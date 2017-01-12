@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#import "UserAPI.h"
+
 @interface ViewController ()
 
 @end
@@ -17,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSURLSessionTask *task = [UserAPI update:nil completionBlock:^(id data, NSURLResponse *response, NSError *error) {
+        NSLog(@"Response %@ %@ %@", data, response, error);
+    }];
+    
+    [task resume];
 }
 
 
