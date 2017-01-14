@@ -11,7 +11,9 @@ import UIKit
 import KeychainSwift
 
 private let keychain = KeychainSwift()
+private let keyUserID = "userID"
 private let keychainToken = "token"
+private let keyTimestamp = "timestamp"
 private let keychainPassword = "password"
 
 class UserCredentials {
@@ -25,13 +27,33 @@ class UserCredentials {
         }
     }
     
-    var password: String {
+    class var password: String {
         get {
             return keychain.get(keychainPassword) ?? ""
         }
         
         set {
             keychain.set(newValue, forKey: keychainPassword)
+        }
+    }
+    
+    class var timestamp: String {
+        get {
+            return UserDefaults.standard.string(forKey: keyTimestamp) ?? ""
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: keyTimestamp)
+        }
+    }
+    
+    class var userID: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: keyUserID)
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: keyUserID)
         }
     }
 }
