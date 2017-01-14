@@ -18,6 +18,10 @@
 		573F59C31E295C4E00AEA72A /* ShareBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */; };
 		573F59D11E295D4900AEA72A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D01E295D4900AEA72A /* Constants.swift */; };
 		573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */; };
+		573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D81E29627A00AEA72A /* BaseAPI.swift */; };
+		573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DA1E29637E00AEA72A /* UserAPI.swift */; };
+		573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DC1E296F4F00AEA72A /* UserCredentials.swift */; };
+		573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59E01E2A7E7800AEA72A /* ModelManager.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,10 @@
 		573F59C41E295C4E00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573F59D01E295D4900AEA72A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousURLConnection.swift; sourceTree = "<group>"; };
+		573F59D81E29627A00AEA72A /* BaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		573F59DA1E29637E00AEA72A /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		573F59DC1E296F4F00AEA72A /* UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		573F59E01E2A7E7800AEA72A /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,7 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				573F599F1E295C4D00AEA72A /* AppDelegate.swift */,
-				573F59D51E295F4700AEA72A /* API Manager */,
+				573F59D51E295F4700AEA72A /* APIManager */,
+				573F59DF1E2A7E3F00AEA72A /* ModelManager */,
 				573F59D41E295EC700AEA72A /* Resources */,
 				573F59D21E295EA200AEA72A /* Utility */,
 				573F59D31E295EAF00AEA72A /* ViewControllers */,
@@ -164,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				573F59D01E295D4900AEA72A /* Constants.swift */,
+				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -188,12 +198,22 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		573F59D51E295F4700AEA72A /* API Manager */ = {
+		573F59D51E295F4700AEA72A /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
 				573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */,
+				573F59D81E29627A00AEA72A /* BaseAPI.swift */,
+				573F59DA1E29637E00AEA72A /* UserAPI.swift */,
 			);
-			name = "API Manager";
+			name = APIManager;
+			sourceTree = "<group>";
+		};
+		573F59DF1E2A7E3F00AEA72A /* ModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				573F59E01E2A7E7800AEA72A /* ModelManager.swift */,
+			);
+			name = ModelManager;
 			sourceTree = "<group>";
 		};
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
@@ -493,8 +513,12 @@
 				573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
 				573F59A21E295C4D00AEA72A /* ViewController.swift in Sources */,
+				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
+				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
+				573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
+				573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,17 +8,17 @@
 
 import UIKit
 
-class AsynchronousURLConnection: NSObject {
-    typealias APICompletionBlock = (Any?, URLResponse?, Error?) -> (Void)
-    
-    static func runAsynchronousRequest(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
-        let task = AsynchronousURLConnection.createAsynchronousRequest(request, completion: completion)
+typealias APICompletionBlock = (Any?, URLResponse?, Error?) -> (Void)
+
+class AsynchronousURLConnection {
+    static func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
+        let task = AsynchronousURLConnection.create(request, completion: completion)
         task?.resume()
         
         return task
     }
     
-    static func createAsynchronousRequest(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
+    static func create(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         

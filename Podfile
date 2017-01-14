@@ -7,6 +7,7 @@ target 'ShareBudget' do
 
   # Pods for ShareBudget
   pod 'XCGLogger'
+  pod 'KeychainSwift'
 
   target 'ShareBudgetTests' do
     inherit! :search_paths

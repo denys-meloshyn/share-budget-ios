@@ -1,14 +1,17 @@
 PODS:
+  - KeychainSwift (7.0.0)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
+  - KeychainSwift
   - XCGLogger
 
 SPEC CHECKSUMS:
+  KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 39b7af3ec65baa2bbe81df74224f2797984fd5d6
+PODFILE CHECKSUM: f5d8bea62bb9bef8c740b3f5660c275e7c63d93c
 
 COCOAPODS: 1.1.1
