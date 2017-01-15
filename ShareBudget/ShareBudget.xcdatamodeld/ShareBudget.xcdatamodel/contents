@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="BaseModel" representedClassName="BaseModel" syncable="YES" codeGenerationType="class">
+    <entity name="BaseModel" representedClassName="BaseModel" syncable="YES">
         <attribute name="internalID" optional="YES" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isChanged" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isRemoved" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="modelID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+    <entity name="Category" representedClassName="Category" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="categories" inverseEntity="Group" syncable="YES"/>
         <relationship name="limits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategoryLimit" inverseName="category" inverseEntity="CategoryLimit" syncable="YES"/>
     </entity>
-    <entity name="CategoryLimit" representedClassName="CategoryLimit" syncable="YES" codeGenerationType="class">
+    <entity name="CategoryLimit" representedClassName="CategoryLimit" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="limits" inverseEntity="Category" syncable="YES"/>
     </entity>
-    <entity name="Expense" representedClassName="Expense" syncable="YES" codeGenerationType="class">
+    <entity name="Expense" representedClassName="Expense" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="expenses" inverseEntity="Group" syncable="YES"/>
     </entity>
-    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+    <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="group" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="group" inverseEntity="Expense" syncable="YES"/>
         <relationship name="limits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupLimit" inverseName="group" inverseEntity="GroupLimit" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="group" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="GroupLimit" representedClassName="GroupLimit" syncable="YES" codeGenerationType="class">
+    <entity name="GroupLimit" representedClassName="GroupLimit" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="limits" inverseEntity="Group" syncable="YES"/>
     </entity>
-    <entity name="User" representedClassName="User" parentEntity="BaseModel" syncable="YES" codeGenerationType="class">
+    <entity name="User" representedClassName="User" parentEntity="BaseModel" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,11 +42,11 @@
     </entity>
     <elements>
         <element name="BaseModel" positionX="-63" positionY="-18" width="128" height="30"/>
-        <element name="User" positionX="-54" positionY="9" width="128" height="30"/>
-        <element name="Group" positionX="-36" positionY="45" width="128" height="30"/>
-        <element name="GroupLimit" positionX="-18" positionY="54" width="128" height="30"/>
-        <element name="Expense" positionX="0" positionY="72" width="128" height="30"/>
-        <element name="Category" positionX="18" positionY="81" width="128" height="30"/>
-        <element name="CategoryLimit" positionX="36" positionY="81" width="128" height="30"/>
+        <element name="Category" positionX="18" positionY="81" width="128" height="90"/>
+        <element name="CategoryLimit" positionX="36" positionY="81" width="128" height="90"/>
+        <element name="Expense" positionX="0" positionY="72" width="128" height="90"/>
+        <element name="Group" positionX="-36" positionY="45" width="128" height="120"/>
+        <element name="GroupLimit" positionX="-18" positionY="54" width="128" height="90"/>
+        <element name="User" positionX="-54" positionY="9" width="128" height="105"/>
     </elements>
 </model>
