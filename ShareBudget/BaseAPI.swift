@@ -10,13 +10,19 @@ import UIKit
 
 extension URLRequest {
     mutating func addToken() {
-        self.addValue(UserCredentials.token, forHTTPHeaderField: kToken)
+        self.setValue(UserCredentials.token, forHTTPHeaderField: kToken)
     }
     
     mutating func addUpdateCredentials() {
-        self.addValue(UserCredentials.token, forHTTPHeaderField: kToken)
-        self.addValue(UserCredentials.timestamp, forHTTPHeaderField: kTimeStamp)
-        self.addValue(String(UserCredentials.userID), forHTTPHeaderField: kUserID)
+        self.addToken()
+        self.setValue(UserCredentials.timestamp, forHTTPHeaderField: kTimeStamp)
+        self.setValue(String(UserCredentials.userID), forHTTPHeaderField: kUserID)
+    }
+    
+    mutating func addModelInfo(_ model: BaseModel) {
+        self.setValue(String(model.internalID), forHTTPHeaderField: kInternalID)
+        self.setValue(String(model.isRemoved), forHTTPHeaderField: kIsRemoved)
+        self.setValue(String(model.modelID), forHTTPHeaderField: BaseAPI.modelKeyID())
     }
 }
 
@@ -29,11 +35,16 @@ class BaseAPI {
         return ""
     }
     
+    class func modelKeyID() -> String {
+        return ""
+    }
+    
     class func components() -> NSURLComponents {
         let components = NSURLComponents()
         components.scheme = "http"
         components.host = "127.0.0.1"
         components.port = 5000
+        components.path = "/" + BaseAPI.resource()
         
         return components
     }
