@@ -17,7 +17,7 @@ protocol LifeCycleStateProtocol: class {
 
 class BaseView {
     fileprivate let presenter: BasePresenter
-    private weak var viewController: UIViewController?
+    fileprivate weak var viewController: UIViewController?
     
     init(with presenter: BasePresenter, and viewController: UIViewController) {
         self.presenter = presenter
@@ -40,5 +40,11 @@ extension BaseView: LifeCycleStateProtocol {
     
     func viewDidDisappear(_ animated: Bool) {
         self.presenter.viewDidDisappear(animated)
+    }
+}
+
+extension BaseView: BasePresenterDelegate {
+    func showPage(title: String) {
+        self.viewController?.navigationItem.title = title
     }
 }

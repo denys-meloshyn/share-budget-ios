@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="g16-2X-JoY">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,132 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-Xu-xnd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hnr-uM-3JY">
+                                        <rect key="frame" x="15" y="15" width="345" height="220"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u32-n6-qUo">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLn-2L-mRK">
+                                                <rect key="frame" x="0.0" y="38" width="345" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                            </textField>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bum-9X-SWs">
+                                                <rect key="frame" x="0.0" y="76" width="345" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
+                                            </textField>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TeZ-js-Tjr">
+                                                <rect key="frame" x="0.0" y="114" width="345" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                            </textField>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3n-HB-yUT">
+                                                <rect key="frame" x="0.0" y="152" width="345" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvs-9G-OI0">
+                                                <rect key="frame" x="0.0" y="190" width="345" height="30"/>
+                                                <state key="normal" title="Switch"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="leading" secondItem="Gf8-Xu-xnd" secondAttribute="leading" constant="15" id="8lw-bv-jiS"/>
+                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="top" secondItem="Gf8-Xu-xnd" secondAttribute="top" constant="15" id="Khz-4T-PTx"/>
+                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="width" secondItem="Gf8-Xu-xnd" secondAttribute="width" constant="-30" id="MK8-i5-SUb"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hnr-uM-3JY" secondAttribute="bottom" constant="15" id="Ywb-xq-9Oh"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hnr-uM-3JY" secondAttribute="trailing" constant="15" id="n1K-ee-aqa"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gf8-Xu-xnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MBg-VE-tQ4"/>
+                            <constraint firstAttribute="bottom" secondItem="Gf8-Xu-xnd" secondAttribute="bottom" id="Rbi-Xo-glc"/>
+                            <constraint firstAttribute="trailing" secondItem="Gf8-Xu-xnd" secondAttribute="trailing" id="WIa-rm-Pnw"/>
+                            <constraint firstItem="Gf8-Xu-xnd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jNf-bx-Des"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mzH-TX-idC"/>
+                    <connections>
+                        <outlet property="authorisationButton" destination="Bvs-9G-OI0" id="Ivf-Nd-5JU"/>
+                        <outlet property="emailTextField" destination="u32-n6-qUo" id="Pss-i0-kFL"/>
+                        <outlet property="firstNameTextField" destination="TeZ-js-Tjr" id="O24-ca-gTS"/>
+                        <outlet property="lastNameTextField" destination="O3n-HB-yUT" id="Pe4-0z-bFf"/>
+                        <outlet property="passwordTextField" destination="ZLn-2L-mRK" id="0fQ-5f-AYA"/>
+                        <outlet property="repeatPasswordTextField" destination="bum-9X-SWs" id="Wuk-BW-nGw"/>
+                        <outlet property="stackView" destination="Hnr-uM-3JY" id="TIR-N8-q4a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2957.5999999999999" y="138.98050974512745"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="PIE-zu-7n0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oXt-4V-B5G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Y1Y-vY-AhO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JXX-Xo-0lk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJo-uM-khD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079.2" y="138.98050974512745"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="4Gf-q5-SXM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g16-2X-JoY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="cMS-ke-b6f">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oXt-4V-B5G" kind="relationship" relationship="viewControllers" id="IF6-QC-gv6"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4l-2K-7al" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="138.98050974512745"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CaR-x0-r93">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="dM5-2a-nhH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i3X-IJ-Ob7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7BC-uz-qMv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XDR-Ea-eOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018.4000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

@@ -8,11 +8,19 @@
 
 import UIKit
 
-class BasePresenter {
+protocol BasePresenterDelegate: class {
+    func showPage(title: String)
+}
+
+class BasePresenter: NSObject {
     private let interaction: BaseInteraction
     
     init(with interaction: BaseInteraction) {
         self.interaction = interaction
+    }
+    
+    func configure() {
+        
     }
 }
 
