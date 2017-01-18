@@ -46,6 +46,7 @@
 		573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */; };
 		573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A301E2D557900AEA72A /* BaseInteraction.swift */; };
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
+		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		573F5A301E2D557900AEA72A /* BaseInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteraction.swift; sourceTree = "<group>"; };
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				573F59D01E295D4900AEA72A /* Constants.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
+				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
+				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
 				573F5A281E2D50B400AEA72A /* BaseView.swift in Sources */,

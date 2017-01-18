@@ -46,11 +46,11 @@ class LoginViewController: BaseViewController {
     }
     
     func linkViewActions(to presenter: LoginPresenter) {
-        self.emailTextField?.delegate = presenter
-        self.passwordTextField?.delegate = presenter
-        self.lastNameTextField?.delegate = presenter
-        self.firstNameTextField?.delegate = presenter
-        self.repeatPasswordTextField?.delegate = presenter
+        presenter.listenTextFieldChanges(self.emailTextField)
+        presenter.listenTextFieldChanges(self.passwordTextField)
+        presenter.listenTextFieldChanges(self.lastNameTextField)
+        presenter.listenTextFieldChanges(self.firstNameTextField)
+        presenter.listenTextFieldChanges(self.repeatPasswordTextField)
         
         self.authorisationButton?.addTarget(presenter, action: #selector(LoginPresenter.switchAuthorisationMode), for: .touchUpInside)
     }

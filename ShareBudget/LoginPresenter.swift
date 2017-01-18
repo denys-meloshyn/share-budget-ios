@@ -16,6 +16,9 @@ enum AuthorisationMode {
 protocol LoginPresenterDelegate: BasePresenterDelegate {
     func showLogin(title: String)
     func showSignUp(title: String)
+    func currentTextField() -> InputTextField
+    func textValue(for field: InputTextField) -> String
+    func showError(_ message: String, for field: InputTextField)
 }
 
 class LoginPresenter: BasePresenter {
@@ -36,13 +39,38 @@ class LoginPresenter: BasePresenter {
         self.updateAthorisationView()
     }
     
+    func listenTextFieldChanges(_ textField: UITextField?) {
+        textField?.delegate = self
+        textField?.addTarget(self, action: #selector(LoginPresenter.validateInputValue), for: .editingChanged)
+    }
+    
+    func validateInputValue() {
+        guard let input = self.delegate?.currentTextField() else {
+            return
+        }
+        
+        guard var value = self.delegate?.textValue(for: input), value.characters.count == 0 else {
+            return
+        }
+        
+        switch input {
+        case .email:
+            if !Validator.email(value) {
+                self.delegate?.showError("E-mail is wrong", for: .email)
+            }
+            
+        default:
+            break
+        }
+    }
+    
     private func updateAthorisationView() {
         switch self.mode {
         case .login:
-            self.delegate?.showLogin(title: "Switch to Sign Up")
+            self.delegate?.showLogin(title: "Don't have an account?")
             self.delegate?.showPage(title: "Login")
         case .signUp:
-            self.delegate?.showSignUp(title: "Switch to Login")
+            self.delegate?.showSignUp(title: "Login with existing credentials")
             self.delegate?.showPage(title: "Sign Up")
         }
     }

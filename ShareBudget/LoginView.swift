@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum InputTextField {
+    case none
+    case email
+    case password
+    case repeatPassword
+    case firstName
+    case lastName
+}
+
 class LoginView: BaseView {
     weak var stackView: UIStackView?
     weak var emailTextField: UITextField?
@@ -52,5 +61,59 @@ extension LoginView: LoginPresenterDelegate {
             self.updateSignUpViews(hidden: false)
             self.updateButton(title: title)
         }
+    }
+    
+    func textValue(for field: InputTextField) -> String {
+        var value: String?
+        
+        switch field {
+        case .email:
+            value = self.emailTextField?.text
+            
+        case .password:
+            value = self.passwordTextField?.text
+            
+        case .repeatPassword:
+            value = self.repeatPasswordTextField?.text
+            
+        case .firstName:
+            value = self.firstNameTextField?.text
+            
+        case .lastName:
+            value = self.lastNameTextField?.text
+            
+        default:
+            break
+        }
+        
+        return value ?? ""
+    }
+    
+    func currentTextField() -> InputTextField {
+        if let emailTextField = self.emailTextField, emailTextField.isFirstResponder {
+            return .email
+        }
+        
+        if let passwordTextField = self.passwordTextField, passwordTextField.isFirstResponder {
+            return .password
+        }
+        
+        if let repeatPasswordTextField = self.repeatPasswordTextField, repeatPasswordTextField.isFirstResponder {
+            return .repeatPassword
+        }
+        
+        if let firstNameTextField = self.firstNameTextField, firstNameTextField.isFirstResponder {
+            return .firstName
+        }
+        
+        if let lastNameTextField = self.lastNameTextField, lastNameTextField.isFirstResponder {
+            return .lastName
+        }
+        
+        return .none
+    }
+    
+    func showError(_ message: String, for field: InputTextField) {
+        
     }
 }
