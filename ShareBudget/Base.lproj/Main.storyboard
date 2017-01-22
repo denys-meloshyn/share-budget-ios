@@ -87,7 +87,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="mzH-TX-idC"/>
                     <connections>
-                        <outlet property="authorisationButton" destination="Bvs-9G-OI0" id="Ivf-Nd-5JU"/>
+                        <outlet property="authorisationButton" destination="3ZL-Uy-f5u" id="p0a-vq-uFB"/>
+                        <outlet property="authorisationModeButton" destination="Bvs-9G-OI0" id="asn-70-6G5"/>
                         <outlet property="emailTextField" destination="u32-n6-qUo" id="Pss-i0-kFL"/>
                         <outlet property="firstNameTextField" destination="TeZ-js-Tjr" id="O24-ca-gTS"/>
                         <outlet property="lastNameTextField" destination="O3n-HB-yUT" id="Pe4-0z-bFf"/>

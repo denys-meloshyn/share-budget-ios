@@ -17,9 +17,11 @@ enum AuthorisationMode {
 protocol LoginPresenterDelegate: BasePresenterDelegate {
     func showLogin(title: String)
     func showSignUp(title: String)
+    func showAuthorisation(title: String)
     func showError(for field: LoginTextField)
     func hideError(for field: LoginTextField)
     func showKeyboard(for textField: LoginTextField)
+    func loginValue(for field: LoginTextField) -> String
     func textType(for textField: UITextField) -> LoginTextField
 }
 
@@ -31,6 +33,8 @@ class LoginPresenter: BasePresenter {
         self.updateAthorisationView()
     }
     
+    // MARK: - Public
+    
     func switchAuthorisationMode() {
         if self.mode == .login {
             self.mode = .signUp
@@ -41,8 +45,45 @@ class LoginPresenter: BasePresenter {
         self.updateAthorisationView()
     }
     
+    func authoriseUser() {
+        
+    }
+    
     func listenTextFieldChanges(_ textField: UITextField?) {
         textField?.delegate = self
+        
+        let notValidField = self.findNotValidField()
+        switch notValidField {
+        case .email(_):
+            self.delegate?.showError(for: .email("E-mail is wrong"))
+            
+        default:
+            break
+        }
+    }
+    
+    // MARK: - Private
+    
+    private func findNotValidField() -> LoginTextField {
+        guard let delegate = self.delegate else {
+            return .all
+        }
+        
+        var value = delegate.loginValue(for: .email(""))
+        if !Validator.email(value) {
+            return .email("")
+        }
+        
+        value = delegate.loginValue(for: .password(""))
+        if !Validator.password(value) {
+            return .password("")
+        }
+        
+        if self.mode == .login {
+            return .none
+        }
+        
+        return .none
     }
     
     fileprivate func validate(textField: UITextField) {
@@ -66,9 +107,11 @@ class LoginPresenter: BasePresenter {
         case .login:
             self.delegate?.showLogin(title: "Don't have an account?")
             self.delegate?.showPage(title: "Login")
+            self.delegate?.showAuthorisation(title: "Login")
         case .signUp:
             self.delegate?.showSignUp(title: "Login with existing account")
             self.delegate?.showPage(title: "Sign Up")
+            self.delegate?.showAuthorisation(title: "Sign Up")
         }
     }
     

@@ -26,6 +26,7 @@ class LoginView: BaseView {
     weak var passwordTextField: UITextField?
     weak var lastNameTextField: UITextField?
     weak var firstNameTextField: UITextField?
+    weak var authorisationModeButton: UIButton?
     weak var repeatPasswordTextField: UITextField?
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
@@ -41,8 +42,8 @@ class LoginView: BaseView {
 
 extension LoginView: LoginPresenterDelegate {
     private func updateButton(title: String) {
-        self.authorisationButton?.setTitle(title, for: .normal)
-        self.authorisationButton?.setTitle(title, for: .selected)
+        self.authorisationModeButton?.setTitle(title, for: .normal)
+        self.authorisationModeButton?.setTitle(title, for: .selected)
     }
     
     private func updateSignUpViews(hidden: Bool) {
@@ -100,6 +101,28 @@ extension LoginView: LoginPresenterDelegate {
         UIView.animate(withDuration: 0.3) {
             self.updateSignUpViews(hidden: false)
             self.updateButton(title: title)
+        }
+    }
+    
+    func loginValue(for field: LoginTextField) -> String {
+        switch field {
+        case .email(_):
+            return self.emailTextField?.text ?? ""
+            
+        case .password(_):
+            return self.passwordTextField?.text ?? ""
+            
+        case .repeatPassword(_):
+            return self.repeatPasswordTextField?.text ?? ""
+            
+        case .firstName(_):
+            return self.firstNameTextField?.text ?? ""
+            
+        case .lastName(_):
+            return self.lastNameTextField?.text ?? ""
+            
+        default:
+            return ""
         }
     }
     
@@ -193,5 +216,10 @@ extension LoginView: LoginPresenterDelegate {
         }
         
         loginTextField?.becomeFirstResponder()
+    }
+    
+    func showAuthorisation(title: String) {
+        self.authorisationButton?.setTitle(title, for: .normal)
+        self.authorisationButton?.setTitle(title, for: .highlighted)
     }
 }

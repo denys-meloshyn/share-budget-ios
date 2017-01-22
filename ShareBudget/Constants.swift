@@ -33,5 +33,7 @@ let kBudgetLimitID = "budgetLimitID"
 let kModifiedUserID = "modifiedUserID"
 let kCategoryLimitID = "categoryLimitID"
 
+let kPasswordMinLength = 6
+
 class Constants: NSObject {
 }

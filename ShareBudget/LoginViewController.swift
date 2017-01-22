@@ -15,6 +15,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet private var passwordTextField: UITextField?
     @IBOutlet private var lastNameTextField: UITextField?
     @IBOutlet private var firstNameTextField: UITextField?
+    @IBOutlet private var authorisationModeButton: UIButton?
     @IBOutlet private var repeatPasswordTextField: UITextField?
     
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class LoginViewController: BaseViewController {
         presenter.configure()
     }
 
-    func linkStoryboardViews(to view: LoginView) {
+    private func linkStoryboardViews(to view: LoginView) {
         view.stackView = self.stackView
         view.emailTextField = self.emailTextField
         view.lastNameTextField = self.lastNameTextField
@@ -43,15 +44,17 @@ class LoginViewController: BaseViewController {
         view.firstNameTextField = self.firstNameTextField
         view.authorisationButton = self.authorisationButton
         view.repeatPasswordTextField = self.repeatPasswordTextField
+        view.authorisationModeButton = self.authorisationModeButton
     }
     
-    func linkViewActions(to presenter: LoginPresenter) {
+    private func linkViewActions(to presenter: LoginPresenter) {
         presenter.listenTextFieldChanges(self.emailTextField)
         presenter.listenTextFieldChanges(self.passwordTextField)
         presenter.listenTextFieldChanges(self.lastNameTextField)
         presenter.listenTextFieldChanges(self.firstNameTextField)
         presenter.listenTextFieldChanges(self.repeatPasswordTextField)
         
-        self.authorisationButton?.addTarget(presenter, action: #selector(LoginPresenter.switchAuthorisationMode), for: .touchUpInside)
+        self.authorisationButton?.addTarget(presenter, action: #selector(LoginPresenter.authoriseUser), for: .touchUpInside)
+        self.authorisationModeButton?.addTarget(presenter, action: #selector(LoginPresenter.switchAuthorisationMode), for: .touchUpInside)
     }
 }

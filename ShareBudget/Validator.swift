@@ -15,4 +15,8 @@ class Validator {
         
         return predicate.evaluate(with: email)
     }
+    
+    class func password(_ password: String) -> Bool {
+        return password.characters.count >= kPasswordMinLength
+    }
 }
