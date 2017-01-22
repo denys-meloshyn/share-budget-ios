@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import XCGLogger
 
-enum InputTextField {
+enum LoginTextField {
     case none
-    case email
-    case password
-    case repeatPassword
-    case firstName
-    case lastName
+    case email(String)
+    case password(String)
+    case repeatPassword(String)
+    case firstName(String)
+    case lastName(String)
+    case all
 }
 
 class LoginView: BaseView {
@@ -49,7 +51,42 @@ extension LoginView: LoginPresenterDelegate {
         self.repeatPasswordTextField?.isHidden = hidden
     }
     
+    private func nextArrangedView(_ view: UIView) -> UIView? {
+        guard let stackView = self.stackView else {
+            return nil
+        }
+        
+        guard let index = stackView.arrangedSubviews.index(of: view), index < stackView.arrangedSubviews.count else {
+            return nil
+        }
+        
+        return stackView.arrangedSubviews[index + 1]
+    }
+    
+    private func createErrorLabel(with text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.textColor = UIColor.red
+        
+        return label
+    }
+    
+    private func updatePasswordReturnKey(_ returnKeyType: UIReturnKeyType) {
+        self.passwordTextField?.returnKeyType = returnKeyType
+    }
+    
+    private func hideKeyboard() {
+        _ = self.emailTextField?.resignFirstResponder()
+        _ = self.passwordTextField?.resignFirstResponder()
+        _ = self.repeatPasswordTextField?.resignFirstResponder()
+        _ = self.firstNameTextField?.resignFirstResponder()
+        _ = self.lastNameTextField?.resignFirstResponder()
+    }
+    
     func showLogin(title: String) {
+        self.updatePasswordReturnKey(.go)
+        self.hideKeyboard()
+        
         UIView.animate(withDuration: 0.3) {
             self.updateSignUpViews(hidden: true)
             self.updateButton(title: title)
@@ -57,63 +94,104 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func showSignUp(title: String) {
+        self.updatePasswordReturnKey(.next)
+        self.hideKeyboard()
+        
         UIView.animate(withDuration: 0.3) {
             self.updateSignUpViews(hidden: false)
             self.updateButton(title: title)
         }
     }
     
-    func textValue(for field: InputTextField) -> String {
-        var value: String?
-        
-        switch field {
-        case .email:
-            value = self.emailTextField?.text
-            
-        case .password:
-            value = self.passwordTextField?.text
-            
-        case .repeatPassword:
-            value = self.repeatPasswordTextField?.text
-            
-        case .firstName:
-            value = self.firstNameTextField?.text
-            
-        case .lastName:
-            value = self.lastNameTextField?.text
-            
-        default:
-            break
+    func textType(for textField: UITextField) -> LoginTextField {
+        if textField === self.emailTextField {
+            return .email(textField.text ?? "")
         }
         
-        return value ?? ""
-    }
-    
-    func currentTextField() -> InputTextField {
-        if let emailTextField = self.emailTextField, emailTextField.isFirstResponder {
-            return .email
+        if textField === self.passwordTextField {
+            return .password(textField.text ?? "")
         }
         
-        if let passwordTextField = self.passwordTextField, passwordTextField.isFirstResponder {
-            return .password
+        if textField === self.repeatPasswordTextField {
+            return .repeatPassword(textField.text ?? "")
         }
         
-        if let repeatPasswordTextField = self.repeatPasswordTextField, repeatPasswordTextField.isFirstResponder {
-            return .repeatPassword
+        if textField === self.firstNameTextField {
+            return .firstName(textField.text ?? "")
         }
         
-        if let firstNameTextField = self.firstNameTextField, firstNameTextField.isFirstResponder {
-            return .firstName
-        }
-        
-        if let lastNameTextField = self.lastNameTextField, lastNameTextField.isFirstResponder {
-            return .lastName
+        if textField === self.lastNameTextField {
+            return .lastName(textField.text ?? "")
         }
         
         return .none
     }
     
-    func showError(_ message: String, for field: InputTextField) {
+    func hideError(for field: LoginTextField) {
+        var textField: UITextField?
         
+        switch field {
+        case .email(_):
+            textField = self.emailTextField
+            
+        default:
+            break
+        }
+        
+        guard let currentTextField = textField else {
+            return
+        }
+        
+        guard let nextView = self.nextArrangedView(currentTextField), nextView.isKind(of: UILabel.self) else {
+            return
+        }
+        
+        nextView.removeFromSuperview()
+    }
+    
+    func showError(for field: LoginTextField) {
+        XCGLogger.error("Error")
+        
+        switch field {
+        case let .email(value):
+            guard let emailTextField = self.emailTextField else {
+                return
+            }
+            
+            guard let index = self.stackView?.arrangedSubviews.index(of: emailTextField) else {
+                return
+            }
+            
+            let label = self.createErrorLabel(with: value)
+            self.stackView?.insertArrangedSubview(label, at: index + 1)
+            
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    func showKeyboard(for textField: LoginTextField) {
+        var loginTextField: UITextField?
+        
+        switch textField {
+        case .password(_):
+            loginTextField = self.passwordTextField
+            
+        case .repeatPassword(_):
+            loginTextField = self.repeatPasswordTextField
+            
+        case .firstName(_):
+            loginTextField = self.firstNameTextField
+            
+        case .lastName(_):
+            loginTextField = self.lastNameTextField
+            
+        default:
+            break
+        }
+        
+        loginTextField?.becomeFirstResponder()
     }
 }

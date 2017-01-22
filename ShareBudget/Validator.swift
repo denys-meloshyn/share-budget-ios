@@ -10,8 +10,8 @@ import UIKit
 
 class Validator {
     class func email(_ email: String) -> Bool {
-        let regExp = "^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$"
-        let predicate = NSPredicate(format: "SELF MATCHES \(regExp)")
+        let regExp = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regExp)
         
         return predicate.evaluate(with: email)
     }
