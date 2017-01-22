@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Rswift
 import XCGLogger
 
 enum AuthorisationMode {
@@ -46,20 +47,18 @@ class LoginPresenter: BasePresenter {
     }
     
     func authoriseUser() {
-        
-    }
-    
-    func listenTextFieldChanges(_ textField: UITextField?) {
-        textField?.delegate = self
-        
         let notValidField = self.findNotValidField()
         switch notValidField {
         case .email(_):
-            self.delegate?.showError(for: .email("E-mail is wrong"))
+            self.delegate?.showError(for: .email(LocalisedManager.login.wrongEmailFormat))
             
         default:
             break
         }
+    }
+    
+    func listenTextFieldChanges(_ textField: UITextField?) {
+        textField?.delegate = self
     }
     
     // MARK: - Private
@@ -94,7 +93,7 @@ class LoginPresenter: BasePresenter {
         switch input {
         case let .email(value):
             if !Validator.email(value) {
-                self.delegate?.showError(for: .email("E-mail is wrong"))
+                self.delegate?.showError(for: .email(LocalisedManager.login.wrongEmailFormat))
             }
             
         default:
@@ -105,13 +104,13 @@ class LoginPresenter: BasePresenter {
     fileprivate func updateAthorisationView() {
         switch self.mode {
         case .login:
-            self.delegate?.showLogin(title: "Don't have an account?")
-            self.delegate?.showPage(title: "Login")
-            self.delegate?.showAuthorisation(title: "Login")
+            self.delegate?.showLogin(title: LocalisedManager.login.dontHaveAccount)
+            self.delegate?.showPage(title: LocalisedManager.login.title)
+            self.delegate?.showAuthorisation(title: LocalisedManager.login.title)
         case .signUp:
-            self.delegate?.showSignUp(title: "Login with existing account")
-            self.delegate?.showPage(title: "Sign Up")
-            self.delegate?.showAuthorisation(title: "Sign Up")
+            self.delegate?.showSignUp(title: LocalisedManager.login.loginWithExistingAccount)
+            self.delegate?.showPage(title: LocalisedManager.login.signUp)
+            self.delegate?.showAuthorisation(title: LocalisedManager.login.signUp)
         }
     }
     

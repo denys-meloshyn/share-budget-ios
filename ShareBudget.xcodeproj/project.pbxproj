@@ -49,6 +49,10 @@
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
 		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
+		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
+		578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
+		578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
+		578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0711E3516BE00DE28C8 /* InfoPlist.strings */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -120,6 +124,14 @@
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
 		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedManager.swift; sourceTree = "<group>"; };
+		578BD05F1E35158D00DE28C8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		578BD0601E35158D00DE28C8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		578BD0611E35159300DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		578BD0621E35159300DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		578BD0661E3516BD00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		578BD06B1E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		578BD0701E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +234,7 @@
 		573F59C11E295C4E00AEA72A /* ShareBudgetUITests */ = {
 			isa = PBXGroup;
 			children = (
+				578BD0711E3516BE00DE28C8 /* InfoPlist.strings */,
 				573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */,
 				573F59C41E295C4E00AEA72A /* Info.plist */,
 			);
@@ -231,8 +244,9 @@
 		573F59D21E295EA200AEA72A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				573F59D01E295D4900AEA72A /* Constants.swift */,
+				578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */,
+				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
 			);
@@ -251,6 +265,8 @@
 		573F59D41E295EC700AEA72A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */,
+				578BD0671E3516BD00DE28C8 /* Localizable.strings */,
 				573F59AE1E295C4D00AEA72A /* Info.plist */,
 				573F59A91E295C4D00AEA72A /* Assets.xcassets */,
 				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
@@ -468,8 +484,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				573F59AD1E295C4D00AEA72A /* LaunchScreen.storyboard in Resources */,
+				578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
+				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +678,7 @@
 				578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
+				578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
@@ -720,6 +740,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				573F59A41E295C4D00AEA72A /* Base */,
+				578BD0601E35158D00DE28C8 /* uk */,
+				578BD0621E35159300DE28C8 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -728,8 +750,34 @@
 			isa = PBXVariantGroup;
 			children = (
 				573F59AC1E295C4D00AEA72A /* Base */,
+				578BD05F1E35158D00DE28C8 /* uk */,
+				578BD0611E35159300DE28C8 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		578BD0671E3516BD00DE28C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				578BD0661E3516BD00DE28C8 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				578BD06B1E3516BE00DE28C8 /* ru */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		578BD0711E3516BE00DE28C8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				578BD0701E3516BE00DE28C8 /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -739,6 +787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -788,6 +837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
