@@ -41,11 +41,13 @@ class LoginViewController: BaseViewController {
         }
         
         if let password = self.password {
+            password.textField?.isSecureTextEntry = true
             self.stackView?.insertArrangedSubview(password, at: 0)
         }
         
         if let email = self.email {
             email.textField?.returnKeyType = .next
+            email.textField?.keyboardType = .emailAddress
             self.stackView?.insertArrangedSubview(email, at: 0)
         }
         

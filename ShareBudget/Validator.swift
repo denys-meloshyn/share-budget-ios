@@ -19,4 +19,13 @@ class Validator {
     class func password(_ password: String) -> Bool {
         return password.characters.count >= kPasswordMinLength
     }
+    
+    class func repeatPassword(password: String, repeat repeatPassword: String) -> Bool {
+        return password == repeatPassword
+    }
+    
+    class func firstName(_ firstName: String) -> Bool {
+        let cleanedValue = firstName.trimmingCharacters(in: CharacterSet.whitespaces)
+        return cleanedValue.characters.count > 0
+    }
 }

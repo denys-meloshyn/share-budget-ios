@@ -46,16 +46,17 @@ class LoginPresenter: BasePresenter {
         }
         
         self.updateAthorisationView()
+        self.resetAllLoginErrorStatuses()
     }
     
     func authoriseUser() {
         let notValidField = self.findNotValidField()
         switch notValidField {
-        case .email(_):
-            self.delegate?.showError(for: .email(LocalisedManager.validation.wrongEmailFormat))
+        case .none:
+            break
             
         default:
-            break
+            self.delegate?.showError(for: notValidField)
         }
     }
     
@@ -64,6 +65,13 @@ class LoginPresenter: BasePresenter {
     }
     
     // MARK: - Private
+    
+    private func resetAllLoginErrorStatuses() {
+        self.delegate?.hideError(for: .email(""))
+        self.delegate?.hideError(for: .password(""))
+        self.delegate?.hideError(for: .repeatPassword(""))
+        self.delegate?.hideError(for: .firstName(""))
+    }
     
     private func configureLoginTextFields() {
         self.delegate?.configureTextField(.email(""), placeholder: LocalisedManager.login.email)
@@ -80,16 +88,25 @@ class LoginPresenter: BasePresenter {
         
         var value = delegate.loginValue(for: .email(""))
         if !Validator.email(value) {
-            return .email("")
+            return .email(LocalisedManager.validation.wrongEmailFormat)
         }
         
         value = delegate.loginValue(for: .password(""))
         if !Validator.password(value) {
-            return .password("")
+            return .password(LocalisedManager.validation.wrongPasswordFormat)
         }
         
         if self.mode == .login {
             return .none
+        }
+        
+        let password = delegate.loginValue(for: .password(""))
+        if !Validator.repeatPassword(password: password, repeat: value) {
+            self.delegate?.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
+        }
+        
+        if !Validator.firstName(value) {
+            self.delegate?.showError(for: .firstName(LocalisedManager.validation.firstNameIsEmpty))
         }
         
         return .none
@@ -109,6 +126,22 @@ class LoginPresenter: BasePresenter {
         case let .password(value):
             if !Validator.password(value) {
                 self.delegate?.showError(for: .password(LocalisedManager.validation.wrongPasswordFormat))
+            }
+            
+        case let .repeatPassword(value):
+            guard let delegate = self.delegate else {
+                self.delegate?.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
+                return
+            }
+            
+            let password = delegate.loginValue(for: .password(""))
+            if !Validator.repeatPassword(password: password, repeat: value) {
+                self.delegate?.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
+            }
+            
+        case let .firstName(value):
+            if !Validator.firstName(value) {
+                self.delegate?.showError(for: .firstName(LocalisedManager.validation.firstNameIsEmpty))
             }
             
         default:
@@ -140,7 +173,7 @@ class LoginPresenter: BasePresenter {
             
         case .password(_):
             if self.mode == .login {
-                
+                self.authoriseUser()
             }
             else {
                 self.delegate?.showKeyboard(for: .repeatPassword(""))
@@ -151,6 +184,9 @@ class LoginPresenter: BasePresenter {
             
         case .firstName(_):
             self.delegate?.showKeyboard(for: .lastName(""))
+            
+        case .lastName(_):
+            self.authoriseUser()
             
         default:
             break
@@ -179,5 +215,15 @@ extension LoginPresenter: UITextFieldDelegate {
         self.activateNextKeyboard(for: textField)
         
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let inputTextField = self.delegate?.textType(for: textField) else {
+            return true
+        }
+        
+        self.delegate?.hideError(for: inputTextField)
+        
+        return true
     }
 }

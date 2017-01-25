@@ -72,6 +72,28 @@ extension LoginView: LoginPresenterDelegate {
         _ = self.lastName?.textField?.resignFirstResponder()
     }
     
+    private func textField(for type: LoginTextField) -> TextFieldErrorMessage? {
+        switch type {
+        case .email(_):
+            return self.email
+            
+        case .password(_):
+            return self.password
+            
+        case .repeatPassword(_):
+            return self.repeatPassword
+            
+        case .firstName(_):
+            return self.firstName
+            
+        case .lastName(_):
+            return self.lastName
+            
+        default:
+            return nil
+        }
+    }
+    
     func showLogin(title: String) {
         self.updatePasswordReturnKey(.go)
         self.hideKeyboard()
@@ -93,25 +115,8 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func loginValue(for field: LoginTextField) -> String {
-        switch field {
-        case .email(_):
-            return self.email?.textField?.text ?? ""
-            
-        case .password(_):
-            return self.password?.textField?.text ?? ""
-            
-        case .repeatPassword(_):
-            return self.repeatPassword?.textField?.text ?? ""
-            
-        case .firstName(_):
-            return self.firstName?.textField?.text ?? ""
-            
-        case .lastName(_):
-            return self.lastName?.textField?.text ?? ""
-            
-        default:
-            return ""
-        }
+        let login = self.textField(for: field)
+        return login?.textField?.text ?? ""
     }
     
     func textType(for textField: UITextField) -> LoginTextField {
@@ -139,57 +144,33 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func hideError(for field: LoginTextField) {
-        switch field {
-        case .email(_):
-            self.email?.isErrorHidden = true
-            
-        default:
-            break
-        }
+        let login = self.textField(for: field)
+        
+        login?.isErrorHidden = true
     }
     
     func showError(for field: LoginTextField) {
-        XCGLogger.error("Error")
-        
         var errorMessage: String?
-        var loginTextField: TextFieldErrorMessage?
+        let login = self.textField(for: field)
         
         switch field {
         case let .email(value):
-            loginTextField = self.email
             errorMessage = value
             
         case let .password(value):
-            loginTextField = self.password
             errorMessage = value
             
         default:
             break
         }
         
-        loginTextField?.isErrorHidden = false
-        loginTextField?.errorMessageLabel?.text = errorMessage
+        login?.isErrorHidden = false
+        login?.errorMessageLabel?.text = errorMessage
     }
     
     func showKeyboard(for textField: LoginTextField) {
-        var loginTextField: UITextField?
-        
-        switch textField {
-        case .password(_):
-            loginTextField = self.password?.textField
-            
-        case .repeatPassword(_):
-            loginTextField = self.repeatPassword?.textField
-            
-        case .firstName(_):
-            loginTextField = self.firstName?.textField
-            
-        case .lastName(_):
-            loginTextField = self.lastName?.textField
-            
-        default:
-            break
-        }
+        let login = self.textField(for: textField)
+        let loginTextField = login?.textField
         
         loginTextField?.becomeFirstResponder()
     }
@@ -200,24 +181,7 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func configureTextField(_ textField: LoginTextField, placeholder: String) {
-        switch textField {
-        case .email(_):
-            self.email?.textField?.placeholder = placeholder
-            
-        case .password(_):
-            self.password?.textField?.placeholder = placeholder
-            
-        case .repeatPassword(_):
-            self.repeatPassword?.textField?.placeholder = placeholder
-            
-        case .firstName(_):
-            self.firstName?.textField?.placeholder = placeholder
-            
-        case .lastName(_):
-            self.lastName?.textField?.placeholder = placeholder
-            
-        default:
-            break
-        }
+        let login = self.textField(for: textField)
+        login?.textField?.placeholder = placeholder
     }
 }
