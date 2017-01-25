@@ -53,6 +53,8 @@
 		578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
 		578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
 		578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0711E3516BE00DE28C8 /* InfoPlist.strings */; };
+		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
+		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -132,6 +134,8 @@
 		578BD0661E3516BD00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		578BD06B1E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		578BD0701E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
+		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -265,13 +269,12 @@
 		573F59D41E295EC700AEA72A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */,
-				578BD0671E3516BD00DE28C8 /* Localizable.strings */,
 				573F59AE1E295C4D00AEA72A /* Info.plist */,
 				573F59A91E295C4D00AEA72A /* Assets.xcassets */,
-				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
-				573F59A31E295C4D00AEA72A /* Main.storyboard */,
+				578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */,
+				578BD0671E3516BD00DE28C8 /* Localizable.strings */,
 				573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */,
+				578BD0741E352DCD00DE28C8 /* Xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			children = (
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
+				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -351,6 +355,16 @@
 				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		578BD0741E352DCD00DE28C8 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
+				573F59A31E295C4D00AEA72A /* Main.storyboard */,
+				578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */,
+			);
+			name = Xib;
 			sourceTree = "<group>";
 		};
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
@@ -485,6 +499,7 @@
 			files = (
 				573F59AD1E295C4D00AEA72A /* LaunchScreen.storyboard in Resources */,
 				578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */,
+				578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
 				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
@@ -670,6 +685,7 @@
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
 				573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */,
 				573F5A101E2C180400AEA72A /* Category+CoreDataClass.swift in Sources */,
+				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
 				573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */,

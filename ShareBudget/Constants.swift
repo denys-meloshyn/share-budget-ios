@@ -35,5 +35,5 @@ let kCategoryLimitID = "categoryLimitID"
 
 let kPasswordMinLength = 6
 
-class Constants: NSObject {
-}
+let loginBorderColor = UIColor.blue
+let loginErrorBorderColor = UIColor.red

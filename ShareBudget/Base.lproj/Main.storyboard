@@ -25,44 +25,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hnr-uM-3JY">
-                                        <rect key="frame" x="15" y="15" width="345" height="258"/>
+                                        <rect key="frame" x="15" y="15" width="345" height="68"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u32-n6-qUo">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLn-2L-mRK">
-                                                <rect key="frame" x="0.0" y="38" width="345" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
-                                            </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bum-9X-SWs">
-                                                <rect key="frame" x="0.0" y="76" width="345" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
-                                            </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TeZ-js-Tjr">
-                                                <rect key="frame" x="0.0" y="114" width="345" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                            </textField>
-                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O3n-HB-yUT">
-                                                <rect key="frame" x="0.0" y="152" width="345" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                            </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZL-Uy-f5u">
-                                                <rect key="frame" x="0.0" y="190" width="345" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
                                                 <state key="normal" title="Login"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvs-9G-OI0">
-                                                <rect key="frame" x="0.0" y="228" width="345" height="30"/>
+                                                <rect key="frame" x="0.0" y="38" width="345" height="30"/>
                                                 <state key="normal" title="Switch"/>
                                             </button>
                                         </subviews>
@@ -89,11 +59,6 @@
                     <connections>
                         <outlet property="authorisationButton" destination="3ZL-Uy-f5u" id="p0a-vq-uFB"/>
                         <outlet property="authorisationModeButton" destination="Bvs-9G-OI0" id="asn-70-6G5"/>
-                        <outlet property="emailTextField" destination="u32-n6-qUo" id="Pss-i0-kFL"/>
-                        <outlet property="firstNameTextField" destination="TeZ-js-Tjr" id="O24-ca-gTS"/>
-                        <outlet property="lastNameTextField" destination="O3n-HB-yUT" id="Pe4-0z-bFf"/>
-                        <outlet property="passwordTextField" destination="ZLn-2L-mRK" id="0fQ-5f-AYA"/>
-                        <outlet property="repeatPasswordTextField" destination="bum-9X-SWs" id="Wuk-BW-nGw"/>
                         <outlet property="stackView" destination="Hnr-uM-3JY" id="TIR-N8-q4a"/>
                     </connections>
                 </viewController>
@@ -123,6 +88,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g16-2X-JoY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cMS-ke-b6f">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

@@ -21,13 +21,13 @@ enum LoginTextField {
 
 class LoginView: BaseView {
     weak var stackView: UIStackView?
-    weak var emailTextField: UITextField?
+    weak var email: TextFieldErrorMessage?
     weak var authorisationButton: UIButton?
-    weak var passwordTextField: UITextField?
-    weak var lastNameTextField: UITextField?
-    weak var firstNameTextField: UITextField?
+    weak var password: TextFieldErrorMessage?
+    weak var lastName: TextFieldErrorMessage?
+    weak var firstName: TextFieldErrorMessage?
     weak var authorisationModeButton: UIButton?
-    weak var repeatPasswordTextField: UITextField?
+    weak var repeatPassword: TextFieldErrorMessage?
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -47,21 +47,9 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     private func updateSignUpViews(hidden: Bool) {
-        self.lastNameTextField?.isHidden = hidden
-        self.firstNameTextField?.isHidden = hidden
-        self.repeatPasswordTextField?.isHidden = hidden
-    }
-    
-    private func nextArrangedView(_ view: UIView) -> UIView? {
-        guard let stackView = self.stackView else {
-            return nil
-        }
-        
-        guard let index = stackView.arrangedSubviews.index(of: view), index < stackView.arrangedSubviews.count else {
-            return nil
-        }
-        
-        return stackView.arrangedSubviews[index + 1]
+        self.lastName?.isHidden = hidden
+        self.firstName?.isHidden = hidden
+        self.repeatPassword?.isHidden = hidden
     }
     
     private func createErrorLabel(with text: String) -> UILabel {
@@ -73,15 +61,15 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     private func updatePasswordReturnKey(_ returnKeyType: UIReturnKeyType) {
-        self.passwordTextField?.returnKeyType = returnKeyType
+        self.password?.textField?.returnKeyType = returnKeyType
     }
     
     private func hideKeyboard() {
-        _ = self.emailTextField?.resignFirstResponder()
-        _ = self.passwordTextField?.resignFirstResponder()
-        _ = self.repeatPasswordTextField?.resignFirstResponder()
-        _ = self.firstNameTextField?.resignFirstResponder()
-        _ = self.lastNameTextField?.resignFirstResponder()
+        _ = self.email?.textField?.resignFirstResponder()
+        _ = self.password?.textField?.resignFirstResponder()
+        _ = self.repeatPassword?.textField?.resignFirstResponder()
+        _ = self.firstName?.textField?.resignFirstResponder()
+        _ = self.lastName?.textField?.resignFirstResponder()
     }
     
     func showLogin(title: String) {
@@ -107,19 +95,19 @@ extension LoginView: LoginPresenterDelegate {
     func loginValue(for field: LoginTextField) -> String {
         switch field {
         case .email(_):
-            return self.emailTextField?.text ?? ""
+            return self.email?.textField?.text ?? ""
             
         case .password(_):
-            return self.passwordTextField?.text ?? ""
+            return self.password?.textField?.text ?? ""
             
         case .repeatPassword(_):
-            return self.repeatPasswordTextField?.text ?? ""
+            return self.repeatPassword?.textField?.text ?? ""
             
         case .firstName(_):
-            return self.firstNameTextField?.text ?? ""
+            return self.firstName?.textField?.text ?? ""
             
         case .lastName(_):
-            return self.lastNameTextField?.text ?? ""
+            return self.lastName?.textField?.text ?? ""
             
         default:
             return ""
@@ -127,23 +115,23 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func textType(for textField: UITextField) -> LoginTextField {
-        if textField === self.emailTextField {
+        if textField === self.email?.textField {
             return .email(textField.text ?? "")
         }
         
-        if textField === self.passwordTextField {
+        if textField === self.password?.textField {
             return .password(textField.text ?? "")
         }
         
-        if textField === self.repeatPasswordTextField {
+        if textField === self.repeatPassword?.textField {
             return .repeatPassword(textField.text ?? "")
         }
         
-        if textField === self.firstNameTextField {
+        if textField === self.firstName?.textField {
             return .firstName(textField.text ?? "")
         }
         
-        if textField === self.lastNameTextField {
+        if textField === self.lastName?.textField {
             return .lastName(textField.text ?? "")
         }
         
@@ -151,48 +139,36 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func hideError(for field: LoginTextField) {
-        var textField: UITextField?
-        
         switch field {
         case .email(_):
-            textField = self.emailTextField
+            self.email?.isErrorHidden = true
             
         default:
             break
         }
-        
-        guard let currentTextField = textField else {
-            return
-        }
-        
-        guard let nextView = self.nextArrangedView(currentTextField), nextView.isKind(of: UILabel.self) else {
-            return
-        }
-        
-        nextView.removeFromSuperview()
     }
     
     func showError(for field: LoginTextField) {
         XCGLogger.error("Error")
         
+        var errorMessage: String?
+        var loginTextField: TextFieldErrorMessage?
+        
         switch field {
         case let .email(value):
-            guard let emailTextField = self.emailTextField else {
-                return
-            }
+            loginTextField = self.email
+            errorMessage = value
             
-            guard let index = self.stackView?.arrangedSubviews.index(of: emailTextField) else {
-                return
-            }
-            
-            let label = self.createErrorLabel(with: value)
-            self.stackView?.insertArrangedSubview(label, at: index + 1)
-            
-            break
+        case let .password(value):
+            loginTextField = self.password
+            errorMessage = value
             
         default:
             break
         }
+        
+        loginTextField?.isErrorHidden = false
+        loginTextField?.errorMessageLabel?.text = errorMessage
     }
     
     func showKeyboard(for textField: LoginTextField) {
@@ -200,16 +176,16 @@ extension LoginView: LoginPresenterDelegate {
         
         switch textField {
         case .password(_):
-            loginTextField = self.passwordTextField
+            loginTextField = self.password?.textField
             
         case .repeatPassword(_):
-            loginTextField = self.repeatPasswordTextField
+            loginTextField = self.repeatPassword?.textField
             
         case .firstName(_):
-            loginTextField = self.firstNameTextField
+            loginTextField = self.firstName?.textField
             
         case .lastName(_):
-            loginTextField = self.lastNameTextField
+            loginTextField = self.lastName?.textField
             
         default:
             break
@@ -221,5 +197,27 @@ extension LoginView: LoginPresenterDelegate {
     func showAuthorisation(title: String) {
         self.authorisationButton?.setTitle(title, for: .normal)
         self.authorisationButton?.setTitle(title, for: .highlighted)
+    }
+    
+    func configureTextField(_ textField: LoginTextField, placeholder: String) {
+        switch textField {
+        case .email(_):
+            self.email?.textField?.placeholder = placeholder
+            
+        case .password(_):
+            self.password?.textField?.placeholder = placeholder
+            
+        case .repeatPassword(_):
+            self.repeatPassword?.textField?.placeholder = placeholder
+            
+        case .firstName(_):
+            self.firstName?.textField?.placeholder = placeholder
+            
+        case .lastName(_):
+            self.lastName?.textField?.placeholder = placeholder
+            
+        default:
+            break
+        }
     }
 }

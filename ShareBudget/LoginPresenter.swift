@@ -24,6 +24,7 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
     func showKeyboard(for textField: LoginTextField)
     func loginValue(for field: LoginTextField) -> String
     func textType(for textField: UITextField) -> LoginTextField
+    func configureTextField(_ textField: LoginTextField, placeholder: String)
 }
 
 class LoginPresenter: BasePresenter {
@@ -32,6 +33,7 @@ class LoginPresenter: BasePresenter {
     
     override func configure() {
         self.updateAthorisationView()
+        self.configureLoginTextFields()
     }
     
     // MARK: - Public
@@ -50,7 +52,7 @@ class LoginPresenter: BasePresenter {
         let notValidField = self.findNotValidField()
         switch notValidField {
         case .email(_):
-            self.delegate?.showError(for: .email(LocalisedManager.login.wrongEmailFormat))
+            self.delegate?.showError(for: .email(LocalisedManager.validation.wrongEmailFormat))
             
         default:
             break
@@ -62,6 +64,14 @@ class LoginPresenter: BasePresenter {
     }
     
     // MARK: - Private
+    
+    private func configureLoginTextFields() {
+        self.delegate?.configureTextField(.email(""), placeholder: LocalisedManager.login.email)
+        self.delegate?.configureTextField(.password(""), placeholder: LocalisedManager.login.password)
+        self.delegate?.configureTextField(.repeatPassword(""), placeholder: LocalisedManager.login.repeatPassword)
+        self.delegate?.configureTextField(.firstName(""), placeholder: LocalisedManager.login.firstName)
+        self.delegate?.configureTextField(.lastName(""), placeholder: LocalisedManager.login.lastName)
+    }
     
     private func findNotValidField() -> LoginTextField {
         guard let delegate = self.delegate else {
@@ -93,7 +103,12 @@ class LoginPresenter: BasePresenter {
         switch input {
         case let .email(value):
             if !Validator.email(value) {
-                self.delegate?.showError(for: .email(LocalisedManager.login.wrongEmailFormat))
+                self.delegate?.showError(for: .email(LocalisedManager.validation.wrongEmailFormat))
+            }
+            
+        case let .password(value):
+            if !Validator.password(value) {
+                self.delegate?.showError(for: .password(LocalisedManager.validation.wrongPasswordFormat))
             }
             
         default:
