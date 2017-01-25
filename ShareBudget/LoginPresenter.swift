@@ -16,6 +16,7 @@ enum AuthorisationMode {
 }
 
 protocol LoginPresenterDelegate: BasePresenterDelegate {
+    func hideKeyboard()
     func showLogin(title: String)
     func showSignUp(title: String)
     func showAuthorisation(title: String)
@@ -45,6 +46,7 @@ class LoginPresenter: BasePresenter {
             self.mode = .login
         }
         
+        self.delegate?.hideKeyboard()
         self.updateAthorisationView()
         self.resetAllLoginErrorStatuses()
     }
@@ -53,6 +55,7 @@ class LoginPresenter: BasePresenter {
         let notValidField = self.findNotValidField()
         switch notValidField {
         case .none:
+            self.delegate?.hideKeyboard()
             break
             
         default:
@@ -88,11 +91,13 @@ class LoginPresenter: BasePresenter {
         
         var value = delegate.loginValue(for: .email(""))
         if !Validator.email(value) {
+            self.delegate?.showKeyboard(for: .email(""))
             return .email(LocalisedManager.validation.wrongEmailFormat)
         }
         
         value = delegate.loginValue(for: .password(""))
         if !Validator.password(value) {
+            self.delegate?.showKeyboard(for: .password(""))
             return .password(LocalisedManager.validation.wrongPasswordFormat)
         }
         
@@ -101,12 +106,16 @@ class LoginPresenter: BasePresenter {
         }
         
         let password = delegate.loginValue(for: .password(""))
+        value = delegate.loginValue(for: .repeatPassword(""))
         if !Validator.repeatPassword(password: password, repeat: value) {
-            self.delegate?.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
+            self.delegate?.showKeyboard(for: .repeatPassword(""))
+            return .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent)
         }
         
+        value = delegate.loginValue(for: .firstName(""))
         if !Validator.firstName(value) {
-            self.delegate?.showError(for: .firstName(LocalisedManager.validation.firstNameIsEmpty))
+            self.delegate?.showKeyboard(for: .firstName(""))
+            return .firstName(LocalisedManager.validation.firstNameIsEmpty)
         }
         
         return .none
@@ -195,14 +204,6 @@ class LoginPresenter: BasePresenter {
 }
 
 extension LoginPresenter: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        guard let inputTextField = self.delegate?.textType(for: textField) else {
-            return
-        }
-        
-        self.delegate?.hideError(for: inputTextField)
-    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let text = textField.text, text.characters.count > 0 else {
             return

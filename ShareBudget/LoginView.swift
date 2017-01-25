@@ -64,14 +64,6 @@ extension LoginView: LoginPresenterDelegate {
         self.password?.textField?.returnKeyType = returnKeyType
     }
     
-    private func hideKeyboard() {
-        _ = self.email?.textField?.resignFirstResponder()
-        _ = self.password?.textField?.resignFirstResponder()
-        _ = self.repeatPassword?.textField?.resignFirstResponder()
-        _ = self.firstName?.textField?.resignFirstResponder()
-        _ = self.lastName?.textField?.resignFirstResponder()
-    }
-    
     private func textField(for type: LoginTextField) -> TextFieldErrorMessage? {
         switch type {
         case .email(_):
@@ -96,7 +88,6 @@ extension LoginView: LoginPresenterDelegate {
     
     func showLogin(title: String) {
         self.updatePasswordReturnKey(.go)
-        self.hideKeyboard()
         
         UIView.animate(withDuration: 0.3) {
             self.updateSignUpViews(hidden: true)
@@ -106,7 +97,6 @@ extension LoginView: LoginPresenterDelegate {
     
     func showSignUp(title: String) {
         self.updatePasswordReturnKey(.next)
-        self.hideKeyboard()
         
         UIView.animate(withDuration: 0.3) {
             self.updateSignUpViews(hidden: false)
@@ -183,5 +173,13 @@ extension LoginView: LoginPresenterDelegate {
     func configureTextField(_ textField: LoginTextField, placeholder: String) {
         let login = self.textField(for: textField)
         login?.textField?.placeholder = placeholder
+    }
+    
+    func hideKeyboard() {
+        _ = self.email?.textField?.resignFirstResponder()
+        _ = self.password?.textField?.resignFirstResponder()
+        _ = self.repeatPassword?.textField?.resignFirstResponder()
+        _ = self.firstName?.textField?.resignFirstResponder()
+        _ = self.lastName?.textField?.resignFirstResponder()
     }
 }
