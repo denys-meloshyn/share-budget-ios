@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol ResourceName {
-    var resource: String { get }
-}
-
 class BaseAPI {
     class func resource() -> String {
         return ""
@@ -26,14 +22,14 @@ class BaseAPI {
         components.scheme = "http"
         components.host = "127.0.0.1"
         components.port = 5000
-        components.path = "/" + BaseAPI.resource()
+        components.path = "/" + self.resource()
         
         return components
     }
     
     class func updates(_ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = BaseAPI.components()
-        components.path = BaseAPI.resource() + "/updates"
+        let components = self.components()
+        components.path = self.resource() + "/updates"
         
         guard let url = components.url else {
             return nil

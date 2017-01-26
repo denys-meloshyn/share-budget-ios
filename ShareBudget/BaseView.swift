@@ -47,4 +47,14 @@ extension BaseView: BasePresenterDelegate {
     func showPage(title: String) {
         self.viewController?.navigationItem.title = title
     }
+    
+    func showErrorMessage(with title: String, _ message: String, _ actions: [UIAlertAction]) {
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        for action in actions {
+            alertView.addAction(action)
+        }
+        
+        self.viewController?.present(alertView, animated: true, completion: nil)
+    }
 }

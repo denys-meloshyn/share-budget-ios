@@ -10,6 +10,7 @@ import UIKit
 
 protocol BasePresenterDelegate: class {
     func showPage(title: String)
+    func showErrorMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
 }
 
 class BasePresenter: NSObject {
@@ -21,6 +22,12 @@ class BasePresenter: NSObject {
     
     func configure() {
         
+    }
+    
+    func alertOkAction(title: String = LocalisedManager.generic.ok) -> UIAlertAction {
+        let action = UIAlertAction(title: title, style: .cancel, handler: nil)
+        
+        return action
     }
 }
 

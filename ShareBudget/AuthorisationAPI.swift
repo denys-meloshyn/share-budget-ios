@@ -14,7 +14,7 @@ class AuthorisationAPI: BaseAPI {
     }
     
     class func login(email: String, password: String, completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = BaseAPI.components()
+        let components = AuthorisationAPI.components()
         
         guard let url = components.url else {
             return nil
@@ -25,6 +25,6 @@ class AuthorisationAPI: BaseAPI {
         request.setValue(email, forHTTPHeaderField: kEmail)
         request.setValue(password, forHTTPHeaderField: kPassword)
         
-        return AsynchronousURLConnection.create(request, completion: completion)
+        return AsynchronousURLConnection.run(request, completion: completion)
     }
 }

@@ -212,4 +212,12 @@ extension LoginView: LoginPresenterDelegate {
         _ = self.firstName?.textField?.resignFirstResponder()
         _ = self.lastName?.textField?.resignFirstResponder()
     }
+    
+    func showSpinnerView() {
+        
+    }
+    
+    func hideSpinnerView() {
+        
+    }
 }

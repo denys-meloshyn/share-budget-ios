@@ -9,7 +9,6 @@
 import UIKit
 
 let kDate = "date"
-
 let kName = "name"
 let kLimit = "limit"
 let kEmail = "email"
@@ -33,7 +32,15 @@ let kBudgetLimitID = "budgetLimitID"
 let kModifiedUserID = "modifiedUserID"
 let kCategoryLimitID = "categoryLimitID"
 
-let kPasswordMinLength = 6
+let kPasswordMinLength = 1
 
 let loginBorderColor = UIColor.blue
 let loginErrorBorderColor = UIColor.red
+
+let kEmailNotApproved = "email_not_approved"
+
+enum ErrorTypeAPI {
+    case none
+    case emailNotApproved
+    case unknown
+}

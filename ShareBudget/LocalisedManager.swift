@@ -12,6 +12,11 @@ import Rswift
 struct LocalisedManager {
     struct generic {
         static let ok = NSLocalizedString("OK", comment: "Generic OK message")
+        static let error = NSLocalizedString("Error", comment: "Generic Error title")
+    }
+    
+    struct error {
+        
     }
     
     struct login {
@@ -24,6 +29,8 @@ struct LocalisedManager {
         static let lastName = NSLocalizedString("Last name", comment: "Placeholder for Last Name text field")
         static let password = NSLocalizedString("Password", comment: "Placeholder for Password text field")
         static let email = NSLocalizedString("E-mail", comment: "Placeholder for Email text field")
+        static let sendAgain = NSLocalizedString("Send again", comment: "Send registration email title")
+        static let sendRegistrationEmailMessage = NSLocalizedString("Please approve your E-mail", comment: "Send registration email error description message")
     }
     
     struct validation {

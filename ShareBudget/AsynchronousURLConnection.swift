@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import XCGLogger
 
 typealias APICompletionBlock = (Any?, URLResponse?, Error?) -> (Void)
 
 class AsynchronousURLConnection {
+    private static func logError(data: Data?) {
+        guard let data = data else {
+            return
+        }
+        
+        let response = String(data: data, encoding: .utf8)
+        XCGLogger.error(response)
+    }
+    
     static func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
         let task = AsynchronousURLConnection.create(request, completion: completion)
+        
+        XCGLogger.info("Load: \(request.url!)")
         task?.resume()
         
         return task
@@ -24,11 +36,8 @@ class AsynchronousURLConnection {
         
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let _ = error {
-                completion?(data, response, error)
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                XCGLogger.error(error)
+                
                 completion?(data, response, error)
                 return
             }
@@ -43,9 +52,9 @@ class AsynchronousURLConnection {
                 completion?(result, response, error)
             }
             catch {
+                AsynchronousURLConnection.logError(data: data)
                 completion?(data, response, error)
             }
-
         }
         
         let task = session.dataTask(with: request, completionHandler: complitionResponseBlock)

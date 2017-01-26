@@ -17,6 +17,8 @@ enum AuthorisationMode {
 
 protocol LoginPresenterDelegate: BasePresenterDelegate {
     func hideKeyboard()
+    func showSpinnerView()
+    func hideSpinnerView()
     func showLogin(title: String)
     func showSignUp(title: String)
     func showAuthorisation(title: String)
@@ -58,7 +60,7 @@ class LoginPresenter: BasePresenter {
         
         let notValidField = self.findNotValidField()
         
-        if notValidField == LoginTextField.none {
+        if notValidField == .none {
             delegate.hideKeyboard()
             
             guard let interaction = self.interaction as? LoginInteraction else {
@@ -68,9 +70,31 @@ class LoginPresenter: BasePresenter {
             let email = delegate.loginValue(for: .email(""))
             let password = delegate.loginValue(for: .password(""))
             
-            interaction.login(email: email, password: password, completion: { (data: Any, response: URLResponse?, error: Error?) -> (Void) in
+            if self.mode == .login {
+                delegate.showSpinnerView()
+                interaction.login(email: email, password: password, completion: { (data, error) -> (Void) in
+                    DispatchQueue.main.async {
+                        delegate.hideSpinnerView()
+                        
+                        switch error {
+                        case .none:
+                            break;
+                            
+                        case .emailNotApproved:
+                            let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { (action) in
+                                interaction.sendRegistrationEmail(email)
+                            })
+                            
+                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.error, LocalisedManager.login.sendRegistrationEmailMessage, [self.alertOkAction(), sendEmailAction])
+                            
+                        default:
+                            break
+                        }
+                    }
+                })
                 
-            })
+                return
+            }
         }
         else {
             delegate.showError(for: notValidField)
