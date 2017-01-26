@@ -13,7 +13,7 @@ protocol BasePresenterDelegate: class {
 }
 
 class BasePresenter: NSObject {
-    private let interaction: BaseInteraction
+    let interaction: BaseInteraction
     
     init(with interaction: BaseInteraction) {
         self.interaction = interaction

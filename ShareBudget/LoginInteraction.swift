@@ -9,5 +9,7 @@
 import UIKit
 
 class LoginInteraction: BaseInteraction {
-    
+    func login(email: String, password: String, completion: APICompletionBlock?) {
+        
+    }
 }

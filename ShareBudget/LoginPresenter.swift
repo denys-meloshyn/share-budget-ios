@@ -52,14 +52,28 @@ class LoginPresenter: BasePresenter {
     }
     
     func authoriseUser() {
+        guard let delegate = self.delegate else {
+            return
+        }
+        
         let notValidField = self.findNotValidField()
-        switch notValidField {
-        case .none:
-            self.delegate?.hideKeyboard()
-            break
+        
+        if notValidField == LoginTextField.none {
+            delegate.hideKeyboard()
             
-        default:
-            self.delegate?.showError(for: notValidField)
+            guard let interaction = self.interaction as? LoginInteraction else {
+                return
+            }
+            
+            let email = delegate.loginValue(for: .email(""))
+            let password = delegate.loginValue(for: .password(""))
+            
+            interaction.login(email: email, password: password, completion: { (data: Any, response: URLResponse?, error: Error?) -> (Void) in
+                
+            })
+        }
+        else {
+            delegate.showError(for: notValidField)
         }
     }
     

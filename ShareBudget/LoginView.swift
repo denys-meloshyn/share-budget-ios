@@ -19,6 +19,36 @@ enum LoginTextField {
     case all
 }
 
+extension LoginTextField: Equatable {
+    static func ==(lhs: LoginTextField, rhs: LoginTextField) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none):
+            return true
+            
+        case (let .email(lEmail), let .email(rEmail)):
+            return lEmail == rEmail
+            
+        case (let .password(lPassword), let .password(rPassword)):
+            return lPassword == rPassword
+            
+        case (let .repeatPassword(lRepeatPassword), let .repeatPassword(rRepeatPassword)):
+            return lRepeatPassword == rRepeatPassword
+            
+        case (let .firstName(lFirstName), let .firstName(rFirstName)):
+            return lFirstName == rFirstName
+            
+        case (let .lastName(lLastName), let .lastName(rLastName)):
+            return lLastName == rLastName
+            
+        case (.all, .all):
+            return true
+            
+        default:
+            return false
+        }
+    }
+}
+
 class LoginView: BaseView {
     weak var stackView: UIStackView?
     weak var email: TextFieldErrorMessage?
