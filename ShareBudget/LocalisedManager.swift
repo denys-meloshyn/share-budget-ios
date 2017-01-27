@@ -19,6 +19,7 @@ struct LocalisedManager {
     struct error {
         static let userNotExist = NSLocalizedString("User with provided email doesn't exist", comment: "Error message when user doesn't exist")
         static let passwordIsWrong = NSLocalizedString("Password is wrong", comment: "Error message when user password is wrong")
+        static let userIsAlreadyExist = NSLocalizedString("User is already exist", comment: "Error message when user trying to register existed email")
     }
     
     struct login {

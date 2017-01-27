@@ -22,13 +22,22 @@ class BaseInteraction {
             switch errorCode {
             case kEmailNotApproved:
                 return .emailNotApproved
+                
+            case kUserNotExist:
+                return .userNotExist
+                
+            case kUserIsAlreadyExist:
+                return .userIsAlreadyExist
+                
+            case kUserPasswordIsWrong:
+                return .userPasswordIsWrong
+                
             default:
                 return .unknown
             }
         }
         
         return .unknown
-
     }
     
     func checkResponse(data: Any?, response: URLResponse?, error: Error?) -> ErrorTypeAPI {

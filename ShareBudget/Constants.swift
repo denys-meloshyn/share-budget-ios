@@ -39,6 +39,7 @@ let loginErrorBorderColor = UIColor.red
 
 let kUserNotExist = "userNotExist"
 let kEmailNotApproved = "email_not_approved"
+let kUserIsAlreadyExist = "user_is_already_exist"
 let kUserPasswordIsWrong = "user_password_is_wrong"
 
 enum ErrorTypeAPI {
@@ -46,5 +47,6 @@ enum ErrorTypeAPI {
     case userNotExist
     case emailNotApproved
     case userPasswordIsWrong
+    case userIsAlreadyExist
     case unknown
 }

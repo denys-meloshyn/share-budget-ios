@@ -24,6 +24,23 @@ class AuthorisationAPI: BaseAPI {
         return AsynchronousURLConnection.run(request, completion: completion)
     }
     
+    class func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APICompletionBlock?) -> URLSessionTask? {
+        let components = AuthorisationAPI.components("user")
+        
+        guard let url = components.url else {
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue(email, forHTTPHeaderField: kEmail)
+        request.setValue(password, forHTTPHeaderField: kPassword)
+        request.setValue(firstName, forHTTPHeaderField: kFirstName)
+        request.setValue(lastName, forHTTPHeaderField: kLastName)
+        
+        return AsynchronousURLConnection.run(request, completion: completion)
+    }
+    
     class func sendRegistrationEmail(_ email: String) {
         let components = AuthorisationAPI.components("registration/sendemail")
         

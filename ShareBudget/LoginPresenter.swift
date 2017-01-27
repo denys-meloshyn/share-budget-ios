@@ -101,11 +101,34 @@ class LoginPresenter: BasePresenter {
                             self.delegate?.showErrorMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
-                        
                     }
                 })
+            }
+            else {
+                let firstName = delegate.loginValue(for: .firstName(""))
+                let lastName = delegate.loginValue(for: .lastName(""))
                 
-                return
+                interaction.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, error) -> (Void) in
+                    DispatchQueue.main.async {
+                        delegate.hideSpinnerView()
+                        
+                        guard error == .none else {
+                            var message = LocalisedManager.generic.errorMessage
+                            
+                            switch error {
+                            case .userIsAlreadyExist:
+                                message = LocalisedManager.error.userIsAlreadyExist
+                                
+                            default:
+                                break
+                            }
+                            
+                            let actions = [self.alertOkAction()]
+                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            return
+                        }
+                    }
+                })
             }
         }
         else {
