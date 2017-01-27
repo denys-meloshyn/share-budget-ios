@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import XCGLogger
 
 class ModelManager {
     static let sharedInstance = ModelManager()
@@ -80,10 +81,25 @@ class ModelManager {
         return self.persistentContainer.viewContext
     }
     
-    static func createChildrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
+    static func childrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
         let childrenManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         childrenManagedObjectContext.parent = parentContext
         
         return childrenManagedObjectContext
+    }
+    
+    func findUser(by userID: Int, in managedObjectContext: NSManagedObjectContext) -> User? {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "modelID==%i", userID)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let items = try managedObjectContext.fetch(fetchRequest)
+            return items.first
+        }
+        catch {
+            XCGLogger.error("Fetching user \(error)")
+            return nil
+        }
     }
 }
