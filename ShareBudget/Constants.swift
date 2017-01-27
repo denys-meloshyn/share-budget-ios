@@ -37,10 +37,14 @@ let kPasswordMinLength = 1
 let loginBorderColor = UIColor.blue
 let loginErrorBorderColor = UIColor.red
 
+let kUserNotExist = "userNotExist"
 let kEmailNotApproved = "email_not_approved"
+let kUserPasswordIsWrong = "user_password_is_wrong"
 
 enum ErrorTypeAPI {
     case none
+    case userNotExist
     case emailNotApproved
+    case userPasswordIsWrong
     case unknown
 }

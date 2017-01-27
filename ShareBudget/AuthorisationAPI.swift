@@ -9,12 +9,8 @@
 import UIKit
 
 class AuthorisationAPI: BaseAPI {
-    override class func resource() -> String {
-        return "login"
-    }
-    
     class func login(email: String, password: String, completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = AuthorisationAPI.components()
+        let components = AuthorisationAPI.components("login")
         
         guard let url = components.url else {
             return nil
@@ -26,5 +22,19 @@ class AuthorisationAPI: BaseAPI {
         request.setValue(password, forHTTPHeaderField: kPassword)
         
         return AsynchronousURLConnection.run(request, completion: completion)
+    }
+    
+    class func sendRegistrationEmail(_ email: String) {
+        let components = AuthorisationAPI.components("registration/sendemail")
+        
+        guard let url = components.url else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(email, forHTTPHeaderField: kEmail)
+        
+        _ = AsynchronousURLConnection.run(request, completion: nil)
     }
 }

@@ -13,7 +13,7 @@ class SyncManager {
         var tasks = [URLSessionTask]()
         var task: URLSessionTask?
         
-        task = UserAPI.updates(nil)
+        task = UserAPI.updates("", nil)
         if let task = task {
             tasks.append(task)
         }

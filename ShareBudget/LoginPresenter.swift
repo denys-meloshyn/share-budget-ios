@@ -70,26 +70,38 @@ class LoginPresenter: BasePresenter {
             let email = delegate.loginValue(for: .email(""))
             let password = delegate.loginValue(for: .password(""))
             
+            delegate.showSpinnerView()
             if self.mode == .login {
-                delegate.showSpinnerView()
                 interaction.login(email: email, password: password, completion: { (data, error) -> (Void) in
                     DispatchQueue.main.async {
                         delegate.hideSpinnerView()
                         
-                        switch error {
-                        case .none:
-                            break;
+                        guard error == .none else {
+                            var actions = [self.alertOkAction()]
+                            var message = LocalisedManager.generic.errorMessage
                             
-                        case .emailNotApproved:
-                            let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { (action) in
-                                interaction.sendRegistrationEmail(email)
-                            })
+                            switch error {
+                            case .userNotExist:
+                                message = LocalisedManager.error.userNotExist
+                                
+                            case .userPasswordIsWrong:
+                                message = LocalisedManager.error.passwordIsWrong
+                                
+                            case .emailNotApproved:
+                                let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { (action) in
+                                    interaction.sendRegistrationEmail(email)
+                                })
+                                message = LocalisedManager.login.sendRegistrationEmailMessage
+                                actions.append(sendEmailAction)
+                                
+                            default:
+                                break
+                            }
                             
-                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.error, LocalisedManager.login.sendRegistrationEmailMessage, [self.alertOkAction(), sendEmailAction])
-                            
-                        default:
-                            break
+                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            return
                         }
+                        
                     }
                 })
                 

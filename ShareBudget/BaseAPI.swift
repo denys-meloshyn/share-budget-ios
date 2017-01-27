@@ -9,27 +9,23 @@
 import UIKit
 
 class BaseAPI {
-    class func resource() -> String {
-        return ""
-    }
-    
     class func modelKeyID() -> String {
         return ""
     }
     
-    class func components() -> NSURLComponents {
+    class func components(_ resource: String) -> NSURLComponents {
         let components = NSURLComponents()
         components.scheme = "http"
         components.host = "127.0.0.1"
         components.port = 5000
-        components.path = "/" + self.resource()
+        components.path = "/" + resource
         
         return components
     }
     
-    class func updates(_ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = self.components()
-        components.path = self.resource() + "/updates"
+    class func updates(_ resource: String, _ completion: APICompletionBlock?) -> URLSessionTask? {
+        let components = self.components(resource)
+        components.path = resource + "/updates"
         
         guard let url = components.url else {
             return nil

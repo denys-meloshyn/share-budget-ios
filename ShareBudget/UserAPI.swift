@@ -10,16 +10,12 @@ import UIKit
 import CoreData
 
 class UserAPI: BaseAPI {
-    override class func resource() -> String {
-        return "user"
-    }
-    
     override class func modelKeyID() -> String {
         return "userID"
     }
     
     class func create(_ managedObjectContext: NSManagedObjectContext, _ firstName: String, _ lastName: String, _ email: String, _ password: String, _ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = BaseAPI.components()
+        let components = UserAPI.components("user")
         
         guard let url = components.url else {
             return nil
@@ -36,7 +32,7 @@ class UserAPI: BaseAPI {
     }
     
     class func update(_ managedObjectContext: NSManagedObjectContext, _ user: User, _ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = BaseAPI.components()
+        let components = UserAPI.components("user")
         
         guard let url = components.url else {
             return nil

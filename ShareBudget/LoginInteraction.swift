@@ -18,6 +18,6 @@ class LoginInteraction: BaseInteraction {
     }
     
     func sendRegistrationEmail(_ email: String) {
-        
+        AuthorisationAPI.sendRegistrationEmail(email)
     }
 }

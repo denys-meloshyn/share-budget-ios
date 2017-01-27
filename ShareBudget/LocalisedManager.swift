@@ -12,11 +12,13 @@ import Rswift
 struct LocalisedManager {
     struct generic {
         static let ok = NSLocalizedString("OK", comment: "Generic OK message")
-        static let error = NSLocalizedString("Error", comment: "Generic Error title")
+        static let errorTitle = NSLocalizedString("Error", comment: "Generic error title")
+        static let errorMessage = NSLocalizedString("Something was wrong", comment: "Generic error message")
     }
     
     struct error {
-        
+        static let userNotExist = NSLocalizedString("User with provided email doesn't exist", comment: "Error message when user doesn't exist")
+        static let passwordIsWrong = NSLocalizedString("Password is wrong", comment: "Error message when user password is wrong")
     }
     
     struct login {
