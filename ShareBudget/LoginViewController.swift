@@ -48,6 +48,7 @@ class LoginViewController: BaseViewController {
         
         if let email = self.email {
             email.textField?.returnKeyType = .next
+            email.textField?.autocorrectionType = .no
             email.textField?.keyboardType = .emailAddress
             self.stackView?.insertArrangedSubview(email, at: 0)
         }

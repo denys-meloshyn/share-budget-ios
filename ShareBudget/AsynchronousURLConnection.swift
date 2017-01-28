@@ -24,7 +24,7 @@ class AsynchronousURLConnection {
     static func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask? {
         let task = AsynchronousURLConnection.create(request, completion: completion)
         
-        XCGLogger.info("Load: \(request.url!)")
+        XCGLogger.info("\(request.httpMethod) \(request.url!)")
         task?.resume()
         
         return task

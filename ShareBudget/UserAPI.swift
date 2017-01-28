@@ -14,6 +14,19 @@ class UserAPI: BaseAPI {
         return "userID"
     }
     
+    override class func timestampStorageKey() -> String {
+        return "user_timestamp"
+    }
+    
+    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+        var user: User?
+        
+        for item in items {
+            user = User(context: managedObjectContext)
+            user?.update(with: item, in: managedObjectContext)
+        }
+    }
+    
     class func create(_ managedObjectContext: NSManagedObjectContext, _ firstName: String, _ lastName: String, _ email: String, _ password: String, _ completion: APICompletionBlock?) -> URLSessionTask? {
         let components = UserAPI.components("user")
         
@@ -49,7 +62,7 @@ class UserAPI: BaseAPI {
             request.setValue(firstName, forHTTPHeaderField: kFirstName)
         }
         
-        request.addUpdateCredentials()
+        request.addUpdateCredentials(timestamp: self.timestamp)
         
         return AsynchronousURLConnection.create(request, completion: completion)
     }

@@ -15,7 +15,7 @@ class LoginInteraction: BaseInteraction {
     
     func login(email: String, password: String, completion: APIResultBlock?) {
         _ = AuthorisationAPI.login(email: email, password: password) { (data, response, error) -> (Void) in
-            let errorType = self.checkResponse(data: data, response: response, error: error)
+            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
                 completion?(data, errorType)
@@ -46,15 +46,6 @@ class LoginInteraction: BaseInteraction {
                 return
             }
             
-            guard let timestamp = result[kTimeStamp] as? String else {
-                XCGLogger.error("'timerStamp' missed")
-                completion?(data, .unknown)
-                return
-            }
-            
-            UserCredentials.token = token
-            UserCredentials.timestamp = timestamp
-            
             var user = ModelManager.sharedInstance.findUser(by: userID, in: self.managedObjectContext)
             if user == nil {
                 user = User(context: self.managedObjectContext)
@@ -63,13 +54,18 @@ class LoginInteraction: BaseInteraction {
             user?.update(with: result, in: self.managedObjectContext)
             ModelManager.saveContext(self.managedObjectContext)
             
+            UserCredentials.token = token
+            if let userID = user?.modelID {
+                UserCredentials.userID = Int(userID)
+            }
+            
             completion?(user, .none)
         }
     }
     
     func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?) {
         _ = AuthorisationAPI.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, response, error) -> (Void) in
-            let errorType = self.checkResponse(data: data, response: response, error: error)
+            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             completion?(data, errorType)
         })

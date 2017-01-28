@@ -10,12 +10,15 @@ import UIKit
 
 class SyncManager {
     class func loadUpdates() {
-        var tasks = [URLSessionTask]()
-        var task: URLSessionTask?
-        
-        task = UserAPI.updates("", nil)
-        if let task = task {
-            tasks.append(task)
-        }
+//        var tasks = [URLSessionTask]()
+//        var task: URLSessionTask?
+//        
+//        
+//        task = UserAPI.updates("user", { (<#Any?#>, <#URLResponse?#>, <#Error?#>) -> (Void) in
+//            <#code#>
+//        })
+//        if let task = task {
+//            tasks.append(task)
+//        }
     }
 }

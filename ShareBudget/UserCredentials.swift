@@ -37,16 +37,6 @@ class UserCredentials {
         }
     }
     
-    class var timestamp: String {
-        get {
-            return UserDefaults.standard.string(forKey: keyTimestamp) ?? ""
-        }
-        
-        set {
-            UserDefaults.standard.set(newValue, forKey: keyTimestamp)
-        }
-    }
-    
     class var userID: Int {
         get {
             return UserDefaults.standard.integer(forKey: keyUserID)
@@ -55,5 +45,13 @@ class UserCredentials {
         set {
             UserDefaults.standard.set(newValue, forKey: keyUserID)
         }
+    }
+    
+    class func logout() {
+        UserCredentials.token = ""
+        UserCredentials.userID = -1
+        UserCredentials.password = ""
+        
+        UserAPI.timestamp = ""
     }
 }

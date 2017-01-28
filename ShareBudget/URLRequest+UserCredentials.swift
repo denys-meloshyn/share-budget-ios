@@ -13,9 +13,9 @@ extension URLRequest {
         self.setValue(UserCredentials.token, forHTTPHeaderField: kToken)
     }
     
-    mutating func addUpdateCredentials() {
+    mutating func addUpdateCredentials(timestamp: String) {
         self.addToken()
-        self.setValue(UserCredentials.timestamp, forHTTPHeaderField: kTimeStamp)
+        self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
         self.setValue(String(UserCredentials.userID), forHTTPHeaderField: kUserID)
     }
     
