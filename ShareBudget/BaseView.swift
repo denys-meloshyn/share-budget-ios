@@ -17,7 +17,7 @@ protocol LifeCycleStateProtocol: class {
 
 class BaseView {
     fileprivate let presenter: BasePresenter
-    fileprivate weak var viewController: UIViewController?
+    weak var viewController: UIViewController?
     
     init(with presenter: BasePresenter, and viewController: UIViewController) {
         self.presenter = presenter
@@ -48,7 +48,7 @@ extension BaseView: BasePresenterDelegate {
         self.viewController?.navigationItem.title = title
     }
     
-    func showErrorMessage(with title: String, _ message: String, _ actions: [UIAlertAction]) {
+    func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction]) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         for action in actions {

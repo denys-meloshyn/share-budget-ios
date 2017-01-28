@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-Xu-xnd">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-Xu-xnd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hnr-uM-3JY">
@@ -59,12 +59,13 @@
                     <connections>
                         <outlet property="authorisationButton" destination="3ZL-Uy-f5u" id="p0a-vq-uFB"/>
                         <outlet property="authorisationModeButton" destination="Bvs-9G-OI0" id="asn-70-6G5"/>
+                        <outlet property="scrollView" destination="Gf8-Xu-xnd" id="hby-eg-x1h"/>
                         <outlet property="stackView" destination="Hnr-uM-3JY" id="TIR-N8-q4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2957.5999999999999" y="138.98050974512745"/>
+            <point key="canvasLocation" x="1079" y="1024"/>
         </scene>
         <!--Item-->
         <scene sceneID="PIE-zu-7n0">
@@ -77,6 +78,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hmR-8E-o1P" kind="relationship" relationship="rootViewController" id="IqE-Nd-SLj"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJo-uM-khD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,6 +104,25 @@
             </objects>
             <point key="canvasLocation" x="140" y="138.98050974512745"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ERI-Km-cR9">
+            <objects>
+                <viewController id="hmR-8E-o1P" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UxD-yU-rwJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="cN9-kn-9yv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gmg-zp-YOM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H3B-iK-cfR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ui6-Su-epx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2002" y="139"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CaR-x0-r93">
             <objects>
@@ -116,7 +139,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDR-Ea-eOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2018.4000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="140" y="1025"/>
         </scene>
     </scenes>
 </document>

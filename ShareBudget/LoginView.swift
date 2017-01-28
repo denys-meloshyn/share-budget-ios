@@ -51,6 +51,7 @@ extension LoginTextField: Equatable {
 
 class LoginView: BaseView {
     weak var stackView: UIStackView?
+    weak var scrollView: UIScrollView?
     weak var email: TextFieldErrorMessage?
     weak var authorisationButton: UIButton?
     weak var password: TextFieldErrorMessage?
@@ -219,5 +220,28 @@ extension LoginView: LoginPresenterDelegate {
     
     func hideSpinnerView() {
         
+    }
+    
+    func removeBottomOffset() {
+        guard var contentInsets = self.scrollView?.contentInset else {
+            return
+        }
+        
+        if let length = self.viewController?.bottomLayoutGuide.length {
+            contentInsets.bottom = length
+        }
+        
+        self.scrollView?.contentInset = contentInsets
+        self.scrollView?.scrollIndicatorInsets = contentInsets
+    }
+    
+    func shiftBottomOffset(_ offset: CGFloat) {
+        guard var contentInsets = self.scrollView?.contentInset else {
+            return
+        }
+        
+        contentInsets.bottom = offset
+        self.scrollView?.contentInset = contentInsets
+        self.scrollView?.scrollIndicatorInsets = contentInsets
     }
 }

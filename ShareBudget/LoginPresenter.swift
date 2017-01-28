@@ -19,9 +19,11 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
     func hideKeyboard()
     func showSpinnerView()
     func hideSpinnerView()
+    func removeBottomOffset()
     func showLogin(title: String)
     func showSignUp(title: String)
     func showAuthorisation(title: String)
+    func shiftBottomOffset(_ offset: CGFloat)
     func showError(for field: LoginTextField)
     func hideError(for field: LoginTextField)
     func showKeyboard(for textField: LoginTextField)
@@ -37,6 +39,18 @@ class LoginPresenter: BasePresenter {
     override func configure() {
         self.updateAthorisationView()
         self.configureLoginTextFields()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.configureNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.removeNotifications()
     }
     
     // MARK: - Public
@@ -98,9 +112,15 @@ class LoginPresenter: BasePresenter {
                                 break
                             }
                             
-                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            self.delegate?.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
+                        
+                        guard let router = self.router as? LoginRouter else {
+                            return
+                        }
+                        
+                        router.showHomePage()
                     }
                 })
             }
@@ -124,7 +144,7 @@ class LoginPresenter: BasePresenter {
                             }
                             
                             let actions = [self.alertOkAction()]
-                            self.delegate?.showErrorMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            self.delegate?.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
                     }
@@ -138,6 +158,18 @@ class LoginPresenter: BasePresenter {
     
     func listenTextFieldChanges(_ textField: UITextField?) {
         textField?.delegate = self
+    }
+    
+    func keyboardWillShown(notofication: NSNotification) {
+        if let info = notofication.userInfo {
+            if let kbSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.delegate?.shiftBottomOffset(kbSize.height)
+            }
+        }
+    }
+    
+    func keyboardWillBeHidden() {
+        self.delegate?.removeBottomOffset()
     }
     
     // MARK: - Private
@@ -192,6 +224,16 @@ class LoginPresenter: BasePresenter {
         }
         
         return .none
+    }
+    
+    private func removeNotifications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    private func configureNotifications() {
+        NotificationCenter.default.addObserver(self, selector:#selector(LoginPresenter.keyboardWillShown(notofication:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(LoginPresenter.keyboardWillBeHidden), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     fileprivate func validate(textField: UITextField) {

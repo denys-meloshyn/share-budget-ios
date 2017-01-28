@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: BaseViewController {
     @IBOutlet private var stackView: UIStackView?
+    @IBOutlet private var scrollView: UIScrollView?
     @IBOutlet private var authorisationButton: UIButton?
     @IBOutlet private var authorisationModeButton: UIButton?
     private let email = R.nib.textFieldErrorMessage.firstView(owner: nil)
@@ -52,8 +53,8 @@ class LoginViewController: BaseViewController {
         }
         
         let router = LoginRouter(with: self)
-        let interactin = LoginInteraction(with: router)
-        let presenter = LoginPresenter(with: interactin)
+        let interactin = LoginInteraction()
+        let presenter = LoginPresenter(with: interactin, router: router)
         self.viperView = LoginView(with: presenter, and: self)
         
         guard let view = self.viperView as? LoginView else {
@@ -68,6 +69,7 @@ class LoginViewController: BaseViewController {
 
     private func linkStoryboardViews(to view: LoginView) {
         view.stackView = self.stackView
+        view.scrollView = self.scrollView
         view.authorisationButton = self.authorisationButton
         view.authorisationModeButton = self.authorisationModeButton
         view.email = self.email

@@ -9,9 +9,8 @@
 import UIKit
 
 class LoginRouter: BaseRouter {
-    private weak var viewController: UIViewController?
-    
-    init(with viewController: UIViewController) {
-        self.viewController = viewController
+    func showHomePage() {
+        let loginViewControler = self.viewController?.storyboard?.instantiateInitialViewController()
+        UIApplication.shared.delegate?.window??.rootViewController = loginViewControler
     }
 }

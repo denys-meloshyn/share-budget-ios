@@ -10,14 +10,16 @@ import UIKit
 
 protocol BasePresenterDelegate: class {
     func showPage(title: String)
-    func showErrorMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
+    func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
 }
 
 class BasePresenter: NSObject {
     let interaction: BaseInteraction
+    let router: BaseRouter
     
-    init(with interaction: BaseInteraction) {
+    init(with interaction: BaseInteraction, router: BaseRouter) {
         self.interaction = interaction
+        self.router = router
     }
     
     func configure() {
