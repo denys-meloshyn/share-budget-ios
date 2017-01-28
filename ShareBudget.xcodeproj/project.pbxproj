@@ -57,6 +57,13 @@
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
+		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
+		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
+		57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */; };
+		57F128621E3D33E800E51C0C /* BudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128611E3D33E800E51C0C /* BudgetPresenter.swift */; };
+		57F128641E3D341700E51C0C /* BudgetInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128631E3D341700E51C0C /* BudgetInteraction.swift */; };
+		57F128661E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */; };
+		57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -140,6 +147,13 @@
 		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
 		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetRouter.swift; sourceTree = "<group>"; };
+		57F128611E3D33E800E51C0C /* BudgetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPresenter.swift; sourceTree = "<group>"; };
+		57F128631E3D341700E51C0C /* BudgetInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetInteraction.swift; sourceTree = "<group>"; };
+		57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSearchTableViewHeader.xib; sourceTree = "<group>"; };
+		57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSearchTableViewHeader.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A321E2D5F4100AEA72A /* BaseViewController.swift */,
+				57F1285B1E3D325300E51C0C /* BudgetViewController.swift */,
 				573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */,
 				57B9B02F1E3D007800085E19 /* SettingsViewController.swift */,
 			);
@@ -322,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
+				57F1285D1E3D332600E51C0C /* BudgetView.swift */,
+				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
 			);
@@ -332,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A291E2D50E100AEA72A /* BasePresenter.swift */,
+				57F128611E3D33E800E51C0C /* BudgetPresenter.swift */,
 				573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */,
 			);
 			name = Presenter;
@@ -341,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A301E2D557900AEA72A /* BaseInteraction.swift */,
+				57F128631E3D341700E51C0C /* BudgetInteraction.swift */,
 				573F5A251E2D502100AEA72A /* LoginInteraction.swift */,
 			);
 			name = Interaction;
@@ -350,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */,
+				57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */,
 				573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */,
 			);
 			name = Router;
@@ -366,9 +386,10 @@
 		578BD0741E352DCD00DE28C8 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
+				57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */,
+				578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */,
 				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
 				573F59A31E295C4D00AEA72A /* Main.storyboard */,
-				578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -505,6 +526,7 @@
 			files = (
 				573F59AD1E295C4D00AEA72A /* LaunchScreen.storyboard in Resources */,
 				578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */,
+				57F128661E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib in Resources */,
 				578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
@@ -694,7 +716,9 @@
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
+				57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */,
 				573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */,
+				57F128621E3D33E800E51C0C /* BudgetPresenter.swift in Sources */,
 				573F5A181E2C180400AEA72A /* GroupLimit+CoreDataClass.swift in Sources */,
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
 				578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */,
@@ -709,10 +733,13 @@
 				573F5A111E2C180400AEA72A /* Category+CoreDataProperties.swift in Sources */,
 				573F5A151E2C180400AEA72A /* Expense+CoreDataProperties.swift in Sources */,
 				57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */,
+				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
+				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,
 				573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */,
 				573F5A131E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift in Sources */,
+				57F128641E3D341700E51C0C /* BudgetInteraction.swift in Sources */,
 				573F5A141E2C180400AEA72A /* Expense+CoreDataClass.swift in Sources */,
 				573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */,
 				57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */,
@@ -722,6 +749,7 @@
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,
 				573F5A171E2C180400AEA72A /* Group+CoreDataProperties.swift in Sources */,
+				57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */,
 				573F5A191E2C180400AEA72A /* GroupLimit+CoreDataProperties.swift in Sources */,
 				573F5A021E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift in Sources */,
 				573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */,

@@ -48,6 +48,10 @@ extension BaseView: BasePresenterDelegate {
         self.viewController?.navigationItem.title = title
     }
     
+    func showTabBar(title: String, image: UIImage, selected: UIImage) {
+        self.viewController?.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selected)
+    }
+    
     func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction]) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
