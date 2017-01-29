@@ -16,25 +16,23 @@ enum BudgetHeaderMode {
 
 protocol BudgetPresenterDelegate: BasePresenterDelegate {
     func refreshData()
+    func createBudgetCell(with title: String?) -> UITableViewCell?
     func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader?
 }
 
 class BudgetPresenter: BasePresenter {
     weak var delegate: BudgetPresenterDelegate?
     
-    var budgetInteraction: BudgetInteraction? {
+    fileprivate var budgetInteraction: BudgetInteraction {
         get {
-            guard let interaction = self.interaction as? BudgetInteraction else {
-                return nil
-            }
-            
-            return interaction
+            return self.interaction as! BudgetInteraction
         }
     }
-    override var interaction: BaseInteraction {
-        didSet {
-            self.budgetInteraction?.delegate = self
-        }
+    
+    override init(with interaction: BaseInteraction, router: BaseRouter) {
+        super.init(with: interaction, router: router)
+        
+        self.budgetInteraction.delegate = self
     }
     
     override func viewDidLoad() {
@@ -44,9 +42,7 @@ class BudgetPresenter: BasePresenter {
     }
     
     func headerMode() -> BudgetHeaderMode {
-        guard let rows = self.budgetInteraction?.numberOfRowsInSection() else {
-            return .create
-        }
+        let rows = self.budgetInteraction.numberOfRowsInSection()
         
         if rows > 0 {
             return .search
@@ -62,7 +58,7 @@ extension BudgetPresenter: BudgetInteractionDelegate {
     }
     
     func didChangeContent() {
-        
+        self.delegate?.refreshData()
     }
     
     func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -74,12 +70,15 @@ extension BudgetPresenter: BudgetInteractionDelegate {
 
 extension BudgetPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.budgetInteraction.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "asd"
+        let budget = self.budgetInteraction.budgetModel(for: indexPath)
+        guard let cell = self.delegate?.createBudgetCell(with: budget.name) else {
+            return UITableViewCell()
+        }
+        
         return cell
     }
     
@@ -104,5 +103,15 @@ extension BudgetPresenter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
+    }
+}
+
+extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
+    func textChanged(_ text: String) {
+        self.budgetInteraction.updateWithSearch(text)
+    }
+    
+    func createNewBudget(_ title: String?) {
+        self.budgetInteraction.createNewBudget(with: title)
     }
 }

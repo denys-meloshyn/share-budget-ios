@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol CreateSearchTableViewHeaderDelegate: class {
+    func textChanged(_ text: String)
+    func createNewBudget(_ title: String?)
+}
+
 class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet var textField: UITextField?
     @IBOutlet var searchCreateButton: UIButton?
+    
+    weak var delegate: CreateSearchTableViewHeaderDelegate?
     
     var mode: BudgetHeaderMode = .create {
         didSet {
@@ -24,11 +31,23 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
         }
     }
     
-    func showSearch() {
+    @IBAction func textChanged() {
+        self.delegate?.textChanged(self.textField?.text ?? "")
+    }
+    
+    private func showSearch() {
         self.searchCreateButton?.setTitle("?", for: .normal)
     }
     
-    func showCreate() {
+    private func showCreate() {
         self.searchCreateButton?.setTitle("+", for: .normal)
+    }
+}
+
+extension CreateSearchTableViewHeader: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.delegate?.createNewBudget(textField.text)
+        
+        return false
     }
 }

@@ -19,7 +19,7 @@ class ModelManager {
     
     // MARK: - Core Data stack
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private static var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
@@ -77,7 +77,7 @@ class ModelManager {
     
     // MARK: - Public methods
     
-    var managedObjectContext:NSManagedObjectContext {
+    class var managedObjectContext:NSManagedObjectContext {
         return self.persistentContainer.viewContext
     }
     
@@ -103,9 +103,12 @@ class ModelManager {
         }
     }
     
-    class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, includeRemoved: Bool = false) -> NSFetchedResultsController<Budget> {
+    class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "", includeRemoved: Bool = false) -> NSFetchedResultsController<Budget> {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = 30
+        
+        let predicate = NSPredicate(format: "name == %@", text)
+        fetchRequest.predicate = predicate
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]

@@ -11,7 +11,7 @@ import XCGLogger
 import CoreData
 
 class LoginInteraction: BaseInteraction {
-    let managedObjectContext = ModelManager.sharedInstance.managedObjectContext
+    let managedObjectContext = ModelManager.managedObjectContext
     
     func login(email: String, password: String, completion: APIResultBlock?) {
         _ = AuthorisationAPI.login(email: email, password: password) { (data, response, error) -> (Void) in

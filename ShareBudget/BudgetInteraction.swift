@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import XCGLogger
 
 protocol BudgetInteractionDelegate: BaseInteractionDelegate {
     
@@ -15,13 +16,32 @@ protocol BudgetInteractionDelegate: BaseInteractionDelegate {
 
 class BudgetInteraction: BaseInteraction {
     weak var delegate: BudgetInteractionDelegate?
-    let managedObjectContext = ModelManager.sharedInstance.managedObjectContext
-    private let fetchedResultsController: NSFetchedResultsController<Budget>
+    let managedObjectContext = ModelManager.managedObjectContext
+    private var fetchedResultsController: NSFetchedResultsController<Budget>
     
     override init() {
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext)
         
         super.init()
+        
+        self.performFetch()
+    }
+    
+    private func performFetch() {
+        self.fetchedResultsController.delegate = self
+        
+        do {
+            try self.fetchedResultsController.performFetch()
+        }
+        catch {
+            XCGLogger.error("Can't perform fetch request")
+        }
+    }
+    
+    private func createFetchedResultsController(with text: String) {
+        self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext, search: text)
+        self.performFetch()
+        self.delegate?.didChangeContent()
     }
     
     func numberOfRowsInSection() -> Int {
@@ -30,6 +50,21 @@ class BudgetInteraction: BaseInteraction {
         }
         
         return section.numberOfObjects
+    }
+    
+    func budgetModel(for indexPath: IndexPath) -> Budget {
+        let budget = self.fetchedResultsController.object(at: indexPath)
+        
+        return budget
+    }
+    
+    func updateWithSearch(_ text: String) {
+        self.createFetchedResultsController(with: text)
+    }
+    
+    func createNewBudget(with name: String?) {
+        let budget = Budget(context: self.managedObjectContext)
+        budget.name = name
     }
 }
 
