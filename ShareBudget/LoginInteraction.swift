@@ -14,53 +14,7 @@ class LoginInteraction: BaseInteraction {
     let managedObjectContext = ModelManager.managedObjectContext
     
     func login(email: String, password: String, completion: APIResultBlock?) {
-        _ = AuthorisationAPI.login(email: email, password: password) { (data, response, error) -> (Void) in
-            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
-            
-            guard errorType == .none else {
-                completion?(data, errorType)
-                return
-            }
-            
-            guard let dict = data as? [String: AnyObject?] else {
-                XCGLogger.error("Response has wrong structure")
-                completion?(data, .unknown)
-                return
-            }
-            
-            guard let result = dict[kResult] as? [String: AnyObject?] else {
-                XCGLogger.error("'result' has wrong structure")
-                completion?(data, .unknown)
-                return
-            }
-            
-            guard let userID = result[kUserID] as? Int else {
-                XCGLogger.error("'userID' missed")
-                completion?(data, .unknown)
-                return
-            }
-            
-            guard let token = result[kToken] as? String else {
-                XCGLogger.error("'token' missed")
-                completion?(data, .unknown)
-                return
-            }
-            
-            var user = ModelManager.findUser(by: userID, in: self.managedObjectContext)
-            if user == nil {
-                user = User(context: self.managedObjectContext)
-            }
-            
-            user?.update(with: result, in: self.managedObjectContext)
-            ModelManager.saveContext(self.managedObjectContext)
-            
-            UserCredentials.token = token
-            if let userID = user?.modelID {
-                UserCredentials.userID = Int(userID)
-            }
-            
-            completion?(user, .none)
-        }
+        _ = AuthorisationAPI.login(email: email, password: password, completion: completion)
     }
     
     func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?) {

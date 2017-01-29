@@ -44,6 +44,9 @@ class BaseAPI {
             case kUserPasswordIsWrong:
                 return .userPasswordIsWrong
                 
+            case kTokenEpired:
+                return .tokenExpired
+                
             default:
                 return .unknown
             }
@@ -80,7 +83,7 @@ class BaseAPI {
     
     class func updates(_ resource: String, _ managedObjectContext: NSManagedObjectContext, _ completion: APIResultBlock?) -> URLSessionTask? {
         let components = self.components(resource)
-        components.path = resource + "/updates"
+        components.path = "/" + resource + "/updates"
         
         guard let url = components.url else {
             return nil
@@ -95,9 +98,20 @@ class BaseAPI {
             
             guard errorType == .none else {
                 if errorType == .tokenExpired {
-                    _ = self.updates(resource, managedObjectContext, completion)
+                    XCGLogger.error("Token is expired")
+                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
+                        if error == .none {
+                            _ = self.updates(resource, managedObjectContext, completion)
+                        }
+                        else {
+                            completion?(data, error)
+                        }
+                    })
+                    
                     return
                 }
+                
+                XCGLogger.error("Error: \(errorType) message: \(data)")
                 
                 completion?(data, errorType)
                 return

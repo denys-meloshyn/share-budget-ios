@@ -13,6 +13,7 @@ import KeychainSwift
 private let keychain = KeychainSwift()
 private let keyUserID = "userID"
 private let keychainToken = "token"
+private let keychainEmail = "email"
 private let keyTimestamp = "timestamp"
 private let keychainPassword = "password"
 
@@ -34,6 +35,16 @@ class UserCredentials {
         
         set {
             keychain.set(newValue, forKey: keychainPassword)
+        }
+    }
+    
+    class var email: String {
+        get {
+            return keychain.get(keychainEmail) ?? ""
+        }
+        
+        set {
+            keychain.set(newValue, forKey: keychainEmail)
         }
     }
     

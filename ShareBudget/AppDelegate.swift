@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
             self.window?.rootViewController = loginViewControler
         }
+        else {
+            SyncManager.run()
+        }
         
         return true
     }

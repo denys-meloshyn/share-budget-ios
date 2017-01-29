@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import XCGLogger
 
 class AuthorisationAPI: BaseAPI {
-    class func login(email: String, password: String, completion: APICompletionBlock?) -> URLSessionTask? {
+    class func login(email: String, password: String, completion: APIResultBlock?) -> URLSessionTask? {
         let components = AuthorisationAPI.components("login")
         
         guard let url = components.url else {
@@ -21,7 +22,53 @@ class AuthorisationAPI: BaseAPI {
         request.setValue(email, forHTTPHeaderField: kEmail)
         request.setValue(password, forHTTPHeaderField: kPassword)
         
-        return AsynchronousURLConnection.run(request, completion: completion)
+        return AsynchronousURLConnection.run(request, completion: { (data, response, error) -> (Void) in
+            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
+            
+            guard errorType == .none else {
+                completion?(data, errorType)
+                return
+            }
+            
+            guard let dict = data as? [String: AnyObject?] else {
+                XCGLogger.error("Response has wrong structure")
+                completion?(data, .unknown)
+                return
+            }
+            
+            guard let result = dict[kResult] as? [String: AnyObject?] else {
+                XCGLogger.error("'result' has wrong structure")
+                completion?(data, .unknown)
+                return
+            }
+            
+            guard let userID = result[kUserID] as? Int else {
+                XCGLogger.error("'userID' is missed")
+                completion?(data, .unknown)
+                return
+            }
+            
+            guard let token = result[kToken] as? String else {
+                XCGLogger.error("'token' is missed")
+                completion?(data, .unknown)
+                return
+            }
+            
+            UserCredentials.email = email
+            UserCredentials.token = token
+            UserCredentials.userID = userID
+            UserCredentials.password = password
+            
+            var user = ModelManager.findUser(by: userID, in: ModelManager.managedObjectContext)
+            if user == nil {
+                user = User(context: ModelManager.managedObjectContext)
+            }
+            
+            user?.update(with: result, in: ModelManager.managedObjectContext)
+            ModelManager.saveContext(ModelManager.managedObjectContext)
+            
+            completion?(user, .none)
+        })
     }
     
     class func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APICompletionBlock?) -> URLSessionTask? {

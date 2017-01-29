@@ -21,19 +21,18 @@ class AsynchronousURLConnection {
         XCGLogger.error(response)
     }
     
-    static func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask {
+    class func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask {
         let task = AsynchronousURLConnection.create(request, completion: completion)
-        
-        XCGLogger.info("\(request.httpMethod) \(request.url!)")
         task.resume()
         
         return task
     }
     
-    static func create(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask {
+    class func create(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
+        XCGLogger.info("\(request.httpMethod!) \(request.url!)")
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if let _ = error {
                 XCGLogger.error(error)

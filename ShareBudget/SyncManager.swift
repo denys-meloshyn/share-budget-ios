@@ -26,26 +26,33 @@ class SyncManager {
     }
     
     private class func scheduleNextUpdate() {
-        SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(15.0), repeats: false) { (timer) in
+        SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(5.0), repeats: false) { (timer) in
             SyncManager.loadUpdates(completion: nil)
         }
     }
 
     private class func loadUpdates(completion: APIResultBlock?) {
+        XCGLogger.info("Load updates from server")
+        
         var tasks = [URLSessionTask]()
         var task: URLSessionTask?
         let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
-                SyncManager.scheduleNextUpdate()
+                DispatchQueue.main.async {
+                    SyncManager.scheduleNextUpdate()
+                }
+                
                 return
             }
             
             tasks.remove(at: 0)
             
             if tasks.count == 0 {
-                SyncManager.scheduleNextUpdate()
+                DispatchQueue.main.async {
+                    SyncManager.scheduleNextUpdate()
+                }
             }
             else {
                 SyncManager.loadingTask = tasks.first

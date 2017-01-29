@@ -107,8 +107,10 @@ class ModelManager {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = 30
         
-        let predicate = NSPredicate(format: "name == %@", text)
-        fetchRequest.predicate = predicate
+        if text.characters.count > 0 {
+            let predicate = NSPredicate(format: "name == %@", text)
+            fetchRequest.predicate = predicate
+        }
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]

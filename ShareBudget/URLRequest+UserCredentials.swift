@@ -15,8 +15,11 @@ extension URLRequest {
     
     mutating func addUpdateCredentials(timestamp: String) {
         self.addToken()
-        self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
         self.setValue(String(UserCredentials.userID), forHTTPHeaderField: kUserID)
+        
+        if timestamp.characters.count > 0 {
+            self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
+        }
     }
     
     mutating func addModelInfo(_ model: BaseModel) {
