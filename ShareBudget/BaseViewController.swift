@@ -11,6 +11,12 @@ import UIKit
 class BaseViewController: UIViewController {
     var viperView: BaseView?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.viperView?.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

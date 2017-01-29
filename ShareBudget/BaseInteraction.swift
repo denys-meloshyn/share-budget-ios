@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 typealias APIResultBlock = (Any?, ErrorTypeAPI) -> (Void)
 
-class BaseInteraction {
+protocol BaseInteractionDelegate: class {
+    func didChangeContent()
+    func willChangeContent()
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+}
+
+class BaseInteraction: NSObject {
+    
 }

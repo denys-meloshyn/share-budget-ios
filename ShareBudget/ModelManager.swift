@@ -48,7 +48,7 @@ class ModelManager {
     
     // MARK: - Core Data Saving support
     
-    static func saveContext (_ context: NSManagedObjectContext) {
+    class func saveContext (_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()
@@ -61,7 +61,7 @@ class ModelManager {
         }
     }
     
-    static func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext) {
+    class func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext) {
         guard let parentManagedObjectContext = childrenManagedObjectContext.parent else {
             return
         }
@@ -81,14 +81,14 @@ class ModelManager {
         return self.persistentContainer.viewContext
     }
     
-    static func childrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
+    class func childrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
         let childrenManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         childrenManagedObjectContext.parent = parentContext
         
         return childrenManagedObjectContext
     }
     
-    func findUser(by userID: Int, in managedObjectContext: NSManagedObjectContext) -> User? {
+    class func findUser(by userID: Int, in managedObjectContext: NSManagedObjectContext) -> User? {
         let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "modelID==%i", userID)
         fetchRequest.fetchLimit = 1
@@ -101,5 +101,17 @@ class ModelManager {
             XCGLogger.error("Fetching user \(error)")
             return nil
         }
+    }
+    
+    class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, includeRemoved: Bool = false) -> NSFetchedResultsController<Budget> {
+        let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
     }
 }

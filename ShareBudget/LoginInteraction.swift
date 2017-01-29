@@ -46,7 +46,7 @@ class LoginInteraction: BaseInteraction {
                 return
             }
             
-            var user = ModelManager.sharedInstance.findUser(by: userID, in: self.managedObjectContext)
+            var user = ModelManager.findUser(by: userID, in: self.managedObjectContext)
             if user == nil {
                 user = User(context: self.managedObjectContext)
             }

@@ -22,8 +22,6 @@ class BudgetViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
         guard let view = self.viperView as? BudgetView else {
             return

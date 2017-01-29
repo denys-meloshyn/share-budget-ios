@@ -15,18 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfr-4q-vjH">
-                    <rect key="frame" x="8" y="8" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="GHE-bJ-seC"/>
-                        <constraint firstAttribute="width" constant="44" id="K9h-MJ-ql2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uHc-8u-y4I">
-                    <rect key="frame" x="60" y="8" width="307" height="44"/>
+                    <rect key="frame" x="56" y="8" width="311" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="6fb-7Q-Qub"/>
                     </constraints>
@@ -34,18 +24,28 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWO-ZR-aBl">
+                    <rect key="frame" x="8" y="10" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="kDZ-Ka-kV2"/>
+                        <constraint firstAttribute="height" constant="40" id="zsI-cV-XkT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                    <state key="normal" title="+"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="uHc-8u-y4I" firstAttribute="leading" secondItem="Dfr-4q-vjH" secondAttribute="trailing" constant="8" id="4vF-Ec-Nnb"/>
                 <constraint firstItem="uHc-8u-y4I" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Isj-17-7xp"/>
-                <constraint firstItem="Dfr-4q-vjH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="KXM-84-tyI"/>
-                <constraint firstItem="Dfr-4q-vjH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cdQ-ag-qVJ"/>
+                <constraint firstItem="QWO-ZR-aBl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="QKb-FI-qmI"/>
+                <constraint firstItem="QWO-ZR-aBl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="axx-n4-XIv"/>
                 <constraint firstAttribute="trailing" secondItem="uHc-8u-y4I" secondAttribute="trailing" constant="8" id="q2m-D9-Iik"/>
+                <constraint firstItem="uHc-8u-y4I" firstAttribute="leading" secondItem="QWO-ZR-aBl" secondAttribute="trailing" constant="8" id="xcn-Io-hz4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="searchCreateButton" destination="QWO-ZR-aBl" id="nNw-Sq-A0F"/>
                 <outlet property="textField" destination="uHc-8u-y4I" id="7Vw-0x-TD9"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54"/>

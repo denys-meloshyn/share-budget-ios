@@ -1,8 +1,8 @@
 //
-//  Group+CoreDataProperties.swift
+//  Budget+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 15.01.17.
+//  Created by Denys Meloshyn on 29.01.17.
 //
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Group {
+extension Budget {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Group> {
-        return NSFetchRequest<Group>(entityName: "Group");
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Budget> {
+        return NSFetchRequest<Budget>(entityName: "Budget");
     }
 
     @NSManaged public var name: String?
@@ -25,7 +25,7 @@ extension Group {
 }
 
 // MARK: Generated accessors for expenses
-extension Group {
+extension Budget {
 
     @objc(addExpensesObject:)
     @NSManaged public func addToExpenses(_ value: Expense)
@@ -42,13 +42,13 @@ extension Group {
 }
 
 // MARK: Generated accessors for limits
-extension Group {
+extension Budget {
 
     @objc(addLimitsObject:)
-    @NSManaged public func addToLimits(_ value: GroupLimit)
+    @NSManaged public func addToLimits(_ value: BudgetLimit)
 
     @objc(removeLimitsObject:)
-    @NSManaged public func removeFromLimits(_ value: GroupLimit)
+    @NSManaged public func removeFromLimits(_ value: BudgetLimit)
 
     @objc(addLimits:)
     @NSManaged public func addToLimits(_ values: NSSet)
@@ -59,7 +59,7 @@ extension Group {
 }
 
 // MARK: Generated accessors for users
-extension Group {
+extension Budget {
 
     @objc(addUsersObject:)
     @NSManaged public func addToUsers(_ value: User)

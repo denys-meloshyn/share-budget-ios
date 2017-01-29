@@ -9,6 +9,7 @@
 import UIKit
 
 protocol LifeCycleStateProtocol: class {
+    func viewDidLoad()
     func viewWillAppear(_ animated: Bool)
     func viewDidAppear(_ animated: Bool)
     func viewWillDisappear(_ animated: Bool)
@@ -16,7 +17,7 @@ protocol LifeCycleStateProtocol: class {
 }
 
 class BaseView {
-    fileprivate let presenter: BasePresenter
+    let presenter: BasePresenter
     weak var viewController: UIViewController?
     
     init(with presenter: BasePresenter, and viewController: UIViewController) {
@@ -26,6 +27,10 @@ class BaseView {
 }
 
 extension BaseView: LifeCycleStateProtocol {
+    func viewDidLoad() {
+        self.presenter.viewDidLoad()
+    }
+    
     func viewWillAppear(_ animated: Bool) {
         self.presenter.viewWillAppear(animated)
     }

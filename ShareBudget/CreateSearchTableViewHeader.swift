@@ -8,6 +8,27 @@
 
 import UIKit
 
-class CreateSearchTableViewHeader: UIView {
+class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet var textField: UITextField?
+    @IBOutlet var searchCreateButton: UIButton?
+    
+    var mode: BudgetHeaderMode = .create {
+        didSet {
+            switch mode {
+            case .create:
+                self.showCreate()
+                
+            case .search:
+                self.showSearch()
+            }
+        }
+    }
+    
+    func showSearch() {
+        self.searchCreateButton?.setTitle("?", for: .normal)
+    }
+    
+    func showCreate() {
+        self.searchCreateButton?.setTitle("+", for: .normal)
+    }
 }

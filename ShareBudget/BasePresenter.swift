@@ -15,7 +15,7 @@ protocol BasePresenterDelegate: class {
 }
 
 class BasePresenter: NSObject {
-    let interaction: BaseInteraction
+    var interaction: BaseInteraction
     let router: BaseRouter
     
     init(with interaction: BaseInteraction, router: BaseRouter) {
@@ -35,6 +35,10 @@ class BasePresenter: NSObject {
 }
 
 extension BasePresenter: LifeCycleStateProtocol {
+    func viewDidLoad() {
+        
+    }
+    
     func viewWillAppear(_ animated: Bool) {
         
     }

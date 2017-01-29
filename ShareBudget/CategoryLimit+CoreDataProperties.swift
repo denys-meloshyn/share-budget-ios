@@ -2,7 +2,7 @@
 //  CategoryLimit+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 15.01.17.
+//  Created by Denys Meloshyn on 29.01.17.
 //
 //
 

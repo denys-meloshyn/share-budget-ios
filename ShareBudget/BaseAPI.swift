@@ -94,6 +94,11 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
+                if errorType == .tokenExpired {
+                    _ = self.updates(resource, managedObjectContext, completion)
+                    return
+                }
+                
                 completion?(data, errorType)
                 return
             }
