@@ -101,7 +101,8 @@ class BaseAPI {
                     XCGLogger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
-                            _ = self.updates(resource, managedObjectContext, completion)
+                            let task = self.updates(resource, managedObjectContext, completion)
+                            task?.resume()
                         }
                         else {
                             completion?(data, error)
