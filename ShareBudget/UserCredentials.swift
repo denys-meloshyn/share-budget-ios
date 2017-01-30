@@ -50,12 +50,16 @@ class UserCredentials {
     
     class var userID: Int {
         get {
-            return UserDefaults.standard.integer(forKey: keyUserID)
+            return Int(UserDefaults.standard.string(forKey: keyUserID) ?? "-1") ?? -1
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: keyUserID)
+            UserDefaults.standard.set(String(newValue), forKey: keyUserID)
         }
+    }
+    
+    class var isLoggedIn: Bool {
+        return UserCredentials.userID >= 0
     }
     
     class func logout() {
@@ -64,5 +68,6 @@ class UserCredentials {
         UserCredentials.password = ""
         
         UserAPI.timestamp = ""
+        BudgetAPI.timestamp = ""
     }
 }

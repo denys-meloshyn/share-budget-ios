@@ -40,6 +40,8 @@ class SyncManager {
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
+                ModelManager.saveChildren(managedObjectContext)
+                
                 DispatchQueue.main.async {
                     SyncManager.scheduleNextUpdate()
                 }
@@ -51,6 +53,7 @@ class SyncManager {
             
             if tasks.count == 0 {
                 DispatchQueue.main.async {
+                    ModelManager.saveChildren(managedObjectContext)
                     SyncManager.scheduleNextUpdate()
                 }
             }
@@ -60,12 +63,40 @@ class SyncManager {
             }
         }
         
-        task = UserAPI.updates("user", managedObjectContext) { (data, error) -> (Void) in
-            completionBlock(data, error)
-        }
+        // Load all updates for 'User'
+        task = UserAPI.updates("user", managedObjectContext, completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
+        // Load all updates for 'Budget'
+        task = BudgetAPI.updates("group", managedObjectContext, completionBlock)
+        tasks = SyncManager.appendTask(task, to: tasks)
+        
+        // -----------------
+        
+        let budgetFetchController = ModelManager.budgetChangedFetchController(managedObjectContext)
+        do {
+            try budgetFetchController.performFetch()
+        }
+        catch {
+            ModelManager.saveChildren(managedObjectContext)
+            XCGLogger.error("Can't fetch data \(error)")
+        }
+        
+        var indexPath = IndexPath()
+        var sections = [NSFetchedResultsSectionInfo]()
+        
+        sections = budgetFetchController.sections ?? []
+        for section in 0..<sections.count {
+            let sectionInfo = sections[section]
+            for row in 0..<sectionInfo.numberOfObjects {
+                indexPath = IndexPath(row: row, section: section)
+                let budget = budgetFetchController.object(at: indexPath)
+                task = BudgetAPI.upload(managedObjectContext, budget, completion)
+            }
+        }
+        
         if tasks.count == 0 {
+            ModelManager.saveChildren(managedObjectContext)
             SyncManager.scheduleNextUpdate()
         }
         else {

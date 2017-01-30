@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.configureLogger()
-        if UserCredentials.token.characters.count == 0 {
+        if !UserCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
             self.window?.rootViewController = loginViewControler

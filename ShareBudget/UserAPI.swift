@@ -26,44 +26,4 @@ class UserAPI: BaseAPI {
             user?.update(with: item, in: managedObjectContext)
         }
     }
-    
-    class func create(_ managedObjectContext: NSManagedObjectContext, _ firstName: String, _ lastName: String, _ email: String, _ password: String, _ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = UserAPI.components("user")
-        
-        guard let url = components.url else {
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue(email, forHTTPHeaderField: kEmail)
-        request.setValue(lastName, forHTTPHeaderField: kLastName)
-        request.setValue(password, forHTTPHeaderField: kPassword)
-        request.setValue(firstName, forHTTPHeaderField: kFirstName)
-        
-        return AsynchronousURLConnection.create(request, completion: completion)
-    }
-    
-    class func update(_ managedObjectContext: NSManagedObjectContext, _ user: User, _ completion: APICompletionBlock?) -> URLSessionTask? {
-        let components = UserAPI.components("user")
-        
-        guard let url = components.url else {
-            return nil
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        
-        if let lastName = user.lastName {
-            request.setValue(lastName, forHTTPHeaderField: kLastName)
-        }
-        
-        if let firstName = user.firstName {
-            request.setValue(firstName, forHTTPHeaderField: kFirstName)
-        }
-        
-        request.addUpdateCredentials(timestamp: self.timestamp)
-        
-        return AsynchronousURLConnection.create(request, completion: completion)
-    }
 }

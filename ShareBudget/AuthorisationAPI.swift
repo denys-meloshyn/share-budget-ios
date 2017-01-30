@@ -59,7 +59,7 @@ class AuthorisationAPI: BaseAPI {
             UserCredentials.userID = userID
             UserCredentials.password = password
             
-            var user = ModelManager.findUser(by: userID, in: ModelManager.managedObjectContext)
+            var user = ModelManager.findEntity(User.self, by: userID, in: ModelManager.managedObjectContext)
             if user == nil {
                 user = User(context: ModelManager.managedObjectContext)
             }

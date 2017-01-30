@@ -63,6 +63,7 @@ class ModelManager {
     
     class func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext) {
         guard let parentManagedObjectContext = childrenManagedObjectContext.parent else {
+            XCGLogger.error("Parent managed object context is missed")
             return
         }
         
@@ -88,9 +89,9 @@ class ModelManager {
         return childrenManagedObjectContext
     }
     
-    class func findUser(by userID: Int, in managedObjectContext: NSManagedObjectContext) -> User? {
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "modelID==%i", userID)
+    class func findEntity(_ entity: BaseModel.Type, by modelID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "modelID==%i", modelID)
         fetchRequest.fetchLimit = 1
         
         do {
@@ -98,19 +99,47 @@ class ModelManager {
             return items.first
         }
         catch {
-            XCGLogger.error("Fetching user \(error)")
+            XCGLogger.error("Finding model \(error)")
             return nil
         }
     }
     
-    class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "", includeRemoved: Bool = false) -> NSFetchedResultsController<Budget> {
+    class func findEntity(_ entity: BaseModel.Type, internal internalID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "internalID==%i", internalID)
+        fetchRequest.fetchLimit = 1
+        
+        do {
+            let items = try managedObjectContext.fetch(fetchRequest)
+            return items.first
+        }
+        catch {
+            XCGLogger.error("Finding model with internal ID \(error)")
+            return nil
+        }
+    }
+    
+    class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "") -> NSFetchedResultsController<Budget> {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = 30
         
         if text.characters.count > 0 {
-            let predicate = NSPredicate(format: "name == %@", text)
+            let predicate = NSPredicate(format: "name CONTAINS[c] %@", text)
             fetchRequest.predicate = predicate
         }
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }
+    
+    class func budgetChangedFetchController(_ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Budget> {
+        let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
