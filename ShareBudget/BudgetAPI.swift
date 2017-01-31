@@ -90,14 +90,8 @@ class BudgetAPI: BaseAPI {
                 return
             }
             
-            guard let timestamp = dict[kTimeStamp] as? String else {
-                XCGLogger.error("'timeStamp' missed")
-                completion?(data, .unknown)
-                return
-            }
-            
+            budget.isChanged = false
             budget.configureModelID(dict: result, for: kGroupID)
-            BudgetAPI.timestamp = timestamp
             
             completion?(nil, .none)
         })

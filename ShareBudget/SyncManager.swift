@@ -91,7 +91,8 @@ class SyncManager {
             for row in 0..<sectionInfo.numberOfObjects {
                 indexPath = IndexPath(row: row, section: section)
                 let budget = budgetFetchController.object(at: indexPath)
-                task = BudgetAPI.upload(managedObjectContext, budget, completion)
+                task = BudgetAPI.upload(managedObjectContext, budget, completionBlock)
+                tasks = SyncManager.appendTask(task, to: tasks)
             }
         }
         

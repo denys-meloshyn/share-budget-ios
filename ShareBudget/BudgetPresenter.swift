@@ -15,7 +15,7 @@ enum BudgetHeaderMode {
 }
 
 protocol BudgetPresenterDelegate: BasePresenterDelegate {
-    func refreshData()
+    func refreshData(for mode: BudgetHeaderMode)
     func createBudgetCell(with title: String?) -> UITableViewCell?
     func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader?
 }
@@ -52,13 +52,15 @@ class BudgetPresenter: BasePresenter {
     }
 }
 
+// MARK: - BudgetInteractionDelegate
+
 extension BudgetPresenter: BudgetInteractionDelegate {
     func willChangeContent() {
-        self.delegate?.refreshData()
+        self.delegate?.refreshData(for: self.headerMode())
     }
     
     func didChangeContent() {
-        self.delegate?.refreshData()
+        self.delegate?.refreshData(for: self.headerMode())
     }
     
     func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -66,7 +68,7 @@ extension BudgetPresenter: BudgetInteractionDelegate {
     }
 }
 
-// MARK: - UITableViewDataSource methods
+// MARK: - UITableViewDataSource
 
 extension BudgetPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -87,7 +89,7 @@ extension BudgetPresenter: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate methods
+// MARK: - UITableViewDelegate
 
 extension BudgetPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -106,6 +108,8 @@ extension BudgetPresenter: UITableViewDelegate {
     }
 }
 
+// MARK: - CreateSearchTableViewHeaderDelegate
+
 extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
     func textChanged(_ text: String) {
         self.budgetInteraction.updateWithSearch(text)
@@ -113,5 +117,11 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
     
     func createNewBudget(_ title: String?) {
         self.budgetInteraction.createNewBudget(with: title)
+    }
+    
+    func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
+        if self.headerMode() == .create {
+            self.createNewBudget(sender.textField?.text)
+        }
     }
 }

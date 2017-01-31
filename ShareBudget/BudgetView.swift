@@ -45,8 +45,10 @@ extension BudgetView: BudgetPresenterDelegate {
         return header
     }
     
-    func refreshData() {
+    func refreshData(for mode: BudgetHeaderMode) {
         self.tableView?.reloadData()
+        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        header?.mode = mode
     }
     
     func createBudgetCell(with title: String?) -> UITableViewCell? {

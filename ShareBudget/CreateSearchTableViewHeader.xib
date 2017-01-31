@@ -36,6 +36,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="33"/>
                     <state key="normal" title="+"/>
+                    <connections>
+                        <action selector="modeAction" destination="iN0-l3-epB" eventType="touchUpInside" id="tXG-66-jFR"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

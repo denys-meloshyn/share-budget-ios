@@ -65,6 +65,7 @@ class BudgetInteraction: BaseInteraction {
     func createNewBudget(with name: String?) {
         let budget = Budget(context: self.managedObjectContext)
         budget.name = name
+        budget.isChanged = true
     }
 }
 

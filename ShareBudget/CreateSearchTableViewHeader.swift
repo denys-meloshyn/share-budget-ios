@@ -11,6 +11,7 @@ import UIKit
 protocol CreateSearchTableViewHeaderDelegate: class {
     func textChanged(_ text: String)
     func createNewBudget(_ title: String?)
+    func modeButtonPressed(_ sender: CreateSearchTableViewHeader)
 }
 
 class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
@@ -31,16 +32,20 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
         }
     }
     
-    @IBAction func textChanged() {
-        self.delegate?.textChanged(self.textField?.text ?? "")
-    }
-    
     private func showSearch() {
         self.searchCreateButton?.setTitle("?", for: .normal)
     }
     
     private func showCreate() {
         self.searchCreateButton?.setTitle("+", for: .normal)
+    }
+    
+    @IBAction func textChanged() {
+        self.delegate?.textChanged(self.textField?.text ?? "")
+    }
+    
+    @IBAction func modeAction() {
+        self.delegate?.modeButtonPressed(self)
     }
 }
 
