@@ -6,7 +6,6 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import XCGLogger
 
 class AuthorisationAPI: BaseAPI {

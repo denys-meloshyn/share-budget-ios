@@ -42,11 +42,11 @@
     </entity>
     <elements>
         <element name="BaseModel" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Budget" positionX="-36" positionY="45" width="128" height="120"/>
+        <element name="BudgetLimit" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Category" positionX="18" positionY="81" width="128" height="90"/>
         <element name="CategoryLimit" positionX="36" positionY="81" width="128" height="90"/>
         <element name="Expense" positionX="0" positionY="72" width="128" height="90"/>
-        <element name="Budget" positionX="-36" positionY="45" width="128" height="120"/>
-        <element name="BudgetLimit" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="User" positionX="-54" positionY="9" width="128" height="105"/>
     </elements>
 </model>

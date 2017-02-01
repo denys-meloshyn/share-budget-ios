@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(Expense)
-public class Expense: NSManagedObject {
+public class Expense: BaseModel {
 
 }

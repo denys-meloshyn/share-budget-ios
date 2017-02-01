@@ -6,7 +6,6 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import XCGLogger
 
@@ -69,6 +68,10 @@ class SyncManager {
         
         // Load all updates for 'Budget'
         task = BudgetAPI.updates("group", managedObjectContext, completionBlock)
+        tasks = SyncManager.appendTask(task, to: tasks)
+        
+        // Load all updates for 'Budget Limit'
+        task = BudgetLimitAPI.updates("group/limit", managedObjectContext, completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
         // -----------------

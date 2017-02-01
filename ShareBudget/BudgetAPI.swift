@@ -6,13 +6,12 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
 import XCGLogger
 
 class BudgetAPI: BaseAPI {
     override class func modelKeyID() -> String {
-        return "groupID"
+        return kGroupID
     }
     
     override class func timestampStorageKey() -> String {

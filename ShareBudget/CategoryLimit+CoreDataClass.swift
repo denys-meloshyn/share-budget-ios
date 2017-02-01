@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(CategoryLimit)
-public class CategoryLimit: NSManagedObject {
+public class CategoryLimit: BaseModel {
 
 }

@@ -44,6 +44,8 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
+		575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
@@ -131,6 +133,8 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
+		575786361E4278620026A0BE /* BudgetLimitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPI.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedManager.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 				57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */,
 				573F59D81E29627A00AEA72A /* BaseAPI.swift */,
 				57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */,
+				575786361E4278620026A0BE /* BudgetLimitAPI.swift */,
+				575786341E4272980026A0BE /* BudgetUserAPI.swift */,
 				573F59E21E2AB9B000AEA72A /* SyncManager.swift */,
 				573F59DA1E29637E00AEA72A /* UserAPI.swift */,
 			);
@@ -712,6 +718,7 @@
 			files = (
 				573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */,
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
+				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
 				57F1286D1E3DF76200E51C0C /* Budget+CoreDataClass.swift in Sources */,
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
@@ -720,6 +727,7 @@
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
+				575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */,
 				57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */,
 				573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */,
 				57F128621E3D33E800E51C0C /* BudgetPresenter.swift in Sources */,
