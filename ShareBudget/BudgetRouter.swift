@@ -11,7 +11,7 @@ import CoreData
 
 class BudgetRouter: BaseRouter {
     func openDetailPage(for budgetID: NSManagedObjectID?) {
-        guard let budgetDetailViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "BudgetDetailViewController") as? BudgetDetailViewController else {
+        guard let budgetDetailViewController = R.storyboard.main.budgetDetailViewController() else {
             return
         }
         

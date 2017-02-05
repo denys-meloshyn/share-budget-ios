@@ -42,4 +42,14 @@ struct LocalisedManager {
         static let repeatPasswordIsDifferent = NSLocalizedString("Repeat password not the same as Password", comment: "Error mesage for repeat password validation")
         static let firstNameIsEmpty = NSLocalizedString("First name is empty", comment: "Error mesage for first name validation")
     }
+    
+    struct edit {
+        struct expense {
+            static let price = NSLocalizedString("Price", comment: "Expense price title in Edit expense page")
+            static let name = NSLocalizedString("Name", comment: "Expense name title in Edit expense page")
+            static let category = NSLocalizedString("Category", comment: "Expense category title in Edit expense page")
+            static let date = NSLocalizedString("Date", comment: "Expense date title in Edit expense page")
+            static let create = NSLocalizedString("Create", comment: "Create title in Edit expense page")
+        }
+    }
 }

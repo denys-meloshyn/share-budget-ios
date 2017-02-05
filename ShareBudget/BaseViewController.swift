@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.linkStoryboardViews()
         self.viperView?.viewDidLoad()
     }
     
@@ -39,5 +40,8 @@ class BaseViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         self.viperView?.viewDidDisappear(animated)
+    }
+    
+    func linkStoryboardViews() {
     }
 }

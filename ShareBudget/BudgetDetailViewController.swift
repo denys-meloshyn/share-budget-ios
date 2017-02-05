@@ -45,4 +45,12 @@ class BudgetDetailViewController: BaseViewController {
             }
         }
     }
+    
+    @IBAction func createNewExpenseAction() {
+        guard let vc = R.storyboard.main.editExpenseViewController() else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
