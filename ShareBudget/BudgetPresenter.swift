@@ -38,7 +38,8 @@ class BudgetPresenter: BasePresenter {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.delegate?.showPage(title: "Budget")
+        self.delegate?.showTabBar(title: "Budgets", image: UIImage(), selected: UIImage())
+        self.delegate?.showPage(title: "Budgets")
     }
     
     func headerMode() -> BudgetHeaderMode {
@@ -93,6 +94,13 @@ extension BudgetPresenter: UITableViewDataSource {
 
 extension BudgetPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let budget = self.budgetInteraction.budgetModel(for: indexPath)
+        
+        guard let router = self.router as? BudgetRouter else {
+            return
+        }
+        
+        router.openDetailPage(for: budget.objectID)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

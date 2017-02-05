@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
+		572749501E43D9E0004A132F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */; };
+		572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749511E44F41B004A132F /* BudgetDetailView.swift */; };
+		572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749531E44F450004A132F /* BudgetDetailPresenter.swift */; };
+		572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749551E44F480004A132F /* BudgetDetailInteraction.swift */; };
+		572749581E44F49F004A132F /* BudgetDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749571E44F49F004A132F /* BudgetDetailRouter.swift */; };
 		573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
 		573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
@@ -91,6 +96,11 @@
 /* Begin PBXFileReference section */
 		05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
+		572749511E44F41B004A132F /* BudgetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
+		572749531E44F450004A132F /* BudgetDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailPresenter.swift; sourceTree = "<group>"; };
+		572749551E44F480004A132F /* BudgetDetailInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteraction.swift; sourceTree = "<group>"; };
+		572749571E44F49F004A132F /* BudgetDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailRouter.swift; sourceTree = "<group>"; };
 		573F599C1E295C4D00AEA72A /* ShareBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F599F1E295C4D00AEA72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		573F59A41E295C4D00AEA72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -285,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A321E2D5F4100AEA72A /* BaseViewController.swift */,
+				5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */,
 				57F1285B1E3D325300E51C0C /* BudgetViewController.swift */,
 				573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */,
 				57B9B02F1E3D007800085E19 /* SettingsViewController.swift */,
@@ -346,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
+				572749511E44F41B004A132F /* BudgetDetailView.swift */,
 				57F1285D1E3D332600E51C0C /* BudgetView.swift */,
 				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
@@ -358,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A291E2D50E100AEA72A /* BasePresenter.swift */,
+				572749531E44F450004A132F /* BudgetDetailPresenter.swift */,
 				57F128611E3D33E800E51C0C /* BudgetPresenter.swift */,
 				573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */,
 			);
@@ -368,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A301E2D557900AEA72A /* BaseInteraction.swift */,
+				572749551E44F480004A132F /* BudgetDetailInteraction.swift */,
 				57F128631E3D341700E51C0C /* BudgetInteraction.swift */,
 				573F5A251E2D502100AEA72A /* LoginInteraction.swift */,
 			);
@@ -378,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */,
+				572749571E44F49F004A132F /* BudgetDetailRouter.swift */,
 				57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */,
 				573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */,
 			);
@@ -728,6 +743,7 @@
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
 				575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */,
+				572749581E44F49F004A132F /* BudgetDetailRouter.swift in Sources */,
 				57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */,
 				573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */,
 				57F128621E3D33E800E51C0C /* BudgetPresenter.swift in Sources */,
@@ -740,15 +756,19 @@
 				578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
+				572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
 				57F128701E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift in Sources */,
+				572749501E43D9E0004A132F /* BudgetDetailViewController.swift in Sources */,
 				573F5A281E2D50B400AEA72A /* BaseView.swift in Sources */,
+				572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */,
 				573F5A2A1E2D50E100AEA72A /* BasePresenter.swift in Sources */,
 				573F5A111E2C180400AEA72A /* Category+CoreDataProperties.swift in Sources */,
 				573F5A151E2C180400AEA72A /* Expense+CoreDataProperties.swift in Sources */,
 				57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */,
 				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
+				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,
 				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,
 				573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */,

@@ -28,8 +28,6 @@ class BudgetViewController: BaseViewController {
         }
         
         self.linkStoryboardViews(to: view)
-        
-//        presenter.configure()
     }
     
     private func linkStoryboardViews(to view: BudgetView) {

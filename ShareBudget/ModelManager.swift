@@ -148,4 +148,20 @@ class ModelManager {
         
         return fetchedResultsController
     }
+    
+    class func budgetLimitFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<BudgetLimit> {
+        let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        let predicate = NSPredicate(format: "%@ == budget", budget)
+        fetchRequest.predicate = predicate
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }
 }
