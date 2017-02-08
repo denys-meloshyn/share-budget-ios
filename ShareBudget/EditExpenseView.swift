@@ -33,12 +33,12 @@ class EditExpenseView: BaseView {
 }
 
 extension EditExpenseView: EditExpensePresenterDelegate {
-    func createExpenseCell(with title: String?, value: String?, placeholder: String?) -> UITableViewCell {
+    func createExpenseCell(with title: String?, value: String?, placeholder: String?) -> RightTextFieldTableViewCell {
         let cell = self.tableView?.dequeueReusableCell(withIdentifier: R.reuseIdentifier.rightTextFieldTableViewCell)
         cell?.titleLabel?.text = title
         cell?.textField?.text = value
         cell?.textField?.placeholder = placeholder
         
-        return cell ?? UITableViewCell()
+        return cell ?? RightTextFieldTableViewCell()
     }
 }

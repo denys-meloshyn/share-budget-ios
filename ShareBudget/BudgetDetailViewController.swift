@@ -51,6 +51,7 @@ class BudgetDetailViewController: BaseViewController {
             return
         }
         
+        vc.budgetID = self.budgetID
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

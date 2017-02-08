@@ -7,23 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class EditExpenseViewController: BaseViewController {
     @IBOutlet var tableView: UITableView?
     
+    var budgetID: NSManagedObjectID?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let router = EditExpenseRouter(with: self)
-        let interactin = EditExpenseInteraction()
-        let presenter = EditExpensePresenter(with: interactin, router: router)
-        self.viperView = EditExpenseView(with: presenter, and: self)
+        
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+        let router = EditExpenseRouter(with: self)
+        let interactin = EditExpenseInteraction(with: self.budgetID!)
+        let presenter = EditExpensePresenter(with: interactin, router: router)
+        self.viperView = EditExpenseView(with: presenter, and: self)
         
+        super.viewDidLoad()
     }
     
     override func linkStoryboardViews() {

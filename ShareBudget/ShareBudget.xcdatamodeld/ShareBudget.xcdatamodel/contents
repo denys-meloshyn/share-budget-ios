@@ -9,7 +9,7 @@
     </entity>
     <entity name="Budget" representedClassName="Budget" parentEntity="BaseModel" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="budget" inverseEntity="Category" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="budget" inverseEntity="Category" syncable="YES"/>
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="budget" inverseEntity="Expense" syncable="YES"/>
         <relationship name="limits" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BudgetLimit" inverseName="budget" inverseEntity="BudgetLimit" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="group" inverseEntity="User" syncable="YES"/>

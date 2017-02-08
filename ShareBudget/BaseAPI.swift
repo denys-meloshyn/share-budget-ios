@@ -96,21 +96,6 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                if errorType == .tokenExpired {
-                    XCGLogger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
-                        if error == .none {
-                            let task = self.updates(resource, managedObjectContext, completion)
-                            task?.resume()
-                        }
-                        else {
-                            completion?(data, error)
-                        }
-                    })
-                    
-                    return
-                }
-                
                 XCGLogger.error("Error: \(errorType) message: \(data)")
                 
                 completion?(data, errorType)

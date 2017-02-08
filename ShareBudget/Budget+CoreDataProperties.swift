@@ -2,7 +2,7 @@
 //  Budget+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 30.01.17.
+//  Created by Denys Meloshyn on 08.02.17.
 //
 //
 
@@ -17,10 +17,27 @@ extension Budget {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var categories: Category?
+    @NSManaged public var categories: NSSet?
     @NSManaged public var expenses: NSSet?
     @NSManaged public var limits: NSSet?
     @NSManaged public var users: NSSet?
+
+}
+
+// MARK: Generated accessors for categories
+extension Budget {
+
+    @objc(addCategoriesObject:)
+    @NSManaged public func addToCategories(_ value: Category)
+
+    @objc(removeCategoriesObject:)
+    @NSManaged public func removeFromCategories(_ value: Category)
+
+    @objc(addCategories:)
+    @NSManaged public func addToCategories(_ values: NSSet)
+
+    @objc(removeCategories:)
+    @NSManaged public func removeFromCategories(_ values: NSSet)
 
 }
 

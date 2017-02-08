@@ -16,5 +16,6 @@ class RightTextFieldTableViewCell: UITableViewCell {
         super.prepareForReuse()
         
         self.accessoryType = .none
+        self.textField?.isUserInteractionEnabled = true
     }
 }

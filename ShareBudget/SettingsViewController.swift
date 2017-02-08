@@ -22,4 +22,8 @@ class SettingsViewController: UIViewController {
             UIApplication.shared.delegate?.window??.rootViewController = loginViewControler
         }
     }
+    
+    @IBAction func reset() {
+        CategoryAPI.timestamp = ""
+    }
 }

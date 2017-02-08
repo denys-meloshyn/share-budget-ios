@@ -89,14 +89,19 @@ class ModelManager {
         return childrenManagedObjectContext
     }
     
+    class func findEntity(fetchRequest: NSFetchRequest<NSFetchRequestResult>, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+        return nil
+    }
+    
     class func findEntity(_ entity: BaseModel.Type, by modelID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
-        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "modelID==%i", modelID)
         fetchRequest.fetchLimit = 1
         
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
-            return items.first
+            return items.first as? BaseModel
         }
         catch {
             XCGLogger.error("Finding model \(error)")
@@ -158,6 +163,22 @@ class ModelManager {
         fetchRequest.predicate = predicate
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }
+    
+    class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<Category> {
+        let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        let predicate = NSPredicate(format: "%@ == budget", budget)
+        fetchRequest.predicate = predicate
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

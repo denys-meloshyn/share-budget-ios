@@ -41,8 +41,31 @@ class SyncManager {
             guard error == .none else {
                 ModelManager.saveChildren(managedObjectContext)
                 
-                DispatchQueue.main.async {
-                    SyncManager.scheduleNextUpdate()
+                if error == .tokenExpired {
+                    XCGLogger.error("Token is expired")
+                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
+                        if error == .none {
+                            SyncManager.loadUpdates(completion: completion)
+                        }
+                        else if error == .unknown{
+                            DispatchQueue.main.async {
+                                SyncManager.scheduleNextUpdate()
+                            }
+                        }
+                        else {
+                            completion?(data, error)
+                        }
+                    })
+                    
+                    return
+                }
+                else if error == .unknown {
+                    DispatchQueue.main.async {
+                        SyncManager.scheduleNextUpdate()
+                    }
+                }
+                else {
+                    completion?(data, error)
                 }
                 
                 return
@@ -72,6 +95,9 @@ class SyncManager {
         
         // Load all updates for 'Budget Limit'
         task = BudgetLimitAPI.updates("group/limit", managedObjectContext, completionBlock)
+        tasks = SyncManager.appendTask(task, to: tasks)
+        
+        task = CategoryAPI.updates("category", managedObjectContext, completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
         // -----------------

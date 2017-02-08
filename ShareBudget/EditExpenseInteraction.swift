@@ -9,19 +9,30 @@
 import CoreData
 
 class EditExpenseInteraction: BaseInteraction {
-    let managedObjectContext = ModelManager.managedObjectContext
-    var expense: Expense?
+    let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
+    var budget: Budget
+    var expense: Expense
     
     private var expenseID: NSManagedObjectID?
     
-    override init() {
-        super.init()
+    init(with budgetID: NSManagedObjectID) {
+        self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
+        self.expense = Expense(context: self.managedObjectContext)
         
+        self.expense.budget = self.budget
+        self.budget.addToExpenses(self.expense)
+    }
+    
+    /*
+    override init() {
         if let expenseID = self.expenseID {
-            self.expense = self.managedObjectContext.object(with: expenseID) as? Expense
+            self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
         }
         else {
             self.expense = Expense(context: self.managedObjectContext)
         }
+        
+        super.init()
     }
+ */
 }
