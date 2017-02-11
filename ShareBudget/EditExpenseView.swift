@@ -33,12 +33,14 @@ class EditExpenseView: BaseView {
 }
 
 extension EditExpenseView: EditExpensePresenterDelegate {
-    func createExpenseCell(with title: String?, value: String?, placeholder: String?) -> RightTextFieldTableViewCell {
+    func createExpenseCell(with inputType: RightTextFieldTableViewCellInputType) -> RightTextFieldTableViewCell {
         let cell = self.tableView?.dequeueReusableCell(withIdentifier: R.reuseIdentifier.rightTextFieldTableViewCell)
-        cell?.titleLabel?.text = title
-        cell?.textField?.text = value
-        cell?.textField?.placeholder = placeholder
+        cell?.inputType = inputType
         
         return cell ?? RightTextFieldTableViewCell()
+    }
+    
+    func showApplyChangesButton(_ button: UIBarButtonItem) {
+        self.viewController?.navigationItem.rightBarButtonItem = button
     }
 }

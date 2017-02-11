@@ -15,24 +15,25 @@ class EditExpenseInteraction: BaseInteraction {
     
     private var expenseID: NSManagedObjectID?
     
-    init(with budgetID: NSManagedObjectID) {
+    init(with budgetID: NSManagedObjectID, expenseID: NSManagedObjectID?) {
+        self.expenseID = expenseID
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
-        self.expense = Expense(context: self.managedObjectContext)
         
-        self.expense.budget = self.budget
-        self.budget.addToExpenses(self.expense)
-    }
-    
-    /*
-    override init() {
-        if let expenseID = self.expenseID {
+        if let expenseID = expenseID {
             self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
         }
         else {
             self.expense = Expense(context: self.managedObjectContext)
+            self.expense.budget = self.budget
+            self.budget.addToExpenses(self.expense)
+        }
+    }
+    
+    var isExpenseNew: Bool {
+        if self.expenseID == nil {
+            return true
         }
         
-        super.init()
+        return false
     }
- */
 }

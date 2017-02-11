@@ -67,12 +67,14 @@ class ModelManager {
             return
         }
         
-        childrenManagedObjectContext.perform { () -> Void in
-            ModelManager.saveContext(childrenManagedObjectContext)
-            
-            parentManagedObjectContext.perform({() -> Void in
-                ModelManager.saveContext(parentManagedObjectContext)
-            })
+        DispatchQueue.main.async {
+            childrenManagedObjectContext.perform { () -> Void in
+                ModelManager.saveContext(childrenManagedObjectContext)
+                
+                parentManagedObjectContext.perform({() -> Void in
+                    ModelManager.saveContext(parentManagedObjectContext)
+                })
+            }
         }
     }
     

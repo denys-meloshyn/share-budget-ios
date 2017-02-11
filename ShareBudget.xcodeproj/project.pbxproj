@@ -60,6 +60,8 @@
 		575A22601E4772D3004825C2 /* EditExpenseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */; };
 		575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22611E4917B8004825C2 /* CategoryViewController.swift */; };
 		575A22641E4BA050004825C2 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22631E4BA050004825C2 /* CategoryAPI.swift */; };
+		575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
+		575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
@@ -163,6 +165,8 @@
 		575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseRouter.swift; sourceTree = "<group>"; };
 		575A22611E4917B8004825C2 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		575A22631E4BA050004825C2 /* CategoryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
+		575A22651E4D0189004825C2 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
+		575A22671E4D01A7004825C2 /* ValidationTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationTextField.xib; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedManager.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
+				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */,
 				575A22561E476CCA004825C2 /* RightTextFieldTableViewCell.xib */,
 				578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */,
+				575A22671E4D01A7004825C2 /* ValidationTextField.xib */,
 				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
 				573F59A31E295C4D00AEA72A /* Main.storyboard */,
 			);
@@ -580,6 +586,7 @@
 				575A22581E476CCA004825C2 /* RightTextFieldTableViewCell.xib in Resources */,
 				57F128661E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib in Resources */,
 				578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */,
+				575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
 				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
@@ -788,6 +795,7 @@
 				575A225A1E477234004825C2 /* EditExpenseView.swift in Sources */,
 				578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
+				575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,

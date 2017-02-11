@@ -50,6 +50,7 @@ struct LocalisedManager {
             static let category = NSLocalizedString("Category", comment: "Expense category title in Edit expense page")
             static let date = NSLocalizedString("Date", comment: "Expense date title in Edit expense page")
             static let create = NSLocalizedString("Create", comment: "Create title in Edit expense page")
+            static let update = NSLocalizedString("Update", comment: "Update title in Edit expense page")
         }
     }
 }

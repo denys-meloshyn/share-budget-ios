@@ -13,16 +13,48 @@ enum EditExpenseField {
     case name
     case category
     case date
-    case create
 }
 
 protocol EditExpensePresenterDelegate: class {
-    func createExpenseCell(with title: String?, value: String?, placeholder: String?) -> RightTextFieldTableViewCell
+    func showApplyChangesButton(_ button: UIBarButtonItem)
+    func createExpenseCell(with inputType: RightTextFieldTableViewCellInputType) -> RightTextFieldTableViewCell
 }
 
 class EditExpensePresenter: BasePresenter {
     weak var delegate: EditExpensePresenterDelegate?
-    fileprivate let items: [EditExpenseField] = [.price, .name, .category, .date, .create]
+    fileprivate let items: [EditExpenseField] = [.price, .name, .category, .date]
+    fileprivate var expenseInteraction: EditExpenseInteraction {
+        get {
+            return self.interaction as! EditExpenseInteraction
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.updateApplyButton()
+    }
+    
+    private func updateApplyButton() {
+        var title: String
+        var isEnabled = true
+        
+        if self.expenseInteraction.isExpenseNew {
+            title = LocalisedManager.edit.expense.create
+        }
+        else {
+            title = LocalisedManager.edit.expense.update
+            
+            if !self.expenseInteraction.expense.hasChanges {
+                isEnabled = false
+            }
+        }
+        
+        let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
+        button.isEnabled = isEnabled
+        
+        self.delegate?.showApplyChangesButton(button)
+    }
     
     fileprivate func fieldTitle(_ field: EditExpenseField) -> String {
         switch field {
@@ -37,20 +69,15 @@ class EditExpensePresenter: BasePresenter {
             
         case .date:
             return LocalisedManager.edit.expense.date
-            
-        case .create:
-            return LocalisedManager.edit.expense.create
         }
+    }
+    
+    func saveChanges() {
+        
     }
 }
 
 extension EditExpensePresenter: UITableViewDataSource {
-    fileprivate var expenseInteraction: EditExpenseInteraction {
-        get {
-            return self.interaction as! EditExpenseInteraction
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
@@ -58,17 +85,20 @@ extension EditExpensePresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = self.items[indexPath.row]
         var cell: RightTextFieldTableViewCell
+        let input: RightTextFieldTableViewCellInputType
         
-        if type == .create {
-            cell = RightTextFieldTableViewCell()
-        }
-        else {
-            cell = self.delegate?.createExpenseCell(with: self.fieldTitle(type), value: "", placeholder: self.fieldTitle(type)) ?? RightTextFieldTableViewCell()
+        switch type {
+        case .category:
+            input = RightTextFieldTableViewCellInputType.notEdited(title: self.fieldTitle(type), value: "", placeholder: self.fieldTitle(type))
+        case .date:
+            input = RightTextFieldTableViewCellInputType.date(title: self.fieldTitle(type), formattedDate: "", date: Date(), placeholder: self.fieldTitle(type))
+        default:
+            input = RightTextFieldTableViewCellInputType.text(title: self.fieldTitle(type), value: "", placeholder: self.fieldTitle(type))
         }
         
+        cell = self.delegate!.createExpenseCell(with: input)
         if type == .category {
             cell.accessoryType = .disclosureIndicator
-            cell.textField?.isUserInteractionEnabled = false
         }
         
         return cell
@@ -77,8 +107,16 @@ extension EditExpensePresenter: UITableViewDataSource {
 
 extension EditExpensePresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let router = self.router as? EditExpenseRouter {
-            router.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: (self.interaction as! EditExpenseInteraction).managedObjectContext)
+        let type = self.items[indexPath.row]
+        
+        switch type {
+        case .category:
+            if let router = self.router as? EditExpenseRouter {
+                router.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: (self.interaction as! EditExpenseInteraction).managedObjectContext)
+            }
+        default:
+            let cell = tableView.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
+            cell?.textField?.becomeFirstResponder()
         }
     }
 }

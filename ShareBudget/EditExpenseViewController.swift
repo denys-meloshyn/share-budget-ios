@@ -14,22 +14,19 @@ class EditExpenseViewController: BaseViewController {
     
     var budgetID: NSManagedObjectID?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        
-    }
-    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         let router = EditExpenseRouter(with: self)
-        let interactin = EditExpenseInteraction(with: self.budgetID!)
+        let interactin = EditExpenseInteraction(with: self.budgetID!, expenseID: nil)
         let presenter = EditExpensePresenter(with: interactin, router: router)
         self.viperView = EditExpenseView(with: presenter, and: self)
         
-        super.viewDidLoad()
+        self.linkStoryboardViews()
+        self.viperView?.viewDidLoad()
     }
     
-    override func linkStoryboardViews() {
+    private func linkStoryboardViews() {
         guard let view = self.viperView as? EditExpenseView else {
             return
         }
