@@ -35,12 +35,9 @@ class SyncManager {
         
         var tasks = [URLSessionTask]()
         var task: URLSessionTask?
-        let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
-                ModelManager.saveChildren(managedObjectContext)
-                
                 if error == .tokenExpired {
                     XCGLogger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
@@ -75,7 +72,6 @@ class SyncManager {
             
             if tasks.count == 0 {
                 DispatchQueue.main.async {
-                    ModelManager.saveChildren(managedObjectContext)
                     SyncManager.scheduleNextUpdate()
                 }
             }
@@ -86,28 +82,28 @@ class SyncManager {
         }
         
         // Load all updates for 'User'
-        task = UserAPI.updates("user", managedObjectContext, completionBlock)
+        task = UserAPI.updates("user", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
         // Load all updates for 'Budget'
-        task = BudgetAPI.updates("group", managedObjectContext, completionBlock)
+        task = BudgetAPI.updates("group", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
         // Load all updates for 'Budget Limit'
-        task = BudgetLimitAPI.updates("group/limit", managedObjectContext, completionBlock)
+        task = BudgetLimitAPI.updates("group/limit", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
-        task = CategoryAPI.updates("category", managedObjectContext, completionBlock)
+        task = CategoryAPI.updates("category", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
         // -----------------
         
+        let managedObjectContext = ModelManager.managedObjectContext
         let budgetFetchController = ModelManager.budgetChangedFetchController(managedObjectContext)
         do {
             try budgetFetchController.performFetch()
         }
         catch {
-            ModelManager.saveChildren(managedObjectContext)
             XCGLogger.error("Can't fetch data \(error)")
         }
         
@@ -126,7 +122,6 @@ class SyncManager {
         }
         
         if tasks.count == 0 {
-            ModelManager.saveChildren(managedObjectContext)
             SyncManager.scheduleNextUpdate()
         }
         else {

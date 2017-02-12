@@ -14,6 +14,7 @@ struct LocalisedManager {
         static let ok = NSLocalizedString("OK", comment: "Generic OK message")
         static let errorTitle = NSLocalizedString("Error", comment: "Generic error title")
         static let errorMessage = NSLocalizedString("Something was wrong", comment: "Generic error message")
+        static let next = NSLocalizedString("Next", comment: "Next title (ex keyboard)")
     }
     
     struct error {

@@ -80,7 +80,7 @@ class BaseAPI {
         
     }
     
-    class func updates(_ resource: String, _ managedObjectContext: NSManagedObjectContext, _ completion: APIResultBlock?) -> URLSessionTask? {
+    class func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask? {
         let components = self.components(resource)
         components.path = "/" + resource + "/updates"
         
@@ -121,7 +121,10 @@ class BaseAPI {
             }
             
             self.timestamp = timestamp
+            let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
             self.parseUpdates(items: results, in: managedObjectContext)
+            ModelManager.saveChildren(managedObjectContext)
+            
             completion?(nil, .none)
         }
         

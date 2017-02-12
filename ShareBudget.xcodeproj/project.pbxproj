@@ -62,6 +62,7 @@
 		575A22641E4BA050004825C2 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22631E4BA050004825C2 /* CategoryAPI.swift */; };
 		575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
 		575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
+		575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
@@ -167,6 +168,7 @@
 		575A22631E4BA050004825C2 /* CategoryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
 		575A22651E4D0189004825C2 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		575A22671E4D01A7004825C2 /* ValidationTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationTextField.xib; sourceTree = "<group>"; };
+		575A226B1E508FCA004825C2 /* UtilityFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFormatter.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedManager.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				573F59D01E295D4900AEA72A /* Constants.swift */,
+				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */,
 				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
@@ -798,6 +801,7 @@
 				575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */,
+				575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
 				57F128701E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift in Sources */,
 				572749501E43D9E0004A132F /* BudgetDetailViewController.swift in Sources */,
