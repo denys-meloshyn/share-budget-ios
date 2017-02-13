@@ -37,4 +37,8 @@ class EditExpenseInteraction: BaseInteraction {
         
         return false
     }
+    
+    func save() {
+        ModelManager.saveChildren(self.managedObjectContext)
+    }
 }

@@ -11,6 +11,8 @@ import CoreData
 import XCGLogger
 
 class BudgetDetailViewController: BaseViewController {
+    @IBOutlet var expenseButton: UIButton?
+    
     var budgetID: NSManagedObjectID?
     private let managedObjectContext = ModelManager.managedObjectContext
     
@@ -48,6 +50,15 @@ class BudgetDetailViewController: BaseViewController {
     
     @IBAction func createNewExpenseAction() {
         guard let vc = R.storyboard.main.editExpenseViewController() else {
+            return
+        }
+        
+        vc.budgetID = self.budgetID
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func showAllExpenses() {
+        guard let vc = R.storyboard.main.expensesViewController() else {
             return
         }
         

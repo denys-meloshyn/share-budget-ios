@@ -108,6 +108,66 @@
             </objects>
             <point key="canvasLocation" x="2001" y="845"/>
         </scene>
+        <!--Expenses View Controller-->
+        <scene sceneID="U6B-XO-PkI">
+            <objects>
+                <viewController storyboardIdentifier="ExpensesViewController" id="ClV-72-GJA" customClass="ExpensesViewController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sJh-rt-vNI"/>
+                        <viewControllerLayoutGuide type="bottom" id="egF-OO-mSV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gXl-7B-9Nq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bWQ-Oc-cNh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" textLabel="oEN-li-ns5" detailTextLabel="wHZ-7b-7bh" style="IBUITableViewCellStyleValue1" id="pCN-fY-ohL">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pCN-fY-ohL" id="QFX-Mr-kS7">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oEN-li-ns5">
+                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wHZ-7b-7bh">
+                                                    <rect key="frame" x="261" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ClV-72-GJA" id="4Tf-cN-NfV"/>
+                                    <outlet property="delegate" destination="ClV-72-GJA" id="Z3f-SH-iW8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bWQ-Oc-cNh" firstAttribute="top" secondItem="gXl-7B-9Nq" secondAttribute="top" id="6q2-BK-3NJ"/>
+                            <constraint firstItem="egF-OO-mSV" firstAttribute="top" secondItem="bWQ-Oc-cNh" secondAttribute="bottom" id="8dh-fL-6Yf"/>
+                            <constraint firstItem="bWQ-Oc-cNh" firstAttribute="leading" secondItem="gXl-7B-9Nq" secondAttribute="leading" id="mPd-1j-XBd"/>
+                            <constraint firstAttribute="trailing" secondItem="bWQ-Oc-cNh" secondAttribute="trailing" id="sSf-op-7AU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7V1-0O-WGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2771.25" y="844.0140845070423"/>
+        </scene>
         <!--Item-->
         <scene sceneID="PIE-zu-7n0">
             <objects>
@@ -280,12 +340,22 @@
                                                             <constraint firstItem="Bdi-iG-659" firstAttribute="top" secondItem="YIh-ly-et3" secondAttribute="top" id="y6j-fs-PHG"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeO-Ry-c3j">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="76"/>
+                                                        <connections>
+                                                            <action selector="showAllExpenses" destination="VqQ-S8-nC0" eventType="touchUpInside" id="6GJ-hP-grR"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="YIh-ly-et3" firstAttribute="centerY" secondItem="8jT-ts-d6I" secondAttribute="centerY" id="5Uu-87-Io3"/>
                                                     <constraint firstAttribute="trailing" secondItem="YIh-ly-et3" secondAttribute="trailing" id="QlM-Ki-Bds"/>
+                                                    <constraint firstItem="DeO-Ry-c3j" firstAttribute="top" secondItem="8jT-ts-d6I" secondAttribute="top" id="VId-wi-dqc"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DeO-Ry-c3j" secondAttribute="bottom" id="eGh-fI-D5f"/>
                                                     <constraint firstItem="YIh-ly-et3" firstAttribute="leading" secondItem="8jT-ts-d6I" secondAttribute="leading" id="fbS-cf-Fax"/>
+                                                    <constraint firstItem="DeO-Ry-c3j" firstAttribute="leading" secondItem="8jT-ts-d6I" secondAttribute="leading" id="mRx-BC-UV9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DeO-Ry-c3j" secondAttribute="trailing" id="uft-XM-aQg"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7h-Pq-Ld1">
@@ -428,7 +498,7 @@ new expense</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJd-xf-cTI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2771.25" y="137.5"/>
+            <point key="canvasLocation" x="2771.25" y="137.32394366197184"/>
         </scene>
         <!--Edit Expense View Controller-->
         <scene sceneID="yda-FR-Yld">

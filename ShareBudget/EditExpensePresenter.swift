@@ -31,6 +31,11 @@ class EditExpensePresenter: BasePresenter {
             return self.interaction as! EditExpenseInteraction
         }
     }
+    fileprivate var expenseRouter: EditExpenseRouter {
+        get {
+            return self.router as! EditExpenseRouter
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,7 +120,7 @@ class EditExpensePresenter: BasePresenter {
     }
     
     func saveChanges() {
-        
+        self.expenseInteraction.save()
     }
 }
 
@@ -169,9 +174,7 @@ extension EditExpensePresenter: UITableViewDelegate {
         
         switch type {
         case .category:
-            if let router = self.router as? EditExpenseRouter {
-                router.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: (self.interaction as! EditExpenseInteraction).managedObjectContext)
-            }
+            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: (self.interaction as! EditExpenseInteraction).managedObjectContext)
         default:
             let cell = tableView.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
             cell?.textField?.becomeFirstResponder()
