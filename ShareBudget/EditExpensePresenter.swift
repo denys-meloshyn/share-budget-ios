@@ -194,23 +194,34 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
         case .date:
             self.expenseInteraction.expense.creationDate = sender.datePicker.date as NSDate?
             
+            let newValue = self.formattedTextFieldValue(for: type)
+            self.delegate?.refreshTextField(at: indexPath, with: newValue)
+            
         case .price:
             guard let text = sender.textField?.text else {
                 return
             }
             
             guard let price = UtilityFormatter.amount(from: text) else {
+                let value = self.formattedTextFieldValue(for: type)
+                self.delegate?.refreshTextField(at: indexPath, with: value)
+                
                 return
             }
             
-            self.expenseInteraction.expense.price = price.doubleValue * 0.01
+            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
+            
+            if roundPrice?.doubleValue == price.doubleValue {
+                self.expenseInteraction.expense.price = price.doubleValue
+            }
+            else {
+                let newValue = self.formattedTextFieldValue(for: type)
+                self.delegate?.refreshTextField(at: indexPath, with: newValue)
+            }
             
         default:
             break
         }
-        
-        let newValue = self.formattedTextFieldValue(for: type)
-        self.delegate?.refreshTextField(at: indexPath, with: newValue)
     }
 }
 

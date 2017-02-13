@@ -20,35 +20,35 @@ class UtilityFormatter: NSObject {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.roundingMode = .halfUp
+        numberFormatter.maximumFractionDigits = 2
         
         return numberFormatter
     }
     
     class func string(from date: Date) -> String {
-        return self.dateFormatter.string(from: date)
+        return UtilityFormatter.dateFormatter.string(from: date)
     }
     
     class func date(from string: String) -> Date? {
-        return self.dateFormatter.date(from: string)
+        return UtilityFormatter.dateFormatter.date(from: string)
     }
     
     class func stringAmount(amount: NSNumber) -> String? {
-        let numberFormatter = self.numberFormatter
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
+        let numberFormatter = UtilityFormatter.numberFormatter
         
         return numberFormatter.string(from: amount)
     }
     
     class func amount(from string: String) -> NSNumber? {
-        return self.numberFormatter.number(from: string)
+        return UtilityFormatter.numberFormatter.number(from: string)
     }
     
-    class func amountRoundDecimal(from string: String) -> NSNumber? {
-        let numberFormatter = self.numberFormatter
-        numberFormatter.minimumFractionDigits = 2
-        numberFormatter.maximumFractionDigits = 2
+    class func roundStringDecimalForTwoPlacesToNumber(_ value: NSNumber) -> NSNumber? {
+        let formatter = UtilityFormatter.numberFormatter
+        guard let formattedNumber = formatter.string(from: value) else {
+            return NSNumber(value: 0.0)
+        }
         
-        return numberFormatter.number(from: string)
+        return formatter.number(from: formattedNumber)
     }
 }
