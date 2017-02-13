@@ -25,5 +25,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func reset() {
         CategoryAPI.timestamp = ""
+        ExpenseAPI.timestamp = ""
     }
 }

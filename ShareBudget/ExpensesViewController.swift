@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import XCGLogger
 
 class ExpensesViewController: UIViewController {
     var budgetID: NSManagedObjectID?
@@ -46,6 +47,7 @@ extension ExpensesViewController: UITableViewDataSource {
         let expense = self.fc?.object(at: indexPath)
         cell?.textLabel?.text = expense?.name
         cell?.detailTextLabel?.text = String(expense?.price ?? 0)
+        XCGLogger.info(expense?.budget)
         
         return cell!
     }

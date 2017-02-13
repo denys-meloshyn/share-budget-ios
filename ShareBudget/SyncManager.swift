@@ -96,6 +96,9 @@ class SyncManager {
         task = CategoryAPI.updates("category", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
+        task = ExpenseAPI.updates("expense", completionBlock)
+        tasks = SyncManager.appendTask(task, to: tasks)
+        
         // -----------------
         
         let managedObjectContext = ModelManager.managedObjectContext
