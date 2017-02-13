@@ -54,4 +54,9 @@ extension EditExpenseView: EditExpensePresenterDelegate {
         let cell = self.tableView?.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
         cell?.textField?.text = value
     }
+    
+    func configureSaveButtonState(_ state: Bool) {
+        let button = self.viewController?.navigationItem.rightBarButtonItem
+        button?.isEnabled = state
+    }
 }

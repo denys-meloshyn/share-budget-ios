@@ -16,6 +16,7 @@ enum EditExpenseField {
 }
 
 protocol EditExpensePresenterDelegate: BasePresenterDelegate {
+    func configureSaveButtonState(_ state: Bool)
     func activateCellTextField(at indexPath: IndexPath)
     func showApplyChangesButton(_ button: UIBarButtonItem)
     func refreshTextField(at indexPath: IndexPath, with value: String)
@@ -35,25 +36,20 @@ class EditExpensePresenter: BasePresenter {
         super.viewDidLoad()
         
         self.updateApplyButton()
+        self.updateSaveButton()
     }
     
     private func updateApplyButton() {
         var title: String
-        var isEnabled = true
         
         if self.expenseInteraction.isExpenseNew {
             title = LocalisedManager.edit.expense.create
         }
         else {
             title = LocalisedManager.edit.expense.update
-            
-            if !self.expenseInteraction.expense.hasChanges {
-                isEnabled = false
-            }
         }
         
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
-        button.isEnabled = isEnabled
         
         self.delegate?.showApplyChangesButton(button)
     }
@@ -95,6 +91,27 @@ class EditExpensePresenter: BasePresenter {
         }
         
         return formattedValue
+    }
+    
+    fileprivate func isInputDataValid() -> Bool {
+        if self.expenseInteraction.expense.price == 0.0 {
+            return false
+        }
+        
+        guard let name = self.expenseInteraction.expense.name, name.characters.count > 0 else {
+            return false
+        }
+        
+        return true
+    }
+    
+    fileprivate func updateSaveButton() {
+        if self.expenseInteraction.isExpenseNew {
+            self.delegate?.configureSaveButtonState(self.isInputDataValid())
+        }
+        else {
+            self.delegate?.configureSaveButtonState(self.expenseInteraction.expense.hasChanges)
+        }
     }
     
     func saveChanges() {
@@ -191,6 +208,9 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
         
         let type = self.items[indexPath.row]
         switch type {
+        case .name:
+            self.expenseInteraction.expense.name = sender.textField?.text
+            
         case .date:
             self.expenseInteraction.expense.creationDate = sender.datePicker.date as NSDate?
             
@@ -222,6 +242,8 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
         default:
             break
         }
+        
+        self.updateSaveButton()
     }
 }
 
