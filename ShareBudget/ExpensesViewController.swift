@@ -45,10 +45,24 @@ extension ExpensesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell")
         let expense = self.fc?.object(at: indexPath)
-        cell?.textLabel?.text = expense?.name
+        cell?.textLabel?.text = "#" + String(expense!.modelID) + " " + expense!.name!
         cell?.detailTextLabel?.text = String(expense?.price ?? 0)
-        XCGLogger.info(expense?.budget)
         
         return cell!
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ExpensesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let viewController = R.storyboard.main.editExpenseViewController() {
+            let expense = self.fc?.object(at: indexPath)
+            
+            viewController.budgetID = self.budgetID
+            viewController.expenseID = expense?.objectID
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }

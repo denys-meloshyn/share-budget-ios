@@ -24,7 +24,6 @@ class EditExpenseInteraction: BaseInteraction {
         }
         else {
             self.expense = Expense(context: self.managedObjectContext)
-            self.expense.isChanged = true
             self.expense.creationDate = NSDate()
             self.expense.budget = self.budget
             self.budget.addToExpenses(self.expense)
@@ -40,6 +39,7 @@ class EditExpenseInteraction: BaseInteraction {
     }
     
     func save() {
+        self.expense.isChanged = true
         ModelManager.saveChildren(self.managedObjectContext)
     }
 }

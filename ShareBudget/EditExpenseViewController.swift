@@ -13,12 +13,13 @@ class EditExpenseViewController: BaseViewController {
     @IBOutlet var tableView: UITableView?
     
     var budgetID: NSManagedObjectID?
+    var expenseID: NSManagedObjectID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let router = EditExpenseRouter(with: self)
-        let interactin = EditExpenseInteraction(with: self.budgetID!, expenseID: nil)
+        let interactin = EditExpenseInteraction(with: self.budgetID!, expenseID: self.expenseID)
         let presenter = EditExpensePresenter(with: interactin, router: router)
         self.viperView = EditExpenseView(with: presenter, and: self)
         

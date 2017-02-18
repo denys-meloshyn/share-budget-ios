@@ -14,4 +14,8 @@ class BaseRouter {
     init(with viewController: UIViewController) {
         self.viewController = viewController
     }
+    
+    func closePage() {
+        _ = self.viewController?.navigationController?.popViewController(animated: true)
+    }
 }

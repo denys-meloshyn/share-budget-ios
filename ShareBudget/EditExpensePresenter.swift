@@ -91,6 +91,9 @@ class EditExpensePresenter: BasePresenter {
                 formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
             }
             
+        case .name:
+            formattedValue = self.expenseInteraction.expense.name ?? ""
+            
         default:
             break
         }
@@ -121,6 +124,7 @@ class EditExpensePresenter: BasePresenter {
     
     func saveChanges() {
         self.expenseInteraction.save()
+        self.expenseRouter.closePage()
     }
 }
 
@@ -181,6 +185,8 @@ extension EditExpensePresenter: UITableViewDelegate {
         }
     }
 }
+
+// MARK: - RightTextFieldTableViewCellDelegate
 
 extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
     func done(sender: RightTextFieldTableViewCell) {
