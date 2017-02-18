@@ -124,6 +124,22 @@ class ModelManager {
         }
     }
     
+    class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> [BaseModel] {
+        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
+        
+        do {
+            let items = try managedObjectContext.fetch(fetchRequest)
+            
+            return items
+        }
+        catch {
+            XCGLogger.error("Error fetch changedModels \(error)")
+            return []
+        }
+    }
+    
     class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "") -> NSFetchedResultsController<Budget> {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = 30
@@ -134,19 +150,6 @@ class ModelManager {
         }
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        return fetchedResultsController
-    }
-    
-    class func budgetChangedFetchController(_ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Budget> {
-        let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
-        fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
-        
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

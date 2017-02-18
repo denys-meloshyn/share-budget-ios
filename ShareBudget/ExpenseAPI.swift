@@ -32,4 +32,19 @@ class ExpenseAPI: BaseAPI {
             expense?.update(with: item, in: managedObjectContext)
         }
     }
+    
+    class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
+        let managedObjectContext = ModelManager.managedObjectContext
+        let items = ModelManager.changedModels(Expense.self, managedObjectContext)
+        
+        var tasks = [URLSessionTask]()
+        
+        for model in items {
+            if let task = ExpenseAPI.upload("expense", managedObjectContext, model, completionBlock) {
+                tasks.append(task)
+            }
+        }
+        
+        return tasks
+    }
 }

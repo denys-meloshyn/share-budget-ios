@@ -24,6 +24,7 @@ class EditExpenseInteraction: BaseInteraction {
         }
         else {
             self.expense = Expense(context: self.managedObjectContext)
+            self.expense.isChanged = true
             self.expense.creationDate = NSDate()
             self.expense.budget = self.budget
             self.budget.addToExpenses(self.expense)

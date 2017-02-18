@@ -28,7 +28,7 @@ class BaseAPI {
         }
     }
     
-    private class func mapdErrorType(data: Any?) -> ErrorTypeAPI {
+    private class func mapErrorType(data: Any?) -> ErrorTypeAPI {
         if let errorMessage = data as? [String: String], let errorCode = errorMessage[kMessage] {
             switch errorCode {
             case kEmailNotApproved:
@@ -60,7 +60,7 @@ class BaseAPI {
         }
         
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-            return BaseAPI.mapdErrorType(data: data)
+            return BaseAPI.mapErrorType(data: data)
         }
         
         return .none
@@ -129,5 +129,66 @@ class BaseAPI {
         }
         
         return task
+    }
+    
+    class func upload(_ resource: String, _ managedObjectContext: NSManagedObjectContext, _ model: BaseModel, _ completion: APIResultBlock?) -> URLSessionTask? {
+        let components = self.components(resource)
+        
+        guard let url = components.url else {
+            return nil
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        let properties = model.uploadProperties()
+        for key in properties.keys {
+            request.setValue(properties[key], forHTTPHeaderField: key)
+        }
+        
+        request.addUpdateCredentials(timestamp: self.timestamp)
+        
+        return AsynchronousURLConnection.create(request, completion: { (data, response, error) -> (Void) in
+            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
+            
+            guard errorType == .none else {
+                if errorType == .tokenExpired {
+                    XCGLogger.error("Token is expired")
+                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
+                        if error == .none {
+                            let task = self.upload(resource, managedObjectContext, model, completion)
+                            task?.resume()
+                        }
+                        else {
+                            completion?(data, error)
+                        }
+                    })
+                    
+                    return
+                }
+                
+                XCGLogger.error("Error: '\(errorType)' message: \(data)")
+                
+                completion?(data, errorType)
+                return
+            }
+            
+            guard let dict = data as? [String: AnyObject?] else {
+                XCGLogger.error("Response has wrong structure")
+                completion?(data, .unknown)
+                return
+            }
+            
+            guard let result = dict[kResult] as? [String: AnyObject?] else {
+                XCGLogger.error("'result' has wrong structure")
+                completion?(data, .unknown)
+                return
+            }
+            
+            model.isChanged = false
+            model.configureModelID(dict: result, for: kGroupID)
+            
+            completion?(nil, .none)
+        })
     }
 }

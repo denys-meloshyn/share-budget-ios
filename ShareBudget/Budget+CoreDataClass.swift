@@ -17,4 +17,14 @@ public class Budget: BaseModel {
         
         self.name = dict[kName] as? String
     }
+    
+    override func uploadProperties() -> [String : String] {
+        var result = super.uploadProperties()
+        
+        if let name = self.name {
+            result[kName] = name
+        }
+        
+        return result
+    }
 }

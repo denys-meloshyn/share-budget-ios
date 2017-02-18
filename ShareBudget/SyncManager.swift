@@ -101,28 +101,11 @@ class SyncManager {
         
         // -----------------
         
-        let managedObjectContext = ModelManager.managedObjectContext
-        let budgetFetchController = ModelManager.budgetChangedFetchController(managedObjectContext)
-        do {
-            try budgetFetchController.performFetch()
-        }
-        catch {
-            XCGLogger.error("Can't fetch data \(error)")
-        }
+        // New or changed budgets
+        tasks += BudgetAPI.allChangedModels(completionBlock: completionBlock)
         
-        var indexPath = IndexPath()
-        var sections = [NSFetchedResultsSectionInfo]()
-        
-        sections = budgetFetchController.sections ?? []
-        for section in 0..<sections.count {
-            let sectionInfo = sections[section]
-            for row in 0..<sectionInfo.numberOfObjects {
-                indexPath = IndexPath(row: row, section: section)
-                let budget = budgetFetchController.object(at: indexPath)
-                task = BudgetAPI.upload(managedObjectContext, budget, completionBlock)
-                tasks = SyncManager.appendTask(task, to: tasks)
-            }
-        }
+        // New or changed expenses
+        tasks += ExpenseAPI.allChangedModels(completionBlock: completionBlock)
         
         if tasks.count == 0 {
             SyncManager.scheduleNextUpdate()

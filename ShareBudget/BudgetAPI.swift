@@ -36,63 +36,18 @@ class BudgetAPI: BaseAPI {
         }
     }
     
-    class func upload(_ managedObjectContext: NSManagedObjectContext, _ budget: Budget, _ completion: APIResultBlock?) -> URLSessionTask? {
-        let components = BudgetAPI.components("group")
+    class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
+        let managedObjectContext = ModelManager.managedObjectContext
+        let items = ModelManager.changedModels(Budget.self ,managedObjectContext)
         
-        guard let url = components.url else {
-            return nil
+        var tasks = [URLSessionTask]()
+        
+        for model in items {
+            if let task = BudgetAPI.upload("group", managedObjectContext, model, completionBlock) {
+                tasks.append(task)
+            }
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
-        
-        if let name = budget.name {
-            request.setValue(name, forHTTPHeaderField: kName)
-        }
-        
-        request.addUpdateCredentials(timestamp: BudgetAPI.timestamp)
-        
-        return AsynchronousURLConnection.create(request, completion: { (data, response, error) -> (Void) in
-            let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
-            
-            guard errorType == .none else {
-                if errorType == .tokenExpired {
-                    XCGLogger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
-                        if error == .none {
-                            let task = self.upload(managedObjectContext, budget, completion)
-                            task?.resume()
-                        }
-                        else {
-                            completion?(data, error)
-                        }
-                    })
-                    
-                    return
-                }
-                
-                XCGLogger.error("Error: \(errorType) message: \(data)")
-                
-                completion?(data, errorType)
-                return
-            }
-            
-            guard let dict = data as? [String: AnyObject?] else {
-                XCGLogger.error("Response has wrong structure")
-                completion?(data, .unknown)
-                return
-            }
-            
-            guard let result = dict[kResult] as? [String: AnyObject?] else {
-                XCGLogger.error("'result' has wrong structure")
-                completion?(data, .unknown)
-                return
-            }
-            
-            budget.isChanged = false
-            budget.configureModelID(dict: result, for: kGroupID)
-            
-            completion?(nil, .none)
-        })
+        return tasks
     }
 }

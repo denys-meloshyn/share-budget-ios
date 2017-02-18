@@ -23,4 +23,21 @@ public class Expense: BaseModel {
         self.name = dict[kName] as? String
         self.price = (dict[kPrice] as? Double) ?? 0.0
     }
+    
+    override func uploadProperties() -> [String : String] {
+        var result = super.uploadProperties()
+        
+        result[kPrice] = String(self.price)
+        result[kExpenseID] = String(self.modelID)
+        
+        if let name = self.name {
+            result[kName] = name
+        }
+        
+        if let modelID = self.budget?.modelID {
+            result[kGroupID] = String(modelID)
+        }
+        
+        return result
+    }
 }

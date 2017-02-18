@@ -24,4 +24,12 @@ public class BaseModel: NSManagedObject {
             self.modelID = Int64(modelID)
         }
     }
+    
+    func uploadProperties() -> [String: String] {
+        var result = [String : String]()
+        
+        result[kIsRemoved] = String(self.isRemoved)
+        
+        return result
+    }
 }
