@@ -11,7 +11,17 @@ import CoreData
 import XCGLogger
 
 class BudgetDetailViewController: BaseViewController {
+    @IBOutlet var monthLabel: UILabel?
+    @IBOutlet var budgetLabel: UILabel?
+    @IBOutlet var balanceLabel: UILabel?
+    @IBOutlet var expenseLabel: UILabel?
     @IBOutlet var expenseButton: UIButton?
+    @IBOutlet var budgetContainerView: UIView?
+    @IBOutlet var expenseContainerView: UIView?
+    @IBOutlet var createExpenseButton: UIButton?
+    @IBOutlet var budgetDescriptionLabel: UILabel?
+    @IBOutlet var balanceDescriptionLabel: UILabel?
+    @IBOutlet var expenseDescriptionLabel: UILabel?
     
     var budgetID: NSManagedObjectID?
     private let managedObjectContext = ModelManager.managedObjectContext
@@ -20,49 +30,28 @@ class BudgetDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         let router = BudgetDetailRouter(with: self)
-        let interactin = BudgetDetailInteraction()
+        let interactin = BudgetDetailInteraction(with: self.budgetID)
         let presenter = BudgetDetailPresenter(with: interactin, router: router)
         self.viperView = BudgetDetailView(with: presenter, and: self)
         
-        if let budgetID = self.budgetID {
-            let fc = ModelManager.budgetLimitFetchController(managedObjectContext, for: budgetID)
-            
-            do {
-                try fc.performFetch()
-                guard let sections = fc.sections else {
-                    return
-                }
-                
-                for i in 0..<sections.count {
-                    let section = sections[i]
-                    for j in 0..<section.numberOfObjects {
-                        let indexPath = IndexPath(row: i, section: j)
-                        let limit = fc.object(at: indexPath)
-                        XCGLogger.info("\(limit.limit), \(limit.date)")
-                    }
-                }
-            }
-            catch {
-                
-            }
-        }
+        self.linkStoryboardViews()
     }
     
-    @IBAction func createNewExpenseAction() {
-        guard let vc = R.storyboard.main.editExpenseViewController() else {
+    private func linkStoryboardViews() {
+        guard let view = self.viperView as? BudgetDetailView else {
             return
         }
         
-        vc.budgetID = self.budgetID
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func showAllExpenses() {
-        guard let vc = R.storyboard.main.expensesViewController() else {
-            return
-        }
-        
-        vc.budgetID = self.budgetID
-        self.navigationController?.pushViewController(vc, animated: true)
+        view.monthLabel = self.monthLabel
+        view.budgetLabel = self.budgetLabel
+        view.balanceLabel = self.balanceLabel
+        view.expenseLabel = self.expenseLabel
+        view.expenseButton = self.expenseButton
+        view.createExpenseButton = self.createExpenseButton
+        view.budgetContainerView = self.budgetContainerView
+        view.expenseContainerView = self.expenseContainerView
+        view.budgetDescriptionLabel = self.budgetDescriptionLabel
+        view.balanceDescriptionLabel = self.balanceDescriptionLabel
+        view.expenseDescriptionLabel = self.expenseDescriptionLabel
     }
 }

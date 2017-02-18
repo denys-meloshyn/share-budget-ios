@@ -9,16 +9,50 @@
 import UIKit
 
 class BudgetDetailView: BaseView {
+    weak var monthLabel: UILabel?
+    weak var budgetLabel: UILabel?
+    weak var balanceLabel: UILabel?
+    weak var expenseLabel: UILabel?
+    weak var expenseButton: UIButton? {
+        didSet {
+            self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
+        }
+    }
+    weak var budgetContainerView: UIView? {
+        didSet {
+            self.configureBorder(for: self.budgetContainerView)
+        }
+    }
+    weak var expenseContainerView: UIView? {
+        didSet {
+            self.configureBorder(for: self.expenseContainerView)
+        }
+    }
+    weak var createExpenseButton: UIButton? {
+        didSet {
+            self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
+        }
+    }
+    weak var budgetDescriptionLabel: UILabel?
+    weak var balanceDescriptionLabel: UILabel?
+    weak var expenseDescriptionLabel: UILabel?
+    
+    override init(with presenter: BasePresenter, and viewController: UIViewController) {
+        super.init(with: presenter, and: viewController)
+        
+        self.budgetDetailPresenter.delegate = self
+    }
+    
     fileprivate var budgetDetailPresenter: BudgetDetailPresenter {
         get {
             return self.presenter as! BudgetDetailPresenter
         }
     }
     
-    override init(with presenter: BasePresenter, and viewController: UIViewController) {
-        super.init(with: presenter, and: viewController)
-        
-        self.budgetDetailPresenter.delegate = self
+    private func configureBorder(for view: UIView?) {
+        view?.layer.borderWidth = 1.0
+        view?.layer.cornerRadius = 5.0
+        view?.layer.borderColor = UIColor.white.cgColor
     }
 }
 

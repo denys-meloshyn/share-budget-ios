@@ -6,8 +6,12 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
+import CoreData
 
 class BudgetDetailInteraction: BaseInteraction {
-
+    var budgetID: NSManagedObjectID?
+    
+    init(with budgetID: NSManagedObjectID?) {
+        self.budgetID = budgetID
+    }
 }

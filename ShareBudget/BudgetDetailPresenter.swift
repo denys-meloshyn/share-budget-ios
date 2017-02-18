@@ -14,10 +14,24 @@ protocol BudgetDetailPresenterDelegate: class {
 
 class BudgetDetailPresenter: BasePresenter {
     weak var delegate: BudgetDetailPresenterDelegate?
-    fileprivate var budgetDetailInteraction: BudgetDetailInteraction {
+    
+    private var budgetDetailInteraction: BudgetDetailInteraction {
         get {
             return self.interaction as! BudgetDetailInteraction
         }
     }
-
+    
+    private var budgetDetailRouter: BudgetDetailRouter {
+        get {
+            return self.router as! BudgetDetailRouter
+        }
+    }
+    
+    func createNewExpense() {
+        self.budgetDetailRouter.openEditExpensePage(with: self.budgetDetailInteraction.budgetID)
+    }
+    
+    func showAllExpenses() {
+        self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID)
+    }
 }
