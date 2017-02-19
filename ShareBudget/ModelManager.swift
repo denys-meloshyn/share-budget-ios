@@ -215,9 +215,9 @@ class ModelManager {
         var tmpPredicate = NSPredicate(format: "%@ == budget", budget)
         predicates.append(tmpPredicate)
         
-        tmpPredicate = NSPredicate(format: "isRemoved == YES")
+        tmpPredicate = NSPredicate(format: "isRemoved == NO")
         predicates.append(tmpPredicate)
-        
+
         tmpPredicate = NSPredicate(format: "creationDate >= %@", date)
         predicates.append(tmpPredicate)
         
