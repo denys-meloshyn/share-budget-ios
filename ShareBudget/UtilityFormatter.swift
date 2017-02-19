@@ -16,6 +16,19 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    class var iso8601DateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = enUSPosixLocale as Locale!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return dateFormatter
+    }
+    
+    class func iso8601Date(from date: String) -> Date? {
+        return self.iso8601DateFormatter.date(from: date)
+    }
+    
     class var numberFormatter: NumberFormatter {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -50,5 +63,16 @@ class UtilityFormatter: NSObject {
         }
         
         return formatter.number(from: formattedNumber)
+    }
+    
+    class func firstMonthDay() -> Date {
+        let calendar = Calendar.current
+        let units = Set<Calendar.Component>([.year, .month, .day])
+        
+        var dateComponents = calendar.dateComponents(units, from: Date())
+        dateComponents.day = 1
+        dateComponents.calendar = calendar
+        
+        return dateComponents.date!
     }
 }

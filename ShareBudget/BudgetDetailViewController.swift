@@ -23,7 +23,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet var balanceDescriptionLabel: UILabel?
     @IBOutlet var expenseDescriptionLabel: UILabel?
     
-    var budgetID: NSManagedObjectID?
+    var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
     
     override func viewDidLoad() {
@@ -35,6 +35,7 @@ class BudgetDetailViewController: BaseViewController {
         self.viperView = BudgetDetailView(with: presenter, and: self)
         
         self.linkStoryboardViews()
+        self.viperView?.viewDidLoad()
     }
     
     private func linkStoryboardViews() {

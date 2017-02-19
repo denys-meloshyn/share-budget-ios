@@ -20,6 +20,10 @@ public class Expense: BaseModel {
             self.budget?.expenses?.adding(self)
         }
         
+        if let date = dict[kCreationDate] as? String {
+            self.creationDate = UtilityFormatter.iso8601Date(from: date) as NSDate?
+        }
+        
         self.name = dict[kName] as? String
         self.price = (dict[kPrice] as? Double) ?? 0.0
     }
@@ -36,6 +40,10 @@ public class Expense: BaseModel {
         
         if let modelID = self.budget?.modelID {
             result[kGroupID] = String(modelID)
+        }
+        
+        if let creationDate = self.creationDate as? Date {
+            result[kCreationDate] = UtilityFormatter.iso8601DateFormatter.string(from: creationDate)
         }
         
         return result

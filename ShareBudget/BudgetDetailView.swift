@@ -57,5 +57,15 @@ class BudgetDetailView: BaseView {
 }
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
+    func updateTotalExpense(_ total: String) {
+        self.expenseLabel?.text = total
+    }
     
+    func updateMonthLimit(_ limit: String) {
+        self.budgetLabel?.text = limit
+    }
+    
+    func updateBalance(_ balance: String) {
+        self.balanceLabel?.text = balance
+    }
 }

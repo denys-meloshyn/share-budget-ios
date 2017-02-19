@@ -9,7 +9,9 @@
 import UIKit
 
 protocol BudgetDetailPresenterDelegate: class {
-    
+    func updateBalance(_ balance: String)
+    func updateMonthLimit(_ limit: String)
+    func updateTotalExpense(_ total: String)
 }
 
 class BudgetDetailPresenter: BasePresenter {
@@ -25,6 +27,28 @@ class BudgetDetailPresenter: BasePresenter {
         get {
             return self.router as! BudgetDetailRouter
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.configureTotalExpenses()
+        self.configureMonthBudget()
+        self.configureBalance()
+    }
+    
+    private func configureTotalExpenses() {
+        let total = self.budgetDetailInteraction.totalExpenses()
+        self.delegate?.updateTotalExpense(String(total))
+    }
+    
+    private func configureMonthBudget() {
+        let month = self.budgetDetailInteraction.lastMonthLimit()
+        self.delegate?.updateMonthLimit(String(month?.limit ?? 0.0))
+    }
+    
+    private func configureBalance() {
+        self.delegate?.updateBalance(String(self.budgetDetailInteraction.balance()))
     }
     
     func createNewExpense() {

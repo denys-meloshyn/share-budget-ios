@@ -204,4 +204,31 @@ class ModelManager {
         
         return fetchedResultsController
     }
+    
+    class func expenseFetchController(for budgetID: NSManagedObjectID, _ date: NSDate, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        fetchRequest.fetchBatchSize = 30
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        
+        var predicates = [NSPredicate]()
+        var tmpPredicate = NSPredicate(format: "%@ == budget", budget)
+        predicates.append(tmpPredicate)
+        
+        tmpPredicate = NSPredicate(format: "isRemoved == YES")
+        predicates.append(tmpPredicate)
+        
+        tmpPredicate = NSPredicate(format: "creationDate >= %@", date)
+        predicates.append(tmpPredicate)
+        
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        fetchRequest.predicate = predicate
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return fetchedResultsController
+    }
 }
