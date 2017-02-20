@@ -180,7 +180,7 @@ class BudgetDetailView: BaseView {
 
 extension BudgetDetailView: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        chartView.draw
+        
     }
 }
 
