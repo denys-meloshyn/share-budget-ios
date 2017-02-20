@@ -439,59 +439,44 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbx-g2-cBC">
                                 <rect key="frame" x="0.0" y="184" width="320" height="335"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htu-3V-uzb" customClass="PieChartView" customModule="Charts">
+                                        <rect key="frame" x="8" y="8" width="304" height="319"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-tK-XCf">
-                                        <rect key="frame" x="85" y="92.5" width="150" height="150"/>
+                                        <rect key="frame" x="125" y="132.5" width="70" height="70"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOY-8j-nZQ">
-                                                <rect key="frame" x="24.5" y="31.5" width="100.5" height="88"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WU-6b-bhX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="47"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyR-X0-l2G">
-                                                        <rect key="frame" x="0.0" y="47" width="100.5" height="41"/>
-                                                        <string key="text">Create 
-new expense</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="2WU-6b-bhX" firstAttribute="leading" secondItem="BOY-8j-nZQ" secondAttribute="leading" id="8AC-Tq-vYx"/>
-                                                    <constraint firstAttribute="trailing" secondItem="2WU-6b-bhX" secondAttribute="trailing" id="K7a-gK-mUM"/>
-                                                    <constraint firstItem="2WU-6b-bhX" firstAttribute="top" secondItem="BOY-8j-nZQ" secondAttribute="top" id="YIY-Rh-3Kt"/>
-                                                    <constraint firstItem="LyR-X0-l2G" firstAttribute="leading" secondItem="BOY-8j-nZQ" secondAttribute="leading" id="bL8-hU-R8o"/>
-                                                    <constraint firstItem="LyR-X0-l2G" firstAttribute="top" secondItem="2WU-6b-bhX" secondAttribute="bottom" id="l5o-hv-sR9"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LyR-X0-l2G" secondAttribute="bottom" id="vyj-y2-s1E"/>
-                                                    <constraint firstAttribute="trailing" secondItem="LyR-X0-l2G" secondAttribute="trailing" id="xPf-n5-C3J"/>
-                                                </constraints>
-                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WU-6b-bhX">
+                                                <rect key="frame" x="22.5" y="11.5" width="24" height="47"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ql-yP-LX9">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.66666666666666663" blue="0.75726996527777779" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="BOY-8j-nZQ" firstAttribute="centerX" secondItem="DdS-tK-XCf" secondAttribute="centerX" id="6In-ga-Hqz"/>
-                                            <constraint firstAttribute="width" constant="150" id="UKb-Lm-TkG"/>
-                                            <constraint firstItem="BOY-8j-nZQ" firstAttribute="centerY" secondItem="DdS-tK-XCf" secondAttribute="centerY" id="W3q-ix-iOd"/>
+                                            <constraint firstAttribute="width" constant="70" id="UKb-Lm-TkG"/>
                                             <constraint firstAttribute="bottom" secondItem="1Ql-yP-LX9" secondAttribute="bottom" id="bLJ-26-1n9"/>
                                             <constraint firstItem="1Ql-yP-LX9" firstAttribute="leading" secondItem="DdS-tK-XCf" secondAttribute="leading" id="dtH-IA-Ql6"/>
                                             <constraint firstAttribute="trailing" secondItem="1Ql-yP-LX9" secondAttribute="trailing" id="fGK-1y-csf"/>
                                             <constraint firstItem="1Ql-yP-LX9" firstAttribute="top" secondItem="DdS-tK-XCf" secondAttribute="top" id="jFg-c7-ZBs"/>
-                                            <constraint firstAttribute="height" constant="150" id="psa-m6-f9S"/>
+                                            <constraint firstAttribute="height" constant="70" id="psa-m6-f9S"/>
+                                            <constraint firstItem="2WU-6b-bhX" firstAttribute="centerY" secondItem="DdS-tK-XCf" secondAttribute="centerY" id="uyH-Hi-2Mo"/>
+                                            <constraint firstItem="2WU-6b-bhX" firstAttribute="centerX" secondItem="DdS-tK-XCf" secondAttribute="centerX" id="xkO-Od-tYb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="htu-3V-uzb" secondAttribute="trailing" constant="8" id="8gB-Ci-CAc"/>
                                     <constraint firstItem="DdS-tK-XCf" firstAttribute="centerY" secondItem="Cbx-g2-cBC" secondAttribute="centerY" id="Kr6-yQ-ZO4"/>
+                                    <constraint firstAttribute="bottom" secondItem="htu-3V-uzb" secondAttribute="bottom" constant="8" id="VQQ-zj-Bq5"/>
                                     <constraint firstItem="DdS-tK-XCf" firstAttribute="centerX" secondItem="Cbx-g2-cBC" secondAttribute="centerX" id="b4Y-Xu-JoY"/>
+                                    <constraint firstItem="htu-3V-uzb" firstAttribute="leading" secondItem="Cbx-g2-cBC" secondAttribute="leading" constant="8" id="gwb-Qp-QNG"/>
+                                    <constraint firstItem="htu-3V-uzb" firstAttribute="top" secondItem="Cbx-g2-cBC" secondAttribute="top" constant="8" id="vdg-ba-aEL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -514,6 +499,7 @@ new expense</string>
                         <outlet property="budgetContainerView" destination="8gz-bO-qVE" id="uag-3z-6pG"/>
                         <outlet property="budgetDescriptionLabel" destination="h3z-lE-hpv" id="d3T-k5-U4b"/>
                         <outlet property="budgetLabel" destination="IIF-vM-23D" id="xjr-0I-zza"/>
+                        <outlet property="chartView" destination="htu-3V-uzb" id="e15-Up-QTR"/>
                         <outlet property="createExpenseButton" destination="1Ql-yP-LX9" id="tRk-K7-hhx"/>
                         <outlet property="expenseButton" destination="EaG-wT-5KY" id="2Wo-tn-ZvT"/>
                         <outlet property="expenseContainerView" destination="NYl-BY-Icn" id="Sjn-ed-o0E"/>

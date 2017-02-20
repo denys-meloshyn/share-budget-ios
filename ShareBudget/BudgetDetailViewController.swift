@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 import CoreData
 import XCGLogger
 
@@ -22,6 +23,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet var budgetDescriptionLabel: UILabel?
     @IBOutlet var balanceDescriptionLabel: UILabel?
     @IBOutlet var expenseDescriptionLabel: UILabel?
+    @IBOutlet var chartView: PieChartView?
     
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
@@ -43,6 +45,7 @@ class BudgetDetailViewController: BaseViewController {
             return
         }
         
+        view.chartView = self.chartView
         view.monthLabel = self.monthLabel
         view.budgetLabel = self.budgetLabel
         view.balanceLabel = self.balanceLabel

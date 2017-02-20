@@ -10,6 +10,7 @@ target 'ShareBudget' do
   pod 'KeychainSwift'
   pod 'R.swift'
   pod 'SnapKit'
+  pod 'Charts/Realm'
 
   target 'ShareBudgetTests' do
     inherit! :search_paths

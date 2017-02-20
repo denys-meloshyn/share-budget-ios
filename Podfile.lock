@@ -1,26 +1,39 @@
 PODS:
+  - Charts/Core (3.0.0)
+  - Charts/Realm (3.0.0):
+    - Charts/Core
+    - RealmSwift (~> 1.1)
   - KeychainSwift (7.0.0)
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
   - SnapKit (3.0.2)
   - XCGLogger (4.0.0):
     - XCGLogger/Core (= 4.0.0)
   - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
+  - Charts/Realm
   - KeychainSwift
   - R.swift
   - SnapKit
   - XCGLogger
 
 SPEC CHECKSUMS:
+  Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
   KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 452558d2c43b4c20605b5d87ae3eb196eadedbed
+PODFILE CHECKSUM: fea8d257c5d1f74edb093639234ba07a7c41eea3
 
 COCOAPODS: 1.1.1
