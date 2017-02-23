@@ -10,7 +10,6 @@ target 'ShareBudget' do
   pod 'KeychainSwift'
   pod 'R.swift'
   pod 'SnapKit'
-  pod 'Charts/Realm'
   pod 'CorePlot'
 
   target 'ShareBudgetTests' do
