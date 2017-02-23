@@ -42,7 +42,11 @@ class BudgetDetailView: BaseView {
             self.configureChart()
         }
     }
+    weak var createNewExpenseContainerView: UIView?
+    weak var constraintChartViewWidth: NSLayoutConstraint?
+    weak var constraintChartViewHeight: NSLayoutConstraint?
     fileprivate var pieGraph : CPTXYGraph?
+    var piePlot: CPTPieChart!
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -56,6 +60,15 @@ class BudgetDetailView: BaseView {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let buttonSize = self.piePlot.pieInnerRadius * 0.9 * 2
+        self.constraintChartViewWidth?.constant = buttonSize
+        self.constraintChartViewHeight?.constant = buttonSize
+        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize / 2.0
+    }
+    
     private func configureBorder(for view: UIView?) {
         view?.layer.borderWidth = 1.0
         view?.layer.cornerRadius = 5.0
@@ -66,8 +79,9 @@ class BudgetDetailView: BaseView {
         // Create graph from theme
         let newGraph = CPTXYGraph(frame: .zero)
         newGraph.fill = CPTFill(color: CPTColor.clear())
-        
         newGraph.apply(CPTTheme(named: .plainWhiteTheme))
+        newGraph.borderLineStyle = nil
+        newGraph.plotAreaFrame?.borderLineStyle = nil
         
         self.chartView?.hostedGraph = newGraph
         
@@ -86,12 +100,14 @@ class BudgetDetailView: BaseView {
 //        newGraph.title          = "Graph Title"
         
         let width = self.chartView?.frame.width ?? 0.0
-        let radius = width / 2.0
-        let innerRadius = radius * 0.3
+        let height = self.chartView?.frame.height ?? 0.0
+        let radius = min(width, height) * 0.4
+        let innerRadius = radius * 0.4
         
         // Add pie chart
-        let piePlot = CPTPieChart(frame: .zero)
+        self.piePlot = CPTPieChart(frame: .zero)
         piePlot.plotArea?.borderLineStyle = nil
+        piePlot.borderLineStyle = nil
         piePlot.dataSource = self
         piePlot.pieRadius = radius
         piePlot.pieInnerRadius = innerRadius
@@ -99,8 +115,8 @@ class BudgetDetailView: BaseView {
         piePlot.startAngle = CGFloat(M_PI_4)
         piePlot.sliceDirection = .counterClockwise
 //        piePlot.centerAnchor = CGPoint(x: 0.5, y: 0.38)
-        piePlot.borderLineStyle = CPTLineStyle()
-        piePlot.delegate = self
+//        piePlot.borderLineStyle = CPTLineStyle()
+        piePlot?.delegate = self
         newGraph.add(piePlot)
         
         self.pieGraph = newGraph

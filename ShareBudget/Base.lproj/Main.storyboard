@@ -443,7 +443,7 @@
                                         <rect key="frame" x="8" y="8" width="304" height="319"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-tK-XCf">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-tK-XCf">
                                         <rect key="frame" x="125" y="132.5" width="70" height="70"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2WU-6b-bhX">
@@ -500,7 +500,10 @@
                         <outlet property="budgetDescriptionLabel" destination="h3z-lE-hpv" id="d3T-k5-U4b"/>
                         <outlet property="budgetLabel" destination="IIF-vM-23D" id="xjr-0I-zza"/>
                         <outlet property="chartView" destination="htu-3V-uzb" id="e15-Up-QTR"/>
+                        <outlet property="constraintChartViewHeight" destination="UKb-Lm-TkG" id="Qaf-dW-ZPi"/>
+                        <outlet property="constraintChartViewWidth" destination="psa-m6-f9S" id="NB3-8N-ggc"/>
                         <outlet property="createExpenseButton" destination="1Ql-yP-LX9" id="tRk-K7-hhx"/>
+                        <outlet property="createNewExpenseContainerView" destination="DdS-tK-XCf" id="lWU-ty-HSS"/>
                         <outlet property="expenseButton" destination="EaG-wT-5KY" id="2Wo-tn-ZvT"/>
                         <outlet property="expenseContainerView" destination="NYl-BY-Icn" id="Sjn-ed-o0E"/>
                         <outlet property="expenseDescriptionLabel" destination="6x1-Cf-8Ea" id="Ew7-1C-4ZQ"/>

@@ -20,10 +20,13 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet var budgetContainerView: UIView?
     @IBOutlet var expenseContainerView: UIView?
     @IBOutlet var createExpenseButton: UIButton?
+    @IBOutlet var chartView: CPTGraphHostingView?
     @IBOutlet var budgetDescriptionLabel: UILabel?
     @IBOutlet var balanceDescriptionLabel: UILabel?
     @IBOutlet var expenseDescriptionLabel: UILabel?
-    @IBOutlet var chartView: CPTGraphHostingView?
+    @IBOutlet var createNewExpenseContainerView: UIView?
+    @IBOutlet var constraintChartViewWidth: NSLayoutConstraint?
+    @IBOutlet var constraintChartViewHeight: NSLayoutConstraint?
     
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
@@ -57,5 +60,8 @@ class BudgetDetailViewController: BaseViewController {
         view.budgetDescriptionLabel = self.budgetDescriptionLabel
         view.balanceDescriptionLabel = self.balanceDescriptionLabel
         view.expenseDescriptionLabel = self.expenseDescriptionLabel
+        view.constraintChartViewWidth = self.constraintChartViewWidth
+        view.constraintChartViewHeight = self.constraintChartViewHeight
+        view.createNewExpenseContainerView = self.createNewExpenseContainerView
     }
 }
