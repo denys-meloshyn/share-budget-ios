@@ -85,12 +85,16 @@ class BudgetDetailView: BaseView {
 //        newGraph.titleTextStyle = whiteText
 //        newGraph.title          = "Graph Title"
         
+        let width = self.chartView?.frame.width ?? 0.0
+        let radius = width / 2.0
+        let innerRadius = radius * 0.3
+        
         // Add pie chart
         let piePlot = CPTPieChart(frame: .zero)
         piePlot.plotArea?.borderLineStyle = nil
         piePlot.dataSource = self
-        piePlot.pieRadius = 131.0
-        piePlot.pieInnerRadius = 60.0
+        piePlot.pieRadius = radius
+        piePlot.pieInnerRadius = innerRadius
         piePlot.identifier = NSString.init(string: "Pie Chart 1")
         piePlot.startAngle = CGFloat(M_PI_4)
         piePlot.sliceDirection = .counterClockwise
