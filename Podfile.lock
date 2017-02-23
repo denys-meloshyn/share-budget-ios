@@ -3,6 +3,7 @@ PODS:
   - Charts/Realm (3.0.0):
     - Charts/Core
     - RealmSwift (~> 1.1)
+  - CorePlot (2.2)
   - KeychainSwift (7.0.0)
   - R.swift (3.1.0):
     - R.swift.Library (~> 3.0.2)
@@ -19,6 +20,7 @@ PODS:
 
 DEPENDENCIES:
   - Charts/Realm
+  - CorePlot
   - KeychainSwift
   - R.swift
   - SnapKit
@@ -26,6 +28,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
+  CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
@@ -34,6 +37,6 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: fea8d257c5d1f74edb093639234ba07a7c41eea3
+PODFILE CHECKSUM: 6cf2b8a8c2a3af8b0602ece3371759e1f2bd4430
 
 COCOAPODS: 1.1.1

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+import CorePlot
 
 class BudgetDetailView: BaseView {
     weak var monthLabel: UILabel?
@@ -37,12 +37,12 @@ class BudgetDetailView: BaseView {
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
-    weak var chartView: PieChartView? {
+    weak var chartView: CPTGraphHostingView? {
         didSet {
             self.configureChart()
-            self.configureChartData()
         }
     }
+    fileprivate var pieGraph : CPTXYGraph?
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -63,126 +63,105 @@ class BudgetDetailView: BaseView {
     }
     
     private func configureChart() {
-        self.chartView?.usePercentValuesEnabled = true
-        self.chartView?.drawSlicesUnderHoleEnabled = true
-        self.chartView?.holeRadiusPercent = 0.58
-        self.chartView?.drawEntryLabelsEnabled = true
-        self.chartView?.transparentCircleRadiusPercent = 0.61
-        self.chartView?.chartDescription?.enabled = true
-        self.chartView?.delegate = self
+        // Create graph from theme
+        let newGraph = CPTXYGraph(frame: .zero)
+        newGraph.fill = CPTFill(color: CPTColor.clear())
         
-//        self.chartView?.setExtraOffsets(left: 5.0, top: 10.0, right: 5.0, bottom: 5.0)
+        newGraph.apply(CPTTheme(named: .plainWhiteTheme))
         
-        self.chartView?.drawCenterTextEnabled = false
+        self.chartView?.hostedGraph = newGraph
         
-        self.chartView?.drawHoleEnabled = true
-        self.chartView?.rotationAngle = 0.0
-        self.chartView?.rotationEnabled = true
-        self.chartView?.highlightPerTapEnabled = true
+        // Paddings
+        newGraph.paddingLeft   = 0.0
+        newGraph.paddingRight  = 0.0
+        newGraph.paddingTop    = 0.0
+        newGraph.paddingBottom = 0.0
         
-        let legend = self.chartView?.legend
-        legend?.drawInside = true
+        newGraph.axisSet = nil
+        
+        let whiteText = CPTMutableTextStyle()
+        whiteText.color = .white()
+        
+//        newGraph.titleTextStyle = whiteText
+//        newGraph.title          = "Graph Title"
+        
+        // Add pie chart
+        let piePlot = CPTPieChart(frame: .zero)
+        piePlot.plotArea?.borderLineStyle = nil
+        piePlot.dataSource = self
+        piePlot.pieRadius = 131.0
+        piePlot.pieInnerRadius = 60.0
+        piePlot.identifier = NSString.init(string: "Pie Chart 1")
+        piePlot.startAngle = CGFloat(M_PI_4)
+        piePlot.sliceDirection = .counterClockwise
+//        piePlot.centerAnchor = CGPoint(x: 0.5, y: 0.38)
+        piePlot.borderLineStyle = CPTLineStyle()
+        piePlot.delegate = self
+        newGraph.add(piePlot)
+        
+        self.pieGraph = newGraph
+    }
+}
+
+// MARK: - Plot Data Source Methods
+
+extension BudgetDetailView: CPTPieChartDataSource {
+    func numberOfRecords(for plot: CPTPlot) -> UInt
+    {
+        return 10
     }
     
-//    - (void)setupPieChartView:(PieChartView *)chartView
-//    {
-//    
-//    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-//    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-//    paragraphStyle.alignment = NSTextAlignmentCenter;
-//    
-//    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:@"Charts\nby Daniel Cohen Gindi"];
-//    [centerText setAttributes:@{
-//    NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:13.f],
-//    NSParagraphStyleAttributeName: paragraphStyle
-//    } range:NSMakeRange(0, centerText.length)];
-//    [centerText addAttributes:@{
-//    NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f],
-//    NSForegroundColorAttributeName: UIColor.grayColor
-//    } range:NSMakeRange(10, centerText.length - 10)];
-//    [centerText addAttributes:@{
-//    NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
-//    NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
-//    } range:NSMakeRange(centerText.length - 19, 19)];
-//    chartView.centerAttributedText = centerText;
-//    
-//    ChartLegend *l = chartView.legend;
-//    l.horizontalAlignment = ChartLegendHorizontalAlignmentRight;
-//    l.verticalAlignment = ChartLegendVerticalAlignmentTop;
-//    l.orientation = ChartLegendOrientationVertical;
-//    l.drawInside = NO;
-//    l.xEntrySpace = 7.0;
-//    l.yEntrySpace = 0.0;
-//    l.yOffset = 0.0;
-//    }
+    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any?
+    {
+        return record + 1 as NSNumber
+//        if Int(record) > 10 {
+//            return nil
+//        }
+//        else {
+//            switch CPTPieChartField(rawValue: Int(field))! {
+//            case .sliceWidth:
+//                return NSNumber(value: record)
+//                
+//            default:
+//                return record as NSNumber
+//            }
+//        }
+    }
     
-    func configureChartData() {
-        var values = [PieChartDataEntry]()
+    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer?
+    {
+        let label = CPTTextLayer(text:"\(record)")
         
-        for i in 1..<20 {
-            let item = PieChartDataEntry(value: Double(i * 10), label: "#\(i)")
-            values.append(item)
+        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
+            textStyle.color = .lightGray()
+            
+            label.textStyle = textStyle
         }
         
-        let dataSet = PieChartDataSet(values: values, label: "Results")
-        dataSet.drawValuesEnabled = true
-        dataSet.sliceSpace = 5.0
-        
-        let data = PieChartData(dataSet: dataSet)
-        self.chartView?.data = data
+        return label
     }
     
-//    - (void)setDataCount:(int)count range:(double)range
+//    func radialOffset(for piePlot: CPTPieChart, record recordIndex: UInt) -> CGFloat
 //    {
-//    double mult = range;
-//
-//    NSMutableArray *values = [[NSMutableArray alloc] init];
-//
-//    for (int i = 0; i < count; i++)
-//    {
-//    [values addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count] icon: [UIImage imageNamed:@"icon"]]];
-//    }
-//    
-//    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"Election Results"];
-//    
-//    dataSet.drawIconsEnabled = NO;
-//    
-//    dataSet.sliceSpace = 2.0;
-//    dataSet.iconsOffset = CGPointMake(0, 40);
-//    
-//    // add a lot of colors
-//    
-//    NSMutableArray *colors = [[NSMutableArray alloc] init];
-//    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-//    [colors addObjectsFromArray:ChartColorTemplates.joyful];
-//    [colors addObjectsFromArray:ChartColorTemplates.colorful];
-//    [colors addObjectsFromArray:ChartColorTemplates.liberty];
-//    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-//    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
-//    
-//    dataSet.colors = colors;
-//    
-//    PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
-//    
-//    NSNumberFormatter *pFormatter = [[NSNumberFormatter alloc] init];
-//    pFormatter.numberStyle = NSNumberFormatterPercentStyle;
-//    pFormatter.maximumFractionDigits = 1;
-//    pFormatter.multiplier = @1.f;
-//    pFormatter.percentSymbol = @" %";
-//    [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
-//    [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
-//    [data setValueTextColor:UIColor.whiteColor];
-//    
-//    _chartView.data = data;
-//    [_chartView highlightValues:nil];
+//        var offset: CGFloat = 0.0
+//        
+//        if ( recordIndex == 0 ) {
+//            offset = piePlot.pieRadius / 8.0
+//        }
+//        
+//        return offset
 //    }
 }
 
-extension BudgetDetailView: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+// MARK: - Delegate Methods
+
+extension BudgetDetailView: CPTPieChartDelegate {
+    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
         
     }
 }
+
+
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
     func updateTotalExpense(_ total: String) {

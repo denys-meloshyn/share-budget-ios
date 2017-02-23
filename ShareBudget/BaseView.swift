@@ -16,7 +16,7 @@ protocol LifeCycleStateProtocol: class {
     func viewDidDisappear(_ animated: Bool)
 }
 
-class BaseView {
+class BaseView: NSObject {
     let presenter: BasePresenter
     weak var viewController: UIViewController?
     

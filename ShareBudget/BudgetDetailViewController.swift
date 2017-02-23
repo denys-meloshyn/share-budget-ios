@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Charts
+import CorePlot
 import CoreData
 import XCGLogger
 
@@ -23,7 +23,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet var budgetDescriptionLabel: UILabel?
     @IBOutlet var balanceDescriptionLabel: UILabel?
     @IBOutlet var expenseDescriptionLabel: UILabel?
-    @IBOutlet var chartView: PieChartView?
+    @IBOutlet var chartView: CPTGraphHostingView?
     
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext

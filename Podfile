@@ -11,6 +11,7 @@ target 'ShareBudget' do
   pod 'R.swift'
   pod 'SnapKit'
   pod 'Charts/Realm'
+  pod 'CorePlot'
 
   target 'ShareBudgetTests' do
     inherit! :search_paths
