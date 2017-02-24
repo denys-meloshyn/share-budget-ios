@@ -12,8 +12,8 @@ import XCGLogger
 class BudgetDetailInteraction: BaseInteraction {
     var budget: Budget
     var budgetID: NSManagedObjectID
-    let fetchedResultsController: NSFetchedResultsController<Expense>
     let managedObjectContext = ModelManager.managedObjectContext
+    let fetchedResultsController: NSFetchedResultsController<Expense>
     
     init(with budgetID: NSManagedObjectID) {
         self.budgetID = budgetID
@@ -26,6 +26,20 @@ class BudgetDetailInteraction: BaseInteraction {
         catch {
             XCGLogger.error("Error fetch \(error)")
         }
+    }
+    
+    func expense(for index: Int) -> Expense {
+        let indexPath = IndexPath(row: 0, section: index)
+        let expense = self.fetchedResultsController.object(at: indexPath)
+        
+        return expense
+    }
+    
+    func numberOfExpenses() -> Int {
+        let sections = self.fetchedResultsController.sections ?? []
+        let section = sections.first
+        
+        return section?.numberOfObjects ?? 0
     }
     
     func totalExpenses() -> Double {
@@ -44,7 +58,6 @@ class BudgetDetailInteraction: BaseInteraction {
     }
     
     func lastMonthLimit() -> BudgetLimit? {
-        
         let limits = self.budget.limits?.allObjects as? [BudgetLimit] ?? []
         let sort = limits.sorted(by: { (first, second) -> Bool in
             guard let firstDate = first.date as? Date, let secondDate = second.date as? Date else {

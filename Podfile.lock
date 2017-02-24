@@ -1,4 +1,7 @@
 PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
   - CorePlot (2.2)
   - KeychainSwift (7.0.0)
   - R.swift (3.1.0):
@@ -10,13 +13,24 @@ PODS:
   - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot
   - KeychainSwift
   - R.swift
   - SnapKit
   - XCGLogger
 
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: dcf98f9bf3a632a7f40679b7da46f09681e48526
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
 SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   KeychainSwift: b6947435dd78cc442c64a84ae648dd0e871cf448
   R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
@@ -24,6 +38,6 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: c01f49721afc113b3cd36f355d6f4e8eddd56b83
+PODFILE CHECKSUM: bbae645d60ceea9f38c40c9d7838fb78186907c7
 
 COCOAPODS: 1.1.1

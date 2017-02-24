@@ -34,19 +34,16 @@ class BudgetDetailView: BaseView {
             self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         }
     }
+    weak var chartView: CPTGraphHostingView?
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
-    weak var chartView: CPTGraphHostingView? {
-        didSet {
-            self.configureChart()
-        }
-    }
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?
+    
+    fileprivate var piePlot: CPTPieChart!
     fileprivate var pieGraph : CPTXYGraph?
-    var piePlot: CPTPieChart!
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -63,10 +60,7 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let buttonSize = self.piePlot.pieInnerRadius * 0.9 * 2
-        self.constraintChartViewWidth?.constant = buttonSize
-        self.constraintChartViewHeight?.constant = buttonSize
-        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize / 2.0
+        
     }
     
     private func configureBorder(for view: UIView?) {
@@ -93,11 +87,6 @@ class BudgetDetailView: BaseView {
         
         newGraph.axisSet = nil
         
-        let whiteText = CPTMutableTextStyle()
-        whiteText.color = .white()
-        
-//        newGraph.titleTextStyle = whiteText
-//        newGraph.title          = "Graph Title"
         
         let width = self.chartView?.frame.width ?? 0.0
         let height = self.chartView?.frame.height ?? 0.0
@@ -106,82 +95,31 @@ class BudgetDetailView: BaseView {
         
         // Add pie chart
         self.piePlot = CPTPieChart(frame: .zero)
-        piePlot.plotArea?.borderLineStyle = nil
-        piePlot.borderLineStyle = nil
-        piePlot.dataSource = self
-        piePlot.pieRadius = radius
-        piePlot.pieInnerRadius = innerRadius
-        piePlot.identifier = NSString.init(string: "Pie Chart 1")
-        piePlot.startAngle = CGFloat(M_PI_4)
-        piePlot.sliceDirection = .counterClockwise
-//        piePlot.centerAnchor = CGPoint(x: 0.5, y: 0.38)
-//        piePlot.borderLineStyle = CPTLineStyle()
-        piePlot?.delegate = self
+        self.piePlot.plotArea?.borderLineStyle = nil
+        self.piePlot.borderLineStyle = nil
+        self.piePlot.pieRadius = radius
+        self.piePlot.pieInnerRadius = innerRadius
+        self.piePlot.identifier = NSString.init(string: "Pie Chart 1")
+        self.piePlot.startAngle = CGFloat(M_PI_4)
+        self.piePlot.sliceDirection = .counterClockwise
+        
+        piePlot.delegate = self.budgetDetailPresenter
+        piePlot.dataSource = self.budgetDetailPresenter
+        
         newGraph.add(piePlot)
         
         self.pieGraph = newGraph
-    }
-}
-
-// MARK: - Plot Data Source Methods
-
-extension BudgetDetailView: CPTPieChartDataSource {
-    func numberOfRecords(for plot: CPTPlot) -> UInt
-    {
-        return 10
+        
+        self.configureChartFrame()
     }
     
-    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any?
-    {
-        return record + 1 as NSNumber
-//        if Int(record) > 10 {
-//            return nil
-//        }
-//        else {
-//            switch CPTPieChartField(rawValue: Int(field))! {
-//            case .sliceWidth:
-//                return NSNumber(value: record)
-//                
-//            default:
-//                return record as NSNumber
-//            }
-//        }
-    }
-    
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer?
-    {
-        let label = CPTTextLayer(text:"\(record)")
-        
-        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
-            textStyle.color = .lightGray()
-            
-            label.textStyle = textStyle
-        }
-        
-        return label
-    }
-    
-//    func radialOffset(for piePlot: CPTPieChart, record recordIndex: UInt) -> CGFloat
-//    {
-//        var offset: CGFloat = 0.0
-//        
-//        if ( recordIndex == 0 ) {
-//            offset = piePlot.pieRadius / 8.0
-//        }
-//        
-//        return offset
-//    }
-}
-
-// MARK: - Delegate Methods
-
-extension BudgetDetailView: CPTPieChartDelegate {
-    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
-        
+    private func configureChartFrame() {
+        let buttonSize = self.piePlot.pieInnerRadius * 0.9 * 2
+        self.constraintChartViewWidth?.constant = buttonSize
+        self.constraintChartViewHeight?.constant = buttonSize
+        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize / 2.0
     }
 }
-
-
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
     func updateTotalExpense(_ total: String) {
