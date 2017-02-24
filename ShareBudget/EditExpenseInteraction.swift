@@ -9,9 +9,9 @@
 import CoreData
 
 class EditExpenseInteraction: BaseInteraction {
-    let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
     var budget: Budget
     var expense: Expense
+    let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
     
     private var expenseID: NSManagedObjectID?
     
@@ -41,5 +41,9 @@ class EditExpenseInteraction: BaseInteraction {
     func save() {
         self.expense.isChanged = true
         ModelManager.saveChildren(self.managedObjectContext)
+    }
+    
+    func updateCategory(_ categoryID: NSManagedObjectID) {
+        self.expense.category = self.managedObjectContext.object(with: categoryID) as? Category
     }
 }

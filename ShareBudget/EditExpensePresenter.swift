@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum EditExpenseField {
     case price
@@ -114,12 +115,12 @@ class EditExpensePresenter: BasePresenter {
     }
     
     fileprivate func updateSaveButton() {
-        if self.expenseInteraction.isExpenseNew {
-            self.delegate?.configureSaveButtonState(self.isInputDataValid())
+        var isEnable = self.isInputDataValid()
+        if isEnable {
+            isEnable = self.expenseInteraction.expense.hasChanges
         }
-        else {
-            self.delegate?.configureSaveButtonState(self.expenseInteraction.expense.hasChanges)
-        }
+        
+        self.delegate?.configureSaveButtonState(isEnable)
     }
     
     func saveChanges() {
@@ -178,11 +179,25 @@ extension EditExpensePresenter: UITableViewDelegate {
         
         switch type {
         case .category:
-            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: (self.interaction as! EditExpenseInteraction).managedObjectContext)
+            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
         default:
             let cell = tableView.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
             cell?.textField?.becomeFirstResponder()
         }
+    }
+}
+
+extension EditExpensePresenter: CategoryViewControllerDelegate {
+    func didSelectCategory(_ categoryID: NSManagedObjectID) {
+        self.expenseInteraction.updateCategory(categoryID)
+        
+        guard let index = self.items.index(of: .category) else {
+            return
+        }
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        self.updateSaveButton()
+        self.delegate?.refreshTextField(at: indexPath, with: self.expenseInteraction.expense.category?.name ?? "")
     }
 }
 

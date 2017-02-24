@@ -10,10 +10,15 @@ import UIKit
 import CoreData
 import XCGLogger
 
+protocol CategoryViewControllerDelegate: class {
+    func didSelectCategory(_ categoryID: NSManagedObjectID)
+}
+
 class CategoryViewController: UIViewController {
     var expenseID: NSManagedObjectID?
     var fc: NSFetchedResultsController<Category>?
     var managedObjectContext: NSManagedObjectContext?
+    weak var delegate: CategoryViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,5 +63,9 @@ extension CategoryViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension CategoryViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = self.fc?.object(at: indexPath)
+        self.delegate?.didSelectCategory(category!.objectID)
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 }

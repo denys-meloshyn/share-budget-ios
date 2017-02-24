@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 30.01.17.
+//  Created by Denys Meloshyn on 24.02.17.
 //
 //
 
@@ -19,6 +19,7 @@ extension Category {
     @NSManaged public var name: String?
     @NSManaged public var budget: Budget?
     @NSManaged public var limits: NSSet?
+    @NSManaged public var expenses: NSSet?
 
 }
 
@@ -36,5 +37,22 @@ extension Category {
 
     @objc(removeLimits:)
     @NSManaged public func removeFromLimits(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for expenses
+extension Category {
+
+    @objc(addExpensesObject:)
+    @NSManaged public func addToExpenses(_ value: Expense)
+
+    @objc(removeExpensesObject:)
+    @NSManaged public func removeFromExpenses(_ value: Expense)
+
+    @objc(addExpenses:)
+    @NSManaged public func addToExpenses(_ values: NSSet)
+
+    @objc(removeExpenses:)
+    @NSManaged public func removeFromExpenses(_ values: NSSet)
 
 }

@@ -28,18 +28,14 @@ class BudgetDetailInteraction: BaseInteraction {
         }
     }
     
-    func expense(for index: Int) -> Expense {
-        let indexPath = IndexPath(row: 0, section: index)
-        let expense = self.fetchedResultsController.object(at: indexPath)
-        
-        return expense
+    func totalExpenses(for categoryIndex: Int) -> Double {
+        return 10.0
     }
     
-    func numberOfExpenses() -> Int {
+    func numberOfCategoryExpenses() -> Int {
         let sections = self.fetchedResultsController.sections ?? []
-        let section = sections.first
         
-        return section?.numberOfObjects ?? 0
+        return sections.count
     }
     
     func totalExpenses() -> Double {

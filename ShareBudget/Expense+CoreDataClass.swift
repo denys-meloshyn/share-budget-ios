@@ -17,7 +17,12 @@ public class Expense: BaseModel {
         
         if let budgetID = dict[kGroupID] as? Int {
             self.budget = ModelManager.findEntity(Budget.self, by: budgetID, in: managedObjectContext) as? Budget
-            self.budget?.expenses?.adding(self)
+            self.budget?.addToExpenses(self)
+        }
+        
+        if let categoryID = dict[kCategoryID] as? Int {
+            self.category = ModelManager.findEntity(Category.self, by: categoryID, in: managedObjectContext) as? Category
+            self.category?.addToExpenses(self)
         }
         
         if let date = dict[kCreationDate] as? String {
@@ -40,6 +45,10 @@ public class Expense: BaseModel {
         
         if let modelID = self.budget?.modelID {
             result[kGroupID] = String(modelID)
+        }
+        
+        if let categoryID = self.category?.modelID {
+            result[kCategoryID] = String(categoryID)
         }
         
         if let creationDate = self.creationDate as? Date {

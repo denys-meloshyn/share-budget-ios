@@ -65,26 +65,14 @@ class BudgetDetailPresenter: BasePresenter {
 extension BudgetDetailPresenter: CPTPieChartDataSource {
     func numberOfRecords(for plot: CPTPlot) -> UInt
     {
-        return UInt(self.budgetDetailInteraction.numberOfExpenses())
+        return UInt(self.budgetDetailInteraction.numberOfCategoryExpenses())
     }
     
     func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any?
     {
-        let expense = self.budgetDetailInteraction.expense(for: Int(record))
+        let expenses = self.budgetDetailInteraction.totalExpenses()
         
-        return expense.price as NSNumber
-        //        if Int(record) > 10 {
-        //            return nil
-        //        }
-        //        else {
-        //            switch CPTPieChartField(rawValue: Int(field))! {
-        //            case .sliceWidth:
-        //                return NSNumber(value: record)
-        //
-        //            default:
-        //                return record as NSNumber
-        //            }
-        //        }
+        return expenses as NSNumber
     }
     
     func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer?
