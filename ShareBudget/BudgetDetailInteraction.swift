@@ -28,8 +28,12 @@ class BudgetDetailInteraction: BaseInteraction {
         }
     }
     
+    func isEmpty() -> Bool {
+        return self.numberOfCategoryExpenses() == 0
+    }
+    
     func totalExpenses(for categoryIndex: Int) -> Double {
-        return 10.0
+        return 100.0
     }
     
     func numberOfCategoryExpenses() -> Int {

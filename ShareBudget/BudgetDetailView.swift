@@ -14,26 +14,10 @@ class BudgetDetailView: BaseView {
     weak var budgetLabel: UILabel?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
-    weak var expenseButton: UIButton? {
-        didSet {
-            self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
-        }
-    }
-    weak var budgetContainerView: UIView? {
-        didSet {
-            self.configureBorder(for: self.budgetContainerView)
-        }
-    }
-    weak var expenseContainerView: UIView? {
-        didSet {
-            self.configureBorder(for: self.expenseContainerView)
-        }
-    }
-    weak var createExpenseButton: UIButton? {
-        didSet {
-            self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
-        }
-    }
+    weak var expenseButton: UIButton?
+    weak var budgetContainerView: UIView?
+    weak var expenseContainerView: UIView?
+    weak var createExpenseButton: UIButton?
     weak var chartView: CPTGraphHostingView?
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
@@ -60,7 +44,12 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configureBorder(for: self.budgetContainerView)
+        self.configureBorder(for: self.expenseContainerView)
+        self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
+        self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         
+        self.configureChart()
     }
     
     private func configureBorder(for view: UIView?) {
@@ -71,22 +60,19 @@ class BudgetDetailView: BaseView {
     
     private func configureChart() {
         // Create graph from theme
-        let newGraph = CPTXYGraph(frame: .zero)
-        newGraph.fill = CPTFill(color: CPTColor.clear())
-        newGraph.apply(CPTTheme(named: .plainWhiteTheme))
-        newGraph.borderLineStyle = nil
-        newGraph.plotAreaFrame?.borderLineStyle = nil
-        
-        self.chartView?.hostedGraph = newGraph
+        self.pieGraph = CPTXYGraph(frame: .zero)
+        self.pieGraph?.apply(CPTTheme(named: .plainWhiteTheme))
+        self.pieGraph?.axisSet = nil
+        self.pieGraph?.borderLineStyle = nil
+        self.pieGraph?.plotAreaFrame?.borderLineStyle = nil
         
         // Paddings
-        newGraph.paddingLeft   = 0.0
-        newGraph.paddingRight  = 0.0
-        newGraph.paddingTop    = 0.0
-        newGraph.paddingBottom = 0.0
+        self.pieGraph?.paddingTop = 0.0
+        self.pieGraph?.paddingLeft = 0.0
+        self.pieGraph?.paddingRight = 0.0
+        self.pieGraph?.paddingBottom = 0.0
         
-        newGraph.axisSet = nil
-        
+        self.chartView?.hostedGraph = self.pieGraph
         
         let width = self.chartView?.frame.width ?? 0.0
         let height = self.chartView?.frame.height ?? 0.0
@@ -95,20 +81,16 @@ class BudgetDetailView: BaseView {
         
         // Add pie chart
         self.piePlot = CPTPieChart(frame: .zero)
-        self.piePlot.plotArea?.borderLineStyle = nil
-        self.piePlot.borderLineStyle = nil
         self.piePlot.pieRadius = radius
         self.piePlot.pieInnerRadius = innerRadius
         self.piePlot.identifier = NSString.init(string: "Pie Chart 1")
         self.piePlot.startAngle = CGFloat(M_PI_4)
-        self.piePlot.sliceDirection = .counterClockwise
+        self.piePlot.sliceDirection = .clockwise
         
-        piePlot.delegate = self.budgetDetailPresenter
-        piePlot.dataSource = self.budgetDetailPresenter
+        self.piePlot.delegate = self.budgetDetailPresenter
+        self.piePlot.dataSource = self.budgetDetailPresenter
         
-        newGraph.add(piePlot)
-        
-        self.pieGraph = newGraph
+        self.pieGraph?.add(piePlot)
         
         self.configureChartFrame()
     }

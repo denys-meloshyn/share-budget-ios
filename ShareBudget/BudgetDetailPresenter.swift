@@ -63,21 +63,30 @@ class BudgetDetailPresenter: BasePresenter {
 // MARK: - CPTPieChartDataSource
 
 extension BudgetDetailPresenter: CPTPieChartDataSource {
-    func numberOfRecords(for plot: CPTPlot) -> UInt
-    {
+    func numberOfRecords(for plot: CPTPlot) -> UInt {
+        if self.budgetDetailInteraction.isEmpty() {
+            return 1
+        }
+        
         return UInt(self.budgetDetailInteraction.numberOfCategoryExpenses())
     }
     
-    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any?
-    {
-        let expenses = self.budgetDetailInteraction.totalExpenses()
-        
-        return expenses as NSNumber
+    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any? {
+        switch CPTPieChartField(rawValue: Int(field))! {
+        case .sliceWidth:
+            return 100 as NSNumber
+            
+        default:
+            return record as NSNumber
+        }
     }
     
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer?
-    {
-        let label = CPTTextLayer(text:"\(record)")
+    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
+        if self.budgetDetailInteraction.isEmpty() {
+            return nil
+        }
+        
+        let label = CPTTextLayer(text:"\(record + 1)")
         
         if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
             textStyle.color = .lightGray()
@@ -88,16 +97,13 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
         return label
     }
     
-    //    func radialOffset(for piePlot: CPTPieChart, record recordIndex: UInt) -> CGFloat
-    //    {
-    //        var offset: CGFloat = 0.0
-    //
-    //        if ( recordIndex == 0 ) {
-    //            offset = piePlot.pieRadius / 8.0
-    //        }
-    //
-    //        return offset
-    //    }
+    func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
+        if self.budgetDetailInteraction.isEmpty() {
+            return CPTFill(color: CPTColor.gray())
+        }
+        
+        return nil
+    }
 }
 
 // MARK: - CPTPieChartDelegate
