@@ -95,8 +95,8 @@ class EditExpensePresenter: BasePresenter {
         case .name:
             formattedValue = self.expenseInteraction.expense.name ?? ""
             
-        default:
-            break
+        case .category:
+            formattedValue = self.expenseInteraction.expense.category?.name ?? ""
         }
         
         return formattedValue
@@ -197,7 +197,7 @@ extension EditExpensePresenter: CategoryViewControllerDelegate {
         
         let indexPath = IndexPath(row: index, section: 0)
         self.updateSaveButton()
-        self.delegate?.refreshTextField(at: indexPath, with: self.expenseInteraction.expense.category?.name ?? "")
+        self.delegate?.refreshTextField(at: indexPath, with: self.formattedTextFieldValue(for: .category))
     }
 }
 

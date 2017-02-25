@@ -45,5 +45,6 @@ class EditExpenseInteraction: BaseInteraction {
     
     func updateCategory(_ categoryID: NSManagedObjectID) {
         self.expense.category = self.managedObjectContext.object(with: categoryID) as? Category
+        self.expense.category?.addToExpenses(self.expense)
     }
 }

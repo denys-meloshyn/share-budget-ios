@@ -97,7 +97,6 @@ class BaseAPI {
             
             guard errorType == .none else {
                 XCGLogger.error("Error: \(errorType) message: \(data)")
-                
                 completion?(data, errorType)
                 return
             }
@@ -186,7 +185,7 @@ class BaseAPI {
             }
             
             model.isChanged = false
-            model.configureModelID(dict: result, for: kGroupID)
+            model.configureModelID(dict: result, for: self.modelKeyID())
             
             completion?(nil, .none)
         })

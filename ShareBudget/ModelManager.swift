@@ -125,14 +125,14 @@ class ModelManager {
     }
     
     class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> [BaseModel] {
-        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.fetchBatchSize = 30
         fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
         
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
             
-            return items
+            return items as! [BaseModel]
         }
         catch {
             XCGLogger.error("Error fetch changedModels \(error)")
