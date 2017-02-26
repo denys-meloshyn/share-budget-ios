@@ -14,58 +14,30 @@ protocol CategoryViewControllerDelegate: class {
     func didSelectCategory(_ categoryID: NSManagedObjectID)
 }
 
-class CategoryViewController: UIViewController {
-    var expenseID: NSManagedObjectID?
-    var fc: NSFetchedResultsController<Category>?
-    var managedObjectContext: NSManagedObjectContext?
+class CategoryViewController: BaseViewController {
+    @IBOutlet var tableView: UITableView?
+    
+    var budgetID: NSManagedObjectID!
+    var managedObjectContext: NSManagedObjectContext!
     weak var delegate: CategoryViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let expense = self.managedObjectContext?.object(with: self.expenseID!) as? Expense
+        let router = CategoryRouter(with: self)
+        let interactin = CategoryInteraction(with: self.budgetID, managedObjectContext: self.managedObjectContext)
+        let presenter = CategoryPresenter(with: interactin, router: router, delegate: self.delegate)
+        self.viperView = CategoryView(with: presenter, and: self)
         
-        fc = ModelManager.categoryFetchController(self.managedObjectContext!, for: expense!.budget!.objectID)
-        
-        do {
-            try fc?.performFetch()
-        }
-        catch {
-            
-        }
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension CategoryViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return fc?.sections?.count ?? 0
+        self.linkStoryboardViews()
+        self.viperView?.viewDidLoad()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionModel = fc?.sections?[section]
+    private func linkStoryboardViews() {
+        guard let view = self.viperView as? CategoryView else {
+            return
+        }
         
-        return sectionModel?.numberOfObjects ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = fc?.object(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell")
-        cell?.textLabel?.text = model?.name
-        
-        XCGLogger.info(model)
-        
-        return cell!
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension CategoryViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = self.fc?.object(at: indexPath)
-        self.delegate?.didSelectCategory(category!.objectID)
-        _ = self.navigationController?.popViewController(animated: true)
+        view.tableView = self.tableView
     }
 }

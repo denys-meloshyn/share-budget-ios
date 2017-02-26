@@ -86,6 +86,10 @@
 		57F1286F1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */; };
 		57F128701E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286C1E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift */; };
 		57F128721E3FC1DF00E51C0C /* BudgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */; };
+		57FAB4221E62483D00A2AEC7 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4211E62483D00A2AEC7 /* CategoryView.swift */; };
+		57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */; };
+		57FAB4261E6248A700A2AEC7 /* CategoryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */; };
+		57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -198,6 +202,10 @@
 		57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BudgetLimit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57F1286C1E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BudgetLimit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPI.swift; sourceTree = "<group>"; };
+		57FAB4211E62483D00A2AEC7 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInteraction.swift; sourceTree = "<group>"; };
+		57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -393,6 +401,7 @@
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
 				572749511E44F41B004A132F /* BudgetDetailView.swift */,
 				57F1285D1E3D332600E51C0C /* BudgetView.swift */,
+				57FAB4211E62483D00A2AEC7 /* CategoryView.swift */,
 				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
 				575A22591E477234004825C2 /* EditExpenseView.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
@@ -409,6 +418,7 @@
 				573F5A291E2D50E100AEA72A /* BasePresenter.swift */,
 				572749531E44F450004A132F /* BudgetDetailPresenter.swift */,
 				57F128611E3D33E800E51C0C /* BudgetPresenter.swift */,
+				57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */,
 				575A225B1E477258004825C2 /* EditExpensePresenter.swift */,
 				573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */,
 			);
@@ -421,6 +431,7 @@
 				573F5A301E2D557900AEA72A /* BaseInteraction.swift */,
 				572749551E44F480004A132F /* BudgetDetailInteraction.swift */,
 				57F128631E3D341700E51C0C /* BudgetInteraction.swift */,
+				57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */,
 				575A225D1E477281004825C2 /* EditExpenseInteraction.swift */,
 				573F5A251E2D502100AEA72A /* LoginInteraction.swift */,
 			);
@@ -433,6 +444,7 @@
 				573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */,
 				572749571E44F49F004A132F /* BudgetDetailRouter.swift */,
 				57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */,
+				57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */,
 				575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */,
 				573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */,
 			);
@@ -779,6 +791,7 @@
 				573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */,
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
+				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
 				57F1286D1E3DF76200E51C0C /* Budget+CoreDataClass.swift in Sources */,
@@ -804,6 +817,7 @@
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
 				575A225A1E477234004825C2 /* EditExpenseView.swift in Sources */,
 				578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */,
+				57FAB4221E62483D00A2AEC7 /* CategoryView.swift in Sources */,
 				578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
 				575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */,
@@ -817,9 +831,11 @@
 				575A22601E4772D3004825C2 /* EditExpenseRouter.swift in Sources */,
 				572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */,
 				573F5A2A1E2D50E100AEA72A /* BasePresenter.swift in Sources */,
+				57FAB4261E6248A700A2AEC7 /* CategoryInteraction.swift in Sources */,
 				573F5A111E2C180400AEA72A /* Category+CoreDataProperties.swift in Sources */,
 				573F5A151E2C180400AEA72A /* Expense+CoreDataProperties.swift in Sources */,
 				57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */,
+				57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */,
 				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,

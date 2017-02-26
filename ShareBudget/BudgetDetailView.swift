@@ -63,7 +63,6 @@ class BudgetDetailView: BaseView {
         self.pieGraph = CPTXYGraph(frame: .zero)
         self.pieGraph?.apply(CPTTheme(named: .plainWhiteTheme))
         self.pieGraph?.axisSet = nil
-        self.pieGraph?.borderLineStyle = nil
         self.pieGraph?.plotAreaFrame?.borderLineStyle = nil
         
         // Paddings

@@ -173,7 +173,7 @@ class ModelManager {
         return fetchedResultsController
     }
     
-    class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<Category> {
+    class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID, search text: String = "") -> NSFetchedResultsController<Category> {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         fetchRequest.fetchBatchSize = 30
         

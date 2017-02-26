@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CreateSearchTableViewHeaderDataSource {
+    func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader?
+}
+
 protocol CreateSearchTableViewHeaderDelegate: class {
     func textChanged(_ text: String)
     func createNewBudget(_ title: String?)

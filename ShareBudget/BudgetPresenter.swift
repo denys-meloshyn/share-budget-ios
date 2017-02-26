@@ -14,10 +14,9 @@ enum BudgetHeaderMode {
     case create
 }
 
-protocol BudgetPresenterDelegate: BasePresenterDelegate {
+protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
     func refreshData(for mode: BudgetHeaderMode)
     func createBudgetCell(with title: String?) -> UITableViewCell?
-    func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader?
 }
 
 class BudgetPresenter: BasePresenter {
