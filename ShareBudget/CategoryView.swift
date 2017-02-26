@@ -12,12 +12,23 @@ class CategoryView: BaseView {
     weak var tableView: UITableView?
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"
     
+    fileprivate var categoryPresenter: CategoryPresenter {
+        get {
+            return self.presenter as! CategoryPresenter
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.categoryPresenter.delegate = self
+        
         let nib = R.nib.createSearchTableViewHeader()
         self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
+        self.tableView?.delegate = self.categoryPresenter
+        self.tableView?.dataSource = self.categoryPresenter
     }
+    
 }
 
 extension CategoryView: CategoryPresenterDelegate {

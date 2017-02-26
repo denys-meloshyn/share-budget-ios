@@ -22,6 +22,7 @@ class CategoryInteraction: BaseInteraction {
     private var budgetID: NSManagedObjectID!
     
     init(with budgetID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
+        self.budgetID = budgetID
         self.managedObjectContext = managedObjectContext
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
         

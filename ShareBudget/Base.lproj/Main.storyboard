@@ -549,10 +549,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="3kf-sh-QHM" id="EzH-KC-ZBw"/>
-                                    <outlet property="delegate" destination="3kf-sh-QHM" id="jiW-cA-RiL"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
