@@ -122,13 +122,13 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
         self.budgetInteraction.updateWithSearch(text)
     }
     
-    func createNewBudget(_ title: String?) {
+    func createNewItem(_ title: String?) {
         self.budgetInteraction.createNewBudget(with: title)
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
         if self.headerMode() == .create {
-            self.createNewBudget(sender.textField?.text)
+            self.createNewItem(sender.textField?.text)
         }
     }
 }

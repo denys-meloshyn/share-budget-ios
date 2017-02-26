@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 protocol CategoryPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
+    func refreshData(for mode: BudgetHeaderMode)
     func createCategoryCell(with text: String?) -> UITableViewCell
 }
 
@@ -26,6 +28,7 @@ class CategoryPresenter: BasePresenter {
         super.init(with: interaction, router: router)
         
         self.categoryDelegate = delegate
+        self.categoryInteraction.delegate = self
     }
     
     func headerMode() -> BudgetHeaderMode {
@@ -36,6 +39,20 @@ class CategoryPresenter: BasePresenter {
         }
         
         return .create
+    }
+}
+
+extension CategoryPresenter: CategoryInteractionDelegate {
+    func willChangeContent() {
+        self.delegate?.refreshData(for: self.headerMode())
+    }
+    
+    func didChangeContent() {
+        self.delegate?.refreshData(for: self.headerMode())
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
     }
 }
 
@@ -83,13 +100,15 @@ extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
         self.categoryInteraction.updateWithSearch(text)
     }
     
-    func createNewBudget(_ title: String?) {
-        //        self.budgetInteraction.createNewBudget(with: title)
+    func createNewItem(_ title: String?) {
+        let newCategory = self.categoryInteraction.createCategory(with: title)
+        self.categoryDelegate?.didSelectCategory(newCategory.objectID)
+        self.router.closePage()
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
-        //        if self.headerMode() == .create {
-        //            self.createNewBudget(sender.textField?.text)
-        //        }
+        if self.headerMode() == .create {
+            self.createNewItem(sender.textField?.text)
+        }
     }
 }

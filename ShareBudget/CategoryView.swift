@@ -28,10 +28,15 @@ class CategoryView: BaseView {
         self.tableView?.delegate = self.categoryPresenter
         self.tableView?.dataSource = self.categoryPresenter
     }
-    
 }
 
 extension CategoryView: CategoryPresenterDelegate {
+    func refreshData(for mode: BudgetHeaderMode) {
+        self.tableView?.reloadData()
+        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        header?.mode = mode
+    }
+    
     func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader? {
         let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
         header?.mode = mode

@@ -178,7 +178,15 @@ class ModelManager {
         fetchRequest.fetchBatchSize = 30
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate = NSPredicate(format: "%@ == budget", budget)
+        
+        let predicate: NSPredicate
+        if text.characters.count > 0 {
+            predicate = NSPredicate(format: "%@ == budget AND name CONTAINS[c] %@", budget, text)
+        }
+        else {
+            predicate = NSPredicate(format: "%@ == budget", budget)
+        }
+        
         fetchRequest.predicate = predicate
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)

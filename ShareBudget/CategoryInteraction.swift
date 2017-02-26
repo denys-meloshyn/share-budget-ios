@@ -40,7 +40,6 @@ class CategoryInteraction: BaseInteraction {
             XCGLogger.error("Error fetch \(error)")
         }
     }
-
     
     private func createFetchedResultsController(with text: String) {
         self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext, for: self.budgetID, search: text)
@@ -63,6 +62,17 @@ class CategoryInteraction: BaseInteraction {
     
     func updateWithSearch(_ text: String) {
         self.createFetchedResultsController(with: text)
+    }
+    
+    func createCategory(with name: String?) -> Category {
+        let category = Category(context: self.managedObjectContext)
+        category.isChanged = true
+        category.name = name
+        
+        category.budget = self.budget
+        self.budget.addToCategories(category)
+        
+        return category
     }
 }
 
