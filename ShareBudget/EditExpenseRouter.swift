@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 
 class EditExpenseRouter: BaseRouter {
-    func openCategoryPage(for budgetID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext, delegate: CategoryViewControllerDelegate?) {
+    func openCategoryPage(for expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext, delegate: CategoryViewControllerDelegate?) {
         if let viewController = R.storyboard.main.categoryViewController() {
             viewController.managedObjectContext = managedObjectContext
-            viewController.budgetID = budgetID
+            viewController.expenseID = expenseID
             viewController.delegate = delegate
             self.viewController?.navigationController?.pushViewController(viewController, animated: true)
         }

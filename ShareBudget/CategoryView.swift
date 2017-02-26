@@ -31,6 +31,20 @@ class CategoryView: BaseView {
 }
 
 extension CategoryView: CategoryPresenterDelegate {
+    internal func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell {
+        let cell = self.tableView?.dequeueReusableCell(withIdentifier: "CategoryTableViewCell")
+        cell?.textLabel?.text = text
+        
+        if isSelected {
+            cell?.accessoryType = .checkmark
+        }
+        else {
+            cell?.accessoryType = .none
+        }
+        
+        return cell!
+    }
+
     func refreshData(for mode: BudgetHeaderMode) {
         self.tableView?.reloadData()
         let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
@@ -42,13 +56,6 @@ extension CategoryView: CategoryPresenterDelegate {
         header?.mode = mode
         
         return header
-    }
-    
-    func createCategoryCell(with text: String?) -> UITableViewCell {
-        let cell = self.tableView?.dequeueReusableCell(withIdentifier: "CategoryTableViewCell")
-        cell?.textLabel?.text = text
-        
-        return cell!
     }
 }
 

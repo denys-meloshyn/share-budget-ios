@@ -179,7 +179,7 @@ extension EditExpensePresenter: UITableViewDelegate {
         
         switch type {
         case .category:
-            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.budget.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
+            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
         default:
             let cell = tableView.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
             cell?.textField?.becomeFirstResponder()

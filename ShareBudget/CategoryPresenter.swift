@@ -11,7 +11,7 @@ import CoreData
 
 protocol CategoryPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
     func refreshData(for mode: BudgetHeaderMode)
-    func createCategoryCell(with text: String?) -> UITableViewCell
+    func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell
 }
 
 class CategoryPresenter: BasePresenter {
@@ -72,7 +72,8 @@ extension CategoryPresenter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = self.categoryInteraction.category(for: indexPath)
-        let cell = self.delegate.createCategoryCell(with: model.name)
+        let isCurrentCategory = self.categoryInteraction.expense.category?.objectID == model.objectID
+        let cell = self.delegate.createCategoryCell(with: model.name, isSelected: isCurrentCategory)
         
         return cell
     }

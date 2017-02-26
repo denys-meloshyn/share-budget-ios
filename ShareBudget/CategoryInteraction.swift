@@ -14,17 +14,17 @@ protocol CategoryInteractionDelegate: BaseInteractionDelegate {
 }
 
 class CategoryInteraction: BaseInteraction {
-    var budget: Budget
+    var expense: Expense
     var delegate: CategoryInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
     var fetchedResultsController: NSFetchedResultsController<Category>!
     
-    private var budgetID: NSManagedObjectID!
+    private var expenseID: NSManagedObjectID!
     
-    init(with budgetID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
-        self.budgetID = budgetID
+    init(with expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
+        self.expenseID = expenseID
         self.managedObjectContext = managedObjectContext
-        self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
+        self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
         
         super.init()
         self.createFetchedResultsController(with: "")
@@ -42,7 +42,7 @@ class CategoryInteraction: BaseInteraction {
     }
     
     private func createFetchedResultsController(with text: String) {
-        self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext, for: self.budgetID, search: text)
+        self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext, for: self.expense.budget!.objectID, search: text)
         self.performFetch()
         self.delegate?.didChangeContent()
     }
@@ -69,8 +69,8 @@ class CategoryInteraction: BaseInteraction {
         category.isChanged = true
         category.name = name
         
-        category.budget = self.budget
-        self.budget.addToCategories(category)
+        category.budget = self.expense.budget
+        self.expense.budget?.addToCategories(category)
         
         return category
     }

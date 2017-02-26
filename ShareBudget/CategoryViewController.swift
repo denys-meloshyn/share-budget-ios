@@ -17,7 +17,7 @@ protocol CategoryViewControllerDelegate: class {
 class CategoryViewController: BaseViewController {
     @IBOutlet var tableView: UITableView?
     
-    var budgetID: NSManagedObjectID!
+    var expenseID: NSManagedObjectID!
     var managedObjectContext: NSManagedObjectContext!
     weak var delegate: CategoryViewControllerDelegate?
     
@@ -25,7 +25,7 @@ class CategoryViewController: BaseViewController {
         super.viewDidLoad()
         
         let router = CategoryRouter(with: self)
-        let interactin = CategoryInteraction(with: self.budgetID, managedObjectContext: self.managedObjectContext)
+        let interactin = CategoryInteraction(with: self.expenseID, managedObjectContext: self.managedObjectContext)
         let presenter = CategoryPresenter(with: interactin, router: router, delegate: self.delegate)
         self.viperView = CategoryView(with: presenter, and: self)
         
