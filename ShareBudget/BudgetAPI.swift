@@ -38,13 +38,22 @@ class BudgetAPI: BaseAPI {
     
     class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
         let managedObjectContext = ModelManager.managedObjectContext
-        let items = ModelManager.changedModels(Budget.self ,managedObjectContext)
+        let fetchedResultsController = ModelManager.changedModels(Budget.self ,managedObjectContext)
         
         var tasks = [URLSessionTask]()
         
-        for model in items {
-            if let task = BudgetAPI.upload("group", managedObjectContext, model, completionBlock) {
-                tasks.append(task)
+        let sections = fetchedResultsController?.sections ?? []
+        for i in 0..<sections.count {
+            let section = sections[i]
+            for j in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: i, section: j)
+                guard let model = fetchedResultsController?.object(at: indexPath) as? Budget else {
+                    continue
+                }
+                
+                if let task = BudgetAPI.upload("group", managedObjectContext, model, completionBlock) {
+                    tasks.append(task)
+                }
             }
         }
         

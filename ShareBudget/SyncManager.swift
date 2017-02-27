@@ -93,9 +93,11 @@ class SyncManager {
         task = BudgetLimitAPI.updates("group/limit", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
+        // Load all updates for 'Category'
         task = CategoryAPI.updates("category", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
+        // Load all updates for 'Expense'
         task = ExpenseAPI.updates("expense", completionBlock)
         tasks = SyncManager.appendTask(task, to: tasks)
         
@@ -103,6 +105,9 @@ class SyncManager {
         
         // New or changed budgets
         tasks += BudgetAPI.allChangedModels(completionBlock: completionBlock)
+        
+        // New or changed categories
+        tasks += CategoryAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed expenses
         tasks += ExpenseAPI.allChangedModels(completionBlock: completionBlock)

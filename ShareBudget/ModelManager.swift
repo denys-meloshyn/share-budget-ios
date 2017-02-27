@@ -94,7 +94,6 @@ class ModelManager {
     }
     
     class func findEntity(_ entity: BaseModel.Type, by modelID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
-        
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "modelID==%i", modelID)
         fetchRequest.fetchLimit = 1
@@ -124,19 +123,24 @@ class ModelManager {
         }
     }
     
-    class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> [BaseModel] {
+    class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.fetchBatchSize = 30
+        
         fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
         
+        let sortDescriptor = NSSortDescriptor(key: "modelID", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
         do {
-            let items = try managedObjectContext.fetch(fetchRequest)
-            
-            return items as! [BaseModel]
+            try fetchedResultsController.performFetch()
+            return fetchedResultsController
         }
         catch {
             XCGLogger.error("Error fetch changedModels \(error)")
-            return []
+            return nil
         }
     }
     

@@ -34,7 +34,27 @@ class CategoryAPI: BaseAPI {
         }
     }
     
-    class func upload(_ managedObjectContext: NSManagedObjectContext, _ budget: Budget, _ completion: APIResultBlock?) -> URLSessionTask? {
-        return nil
+    class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
+        let managedObjectContext = ModelManager.managedObjectContext
+        let fetchedResultsController = ModelManager.changedModels(Category.self ,managedObjectContext)
+        
+        var tasks = [URLSessionTask]()
+        
+        let sections = fetchedResultsController?.sections ?? []
+        for i in 0..<sections.count {
+            let section = sections[i]
+            for j in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: i, section: j)
+                guard let model = fetchedResultsController?.object(at: indexPath) as? Category else {
+                    continue
+                }
+                
+                if let task = CategoryAPI.upload("category", managedObjectContext, model, completionBlock) {
+                    tasks.append(task)
+                }
+            }
+        }
+        
+        return tasks
     }
 }

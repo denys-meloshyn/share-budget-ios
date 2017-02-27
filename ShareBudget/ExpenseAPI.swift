@@ -35,13 +35,22 @@ class ExpenseAPI: BaseAPI {
     
     class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
         let managedObjectContext = ModelManager.managedObjectContext
-        let items = ModelManager.changedModels(Expense.self, managedObjectContext)
+        let fetchedResultsController = ModelManager.changedModels(Expense.self, managedObjectContext)
         
         var tasks = [URLSessionTask]()
         
-        for model in items {
-            if let task = ExpenseAPI.upload("expense", managedObjectContext, model, completionBlock) {
-                tasks.append(task)
+        let sections = fetchedResultsController?.sections ?? []
+        for i in 0..<sections.count {
+            let section = sections[i]
+            for j in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: i, section: j)
+                guard let model = fetchedResultsController?.object(at: indexPath) as? Expense else {
+                    continue
+                }
+                
+                if let task = ExpenseAPI.upload("expense", managedObjectContext, model, completionBlock) {
+                    tasks.append(task)
+                }
             }
         }
         
