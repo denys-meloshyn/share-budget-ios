@@ -13,17 +13,6 @@ class SyncManager {
     private static var timer: Timer?
     private static var loadingTask: URLSessionTask?
     
-    private class func appendTask(_ task: URLSessionTask?, to items: [URLSessionTask]) -> [URLSessionTask] {
-        guard let task = task else {
-            return items
-        }
-        
-        var result = items
-        result.append(task)
-        
-        return result
-    }
-    
     private class func scheduleNextUpdate() {
         SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(5.0), repeats: false) { (timer) in
             SyncManager.loadUpdates(completion: nil)
@@ -33,8 +22,8 @@ class SyncManager {
     private class func loadUpdates(completion: APIResultBlock?) {
         XCGLogger.info("Load updates from server")
         
-        var tasks = [URLSessionTask]()
-        var task: URLSessionTask?
+        var tasks = [BaseAPITask]()
+        var task: BaseAPITask
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
@@ -76,30 +65,30 @@ class SyncManager {
                 }
             }
             else {
-                SyncManager.loadingTask = tasks.first
+                SyncManager.loadingTask = tasks.first?.request()
                 SyncManager.loadingTask?.resume()
             }
         }
         
         // Load all updates for 'User'
-        task = UserAPI.updates("user", completionBlock)
-        tasks = SyncManager.appendTask(task, to: tasks)
+        task = BaseAPILoadUpdatesTask(resource: "user", entity: UserAPI.self, completionBlock: completionBlock)
+        tasks.append(task)
         
         // Load all updates for 'Budget'
-        task = BudgetAPI.updates("group", completionBlock)
-        tasks = SyncManager.appendTask(task, to: tasks)
+        task = BaseAPILoadUpdatesTask(resource: "group", entity: BudgetAPI.self, completionBlock: completionBlock)
+        tasks.append(task)
         
         // Load all updates for 'Budget Limit'
-        task = BudgetLimitAPI.updates("group/limit", completionBlock)
-        tasks = SyncManager.appendTask(task, to: tasks)
+        task = BaseAPILoadUpdatesTask(resource: "group/limit", entity: BudgetLimitAPI.self, completionBlock: completionBlock)
+        tasks.append(task)
         
         // Load all updates for 'Category'
-        task = CategoryAPI.updates("category", completionBlock)
-        tasks = SyncManager.appendTask(task, to: tasks)
+        task = BaseAPILoadUpdatesTask(resource: "category", entity: CategoryAPI.self, completionBlock: completionBlock)
+        tasks.append(task)
         
         // Load all updates for 'Expense'
-        task = ExpenseAPI.updates("expense", completionBlock)
-        tasks = SyncManager.appendTask(task, to: tasks)
+        task = BaseAPILoadUpdatesTask(resource: "category", entity: CategoryAPI.self, completionBlock: completionBlock)
+        tasks.append(task)
         
         // -----------------
         
@@ -116,7 +105,7 @@ class SyncManager {
             SyncManager.scheduleNextUpdate()
         }
         else {
-            SyncManager.loadingTask = tasks.first
+            SyncManager.loadingTask = tasks.first?.request()
             SyncManager.loadingTask?.resume()
         }
     }

@@ -33,11 +33,11 @@ class ExpenseAPI: BaseAPI {
         }
     }
     
-    class func allChangedModels(completionBlock: APIResultBlock?) -> [URLSessionTask] {
+    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
         let fetchedResultsController = ModelManager.changedModels(Expense.self, managedObjectContext)
         
-        var tasks = [URLSessionTask]()
+        var tasks = [BaseAPITask]()
         
         let sections = fetchedResultsController?.sections ?? []
         for i in 0..<sections.count {
@@ -48,9 +48,8 @@ class ExpenseAPI: BaseAPI {
                     continue
                 }
                 
-                if let task = ExpenseAPI.upload("expense", managedObjectContext, model, completionBlock) {
-                    tasks.append(task)
-                }
+                let task = BaseAPITaskUpload(resource: "expense", entity: ExpenseAPI.self, modelID: model.objectID, completionBlock: completionBlock)
+                tasks.append(task)
             }
         }
         

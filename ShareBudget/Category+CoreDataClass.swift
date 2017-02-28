@@ -22,4 +22,18 @@ public class Category: BaseModel {
             self.budget?.addToCategories(self)
         }
     }
+    
+    override func uploadProperties() -> [String : String] {
+        var result = super.uploadProperties()
+        
+        if let name = self.name {
+            result[kName] = name
+        }
+        
+        if let groupID = self.budget?.modelID {
+            result[kGroupID] = String(groupID)
+        }
+        
+        return result
+    }
 }

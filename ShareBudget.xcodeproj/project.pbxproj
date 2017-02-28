@@ -90,6 +90,9 @@
 		57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */; };
 		57FAB4261E6248A700A2AEC7 /* CategoryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */; };
 		57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */; };
+		57FAB42E1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */; };
+		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
+		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -206,6 +209,9 @@
 		57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInteraction.swift; sourceTree = "<group>"; };
 		57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRouter.swift; sourceTree = "<group>"; };
+		57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPITaskUpload.swift; sourceTree = "<group>"; };
+		57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPITask.swift; sourceTree = "<group>"; };
+		57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPILoadUpdatesTask.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -362,6 +368,8 @@
 				573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */,
 				57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */,
 				573F59D81E29627A00AEA72A /* BaseAPI.swift */,
+				57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */,
+				57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */,
 				57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */,
 				575786361E4278620026A0BE /* BudgetLimitAPI.swift */,
 				575786341E4272980026A0BE /* BudgetUserAPI.swift */,
@@ -369,6 +377,7 @@
 				578A04D01E5256B500330DCD /* ExpenseAPI.swift */,
 				573F59E21E2AB9B000AEA72A /* SyncManager.swift */,
 				573F59DA1E29637E00AEA72A /* UserAPI.swift */,
+				57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */,
 			);
 			name = APIManager;
 			sourceTree = "<group>";
@@ -802,6 +811,7 @@
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
 				578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */,
+				57FAB42E1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift in Sources */,
 				575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */,
 				572749581E44F49F004A132F /* BudgetDetailRouter.swift in Sources */,
 				575A225C1E477258004825C2 /* EditExpensePresenter.swift in Sources */,
@@ -824,6 +834,7 @@
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */,
 				575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */,
+				57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */,
 				573F59E11E2A7E7800AEA72A /* ModelManager.swift in Sources */,
 				57F128701E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift in Sources */,
 				572749501E43D9E0004A132F /* BudgetDetailViewController.swift in Sources */,
@@ -838,6 +849,7 @@
 				57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */,
 				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
+				57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */,
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,
 				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,

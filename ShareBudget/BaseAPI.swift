@@ -130,7 +130,7 @@ class BaseAPI {
         return task
     }
     
-    class func upload(_ resource: String, _ managedObjectContext: NSManagedObjectContext, _ model: BaseModel, _ completion: APIResultBlock?) -> URLSessionTask? {
+    class func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask? {
         let components = self.components(resource)
         
         guard let url = components.url else {
@@ -140,6 +140,8 @@ class BaseAPI {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
         
+        let managedObjectContext = ModelManager.managedObjectContext
+        let model = managedObjectContext.object(with: modelID) as! BaseModel
         let properties = model.uploadProperties()
         for key in properties.keys {
             request.setValue(properties[key], forHTTPHeaderField: key)
@@ -155,7 +157,7 @@ class BaseAPI {
                     XCGLogger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
-                            let task = self.upload(resource, managedObjectContext, model, completion)
+                            let task = self.upload(resource, modelID, completion)
                             task?.resume()
                         }
                         else {
@@ -184,10 +186,17 @@ class BaseAPI {
                 return
             }
             
+            let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
+            let model = managedObjectContext.object(with: modelID) as! BaseModel
             model.isChanged = false
             model.configureModelID(dict: result, for: self.modelKeyID())
+            ModelManager.saveChildren(managedObjectContext)
             
             completion?(nil, .none)
         })
+    }
+    
+    class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+        return []
     }
 }
