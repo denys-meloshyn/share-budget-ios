@@ -87,7 +87,7 @@ class SyncManager {
         tasks.append(task)
         
         // Load all updates for 'Expense'
-        task = BaseAPILoadUpdatesTask(resource: "category", entity: CategoryAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "expense", entity: ExpenseAPI.self, completionBlock: completionBlock)
         tasks.append(task)
         
         // -----------------
