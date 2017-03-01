@@ -194,13 +194,14 @@ class ModelManager {
         fetchRequest.fetchBatchSize = 30
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate = NSPredicate(format: "%@ == budget", budget)
+        let predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO", budget)
         fetchRequest.predicate = predicate
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDescriptorDate = NSSortDescriptor(key: "creationDate", ascending: false)
+        let sortDescriptorName = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptorDate, sortDescriptorName]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "category", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "sectionCreationDate", cacheName: nil)
         
         return fetchedResultsController
     }
@@ -227,7 +228,7 @@ class ModelManager {
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "category", cacheName: nil)
         
         return fetchedResultsController
     }

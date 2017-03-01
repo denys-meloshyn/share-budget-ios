@@ -2,7 +2,7 @@
 //  Expense+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 24.02.17.
+//  Created by Denys Meloshyn on 01.03.17.
 //
 //
 
@@ -19,6 +19,7 @@ extension Expense {
     @NSManaged public var creationDate: NSDate?
     @NSManaged public var name: String?
     @NSManaged public var price: Double
+    @NSManaged public var sectionCreationDate: String?
     @NSManaged public var budget: Budget?
     @NSManaged public var category: Category?
 

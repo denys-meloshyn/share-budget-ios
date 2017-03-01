@@ -34,6 +34,7 @@
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sectionCreationDate" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="budget" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Budget" inverseName="expenses" inverseEntity="Budget" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="expenses" inverseEntity="Category" syncable="YES"/>
     </entity>
@@ -49,7 +50,7 @@
         <element name="BudgetLimit" positionX="-18" positionY="54" width="128" height="90"/>
         <element name="Category" positionX="18" positionY="81" width="128" height="105"/>
         <element name="CategoryLimit" positionX="36" positionY="81" width="128" height="90"/>
-        <element name="Expense" positionX="0" positionY="72" width="128" height="120"/>
+        <element name="Expense" positionX="0" positionY="72" width="128" height="135"/>
         <element name="User" positionX="-54" positionY="9" width="128" height="105"/>
     </elements>
 </model>

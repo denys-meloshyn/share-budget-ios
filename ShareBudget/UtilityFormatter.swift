@@ -9,6 +9,14 @@
 import UIKit
 
 class UtilityFormatter: NSObject {
+    class var yearMonthFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MMM"
+        
+        return dateFormatter
+    }
+
+    
     class var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

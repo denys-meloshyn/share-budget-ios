@@ -42,6 +42,12 @@ extension ExpensesViewController: UITableViewDataSource {
         return sectionModel?.numberOfObjects ?? 0
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let model = self.fc?.sections?[section]
+        
+        return model?.name
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell")
         let expense = self.fc?.object(at: indexPath)

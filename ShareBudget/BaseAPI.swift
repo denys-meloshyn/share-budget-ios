@@ -122,10 +122,12 @@ class BaseAPI {
                 return
             }
             
-            self.timestamp = timestamp
-            let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
-            self.parseUpdates(items: results, in: managedObjectContext)
-            ModelManager.saveChildren(managedObjectContext)
+            if results.count > 0 {
+                self.timestamp = timestamp
+                let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
+                self.parseUpdates(items: results, in: managedObjectContext)
+                ModelManager.saveChildren(managedObjectContext)
+            }
             
             completion?(nil, .none)
         }

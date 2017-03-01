@@ -11,6 +11,22 @@ import CoreData
 
 @objc(Expense)
 public class Expense: BaseModel {
+    override public func didChangeValue(forKey key: String) {
+        super.didChangeValue(forKey: key)
+        
+        if key == "creationDate" {
+            willAccessValue(forKey: "creationDate")
+            if let creationDate = self.creationDate as? Date {
+                let section = UtilityFormatter.yearMonthFormatter.string(from: creationDate)
+                
+                willChangeValue(forKey: "sectionCreationDate")
+                self.sectionCreationDate = section
+                didChangeValue(forKey: "sectionCreationDate")
+            }
+            didAccessValue(forKey: "creationDate")
+        }
+    }
+    
     override func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
         self.configureModelID(dict: dict, for: kExpenseID)
