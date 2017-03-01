@@ -43,8 +43,11 @@ class BaseAPI {
             case kUserPasswordIsWrong:
                 return .userPasswordIsWrong
                 
-            case kTokenEpired:
+            case kTokenExpired:
                 return .tokenExpired
+                
+            case kTokenNotValid:
+                return .tokenNotValid
                 
             default:
                 return .unknown

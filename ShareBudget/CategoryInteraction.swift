@@ -27,12 +27,14 @@ class CategoryInteraction: BaseInteraction {
         self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
         
         super.init()
-        self.createFetchedResultsController(with: "")
+        
+        self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext)
+        self.fetchedResultsController.delegate = self
+        
+        self.updatePredicate(with: "")
     }
     
     private func performFetch() {
-        self.fetchedResultsController.delegate = self
-        
         do {
             try self.fetchedResultsController.performFetch()
         }
@@ -41,9 +43,18 @@ class CategoryInteraction: BaseInteraction {
         }
     }
     
-    private func createFetchedResultsController(with text: String) {
-        self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext, for: self.expense.budget!.objectID, search: text)
+    private func updatePredicate(with text: String) {
+        let predicate: NSPredicate
+        if text.characters.count > 0 {
+            predicate = NSPredicate(format: "name CONTAINS[c] %@ AND %@ == budget", text, self.expense.budget!)
+        }
+        else {
+            predicate = NSPredicate(format: "%@ == budget", self.expense.budget!)
+        }
+        
+        self.fetchedResultsController.fetchRequest.predicate = predicate
         self.performFetch()
+        
         self.delegate?.didChangeContent()
     }
     
@@ -61,7 +72,7 @@ class CategoryInteraction: BaseInteraction {
     }
     
     func updateWithSearch(_ text: String) {
-        self.createFetchedResultsController(with: text)
+        self.updatePredicate(with: text)
     }
     
     func createCategory(with name: String?) -> Category {
