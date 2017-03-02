@@ -72,9 +72,13 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
     }
     
     func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any? {
+        if self.budgetDetailInteraction.isEmpty() {
+            return 1 as NSNumber
+        }
+        
         switch CPTPieChartField(rawValue: Int(field))! {
         case .sliceWidth:
-            return 100 as NSNumber
+            return NSNumber(value: self.budgetDetailInteraction.totalExpenses(for: Int(record)))
             
         default:
             return record as NSNumber
@@ -86,7 +90,7 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
             return nil
         }
         
-        let label = CPTTextLayer(text:"\(record + 1)")
+        let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
         
         if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
             textStyle.color = .lightGray()
