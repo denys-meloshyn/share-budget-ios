@@ -28,12 +28,26 @@ class BudgetDetailInteraction: BaseInteraction {
         }
     }
     
+    private func totalExpenseForSection(_ section: Int) -> Double {
+        let sections = self.fetchedResultsController.sections!
+        let sectionModel = sections[section]
+        
+        var total = 0.0
+        for i in 0..<sectionModel.numberOfObjects {
+            let indexPath = IndexPath(row: i, section: section)
+            let expense = self.fetchedResultsController.object(at: indexPath)
+            total += expense.price
+        }
+        
+        return total
+    }
+    
     func isEmpty() -> Bool {
         return self.numberOfCategoryExpenses() == 0
     }
     
     func totalExpenses(for categoryIndex: Int) -> Double {
-        return 100.0
+        return self.totalExpenseForSection(categoryIndex)
     }
     
     func numberOfCategoryExpenses() -> Int {
@@ -46,12 +60,7 @@ class BudgetDetailInteraction: BaseInteraction {
         var total = 0.0
         let sections = self.fetchedResultsController.sections ?? []
         for i in 0..<sections.count {
-            let section = sections[i]
-            for j in 0..<section.numberOfObjects {
-                let indexPath = IndexPath(row: j, section: i)
-                let expense = self.fetchedResultsController.object(at: indexPath)
-                total += expense.price
-            }
+            total += self.totalExpenseForSection(i)
         }
         
         return total

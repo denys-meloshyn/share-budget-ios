@@ -31,7 +31,7 @@ public class Category: BaseModel {
         }
         
         if let groupID = self.budget?.modelID {
-            result[kGroupID] = String(groupID)
+            result[kGroupID] = String(groupID.intValue)
         }
         
         return result

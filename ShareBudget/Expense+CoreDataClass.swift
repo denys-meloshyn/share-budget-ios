@@ -53,18 +53,21 @@ public class Expense: BaseModel {
         var result = super.uploadProperties()
         
         result[kPrice] = String(self.price)
-        result[kExpenseID] = String(self.modelID)
+        
+        if let modelID = self.modelID {
+            result[kExpenseID] = String(modelID.intValue)
+        }
         
         if let name = self.name {
             result[kName] = name
         }
         
         if let modelID = self.budget?.modelID {
-            result[kGroupID] = String(modelID)
+            result[kGroupID] = String(modelID.intValue)
         }
         
         if let categoryID = self.category?.modelID {
-            result[kCategoryID] = String(categoryID)
+            result[kCategoryID] = String(categoryID.intValue)
         }
         
         if let creationDate = self.creationDate as? Date {

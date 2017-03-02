@@ -21,7 +21,7 @@ public class BaseModel: NSManagedObject {
     
     func configureModelID(dict: [String: AnyObject?], for key: String) {
         if let modelID = dict[key] as? Int {
-            self.modelID = Int64(modelID)
+            self.modelID = NSNumber(value: modelID)
         }
     }
     

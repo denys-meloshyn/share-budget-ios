@@ -51,7 +51,7 @@ extension ExpensesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell")
         let expense = self.fc?.object(at: indexPath)
-        cell?.textLabel?.text = "#" + String(expense!.modelID) + " " + expense!.name! + " " + String(describing: expense!.creationDate)
+        cell?.textLabel?.text = "#" + String(describing: expense!.modelID) + " " + expense!.name! + " " + String(describing: expense!.creationDate)
         cell?.detailTextLabel?.text = String(expense?.price ?? 0)
         
         return cell!
