@@ -49,7 +49,7 @@ extension BaseView: LifeCycleStateProtocol {
 }
 
 extension BaseView: BasePresenterDelegate {
-    func showPage(title: String) {
+    func showPage(title: String?) {
         self.viewController?.navigationItem.title = title
     }
     

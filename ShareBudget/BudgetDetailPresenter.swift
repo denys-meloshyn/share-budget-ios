@@ -8,7 +8,7 @@
 
 import CorePlot
 
-protocol BudgetDetailPresenterDelegate: class {
+protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func updateBalance(_ balance: String)
     func updateMonthLimit(_ limit: String)
     func updateTotalExpense(_ total: String)
@@ -31,6 +31,8 @@ class BudgetDetailPresenter: BasePresenter {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate?.showPage(title: self.budgetDetailInteraction.budget.name)
         
         self.configureTotalExpenses()
         self.configureMonthBudget()

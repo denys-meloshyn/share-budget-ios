@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BasePresenterDelegate: class {
-    func showPage(title: String)
+    func showPage(title: String?)
     func showTabBar(title: String, image: UIImage, selected: UIImage)
     func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
 }

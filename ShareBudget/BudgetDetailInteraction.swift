@@ -11,15 +11,19 @@ import XCGLogger
 
 class BudgetDetailInteraction: BaseInteraction {
     var budget: Budget
-    var budgetID: NSManagedObjectID
-    let managedObjectContext = ModelManager.managedObjectContext
-    let fetchedResultsController: NSFetchedResultsController<Expense>
+    let budgetID: NSManagedObjectID
+    
+    private let calculator: ExpenseCalculator
+    private let managedObjectContext = ModelManager.managedObjectContext
+    private let fetchedResultsController: NSFetchedResultsController<Expense>
     
     init(with budgetID: NSManagedObjectID) {
         self.budgetID = budgetID
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
         
         self.fetchedResultsController = ModelManager.expenseFetchController(for: budgetID, UtilityFormatter.firstMonthDay() as NSDate, self.managedObjectContext)
+        self.calculator = ExpenseCalculator(fetchedResultsController: self.fetchedResultsController)
+        
         do {
             try self.fetchedResultsController.performFetch()
         }
@@ -28,26 +32,12 @@ class BudgetDetailInteraction: BaseInteraction {
         }
     }
     
-    private func totalExpenseForSection(_ section: Int) -> Double {
-        let sections = self.fetchedResultsController.sections!
-        let sectionModel = sections[section]
-        
-        var total = 0.0
-        for i in 0..<sectionModel.numberOfObjects {
-            let indexPath = IndexPath(row: i, section: section)
-            let expense = self.fetchedResultsController.object(at: indexPath)
-            total += expense.price
-        }
-        
-        return total
-    }
-    
     func isEmpty() -> Bool {
         return self.numberOfCategoryExpenses() == 0
     }
     
     func totalExpenses(for categoryIndex: Int) -> Double {
-        return self.totalExpenseForSection(categoryIndex)
+        return self.calculator.totalExpense(for: categoryIndex)
     }
     
     func numberOfCategoryExpenses() -> Int {
@@ -63,13 +53,7 @@ class BudgetDetailInteraction: BaseInteraction {
     }
     
     func totalExpenses() -> Double {
-        var total = 0.0
-        let sections = self.fetchedResultsController.sections ?? []
-        for i in 0..<sections.count {
-            total += self.totalExpenseForSection(i)
-        }
-        
-        return total
+        return self.calculator.totalExpenses()
     }
     
     func lastMonthLimit() -> BudgetLimit? {

@@ -14,11 +14,13 @@ class ExpensesViewController: UIViewController {
     var budgetID: NSManagedObjectID?
     private let managedObjectContext = ModelManager.managedObjectContext
     var fc: NSFetchedResultsController<Expense>?
+    var calculator: ExpenseCalculator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
+        self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
         
         do {
             try self.fc?.performFetch()
@@ -43,9 +45,9 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let model = self.fc?.sections?[section]
+        let model = self.fc!.sections![section]
         
-        return model?.name
+        return "\(model.name) \(self.calculator!.totalExpense(for: section))"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

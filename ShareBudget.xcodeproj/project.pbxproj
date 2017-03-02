@@ -93,6 +93,7 @@
 		57FAB42E1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */; };
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
+		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -212,6 +213,7 @@
 		57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPITaskUpload.swift; sourceTree = "<group>"; };
 		57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPITask.swift; sourceTree = "<group>"; };
 		57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPILoadUpdatesTask.swift; sourceTree = "<group>"; };
+		57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCalculator.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
+				57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -866,6 +869,7 @@
 				575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */,
 				57F1286E1E3DF76200E51C0C /* Budget+CoreDataProperties.swift in Sources */,
 				57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */,
+				57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */,
 				573F5A021E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift in Sources */,
 				575A225E1E477281004825C2 /* EditExpenseInteraction.swift in Sources */,
 				573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */,
