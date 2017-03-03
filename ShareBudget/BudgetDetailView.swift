@@ -15,6 +15,7 @@ class BudgetDetailView: BaseView {
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
     weak var expenseButton: UIButton?
+    weak var expenseCoverView: UIView?
     weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
     weak var createExpenseButton: UIButton?
@@ -102,6 +103,8 @@ class BudgetDetailView: BaseView {
     }
 }
 
+// MARK: - BudgetDetailPresenterDelegate
+
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
     func updateTotalExpense(_ total: String) {
         self.expenseLabel?.text = total
@@ -113,5 +116,13 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateBalance(_ balance: String) {
         self.balanceLabel?.text = balance
+    }
+    
+    func updateCurrentMonthDate(_ date: String) {
+        self.monthLabel?.text = date
+    }
+    
+    func updateExpenseCoverColor(_ color: UIColor?) {
+        self.expenseCoverView?.backgroundColor = color
     }
 }
