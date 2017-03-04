@@ -15,10 +15,13 @@ class ExpensesViewController: UIViewController {
     private let managedObjectContext = ModelManager.managedObjectContext
     var fc: NSFetchedResultsController<Expense>?
     var calculator: ExpenseCalculator?
+    @IBOutlet var tableView: UITableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.estimatedRowHeight = 60.0
         self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
         
@@ -51,10 +54,11 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell") as? ExpenseTableViewCell
         let expense = self.fc?.object(at: indexPath)
-        cell?.textLabel?.text = "#" + String(describing: expense!.modelID) + " " + expense!.name! + " " + String(describing: expense!.creationDate)
-        cell?.detailTextLabel?.text = String(expense?.price ?? 0)
+        cell?.titleLabel?.text = expense!.name!
+        cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(from: expense!.creationDate! as Date)
+        cell?.priceLabel?.text = String(expense?.price ?? 0)
         
         return cell!
     }

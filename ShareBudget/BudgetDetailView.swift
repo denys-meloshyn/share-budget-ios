@@ -19,6 +19,7 @@ class BudgetDetailView: BaseView {
     weak var expenseCoverView: UIView?
     weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
+    weak var balanceContainerView: UIView?
     weak var createExpenseButton: UIButton?
     weak var chartView: CPTGraphHostingView?
     weak var budgetDescriptionLabel: UILabel?
@@ -48,6 +49,7 @@ class BudgetDetailView: BaseView {
         
         self.configureBorder(for: self.budgetContainerView)
         self.configureBorder(for: self.expenseContainerView)
+        self.configureBorder(for: self.balanceContainerView, color: UIColor.gray)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
@@ -55,10 +57,10 @@ class BudgetDetailView: BaseView {
         self.configureChart()
     }
     
-    private func configureBorder(for view: UIView?) {
+    private func configureBorder(for view: UIView?, color: UIColor? = UIColor.white) {
         view?.layer.borderWidth = 1.0
         view?.layer.cornerRadius = 5.0
-        view?.layer.borderColor = UIColor.white.cgColor
+        view?.layer.borderColor = color?.cgColor
     }
     
     private func configureChart() {
@@ -108,6 +110,10 @@ class BudgetDetailView: BaseView {
 // MARK: - BudgetDetailPresenterDelegate
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
+    func updateChart() {
+        self.piePlot.reloadData()
+    }
+    
     func updateTotalExpense(_ total: String) {
         self.expenseLabel?.text = total
     }

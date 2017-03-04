@@ -15,7 +15,14 @@ class UtilityFormatter: NSObject {
         
         return dateFormatter
     }
-
+    
+    class var expenseFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        
+        return dateFormatter
+    }
     
     class var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()

@@ -9,6 +9,7 @@
 import CorePlot
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
+    func updateChart()
     func updateBalance(_ balance: String)
     func updateMonthLimit(_ limit: String)
     func updateTotalExpense(_ total: String)
@@ -117,7 +118,7 @@ class BudgetDetailPresenter: BasePresenter {
         }
     }
     
-    private func configureTotalExpenses() {
+    fileprivate func configureTotalExpenses() {
         let total = self.budgetDetailInteraction.totalExpenses()
         self.delegate?.updateTotalExpense(String(total))
     }
@@ -127,7 +128,7 @@ class BudgetDetailPresenter: BasePresenter {
         self.delegate?.updateMonthLimit(String(month?.limit ?? 0.0))
     }
     
-    private func configureBalance() {
+    fileprivate func configureBalance() {
         self.delegate?.updateBalance(String(self.budgetDetailInteraction.balance()))
     }
     
@@ -149,6 +150,7 @@ class BudgetDetailPresenter: BasePresenter {
             self.budgetDetailInteraction.createOrUpdateCurrentBudgetLimit(newLimit?.doubleValue ?? 0.0)
             self.configureMonthBudget()
             self.updateTotalSpentExpensesColor()
+            self.configureBalance()
         }
         
         return res
@@ -225,6 +227,13 @@ extension BudgetDetailPresenter: CPTPieChartDelegate {
 // MARK: - BudgetDetailInteractionDelegate
 
 extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
+    func didChangeContent() {
+        self.configureTotalExpenses()
+        self.configureBalance()
+        self.updateTotalSpentExpensesColor()
+        self.delegate?.updateChart()
+    }
+    
     func limitChanged() {
         self.configureMonthBudget()
     }
