@@ -28,4 +28,12 @@ class Validator {
         let cleanedValue = firstName.trimmingCharacters(in: CharacterSet.whitespaces)
         return cleanedValue.characters.count > 0
     }
+    
+    class func isNumberValid(_ value: String) -> Bool {
+        guard let _ = UtilityFormatter.amount(from: value) else {
+            return false
+        }
+        
+        return true
+    }
 }

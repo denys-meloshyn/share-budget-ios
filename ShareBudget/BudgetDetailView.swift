@@ -14,6 +14,7 @@ class BudgetDetailView: BaseView {
     weak var budgetLabel: UILabel?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
+    weak var budgetButton: UIButton?
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
     weak var budgetContainerView: UIView?
@@ -48,6 +49,7 @@ class BudgetDetailView: BaseView {
         self.configureBorder(for: self.budgetContainerView)
         self.configureBorder(for: self.expenseContainerView)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
+        self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         
         self.configureChart()
@@ -124,5 +126,33 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.expenseCoverView?.backgroundColor = color
+    }
+    
+    func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let createAction = UIAlertAction(title: create, style: .default, handler:  self.budgetDetailPresenter.createHandler(with: alertController))
+        
+        let cancelAction = UIAlertAction(title: cancel, style: .cancel)
+        
+        alertController.addTextField { (textField) in
+            textField.text = budgetLimit
+            textField.keyboardType = .numbersAndPunctuation
+            textField.placeholder = placeholder
+            textField.autocapitalizationType = .none
+            
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { (notification) in
+                guard let text = textField.text else {
+                    return
+                }
+                
+                createAction.isEnabled = Validator.isNumberValid(text)
+            }
+        }
+        
+        alertController.addAction(createAction)
+        alertController.addAction(cancelAction)
+        
+        self.viewController?.present(alertController, animated: true, completion: nil)
     }
 }

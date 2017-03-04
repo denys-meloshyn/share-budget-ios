@@ -55,7 +55,7 @@ class CategoryInteraction: BaseInteraction {
         self.fetchedResultsController.fetchRequest.predicate = predicate
         self.performFetch()
         
-        self.delegate?.didChangeContent()
+        self.delegate?.didChangeContent?()
     }
     
     func numberOfCategories() -> Int {
@@ -91,11 +91,11 @@ class CategoryInteraction: BaseInteraction {
 
 extension CategoryInteraction: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.willChangeContent()
+        self.delegate?.willChangeContent?()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent()
+        self.delegate?.didChangeContent?()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

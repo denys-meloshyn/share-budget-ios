@@ -41,7 +41,7 @@ class BudgetInteraction: BaseInteraction {
     private func createFetchedResultsController(with text: String) {
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext, search: text)
         self.performFetch()
-        self.delegate?.didChangeContent()
+        self.delegate?.didChangeContent?()
     }
     
     func numberOfRowsInSection() -> Int {
@@ -73,11 +73,11 @@ class BudgetInteraction: BaseInteraction {
 
 extension BudgetInteraction: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.willChangeContent()
+        self.delegate?.willChangeContent?()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent()
+        self.delegate?.didChangeContent?()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

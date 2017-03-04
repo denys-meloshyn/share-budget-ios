@@ -9,10 +9,16 @@
 import CoreData
 import XCGLogger
 
+protocol BudgetDetailInteractionDelegate: BaseInteractionDelegate {
+    func limitChanged()
+}
+
 class BudgetDetailInteraction: BaseInteraction {
     var budget: Budget
     let budgetID: NSManagedObjectID
+    weak var delegate: BudgetDetailInteractionDelegate?
     
+    private var kvoContext: UInt8 = 1
     private let calculator: ExpenseCalculator
     private let managedObjectContext = ModelManager.managedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Expense>
@@ -30,6 +36,10 @@ class BudgetDetailInteraction: BaseInteraction {
         catch {
             XCGLogger.error("Error fetch \(error)")
         }
+        
+        super.init()
+        
+        self.fetchedResultsController.delegate = self
     }
     
     func isEmpty() -> Bool {
@@ -80,5 +90,49 @@ class BudgetDetailInteraction: BaseInteraction {
         let balance = limit - self.totalExpenses()
         
         return balance
+    }
+    
+    func createOrUpdateCurrentBudgetLimit(_ limit: Double) {
+        var budgetLimit = self.lastMonthLimit()
+        if budgetLimit == nil {
+            budgetLimit = BudgetLimit(context: self.managedObjectContext)
+            budgetLimit?.date = NSDate()
+            
+            self.budget.addToLimits(budgetLimit!)
+        }
+        
+        budgetLimit?.limit = limit
+        budgetLimit?.isChanged = true
+        
+        ModelManager.saveContext(self.managedObjectContext)
+    }
+    
+    private func isCurrentMonth(_ date: NSDate) -> Bool {
+        let calendar = Calendar.current
+        let units = Set<Calendar.Component>([.year, .month, .day])
+        
+        var inputComponents = calendar.dateComponents(units, from: date as Date)
+        inputComponents.calendar = calendar
+        
+        var currentComponents = calendar.dateComponents(units, from: Date())
+        currentComponents.calendar = calendar
+        
+        return (inputComponents.month == currentComponents.month && inputComponents.year == currentComponents.year)
+    }
+}
+
+// MARK: - NSFetchedResultsControllerDelegate methds
+
+extension BudgetDetailInteraction: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
     }
 }

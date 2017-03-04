@@ -21,4 +21,20 @@ public class BudgetLimit: BaseModel {
             self.date = UtilityFormatter.date(from: date) as NSDate?
         }
     }
+    
+    override func uploadProperties() -> [String : String] {
+        var result = super.uploadProperties()
+        
+        if let date = self.date as? Date {
+            result[kDate] = UtilityFormatter.string(from: date)
+        }
+        
+        if let groupID = self.budget?.modelID {
+            result[kGroupID] = String(groupID.intValue)
+        }
+        
+        result[kLimit] = String(limit)
+        
+        return result
+    }
 }

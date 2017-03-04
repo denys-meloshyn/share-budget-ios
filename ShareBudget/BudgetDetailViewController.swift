@@ -16,6 +16,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet var budgetLabel: UILabel?
     @IBOutlet var balanceLabel: UILabel?
     @IBOutlet var expenseLabel: UILabel?
+    @IBOutlet var budgetButton: UIButton?
     @IBOutlet var expenseButton: UIButton?
     @IBOutlet var expenseCoverView: UIView?
     @IBOutlet var budgetContainerView: UIView?
@@ -53,6 +54,7 @@ class BudgetDetailViewController: BaseViewController {
         view.monthLabel = self.monthLabel
         view.budgetLabel = self.budgetLabel
         view.balanceLabel = self.balanceLabel
+        view.budgetButton = self.budgetButton
         view.expenseLabel = self.expenseLabel
         view.expenseButton = self.expenseButton
         view.expenseCoverView = self.expenseCoverView

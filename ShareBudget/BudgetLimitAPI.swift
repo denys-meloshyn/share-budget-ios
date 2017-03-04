@@ -45,4 +45,27 @@ class BudgetLimitAPI: BaseAPI {
             limit?.update(with: item, in: managedObjectContext)
         }
     }
+    
+    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+        let managedObjectContext = ModelManager.managedObjectContext
+        let fetchedResultsController = ModelManager.changedModels(BudgetLimit.self, managedObjectContext)
+        
+        var tasks = [BaseAPITask]()
+        
+        let sections = fetchedResultsController?.sections ?? []
+        for i in 0..<sections.count {
+            let section = sections[i]
+            for j in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: i, section: j)
+                guard let model = fetchedResultsController?.object(at: indexPath) as? BudgetLimit else {
+                    continue
+                }
+                
+                let task = BaseAPITaskUpload(resource: "group/limit", entity: self, modelID: model.objectID, completionBlock: completionBlock)
+                tasks.append(task)
+            }
+        }
+        
+        return tasks
+    }
 }

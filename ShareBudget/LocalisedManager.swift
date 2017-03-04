@@ -15,6 +15,8 @@ struct LocalisedManager {
         static let errorTitle = NSLocalizedString("Error", comment: "Generic error title")
         static let errorMessage = NSLocalizedString("Something was wrong", comment: "Generic error message")
         static let next = NSLocalizedString("Next", comment: "Next title (ex keyboard)")
+        static let create = NSLocalizedString("Create", comment: "Generic create text")
+        static let cancel = NSLocalizedString("Cancel", comment: "Generic cancel text")
     }
     
     struct error {
@@ -52,6 +54,12 @@ struct LocalisedManager {
             static let date = NSLocalizedString("Date", comment: "Expense date title in Edit expense page")
             static let create = NSLocalizedString("Create", comment: "Create title in Edit expense page")
             static let update = NSLocalizedString("Update", comment: "Update title in Edit expense page")
+        }
+        
+        struct budgetLimit {
+            static let changeLimitTitle = NSLocalizedString("Update limit", comment: "Update title in budget detail page")
+            static let changeLimitMessage = NSLocalizedString("Change the limit for current month", comment: "Update message in budget detail page")
+            static let changeLimitTextPlaceholder = NSLocalizedString("Month budget limit", comment: "Text placeholder in budget detail page")
         }
     }
 }

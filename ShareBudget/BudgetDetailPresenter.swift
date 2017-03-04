@@ -14,6 +14,7 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func updateTotalExpense(_ total: String)
     func updateCurrentMonthDate(_ date: String)
     func updateExpenseCoverColor(_ color: UIColor?)
+    func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String)
 }
 
 class BudgetDetailPresenter: BasePresenter {
@@ -37,6 +38,8 @@ class BudgetDetailPresenter: BasePresenter {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.budgetDetailInteraction.delegate = self
+        
         self.delegate?.showPage(title: self.budgetDetailInteraction.budget.name)
         self.delegate?.updateCurrentMonthDate(UtilityFormatter.yearMonthFormatter.string(from: Date()))
         self.configureColors()
@@ -49,7 +52,7 @@ class BudgetDetailPresenter: BasePresenter {
     private func configureColors() {
         let rangeLength = 1.0 / Double(self.colors.count)
         
-        for i in 0..<colors.count {
+        for i in 0..<self.colors.count {
             let start = rangeLength * Double(i)
             let end = rangeLength * Double(i + 1)
             
@@ -57,7 +60,7 @@ class BudgetDetailPresenter: BasePresenter {
         }
     }
     
-    private func updateTotalSpentExpensesColor() {
+    fileprivate func updateTotalSpentExpensesColor() {
         let budget = self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0
         
         let totalExpenses = self.budgetDetailInteraction.totalExpenses()
@@ -73,21 +76,21 @@ class BudgetDetailPresenter: BasePresenter {
         }
         
         let percent = totalExpenses / budget
-        let percentColor = Double(colors.count) * percent
+        let percentColor = Double(self.colors.count) * percent
         let percentColorIndex = Int(floor(percentColor))
         
         if percentColorIndex == 0 {
-            let resColor = colors[percentColorIndex]
+            let resColor = self.colors[percentColorIndex]
             self.delegate?.updateExpenseCoverColor(resColor)
         }
-        else if percentColorIndex == colors.count {
-            let resColor = colors.last
+        else if percentColorIndex >= self.colors.count {
+            let resColor = self.colors.last
             self.delegate?.updateExpenseCoverColor(resColor)
         }
         else {
-            for range in colorsRange {
+            for range in self.colorsRange {
                 if range.contains(percent) {
-                    guard let rangeIndex = colorsRange.index(of: range) else {
+                    guard let rangeIndex = self.colorsRange.index(of: range) else {
                         continue
                     }
                     
@@ -95,8 +98,8 @@ class BudgetDetailPresenter: BasePresenter {
                     let rangeLength = range.upperBound - range.lowerBound
                     let rangePercantage = dif / rangeLength
                     
-                    let fromColor = colors[rangeIndex - 1]
-                    let toColor = colors[rangeIndex]
+                    let fromColor = self.colors[rangeIndex - 1]
+                    let toColor = self.colors[rangeIndex]
                     
                     let cgiColors = fromColor.cgColor.components ?? []
                     var resCGIColors = [Float]()
@@ -119,7 +122,7 @@ class BudgetDetailPresenter: BasePresenter {
         self.delegate?.updateTotalExpense(String(total))
     }
     
-    private func configureMonthBudget() {
+    fileprivate func configureMonthBudget() {
         let month = self.budgetDetailInteraction.lastMonthLimit()
         self.delegate?.updateMonthLimit(String(month?.limit ?? 0.0))
     }
@@ -134,6 +137,30 @@ class BudgetDetailPresenter: BasePresenter {
     
     func showAllExpenses() {
         self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID)
+    }
+    
+    func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {
+        let res: ((UIAlertAction) -> Swift.Void)? = { (action) in
+            guard let text = alertController.textFields?.first?.text  else {
+                return
+            }
+            
+            let newLimit = UtilityFormatter.amount(from: text)
+            self.budgetDetailInteraction.createOrUpdateCurrentBudgetLimit(newLimit?.doubleValue ?? 0.0)
+            self.configureMonthBudget()
+            self.updateTotalSpentExpensesColor()
+        }
+        
+        return res
+    }
+    
+    func changeBudgetLimit() {
+        self.delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
+                                               message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
+                                               create: LocalisedManager.generic.create,
+                                               cancel: LocalisedManager.generic.cancel,
+                                               placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
+                                               budgetLimit: String(self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0))
     }
 }
 
@@ -192,5 +219,13 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
 extension BudgetDetailPresenter: CPTPieChartDelegate {
     func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
         
+    }
+}
+
+// MARK: - BudgetDetailInteractionDelegate
+
+extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
+    func limitChanged() {
+        self.configureMonthBudget()
     }
 }
