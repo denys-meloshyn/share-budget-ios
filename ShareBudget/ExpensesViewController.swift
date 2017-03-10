@@ -57,7 +57,11 @@ extension ExpensesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell") as? ExpenseTableViewCell
         let expense = self.fc?.object(at: indexPath)
         cell?.titleLabel?.text = expense!.name!
-        cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(from: expense!.creationDate! as Date)
+        
+        if let date = expense?.creationDate as? Date {
+            cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)
+        }
+        
         cell?.priceLabel?.text = String(expense?.price ?? 0)
         
         return cell!

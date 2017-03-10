@@ -14,7 +14,7 @@ class SyncManager {
     private static var loadingTask: URLSessionTask?
     
     private class func scheduleNextUpdate() {
-        SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(5.0), repeats: false) { (timer) in
+        SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { (timer) in
             SyncManager.loadUpdates(completion: nil)
         }
     }
@@ -70,6 +70,18 @@ class SyncManager {
             }
         }
         
+        // New or changed budgets
+        tasks += BudgetAPI.allChangedModels(completionBlock: completionBlock)
+        
+        // New or changed budget limits
+        tasks += BudgetLimitAPI.allChangedModels(completionBlock: completionBlock)
+        
+        // New or changed categories
+        tasks += CategoryAPI.allChangedModels(completionBlock: completionBlock)
+        
+        // New or changed expenses
+        tasks += ExpenseAPI.allChangedModels(completionBlock: completionBlock)
+        
         // Load all updates for 'User'
         task = BaseAPILoadUpdatesTask(resource: "user", entity: UserAPI.self, completionBlock: completionBlock)
         tasks.append(task)
@@ -92,17 +104,7 @@ class SyncManager {
         
         // -----------------
         
-        // New or changed budgets
-        tasks += BudgetAPI.allChangedModels(completionBlock: completionBlock)
         
-        // New or changed budget limits
-        tasks += BudgetLimitAPI.allChangedModels(completionBlock: completionBlock)
-        
-        // New or changed categories
-        tasks += CategoryAPI.allChangedModels(completionBlock: completionBlock)
-        
-        // New or changed expenses
-        tasks += ExpenseAPI.allChangedModels(completionBlock: completionBlock)
         
         if tasks.count == 0 {
             SyncManager.scheduleNextUpdate()

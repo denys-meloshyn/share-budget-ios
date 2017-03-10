@@ -71,9 +71,14 @@ class BaseAPI {
     
     class func components(_ resource: String) -> NSURLComponents {
         let components = NSURLComponents()
+        
         components.scheme = "http"
         components.host = "127.0.0.1"
         components.port = 5000
+        
+//        components.scheme = "https"
+//        components.host = "sharebudget-development.herokuapp.com"
+        
         components.path = "/" + resource
         
         return components
@@ -147,12 +152,20 @@ class BaseAPI {
         
         let managedObjectContext = ModelManager.managedObjectContext
         let model = managedObjectContext.object(with: modelID) as! BaseModel
-        let properties = model.uploadProperties()
-        for key in properties.keys {
-            request.setValue(properties[key], forHTTPHeaderField: key)
+        var properties = model.uploadProperties()
+        
+        properties[kToken] = UserCredentials.token
+        properties[kUserID] = String(UserCredentials.userID)
+        if !self.timestamp.isEmpty {
+            properties[kTimeStamp] = self.timestamp
         }
         
-        request.addUpdateCredentials(timestamp: self.timestamp)
+        let formValues = properties.map { (key, value) -> String in
+            return "\(key)=\(value)"
+        }.joined(separator: "&")
+        
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpBody = formValues.data(using: .utf8)
         
         return AsynchronousURLConnection.create(request, completion: { (data, response, error) -> (Void) in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)

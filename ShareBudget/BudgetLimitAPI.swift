@@ -56,7 +56,7 @@ class BudgetLimitAPI: BaseAPI {
         for i in 0..<sections.count {
             let section = sections[i]
             for j in 0..<section.numberOfObjects {
-                let indexPath = IndexPath(row: i, section: j)
+                let indexPath = IndexPath(row: j, section: i)
                 guard let model = fetchedResultsController?.object(at: indexPath) as? BudgetLimit else {
                     continue
                 }
