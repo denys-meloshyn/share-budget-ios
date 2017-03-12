@@ -21,6 +21,10 @@ public class Budget: BaseModel {
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
+        if let modelID = self.modelID {
+            result[kGroupID] = String(modelID.intValue)
+        }
+        
         if let name = self.name {
             result[kName] = name
         }

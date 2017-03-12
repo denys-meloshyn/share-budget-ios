@@ -25,6 +25,10 @@ public class BudgetLimit: BaseModel {
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
+        if let modelID = self.modelID {
+            result[kBudgetLimitID] = String(modelID.intValue)
+        }
+        
         if let date = self.date as? Date {
             result[kDate] = UtilityFormatter.string(from: date)
         }

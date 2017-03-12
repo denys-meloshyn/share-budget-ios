@@ -21,6 +21,7 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
 class BudgetDetailPresenter: BasePresenter {
     weak var delegate: BudgetDetailPresenterDelegate?
     
+    fileprivate var selectedSlice: UInt?
     private var colorsRange = [Range<Double>]()
     private let colors = [UIColor.green, UIColor.yellow, UIColor.red]
     
@@ -196,6 +197,10 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
             return nil
         }
         
+        if self.selectedSlice != record {
+            return nil
+        }
+        
         let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
         
         if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
@@ -220,7 +225,14 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
 
 extension BudgetDetailPresenter: CPTPieChartDelegate {
     func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
+        if self.selectedSlice == idx {
+            self.selectedSlice = nil
+        }
+        else {
+            self.selectedSlice = idx
+        }
         
+        self.delegate?.updateChart()
     }
 }
 

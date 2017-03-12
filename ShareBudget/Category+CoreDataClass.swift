@@ -30,6 +30,10 @@ public class Category: BaseModel {
             result[kName] = name
         }
         
+        if let categoryID = self.modelID {
+            result[kCategoryID] = String(categoryID.intValue)
+        }
+        
         if let groupID = self.budget?.modelID {
             result[kGroupID] = String(groupID.intValue)
         }
