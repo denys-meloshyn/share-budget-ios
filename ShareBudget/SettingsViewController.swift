@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logout() {
         UserCredentials.logout()
+        ModelManager.dropAllEntities()
         
         if let loginViewControler = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationViewController") {
             UIApplication.shared.delegate?.window??.rootViewController = loginViewControler
@@ -26,5 +27,8 @@ class SettingsViewController: UIViewController {
     @IBAction func reset() {
         CategoryAPI.timestamp = ""
         ExpenseAPI.timestamp = ""
+        BudgetAPI.timestamp = ""
+        BudgetLimitAPI.timestamp = ""
+        UserAPI.timestamp = ""
     }
 }

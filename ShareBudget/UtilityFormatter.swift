@@ -40,6 +40,15 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    class var pareseDateFormatter: DateFormatter {
+        let dateFormatter = DateFormatter()
+        let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = enUSPosixLocale as Locale!
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        return dateFormatter
+    }
+    
     class func iso8601Date(from date: String) -> Date? {
         return self.iso8601DateFormatter.date(from: date)
     }

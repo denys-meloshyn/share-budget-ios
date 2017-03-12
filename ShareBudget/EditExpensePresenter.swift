@@ -88,7 +88,7 @@ class EditExpensePresenter: BasePresenter {
             
         case .price:
             let price = NSNumber(value: self.expenseInteraction.expense.price)
-            if price.doubleValue > 0.0 {
+            if price.doubleValue >= 0.0 {
                 formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
             }
             

@@ -76,7 +76,41 @@ class ModelManager {
         }
     }
     
+    private class func dropEntity(_ entity: BaseModel.Type) {
+        let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
+        fetchRequest.includesPropertyValues = false
+        
+        let sortDescriptor = NSSortDescriptor(key: "modelID", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let managedObjectContext = ModelManager.managedObjectContext
+        let fetchController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchController.performFetch()
+        }
+        catch {
+            XCGLogger.error("Error drop entity \(entity) \(error)")
+        }
+        
+        let sections = fetchController.sections ?? []
+        for sectionIndex in 0..<sections.count {
+            let section = sections[sectionIndex]
+            for rowIndex in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: rowIndex, section: sectionIndex)
+                let model = fetchController.object(at: indexPath)
+                managedObjectContext.delete(model)
+            }
+        }
+        
+        ModelManager.saveContext(managedObjectContext)
+    }
+    
     // MARK: - Public methods
+    
+    class func dropAllEntities() {
+        ModelManager.dropEntity(BaseModel.self)
+    }
     
     class var managedObjectContext:NSManagedObjectContext {
         return self.persistentContainer.viewContext

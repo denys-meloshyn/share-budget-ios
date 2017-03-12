@@ -42,7 +42,7 @@ public class Expense: BaseModel {
         }
         
         if let date = dict[kCreationDate] as? String {
-            self.creationDate = UtilityFormatter.iso8601Date(from: date) as NSDate?
+            self.creationDate = UtilityFormatter.pareseDateFormatter.date(from: date) as NSDate?
         }
         
         self.name = dict[kName] as? String

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import XCGLogger
 
-class ExpensesViewController: UIViewController {
+class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelegate {
     var budgetID: NSManagedObjectID?
     private let managedObjectContext = ModelManager.managedObjectContext
     var fc: NSFetchedResultsController<Expense>?
@@ -23,6 +23,7 @@ class ExpensesViewController: UIViewController {
         self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.estimatedRowHeight = 60.0
         self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
+        self.fc?.delegate = self
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
         
         do {
@@ -31,6 +32,10 @@ class ExpensesViewController: UIViewController {
         catch {
             
         }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView?.reloadData()
     }
 }
 
@@ -56,7 +61,15 @@ extension ExpensesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell") as? ExpenseTableViewCell
         let expense = self.fc?.object(at: indexPath)
-        cell?.titleLabel?.text = expense!.name!
+        
+        var items = [String]()
+        if let modelID = expense?.modelID {
+            items.append("#\(modelID)")
+        }
+        if let name = expense?.name {
+            items.append(name)
+        }
+        cell?.titleLabel?.text = items.joined(separator: " ")
         
         if let date = expense?.creationDate as? Date {
             cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)

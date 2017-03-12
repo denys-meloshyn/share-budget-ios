@@ -104,8 +104,6 @@ class SyncManager {
         
         // -----------------
         
-        
-        
         if tasks.count == 0 {
             SyncManager.scheduleNextUpdate()
         }
