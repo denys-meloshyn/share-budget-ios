@@ -64,6 +64,7 @@
 		575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
 		575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
 		575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
+		576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
 		578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
@@ -181,6 +182,7 @@
 		575A22651E4D0189004825C2 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		575A22671E4D01A7004825C2 /* ValidationTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationTextField.xib; sourceTree = "<group>"; };
 		575A226B1E508FCA004825C2 /* UtilityFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFormatter.swift; sourceTree = "<group>"; };
+		576424B61E79E4CC000B595E /* NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		578A04D01E5256B500330DCD /* ExpenseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseAPI.swift; sourceTree = "<group>"; };
@@ -329,12 +331,13 @@
 			isa = PBXGroup;
 			children = (
 				573F59D01E295D4900AEA72A /* Constants.swift */,
-				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
+				57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */,
 				578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */,
+				576424B61E79E4CC000B595E /* NetworkIndicator.swift */,
 				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
+				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
-				57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
 				573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */,
 				573F5A101E2C180400AEA72A /* Category+CoreDataClass.swift in Sources */,
+				576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */,
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,

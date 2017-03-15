@@ -22,6 +22,8 @@ class AsynchronousURLConnection {
     
     class func run(_ request: URLRequest, completion: APICompletionBlock?) -> URLSessionDataTask {
         let task = AsynchronousURLConnection.create(request, completion: completion)
+        
+        NetworkIndicator.shared.visible = true
         task.resume()
         
         return task
@@ -33,6 +35,8 @@ class AsynchronousURLConnection {
         
         XCGLogger.info("\(request.httpMethod!) \(request.url!) \(request.allHTTPHeaderFields)")
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            NetworkIndicator.shared.visible = false
+            
             if let _ = error {
                 XCGLogger.error(error)
                 

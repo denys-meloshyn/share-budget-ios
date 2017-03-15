@@ -67,6 +67,7 @@ class SyncManager {
             else {
                 SyncManager.loadingTask = tasks.first?.request()
                 SyncManager.loadingTask?.resume()
+                NetworkIndicator.shared.visible = true
             }
         }
         
@@ -110,6 +111,7 @@ class SyncManager {
         else {
             SyncManager.loadingTask = tasks.first?.request()
             SyncManager.loadingTask?.resume()
+            NetworkIndicator.shared.visible = true
         }
     }
     
