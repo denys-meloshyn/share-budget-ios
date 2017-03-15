@@ -131,7 +131,7 @@ class BaseAPI {
                 self.timestamp = timestamp
                 let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
                 self.parseUpdates(items: results, in: managedObjectContext)
-                ModelManager.saveChildren(managedObjectContext)
+                ModelManager.saveChildren(managedObjectContext, block: nil)
             }
             
             completion?(nil, .none)
@@ -208,9 +208,9 @@ class BaseAPI {
             let model = managedObjectContext.object(with: modelID) as! BaseModel
             model.isChanged = false
             model.configureModelID(dict: result, for: self.modelKeyID())
-            ModelManager.saveChildren(managedObjectContext)
-            
-            completion?(nil, .none)
+            ModelManager.saveChildren(managedObjectContext, block: {
+                completion?(nil, .none)
+            })
         })
     }
     

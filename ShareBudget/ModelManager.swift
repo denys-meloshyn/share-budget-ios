@@ -61,7 +61,7 @@ class ModelManager {
         }
     }
     
-    class func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext) {
+    class func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext, block: (() -> Swift.Void)?) {
         guard let parentManagedObjectContext = childrenManagedObjectContext.parent else {
             XCGLogger.error("Parent managed object context is missed")
             return
@@ -72,6 +72,8 @@ class ModelManager {
             
             parentManagedObjectContext.perform({() -> Void in
                 ModelManager.saveContext(parentManagedObjectContext)
+                
+                block?()
             })
         }
     }

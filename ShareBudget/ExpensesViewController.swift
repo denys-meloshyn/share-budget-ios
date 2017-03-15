@@ -21,7 +21,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         super.viewDidLoad()
 
         self.tableView?.rowHeight = UITableViewAutomaticDimension
-        self.tableView?.estimatedRowHeight = 60.0
+        self.tableView?.estimatedRowHeight = 80.0
         self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
         self.fc?.delegate = self
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
@@ -72,7 +72,16 @@ extension ExpensesViewController: UITableViewDataSource {
         cell?.titleLabel?.text = items.joined(separator: " ")
         
         if let date = expense?.creationDate as? Date {
-            cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)
+            items.removeAll()
+            if let date = UtilityFormatter.expenseFormatter.string(for: date) {
+                items += [date]
+            }
+            
+            if let name = expense?.category?.name {
+                items += [name]
+            }
+            
+            cell?.dateLabel?.text = items.joined(separator: "\n")
         }
         
         cell?.priceLabel?.text = String(expense?.price ?? 0)

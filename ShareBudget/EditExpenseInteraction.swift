@@ -40,7 +40,7 @@ class EditExpenseInteraction: BaseInteraction {
     
     func save() {
         self.expense.isChanged = true
-        ModelManager.saveChildren(self.managedObjectContext)
+        ModelManager.saveChildren(self.managedObjectContext, block: nil)
     }
     
     func updateCategory(_ categoryID: NSManagedObjectID) {
