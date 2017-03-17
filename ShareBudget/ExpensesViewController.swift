@@ -63,13 +63,7 @@ extension ExpensesViewController: UITableViewDataSource {
         let expense = self.fc?.object(at: indexPath)
         
         var items = [String]()
-        if let modelID = expense?.modelID {
-            items.append("#\(modelID)")
-        }
-        if let name = expense?.name {
-            items.append(name)
-        }
-        cell?.titleLabel?.text = items.joined(separator: " ")
+        cell?.titleLabel?.text = expense?.name
         
         if let date = expense?.creationDate as? Date {
             items.removeAll()

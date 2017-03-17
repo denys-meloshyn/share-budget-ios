@@ -62,6 +62,7 @@ class RightTextFieldTableViewCell: UITableViewCell {
             resTitle = title
             resValue = value
             resPlaceholder = placeholder
+            self.textField?.autocapitalizationType = .words
             self.listenTextFieldChanges()
             
         case let .notEdited(title, value, placeholder):
@@ -77,10 +78,8 @@ class RightTextFieldTableViewCell: UITableViewCell {
             resPlaceholder = placeholder
             
             self.datePicker.addTarget(self, action: #selector(RightTextFieldTableViewCell.dateChanged), for: .valueChanged)
-            self.datePicker.datePickerMode = .date
-            if let date = date {
-                self.datePicker.date = date
-            }
+            self.datePicker.datePickerMode = .dateAndTime
+            self.datePicker.date = date ?? Date()
             self.textField?.inputView = self.datePicker
             self.addDateToolBar()
             
