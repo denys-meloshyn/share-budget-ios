@@ -132,13 +132,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCl-xr-C1W">
-                                                    <rect key="frame" x="58" y="19" width="254" height="21"/>
+                                                    <rect key="frame" x="65" y="19" width="240" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bu2-bY-ZRa">
-                                                    <rect key="frame" x="8" y="4" width="42" height="50"/>
+                                                    <rect key="frame" x="15" y="4" width="42" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb4-zE-5U2">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="29"/>
@@ -166,8 +166,8 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Bu2-bY-ZRa" firstAttribute="leading" secondItem="QFX-Mr-kS7" secondAttribute="leading" constant="8" id="BEy-q8-mQS"/>
-                                                <constraint firstAttribute="trailing" secondItem="YCl-xr-C1W" secondAttribute="trailing" constant="8" id="GTv-Pj-hb7"/>
+                                                <constraint firstItem="Bu2-bY-ZRa" firstAttribute="leading" secondItem="QFX-Mr-kS7" secondAttribute="leading" constant="15" id="BEy-q8-mQS"/>
+                                                <constraint firstAttribute="trailing" secondItem="YCl-xr-C1W" secondAttribute="trailing" constant="15" id="GTv-Pj-hb7"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bu2-bY-ZRa" secondAttribute="bottom" constant="5" id="NGt-c6-ML4"/>
                                                 <constraint firstItem="Bu2-bY-ZRa" firstAttribute="top" secondItem="QFX-Mr-kS7" secondAttribute="top" constant="4" id="UQm-ud-BVB"/>
                                                 <constraint firstItem="YCl-xr-C1W" firstAttribute="leading" secondItem="Bu2-bY-ZRa" secondAttribute="trailing" constant="8" id="rrD-Nc-Cgw"/>
@@ -192,7 +192,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bWQ-Oc-cNh" firstAttribute="top" secondItem="gXl-7B-9Nq" secondAttribute="top" id="6q2-BK-3NJ"/>
-                            <constraint firstAttribute="bottom" secondItem="bWQ-Oc-cNh" secondAttribute="bottom" id="RFa-dF-uWV"/>
+                            <constraint firstAttribute="bottom" secondItem="bWQ-Oc-cNh" secondAttribute="bottom" id="Cm3-Qj-kFs"/>
                             <constraint firstItem="bWQ-Oc-cNh" firstAttribute="leading" secondItem="gXl-7B-9Nq" secondAttribute="leading" id="mPd-1j-XBd"/>
                             <constraint firstAttribute="trailing" secondItem="bWQ-Oc-cNh" secondAttribute="trailing" id="sSf-op-7AU"/>
                         </constraints>
@@ -582,11 +582,11 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6H7-TL-s0s" id="SK0-qz-U5j">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ofa-40-Usq">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -601,9 +601,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lao-C4-884" firstAttribute="top" secondItem="83u-Hm-gwj" secondAttribute="top" id="3YX-B5-Yn5"/>
+                            <constraint firstAttribute="bottom" secondItem="lao-C4-884" secondAttribute="bottom" id="5bT-qp-xQI"/>
                             <constraint firstAttribute="trailing" secondItem="lao-C4-884" secondAttribute="trailing" id="AAz-ff-lqO"/>
                             <constraint firstItem="lao-C4-884" firstAttribute="leading" secondItem="83u-Hm-gwj" secondAttribute="leading" id="c9G-GS-zo7"/>
-                            <constraint firstItem="NtL-Hu-AUn" firstAttribute="top" secondItem="lao-C4-884" secondAttribute="bottom" id="kbS-TT-867"/>
                         </constraints>
                     </view>
                     <connections>

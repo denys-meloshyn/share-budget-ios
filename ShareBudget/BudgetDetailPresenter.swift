@@ -7,6 +7,7 @@
 //
 
 import CorePlot
+import ChameleonFramework
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func updateChart()
@@ -22,6 +23,8 @@ class BudgetDetailPresenter: BasePresenter {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
+    fileprivate var pieChartColors = [UIColor]()
+    
     private var colorsRange = [Range<Double>]()
     private let colors = [UIColor.green, UIColor.yellow, UIColor.red]
     
@@ -45,10 +48,30 @@ class BudgetDetailPresenter: BasePresenter {
         self.delegate?.showPage(title: self.budgetDetailInteraction.budget.name)
         self.delegate?.updateCurrentMonthDate(UtilityFormatter.yearMonthFormatter.string(from: Date()))
         self.configureColors()
+        self.configurePiChartColors()
         self.configureTotalExpenses()
         self.configureMonthBudget()
         self.configureBalance()
         self.updateTotalSpentExpensesColor()
+    }
+    
+    private func configurePiChartColors() {
+        self.pieChartColors.append(UIColor.flatRed)
+        self.pieChartColors.append(UIColor.flatOrange)
+        self.pieChartColors.append(UIColor.flatYellow)
+        self.pieChartColors.append(UIColor.flatSkyBlue)
+        self.pieChartColors.append(UIColor.flatGreen)
+        self.pieChartColors.append(UIColor.flatWatermelon)
+        self.pieChartColors.append(UIColor.flatLime)
+        self.pieChartColors.append(UIColor.flatBlue)
+        self.pieChartColors.append(UIColor.flatMint)
+        self.pieChartColors.append(UIColor.flatPink)
+        self.pieChartColors.append(UIColor.flatPlum)
+        self.pieChartColors.append(UIColor.flatSand)
+        self.pieChartColors.append(UIColor.flatTeal)
+        self.pieChartColors.append(UIColor.flatMagenta)
+        self.pieChartColors.append(UIColor.flatBrown)
+        self.pieChartColors.append(UIColor.flatGray)
     }
     
     private func configureColors() {
@@ -192,29 +215,14 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
         }
     }
     
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
-        if self.budgetDetailInteraction.isEmpty() {
-            return nil
-        }
-        
-        if self.selectedSlice != record {
-            return nil
-        }
-        
-        let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
-        
-        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
-            textStyle.color = .lightGray()
-            
-            label.textStyle = textStyle
-        }
-        
-        return label
-    }
-    
     func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
         if self.budgetDetailInteraction.isEmpty() {
             return CPTFill(color: CPTColor.gray())
+        }
+        
+        let index = Int(idx)
+        if index < self.pieChartColors.count - 1 {
+            return CPTFill(color: CPTColor(cgColor: self.pieChartColors[index].cgColor))
         }
         
         return nil

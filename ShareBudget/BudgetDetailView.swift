@@ -8,6 +8,7 @@
 
 import UIKit
 import CorePlot
+import ChameleonFramework
 
 class BudgetDetailView: BaseView {
     weak var monthLabel: UILabel?
@@ -47,9 +48,7 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureBorder(for: self.budgetContainerView)
-        self.configureBorder(for: self.expenseContainerView)
-        self.configureBorder(for: self.balanceContainerView, color: UIColor.gray)
+        self.updateContrastColor(to: UIColor.black)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
@@ -80,8 +79,8 @@ class BudgetDetailView: BaseView {
         
         let width = self.chartView?.frame.width ?? 0.0
         let height = self.chartView?.frame.height ?? 0.0
-        let radius = min(width, height) * 0.4
-        let innerRadius = radius * 0.4
+        let radius = min(width, height) * 0.5
+        let innerRadius = radius * 0.5
         
         // Add pie chart
         self.piePlot = CPTPieChart(frame: .zero)
@@ -100,10 +99,22 @@ class BudgetDetailView: BaseView {
     }
     
     private func configureChartFrame() {
-        let buttonSize = self.piePlot.pieInnerRadius * 0.9 * 2
+        let buttonSize = self.piePlot.pieInnerRadius * 0.8 * 2
         self.constraintChartViewWidth?.constant = buttonSize
         self.constraintChartViewHeight?.constant = buttonSize
-        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize / 2.0
+        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize * 0.5
+    }
+    
+    fileprivate func updateContrastColor(to color: UIColor) {
+        let newColor = UIColor(contrastingBlackOrWhiteColorOn: color, isFlat: true)
+        
+        self.configureBorder(for: self.budgetContainerView, color: newColor)
+        self.configureBorder(for: self.expenseContainerView, color: newColor)
+        self.configureBorder(for: self.balanceContainerView, color: UIColor.lightGray)
+        
+        self.budgetLabel?.textColor = newColor
+        self.balanceLabel?.textColor = newColor
+        self.expenseLabel?.textColor = newColor
     }
 }
 
@@ -132,6 +143,10 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.expenseCoverView?.backgroundColor = color
+        
+        if let color = color {
+            self.updateContrastColor(to: color)
+        }
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
