@@ -246,13 +246,7 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
                 return
             }
             
-            guard let price = UtilityFormatter.amount(from: text) else {
-                let value = self.formattedTextFieldValue(for: type)
-                self.delegate?.refreshTextField(at: indexPath, with: value)
-                
-                return
-            }
-            
+            let price = UtilityFormatter.amount(from: text) ?? 0.0
             let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
             
             if roundPrice?.doubleValue == price.doubleValue {
