@@ -208,7 +208,7 @@
         <!--Item-->
         <scene sceneID="PIE-zu-7n0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oXt-4V-B5G" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oXt-4V-B5G" customClass="RotateNavigationController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Y1Y-vY-AhO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JXX-Xo-0lk">
@@ -224,10 +224,10 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="138.98050974512745"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Rotate Tab Bar Controller-->
         <scene sceneID="4Gf-q5-SXM">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g16-2X-JoY" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g16-2X-JoY" customClass="RotateTabBarController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="cMS-ke-b6f">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -616,10 +616,10 @@
             </objects>
             <point key="canvasLocation" x="4426.875" y="136.26760563380282"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Rotate Navigation Controller-->
         <scene sceneID="CaR-x0-r93">
             <objects>
-                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="dM5-2a-nhH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="dM5-2a-nhH" customClass="RotateNavigationController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i3X-IJ-Ob7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -637,7 +637,7 @@
         <!--Item-->
         <scene sceneID="NTr-aC-hJg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUI-NR-hly" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUI-NR-hly" customClass="RotateNavigationController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="yj1-pU-SR9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="anR-JR-J6m">
