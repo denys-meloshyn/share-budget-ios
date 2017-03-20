@@ -12,6 +12,8 @@ import ChameleonFramework
 
 class BudgetDetailView: BaseView {
     weak var monthLabel: UILabel?
+    weak var minusLabel: UILabel?
+    weak var equalLabel: UILabel?
     weak var budgetLabel: UILabel?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
@@ -48,7 +50,6 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateContrastColor(to: UIColor.black)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
@@ -112,9 +113,15 @@ class BudgetDetailView: BaseView {
         self.configureBorder(for: self.expenseContainerView, color: newColor)
         self.configureBorder(for: self.balanceContainerView, color: UIColor.lightGray)
         
+        self.minusLabel?.textColor = newColor
+        self.equalLabel?.textColor = newColor
+        self.monthLabel?.textColor = newColor
         self.budgetLabel?.textColor = newColor
         self.balanceLabel?.textColor = newColor
         self.expenseLabel?.textColor = newColor
+        self.budgetDescriptionLabel?.textColor = newColor
+        self.balanceDescriptionLabel?.textColor = newColor
+        self.expenseDescriptionLabel?.textColor = newColor
     }
 }
 

@@ -61,6 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         self.configureLogger()
+        self.configureAppearance()
+        
         if !UserCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
@@ -95,6 +97,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         ModelManager.saveContext(ModelManager.managedObjectContext)
+    }
+    
+    private func configureAppearance() {
+        UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().barTintColor = Constants.defaultApperanceColor
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.selected)
+        
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        
+//        UITextField.appearance().tintColor = Constants.defaultActiveColor
     }
 }
 

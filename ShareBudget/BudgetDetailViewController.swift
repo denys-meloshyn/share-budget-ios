@@ -12,24 +12,26 @@ import CoreData
 import XCGLogger
 
 class BudgetDetailViewController: BaseViewController {
-    @IBOutlet var monthLabel: UILabel?
-    @IBOutlet var budgetLabel: UILabel?
-    @IBOutlet var balanceLabel: UILabel?
-    @IBOutlet var expenseLabel: UILabel?
-    @IBOutlet var budgetButton: UIButton?
-    @IBOutlet var expenseButton: UIButton?
-    @IBOutlet var expenseCoverView: UIView?
-    @IBOutlet var budgetContainerView: UIView?
-    @IBOutlet var expenseContainerView: UIView?
-    @IBOutlet var balanceContainerView: UIView?
-    @IBOutlet var createExpenseButton: UIButton?
-    @IBOutlet var chartView: CPTGraphHostingView?
-    @IBOutlet var budgetDescriptionLabel: UILabel?
-    @IBOutlet var balanceDescriptionLabel: UILabel?
-    @IBOutlet var expenseDescriptionLabel: UILabel?
-    @IBOutlet var createNewExpenseContainerView: UIView?
-    @IBOutlet var constraintChartViewWidth: NSLayoutConstraint?
-    @IBOutlet var constraintChartViewHeight: NSLayoutConstraint?
+    @IBOutlet private var monthLabel: UILabel?
+    @IBOutlet private var minusLabel: UILabel?
+    @IBOutlet private var equalLabel: UILabel?
+    @IBOutlet private var budgetLabel: UILabel?
+    @IBOutlet private var balanceLabel: UILabel?
+    @IBOutlet private var expenseLabel: UILabel?
+    @IBOutlet private var budgetButton: UIButton?
+    @IBOutlet private var expenseButton: UIButton?
+    @IBOutlet private var expenseCoverView: UIView?
+    @IBOutlet private var budgetContainerView: UIView?
+    @IBOutlet private var expenseContainerView: UIView?
+    @IBOutlet private var balanceContainerView: UIView?
+    @IBOutlet private var createExpenseButton: UIButton?
+    @IBOutlet private var chartView: CPTGraphHostingView?
+    @IBOutlet private var budgetDescriptionLabel: UILabel?
+    @IBOutlet private var balanceDescriptionLabel: UILabel?
+    @IBOutlet private var expenseDescriptionLabel: UILabel?
+    @IBOutlet private var createNewExpenseContainerView: UIView?
+    @IBOutlet private var constraintChartViewWidth: NSLayoutConstraint?
+    @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
     
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
@@ -52,6 +54,8 @@ class BudgetDetailViewController: BaseViewController {
         }
         
         view.chartView = self.chartView
+        view.minusLabel = self.minusLabel
+        view.equalLabel = self.equalLabel
         view.monthLabel = self.monthLabel
         view.budgetLabel = self.budgetLabel
         view.balanceLabel = self.balanceLabel

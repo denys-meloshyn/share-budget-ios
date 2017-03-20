@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 let kDate = "date"
 let kName = "name"
@@ -54,4 +55,8 @@ enum ErrorTypeAPI {
     case tokenExpired
     case tokenNotValid
     case unknown
+}
+
+class Constants {
+    static let defaultApperanceColor = UIColor(hexString: "#009688")
 }
