@@ -58,5 +58,5 @@ enum ErrorTypeAPI {
 }
 
 class Constants {
-    static let defaultApperanceColor = UIColor(hexString: "#009688")
+    static let defaultApperanceColor = UIColor(hexString: "#4CAF50")
 }

@@ -447,7 +447,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htu-3V-uzb" customClass="CPTGraphHostingView">
                                         <rect key="frame" x="8" y="8" width="304" height="319"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DdS-tK-XCf">
                                         <rect key="frame" x="125" y="132.5" width="70" height="70"/>
@@ -475,7 +475,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="htu-3V-uzb" secondAttribute="trailing" constant="8" id="8gB-Ci-CAc"/>
                                     <constraint firstItem="DdS-tK-XCf" firstAttribute="centerY" secondItem="Cbx-g2-cBC" secondAttribute="centerY" id="Kr6-yQ-ZO4"/>

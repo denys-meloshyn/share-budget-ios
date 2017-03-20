@@ -26,7 +26,7 @@ class BudgetDetailPresenter: BasePresenter {
     fileprivate var pieChartColors = [UIColor]()
     
     private var colorsRange = [Range<Double>]()
-    private let colors = [UIColor.green, UIColor.yellow, UIColor.red]
+    private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
     
     fileprivate var budgetDetailInteraction: BudgetDetailInteraction {
         get {

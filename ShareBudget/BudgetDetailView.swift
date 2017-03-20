@@ -50,6 +50,7 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.viewController?.view.backgroundColor = UIColor(hexString: "#F5F5F5")
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
@@ -68,6 +69,8 @@ class BudgetDetailView: BaseView {
         self.pieGraph = CPTXYGraph(frame: .zero)
         self.pieGraph?.apply(CPTTheme(named: .plainWhiteTheme))
         self.pieGraph?.axisSet = nil
+        self.pieGraph?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
+        self.pieGraph?.plotAreaFrame?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
         self.pieGraph?.plotAreaFrame?.borderLineStyle = nil
         
         // Paddings
