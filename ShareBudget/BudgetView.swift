@@ -34,6 +34,12 @@ class BudgetView: BaseView {
         
         self.budgetPresenter.delegate = self
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
+    }
 }
 
 extension BudgetView: BudgetPresenterDelegate {
@@ -53,6 +59,7 @@ extension BudgetView: BudgetPresenterDelegate {
     
     func createBudgetCell(with title: String?) -> UITableViewCell? {
         let cell = self.tableView?.dequeueReusableCell(withIdentifier: self.tableBudgetCellReuseIdentifier)
+        cell?.backgroundColor = UIColor.clear
         cell?.textLabel?.text = title
         
         return cell

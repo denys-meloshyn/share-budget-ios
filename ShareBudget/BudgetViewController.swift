@@ -28,6 +28,7 @@ class BudgetViewController: BaseViewController {
         }
         
         self.linkStoryboardViews(to: view)
+        self.viperView?.viewDidLoad()
     }
     
     private func linkStoryboardViews(to view: BudgetView) {

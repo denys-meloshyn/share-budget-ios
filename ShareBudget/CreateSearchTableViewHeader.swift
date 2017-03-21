@@ -39,7 +39,7 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.backgroundColor = UIColor.white
+        self.contentView.backgroundColor = Constants.defaultBackgroundColor
     }
     
     private func showSearch() {
