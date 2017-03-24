@@ -78,6 +78,8 @@
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
+		57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
+		57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
 		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
 		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
 		57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */; };
@@ -202,6 +204,8 @@
 		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
 		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewHeader.swift; sourceTree = "<group>"; };
+		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 		57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetRouter.swift; sourceTree = "<group>"; };
@@ -428,6 +432,7 @@
 				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
 				575A22591E477234004825C2 /* EditExpenseView.swift */,
 				5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */,
+				57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
@@ -487,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */,
+				57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */,
 				575A22561E476CCA004825C2 /* RightTextFieldTableViewCell.xib */,
 				578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */,
 				575A22671E4D01A7004825C2 /* ValidationTextField.xib */,
@@ -635,6 +641,7 @@
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
 				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
+				57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +872,7 @@
 				573F5A111E2C180400AEA72A /* Category+CoreDataProperties.swift in Sources */,
 				573F5A151E2C180400AEA72A /* Expense+CoreDataProperties.swift in Sources */,
 				57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */,
+				57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */,
 				57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */,
 				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,

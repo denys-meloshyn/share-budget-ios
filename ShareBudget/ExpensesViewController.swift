@@ -22,6 +22,8 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
 
         self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.estimatedRowHeight = 80.0
+        self.tableView?.sectionHeaderHeight = 40.0
+        self.tableView?.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: "ExpenseTableViewHeader")
         self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
         self.fc?.delegate = self
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
@@ -52,35 +54,32 @@ extension ExpensesViewController: UITableViewDataSource {
         return sectionModel?.numberOfObjects ?? 0
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let model = self.fc!.sections![section]
-        
-        return "\(model.name) \(self.calculator!.totalExpense(for: section))"
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell") as? ExpenseTableViewCell
         let expense = self.fc?.object(at: indexPath)
         
-        var items = [String]()
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        
         cell?.titleLabel?.text = expense?.name
+        cell?.priceLabel?.text = formatter.string(from: expense?.price as NSNumber? ?? 0)
+        cell?.categoryLabel?.text = expense?.category?.name
         
         if let date = expense?.creationDate as? Date {
-            items.removeAll()
-            if let date = UtilityFormatter.expenseFormatter.string(for: date) {
-                items += [date]
-            }
-            
-            if let name = expense?.category?.name {
-                items += [name]
-            }
-            
-            cell?.dateLabel?.text = items.joined(separator: "\n")
+            cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)
         }
         
-        cell?.priceLabel?.text = String(expense?.price ?? 0)
-        
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpenseTableViewHeader") as? ExpenseTableViewHeader
+        
+        let model = self.fc!.sections![section]
+        headerView?.monthLabel?.text = model.name
+        headerView?.monthExpensesLabel?.text = String(self.calculator?.totalExpense(for: section) ?? 0.0)
+        
+        return headerView
     }
 }
 
