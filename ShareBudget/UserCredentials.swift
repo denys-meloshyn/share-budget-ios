@@ -58,16 +58,24 @@ class UserCredentials {
         }
     }
     
+    class func resetTimeStamps() {
+        CategoryAPI.timestamp = ""
+        ExpenseAPI.timestamp = ""
+        BudgetAPI.timestamp = ""
+        BudgetLimitAPI.timestamp = ""
+        UserAPI.timestamp = ""
+    }
+    
     class var isLoggedIn: Bool {
         return UserCredentials.userID >= 0
     }
     
     class func logout() {
-        UserCredentials.token = ""
-        UserCredentials.userID = -1
-        UserCredentials.password = ""
+        self.token = ""
+        self.email = ""
+        self.userID = -1
+        self.password = ""
         
-        UserAPI.timestamp = ""
-        BudgetAPI.timestamp = ""
+        self.resetTimeStamps()
     }
 }

@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logout() {
+        
         UserCredentials.logout()
         ModelManager.dropAllEntities()
         
@@ -25,10 +26,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func reset() {
-        CategoryAPI.timestamp = ""
-        ExpenseAPI.timestamp = ""
-        BudgetAPI.timestamp = ""
-        BudgetLimitAPI.timestamp = ""
-        UserAPI.timestamp = ""
+        UserCredentials.resetTimeStamps()
     }
 }
