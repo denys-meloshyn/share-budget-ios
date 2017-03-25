@@ -215,6 +215,18 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
         }
     }
     
+    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? { 
+        let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
+        
+        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
+            textStyle.color = CPTColor.white()
+            
+            label.textStyle = textStyle
+        }
+        
+        return label
+    }
+    
     func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
         if self.budgetDetailInteraction.isEmpty() {
             return CPTFill(color: CPTColor.gray())

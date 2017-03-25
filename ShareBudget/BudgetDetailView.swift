@@ -55,6 +55,10 @@ class BudgetDetailView: BaseView {
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         
+        self.configureBorder(for: self.budgetContainerView, color: .white)
+        self.configureBorder(for: self.expenseContainerView, color: .white)
+        self.configureBorder(for: self.balanceContainerView, color: .lightGray)
+        
         self.configureChart()
     }
     
@@ -93,6 +97,8 @@ class BudgetDetailView: BaseView {
         self.piePlot.identifier = NSString.init(string: "Pie Chart 1")
         self.piePlot.startAngle = CGFloat(M_PI_4)
         self.piePlot.sliceDirection = .clockwise
+        self.piePlot.labelOffset = -60.0
+        self.piePlot.labelRotationRelativeToRadius = true
         
         self.piePlot.delegate = self.budgetDetailPresenter
         self.piePlot.dataSource = self.budgetDetailPresenter
@@ -153,10 +159,6 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.expenseCoverView?.backgroundColor = color
-        
-        if let color = color {
-            self.updateContrastColor(to: color)
-        }
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {

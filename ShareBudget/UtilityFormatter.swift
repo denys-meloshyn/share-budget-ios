@@ -11,7 +11,7 @@ import UIKit
 class UtilityFormatter: NSObject {
     class var yearMonthFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MMM"
+        dateFormatter.dateFormat = "yyyy MMMM"
         
         return dateFormatter
     }
