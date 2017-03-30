@@ -100,10 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
+        UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().barTintColor = Constants.defaultApperanceColor
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.selected)
         
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]

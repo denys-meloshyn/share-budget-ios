@@ -55,9 +55,9 @@ class BudgetDetailView: BaseView {
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         
-        self.configureBorder(for: self.budgetContainerView, color: .white)
-        self.configureBorder(for: self.expenseContainerView, color: .white)
-        self.configureBorder(for: self.balanceContainerView, color: .lightGray)
+        self.configureBorder(for: self.budgetContainerView, color: Constants.defaultActionColor)
+        self.configureBorder(for: self.expenseContainerView, color: Constants.defaultActionColor)
+        self.configureBorder(for: self.balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
         
         self.configureChart()
     }

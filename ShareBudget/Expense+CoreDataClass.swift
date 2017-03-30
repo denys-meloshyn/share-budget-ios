@@ -17,7 +17,10 @@ public class Expense: BaseModel {
         if key == "creationDate" {
             willAccessValue(forKey: "creationDate")
             if let creationDate = self.creationDate as? Date {
-                let section = UtilityFormatter.yearMonthFormatter.string(from: creationDate)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy MM"
+                
+                let section = dateFormatter.string(from: creationDate)
                 
                 willChangeValue(forKey: "sectionCreationDate")
                 self.sectionCreationDate = section
