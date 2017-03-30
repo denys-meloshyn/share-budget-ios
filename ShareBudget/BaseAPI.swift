@@ -104,7 +104,7 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                XCGLogger.error("Error: \(errorType) message: \(data)")
+                XCGLogger.error("Error: \(errorType) message: \(String(describing: data))")
                 completion?(data, errorType)
                 return
             }
@@ -186,7 +186,7 @@ class BaseAPI {
                     return
                 }
                 
-                XCGLogger.error("Error: '\(errorType)' message: \(data)")
+                XCGLogger.error("Error: '\(errorType)' message: \(String(describing: data))")
                 
                 completion?(data, errorType)
                 return

@@ -65,7 +65,7 @@ extension ExpensesViewController: UITableViewDataSource {
         cell?.priceLabel?.text = formatter.string(from: expense?.price as NSNumber? ?? 0)
         cell?.categoryLabel?.text = expense?.category?.name
         
-        if let date = expense?.creationDate as? Date {
+        if let date = expense?.creationDate as Date? {
             cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)
         }
         

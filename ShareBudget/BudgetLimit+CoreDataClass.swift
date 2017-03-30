@@ -29,7 +29,7 @@ public class BudgetLimit: BaseModel {
             result[kBudgetLimitID] = String(modelID.intValue)
         }
         
-        if let date = self.date as? Date {
+        if let date = self.date as Date? {
             result[kDate] = UtilityFormatter.string(from: date)
         }
         

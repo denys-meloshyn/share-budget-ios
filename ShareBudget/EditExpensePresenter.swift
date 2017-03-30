@@ -81,7 +81,7 @@ class EditExpensePresenter: BasePresenter {
         
         switch type {
         case .date:
-            let creationDate = self.expenseInteraction.expense.creationDate as? Date
+            let creationDate = self.expenseInteraction.expense.creationDate as Date?
             if let date = creationDate {
                 formattedValue = UtilityFormatter.string(from: date)
             }
@@ -149,7 +149,7 @@ extension EditExpensePresenter: UITableViewDataSource {
             input = .notEdited(title: title, value: formattedValue, placeholder: placeholder)
             
         case .date:
-            let creationDate = self.expenseInteraction.expense.creationDate as? Date
+            let creationDate = self.expenseInteraction.expense.creationDate as Date?
             
             input = .date(title: title, formattedDate: formattedValue, date: creationDate, placeholder: placeholder)
             

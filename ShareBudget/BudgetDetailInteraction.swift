@@ -69,7 +69,7 @@ class BudgetDetailInteraction: BaseInteraction {
     func lastMonthLimit() -> BudgetLimit? {
         let limits = self.budget.limits?.allObjects as? [BudgetLimit] ?? []
         let sort = limits.sorted(by: { (first, second) -> Bool in
-            guard let firstDate = first.date as? Date, let secondDate = second.date as? Date else {
+            guard let firstDate = first.date as Date?, let secondDate = second.date as Date? else {
                 return false
             }
             

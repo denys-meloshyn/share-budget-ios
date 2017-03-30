@@ -95,7 +95,7 @@ class BudgetDetailView: BaseView {
         self.piePlot.pieRadius = radius
         self.piePlot.pieInnerRadius = innerRadius
         self.piePlot.identifier = NSString.init(string: "Pie Chart 1")
-        self.piePlot.startAngle = CGFloat(M_PI_4)
+        self.piePlot.startAngle = CGFloat(Double.pi / 4)
         self.piePlot.sliceDirection = .clockwise
         self.piePlot.labelOffset = -60.0
         self.piePlot.labelRotationRelativeToRadius = true

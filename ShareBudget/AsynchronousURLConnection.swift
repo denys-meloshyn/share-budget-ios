@@ -33,7 +33,7 @@ class AsynchronousURLConnection {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
-        XCGLogger.info("\(request.httpMethod!) \(request.url!) \(request.allHTTPHeaderFields)")
+        XCGLogger.info("\(request.httpMethod!) \(request.url!) \(String(describing: request.allHTTPHeaderFields))")
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             NetworkIndicator.shared.visible = false
             

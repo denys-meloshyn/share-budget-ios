@@ -16,7 +16,7 @@ public class Expense: BaseModel {
         
         if key == "creationDate" {
             willAccessValue(forKey: "creationDate")
-            if let creationDate = self.creationDate as? Date {
+            if let creationDate = self.creationDate as Date? {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy MM"
                 
@@ -73,7 +73,7 @@ public class Expense: BaseModel {
             result[kCategoryID] = String(categoryID.intValue)
         }
         
-        if let creationDate = self.creationDate as? Date {
+        if let creationDate = self.creationDate as Date? {
             result[kCreationDate] = UtilityFormatter.iso8601DateFormatter.string(from: creationDate)
         }
         
