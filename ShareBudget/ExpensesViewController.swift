@@ -75,8 +75,13 @@ extension ExpensesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpenseTableViewHeader") as? ExpenseTableViewHeader
         
-        let expense = self.fc?.fetchedObjects?.first
+        let sectionModel = self.fc?.sections?[section]
+        var expense: Expense?
+        if sectionModel?.numberOfObjects ?? 0 > 0 {
+            expense = self.fc?.object(at: IndexPath(row: 0, section: section))
+        }
         let creationDate = expense?.creationDate ?? NSDate()
+        
         headerView?.monthLabel?.text = UtilityFormatter.yearMonthFormatter.string(from: creationDate as Date)
         
         headerView?.monthExpensesLabel?.text = String(self.calculator?.totalExpense(for: section) ?? 0.0)
