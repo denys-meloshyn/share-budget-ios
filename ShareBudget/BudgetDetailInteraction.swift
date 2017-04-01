@@ -101,8 +101,25 @@ class BudgetDetailInteraction: BaseInteraction {
             self.budget.addToLimits(budgetLimit!)
         }
         
-        budgetLimit?.limit = limit
-        budgetLimit?.isChanged = true
+        guard var newLimit = budgetLimit else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        let units = Set<Calendar.Component>([.year, .month])
+        var currentComponents = calendar.dateComponents(units, from: Date())
+        var lastMonthComponents = calendar.dateComponents(units, from: (newLimit.date as Date?) ?? Date())
+        
+        if currentComponents.year != lastMonthComponents.year || currentComponents.month != lastMonthComponents.month {
+            // We don't have budget limit for current month
+            newLimit = BudgetLimit(context: self.managedObjectContext)
+            newLimit.budget = self.budget
+            newLimit.date = NSDate()
+            self.budget.addToLimits(newLimit)
+        }
+        
+        newLimit.limit = limit
+        newLimit.isChanged = true
         
         ModelManager.saveContext(self.managedObjectContext)
     }
