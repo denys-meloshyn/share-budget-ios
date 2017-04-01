@@ -12,9 +12,11 @@ import XCGLogger
 
 class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelegate {
     var budgetID: NSManagedObjectID?
+    var categoryID: NSManagedObjectID?
     private let managedObjectContext = ModelManager.managedObjectContext
     var fc: NSFetchedResultsController<Expense>?
     var calculator: ExpenseCalculator?
+    private var category: Category?
     @IBOutlet var tableView: UITableView?
     
     override func viewDidLoad() {
@@ -24,7 +26,12 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         self.tableView?.estimatedRowHeight = 80.0
         self.tableView?.sectionHeaderHeight = 40.0
         self.tableView?.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: "ExpenseTableViewHeader")
-        self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!)
+        
+        if let categoryID = self.categoryID {
+            self.category = self.managedObjectContext.object(with: categoryID) as? Category
+        }
+        
+        self.fc = ModelManager.expenseFetchController(self.managedObjectContext, for: self.budgetID!, categoryID: category?.objectID)
         self.fc?.delegate = self
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
         

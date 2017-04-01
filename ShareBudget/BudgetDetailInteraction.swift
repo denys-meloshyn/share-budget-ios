@@ -56,6 +56,12 @@ class BudgetDetailInteraction: BaseInteraction {
         return sections.count
     }
     
+    func category(for section: Int) -> Category? {
+        let expense = self.fetchedResultsController.object(at: IndexPath(row: 0, section: section))
+        
+        return expense.category
+    }
+    
     func categoryTitle(for section: Int) -> String {
         let section = self.fetchedResultsController.sections![section]
         

@@ -34,7 +34,7 @@ class BudgetDetailPresenter: BasePresenter {
         }
     }
     
-    private var budgetDetailRouter: BudgetDetailRouter {
+    fileprivate var budgetDetailRouter: BudgetDetailRouter {
         get {
             return self.router as! BudgetDetailRouter
         }
@@ -253,6 +253,7 @@ extension BudgetDetailPresenter: CPTPieChartDelegate {
         }
         
         self.delegate?.updateChart()
+        self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID, categoryID: self.budgetDetailInteraction.category(for: Int(idx))?.objectID)
     }
 }
 

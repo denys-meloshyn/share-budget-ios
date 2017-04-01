@@ -225,12 +225,20 @@ class ModelManager {
         return fetchedResultsController
     }
     
-    class func expenseFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<Expense> {
+    class func expenseFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID, categoryID: NSManagedObjectID? = nil) -> NSFetchedResultsController<Expense> {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         fetchRequest.fetchBatchSize = 30
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO", budget)
+        let predicate: NSPredicate
+        
+        if let categoryID = categoryID {
+            let category = managedObjectContext.object(with: categoryID)
+            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO AND category == %@", budget, category)
+        } else {
+            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO", budget)
+        }
+        
         fetchRequest.predicate = predicate
         
         let sortDescriptorDate = NSSortDescriptor(key: "creationDate", ascending: false)

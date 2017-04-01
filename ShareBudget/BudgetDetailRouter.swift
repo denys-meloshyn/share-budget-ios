@@ -18,12 +18,13 @@ class BudgetDetailRouter: BaseRouter {
         self.viewController?.navigationController?.pushViewController(editExpenseViewController, animated: true)
     }
     
-    func showAllExpensesPage(with budgetID: NSManagedObjectID?) {
+    func showAllExpensesPage(with budgetID: NSManagedObjectID?, categoryID: NSManagedObjectID? = nil) {
         guard let expensesViewController = R.storyboard.main.expensesViewController() else {
             return
         }
         
         expensesViewController.budgetID = budgetID
+        expensesViewController.categoryID = categoryID
         self.viewController?.navigationController?.pushViewController(expensesViewController, animated: true)
     }
 }
