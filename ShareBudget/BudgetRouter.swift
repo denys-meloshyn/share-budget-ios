@@ -16,6 +16,7 @@ class BudgetRouter: BaseRouter {
         }
         
         budgetDetailViewController.budgetID = budgetID
+        budgetDetailViewController.hidesBottomBarWhenPushed = true
         self.viewController?.navigationController?.pushViewController(budgetDetailViewController, animated: true)
     }
 }

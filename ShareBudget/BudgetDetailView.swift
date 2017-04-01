@@ -62,6 +62,18 @@ class BudgetDetailView: BaseView {
         self.configureChart()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.changeNavigationBarColor(Constants.defaultApperanceColor)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.changeNavigationBarColor(self.expenseCoverView?.backgroundColor)
+    }
+    
     private func configureBorder(for view: UIView?, color: UIColor? = UIColor.white) {
         view?.layer.borderWidth = 1.0
         view?.layer.cornerRadius = 5.0
@@ -132,11 +144,19 @@ class BudgetDetailView: BaseView {
         self.balanceDescriptionLabel?.textColor = newColor
         self.expenseDescriptionLabel?.textColor = newColor
     }
+    
+    fileprivate func changeNavigationBarColor(_ color: UIColor?) {
+        self.viewController?.navigationController?.navigationBar.barTintColor = color
+    }
 }
 
 // MARK: - BudgetDetailPresenterDelegate
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
+    func resetNavigationBarColor(_ color: UIColor?) {
+        self.changeNavigationBarColor(color)
+    }
+    
     func updateChart() {
         self.piePlot.reloadData()
     }
@@ -159,6 +179,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.expenseCoverView?.backgroundColor = color
+        self.changeNavigationBarColor(color)
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
