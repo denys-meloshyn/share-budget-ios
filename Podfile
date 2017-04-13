@@ -14,12 +14,12 @@ target 'ShareBudget' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 
   target 'ShareBudgetTests' do
-#    inherit! :search_paths
+    inherit! :search_paths
     # Pods for testing
   end
 
   target 'ShareBudgetUITests' do
-#    inherit! :search_paths
+    inherit! :search_paths
     # Pods for testing
   end
 
