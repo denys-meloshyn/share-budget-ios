@@ -18,6 +18,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var budgetLabel: UILabel?
     @IBOutlet private var balanceLabel: UILabel?
     @IBOutlet private var expenseLabel: UILabel?
+    @IBOutlet private var animationView: UIView?
     @IBOutlet private var budgetButton: UIButton?
     @IBOutlet private var expenseButton: UIButton?
     @IBOutlet private var expenseCoverView: UIView?
@@ -32,6 +33,8 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var createNewExpenseContainerView: UIView?
     @IBOutlet private var constraintChartViewWidth: NSLayoutConstraint?
     @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
+    @IBOutlet private var constraintAnimationViewWidth: NSLayoutConstraint?
+    @IBOutlet private var constraintAnimationViewHeight: NSLayoutConstraint?
     
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
@@ -62,6 +65,7 @@ class BudgetDetailViewController: BaseViewController {
         view.budgetButton = self.budgetButton
         view.expenseLabel = self.expenseLabel
         view.expenseButton = self.expenseButton
+        view.animationView = self.animationView
         view.expenseCoverView = self.expenseCoverView
         view.createExpenseButton = self.createExpenseButton
         view.budgetContainerView = self.budgetContainerView
@@ -72,6 +76,8 @@ class BudgetDetailViewController: BaseViewController {
         view.expenseDescriptionLabel = self.expenseDescriptionLabel
         view.constraintChartViewWidth = self.constraintChartViewWidth
         view.constraintChartViewHeight = self.constraintChartViewHeight
+        view.constraintAnimationViewWidth = self.constraintAnimationViewWidth
+        view.constraintAnimationViewHeight = self.constraintAnimationViewHeight
         view.createNewExpenseContainerView = self.createNewExpenseContainerView
     }
 }

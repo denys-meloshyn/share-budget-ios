@@ -17,6 +17,7 @@ class BudgetDetailView: BaseView {
     weak var budgetLabel: UILabel?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
+    weak var animationView: UIView?
     weak var budgetButton: UIButton?
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
@@ -31,6 +32,8 @@ class BudgetDetailView: BaseView {
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?
+    weak var constraintAnimationViewWidth: NSLayoutConstraint?
+    weak var constraintAnimationViewHeight: NSLayoutConstraint?
     
     fileprivate var piePlot: CPTPieChart!
     fileprivate var pieGraph : CPTXYGraph?
@@ -60,6 +63,7 @@ class BudgetDetailView: BaseView {
         self.configureBorder(for: self.balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
         
         self.configureChart()
+        self.startAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,6 +129,22 @@ class BudgetDetailView: BaseView {
         self.constraintChartViewWidth?.constant = buttonSize
         self.constraintChartViewHeight?.constant = buttonSize
         self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize * 0.5
+        
+        self.constraintAnimationViewWidth?.constant = (self.constraintChartViewWidth?.constant ?? 0.0)
+        self.constraintAnimationViewHeight?.constant = (self.constraintChartViewHeight?.constant ?? 0.0)
+        self.animationView?.layer.cornerRadius = (self.constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
+    }
+    
+    private func startAnimation() {
+        UIView.animate(withDuration: 5.0, animations: { [weak self] in
+            self?.animationView?.alpha = 0.0
+            self?.animationView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { [weak self] (_) in
+            self?.animationView?.alpha = 1.0
+            self?.animationView?.transform = .identity
+            
+            self?.startAnimation()
+        }
     }
     
     fileprivate func updateContrastColor(to color: UIColor) {
