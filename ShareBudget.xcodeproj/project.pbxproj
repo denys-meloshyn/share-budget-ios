@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
+		387C9BF39DB217099353A353 /* Pods_ShareBudget_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
 		571041E61E8085A40060CBBA /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
@@ -100,6 +101,7 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		6360E5602B9C0063BAC95269 /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
@@ -123,7 +125,10 @@
 
 /* Begin PBXFileReference section */
 		05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
+		08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE0818D9504CBC0A255F9BF /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
@@ -227,11 +232,14 @@
 		57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPILoadUpdatesTask.swift; sourceTree = "<group>"; };
 		57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCalculator.swift; sourceTree = "<group>"; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
+		996440F76BCA58ED64367CDD /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
 		C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E64CA83F0DC801B476E750F8 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F6539CD9EF00F396291606E5 /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */,
+				6360E5602B9C0063BAC95269 /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */,
+				387C9BF39DB217099353A353 /* Pods_ShareBudget_ShareBudgetUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +282,10 @@
 				FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */,
 				DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */,
 				05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */,
+				E64CA83F0DC801B476E750F8 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */,
+				996440F76BCA58ED64367CDD /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */,
+				F6539CD9EF00F396291606E5 /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */,
+				3AE0818D9504CBC0A255F9BF /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -508,6 +522,8 @@
 				2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */,
 				C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */,
 				9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */,
+				08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */,
+				1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -690,7 +706,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */ = {
@@ -720,7 +736,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		498AA86A9EF860D635FFED82 /* [CP] Copy Pods Resources */ = {
@@ -735,7 +751,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		54E23B326E6E94E0A109CBDB /* [CP] Check Pods Manifest.lock */ = {
@@ -778,7 +794,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5E1FA8DC2DD9F00E65DF21DB /* [CP] Check Pods Manifest.lock */ = {
@@ -1104,7 +1120,7 @@
 		};
 		573F59CB1E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */;
+			baseConfigurationReference = E64CA83F0DC801B476E750F8 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1120,7 +1136,7 @@
 		};
 		573F59CC1E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */;
+			baseConfigurationReference = 996440F76BCA58ED64367CDD /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1136,7 +1152,7 @@
 		};
 		573F59CE1E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */;
+			baseConfigurationReference = F6539CD9EF00F396291606E5 /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
@@ -1151,7 +1167,7 @@
 		};
 		573F59CF1E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */;
+			baseConfigurationReference = 3AE0818D9504CBC0A255F9BF /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;

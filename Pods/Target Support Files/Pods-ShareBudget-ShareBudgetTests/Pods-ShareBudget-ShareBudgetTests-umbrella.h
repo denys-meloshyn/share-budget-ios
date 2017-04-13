@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ShareBudgetTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ShareBudgetTestsVersionString[];
+FOUNDATION_EXPORT double Pods_ShareBudget_ShareBudgetTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_ShareBudget_ShareBudgetTestsVersionString[];
 
