@@ -179,7 +179,11 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.expenseCoverView?.backgroundColor = color
-        self.changeNavigationBarColor(color)
+        
+        // View controller is visible
+        if self.viewController?.navigationController?.topViewController === self.viewController {
+            self.changeNavigationBarColor(color)
+        }
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {

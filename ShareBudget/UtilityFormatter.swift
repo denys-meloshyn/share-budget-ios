@@ -99,4 +99,15 @@ class UtilityFormatter: NSObject {
         
         return dateComponents.date!
     }
+    
+    class func lastMonthDay() -> Date {
+        let calendar = Calendar.current
+        let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second])
+        
+        var dateComponents = calendar.dateComponents(units, from: Date())
+        dateComponents.day = 1
+        dateComponents.calendar = calendar
+        
+        return dateComponents.date!
+    }
 }

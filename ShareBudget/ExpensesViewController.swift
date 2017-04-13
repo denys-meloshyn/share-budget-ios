@@ -101,6 +101,8 @@ extension ExpensesViewController: UITableViewDataSource {
 
 extension ExpensesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         if let viewController = R.storyboard.main.editExpenseViewController() {
             let expense = self.fc?.object(at: indexPath)
             

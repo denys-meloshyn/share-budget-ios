@@ -62,7 +62,7 @@ class RightTextFieldTableViewCell: UITableViewCell {
             resTitle = title
             resValue = value
             resPlaceholder = placeholder
-            self.textField?.autocapitalizationType = .words
+            self.textField?.autocapitalizationType = .sentences
             self.listenTextFieldChanges()
             
         case let .notEdited(title, value, placeholder):

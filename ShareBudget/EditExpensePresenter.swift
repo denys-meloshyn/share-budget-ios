@@ -88,7 +88,7 @@ class EditExpensePresenter: BasePresenter {
             
         case .price:
             let price = NSNumber(value: self.expenseInteraction.expense.price)
-            if price.doubleValue >= 0.0 {
+            if price.doubleValue > 0.0 {
                 formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
             }
             
@@ -107,7 +107,7 @@ class EditExpensePresenter: BasePresenter {
             return false
         }
         
-        guard let name = self.expenseInteraction.expense.name, name.characters.count > 0 else {
+        if self.expenseInteraction.expense.category == nil {
             return false
         }
         
@@ -175,6 +175,8 @@ extension EditExpensePresenter: UITableViewDataSource {
 
 extension EditExpensePresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         let type = self.items[indexPath.row]
         
         switch type {
