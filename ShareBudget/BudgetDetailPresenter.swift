@@ -215,7 +215,11 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
         }
     }
     
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? { 
+    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
+        if self.budgetDetailInteraction.isEmpty() {
+            return nil
+        }
+        
         let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
         
         if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {

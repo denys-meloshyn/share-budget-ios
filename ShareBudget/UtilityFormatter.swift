@@ -49,6 +49,12 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    class func roundToTwoSeconds(date: Date) -> Date? {
+        let roundedStr = self.pareseDateFormatter.string(from: date)
+        
+        return self.pareseDateFormatter.date(from: roundedStr)
+    }
+    
     class func iso8601Date(from date: String) -> Date? {
         return self.iso8601DateFormatter.date(from: date)
     }

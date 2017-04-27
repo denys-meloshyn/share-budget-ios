@@ -24,7 +24,7 @@ class EditExpenseInteraction: BaseInteraction {
         }
         else {
             self.expense = Expense(context: self.managedObjectContext)
-            self.expense.creationDate = NSDate()
+            self.expense.creationDate = UtilityFormatter.roundToTwoSeconds(date: Date()) as NSDate?
             self.expense.budget = self.budget
             self.budget.addToExpenses(self.expense)
         }
