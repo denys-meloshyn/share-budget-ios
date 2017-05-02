@@ -4,6 +4,7 @@ PODS:
     - ChameleonFramework/Default
   - CorePlot (2.2)
   - KeychainSwift (8.0.2)
+  - le (1.1)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot
   - KeychainSwift
+  - le (~> 1.1)
   - R.swift
   - SnapKit
   - XCGLogger
@@ -37,12 +39,13 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
+  le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 4b2582d3897411bb6ed694cf3683e9e7921f8647
+PODFILE CHECKSUM: 309200a4c9430e75917d739c37f6bc6ae9d125db
 
 COCOAPODS: 1.2.1

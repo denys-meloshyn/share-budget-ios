@@ -1,0 +1,6 @@
+framework module le {
+  umbrella header "le-umbrella.h"
+
+  export *
+  module * { export * }
+}
