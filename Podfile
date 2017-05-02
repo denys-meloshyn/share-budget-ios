@@ -12,6 +12,7 @@ target 'ShareBudget' do
   pod 'SnapKit'
   pod 'CorePlot'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'le', '~> 1.1'
 
   target 'ShareBudgetTests' do
     inherit! :search_paths

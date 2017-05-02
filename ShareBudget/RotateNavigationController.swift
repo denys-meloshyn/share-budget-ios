@@ -29,7 +29,7 @@ class RotateNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get {
-            return .lightContent
+            return self.topViewController?.preferredStatusBarStyle ?? .lightContent
         }
     }
 }

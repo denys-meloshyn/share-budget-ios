@@ -24,7 +24,7 @@ class BaseViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+        super.viewWillDisappear(animated)
         
         self.viperView?.viewWillDisappear(animated)
     }
@@ -33,5 +33,11 @@ class BaseViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         self.viperView?.viewDidDisappear(animated)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
     }
 }

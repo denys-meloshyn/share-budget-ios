@@ -15,9 +15,11 @@ class BudgetDetailView: BaseView {
     weak var minusLabel: UILabel?
     weak var equalLabel: UILabel?
     weak var budgetLabel: UILabel?
+    weak var backButton: UIButton?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
     weak var animationView: UIView?
+    weak var navigationView: UIView?
     weak var budgetButton: UIButton?
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
@@ -25,6 +27,7 @@ class BudgetDetailView: BaseView {
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
     weak var createExpenseButton: UIButton?
+    weak var navigationTitleLabel: UILabel?
     weak var chartView: CPTGraphHostingView?
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
@@ -54,6 +57,7 @@ class BudgetDetailView: BaseView {
         super.viewDidLoad()
         
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
+        self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
@@ -63,19 +67,6 @@ class BudgetDetailView: BaseView {
         self.configureBorder(for: self.balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
         
         self.configureChart()
-        self.startAnimation()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.changeNavigationBarColor(Constants.defaultApperanceColor)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.changeNavigationBarColor(self.expenseCoverView?.backgroundColor)
     }
     
     private func configureBorder(for view: UIView?, color: UIColor? = UIColor.white) {
@@ -135,7 +126,7 @@ class BudgetDetailView: BaseView {
         self.animationView?.layer.cornerRadius = (self.constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
     }
     
-    private func startAnimation() {
+    fileprivate func startAnimation() {
         UIView.animate(withDuration: 5.0, animations: { [weak self] in
             self?.animationView?.alpha = 0.0
             self?.animationView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -164,17 +155,29 @@ class BudgetDetailView: BaseView {
         self.balanceDescriptionLabel?.textColor = newColor
         self.expenseDescriptionLabel?.textColor = newColor
     }
-    
-    fileprivate func changeNavigationBarColor(_ color: UIColor?) {
-        self.viewController?.navigationController?.navigationBar.barTintColor = color
-    }
 }
 
 // MARK: - BudgetDetailPresenterDelegate
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
-    func resetNavigationBarColor(_ color: UIColor?) {
-        self.changeNavigationBarColor(color)
+    override func showPage(title: String?) {
+        self.navigationTitleLabel?.text = title
+    }
+    
+    func updateNativeNavigationVisibility(_ isVisible: Bool) {
+        if (isVisible) {
+            self.viewController?.navigationController?.setNavigationBarHidden(false, animated: true)
+        } else {
+            self.viewController?.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    }
+    
+    func updateCreateButtonAnimation(_ isActive: Bool) {
+        if (isActive) {
+            self.startAnimation()
+        } else {
+            self.animationView?.layer.removeAllAnimations()
+        }
     }
     
     func updateChart() {
@@ -198,12 +201,8 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     }
     
     func updateExpenseCoverColor(_ color: UIColor?) {
+        self.navigationView?.backgroundColor = color
         self.expenseCoverView?.backgroundColor = color
-        
-        // View controller is visible
-        if self.viewController?.navigationController?.topViewController === self.viewController {
-            self.changeNavigationBarColor(color)
-        }
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {

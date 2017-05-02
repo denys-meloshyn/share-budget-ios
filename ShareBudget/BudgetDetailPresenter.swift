@@ -16,6 +16,8 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func updateTotalExpense(_ total: String)
     func updateCurrentMonthDate(_ date: String)
     func updateExpenseCoverColor(_ color: UIColor?)
+    func updateCreateButtonAnimation(_ isActive: Bool)
+    func updateNativeNavigationVisibility(_ isVisible: Bool)
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String)
 }
 
@@ -53,6 +55,20 @@ class BudgetDetailPresenter: BasePresenter {
         self.configureMonthBudget()
         self.configureBalance()
         self.updateTotalSpentExpensesColor()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.delegate?.updateNativeNavigationVisibility(false)
+        self.delegate?.updateCreateButtonAnimation(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.delegate?.updateNativeNavigationVisibility(true)
+        self.delegate?.updateCreateButtonAnimation(false)
     }
     
     private func configurePiChartColors() {
@@ -187,6 +203,10 @@ class BudgetDetailPresenter: BasePresenter {
                                                cancel: LocalisedManager.generic.cancel,
                                                placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
                                                budgetLimit: String(self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0))
+    }
+    
+    func closePageAction() {
+        self.budgetDetailRouter.closePage()
     }
 }
 

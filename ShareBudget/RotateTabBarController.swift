@@ -25,7 +25,7 @@ class RotateTabBarController: UITabBarController {
                 return selectedVC.supportedInterfaceOrientations
             }
             
-            return UIInterfaceOrientationMask.portrait
+            return .portrait
         }
     }
     
@@ -35,13 +35,17 @@ class RotateTabBarController: UITabBarController {
                 return selectedVC.preferredInterfaceOrientationForPresentation
             }
             
-            return UIInterfaceOrientation.portrait
+            return .portrait
         }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get {
-            return UIStatusBarStyle.lightContent
+            if let selectedVC = self.selectedViewController {
+                return selectedVC.preferredStatusBarStyle
+            }
+            
+            return .lightContent
         }
     }
 }
