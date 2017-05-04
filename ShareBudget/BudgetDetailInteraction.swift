@@ -88,7 +88,7 @@ class BudgetDetailInteraction: BaseInteraction {
             return false
         })
         
-        return sort.first
+        return sort.last
     }
     
     func balance() -> Double {
