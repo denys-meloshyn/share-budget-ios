@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import le
 import XCGLogger
 
 @UIApplicationMain
@@ -15,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private func configureLogger() {
+        LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
+        
         // Create a logger object with no destinations
         let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
         
