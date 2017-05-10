@@ -15,11 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    private let cacheDirectory: URL = {
+        let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
+        return urls[urls.endIndex - 1]
+    }()
+    
     private func configureLogger() {
         LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
         
         // Create a logger object with no destinations
-        let log = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
+        let log = XCGLogger.default
         
         // Create a destination for the system console log (via NSLog)
         let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
@@ -38,7 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         log.add(destination: systemDestination)
         
         // Create a file log destination
-        let fileDestination = FileDestination(writeToFile: "/path/to/file", identifier: "advancedLogger.fileDestination")
+        let logPath: URL = self.cacheDirectory.appendingPathComponent("XCGLogger_Log.txt")
+        let fileDestination = FileDestination(writeToFile: logPath, identifier: "advancedLogger.fileDestination")
         
         // Optionally set some configuration options
         fileDestination.outputLevel = .debug
@@ -55,6 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add the destination to the logger
         log.add(destination: fileDestination)
+        
+        let remoteLogsDestination = RemoteLogsDestination(identifier: "advancedLogger.remoteDestination")
+        remoteLogsDestination.outputLevel = .debug
+        remoteLogsDestination.showLogIdentifier = false
+        remoteLogsDestination.showFunctionName = true
+        remoteLogsDestination.showThreadName = true
+        remoteLogsDestination.showLevel = true
+        remoteLogsDestination.showFileName = true
+        remoteLogsDestination.showLineNumber = true
+        remoteLogsDestination.showDate = true
+        
+        log.add(destination: remoteLogsDestination)
         
         // Add basic app info, version info etc, to the start of the logs
         log.logAppDetails()
