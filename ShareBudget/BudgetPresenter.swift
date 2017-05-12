@@ -16,8 +16,10 @@ enum BudgetHeaderMode {
 
 protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
     func cancelSearch()
+    func showGroupList()
     func refreshData(for mode: BudgetHeaderMode)
     func createBudgetCell(with title: String?) -> UITableViewCell?
+    func showCreateNewGroupMessage(message: NSAttributedString)
 }
 
 class BudgetPresenter: BasePresenter {
@@ -42,7 +44,7 @@ class BudgetPresenter: BasePresenter {
         self.delegate?.showPage(title: "Budgets")
     }
     
-    func headerMode() -> BudgetHeaderMode {
+    fileprivate func headerMode() -> BudgetHeaderMode {
         let rows = self.budgetInteraction.numberOfRowsInSection()
         
         if rows > 0 {
@@ -50,6 +52,23 @@ class BudgetPresenter: BasePresenter {
         }
         
         return .create
+    }
+    
+    fileprivate func updateSearchPlaceholder(_ searchText: String) {
+        if self.headerMode() == .create {
+            let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
+            let attribetString = NSMutableAttributedString(string: descriptionText)
+            var range = (descriptionText as NSString).range(of: searchText, options: .backwards)
+            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultApperanceColor, range: range)
+            
+            range = (descriptionText as NSString).range(of: "+")
+            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultApperanceColor, range: range)
+            
+            self.delegate?.showCreateNewGroupMessage(message: attribetString)
+        }
+        else {
+            self.delegate?.showGroupList()
+        }
     }
 }
 
@@ -119,17 +138,15 @@ extension BudgetPresenter: UITableViewDelegate {
 // MARK: - CreateSearchTableViewHeaderDelegate
 
 extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
-    func textFieldPlaceholder() -> String? {
-        return LocalisedManager.groups.headerPlaceholder
-    }
-    
     func textChanged(_ text: String) {
         self.budgetInteraction.updateWithSearch(text)
+        self.updateSearchPlaceholder(text)
     }
     
     func createNewItem(_ title: String?) {
         guard let title = title, !title.isEmpty else {
             self.delegate?.cancelSearch()
+            self.delegate?.showGroupList()
             return
         }
         

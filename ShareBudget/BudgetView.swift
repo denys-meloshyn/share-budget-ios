@@ -41,6 +41,7 @@ class BudgetView: BaseView {
         super.viewDidLoad()
         
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
+        self.createNewGroupRootView?.backgroundColor = Constants.defaultBackgroundColor
     }
 }
 
@@ -71,5 +72,17 @@ extension BudgetView: BudgetPresenterDelegate {
     func cancelSearch() {
         let searchView = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
         searchView?.textField?.resignFirstResponder()
+    }
+    
+    func showGroupList() {
+        self.tableView?.isScrollEnabled = true
+        self.createNewGroupRootView?.isHidden = true
+    }
+    
+    func showCreateNewGroupMessage(message: NSAttributedString) {
+        self.tableView?.isScrollEnabled = false
+        self.createNewGroupRootView?.isHidden = false
+        
+        self.createNewGroupLabel?.attributedText = message
     }
 }

@@ -47,7 +47,13 @@ struct LocalisedManager {
     }
     
     struct groups {
-        static let headerPlaceholder = "Create or search group"
+        static let headerPlaceholder = NSLocalizedString("Create or search group", comment: "Placeholder for search text field")
+        static func createNewGroupTip(_ groupName: String) -> String {
+            let localizedValue = NSLocalizedString("Press + to create new grou with name %@", comment: "Tip to create new group during search")
+            
+            return String(format: localizedValue, groupName)
+            
+        }
     }
     
     struct edit {
