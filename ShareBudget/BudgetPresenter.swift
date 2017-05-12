@@ -59,10 +59,10 @@ class BudgetPresenter: BasePresenter {
             let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
             let attribetString = NSMutableAttributedString(string: descriptionText)
             var range = (descriptionText as NSString).range(of: searchText, options: .backwards)
-            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultApperanceColor, range: range)
+            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultActionColor, range: range)
             
             range = (descriptionText as NSString).range(of: "+")
-            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultApperanceColor, range: range)
+            attribetString.addAttribute(NSForegroundColorAttributeName, value: Constants.defaultActionColor, range: range)
             
             self.delegate?.showCreateNewGroupMessage(message: attribetString)
         }
@@ -113,6 +113,8 @@ extension BudgetPresenter: UITableViewDataSource {
 
 extension BudgetPresenter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         let budget = self.budgetInteraction.budgetModel(for: indexPath)
         
         guard let router = self.router as? BudgetRouter else {

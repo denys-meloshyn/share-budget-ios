@@ -56,7 +56,10 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.animationView?.backgroundColor = Constants.defaultActionColor
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
+        self.createNewExpenseContainerView?.backgroundColor = Constants.defaultActionColor
+        
         self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
