@@ -8,9 +8,11 @@
 
 import le
 import XCGLogger
+import BugfenderSDK
 
 class RemoteLogsDestination: AppleSystemLogDestination {
     override func write(message: String) {
-        LELog.sharedInstance().log(NSString(string: message))
+        //LELog.sharedInstance().log(NSString(string: message))
+        BFLog(message)
     }
 }

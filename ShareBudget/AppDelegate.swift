@@ -7,8 +7,10 @@
 //
 
 import UIKit
+
 import le
 import XCGLogger
+import BugfenderSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
     
     private func configureLogger() {
-        LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
+        //LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
+        
+        Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
+        Bugfender.setPrintToConsole(false)
+        Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
         
         // Create a logger object with no destinations
         let log = XCGLogger.default
