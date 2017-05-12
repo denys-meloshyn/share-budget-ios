@@ -160,16 +160,16 @@ class BudgetDetailPresenter: BasePresenter {
     
     fileprivate func configureTotalExpenses() {
         let total = self.budgetDetailInteraction.totalExpenses()
-        self.delegate?.updateTotalExpense(String(total))
+        self.delegate?.updateTotalExpense(UtilityFormatter.priceFormatter.string(for: total) ?? "0")
     }
     
     fileprivate func configureMonthBudget() {
         let month = self.budgetDetailInteraction.lastMonthLimit()
-        self.delegate?.updateMonthLimit(String(month?.limit ?? 0.0))
+        self.delegate?.updateMonthLimit(UtilityFormatter.priceFormatter.string(for: month?.limit) ?? "0")
     }
     
     fileprivate func configureBalance() {
-        self.delegate?.updateBalance(String(self.budgetDetailInteraction.balance()))
+        self.delegate?.updateBalance(UtilityFormatter.priceFormatter.string(for: self.budgetDetailInteraction.balance()) ?? "0")
     }
     
     func createNewExpense() {

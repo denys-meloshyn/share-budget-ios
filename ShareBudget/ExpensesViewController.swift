@@ -69,7 +69,7 @@ extension ExpensesViewController: UITableViewDataSource {
         formatter.maximumFractionDigits = 2
         
         cell?.titleLabel?.text = expense?.name
-        cell?.priceLabel?.text = formatter.string(from: expense?.price as NSNumber? ?? 0)
+        cell?.priceLabel?.text = UtilityFormatter.priceFormatter.string(for: expense?.price)
         cell?.categoryLabel?.text = expense?.category?.name
         
         if let date = expense?.creationDate as Date? {
@@ -90,8 +90,7 @@ extension ExpensesViewController: UITableViewDataSource {
         let creationDate = expense?.creationDate ?? NSDate()
         
         headerView?.monthLabel?.text = UtilityFormatter.yearMonthFormatter.string(from: creationDate as Date)
-        
-        headerView?.monthExpensesLabel?.text = String(self.calculator?.totalExpense(for: section) ?? 0.0)
+        headerView?.monthExpensesLabel?.text = UtilityFormatter.priceFormatter.string(for: self.calculator?.totalExpense(for: section) ?? 0.0)
         
         return headerView
     }

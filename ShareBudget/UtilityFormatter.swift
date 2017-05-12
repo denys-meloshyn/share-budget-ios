@@ -24,6 +24,13 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    class var priceFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        return formatter
+    }
+    
     class var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
