@@ -46,6 +46,10 @@ struct LocalisedManager {
         static let firstNameIsEmpty = NSLocalizedString("First name is empty", comment: "Error mesage for first name validation")
     }
     
+    struct groups {
+        static let headerPlaceholder = "Create or search group"
+    }
+    
     struct edit {
         struct expense {
             static let price = NSLocalizedString("Price", comment: "Expense price title in Edit expense page")

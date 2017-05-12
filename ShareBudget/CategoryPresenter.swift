@@ -64,7 +64,7 @@ extension CategoryPresenter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = self.delegate.createSearchTableHeaderView(with: self.headerMode())
+        let header = self.delegate.createSearchTableHeaderView(with: self.headerMode(), placeholder: "")
         header?.delegate = self
         
         return header
@@ -97,6 +97,10 @@ extension CategoryPresenter: UITableViewDelegate {
 // MARK: - CreateSearchTableViewHeaderDelegate
 
 extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
+    func textFieldPlaceholder() -> String? {
+        return ""
+    }
+
     func textChanged(_ text: String) {
         self.categoryInteraction.updateWithSearch(text)
     }

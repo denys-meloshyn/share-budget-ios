@@ -19,6 +19,8 @@ class BudgetView: BaseView {
         }
     }
     
+    weak var createNewGroupLabel: UILabel?
+    weak var createNewGroupRootView: UIView?
     weak var tableView: UITableView? {
         didSet {
             let nib = R.nib.createSearchTableViewHeader()
@@ -43,9 +45,10 @@ class BudgetView: BaseView {
 }
 
 extension BudgetView: BudgetPresenterDelegate {
-    func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader? {
+    func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
         let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
         header?.delegate = self.budgetPresenter
+        header?.textField?.placeholder = placeholder
         header?.mode = mode
         
         return header
@@ -63,5 +66,10 @@ extension BudgetView: BudgetPresenterDelegate {
         cell?.textLabel?.text = title
         
         return cell
+    }
+    
+    func cancelSearch() {
+        let searchView = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        searchView?.textField?.resignFirstResponder()
     }
 }

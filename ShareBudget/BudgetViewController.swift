@@ -10,6 +10,8 @@ import UIKit
 
 class BudgetViewController: BaseViewController {
     @IBOutlet private var tableView: UITableView?
+    @IBOutlet private var createNewGroupLabel: UILabel?
+    @IBOutlet private var createNewGroupRootView: UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,5 +35,7 @@ class BudgetViewController: BaseViewController {
     
     private func linkStoryboardViews(to view: BudgetView) {
         view.tableView = self.tableView
+        view.createNewGroupLabel = self.createNewGroupLabel
+        view.createNewGroupRootView = self.createNewGroupRootView
     }
 }

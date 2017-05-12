@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CreateSearchTableViewHeaderDataSource {
-    func createSearchTableHeaderView(with mode: BudgetHeaderMode) -> CreateSearchTableViewHeader?
+    func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader?
 }
 
 protocol CreateSearchTableViewHeaderDelegate: class {
@@ -20,6 +20,7 @@ protocol CreateSearchTableViewHeaderDelegate: class {
 
 class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet var textField: UITextField?
+    @IBOutlet var textFieldRootView: UIView?
     @IBOutlet var searchCreateButton: UIButton?
     
     weak var delegate: CreateSearchTableViewHeaderDelegate?
@@ -39,6 +40,8 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.textFieldRootView?.layer.borderWidth = 1.0
+        self.textFieldRootView?.layer.borderColor = UIColor.black.cgColor
         self.contentView.backgroundColor = Constants.defaultBackgroundColor
     }
     

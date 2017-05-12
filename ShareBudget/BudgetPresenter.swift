@@ -15,6 +15,7 @@ enum BudgetHeaderMode {
 }
 
 protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
+    func cancelSearch()
     func refreshData(for mode: BudgetHeaderMode)
     func createBudgetCell(with title: String?) -> UITableViewCell?
 }
@@ -85,7 +86,7 @@ extension BudgetPresenter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.delegate?.createSearchTableHeaderView(with: self.headerMode())
+        return self.delegate?.createSearchTableHeaderView(with: self.headerMode(), placeholder: LocalisedManager.groups.headerPlaceholder)
     }
 }
 
@@ -118,11 +119,20 @@ extension BudgetPresenter: UITableViewDelegate {
 // MARK: - CreateSearchTableViewHeaderDelegate
 
 extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
+    func textFieldPlaceholder() -> String? {
+        return LocalisedManager.groups.headerPlaceholder
+    }
+    
     func textChanged(_ text: String) {
         self.budgetInteraction.updateWithSearch(text)
     }
     
     func createNewItem(_ title: String?) {
+        guard let title = title, !title.isEmpty else {
+            self.delegate?.cancelSearch()
+            return
+        }
+        
         self.budgetInteraction.createNewBudget(with: title)
     }
     

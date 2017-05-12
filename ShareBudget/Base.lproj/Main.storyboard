@@ -265,6 +265,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1p-Fe-VjH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press &quot;+&quot; to create new group" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfK-Ue-g2l">
+                                        <rect key="frame" x="0.0" y="273" width="320" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SfK-Ue-g2l" firstAttribute="leading" secondItem="J1p-Fe-VjH" secondAttribute="leading" id="K7i-bm-XQq"/>
+                                    <constraint firstItem="SfK-Ue-g2l" firstAttribute="centerY" secondItem="J1p-Fe-VjH" secondAttribute="centerY" id="XyC-95-mUc"/>
+                                    <constraint firstAttribute="trailing" secondItem="SfK-Ue-g2l" secondAttribute="trailing" id="fch-TI-OP2"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zo8-p7-DDd">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -273,19 +290,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Zo8-p7-DDd" secondAttribute="bottom" id="2at-8V-gpe"/>
+                            <constraint firstItem="J1p-Fe-VjH" firstAttribute="leading" secondItem="gmg-zp-YOM" secondAttribute="leading" id="GwT-r9-tln"/>
                             <constraint firstItem="Zo8-p7-DDd" firstAttribute="top" secondItem="gmg-zp-YOM" secondAttribute="top" id="SOX-xb-rJs"/>
+                            <constraint firstItem="J1p-Fe-VjH" firstAttribute="top" secondItem="gmg-zp-YOM" secondAttribute="top" id="XdQ-Er-XhX"/>
+                            <constraint firstAttribute="trailing" secondItem="J1p-Fe-VjH" secondAttribute="trailing" id="c90-Ht-iJu"/>
+                            <constraint firstAttribute="bottom" secondItem="J1p-Fe-VjH" secondAttribute="bottom" id="cZL-Ow-8vf"/>
                             <constraint firstAttribute="trailing" secondItem="Zo8-p7-DDd" secondAttribute="trailing" id="rfl-uf-L3x"/>
                             <constraint firstItem="Zo8-p7-DDd" firstAttribute="leading" secondItem="gmg-zp-YOM" secondAttribute="leading" id="tl6-EF-fHF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="H3B-iK-cfR"/>
                     <connections>
+                        <outlet property="createNewGroupLabel" destination="SfK-Ue-g2l" id="b62-u1-xh9"/>
+                        <outlet property="createNewGroupRootView" destination="J1p-Fe-VjH" id="Sjj-pb-z9j"/>
                         <outlet property="tableView" destination="Zo8-p7-DDd" id="RYH-SV-Tlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ui6-Su-epx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2000.8" y="138.98050974512745"/>
+            <point key="canvasLocation" x="2000.625" y="138.38028169014083"/>
         </scene>
         <!--Budget Detail View Controller-->
         <scene sceneID="g46-lN-1Ib">
