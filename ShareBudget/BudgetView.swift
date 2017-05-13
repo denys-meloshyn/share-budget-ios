@@ -19,17 +19,10 @@ class BudgetView: BaseView {
         }
     }
     
+    weak var tableView: UITableView?
     weak var createNewGroupLabel: UILabel?
     weak var createNewGroupRootView: UIView?
-    weak var tableView: UITableView? {
-        didSet {
-            let nib = R.nib.createSearchTableViewHeader()
-            self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
-            self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: self.tableBudgetCellReuseIdentifier)
-            self.tableView?.delegate = self.budgetPresenter
-            self.tableView?.dataSource = self.budgetPresenter
-        }
-    }
+    weak var constantCreateNewGroupRootViewBottom: NSLayoutConstraint?
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -40,8 +33,16 @@ class BudgetView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configureTable()
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
-        self.createNewGroupRootView?.backgroundColor = Constants.defaultBackgroundColor
+    }
+    
+    private func configureTable() {
+        let nib = R.nib.createSearchTableViewHeader()
+        self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
+        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: self.tableBudgetCellReuseIdentifier)
+        self.tableView?.delegate = self.budgetPresenter
+        self.tableView?.dataSource = self.budgetPresenter
     }
 }
 
@@ -84,5 +85,27 @@ extension BudgetView: BudgetPresenterDelegate {
         self.createNewGroupRootView?.isHidden = false
         
         self.createNewGroupLabel?.attributedText = message
+    }
+    
+    func removeBottomOffset() {
+        guard var inset = self.tableView?.contentInset else {
+            return
+        }
+        inset.bottom = self.viewController?.bottomLayoutGuide.length ?? 0.0
+        
+        self.tableView?.contentInset = inset
+        self.tableView?.scrollIndicatorInsets = inset
+        self.constantCreateNewGroupRootViewBottom?.constant = 0.0
+    }
+    
+    func setBottomOffset(_ offset: Double) {
+        guard var inset = self.tableView?.contentInset else {
+            return
+        }
+        inset.bottom = CGFloat(offset)
+        
+        self.tableView?.contentInset = inset
+        self.tableView?.scrollIndicatorInsets = inset
+        self.constantCreateNewGroupRootViewBottom?.constant = CGFloat(offset)
     }
 }

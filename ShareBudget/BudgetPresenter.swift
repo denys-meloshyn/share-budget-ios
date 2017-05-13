@@ -17,9 +17,11 @@ enum BudgetHeaderMode {
 protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
     func cancelSearch()
     func showGroupList()
+    func removeBottomOffset()
+    func setBottomOffset(_ offset: Double)
     func refreshData(for mode: BudgetHeaderMode)
-    func createBudgetCell(with title: String?) -> UITableViewCell?
     func showCreateNewGroupMessage(message: NSAttributedString)
+    func createBudgetCell(with title: String?) -> UITableViewCell?
 }
 
 class BudgetPresenter: BasePresenter {
@@ -42,6 +44,18 @@ class BudgetPresenter: BasePresenter {
         
         self.delegate?.showTabBar(title: "Budgets", image: UIImage(), selected: UIImage())
         self.delegate?.showPage(title: "Budgets")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.addKeyboardNotifications()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.removeKeyboardNotifications()
     }
     
     fileprivate func headerMode() -> BudgetHeaderMode {
@@ -164,5 +178,17 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
         if self.headerMode() == .create {
             self.createNewItem(sender, sender.textField?.text)
         }
+    }
+}
+
+// MARK: - KeyBoardProtocol
+
+extension BudgetPresenter: KeyBoardProtocol {
+    func keyboardWillHide(notification: NSNotification) {
+        self.delegate?.removeBottomOffset()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        self.delegate?.setBottomOffset(self.keyboardHeight(from: notification))
     }
 }
