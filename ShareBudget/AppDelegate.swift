@@ -137,7 +137,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-//        UITextField.appearance().tintColor = Constants.defaultActiveColor
+        UITextField.appearance().tintColor = Constants.defaultActionColor
+        
+        self.window?.tintColor = Constants.defaultActionColor
     }
 }
 
