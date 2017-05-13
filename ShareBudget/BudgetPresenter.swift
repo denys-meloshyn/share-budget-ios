@@ -165,7 +165,7 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
-        guard let title = title, Validator.isNullOrBlank(title) else {
+        guard let title = title, !Validator.isNullOrBlank(title) else {
             self.delegate?.cancelSearch()
             self.delegate?.showGroupList()
             return

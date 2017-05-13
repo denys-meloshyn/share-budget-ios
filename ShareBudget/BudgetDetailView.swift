@@ -127,6 +127,7 @@ class BudgetDetailView: BaseView {
         self.constraintAnimationViewWidth?.constant = (self.constraintChartViewWidth?.constant ?? 0.0)
         self.constraintAnimationViewHeight?.constant = (self.constraintChartViewHeight?.constant ?? 0.0)
         self.animationView?.layer.cornerRadius = (self.constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
+        self.viewController?.view.layoutIfNeeded()
     }
     
     fileprivate func startAnimation() {

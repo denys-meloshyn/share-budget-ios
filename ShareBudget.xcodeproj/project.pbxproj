@@ -346,14 +346,14 @@
 			children = (
 				573F59D01E295D4900AEA72A /* Constants.swift */,
 				57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */,
+				57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */,
 				578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */,
-				572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */,
 				576424B61E79E4CC000B595E /* NetworkIndicator.swift */,
 				578BD05B1E35103100DE28C8 /* R.generated.swift */,
+				572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
-				57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
