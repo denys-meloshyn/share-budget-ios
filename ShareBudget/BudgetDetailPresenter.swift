@@ -165,7 +165,7 @@ class BudgetDetailPresenter: BasePresenter {
     
     fileprivate func configureMonthBudget() {
         let month = self.budgetDetailInteraction.lastMonthLimit()
-        self.delegate?.updateMonthLimit(UtilityFormatter.priceFormatter.string(for: month?.limit) ?? "0")
+        self.delegate?.updateMonthLimit(UtilityFormatter.priceFormatter.string(for: month?.limit ?? 0) ?? "0")
     }
     
     fileprivate func configureBalance() {
@@ -202,7 +202,7 @@ class BudgetDetailPresenter: BasePresenter {
                                                create: LocalisedManager.generic.create,
                                                cancel: LocalisedManager.generic.cancel,
                                                placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
-                                               budgetLimit: String(self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0))
+                                               budgetLimit: String(self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0))
     }
     
     func closePageAction() {

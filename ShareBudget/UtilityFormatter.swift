@@ -27,6 +27,7 @@ class UtilityFormatter: NSObject {
     class var priceFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
         
         return formatter
     }

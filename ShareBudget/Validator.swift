@@ -30,7 +30,7 @@ class Validator {
     }
     
     class func isNumberValid(_ value: String) -> Bool {
-        guard let _ = UtilityFormatter.amount(from: value) else {
+        guard let _ = Double(value) else {
             return false
         }
         
