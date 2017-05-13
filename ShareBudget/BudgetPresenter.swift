@@ -140,24 +140,29 @@ extension BudgetPresenter: UITableViewDelegate {
 // MARK: - CreateSearchTableViewHeaderDelegate
 
 extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
-    func textChanged(_ text: String) {
-        self.budgetInteraction.updateWithSearch(text)
-        self.updateSearchPlaceholder(text)
+    func textChanged(_ sender: CreateSearchTableViewHeader, _ text: String) {
+        let newText = Validator.removeWhiteSpaces(text)
+        if text != newText {
+            sender.textField?.text = newText
+        }
+        
+        self.budgetInteraction.updateWithSearch(newText)
+        self.updateSearchPlaceholder(newText)
     }
     
-    func createNewItem(_ title: String?) {
-        guard let title = title, !title.isEmpty else {
+    func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
+        guard let title = title, Validator.isNullOrBlank(title) else {
             self.delegate?.cancelSearch()
             self.delegate?.showGroupList()
             return
         }
         
-        self.budgetInteraction.createNewBudget(with: title)
+        self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
         if self.headerMode() == .create {
-            self.createNewItem(sender.textField?.text)
+            self.createNewItem(sender, sender.textField?.text)
         }
     }
 }

@@ -36,4 +36,25 @@ class Validator {
         
         return true
     }
+    
+    class func removeWhiteSpaces(_ string: String) -> String {
+        let nsString = string as NSString
+        let result = nsString.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression, range: NSMakeRange(0, nsString.length))
+        
+        if result == " " {
+            return ""
+        }
+        
+        return result
+    }
+    
+    class func isNullOrBlank(_ string: String?) -> Bool {
+        guard let string = string  else {
+            return true
+        }
+        
+        let result = self.removeWhiteSpaces(string)
+        
+        return result.isEmpty
+    }
 }

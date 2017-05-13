@@ -97,15 +97,11 @@ extension CategoryPresenter: UITableViewDelegate {
 // MARK: - CreateSearchTableViewHeaderDelegate
 
 extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
-    func textFieldPlaceholder() -> String? {
-        return ""
-    }
-
-    func textChanged(_ text: String) {
+    func textChanged(_ sender: CreateSearchTableViewHeader, _ text: String) {
         self.categoryInteraction.updateWithSearch(text)
     }
     
-    func createNewItem(_ title: String?) {
+    func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
         let newCategory = self.categoryInteraction.createCategory(with: title)
         self.categoryDelegate?.didSelectCategory(newCategory.objectID)
         self.router.closePage()
@@ -113,7 +109,7 @@ extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
         if self.headerMode() == .create {
-            self.createNewItem(sender.textField?.text)
+            self.createNewItem(sender, sender.textField?.text)
         }
     }
 }

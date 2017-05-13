@@ -75,12 +75,12 @@ extension BudgetView: BudgetPresenterDelegate {
     }
     
     func showGroupList() {
-        self.tableView?.isScrollEnabled = true
+        self.tableView?.separatorStyle = .singleLine
         self.createNewGroupRootView?.isHidden = true
     }
     
     func showCreateNewGroupMessage(message: NSAttributedString) {
-        self.tableView?.isScrollEnabled = false
+        self.tableView?.separatorStyle = .none
         self.createNewGroupRootView?.isHidden = false
         
         self.createNewGroupLabel?.attributedText = message

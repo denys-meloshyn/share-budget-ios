@@ -13,9 +13,9 @@ protocol CreateSearchTableViewHeaderDataSource {
 }
 
 protocol CreateSearchTableViewHeaderDelegate: class {
-    func textChanged(_ text: String)
-    func createNewItem(_ title: String?)
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader)
+    func textChanged(_ sender: CreateSearchTableViewHeader, _ text: String)
+    func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?)
 }
 
 class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
@@ -55,7 +55,7 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     }
     
     @IBAction func textChanged() {
-        self.delegate?.textChanged(self.textField?.text ?? "")
+        self.delegate?.textChanged(self, self.textField?.text ?? "")
     }
     
     @IBAction func modeAction() {
@@ -65,7 +65,7 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
 
 extension CreateSearchTableViewHeader: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.delegate?.createNewItem(textField.text)
+        self.delegate?.createNewItem(self, textField.text)
         
         return false
     }
