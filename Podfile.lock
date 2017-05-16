@@ -24,13 +24,13 @@ PODS:
 DEPENDENCIES:
   - BugfenderSDK (~> 1.4)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
-  - CorePlot
+  - CorePlot (~> 2.2)
   - Cuckoo (~> 0.9)
-  - KeychainSwift
+  - KeychainSwift (~> 8.0)
   - le (~> 1.1)
-  - R.swift
-  - SnapKit
-  - XCGLogger
+  - R.swift (~> 3.2)
+  - SnapKit (~> 3.2)
+  - XCGLogger (~> 5.0.1)
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -54,6 +54,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 84a4a42deb4ca9787e1707d6801ef793e219fbba
+PODFILE CHECKSUM: 84181884ac1e79d229a040e1652cc8619f8881ff
 
 COCOAPODS: 1.2.1

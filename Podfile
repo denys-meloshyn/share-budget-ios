@@ -6,11 +6,11 @@ target 'ShareBudget' do
   use_frameworks!
 
   # Pods for ShareBudget
-  pod 'XCGLogger'
-  pod 'KeychainSwift'
-  pod 'R.swift'
-  pod 'SnapKit'
-  pod 'CorePlot'
+  pod 'XCGLogger', '~> 5.0.1'
+  pod 'KeychainSwift', '~> 8.0'
+  pod 'R.swift', '~> 3.2'
+  pod 'SnapKit', '~> 3.2'
+  pod 'CorePlot', '~> 2.2'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'le', '~> 1.1'
   pod 'BugfenderSDK', '~> 1.4'

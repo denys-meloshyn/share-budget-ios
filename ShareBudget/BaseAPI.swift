@@ -72,12 +72,12 @@ class BaseAPI {
     class func components(_ resource: String) -> NSURLComponents {
         let components = NSURLComponents()
         
-//        components.scheme = "http"
-//        components.host = "127.0.0.1"
-//        components.port = 5000
+        components.scheme = "http"
+        components.host = "127.0.0.1"
+        components.port = 5000
         
-        components.scheme = "https"
-        components.host = "sharebudget-development.herokuapp.com"
+//        components.scheme = "https"
+//        components.host = "sharebudget-development.herokuapp.com"
         
         components.path = "/" + resource
         
