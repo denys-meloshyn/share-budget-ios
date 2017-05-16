@@ -25,9 +25,9 @@ class BudgetDetailPresenter: BasePresenter {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
-    fileprivate var pieChartColors = [UIColor]()
+    fileprivate var pieChartColors: Array<UIColor> = [UIColor]()
     
-    private var colorsRange = [Range<Double>]()
+    private var colorsRange: Array<Range<Double>> = [Range<Double>]()
     private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
     
     fileprivate var budgetDetailInteraction: BudgetDetailInteraction {

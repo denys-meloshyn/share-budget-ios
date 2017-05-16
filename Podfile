@@ -18,6 +18,7 @@ target 'ShareBudget' do
   target 'ShareBudgetTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Cuckoo', '~> 0.9'
   end
 
   target 'ShareBudgetUITests' do
