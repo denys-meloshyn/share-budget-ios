@@ -18,6 +18,7 @@ target 'ShareBudget' do
   target 'ShareBudgetTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble', '~> 6.0.0'
   end
 
   target 'ShareBudgetUITests' do
