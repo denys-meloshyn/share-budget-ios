@@ -673,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */ = {
@@ -731,7 +731,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5E1FA8DC2DD9F00E65DF21DB /* [CP] Check Pods Manifest.lock */ = {
@@ -1038,7 +1038,7 @@
 		};
 		573F59CB1E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */;
+			baseConfigurationReference = 106FCD6BD08864B66E1037CB /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1056,7 +1056,7 @@
 		};
 		573F59CC1E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */;
+			baseConfigurationReference = 48446F794F958237F0A33321 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
