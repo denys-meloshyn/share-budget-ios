@@ -10,5 +10,5 @@ import UIKit
 @testable import ShareBudget
 
 class MockBudgetPresenter: BudgetPresenter {
-  
+    var calledMethods = [String: Any]()
 }

@@ -8,6 +8,7 @@ PODS:
   - CorePlot (2.2)
   - KeychainSwift (8.0.2)
   - le (1.1)
+  - Nimble (6.0.1)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - CorePlot (~> 2.2)
   - KeychainSwift (~> 8.0)
   - le (~> 1.1)
+  - Nimble (~> 6.0.0)
   - R.swift (~> 3.2)
   - SnapKit (~> 3.2)
   - XCGLogger (~> 5.0.1)
@@ -45,12 +47,13 @@ SPEC CHECKSUMS:
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
+  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 6996954435dd28bd29bf8d9a5d1b721ed3ba2fc1
+PODFILE CHECKSUM: aee79aa288302b76161ad11e6f9f154932834670
 
 COCOAPODS: 1.2.1

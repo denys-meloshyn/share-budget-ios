@@ -22,7 +22,6 @@
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
 		573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A91E295C4D00AEA72A /* Assets.xcassets */; };
 		573F59AD1E295C4D00AEA72A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */; };
-		573F59C31E295C4E00AEA72A /* ShareBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */; };
 		573F59D11E295D4900AEA72A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D01E295D4900AEA72A /* Constants.swift */; };
 		573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */; };
 		573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D81E29627A00AEA72A /* BaseAPI.swift */; };
@@ -74,7 +73,6 @@
 		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
 		578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
 		578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
-		578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0711E3516BE00DE28C8 /* InfoPlist.strings */; };
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
@@ -107,19 +105,12 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		BBEE3F6B14AAFBF3098748D9 /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
-		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		573F59B41E295C4E00AEA72A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 573F59941E295C4D00AEA72A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 573F599B1E295C4D00AEA72A;
-			remoteInfo = ShareBudget;
-		};
-		573F59BF1E295C4E00AEA72A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 573F59941E295C4D00AEA72A /* Project object */;
 			proxyType = 1;
@@ -131,8 +122,10 @@
 /* Begin PBXFileReference section */
 		05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		106FCD6BD08864B66E1037CB /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48446F794F958237F0A33321 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 		5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
@@ -151,7 +144,6 @@
 		573F59AE1E295C4D00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573F59B31E295C4E00AEA72A /* ShareBudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareBudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F59B91E295C4E00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		573F59BE1E295C4E00AEA72A /* ShareBudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareBudgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetUITests.swift; sourceTree = "<group>"; };
 		573F59C41E295C4E00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573F59D01E295D4900AEA72A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -265,14 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		573F59BB1E295C4E00AEA72A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */,
+				BBEE3F6B14AAFBF3098748D9 /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +273,8 @@
 				FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */,
 				DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */,
 				05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */,
+				106FCD6BD08864B66E1037CB /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */,
+				48446F794F958237F0A33321 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -309,7 +296,6 @@
 			children = (
 				573F599C1E295C4D00AEA72A /* ShareBudget.app */,
 				573F59B31E295C4E00AEA72A /* ShareBudgetTests.xctest */,
-				573F59BE1E295C4E00AEA72A /* ShareBudgetUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -590,27 +576,6 @@
 			productReference = 573F59B31E295C4E00AEA72A /* ShareBudgetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		573F59BD1E295C4E00AEA72A /* ShareBudgetUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 573F59CD1E295C4E00AEA72A /* Build configuration list for PBXNativeTarget "ShareBudgetUITests" */;
-			buildPhases = (
-				D964D342CA0142E8B0ACD54B /* [CP] Check Pods Manifest.lock */,
-				573F59BA1E295C4E00AEA72A /* Sources */,
-				573F59BB1E295C4E00AEA72A /* Frameworks */,
-				573F59BC1E295C4E00AEA72A /* Resources */,
-				44E838ABB992DD3CE723F955 /* [CP] Embed Pods Frameworks */,
-				498AA86A9EF860D635FFED82 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				573F59C01E295C4E00AEA72A /* PBXTargetDependency */,
-			);
-			name = ShareBudgetUITests;
-			productName = ShareBudgetUITests;
-			productReference = 573F59BE1E295C4E00AEA72A /* ShareBudgetUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -627,12 +592,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					573F59B21E295C4E00AEA72A = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4ZT9N5NKNU;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 573F599B1E295C4D00AEA72A;
-					};
-					573F59BD1E295C4E00AEA72A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4ZT9N5NKNU;
 						ProvisioningStyle = Automatic;
@@ -655,7 +614,6 @@
 			targets = (
 				573F599B1E295C4D00AEA72A /* ShareBudget */,
 				573F59B21E295C4E00AEA72A /* ShareBudgetTests */,
-				573F59BD1E295C4E00AEA72A /* ShareBudgetUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -682,14 +640,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		573F59BC1E295C4E00AEA72A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,36 +691,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		44E838ABB992DD3CE723F955 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		498AA86A9EF860D635FFED82 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		54E23B326E6E94E0A109CBDB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -815,21 +735,6 @@
 			showEnvVarsInLog = 0;
 		};
 		5E1FA8DC2DD9F00E65DF21DB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D964D342CA0142E8B0ACD54B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -948,14 +853,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		573F59BA1E295C4E00AEA72A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				573F59C31E295C4E00AEA72A /* ShareBudgetUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -963,11 +860,6 @@
 			isa = PBXTargetDependency;
 			target = 573F599B1E295C4D00AEA72A /* ShareBudget */;
 			targetProxy = 573F59B41E295C4E00AEA72A /* PBXContainerItemProxy */;
-		};
-		573F59C01E295C4E00AEA72A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 573F599B1E295C4D00AEA72A /* ShareBudget */;
-			targetProxy = 573F59BF1E295C4E00AEA72A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1180,40 +1072,6 @@
 			};
 			name = Release;
 		};
-		573F59CE1E295C4E00AEA72A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = ShareBudget;
-			};
-			name = Debug;
-		};
-		573F59CF1E295C4E00AEA72A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = ShareBudget;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1240,15 +1098,6 @@
 			buildConfigurations = (
 				573F59CB1E295C4E00AEA72A /* Debug */,
 				573F59CC1E295C4E00AEA72A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		573F59CD1E295C4E00AEA72A /* Build configuration list for PBXNativeTarget "ShareBudgetUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				573F59CE1E295C4E00AEA72A /* Debug */,
-				573F59CF1E295C4E00AEA72A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -58,7 +58,7 @@ class BudgetPresenter: BasePresenter {
         self.removeKeyboardNotifications()
     }
     
-    fileprivate func headerMode() -> BudgetHeaderMode {
+    func headerMode() -> BudgetHeaderMode {
         let rows = self.budgetInteraction.numberOfRowsInSection()
         
         if rows > 0 {
@@ -68,7 +68,7 @@ class BudgetPresenter: BasePresenter {
         return .create
     }
     
-    fileprivate func updateSearchPlaceholder(_ searchText: String) {
+    func updateSearchPlaceholder(_ searchText: String) {
         if self.headerMode() == .create {
             let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
             let attribetString = NSMutableAttributedString(string: descriptionText)
