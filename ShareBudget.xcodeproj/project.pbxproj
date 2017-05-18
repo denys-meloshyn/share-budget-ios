@@ -22,7 +22,6 @@
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
 		573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A91E295C4D00AEA72A /* Assets.xcassets */; };
 		573F59AD1E295C4D00AEA72A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */; };
-		573F59B81E295C4E00AEA72A /* ShareBudgetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59B71E295C4E00AEA72A /* ShareBudgetTests.swift */; };
 		573F59C31E295C4E00AEA72A /* ShareBudgetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */; };
 		573F59D11E295D4900AEA72A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D01E295D4900AEA72A /* Constants.swift */; };
 		573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */; };
@@ -79,6 +78,12 @@
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
+		57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */; };
+		57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */; };
+		57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD621ECE201400CE372C /* MockBudgetInteraction.swift */; };
+		57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */; };
+		57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */; };
+		57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */; };
 		57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
 		57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
@@ -145,7 +150,6 @@
 		573F59AC1E295C4D00AEA72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		573F59AE1E295C4D00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573F59B31E295C4E00AEA72A /* ShareBudgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareBudgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		573F59B71E295C4E00AEA72A /* ShareBudgetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetTests.swift; sourceTree = "<group>"; };
 		573F59B91E295C4E00AEA72A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573F59BE1E295C4E00AEA72A /* ShareBudgetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareBudgetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F59C21E295C4E00AEA72A /* ShareBudgetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetUITests.swift; sourceTree = "<group>"; };
@@ -209,6 +213,12 @@
 		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
 		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPresenterTest.swift; sourceTree = "<group>"; };
+		57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetPresenter.swift; sourceTree = "<group>"; };
+		57BEAD621ECE201400CE372C /* MockBudgetInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetInteraction.swift; sourceTree = "<group>"; };
+		57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetRouter.swift; sourceTree = "<group>"; };
+		57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetViewController.swift; sourceTree = "<group>"; };
+		57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetView.swift; sourceTree = "<group>"; };
 		57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewHeader.swift; sourceTree = "<group>"; };
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
@@ -326,7 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				573F59B91E295C4E00AEA72A /* Info.plist */,
-				573F59B71E295C4E00AEA72A /* ShareBudgetTests.swift */,
+				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
+				57BEAD611ECE1FC800CE372C /* Mock */,
 			);
 			path = ShareBudgetTests;
 			sourceTree = "<group>";
@@ -508,6 +519,18 @@
 				573F59A31E295C4D00AEA72A /* Main.storyboard */,
 			);
 			name = Xib;
+			sourceTree = "<group>";
+		};
+		57BEAD611ECE1FC800CE372C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				57BEAD621ECE201400CE372C /* MockBudgetInteraction.swift */,
+				57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */,
+				57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */,
+				57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */,
+				57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */,
+			);
+			name = Mock;
 			sourceTree = "<group>";
 		};
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
@@ -916,7 +939,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				573F59B81E295C4E00AEA72A /* ShareBudgetTests.swift in Sources */,
+				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
+				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
+				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,
+				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
+				57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */,
+				57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
