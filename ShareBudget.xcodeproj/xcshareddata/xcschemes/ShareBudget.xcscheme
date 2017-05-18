@@ -39,6 +39,16 @@
                ReferencedContainer = "container:ShareBudget.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "573F59BD1E295C4E00AEA72A"
+               BuildableName = "ShareBudgetUITests.xctest"
+               BlueprintName = "ShareBudgetUITests"
+               ReferencedContainer = "container:ShareBudget.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

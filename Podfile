@@ -14,12 +14,16 @@ target 'ShareBudget' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'le', '~> 1.1'
   pod 'BugfenderSDK', '~> 1.4'
-  
 
   target 'ShareBudgetTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'Nimble', '~> 6.0.0'
+  end
+
+  target 'ShareBudgetUITests' do
+    inherit! :search_paths
+    # Pods for testing
   end
 
 end
