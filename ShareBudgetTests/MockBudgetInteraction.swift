@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 @testable import ShareBudget
 
 class MockBudgetInteraction: BudgetInteraction {
@@ -14,5 +15,12 @@ class MockBudgetInteraction: BudgetInteraction {
     
     override func numberOfRowsInSection() -> Int {
         return numberOfItems
+    }
+    
+    override func budgetModel(for indexPath: IndexPath) -> Budget {
+        let model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Test name"
+        
+        return model
     }
 }

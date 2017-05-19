@@ -37,14 +37,23 @@ class BudgetView: BaseView {
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
     }
     
-    private func configureTable() {
+    func configureTable() {
         let nib = R.nib.createSearchTableViewHeader()
         self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
         self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: self.tableBudgetCellReuseIdentifier)
         self.tableView?.delegate = self.budgetPresenter
         self.tableView?.dataSource = self.budgetPresenter
     }
+    
+    // Method of BudgetPresenterDelegate, need here to be able to test it
+    func refreshData(for mode: BudgetHeaderMode) {
+        self.tableView?.reloadData()
+        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        header?.mode = mode
+    }
 }
+
+// MARK: - BudgetPresenterDelegate
 
 extension BudgetView: BudgetPresenterDelegate {
     func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
@@ -56,18 +65,12 @@ extension BudgetView: BudgetPresenterDelegate {
         return header
     }
     
-    func refreshData(for mode: BudgetHeaderMode) {
-        self.tableView?.reloadData()
-        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
-        header?.mode = mode
-    }
-    
-    func createBudgetCell(with title: String?) -> UITableViewCell? {
+    func createBudgetCell(with title: String?) -> UITableViewCell {
         let cell = self.tableView?.dequeueReusableCell(withIdentifier: self.tableBudgetCellReuseIdentifier)
         cell?.backgroundColor = UIColor.clear
         cell?.textLabel?.text = title
         
-        return cell
+        return cell!
     }
     
     func cancelSearch() {

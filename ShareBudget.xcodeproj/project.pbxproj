@@ -84,6 +84,8 @@
 		57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */; };
 		57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */; };
 		57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */; };
+		57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */; };
+		57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD841ECF64FE00CE372C /* CalledMethod.swift */; };
 		57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
 		57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
@@ -219,6 +221,8 @@
 		57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetRouter.swift; sourceTree = "<group>"; };
 		57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetViewController.swift; sourceTree = "<group>"; };
 		57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetView.swift; sourceTree = "<group>"; };
+		57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalledMethodManager.swift; sourceTree = "<group>"; };
+		57BEAD841ECF64FE00CE372C /* CalledMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalledMethod.swift; sourceTree = "<group>"; };
 		57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewHeader.swift; sourceTree = "<group>"; };
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				573F59B91E295C4E00AEA72A /* Info.plist */,
 				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
+				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
 			path = ShareBudgetTests;
 			sourceTree = "<group>";
@@ -531,6 +536,15 @@
 				57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */,
 			);
 			name = Mock;
+			sourceTree = "<group>";
+		};
+		57BEAD861ECF6F6400CE372C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				57BEAD841ECF64FE00CE372C /* CalledMethod.swift */,
+				57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
@@ -942,7 +956,9 @@
 				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
 				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,
+				57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */,
 				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
+				57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */,
 				57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */,
 				57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */,
 			);

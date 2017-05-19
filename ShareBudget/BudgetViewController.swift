@@ -9,7 +9,7 @@
 import UIKit
 
 class BudgetViewController: BaseViewController {
-    @IBOutlet private var tableView: UITableView?
+    @IBOutlet var tableView: UITableView?
     @IBOutlet private var createNewGroupLabel: UILabel?
     @IBOutlet private var createNewGroupRootView: UIView?
     @IBOutlet private var constantCreateNewGroupRootViewBottom: NSLayoutConstraint?

@@ -9,5 +9,4 @@
 @testable import ShareBudget
 
 class MockBudgetViewController: BudgetViewController {
-
 }

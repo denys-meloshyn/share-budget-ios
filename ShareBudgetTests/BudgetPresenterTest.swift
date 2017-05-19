@@ -26,6 +26,9 @@ class BudgetPresenterTest: XCTestCase {
         view = MockBudgetView(with: presenter, and: viewController)
         
         viewController.viperView = view
+        
+        viewController.tableView = UITableView()
+        
         viewController.viewDidLoad()
     }
     
@@ -33,8 +36,8 @@ class BudgetPresenterTest: XCTestCase {
         let showPage = #selector(MockBudgetView.showPage(title:))
         let showTabBar = #selector(MockBudgetView.showTabBar(title:image:selected:))
         
-        expect(self.view.calledMethods.keys).to(contain(showPage.description))
-        expect(self.view.calledMethods.keys).to(contain(showTabBar.description))
+        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(selector: showPage)))
+        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(selector: showTabBar)))
     }
     
     func testHeaderModeSearch() {
@@ -58,7 +61,8 @@ class BudgetPresenterTest: XCTestCase {
         presenter.updateSearchPlaceholder("")
         
         let key = #selector(MockBudgetView.showCreateNewGroupMessage(message:))
-        expect(self.view.calledMethods.keys).to(contain(key.description))
+        let expected = CalledMethod(selector: key)
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
     func testUpdateSearchPlaceholderList() {
@@ -66,7 +70,8 @@ class BudgetPresenterTest: XCTestCase {
         presenter.updateSearchPlaceholder("")
         
         let key = #selector(MockBudgetView.showGroupList)
-        expect(self.view.calledMethods.keys).to(contain(key.description))
+        let expected = CalledMethod(selector: key)
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
     func testNumberOfGroupToShow() {
@@ -74,5 +79,27 @@ class BudgetPresenterTest: XCTestCase {
         
         let result = presenter.tableView(UITableView(), numberOfRowsInSection: 0)
         expect(result) == 10
+    }
+    
+    func testRefreshDataWillChangeContent() {
+        presenter.willChangeContent()
+        
+        let key = NSSelectorFromString("showPageWithTitle:")
+        let expected = CalledMethod(selector: key)
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testRefreshDataDidChangeContent() {
+        presenter.didChangeContent()
+        
+        let key = NSSelectorFromString("showPageWithTitle:")
+        let expected = CalledMethod(selector: key)
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testCell() {
+        let cell = presenter.tableView(UITableView(), cellForRowAt: IndexPath())
+        
+        expect(cell.textLabel?.text).to(equal("Test name"))
     }
 }

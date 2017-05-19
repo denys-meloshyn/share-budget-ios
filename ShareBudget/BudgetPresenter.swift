@@ -21,7 +21,7 @@ protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHe
     func setBottomOffset(_ offset: Double)
     func refreshData(for mode: BudgetHeaderMode)
     func showCreateNewGroupMessage(message: NSAttributedString)
-    func createBudgetCell(with title: String?) -> UITableViewCell?
+    func createBudgetCell(with title: String?) -> UITableViewCell
 }
 
 class BudgetPresenter: BasePresenter {
