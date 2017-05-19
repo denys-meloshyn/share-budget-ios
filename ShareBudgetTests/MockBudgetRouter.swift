@@ -7,7 +7,12 @@
 //
 
 @testable import ShareBudget
+import CoreData
 
 class MockBudgetRouter: BudgetRouter {
-
+    let calledMethodManager = CalledMethodManager()
+    
+    override func openDetailPage(for budgetID: NSManagedObjectID?) {
+        calledMethodManager.add("openDetailPage")
+    }
 }

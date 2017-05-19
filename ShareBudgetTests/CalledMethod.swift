@@ -10,19 +10,23 @@ import UIKit
 
 class CalledMethod {
     var counter = 0
-    var selector: Selector
+    var name: String
     
-    init(selector: Selector) {
-        self.selector = selector
+    init(_ selector: Selector) {
+        self.name = selector.description
+    }
+    
+    init(_ selector: String) {
+        self.name = selector
     }
 }
 
 extension CalledMethod: Hashable {
     var hashValue: Int {
-        return selector.hashValue
+        return name.hashValue
     }
     
     static func == (lhs: CalledMethod, rhs: CalledMethod) -> Bool {
-        return lhs.selector == rhs.selector
+        return lhs.name == rhs.name
     }
 }

@@ -6,8 +6,9 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 import XCTest
-@testable import ShareBudget
 import Nimble
+import CoreData
+@testable import ShareBudget
 
 class BudgetPresenterTest: XCTestCase {
     var view: MockBudgetView!
@@ -15,9 +16,13 @@ class BudgetPresenterTest: XCTestCase {
     var presenter: MockBudgetPresenter!
     var interaction: MockBudgetInteraction!
     var viewController: MockBudgetViewController!
+    var createSearchTableViewHeader: CreateSearchTableViewHeader!
     
     override func setUp() {
         super.setUp()
+        
+        ModelManager.dropAllEntities()
+        createSearchTableViewHeader = R.nib.createSearchTableViewHeader().instantiate(withOwner: nil, options: nil).first as! CreateSearchTableViewHeader
         
         viewController = MockBudgetViewController()
         router = MockBudgetRouter(with: viewController)
@@ -36,12 +41,16 @@ class BudgetPresenterTest: XCTestCase {
         let showPage = #selector(MockBudgetView.showPage(title:))
         let showTabBar = #selector(MockBudgetView.showTabBar(title:image:selected:))
         
-        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(selector: showPage)))
-        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(selector: showTabBar)))
+        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(showPage)))
+        expect(self.view.calledMethodManager.methods).to(contain(CalledMethod(showTabBar)))
     }
     
     func testHeaderModeSearch() {
-        interaction.numberOfItems = 5
+        var model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Name_A"
+        model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Name_B"
+        ModelManager.saveContext(ModelManager.managedObjectContext)
         
         let result = BudgetHeaderMode.search
         let expected = self.presenter.headerMode()
@@ -49,33 +58,35 @@ class BudgetPresenterTest: XCTestCase {
     }
     
     func testHeaderModeCreate() {
-        interaction.numberOfItems = 0
-        
         let result = BudgetHeaderMode.create
         let expected = self.presenter.headerMode()
         XCTAssertEqual(result, expected)
     }
     
     func testUpdateSearchPlaceholderCreateNew() {
-        interaction.numberOfItems = 0
         presenter.updateSearchPlaceholder("")
         
-        let key = #selector(MockBudgetView.showCreateNewGroupMessage(message:))
-        let expected = CalledMethod(selector: key)
+        let expected = CalledMethod(#selector(MockBudgetView.showCreateNewGroupMessage(message:)))
         expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
     func testUpdateSearchPlaceholderList() {
-        interaction.numberOfItems = 7
+        let model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Name_A"
+        ModelManager.saveContext(ModelManager.managedObjectContext)
+        
         presenter.updateSearchPlaceholder("")
         
-        let key = #selector(MockBudgetView.showGroupList)
-        let expected = CalledMethod(selector: key)
+        let expected = CalledMethod(#selector(MockBudgetView.showGroupList))
         expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
     func testNumberOfGroupToShow() {
-        interaction.numberOfItems = 10
+        for i in 0..<10 {
+            let model = Budget(context: ModelManager.managedObjectContext)
+            model.name = "Name_\(i)"
+        }
+        ModelManager.saveContext(ModelManager.managedObjectContext)
         
         let result = presenter.tableView(UITableView(), numberOfRowsInSection: 0)
         expect(result) == 10
@@ -84,22 +95,70 @@ class BudgetPresenterTest: XCTestCase {
     func testRefreshDataWillChangeContent() {
         presenter.willChangeContent()
         
-        let key = NSSelectorFromString("showPageWithTitle:")
-        let expected = CalledMethod(selector: key)
+        let expected = CalledMethod("showPageWithTitle:")
         expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
     func testRefreshDataDidChangeContent() {
         presenter.didChangeContent()
         
-        let key = NSSelectorFromString("showPageWithTitle:")
-        let expected = CalledMethod(selector: key)
+        let expected = CalledMethod("showPageWithTitle:")
         expect(self.view.calledMethodManager.methods).to(contain(expected))
     }
     
-    func testCell() {
-        let cell = presenter.tableView(UITableView(), cellForRowAt: IndexPath())
+    func testCellCreated() {
+        let model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Name_A"
+        ModelManager.saveContext(ModelManager.managedObjectContext)
         
-        expect(cell.textLabel?.text).to(equal("Test name"))
+        let cell = presenter.tableView(UITableView(), cellForRowAt: IndexPath(row: 0, section: 0))
+        
+        expect(cell.textLabel?.text).notTo(beNil())
+    }
+    
+    func testHeaderCreated() {
+        let header = presenter.tableView(UITableView(), viewForHeaderInSection: 0) as? CreateSearchTableViewHeader
+        
+        expect(header?.textField?.text).notTo(beNil())
+        expect(header?.textField?.placeholder).notTo(beNil())
+    }
+    
+    func testDetailPageOpened() {
+        let model = Budget(context: ModelManager.managedObjectContext)
+        model.name = "Name_A"
+        ModelManager.saveContext(ModelManager.managedObjectContext)
+        
+        presenter.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        let expected = CalledMethod("openDetailPage")
+        expect(self.router.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testTableRowHeightNotZero() {
+        expect(self.presenter.tableView(UITableView(), heightForHeaderInSection: 0)) > 0
+    }
+    
+    func testSearchTextChangedWithoutWhiteSpaces() {
+        createSearchTableViewHeader.textField?.text = "Test"
+        
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
+        
+        expect(self.createSearchTableViewHeader.textField?.text) == "Test"
+    }
+    
+    func testSearchTextChangedWithOneWhiteSpace() {
+        createSearchTableViewHeader.textField?.text = "Test "
+        
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
+        
+        expect(self.createSearchTableViewHeader.textField?.text) == "Test "
+    }
+    
+    func testSearchTextChangedWithMoreThaOneWhiteSpace() {
+        createSearchTableViewHeader.textField?.text = "Test    "
+        
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
+        
+        expect(self.createSearchTableViewHeader.textField?.text) == "Test "
     }
 }
