@@ -9,15 +9,11 @@
 import CoreData
 
 class UserAPI: BaseAPI {
-    override class func modelKeyID() -> String {
-        return "userID"
-    }
-    
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "user_timestamp"
     }
     
-    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var user: User?
         
         for item in items {

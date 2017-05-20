@@ -18,6 +18,12 @@ class SyncManager {
             SyncManager.loadUpdates(completion: nil)
         }
     }
+    
+    static let userAPI = UserAPI()
+    static let budgetAPI = BudgetAPI()
+    static let expenseAPI = ExpenseAPI()
+    static let categoryAPI = CategoryAPI()
+    static let budgetLimitAPI = BudgetLimitAPI()
 
     private class func loadUpdates(completion: APIResultBlock?) {
         XCGLogger.info("Load updates from server")
@@ -72,35 +78,35 @@ class SyncManager {
         }
         
         // New or changed budgets
-        tasks += BudgetAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.budgetAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed budget limits
-        tasks += BudgetLimitAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed categories
-        tasks += CategoryAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.categoryAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed expenses
-        tasks += ExpenseAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.expenseAPI.allChangedModels(completionBlock: completionBlock)
         
         // Load all updates for 'User'
-        task = BaseAPILoadUpdatesTask(resource: "user", entity: UserAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "user", entity: self.userAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // Load all updates for 'Budget'
-        task = BaseAPILoadUpdatesTask(resource: "group", entity: BudgetAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "group", entity: self.budgetAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // Load all updates for 'Budget Limit'
-        task = BaseAPILoadUpdatesTask(resource: "group/limit", entity: BudgetLimitAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "group/limit", entity: self.budgetLimitAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // Load all updates for 'Category'
-        task = BaseAPILoadUpdatesTask(resource: "category", entity: CategoryAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "category", entity: self.categoryAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // Load all updates for 'Expense'
-        task = BaseAPILoadUpdatesTask(resource: "expense", entity: ExpenseAPI.self, completionBlock: completionBlock)
+        task = BaseAPILoadUpdatesTask(resource: "expense", entity: self.expenseAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // -----------------

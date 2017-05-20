@@ -11,6 +11,10 @@ import CoreData
 
 @objc(BaseModel)
 public class BaseModel: NSManagedObject {
+    class func modelKeyID() -> String {
+        return ""
+    }
+    
     func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         if let isRemoved = dict[kIsRemoved] as? Bool {
             self.isRemoved = isRemoved

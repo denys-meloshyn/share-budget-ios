@@ -21,13 +21,4 @@ extension URLRequest {
             self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
         }
     }
-    
-    mutating func addModelInfo(_ model: BaseModel) {
-        self.setValue(String(model.internalID), forHTTPHeaderField: kInternalID)
-        self.setValue(String(model.isRemoved), forHTTPHeaderField: kIsRemoved)
-        
-        if let modelID = model.modelID {
-            self.setValue(String(modelID.intValue), forHTTPHeaderField: BaseAPI.modelKeyID())
-        }
-    }
 }

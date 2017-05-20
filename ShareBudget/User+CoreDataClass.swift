@@ -11,6 +11,10 @@ import CoreData
 
 @objc(User)
 public class User: BaseModel {
+    override class func modelKeyID() -> String {
+        return "userID"
+    }
+    
     override func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
         self.configureModelID(dict: dict, for: kUserID)

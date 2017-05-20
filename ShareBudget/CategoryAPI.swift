@@ -10,19 +10,15 @@ import CoreData
 import XCGLogger
 
 class CategoryAPI: BaseAPI {
-    override class func modelKeyID() -> String {
-        return kCategoryID
-    }
-    
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "category_timestamp"
     }
     
-    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var category: Category?
         
         for item in items {
-            if let modelID = item[self.modelKeyID()] as? Int {
+            if let modelID = item[Category.modelKeyID()] as? Int {
                 category = ModelManager.findEntity(Category.self, by: modelID, in: managedObjectContext) as? Category
             }
             
@@ -34,7 +30,7 @@ class CategoryAPI: BaseAPI {
         }
     }
     
-    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
         let fetchedResultsController = ModelManager.changedModels(Category.self ,managedObjectContext)
         
@@ -50,7 +46,7 @@ class CategoryAPI: BaseAPI {
                 }
                 
                 let modelID = model.objectID
-                let task = BaseAPITaskUpload(resource: "category", entity: CategoryAPI.self, modelID: modelID, completionBlock: completionBlock)
+                let task = BaseAPITaskUpload(resource: "category", entity: self, modelID: modelID, completionBlock: completionBlock)
                 tasks.append(task)
             }
         }

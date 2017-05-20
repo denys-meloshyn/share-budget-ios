@@ -10,21 +10,17 @@ import CoreData
 import XCGLogger
 
 class BudgetAPI: BaseAPI {
-    override class func modelKeyID() -> String {
-        return kGroupID
-    }
-    
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "budget_timestamp"
     }
     
-    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var budget: Budget?
         
         for item in items {
             if let internalID = item[kInternalID] as? Int {
                 budget = ModelManager.findEntity(Budget.self, internal: internalID, in: managedObjectContext) as? Budget
-            } else if let modelID = item[BudgetAPI.modelKeyID()] as? Int {
+            } else if let modelID = item[Budget.modelKeyID()] as? Int {
                 budget = ModelManager.findEntity(Budget.self, by: modelID, in: managedObjectContext) as? Budget
             }
             
@@ -36,7 +32,7 @@ class BudgetAPI: BaseAPI {
         }
     }
     
-    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
         let fetchedResultsController = ModelManager.changedModels(Budget.self ,managedObjectContext)
         
@@ -51,7 +47,7 @@ class BudgetAPI: BaseAPI {
                     continue
                 }
                 
-                let task = BaseAPITaskUpload(resource: "group", entity: BudgetAPI.self, modelID: model.objectID, completionBlock: completionBlock)
+                let task = BaseAPITaskUpload(resource: "group", entity: self, modelID: model.objectID, completionBlock: completionBlock)
                 tasks.append(task)
             }
         }

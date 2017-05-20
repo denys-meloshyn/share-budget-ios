@@ -11,6 +11,10 @@ import CoreData
 
 @objc(BudgetLimit)
 public class BudgetLimit: BaseModel {
+    override class func modelKeyID() -> String {
+        return kBudgetLimitID
+    }
+    
     override func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
         self.configureModelID(dict: dict, for: kBudgetLimitID)

@@ -11,6 +11,10 @@ import CoreData
 
 @objc(Expense)
 public class Expense: BaseModel {
+    override class func modelKeyID() -> String {
+        return kExpenseID
+    }
+    
     override public func didChangeValue(forKey key: String) {
         super.didChangeValue(forKey: key)
         

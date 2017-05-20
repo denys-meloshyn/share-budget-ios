@@ -34,6 +34,11 @@ let kBudgetLimitID = "budgetLimitID"
 let kModifiedUserID = "modifiedUserID"
 let kCategoryLimitID = "categoryLimitID"
 
+let kPagination = "pagination"
+let kPaginationStart = "start"
+let kPaginationTotal = "total"
+let kPaginationPageSize = "pageSize"
+
 let kPasswordMinLength = 1
 
 let loginBorderColor = UIColor.blue
