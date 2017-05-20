@@ -27,12 +27,14 @@ class MockBudgetView: BudgetView {
     }
     
     override func showGroupList() {
-        let key = #selector(MockBudgetView.showGroupList)
-        calledMethodManager.add(key)
+        calledMethodManager.add(#selector(MockBudgetView.showGroupList))
     }
     
     override func refreshData(for mode: BudgetHeaderMode) {
-        let key = #selector(MockBudgetView.showGroupList)
-        calledMethodManager.add(key)
+        calledMethodManager.add(#selector(MockBudgetView.showGroupList))
+    }
+    
+    override func cancelSearch() {
+        calledMethodManager.add(#selector(MockBudgetView.cancelSearch))
     }
 }

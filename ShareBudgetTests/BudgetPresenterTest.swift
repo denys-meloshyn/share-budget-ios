@@ -161,4 +161,38 @@ class BudgetPresenterTest: XCTestCase {
         
         expect(self.createSearchTableViewHeader.textField?.text) == "Test "
     }
+    
+    func testCreateNewBudgetEmptyName() {
+        createSearchTableViewHeader.textField?.text = ""
+        
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField?.text)
+        
+        var expected = CalledMethod(#selector(MockBudgetView.cancelSearch))
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+        expected = CalledMethod(#selector(MockBudgetView.showGroupList))
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testCreateNewBudgetEmptyNameWithWhiteSpaces() {
+        createSearchTableViewHeader.textField?.text = "      "
+        
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField?.text)
+        
+        var expected = CalledMethod(#selector(MockBudgetView.cancelSearch))
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+        expected = CalledMethod(#selector(MockBudgetView.showGroupList))
+        expect(self.view.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testCreateNewBudgetEmptyNameValid() {
+        createSearchTableViewHeader.textField?.text = "Test"
+        
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField?.text)
+        ModelManager.saveContext(ModelManager.managedObjectContext)
+        
+        expect(self.interaction.numberOfRowsInSection()) == 1
+        
+        let model = interaction.budgetModel(for: IndexPath(row: 0, section: 0))
+        expect(model.name) == "Test"
+    }
 }
