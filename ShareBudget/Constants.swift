@@ -38,7 +38,7 @@ let kPagination = "pagination"
 let kPaginationStart = "start"
 let kPaginationTotal = "total"
 let kPaginationPageSize = "pageSize"
-let paginationSize = 2
+let paginationSize = 30
 
 let kPasswordMinLength = 1
 
