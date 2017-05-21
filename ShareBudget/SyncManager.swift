@@ -24,11 +24,12 @@ class SyncManager {
     static let expenseAPI = ExpenseAPI()
     static let categoryAPI = CategoryAPI()
     static let budgetLimitAPI = BudgetLimitAPI()
+    
+    static var tasks = [BaseAPITask]()
 
     private class func loadUpdates(completion: APIResultBlock?) {
         XCGLogger.info("Load updates from server")
         
-        var tasks = [BaseAPITask]()
         var task: BaseAPITask
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
@@ -63,9 +64,9 @@ class SyncManager {
                 return
             }
             
-            tasks.remove(at: 0)
+            self.tasks.remove(at: 0)
             
-            if tasks.count == 0 {
+            if self.tasks.count == 0 {
                 DispatchQueue.main.async {
                     SyncManager.scheduleNextUpdate()
                 }
@@ -78,16 +79,24 @@ class SyncManager {
         }
         
         // New or changed budgets
-        tasks += self.budgetAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.budgetAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
+            completionBlock(data, error)
+        })
         
         // New or changed budget limits
-        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
+            completionBlock(data, error)
+        })
         
         // New or changed categories
-        tasks += self.categoryAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.categoryAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
+            completionBlock(data, error)
+        })
         
         // New or changed expenses
-        tasks += self.expenseAPI.allChangedModels(completionBlock: completionBlock)
+        tasks += self.expenseAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
+            completionBlock(data, error)
+        })
         
         // Load all updates for 'User'
         task = BaseAPILoadUpdatesTask(resource: "user", entity: self.userAPI, completionBlock: completionBlock)
@@ -119,6 +128,10 @@ class SyncManager {
             SyncManager.loadingTask?.resume()
             NetworkIndicator.shared.visible = true
         }
+    }
+    
+    class func insertPaginationTask(_ task: BaseAPITask) {
+        self.tasks.insert(task, at: 1)
     }
     
     class func run() {

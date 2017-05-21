@@ -9,7 +9,7 @@
 import CoreData
 import XCGLogger
 
-class BaseAPI {    
+class BaseAPI {
     func timestampStorageKey() -> String {
         return ""
     }
@@ -23,6 +23,8 @@ class BaseAPI {
             UserDefaults.standard.set(newValue, forKey: self.timestampStorageKey())
         }
     }
+    
+    var pagination: PaginationAPI?
     
     class private func mapErrorType(data: Any?) -> ErrorTypeAPI {
         if let errorMessage = data as? [String: String], let errorCode = errorMessage[kMessage] {
@@ -88,6 +90,16 @@ class BaseAPI {
         let components = BaseAPI.components(resource)
         components.path = "/" + resource + "/updates"
         
+        if let pagination = self.pagination {
+            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(pagination.size))
+            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(pagination.start))
+            components.queryItems = [sizePageQuery, startPageQuery]
+        } else {
+            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(paginationSize))
+            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(1))
+            components.queryItems = [sizePageQuery, startPageQuery]
+        }
+        
         guard let url = components.url else {
             return nil
         }
@@ -124,7 +136,16 @@ class BaseAPI {
             }
             
             if let pagination = dict[kPagination] as? [String: Any] {
-//                self.pagination = PaginationAPI(with: pagination)
+                let pagination = PaginationAPI(with: pagination)
+                
+                if pagination.hasNext() {
+                    let newPageTask = BaseAPILoadUpdatesTask(resource: resource, entity: self, completionBlock: completion)
+                    SyncManager.insertPaginationTask(newPageTask)
+                    self.pagination = pagination
+                }
+                else {
+                    self.pagination = nil
+                }
             }
             
             if results.count > 0 {

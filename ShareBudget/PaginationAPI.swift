@@ -22,4 +22,12 @@ class PaginationAPI {
         self.start = dict[kPaginationStart] as? Int ?? 0
         self.total = dict[kPaginationTotal] as? Int ?? 0
     }
+    
+    func hasNext() -> Bool {
+        if self.start + self.size > self.total {
+            return false
+        }
+        
+        return true
+    }
 }
