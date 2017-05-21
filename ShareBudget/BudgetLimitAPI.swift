@@ -9,19 +9,15 @@
 import CoreData
 
 class BudgetLimitAPI: BaseAPI {
-    override class func modelKeyID() -> String {
-        return kBudgetLimitID
-    }
-    
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "budget_limit_timestamp"
     }
     
-    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var limit: BudgetLimit?
         
         for item in items {
-            guard let budgetID = item[BudgetAPI.modelKeyID()] as? Int else {
+            guard let budgetID = item[Budget.modelKeyID()] as? Int else {
                 continue
             }
             
@@ -29,7 +25,7 @@ class BudgetLimitAPI: BaseAPI {
                 continue
             }
             
-            guard let limitID = item[BudgetLimitAPI.modelKeyID()] as? Int else {
+            guard let limitID = item[BudgetLimit.modelKeyID()] as? Int else {
                 continue
             }
             
@@ -46,7 +42,7 @@ class BudgetLimitAPI: BaseAPI {
         }
     }
     
-    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
         let fetchedResultsController = ModelManager.changedModels(BudgetLimit.self, managedObjectContext)
         

@@ -10,10 +10,10 @@ import UIKit
 
 class BaseAPITask {
     var resource: String
-    var entity: BaseAPI.Type
+    var entity: BaseAPI
     var completionBlock: APIResultBlock?
     
-    init(resource: String, entity: BaseAPI.Type, completionBlock: APIResultBlock?) {
+    init(resource: String, entity: BaseAPI, completionBlock: APIResultBlock?) {
         self.entity = entity
         self.resource = resource
         self.completionBlock = completionBlock

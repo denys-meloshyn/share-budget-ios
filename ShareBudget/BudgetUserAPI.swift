@@ -9,7 +9,7 @@
 import CoreData
 
 class BudgetUserAPI: BaseAPI {
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "budget_user_timestamp"
     }
 }

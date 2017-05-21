@@ -10,15 +10,11 @@ import CoreData
 import XCGLogger
 
 class BaseAPI {
-    class func modelKeyID() -> String {
+    func timestampStorageKey() -> String {
         return ""
     }
     
-    class func timestampStorageKey() -> String {
-        return ""
-    }
-    
-    class var timestamp: String {
+    var timestamp: String {
         get {
             return UserDefaults.standard.string(forKey: self.timestampStorageKey()) ?? ""
         }
@@ -28,7 +24,9 @@ class BaseAPI {
         }
     }
     
-    private class func mapErrorType(data: Any?) -> ErrorTypeAPI {
+    var pagination: PaginationAPI?
+    
+    class private func mapErrorType(data: Any?) -> ErrorTypeAPI {
         if let errorMessage = data as? [String: String], let errorCode = errorMessage[kMessage] {
             switch errorCode {
             case kEmailNotApproved:
@@ -63,7 +61,7 @@ class BaseAPI {
         }
         
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-            return BaseAPI.mapErrorType(data: data)
+            return self.mapErrorType(data: data)
         }
         
         return .none
@@ -84,13 +82,23 @@ class BaseAPI {
         return components
     }
     
-    class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         
     }
     
-    class func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask? {
-        let components = self.components(resource)
+    func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask? {
+        let components = BaseAPI.components(resource)
         components.path = "/" + resource + "/updates"
+        
+        if let pagination = self.pagination {
+            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(pagination.size))
+            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(pagination.start))
+            components.queryItems = [sizePageQuery, startPageQuery]
+        } else {
+            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(paginationSize))
+            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(1))
+            components.queryItems = [sizePageQuery, startPageQuery]
+        }
         
         guard let url = components.url else {
             return nil
@@ -127,6 +135,19 @@ class BaseAPI {
                 return
             }
             
+            if let pagination = dict[kPagination] as? [String: Any] {
+                let pagination = PaginationAPI(with: pagination)
+                
+                if pagination.hasNext() {
+                    let newPageTask = BaseAPILoadUpdatesTask(resource: resource, entity: self, completionBlock: completion)
+                    SyncManager.insertPaginationTask(newPageTask)
+                    self.pagination = pagination
+                }
+                else {
+                    self.pagination = nil
+                }
+            }
+            
             if results.count > 0 {
                 self.timestamp = timestamp
                 let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
@@ -140,8 +161,8 @@ class BaseAPI {
         return task
     }
     
-    class func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask? {
-        let components = self.components(resource)
+    func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask? {
+        let components = BaseAPI.components(resource)
         
         guard let url = components.url else {
             return nil
@@ -207,14 +228,15 @@ class BaseAPI {
             let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
             let model = managedObjectContext.object(with: modelID) as! BaseModel
             model.isChanged = false
-            model.configureModelID(dict: result, for: self.modelKeyID())
+            
+            model.update(with: result, in: managedObjectContext)
             ModelManager.saveChildren(managedObjectContext, block: {
                 completion?(nil, .none)
             })
         })
     }
     
-    class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         return []
     }
 }

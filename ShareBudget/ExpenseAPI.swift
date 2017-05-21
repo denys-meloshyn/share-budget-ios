@@ -9,19 +9,15 @@
 import CoreData
 
 class ExpenseAPI: BaseAPI {
-    override class func modelKeyID() -> String {
-        return kExpenseID
-    }
-    
-    override class func timestampStorageKey() -> String {
+    override func timestampStorageKey() -> String {
         return "expense_timestamp"
     }
     
-    override class func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var expense: Expense?
         
         for item in items {
-            if let modelID = item[self.modelKeyID()] as? Int {
+            if let modelID = item[Expense.modelKeyID()] as? Int {
                 expense = ModelManager.findEntity(Expense.self, by: modelID, in: managedObjectContext) as? Expense
             }
             
@@ -33,7 +29,7 @@ class ExpenseAPI: BaseAPI {
         }
     }
     
-    override class func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
         let fetchedResultsController = ModelManager.changedModels(Expense.self, managedObjectContext)
         
@@ -48,7 +44,7 @@ class ExpenseAPI: BaseAPI {
                     continue
                 }
                 
-                let task = BaseAPITaskUpload(resource: "expense", entity: ExpenseAPI.self, modelID: model.objectID, completionBlock: completionBlock)
+                let task = BaseAPITaskUpload(resource: "expense", entity: self, modelID: model.objectID, completionBlock: completionBlock)
                 tasks.append(task)
             }
         }

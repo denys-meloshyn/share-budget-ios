@@ -59,11 +59,11 @@ class UserCredentials {
     }
     
     class func resetTimeStamps() {
-        CategoryAPI.timestamp = ""
-        ExpenseAPI.timestamp = ""
-        BudgetAPI.timestamp = ""
-        BudgetLimitAPI.timestamp = ""
-        UserAPI.timestamp = ""
+        SyncManager.categoryAPI.timestamp = ""
+        SyncManager.expenseAPI.timestamp = ""
+        SyncManager.budgetAPI.timestamp = ""
+        SyncManager.budgetLimitAPI.timestamp = ""
+        SyncManager.userAPI.timestamp = ""
     }
     
     class var isLoggedIn: Bool {

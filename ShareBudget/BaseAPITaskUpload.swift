@@ -11,7 +11,7 @@ import CoreData
 class BaseAPITaskUpload: BaseAPITask {
     var modelID: NSManagedObjectID
     
-    init(resource: String, entity: BaseAPI.Type, modelID: NSManagedObjectID, completionBlock: APIResultBlock?) {
+    init(resource: String, entity: BaseAPI, modelID: NSManagedObjectID, completionBlock: APIResultBlock?) {
         self.modelID = modelID
         
         super.init(resource: resource, entity: entity, completionBlock: completionBlock)

@@ -86,6 +86,7 @@
 		57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */; };
 		57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */; };
 		57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD841ECF64FE00CE372C /* CalledMethod.swift */; };
+		57BEAD881ED07C5100CE372C /* PaginationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD871ED07C5100CE372C /* PaginationAPI.swift */; };
 		57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
 		57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
@@ -223,6 +224,7 @@
 		57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetView.swift; sourceTree = "<group>"; };
 		57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalledMethodManager.swift; sourceTree = "<group>"; };
 		57BEAD841ECF64FE00CE372C /* CalledMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalledMethod.swift; sourceTree = "<group>"; };
+		57BEAD871ED07C5100CE372C /* PaginationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationAPI.swift; sourceTree = "<group>"; };
 		57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewHeader.swift; sourceTree = "<group>"; };
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 				573F59E21E2AB9B000AEA72A /* SyncManager.swift */,
 				573F59DA1E29637E00AEA72A /* UserAPI.swift */,
 				57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */,
+				57BEAD871ED07C5100CE372C /* PaginationAPI.swift */,
 			);
 			name = APIManager;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
 				572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */,
+				57BEAD881ED07C5100CE372C /* PaginationAPI.swift in Sources */,
 				575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */,
 				57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */,
 				571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */,
