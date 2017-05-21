@@ -80,24 +80,16 @@ class SyncManager {
         }
         
         // New or changed budgets
-        tasks += self.budgetAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
-            completionBlock(data, error)
-        })
+        tasks += self.budgetAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed budget limits
-        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
-            completionBlock(data, error)
-        })
+        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed categories
-        tasks += self.categoryAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
-            completionBlock(data, error)
-        })
+        tasks += self.categoryAPI.allChangedModels(completionBlock: completionBlock)
         
         // New or changed expenses
-        tasks += self.expenseAPI.allChangedModels(completionBlock: { (data, error) -> (Void) in
-            completionBlock(data, error)
-        })
+        tasks += self.expenseAPI.allChangedModels(completionBlock: completionBlock)
         
         // Load all updates for 'User'
         task = BaseAPILoadUpdatesTask(resource: "user", entity: self.userAPI, completionBlock: completionBlock)
