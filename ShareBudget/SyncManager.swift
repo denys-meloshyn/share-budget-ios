@@ -30,6 +30,7 @@ class SyncManager {
     private class func loadUpdates(completion: APIResultBlock?) {
         XCGLogger.info("Load updates from server")
         
+        self.tasks.removeAll()
         var task: BaseAPITask
         
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
