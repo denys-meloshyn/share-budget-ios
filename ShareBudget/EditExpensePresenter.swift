@@ -17,10 +17,12 @@ enum EditExpenseField {
 }
 
 protocol EditExpensePresenterDelegate: BasePresenterDelegate {
+    func updateDate(_ value: String)
     func updatePrice(_ value: String)
+    func updateDatePicker(with date: Date)
     func activateTextField(_ textField: EditExpenseField)
     func typeForTextField(_ textField: UITextField) -> EditExpenseField
-    func setPlaceholder(_ value: String?, for textField: EditExpenseField)
+    func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField)
     
     func configureSaveButtonState(_ state: Bool)
     func activateCellTextField(at indexPath: IndexPath)
@@ -49,12 +51,27 @@ class EditExpensePresenter: BasePresenter {
         self.updateApplyButton()
         self.updateSaveButton()
         
+        let date = self.expenseInteraction.expense.creationDate ?? NSDate()
+        self.delegate?.updateDatePicker(with: date as Date)
+        
         self.updatePrice()
         self.updateCategory()
+        self.updateDate()
+        
         self.delegate?.activateTextField(.price)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, for: .name)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, for: .date)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, for: .price)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, color: Constants.defaultApperanceColor, for: .name)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, color: Constants.defaultApperanceColor, for: .date)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, color: Constants.defaultApperanceColor, for: .price)
+    }
+    
+    func openCategoryPage() {
+        self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
+    }
+    
+    func dateChanged(sender: UIDatePicker) {
+        self.expenseInteraction.expense.creationDate = sender.date as NSDate?
+        
+        self.updateDate()
     }
     
     private func updateApplyButton() {
@@ -82,10 +99,20 @@ class EditExpensePresenter: BasePresenter {
         self.delegate?.updatePrice(formattedValue)
     }
     
-    private func updateCategory() {
-        let value = self.expenseInteraction.expense.category?.name ?? LocalisedManager.edit.expense.category
-        
-        self.delegate?.setPlaceholder(value, for: .category)
+    fileprivate func updateCategory() {
+        if let name = self.expenseInteraction.expense.category?.name {
+            self.delegate?.setPlaceholder(name, color: Constants.defaultTextTintColor, for: .category)
+        }
+        else {
+            self.delegate?.setPlaceholder(LocalisedManager.edit.expense.category, color: Constants.defaultInputTextColor, for: .category)
+        }
+    }
+    
+    fileprivate func updateDate() {
+        if let creationDate = self.expenseInteraction.expense.creationDate as Date? {
+            let formattedValue = UtilityFormatter.string(from: creationDate)
+            self.delegate?.updateDate(formattedValue)
+        }
     }
     
     fileprivate func fieldTitle(_ field: EditExpenseField) -> String {
@@ -217,17 +244,14 @@ extension EditExpensePresenter: UITableViewDelegate {
     }
 }
 
+// MARK: - CategoryViewControllerDelegate
+
 extension EditExpensePresenter: CategoryViewControllerDelegate {
     func didSelectCategory(_ categoryID: NSManagedObjectID) {
         self.expenseInteraction.updateCategory(categoryID)
         
-        guard let index = self.items.index(of: .category) else {
-            return
-        }
-        
-        let indexPath = IndexPath(row: index, section: 0)
         self.updateSaveButton()
-        self.delegate?.refreshTextField(at: indexPath, with: self.formattedTextFieldValue(for: .category))
+        self.updateCategory()
     }
 }
 
@@ -313,11 +337,7 @@ extension EditExpensePresenter: UITextFieldDelegate {
             self.expenseInteraction.expense.name = newValue
             
         case .date:
-            break
-            //            self.expenseInteraction.expense.creationDate = sender.datePicker.date as NSDate?
-            //
-            //            let newValue = self.formattedTextFieldValue(for: type)
-            //            self.delegate?.refreshTextField(at: indexPath, with: newValue)
+            return false
             
         case .price:
             guard newValue.characters.count > 0 else {

@@ -64,8 +64,9 @@ enum ErrorTypeAPI {
 }
 
 class Constants {
-    static let defaultTextTintColor = UIColor.white
+    static let defaultTextTintColor = UIColor.black
+    static let defaultInputTextColor = UIColor(hexString:"#C7C7CD")!
     static let defaultActionColor = UIColor(hexString: "#E91E63")!
-    static let defaultApperanceColor = UIColor(hexString: "#4CAF50")!
+    static let defaultApperanceColor = UIColor(hexString: "#EEEEEE")!
     static let defaultBackgroundColor = UIColor(hexString: "#F5F5F5")
 }

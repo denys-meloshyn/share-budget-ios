@@ -32,6 +32,7 @@ class BudgetDetailView: BaseView {
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
+    weak var backButtonImageView: UIImageView?
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?
@@ -59,6 +60,10 @@ class BudgetDetailView: BaseView {
         self.animationView?.backgroundColor = Constants.defaultActionColor
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
         self.createNewExpenseContainerView?.backgroundColor = Constants.defaultActionColor
+        
+        let image = R.image.back_icon()?.withRenderingMode(.alwaysTemplate)
+        self.backButtonImageView?.image = image
+        self.backButtonImageView?.tintColor = Constants.defaultTextTintColor
         
         self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)

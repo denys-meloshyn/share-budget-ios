@@ -15,6 +15,7 @@ class EditExpenseView: BaseView {
     var nameTextField: UITextField?
     var priceTextField: UITextField?
     var categoryContainerView: UIView?
+    lazy var datePicker = UIDatePicker()
     
     fileprivate var editExpensePresenter: EditExpensePresenter {
         get {
@@ -31,10 +32,20 @@ class EditExpenseView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.dateTextField?.delegate = self.editExpensePresenter
         self.priceTextField?.delegate = self.editExpensePresenter
         
         self.setBorderColor(for: self.dateContainerView)
         self.setBorderColor(for: self.categoryContainerView)
+        self.categoryButton?.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
+        
+        self.configureDatePicker()
+    }
+    
+    private func configureDatePicker() {
+        self.datePicker.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.dateChanged(sender:)), for: .valueChanged)
+        self.datePicker.datePickerMode = .dateAndTime
+        self.dateTextField?.inputView = self.datePicker
     }
     
     fileprivate func setBorderColor(for view: UIView?) {
@@ -45,6 +56,14 @@ class EditExpenseView: BaseView {
 }
 
 extension EditExpenseView: EditExpensePresenterDelegate {
+    func updateDate(_ value: String) {
+        self.dateTextField?.text = value
+    }
+    
+    func updateDatePicker(with date: Date) {
+        self.datePicker.date = date
+    }
+    
     func updatePrice(_ value: String) {
         self.priceTextField?.text = value
     }
@@ -53,12 +72,16 @@ extension EditExpenseView: EditExpensePresenterDelegate {
         switch textField {
         case self.priceTextField!:
             return .price
+            
+        case self.dateTextField!:
+            return .date
+            
         default:
             return .price
         }
     }
     
-    func setPlaceholder(_ value: String?, for textField: EditExpenseField) {
+    func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField) {
         switch textField {
         case .price:
             self.priceTextField?.placeholder = value
@@ -72,6 +95,8 @@ extension EditExpenseView: EditExpensePresenterDelegate {
         case .category:
             self.categoryButton?.setTitle(value, for: .normal)
             self.categoryButton?.setTitle(value, for: .highlighted)
+            self.categoryButton?.setTitleColor(color, for: .normal)
+            self.categoryButton?.setTitleColor(color, for: .highlighted)
         }
     }
     
