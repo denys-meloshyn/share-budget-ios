@@ -17,6 +17,11 @@ enum EditExpenseField {
 }
 
 protocol EditExpensePresenterDelegate: BasePresenterDelegate {
+    func updatePrice(_ value: String)
+    func activateTextField(_ textField: EditExpenseField)
+    func typeForTextField(_ textField: UITextField) -> EditExpenseField
+    func setPlaceholder(_ value: String?, for textField: EditExpenseField)
+    
     func configureSaveButtonState(_ state: Bool)
     func activateCellTextField(at indexPath: IndexPath)
     func showApplyChangesButton(_ button: UIBarButtonItem)
@@ -43,6 +48,13 @@ class EditExpensePresenter: BasePresenter {
         
         self.updateApplyButton()
         self.updateSaveButton()
+        
+        self.updatePrice()
+        self.updateCategory()
+        self.delegate?.activateTextField(.price)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, for: .name)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, for: .date)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, for: .price)
     }
     
     private func updateApplyButton() {
@@ -58,6 +70,22 @@ class EditExpensePresenter: BasePresenter {
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
         
         self.delegate?.showApplyChangesButton(button)
+    }
+    
+    private func updatePrice() {
+        var formattedValue = ""
+        let price = NSNumber(value: self.expenseInteraction.expense.price)
+        if price.doubleValue > 0.0 {
+            formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
+        }
+        
+        self.delegate?.updatePrice(formattedValue)
+    }
+    
+    private func updateCategory() {
+        let value = self.expenseInteraction.expense.category?.name ?? LocalisedManager.edit.expense.category
+        
+        self.delegate?.setPlaceholder(value, for: .category)
     }
     
     fileprivate func fieldTitle(_ field: EditExpenseField) -> String {
@@ -267,3 +295,68 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension EditExpensePresenter: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let type = self.delegate?.typeForTextField(textField) else {
+            return true
+        }
+        
+        let objcValue = textField.text as NSString?
+        guard let newValue = objcValue?.replacingCharacters(in: range, with: string) else {
+            return true
+        }
+        
+        switch type {
+        case .name:
+            self.expenseInteraction.expense.name = newValue
+            
+        case .date:
+            break
+            //            self.expenseInteraction.expense.creationDate = sender.datePicker.date as NSDate?
+            //
+            //            let newValue = self.formattedTextFieldValue(for: type)
+            //            self.delegate?.refreshTextField(at: indexPath, with: newValue)
+            
+        case .price:
+            guard newValue.characters.count > 0 else {
+                return true
+            }
+            
+            guard let price = UtilityFormatter.amount(from: newValue) else {
+                return false
+            }
+            
+            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
+            
+            if roundPrice?.doubleValue == price.doubleValue {
+                self.expenseInteraction.expense.price = price.doubleValue
+            }
+            else {
+                return false
+            }
+            
+        default:
+            break
+        }
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let type = self.delegate?.typeForTextField(textField) else {
+            return true
+        }
+        
+        switch type {
+        case .name:
+            self.delegate?.activateTextField(.name)
+            
+        default:
+            break
+        }
+        
+        return true
+    }
+}
