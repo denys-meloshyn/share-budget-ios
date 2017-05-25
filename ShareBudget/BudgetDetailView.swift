@@ -61,10 +61,6 @@ class BudgetDetailView: BaseView {
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
         self.createNewExpenseContainerView?.backgroundColor = Constants.defaultActionColor
         
-        let image = R.image.back_icon()?.withRenderingMode(.alwaysTemplate)
-        self.backButtonImageView?.image = image
-        self.backButtonImageView?.tintColor = Constants.defaultTextTintColor
-        
         self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)

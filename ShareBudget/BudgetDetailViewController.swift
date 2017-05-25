@@ -55,6 +55,12 @@ class BudgetDetailViewController: BaseViewController {
         self.viperView?.viewDidLoad()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
+    
     private func linkStoryboardViews() {
         guard let view = self.viperView as? BudgetDetailView else {
             return
@@ -73,6 +79,7 @@ class BudgetDetailViewController: BaseViewController {
         view.animationView = self.animationView
         view.navigationView = self.navigationView
         view.expenseCoverView = self.expenseCoverView
+        
         view.backButtonImageView = self.backButtonImageView
         view.createExpenseButton = self.createExpenseButton
         view.budgetContainerView = self.budgetContainerView

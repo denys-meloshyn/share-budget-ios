@@ -12,6 +12,7 @@ import CoreData
 class EditExpenseViewController: BaseViewController {
     @IBOutlet private var categoryButton: UIButton?
     @IBOutlet private var dateContainerView: UIView?
+    @IBOutlet private var nameSeparatorLine: UIView?
     @IBOutlet private var dateTextField: UITextField?
     @IBOutlet private var nameTextField: UITextField?
     @IBOutlet private var priceTextField: UITextField?
@@ -41,6 +42,7 @@ class EditExpenseViewController: BaseViewController {
         view.nameTextField = self.nameTextField
         view.categoryButton = self.categoryButton
         view.priceTextField = self.priceTextField
+        view.nameSeparatorLine = self.nameSeparatorLine
         view.dateContainerView = self.dateContainerView
         view.categoryContainerView = self.categoryContainerView
     }

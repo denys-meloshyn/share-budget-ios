@@ -361,6 +361,8 @@ extension EditExpensePresenter: UITextFieldDelegate {
             break
         }
         
+        self.updateSaveButton()
+        
         return true
     }
     

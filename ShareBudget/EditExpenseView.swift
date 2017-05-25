@@ -9,12 +9,13 @@
 import UIKit
 
 class EditExpenseView: BaseView {
-    var categoryButton: UIButton?
-    var dateContainerView: UIView?
-    var dateTextField: UITextField?
-    var nameTextField: UITextField?
-    var priceTextField: UITextField?
-    var categoryContainerView: UIView?
+    weak var categoryButton: UIButton?
+    weak var dateContainerView: UIView?
+    weak var nameSeparatorLine: UIView?
+    weak var dateTextField: UITextField?
+    weak var nameTextField: UITextField?
+    weak var priceTextField: UITextField?
+    weak var categoryContainerView: UIView?
     lazy var datePicker = UIDatePicker()
     
     fileprivate var editExpensePresenter: EditExpensePresenter {
@@ -32,11 +33,13 @@ class EditExpenseView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.nameTextField?.delegate = self.editExpensePresenter
         self.dateTextField?.delegate = self.editExpensePresenter
         self.priceTextField?.delegate = self.editExpensePresenter
         
         self.setBorderColor(for: self.dateContainerView)
         self.setBorderColor(for: self.categoryContainerView)
+        self.nameSeparatorLine?.backgroundColor = Constants.defaultActionColor
         self.categoryButton?.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
         
         self.configureDatePicker()
@@ -75,6 +78,9 @@ extension EditExpenseView: EditExpensePresenterDelegate {
             
         case self.dateTextField!:
             return .date
+            
+        case self.nameTextField!:
+            return .name
             
         default:
             return .price
