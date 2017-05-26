@@ -59,6 +59,10 @@ class EditExpenseView: BaseView {
 }
 
 extension EditExpenseView: EditExpensePresenterDelegate {
+    func updateName(_ value: String?) {
+        self.nameTextField?.text = value
+    }
+    
     func updateDate(_ value: String) {
         self.dateTextField?.text = value
     }

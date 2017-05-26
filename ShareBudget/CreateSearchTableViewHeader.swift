@@ -41,7 +41,7 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
         super.awakeFromNib()
         
         self.textFieldRootView?.layer.borderWidth = 1.0
-        self.textFieldRootView?.layer.borderColor = UIColor.black.cgColor
+        self.textFieldRootView?.layer.borderColor = Constants.defaultActionColor.cgColor
         self.searchCreateButton?.tintColor = Constants.defaultActionColor
         self.contentView.backgroundColor = Constants.defaultBackgroundColor
     }

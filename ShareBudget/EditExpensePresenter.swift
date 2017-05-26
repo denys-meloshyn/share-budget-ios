@@ -18,6 +18,7 @@ enum EditExpenseField {
 
 protocol EditExpensePresenterDelegate: BasePresenterDelegate {
     func updateDate(_ value: String)
+    func updateName(_ value: String?)
     func updatePrice(_ value: String)
     func updateDatePicker(with date: Date)
     func activateTextField(_ textField: EditExpenseField)
@@ -57,6 +58,7 @@ class EditExpensePresenter: BasePresenter {
         self.updatePrice()
         self.updateCategory()
         self.updateDate()
+        self.delegate?.updateName(self.expenseInteraction.expense.name)
         
         self.delegate?.activateTextField(.price)
         self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, color: Constants.defaultApperanceColor, for: .name)
