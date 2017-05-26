@@ -110,7 +110,7 @@ class EditExpensePresenter: BasePresenter {
     
     fileprivate func updateDate() {
         if let creationDate = self.expenseInteraction.expense.creationDate as Date? {
-            let formattedValue = UtilityFormatter.string(from: creationDate)
+            let formattedValue = UtilityFormatter.expenseCreationFormatter.string(from: creationDate)
             self.delegate?.updateDate(formattedValue)
         }
     }
