@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : Constants.defaultActionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = Constants.defaultTextTintColor
+        UINavigationBar.appearance().tintColor = Constants.defaultActionColor
         UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Constants.defaultTextTintColor]
         
