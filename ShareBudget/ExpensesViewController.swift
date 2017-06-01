@@ -100,7 +100,7 @@ extension ExpensesViewController: UITableViewDataSource {
         cell?.budgetRestLabel?.text = dict[expense?.modelID?.stringValue ?? ""]
         
         if let date = expense?.creationDate as Date? {
-            cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)
+            cell?.dateLabel?.text = UtilityFormatter.expenseCreationFormatter.string(for: date)
         }
         
         return cell!
