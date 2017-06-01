@@ -119,23 +119,8 @@ extension EditExpenseView: EditExpensePresenterDelegate {
         }
     }
     
-    func createExpenseCell(with inputType: RightTextFieldTableViewCellInputType) -> RightTextFieldTableViewCell {
-        return RightTextFieldTableViewCell()
-    }
-    
     func showApplyChangesButton(_ button: UIBarButtonItem) {
         self.viewController?.navigationItem.rightBarButtonItem = button
-    }
-    
-    func activateCellTextField(at indexPath: IndexPath) {
-//        self.tableView?.scrollToRow(at: indexPath, at: .middle, animated: true)
-//        let cell = self.tableView?.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
-//        cell?.textField?.becomeFirstResponder()
-    }
-    
-    func refreshTextField(at indexPath: IndexPath, with value: String) {
-//        let cell = self.tableView?.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
-//        cell?.textField?.text = value
     }
     
     func configureSaveButtonState(_ state: Bool) {

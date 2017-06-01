@@ -36,6 +36,9 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         self.fc?.delegate = self
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fc!)
         
+        let budget = self.managedObjectContext.object(with: self.budgetID!) as? Budget
+        self.navigationItem.title = budget?.name
+        
         do {
             try self.fc?.performFetch()
             self.calculateBudgetRestForExpenses()

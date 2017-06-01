@@ -21,15 +21,11 @@ protocol EditExpensePresenterDelegate: BasePresenterDelegate {
     func updateName(_ value: String?)
     func updatePrice(_ value: String)
     func updateDatePicker(with date: Date)
+    func configureSaveButtonState(_ state: Bool)
     func activateTextField(_ textField: EditExpenseField)
+    func showApplyChangesButton(_ button: UIBarButtonItem)
     func typeForTextField(_ textField: UITextField) -> EditExpenseField
     func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField)
-    
-    func configureSaveButtonState(_ state: Bool)
-    func activateCellTextField(at indexPath: IndexPath)
-    func showApplyChangesButton(_ button: UIBarButtonItem)
-    func refreshTextField(at indexPath: IndexPath, with value: String)
-    func createExpenseCell(with inputType: RightTextFieldTableViewCellInputType) -> RightTextFieldTableViewCell
 }
 
 class EditExpensePresenter: BasePresenter {
@@ -51,6 +47,7 @@ class EditExpensePresenter: BasePresenter {
         
         self.updateApplyButton()
         self.updateSaveButton()
+        self.delegate?.showPage(title: self.expenseInteraction.budget.name)
         
         let date = self.expenseInteraction.expense.creationDate ?? NSDate()
         self.delegate?.updateDatePicker(with: date as Date)
@@ -93,9 +90,8 @@ class EditExpensePresenter: BasePresenter {
     
     private func updatePrice() {
         var formattedValue = ""
-        let price = NSNumber(value: self.expenseInteraction.expense.price)
-        if price.doubleValue > 0.0 {
-            formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
+        if self.expenseInteraction.expense.price > 0.0 {
+            formattedValue = String(self.expenseInteraction.expense.price)
         }
         
         self.delegate?.updatePrice(formattedValue)
@@ -186,66 +182,6 @@ class EditExpensePresenter: BasePresenter {
     }
 }
 
-// MARK: - UITableViewDataSource
-
-extension EditExpensePresenter: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let type = self.items[indexPath.row]
-        let input: RightTextFieldTableViewCellInputType
-        
-        let title = self.fieldTitle(type)
-        let placeholder = self.fieldTitle(type)
-        let formattedValue = self.formattedTextFieldValue(for: type)
-        
-        switch type {
-        case .category:
-            input = .notEdited(title: title, value: formattedValue, placeholder: placeholder)
-            
-        case .date:
-            let creationDate = self.expenseInteraction.expense.creationDate as Date?
-            
-            input = .date(title: title, formattedDate: formattedValue, date: creationDate, placeholder: placeholder)
-            
-        case .price:
-            input = .number(title: title, value: formattedValue, placeholder: placeholder)
-            
-        default:
-            input = .text(title: title, value: formattedValue, placeholder: placeholder)
-        }
-        
-        let cell = self.delegate!.createExpenseCell(with: input)
-        cell.indexPath = indexPath
-        cell.delegate = self
-        if type == .category {
-            cell.accessoryType = .disclosureIndicator
-        }
-        
-        return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension EditExpensePresenter: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
-        
-        let type = self.items[indexPath.row]
-        
-        switch type {
-        case .category:
-            self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
-        default:
-            let cell = tableView.cellForRow(at: indexPath) as? RightTextFieldTableViewCell
-            cell?.textField?.becomeFirstResponder()
-        }
-    }
-}
-
 // MARK: - CategoryViewControllerDelegate
 
 extension EditExpensePresenter: CategoryViewControllerDelegate {
@@ -254,70 +190,6 @@ extension EditExpensePresenter: CategoryViewControllerDelegate {
         
         self.updateSaveButton()
         self.updateCategory()
-    }
-}
-
-// MARK: - RightTextFieldTableViewCellDelegate
-
-extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
-    func done(sender: RightTextFieldTableViewCell) {
-        sender.textField?.resignFirstResponder()
-    }
-    
-    func nextKeyboard(sender: RightTextFieldTableViewCell) {
-        guard let indexPath = sender.indexPath else {
-            return
-        }
-        
-        if indexPath.row + 1 < self.items.count {
-            var nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-            if self.items[nextIndexPath.row] == .category {
-                nextIndexPath = IndexPath(row: indexPath.row + 2, section: indexPath.section)
-            }
-            self.delegate?.activateCellTextField(at: nextIndexPath)
-        }
-        else {
-            self.done(sender: sender)
-        }
-    }
-    
-    func valueChanged(sender: RightTextFieldTableViewCell) {
-        guard let indexPath = sender.indexPath else {
-            return
-        }
-        
-        let type = self.items[indexPath.row]
-        switch type {
-        case .name:
-            self.expenseInteraction.expense.name = sender.textField?.text
-            
-        case .date:
-            self.expenseInteraction.expense.creationDate = sender.datePicker.date as NSDate?
-            
-            let newValue = self.formattedTextFieldValue(for: type)
-            self.delegate?.refreshTextField(at: indexPath, with: newValue)
-            
-        case .price:
-            guard let text = sender.textField?.text else {
-                return
-            }
-            
-            let price = UtilityFormatter.amount(from: text) ?? 0.0
-            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
-            
-            if roundPrice?.doubleValue == price.doubleValue {
-                self.expenseInteraction.expense.price = price.doubleValue
-            }
-            else {
-                let newValue = self.formattedTextFieldValue(for: type)
-                self.delegate?.refreshTextField(at: indexPath, with: newValue)
-            }
-            
-        default:
-            break
-        }
-        
-        self.updateSaveButton()
     }
 }
 
