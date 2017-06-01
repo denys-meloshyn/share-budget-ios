@@ -33,6 +33,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var budgetDescriptionLabel: UILabel?
     @IBOutlet private var balanceDescriptionLabel: UILabel?
     @IBOutlet private var expenseDescriptionLabel: UILabel?
+    @IBOutlet private var backButtonImageView: UIImageView?
     @IBOutlet private var createNewExpenseContainerView: UIView?
     @IBOutlet private var constraintChartViewWidth: NSLayoutConstraint?
     @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
@@ -54,6 +55,12 @@ class BudgetDetailViewController: BaseViewController {
         self.viperView?.viewDidLoad()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
+    
     private func linkStoryboardViews() {
         guard let view = self.viperView as? BudgetDetailView else {
             return
@@ -72,6 +79,7 @@ class BudgetDetailViewController: BaseViewController {
         view.animationView = self.animationView
         view.navigationView = self.navigationView
         view.expenseCoverView = self.expenseCoverView
+        view.backButtonImageView = self.backButtonImageView
         view.createExpenseButton = self.createExpenseButton
         view.budgetContainerView = self.budgetContainerView
         view.expenseContainerView = self.expenseContainerView

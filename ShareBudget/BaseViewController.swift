@@ -34,10 +34,4 @@ class BaseViewController: UIViewController {
         
         self.viperView?.viewDidDisappear(animated)
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
-    }
 }

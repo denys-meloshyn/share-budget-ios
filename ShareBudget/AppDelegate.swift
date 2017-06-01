@@ -128,14 +128,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureAppearance() {
         UITabBar.appearance().isTranslucent = true
-        UITabBar.appearance().tintColor = UIColor.white
+        UITabBar.appearance().tintColor = Constants.defaultTextTintColor
         UITabBar.appearance().barTintColor = Constants.defaultApperanceColor
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.white], for: UIControlState.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : Constants.defaultActionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().tintColor = Constants.defaultTextTintColor
         UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Constants.defaultTextTintColor]
         
         UITextField.appearance().tintColor = Constants.defaultActionColor
         

@@ -17,6 +17,14 @@ enum EditExpenseField {
 }
 
 protocol EditExpensePresenterDelegate: BasePresenterDelegate {
+    func updateDate(_ value: String)
+    func updateName(_ value: String?)
+    func updatePrice(_ value: String)
+    func updateDatePicker(with date: Date)
+    func activateTextField(_ textField: EditExpenseField)
+    func typeForTextField(_ textField: UITextField) -> EditExpenseField
+    func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField)
+    
     func configureSaveButtonState(_ state: Bool)
     func activateCellTextField(at indexPath: IndexPath)
     func showApplyChangesButton(_ button: UIBarButtonItem)
@@ -43,6 +51,29 @@ class EditExpensePresenter: BasePresenter {
         
         self.updateApplyButton()
         self.updateSaveButton()
+        
+        let date = self.expenseInteraction.expense.creationDate ?? NSDate()
+        self.delegate?.updateDatePicker(with: date as Date)
+        
+        self.updatePrice()
+        self.updateCategory()
+        self.updateDate()
+        self.delegate?.updateName(self.expenseInteraction.expense.name)
+        
+        self.delegate?.activateTextField(.price)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, color: Constants.defaultApperanceColor, for: .name)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, color: Constants.defaultApperanceColor, for: .date)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, color: Constants.defaultApperanceColor, for: .price)
+    }
+    
+    func openCategoryPage() {
+        self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
+    }
+    
+    func dateChanged(sender: UIDatePicker) {
+        self.expenseInteraction.expense.creationDate = sender.date as NSDate?
+        
+        self.updateDate()
     }
     
     private func updateApplyButton() {
@@ -58,6 +89,32 @@ class EditExpensePresenter: BasePresenter {
         let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
         
         self.delegate?.showApplyChangesButton(button)
+    }
+    
+    private func updatePrice() {
+        var formattedValue = ""
+        let price = NSNumber(value: self.expenseInteraction.expense.price)
+        if price.doubleValue > 0.0 {
+            formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
+        }
+        
+        self.delegate?.updatePrice(formattedValue)
+    }
+    
+    fileprivate func updateCategory() {
+        if let name = self.expenseInteraction.expense.category?.name {
+            self.delegate?.setPlaceholder(name, color: Constants.defaultTextTintColor, for: .category)
+        }
+        else {
+            self.delegate?.setPlaceholder(LocalisedManager.edit.expense.category, color: Constants.defaultInputTextColor, for: .category)
+        }
+    }
+    
+    fileprivate func updateDate() {
+        if let creationDate = self.expenseInteraction.expense.creationDate as Date? {
+            let formattedValue = UtilityFormatter.expenseCreationFormatter.string(from: creationDate)
+            self.delegate?.updateDate(formattedValue)
+        }
     }
     
     fileprivate func fieldTitle(_ field: EditExpenseField) -> String {
@@ -189,17 +246,14 @@ extension EditExpensePresenter: UITableViewDelegate {
     }
 }
 
+// MARK: - CategoryViewControllerDelegate
+
 extension EditExpensePresenter: CategoryViewControllerDelegate {
     func didSelectCategory(_ categoryID: NSManagedObjectID) {
         self.expenseInteraction.updateCategory(categoryID)
         
-        guard let index = self.items.index(of: .category) else {
-            return
-        }
-        
-        let indexPath = IndexPath(row: index, section: 0)
         self.updateSaveButton()
-        self.delegate?.refreshTextField(at: indexPath, with: self.formattedTextFieldValue(for: .category))
+        self.updateCategory()
     }
 }
 
@@ -267,3 +321,66 @@ extension EditExpensePresenter: RightTextFieldTableViewCellDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension EditExpensePresenter: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let type = self.delegate?.typeForTextField(textField) else {
+            return true
+        }
+        
+        let objcValue = textField.text as NSString?
+        guard let newValue = objcValue?.replacingCharacters(in: range, with: string) else {
+            return true
+        }
+        
+        switch type {
+        case .name:
+            self.expenseInteraction.expense.name = newValue
+            
+        case .date:
+            return false
+            
+        case .price:
+            guard newValue.characters.count > 0 else {
+                return true
+            }
+            
+            guard let price = UtilityFormatter.amount(from: newValue) else {
+                return false
+            }
+            
+            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
+            
+            if roundPrice?.doubleValue == price.doubleValue {
+                self.expenseInteraction.expense.price = price.doubleValue
+            }
+            else {
+                return false
+            }
+            
+        default:
+            break
+        }
+        
+        self.updateSaveButton()
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let type = self.delegate?.typeForTextField(textField) else {
+            return true
+        }
+        
+        switch type {
+        case .name:
+            self.delegate?.activateTextField(.name)
+            
+        default:
+            break
+        }
+        
+        return true
+    }
+}

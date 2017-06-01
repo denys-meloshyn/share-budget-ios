@@ -32,6 +32,7 @@ class BudgetDetailView: BaseView {
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
+    weak var backButtonImageView: UIImageView?
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?
