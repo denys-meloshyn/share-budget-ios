@@ -131,15 +131,23 @@ class BudgetDetailView: BaseView {
         self.viewController?.view.layoutIfNeeded()
     }
     
+    fileprivate func stopAnimation() {
+        self.animationView?.layer.removeAllAnimations()
+    }
+    
     fileprivate func startAnimation() {
+        self.stopAnimation()
+        
         UIView.animate(withDuration: 5.0, animations: { [weak self] in
             self?.animationView?.alpha = 0.0
             self?.animationView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) { [weak self] (_) in
-            self?.animationView?.alpha = 1.0
-            self?.animationView?.transform = .identity
-            
-            self?.startAnimation()
+        }) { [weak self] (finished) in
+            if (finished) {
+                self?.animationView?.alpha = 1.0
+                self?.animationView?.transform = .identity
+                
+                self?.startAnimation()
+            }
         }
     }
     
@@ -181,7 +189,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
         if (isActive) {
             self.startAnimation()
         } else {
-            self.animationView?.layer.removeAllAnimations()
+            self.stopAnimation()
         }
     }
     

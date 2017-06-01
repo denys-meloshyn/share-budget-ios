@@ -47,7 +47,6 @@ class EditExpensePresenter: BasePresenter {
         
         self.updateApplyButton()
         self.updateSaveButton()
-        self.delegate?.showPage(title: self.expenseInteraction.budget.name)
         
         let date = self.expenseInteraction.expense.creationDate ?? NSDate()
         self.delegate?.updateDatePicker(with: date as Date)
