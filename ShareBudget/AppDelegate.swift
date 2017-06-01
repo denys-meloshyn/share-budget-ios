@@ -32,22 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create a logger object with no destinations
         let log = XCGLogger.default
         
-        // Create a destination for the system console log (via NSLog)
-        let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
-        
-        // Optionally set some configuration options
-        systemDestination.outputLevel = .debug
-        systemDestination.showLogIdentifier = false
-        systemDestination.showFunctionName = true
-        systemDestination.showThreadName = true
-        systemDestination.showLevel = true
-        systemDestination.showFileName = true
-        systemDestination.showLineNumber = true
-        systemDestination.showDate = true
-        
-        // Add the destination to the logger
-        log.add(destination: systemDestination)
-        
         // Create a file log destination
         let logPath: URL = self.cacheDirectory.appendingPathComponent("XCGLogger_Log.txt")
         let fileDestination = FileDestination(writeToFile: logPath, identifier: "advancedLogger.fileDestination")
@@ -72,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         remoteLogsDestination.outputLevel = .debug
         remoteLogsDestination.showLogIdentifier = false
         remoteLogsDestination.showFunctionName = true
-        remoteLogsDestination.showThreadName = true
+        remoteLogsDestination.showThreadName = false
         remoteLogsDestination.showLevel = true
         remoteLogsDestination.showFileName = true
         remoteLogsDestination.showLineNumber = true

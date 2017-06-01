@@ -33,7 +33,7 @@ class AsynchronousURLConnection {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
-        XCGLogger.info("\(request.httpMethod!) \(request.url!) \(String(describing: request.allHTTPHeaderFields))")
+        XCGLogger.info("\(request.httpMethod!) \(request.url!)")
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             NetworkIndicator.shared.visible = false
             
@@ -50,7 +50,7 @@ class AsynchronousURLConnection {
             }
             
             do {
-                let result = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                let result = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                 completion?(result, response, error)
             }
             catch {
