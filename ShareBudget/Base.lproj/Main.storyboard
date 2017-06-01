@@ -173,19 +173,28 @@
                                                         <constraint firstAttribute="bottom" secondItem="AbC-uj-ZmK" secondAttribute="bottom" id="iaz-xc-xX1"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tqq-uB-RVy">
+                                                    <rect key="frame" x="267.5" y="123.5" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Bu2-bY-ZRa" firstAttribute="leading" secondItem="QFX-Mr-kS7" secondAttribute="leading" constant="15" id="BEy-q8-mQS"/>
                                                 <constraint firstAttribute="trailing" secondItem="YCl-xr-C1W" secondAttribute="trailing" constant="15" id="GTv-Pj-hb7"/>
                                                 <constraint firstAttribute="bottom" secondItem="Bu2-bY-ZRa" secondAttribute="bottom" constant="5" id="NGt-c6-ML4"/>
                                                 <constraint firstItem="Bu2-bY-ZRa" firstAttribute="top" secondItem="QFX-Mr-kS7" secondAttribute="top" constant="4" id="UQm-ud-BVB"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tqq-uB-RVy" secondAttribute="trailing" constant="15" id="o8w-Kk-lAr"/>
                                                 <constraint firstItem="YCl-xr-C1W" firstAttribute="leading" secondItem="Bu2-bY-ZRa" secondAttribute="trailing" constant="8" id="rrD-Nc-Cgw"/>
+                                                <constraint firstItem="Tqq-uB-RVy" firstAttribute="bottom" secondItem="Bu2-bY-ZRa" secondAttribute="bottom" id="zDj-NE-c6x"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
                                             <constraint firstItem="YCl-xr-C1W" firstAttribute="centerY" secondItem="pCN-fY-ohL" secondAttribute="centerY" id="8r4-uR-fyQ"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="budgetRestLabel" destination="Tqq-uB-RVy" id="Wj0-Ox-0Vo"/>
                                             <outlet property="categoryLabel" destination="lJu-2J-zpr" id="M7j-Pw-7fI"/>
                                             <outlet property="dateLabel" destination="AbC-uj-ZmK" id="JW9-Yu-ZhR"/>
                                             <outlet property="priceLabel" destination="YCl-xr-C1W" id="ros-kN-nme"/>

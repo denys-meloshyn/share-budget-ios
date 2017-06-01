@@ -18,6 +18,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
     var calculator: ExpenseCalculator?
     private var category: Category?
     @IBOutlet var tableView: UITableView?
+    var budgetRest = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         
         do {
             try self.fc?.performFetch()
+            self.calculateBudgetRestForExpenses()
         }
         catch {
             
@@ -44,7 +46,30 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.calculateBudgetRestForExpenses()
         self.tableView?.reloadData()
+    }
+    
+    func calculateBudgetRestForExpenses() {
+        let budget = self.managedObjectContext.object(with: self.budgetID!) as? Budget
+        
+        self.budgetRest.removeAll()
+        for section in 0..<numberOfSections(in: self.tableView!) {
+            let firstExpense = self.fc?.object(at: IndexPath(row: 0, section: section))
+            let date = (firstExpense?.creationDate)! as Date
+            let total = budget?.limit(for: date)?.limit ?? 0
+            var rest = total
+            
+            var rowDict = [String: String]()
+            let rows = tableView(self.tableView!, numberOfRowsInSection: section)
+            for i in 0..<rows {
+                let expense = self.fc?.object(at: IndexPath(row: rows - i - 1, section: section))
+                
+                rest -= expense?.price ?? 0.0
+                rowDict[expense?.modelID?.stringValue ?? ""] = String(rest)
+            }
+            self.budgetRest.append(rowDict)
+        }
     }
 }
 
@@ -71,6 +96,8 @@ extension ExpensesViewController: UITableViewDataSource {
         cell?.titleLabel?.text = expense?.name
         cell?.priceLabel?.text = UtilityFormatter.priceFormatter.string(for: expense?.price)
         cell?.categoryLabel?.text = expense?.category?.name
+        let dict = self.budgetRest[indexPath.section]
+        cell?.budgetRestLabel?.text = dict[expense?.modelID?.stringValue ?? ""]
         
         if let date = expense?.creationDate as Date? {
             cell?.dateLabel?.text = UtilityFormatter.expenseFormatter.string(for: date)

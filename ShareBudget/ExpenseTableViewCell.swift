@@ -13,4 +13,5 @@ class ExpenseTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet var priceLabel: UILabel?
     @IBOutlet var categoryLabel: UILabel?
+    @IBOutlet var budgetRestLabel: UILabel?
 }
