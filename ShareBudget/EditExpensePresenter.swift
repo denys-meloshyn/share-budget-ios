@@ -217,14 +217,14 @@ extension EditExpensePresenter: UITextFieldDelegate {
                 return true
             }
             
-            guard let price = UtilityFormatter.amount(from: newValue) else {
+            guard let price = Double(newValue) else {
                 return false
             }
             
-            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
+            let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(NSNumber(value: price))
             
-            if roundPrice?.doubleValue == price.doubleValue {
-                self.expenseInteraction.expense.price = price.doubleValue
+            if roundPrice?.doubleValue == price {
+                self.expenseInteraction.expense.price = price
             }
             else {
                 return false
