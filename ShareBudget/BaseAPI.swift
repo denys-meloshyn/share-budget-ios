@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 class BaseAPI {
     func timestampStorageKey() -> String {
@@ -68,11 +67,11 @@ class BaseAPI {
     }
     
     class func components(_ resource: String) -> NSURLComponents {
-        let components = NSURLComponents()
+        let components = Dependency.backendConnection!
         
-        components.scheme = "http"
-        components.host = "127.0.0.1"
-        components.port = 5000
+//        components.scheme = "http"
+//        components.host = "127.0.0.1"
+//        components.port = 5000
         
 //        components.scheme = "https"
 //        components.host = "sharebudget-development.herokuapp.com"
@@ -112,25 +111,25 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                XCGLogger.error("Error: \(errorType) message: \(String(describing: data))")
+                Dependency.logger.error("Error: \(errorType) message: \(String(describing: data))")
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                XCGLogger.error("Response has wrong structure")
+                Dependency.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let results = dict[kResult] as? [[String: AnyObject?]] else {
-                XCGLogger.error("'result' has wrong structure")
+                Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let timestamp = dict[kTimeStamp] as? String else {
-                XCGLogger.error("'timeStamp' missed")
+                Dependency.logger.error("'timeStamp' missed")
                 completion?(data, .unknown)
                 return
             }
@@ -193,7 +192,7 @@ class BaseAPI {
             
             guard errorType == .none else {
                 if errorType == .tokenExpired {
-                    XCGLogger.error("Token is expired")
+                    Dependency.logger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             let task = self.upload(resource, modelID, completion)
@@ -207,20 +206,20 @@ class BaseAPI {
                     return
                 }
                 
-                XCGLogger.error("Error: '\(errorType)' message: \(String(describing: data))")
+                Dependency.logger.error("Error: '\(errorType)' message: \(String(describing: data))")
                 
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                XCGLogger.error("Response has wrong structure")
+                Dependency.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let result = dict[kResult] as? [String: AnyObject?] else {
-                XCGLogger.error("'result' has wrong structure")
+                Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }

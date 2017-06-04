@@ -93,9 +93,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureBackendConnection() {
         let components = NSURLComponents()
         
-        components.scheme = "http"
-        components.host = "127.0.0.1"
-        components.port = 5000
+        switch Dependency.environment {
+        case .developmentLocal:
+            components.scheme = "http"
+            components.host = "127.0.0.1"
+            components.port = 5000
+            
+        case .developmentRemote:
+            components.scheme = "https"
+            components.host = "sharebudget-development.herokuapp.com"
+
+        case .production:
+            components.scheme = "https"
+            components.host = "sharebudget-development.herokuapp.com"
+        }
         
         Dependency.backendConnection = components
     }

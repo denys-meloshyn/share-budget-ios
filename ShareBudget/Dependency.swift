@@ -8,7 +8,23 @@
 
 import XCGLogger
 
+enum Environment {
+    case production
+    case developmentLocal
+    case developmentRemote
+}
+
 class Dependency {
     static var logger: XCGLogger!
     @NSCopying static var backendConnection: NSURLComponents!
+    
+    static let environment: Environment = {
+        #if DEVELOPMENT_LOCAL
+            return Environment.developmentLocal
+        #elseif DEVELOPMENT_REMOTE
+            return Environment.developmentRemote
+        #endif
+        
+        return Environment.production
+    }()
 }
