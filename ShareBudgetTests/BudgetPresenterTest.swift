@@ -37,6 +37,20 @@ class BudgetPresenterTest: XCTestCase {
         viewController.viewDidLoad()
     }
     
+    func testStartListenKeyboardNotifications() {
+        let hideKeyboard = #selector(MockBudgetPresenter.startListenKeyboardNotifications)
+        
+        viewController.viewWillAppear(false)
+        expect(self.presenter.calledMethodManager.methods).to(contain(CalledMethod(hideKeyboard)))
+    }
+    
+    func testStopListenKeyboardNotifications() {
+        let hideKeyboard = #selector(MockBudgetPresenter.stopListenKeyboardNotifications)
+        
+        viewController.viewDidDisappear(false)
+        expect(self.presenter.calledMethodManager.methods).to(contain(CalledMethod(hideKeyboard)))
+    }
+    
     func testViewDidLoadDelegateMethods() {
         let showPage = #selector(MockBudgetView.showPage(title:))
         let showTabBar = #selector(MockBudgetView.showTabBar(title:image:selected:))

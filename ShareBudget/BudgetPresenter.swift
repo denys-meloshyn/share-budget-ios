@@ -49,13 +49,13 @@ class BudgetPresenter: BasePresenter {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.addKeyboardNotifications()
+        self.startListenKeyboardNotifications()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        self.removeKeyboardNotifications()
+        self.stopListenKeyboardNotifications()
     }
     
     func headerMode() -> BudgetHeaderMode {
@@ -83,6 +83,14 @@ class BudgetPresenter: BasePresenter {
         else {
             self.delegate?.showGroupList()
         }
+    }
+    
+    func startListenKeyboardNotifications() {
+        self.addKeyboardNotifications()
+    }
+    
+    func stopListenKeyboardNotifications() {
+        self.removeKeyboardNotifications()
     }
 }
 

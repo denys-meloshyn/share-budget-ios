@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureDependencies() {
         self.configureLogger()
+        self.configureBackendConnection()
     }
     
     private func configureLogger() {
@@ -87,6 +88,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Add basic app info, version info etc, to the start of the logs
         Dependency.logger.logAppDetails()
+    }
+    
+    private func configureBackendConnection() {
+        let components = NSURLComponents()
+        
+        components.scheme = "http"
+        components.host = "127.0.0.1"
+        components.port = 5000
+        
+        Dependency.backendConnection = components
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

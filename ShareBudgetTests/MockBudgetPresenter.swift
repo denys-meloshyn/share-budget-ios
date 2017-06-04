@@ -9,5 +9,15 @@ import UIKit
 @testable import ShareBudget
 
 class MockBudgetPresenter: BudgetPresenter {
-    var calledMethods = [String: Any]()
+    let calledMethodManager = CalledMethodManager()
+    
+    override func startListenKeyboardNotifications() {
+        let key = #selector(MockBudgetPresenter.startListenKeyboardNotifications)
+        calledMethodManager.add(key)
+    }
+    
+    override func stopListenKeyboardNotifications() {
+        let key = #selector(MockBudgetPresenter.stopListenKeyboardNotifications)
+        calledMethodManager.add(key)
+    }
 }

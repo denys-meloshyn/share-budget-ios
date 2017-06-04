@@ -10,4 +10,5 @@ import XCGLogger
 
 class Dependency {
     static var logger: XCGLogger!
+    @NSCopying static var backendConnection: NSURLComponents!
 }
