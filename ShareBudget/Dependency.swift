@@ -23,8 +23,8 @@ class Dependency {
             return Environment.developmentLocal
         #elseif DEVELOPMENT_REMOTE
             return Environment.developmentRemote
+        #else
+            return Environment.production
         #endif
-        
-        return Environment.production
     }()
 }

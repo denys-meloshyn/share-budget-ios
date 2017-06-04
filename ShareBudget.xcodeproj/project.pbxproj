@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
+		345AB200E0DA3B1351C5D3B1 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
 		571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
@@ -18,6 +19,194 @@
 		572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749531E44F450004A132F /* BudgetDetailPresenter.swift */; };
 		572749561E44F480004A132F /* BudgetDetailInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749551E44F480004A132F /* BudgetDetailInteraction.swift */; };
 		572749581E44F49F004A132F /* BudgetDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749571E44F49F004A132F /* BudgetDetailRouter.swift */; };
+		5735C4001EE445F40037BAA8 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
+		5735C4011EE445F40037BAA8 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22631E4BA050004825C2 /* CategoryAPI.swift */; };
+		5735C4021EE445F40037BAA8 /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
+		5735C4031EE445F40037BAA8 /* AsynchronousURLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */; };
+		5735C4041EE445F40037BAA8 /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		5735C4051EE445F40037BAA8 /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
+		5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */; };
+		5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22611E4917B8004825C2 /* CategoryViewController.swift */; };
+		5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
+		5735C4091EE445F40037BAA8 /* Budget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128691E3DF76200E51C0C /* Budget+CoreDataClass.swift */; };
+		5735C40A1EE445F40037BAA8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
+		5735C40B1EE445F40037BAA8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */; };
+		5735C40C1EE445F40037BAA8 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A041E2C180400AEA72A /* Category+CoreDataClass.swift */; };
+		5735C40D1EE445F40037BAA8 /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
+		5735C40E1EE445F40037BAA8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
+		5735C40F1EE445F40037BAA8 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D81E29627A00AEA72A /* BaseAPI.swift */; };
+		5735C4101EE445F40037BAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
+		5735C4111EE445F40037BAA8 /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
+		5735C4121EE445F40037BAA8 /* BaseAPITaskUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */; };
+		5735C4131EE445F40037BAA8 /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
+		5735C4141EE445F40037BAA8 /* RemoteLogsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */; };
+		5735C4151EE445F40037BAA8 /* BudgetDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749571E44F49F004A132F /* BudgetDetailRouter.swift */; };
+		5735C4161EE445F40037BAA8 /* EditExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225B1E477258004825C2 /* EditExpensePresenter.swift */; };
+		5735C4171EE445F40037BAA8 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
+		5735C4181EE445F40037BAA8 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */; };
+		5735C4191EE445F40037BAA8 /* BudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128611E3D33E800E51C0C /* BudgetPresenter.swift */; };
+		5735C41A1EE445F40037BAA8 /* BudgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */; };
+		5735C41B1EE445F40037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */; };
+		5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */; };
+		5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */; };
+		5735C41E1EE445F40037BAA8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
+		5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
+		5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
+		5735C4211EE445F40037BAA8 /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
+		5735C4221EE445F40037BAA8 /* EditExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22591E477234004825C2 /* EditExpenseView.swift */; };
+		5735C4231EE445F40037BAA8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
+		5735C4241EE445F40037BAA8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4211E62483D00A2AEC7 /* CategoryView.swift */; };
+		5735C4251EE445F40037BAA8 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
+		5735C4261EE445F40037BAA8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
+		5735C4271EE445F40037BAA8 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
+		5735C4281EE445F40037BAA8 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
+		5735C4291EE445F40037BAA8 /* BaseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A301E2D557900AEA72A /* BaseInteraction.swift */; };
+		5735C42A1EE445F40037BAA8 /* BudgetDetailInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749551E44F480004A132F /* BudgetDetailInteraction.swift */; };
+		5735C42B1EE445F40037BAA8 /* PaginationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD871ED07C5100CE372C /* PaginationAPI.swift */; };
+		5735C42C1EE445F40037BAA8 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
+		5735C42D1EE445F40037BAA8 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
+		5735C42E1EE445F40037BAA8 /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
+		5735C42F1EE445F40037BAA8 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59E01E2A7E7800AEA72A /* ModelManager.swift */; };
+		5735C4301EE445F40037BAA8 /* BudgetLimit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286C1E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift */; };
+		5735C4311EE445F40037BAA8 /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */; };
+		5735C4321EE445F40037BAA8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A271E2D50B400AEA72A /* BaseView.swift */; };
+		5735C4331EE445F40037BAA8 /* EditExpenseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */; };
+		5735C4341EE445F40037BAA8 /* BudgetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749531E44F450004A132F /* BudgetDetailPresenter.swift */; };
+		5735C4351EE445F40037BAA8 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A291E2D50E100AEA72A /* BasePresenter.swift */; };
+		5735C4361EE445F40037BAA8 /* CategoryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */; };
+		5735C4371EE445F40037BAA8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A051E2C180400AEA72A /* Category+CoreDataProperties.swift */; };
+		5735C4381EE445F40037BAA8 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A091E2C180400AEA72A /* Expense+CoreDataProperties.swift */; };
+		5735C4391EE445F40037BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
+		5735C43A1EE445F40037BAA8 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
+		5735C43B1EE445F40037BAA8 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */; };
+		5735C43C1EE445F40037BAA8 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
+		5735C43D1EE445F40037BAA8 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59E21E2AB9B000AEA72A /* SyncManager.swift */; };
+		5735C43E1EE445F40037BAA8 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
+		5735C43F1EE445F40037BAA8 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749511E44F41B004A132F /* BudgetDetailView.swift */; };
+		5735C4401EE445F40037BAA8 /* CreateSearchTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */; };
+		5735C4411EE445F40037BAA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */; };
+		5735C4421EE445F40037BAA8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A211E2D4FCF00AEA72A /* LoginView.swift */; };
+		5735C4431EE445F40037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A071E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift */; };
+		5735C4441EE445F40037BAA8 /* BudgetInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128631E3D341700E51C0C /* BudgetInteraction.swift */; };
+		5735C4451EE445F40037BAA8 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A081E2C180400AEA72A /* Expense+CoreDataClass.swift */; };
+		5735C4461EE445F40037BAA8 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DC1E296F4F00AEA72A /* UserCredentials.swift */; };
+		5735C4471EE445F40037BAA8 /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
+		5735C4481EE445F40037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A011E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift */; };
+		5735C4491EE445F40037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A061E2C180400AEA72A /* CategoryLimit+CoreDataClass.swift */; };
+		5735C44A1EE445F40037BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D01E295D4900AEA72A /* Constants.swift */; };
+		5735C44B1EE445F40037BAA8 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */; };
+		5735C44C1EE445F40037BAA8 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22531E4747E0004825C2 /* EditExpenseViewController.swift */; };
+		5735C44D1EE445F40037BAA8 /* Budget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286A1E3DF76200E51C0C /* Budget+CoreDataProperties.swift */; };
+		5735C44E1EE445F40037BAA8 /* BudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */; };
+		5735C44F1EE445F40037BAA8 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		5735C4501EE445F40037BAA8 /* BaseModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A001E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift */; };
+		5735C4511EE445F40037BAA8 /* EditExpenseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225D1E477281004825C2 /* EditExpenseInteraction.swift */; };
+		5735C4521EE445F40037BAA8 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DA1E29637E00AEA72A /* UserAPI.swift */; };
+		5735C4561EE445F40037BAA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */; };
+		5735C4571EE445F40037BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
+		5735C4581EE445F40037BAA8 /* RightTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22561E476CCA004825C2 /* RightTextFieldTableViewCell.xib */; };
+		5735C4591EE445F40037BAA8 /* CreateSearchTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */; };
+		5735C45A1EE445F40037BAA8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
+		5735C45B1EE445F40037BAA8 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
+		5735C45C1EE445F40037BAA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A91E295C4D00AEA72A /* Assets.xcassets */; };
+		5735C45D1EE445F40037BAA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
+		5735C45E1EE445F40037BAA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
+		5735C45F1EE445F40037BAA8 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
+		5735C46B1EE44D8F0037BAA8 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
+		5735C46C1EE44D8F0037BAA8 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22631E4BA050004825C2 /* CategoryAPI.swift */; };
+		5735C46D1EE44D8F0037BAA8 /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
+		5735C46E1EE44D8F0037BAA8 /* AsynchronousURLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */; };
+		5735C46F1EE44D8F0037BAA8 /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		5735C4701EE44D8F0037BAA8 /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
+		5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */; };
+		5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22611E4917B8004825C2 /* CategoryViewController.swift */; };
+		5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
+		5735C4741EE44D8F0037BAA8 /* Budget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128691E3DF76200E51C0C /* Budget+CoreDataClass.swift */; };
+		5735C4751EE44D8F0037BAA8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
+		5735C4761EE44D8F0037BAA8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */; };
+		5735C4771EE44D8F0037BAA8 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A041E2C180400AEA72A /* Category+CoreDataClass.swift */; };
+		5735C4781EE44D8F0037BAA8 /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
+		5735C4791EE44D8F0037BAA8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
+		5735C47A1EE44D8F0037BAA8 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D81E29627A00AEA72A /* BaseAPI.swift */; };
+		5735C47B1EE44D8F0037BAA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
+		5735C47C1EE44D8F0037BAA8 /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
+		5735C47D1EE44D8F0037BAA8 /* BaseAPITaskUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */; };
+		5735C47E1EE44D8F0037BAA8 /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
+		5735C47F1EE44D8F0037BAA8 /* RemoteLogsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */; };
+		5735C4801EE44D8F0037BAA8 /* BudgetDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749571E44F49F004A132F /* BudgetDetailRouter.swift */; };
+		5735C4811EE44D8F0037BAA8 /* EditExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225B1E477258004825C2 /* EditExpensePresenter.swift */; };
+		5735C4821EE44D8F0037BAA8 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
+		5735C4831EE44D8F0037BAA8 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */; };
+		5735C4841EE44D8F0037BAA8 /* BudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128611E3D33E800E51C0C /* BudgetPresenter.swift */; };
+		5735C4851EE44D8F0037BAA8 /* BudgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */; };
+		5735C4861EE44D8F0037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */; };
+		5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */; };
+		5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */; };
+		5735C4891EE44D8F0037BAA8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
+		5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
+		5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
+		5735C48C1EE44D8F0037BAA8 /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
+		5735C48D1EE44D8F0037BAA8 /* EditExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22591E477234004825C2 /* EditExpenseView.swift */; };
+		5735C48E1EE44D8F0037BAA8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
+		5735C48F1EE44D8F0037BAA8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4211E62483D00A2AEC7 /* CategoryView.swift */; };
+		5735C4901EE44D8F0037BAA8 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
+		5735C4911EE44D8F0037BAA8 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
+		5735C4921EE44D8F0037BAA8 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
+		5735C4931EE44D8F0037BAA8 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
+		5735C4941EE44D8F0037BAA8 /* BaseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A301E2D557900AEA72A /* BaseInteraction.swift */; };
+		5735C4951EE44D8F0037BAA8 /* BudgetDetailInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749551E44F480004A132F /* BudgetDetailInteraction.swift */; };
+		5735C4961EE44D8F0037BAA8 /* PaginationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD871ED07C5100CE372C /* PaginationAPI.swift */; };
+		5735C4971EE44D8F0037BAA8 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
+		5735C4981EE44D8F0037BAA8 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
+		5735C4991EE44D8F0037BAA8 /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
+		5735C49A1EE44D8F0037BAA8 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59E01E2A7E7800AEA72A /* ModelManager.swift */; };
+		5735C49B1EE44D8F0037BAA8 /* BudgetLimit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286C1E3DF76200E51C0C /* BudgetLimit+CoreDataProperties.swift */; };
+		5735C49C1EE44D8F0037BAA8 /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */; };
+		5735C49D1EE44D8F0037BAA8 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A271E2D50B400AEA72A /* BaseView.swift */; };
+		5735C49E1EE44D8F0037BAA8 /* EditExpenseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */; };
+		5735C49F1EE44D8F0037BAA8 /* BudgetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749531E44F450004A132F /* BudgetDetailPresenter.swift */; };
+		5735C4A01EE44D8F0037BAA8 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A291E2D50E100AEA72A /* BasePresenter.swift */; };
+		5735C4A11EE44D8F0037BAA8 /* CategoryInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */; };
+		5735C4A21EE44D8F0037BAA8 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A051E2C180400AEA72A /* Category+CoreDataProperties.swift */; };
+		5735C4A31EE44D8F0037BAA8 /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A091E2C180400AEA72A /* Expense+CoreDataProperties.swift */; };
+		5735C4A41EE44D8F0037BAA8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
+		5735C4A51EE44D8F0037BAA8 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
+		5735C4A61EE44D8F0037BAA8 /* CategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */; };
+		5735C4A71EE44D8F0037BAA8 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
+		5735C4A81EE44D8F0037BAA8 /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59E21E2AB9B000AEA72A /* SyncManager.swift */; };
+		5735C4A91EE44D8F0037BAA8 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
+		5735C4AA1EE44D8F0037BAA8 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749511E44F41B004A132F /* BudgetDetailView.swift */; };
+		5735C4AB1EE44D8F0037BAA8 /* CreateSearchTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */; };
+		5735C4AC1EE44D8F0037BAA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */; };
+		5735C4AD1EE44D8F0037BAA8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A211E2D4FCF00AEA72A /* LoginView.swift */; };
+		5735C4AE1EE44D8F0037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A071E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift */; };
+		5735C4AF1EE44D8F0037BAA8 /* BudgetInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F128631E3D341700E51C0C /* BudgetInteraction.swift */; };
+		5735C4B01EE44D8F0037BAA8 /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A081E2C180400AEA72A /* Expense+CoreDataClass.swift */; };
+		5735C4B11EE44D8F0037BAA8 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DC1E296F4F00AEA72A /* UserCredentials.swift */; };
+		5735C4B21EE44D8F0037BAA8 /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
+		5735C4B31EE44D8F0037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A011E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift */; };
+		5735C4B41EE44D8F0037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A061E2C180400AEA72A /* CategoryLimit+CoreDataClass.swift */; };
+		5735C4B51EE44D8F0037BAA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59D01E295D4900AEA72A /* Constants.swift */; };
+		5735C4B61EE44D8F0037BAA8 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2E1E2D54F500AEA72A /* BaseRouter.swift */; };
+		5735C4B71EE44D8F0037BAA8 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22531E4747E0004825C2 /* EditExpenseViewController.swift */; };
+		5735C4B81EE44D8F0037BAA8 /* Budget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286A1E3DF76200E51C0C /* Budget+CoreDataProperties.swift */; };
+		5735C4B91EE44D8F0037BAA8 /* BudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */; };
+		5735C4BA1EE44D8F0037BAA8 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		5735C4BB1EE44D8F0037BAA8 /* BaseModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A001E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift */; };
+		5735C4BC1EE44D8F0037BAA8 /* EditExpenseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225D1E477281004825C2 /* EditExpenseInteraction.swift */; };
+		5735C4BD1EE44D8F0037BAA8 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DA1E29637E00AEA72A /* UserAPI.swift */; };
+		5735C4BF1EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
+		5735C4C01EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
+		5735C4C21EE44D8F0037BAA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */; };
+		5735C4C31EE44D8F0037BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
+		5735C4C41EE44D8F0037BAA8 /* RightTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22561E476CCA004825C2 /* RightTextFieldTableViewCell.xib */; };
+		5735C4C51EE44D8F0037BAA8 /* CreateSearchTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57F128651E3D3A8800E51C0C /* CreateSearchTableViewHeader.xib */; };
+		5735C4C61EE44D8F0037BAA8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
+		5735C4C71EE44D8F0037BAA8 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
+		5735C4C81EE44D8F0037BAA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A91E295C4D00AEA72A /* Assets.xcassets */; };
+		5735C4C91EE44D8F0037BAA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
+		5735C4CA1EE44D8F0037BAA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
+		5735C4CB1EE44D8F0037BAA8 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
 		573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
 		573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
@@ -111,7 +300,9 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		C83663BE7AFABE307871E3BE /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
+		EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +338,10 @@
 		572749531E44F450004A132F /* BudgetDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailPresenter.swift; sourceTree = "<group>"; };
 		572749551E44F480004A132F /* BudgetDetailInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteraction.swift; sourceTree = "<group>"; };
 		572749571E44F49F004A132F /* BudgetDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailRouter.swift; sourceTree = "<group>"; };
+		5735C4651EE445F40037BAA8 /* ShareBudgetDevelopmentLocal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudgetDevelopmentLocal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5735C4661EE445F40037BAA8 /* ShareBudget Development Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ShareBudget Development Local-Info.plist"; path = "/Users/denysmeloshyn/Programming/ShareBudget/ShareBudget Development Local-Info.plist"; sourceTree = "<absolute>"; };
+		5735C4D11EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudgetDevelopmentRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5735C4D21EE44D8F0037BAA8 /* ShareBudget Development Remote-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ShareBudget Development Remote-Info.plist"; path = "/Users/denysmeloshyn/Programming/ShareBudget/ShareBudget Development Remote-Info.plist"; sourceTree = "<absolute>"; };
 		573F599C1E295C4D00AEA72A /* ShareBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F599F1E295C4D00AEA72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		573F59A41E295C4D00AEA72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,21 +445,47 @@
 		57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPITask.swift; sourceTree = "<group>"; };
 		57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPILoadUpdatesTask.swift; sourceTree = "<group>"; };
 		57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCalculator.swift; sourceTree = "<group>"; };
+		5B37314B3F77B600D4C3C8FD /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; sourceTree = "<group>"; };
+		5BBB14576CBDEA17EC1EA3B7 /* Pods_ShareBudget_Development_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_Development_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
+		7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
+		C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; sourceTree = "<group>"; };
 		C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; sourceTree = "<group>"; };
+		F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5735C4531EE445F40037BAA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				345AB200E0DA3B1351C5D3B1 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5735C4BE1EE44D8F0037BAA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5735C4BF1EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */,
+				5735C4C01EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */,
+				EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		573F59991E295C4D00AEA72A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */,
+				C83663BE7AFABE307871E3BE /* Pods_ShareBudget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +517,10 @@
 				FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */,
 				DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */,
 				05C537F8178432993EB75534 /* Pods-ShareBudgetUITests.release.xcconfig */,
+				5B37314B3F77B600D4C3C8FD /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */,
+				DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */,
+				F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */,
+				C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -318,6 +543,8 @@
 				573F599C1E295C4D00AEA72A /* ShareBudget.app */,
 				573F59B31E295C4E00AEA72A /* ShareBudgetTests.xctest */,
 				573F59BE1E295C4E00AEA72A /* ShareBudgetUITests.xctest */,
+				5735C4651EE445F40037BAA8 /* ShareBudgetDevelopmentLocal.app */,
+				5735C4D11EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,6 +627,8 @@
 			isa = PBXGroup;
 			children = (
 				573F59AE1E295C4D00AEA72A /* Info.plist */,
+				5735C4661EE445F40037BAA8 /* ShareBudget Development Local-Info.plist */,
+				5735C4D21EE44D8F0037BAA8 /* ShareBudget Development Remote-Info.plist */,
 				573F59A91E295C4D00AEA72A /* Assets.xcassets */,
 				578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */,
 				578BD0671E3516BD00DE28C8 /* Localizable.strings */,
@@ -561,6 +790,9 @@
 				9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */,
 				08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */,
 				1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */,
+				5BBB14576CBDEA17EC1EA3B7 /* Pods_ShareBudget_Development_Local.framework */,
+				7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */,
+				A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,6 +800,48 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5735C3FC1EE445F40037BAA8 /* ShareBudgetDevelopmentLocal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5735C4621EE445F40037BAA8 /* Build configuration list for PBXNativeTarget "ShareBudgetDevelopmentLocal" */;
+			buildPhases = (
+				B76DD47989B9C831B3B091B9 /* [CP] Check Pods Manifest.lock */,
+				5735C3FE1EE445F40037BAA8 /* ShellScript */,
+				5735C3FF1EE445F40037BAA8 /* Sources */,
+				5735C4531EE445F40037BAA8 /* Frameworks */,
+				5735C4551EE445F40037BAA8 /* Resources */,
+				1FF9F15F9FDDA4C723DA2A6B /* [CP] Embed Pods Frameworks */,
+				70D84FE5024650CC2E507419 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareBudgetDevelopmentLocal;
+			productName = ShareBudget;
+			productReference = 5735C4651EE445F40037BAA8 /* ShareBudgetDevelopmentLocal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5735C4671EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5735C4CE1EE44D8F0037BAA8 /* Build configuration list for PBXNativeTarget "ShareBudgetDevelopmentRemote" */;
+			buildPhases = (
+				5735C4681EE44D8F0037BAA8 /* [CP] Check Pods Manifest.lock */,
+				5735C4691EE44D8F0037BAA8 /* ShellScript */,
+				5735C46A1EE44D8F0037BAA8 /* Sources */,
+				5735C4BE1EE44D8F0037BAA8 /* Frameworks */,
+				5735C4C11EE44D8F0037BAA8 /* Resources */,
+				5735C4CC1EE44D8F0037BAA8 /* [CP] Embed Pods Frameworks */,
+				5735C4CD1EE44D8F0037BAA8 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareBudgetDevelopmentRemote;
+			productName = ShareBudget;
+			productReference = 5735C4D11EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
 		573F599B1E295C4D00AEA72A /* ShareBudget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 573F59C71E295C4E00AEA72A /* Build configuration list for PBXNativeTarget "ShareBudget" */;
@@ -641,6 +915,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Denys Meloshyn";
 				TargetAttributes = {
+					5735C3FC1EE445F40037BAA8 = {
+						DevelopmentTeam = 4ZT9N5NKNU;
+					};
+					5735C4671EE44D8F0037BAA8 = {
+						DevelopmentTeam = 4ZT9N5NKNU;
+					};
 					573F599B1E295C4D00AEA72A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4ZT9N5NKNU;
@@ -674,6 +954,8 @@
 			projectRoot = "";
 			targets = (
 				573F599B1E295C4D00AEA72A /* ShareBudget */,
+				5735C3FC1EE445F40037BAA8 /* ShareBudgetDevelopmentLocal */,
+				5735C4671EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote */,
 				573F59B21E295C4E00AEA72A /* ShareBudgetTests */,
 				573F59BD1E295C4E00AEA72A /* ShareBudgetUITests */,
 			);
@@ -681,6 +963,40 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5735C4551EE445F40037BAA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5735C4561EE445F40037BAA8 /* LaunchScreen.storyboard in Resources */,
+				5735C4571EE445F40037BAA8 /* Localizable.strings in Resources */,
+				5735C4581EE445F40037BAA8 /* RightTextFieldTableViewCell.xib in Resources */,
+				5735C4591EE445F40037BAA8 /* CreateSearchTableViewHeader.xib in Resources */,
+				5735C45A1EE445F40037BAA8 /* TextFieldErrorMessage.xib in Resources */,
+				5735C45B1EE445F40037BAA8 /* ValidationTextField.xib in Resources */,
+				5735C45C1EE445F40037BAA8 /* Assets.xcassets in Resources */,
+				5735C45D1EE445F40037BAA8 /* Main.storyboard in Resources */,
+				5735C45E1EE445F40037BAA8 /* InfoPlist.strings in Resources */,
+				5735C45F1EE445F40037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5735C4C11EE44D8F0037BAA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5735C4C21EE44D8F0037BAA8 /* LaunchScreen.storyboard in Resources */,
+				5735C4C31EE44D8F0037BAA8 /* Localizable.strings in Resources */,
+				5735C4C41EE44D8F0037BAA8 /* RightTextFieldTableViewCell.xib in Resources */,
+				5735C4C51EE44D8F0037BAA8 /* CreateSearchTableViewHeader.xib in Resources */,
+				5735C4C61EE44D8F0037BAA8 /* TextFieldErrorMessage.xib in Resources */,
+				5735C4C71EE44D8F0037BAA8 /* ValidationTextField.xib in Resources */,
+				5735C4C81EE44D8F0037BAA8 /* Assets.xcassets in Resources */,
+				5735C4C91EE44D8F0037BAA8 /* Main.storyboard in Resources */,
+				5735C4CA1EE44D8F0037BAA8 /* InfoPlist.strings in Resources */,
+				5735C4CB1EE44D8F0037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		573F599A1E295C4D00AEA72A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +1062,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1FF9F15F9FDDA4C723DA2A6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -806,6 +1137,77 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		5735C3FE1EE445F40037BAA8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		5735C4681EE44D8F0037BAA8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5735C4691EE44D8F0037BAA8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+		5735C4CC1EE44D8F0037BAA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5735C4CD1EE44D8F0037BAA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		573F5A391E350AE700AEA72A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -849,6 +1251,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		70D84FE5024650CC2E507419 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B76DD47989B9C831B3B091B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		D964D342CA0142E8B0ACD54B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -867,6 +1299,186 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5735C3FF1EE445F40037BAA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5735C4001EE445F40037BAA8 /* ExpenseTableViewCell.swift in Sources */,
+				5735C4011EE445F40037BAA8 /* CategoryAPI.swift in Sources */,
+				5735C4021EE445F40037BAA8 /* RotateTabBarController.swift in Sources */,
+				5735C4031EE445F40037BAA8 /* AsynchronousURLConnection.swift in Sources */,
+				5735C4041EE445F40037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
+				5735C4051EE445F40037BAA8 /* BudgetUserAPI.swift in Sources */,
+				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
+				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
+				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
+				5735C4091EE445F40037BAA8 /* Budget+CoreDataClass.swift in Sources */,
+				5735C40A1EE445F40037BAA8 /* BaseViewController.swift in Sources */,
+				5735C40B1EE445F40037BAA8 /* User+CoreDataProperties.swift in Sources */,
+				5735C40C1EE445F40037BAA8 /* Category+CoreDataClass.swift in Sources */,
+				5735C40D1EE445F40037BAA8 /* NetworkIndicator.swift in Sources */,
+				5735C40E1EE445F40037BAA8 /* TextFieldErrorMessage.swift in Sources */,
+				5735C40F1EE445F40037BAA8 /* BaseAPI.swift in Sources */,
+				5735C4101EE445F40037BAA8 /* AppDelegate.swift in Sources */,
+				5735C4111EE445F40037BAA8 /* ExpenseAPI.swift in Sources */,
+				5735C4121EE445F40037BAA8 /* BaseAPITaskUpload.swift in Sources */,
+				5735C4131EE445F40037BAA8 /* BudgetLimitAPI.swift in Sources */,
+				5735C4141EE445F40037BAA8 /* RemoteLogsDestination.swift in Sources */,
+				5735C4151EE445F40037BAA8 /* BudgetDetailRouter.swift in Sources */,
+				5735C4161EE445F40037BAA8 /* EditExpensePresenter.swift in Sources */,
+				5735C4171EE445F40037BAA8 /* BudgetViewController.swift in Sources */,
+				5735C4181EE445F40037BAA8 /* User+CoreDataClass.swift in Sources */,
+				5735C4191EE445F40037BAA8 /* BudgetPresenter.swift in Sources */,
+				5735C41A1EE445F40037BAA8 /* BudgetAPI.swift in Sources */,
+				5735C41B1EE445F40037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
+				5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
+				5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */,
+				5735C41E1EE445F40037BAA8 /* R.generated.swift in Sources */,
+				5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */,
+				5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */,
+				5735C4211EE445F40037BAA8 /* LoginInteraction.swift in Sources */,
+				5735C4221EE445F40037BAA8 /* EditExpenseView.swift in Sources */,
+				5735C4231EE445F40037BAA8 /* LocalisedManager.swift in Sources */,
+				5735C4241EE445F40037BAA8 /* CategoryView.swift in Sources */,
+				5735C4251EE445F40037BAA8 /* ExpensesViewController.swift in Sources */,
+				5735C4261EE445F40037BAA8 /* Validator.swift in Sources */,
+				5735C4271EE445F40037BAA8 /* ValidationTextField.swift in Sources */,
+				5735C4281EE445F40037BAA8 /* KeyboardProtocol.swift in Sources */,
+				5735C4291EE445F40037BAA8 /* BaseInteraction.swift in Sources */,
+				5735C42A1EE445F40037BAA8 /* BudgetDetailInteraction.swift in Sources */,
+				5735C42B1EE445F40037BAA8 /* PaginationAPI.swift in Sources */,
+				5735C42C1EE445F40037BAA8 /* UtilityFormatter.swift in Sources */,
+				5735C42D1EE445F40037BAA8 /* BaseAPILoadUpdatesTask.swift in Sources */,
+				5735C42E1EE445F40037BAA8 /* RotateNavigationController.swift in Sources */,
+				5735C42F1EE445F40037BAA8 /* ModelManager.swift in Sources */,
+				5735C4301EE445F40037BAA8 /* BudgetLimit+CoreDataProperties.swift in Sources */,
+				5735C4311EE445F40037BAA8 /* BudgetDetailViewController.swift in Sources */,
+				5735C4321EE445F40037BAA8 /* BaseView.swift in Sources */,
+				5735C4331EE445F40037BAA8 /* EditExpenseRouter.swift in Sources */,
+				5735C4341EE445F40037BAA8 /* BudgetDetailPresenter.swift in Sources */,
+				5735C4351EE445F40037BAA8 /* BasePresenter.swift in Sources */,
+				5735C4361EE445F40037BAA8 /* CategoryInteraction.swift in Sources */,
+				5735C4371EE445F40037BAA8 /* Category+CoreDataProperties.swift in Sources */,
+				5735C4381EE445F40037BAA8 /* Expense+CoreDataProperties.swift in Sources */,
+				5735C4391EE445F40037BAA8 /* SettingsViewController.swift in Sources */,
+				5735C43A1EE445F40037BAA8 /* ExpenseTableViewHeader.swift in Sources */,
+				5735C43B1EE445F40037BAA8 /* CategoryRouter.swift in Sources */,
+				5735C43C1EE445F40037BAA8 /* BudgetView.swift in Sources */,
+				5735C43D1EE445F40037BAA8 /* SyncManager.swift in Sources */,
+				5735C43E1EE445F40037BAA8 /* BaseAPITask.swift in Sources */,
+				5735C43F1EE445F40037BAA8 /* BudgetDetailView.swift in Sources */,
+				5735C4401EE445F40037BAA8 /* CreateSearchTableViewHeader.swift in Sources */,
+				5735C4411EE445F40037BAA8 /* LoginViewController.swift in Sources */,
+				5735C4421EE445F40037BAA8 /* LoginView.swift in Sources */,
+				5735C4431EE445F40037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */,
+				5735C4441EE445F40037BAA8 /* BudgetInteraction.swift in Sources */,
+				5735C4451EE445F40037BAA8 /* Expense+CoreDataClass.swift in Sources */,
+				5735C4461EE445F40037BAA8 /* UserCredentials.swift in Sources */,
+				5735C4471EE445F40037BAA8 /* AuthorisationAPI.swift in Sources */,
+				5735C4481EE445F40037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
+				5735C4491EE445F40037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				5735C44A1EE445F40037BAA8 /* Constants.swift in Sources */,
+				5735C44B1EE445F40037BAA8 /* BaseRouter.swift in Sources */,
+				5735C44C1EE445F40037BAA8 /* EditExpenseViewController.swift in Sources */,
+				5735C44D1EE445F40037BAA8 /* Budget+CoreDataProperties.swift in Sources */,
+				5735C44E1EE445F40037BAA8 /* BudgetRouter.swift in Sources */,
+				5735C44F1EE445F40037BAA8 /* ExpenseCalculator.swift in Sources */,
+				5735C4501EE445F40037BAA8 /* BaseModel+CoreDataClass.swift in Sources */,
+				5735C4511EE445F40037BAA8 /* EditExpenseInteraction.swift in Sources */,
+				5735C4521EE445F40037BAA8 /* UserAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5735C46A1EE44D8F0037BAA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5735C46B1EE44D8F0037BAA8 /* ExpenseTableViewCell.swift in Sources */,
+				5735C46C1EE44D8F0037BAA8 /* CategoryAPI.swift in Sources */,
+				5735C46D1EE44D8F0037BAA8 /* RotateTabBarController.swift in Sources */,
+				5735C46E1EE44D8F0037BAA8 /* AsynchronousURLConnection.swift in Sources */,
+				5735C46F1EE44D8F0037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
+				5735C4701EE44D8F0037BAA8 /* BudgetUserAPI.swift in Sources */,
+				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
+				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
+				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
+				5735C4741EE44D8F0037BAA8 /* Budget+CoreDataClass.swift in Sources */,
+				5735C4751EE44D8F0037BAA8 /* BaseViewController.swift in Sources */,
+				5735C4761EE44D8F0037BAA8 /* User+CoreDataProperties.swift in Sources */,
+				5735C4771EE44D8F0037BAA8 /* Category+CoreDataClass.swift in Sources */,
+				5735C4781EE44D8F0037BAA8 /* NetworkIndicator.swift in Sources */,
+				5735C4791EE44D8F0037BAA8 /* TextFieldErrorMessage.swift in Sources */,
+				5735C47A1EE44D8F0037BAA8 /* BaseAPI.swift in Sources */,
+				5735C47B1EE44D8F0037BAA8 /* AppDelegate.swift in Sources */,
+				5735C47C1EE44D8F0037BAA8 /* ExpenseAPI.swift in Sources */,
+				5735C47D1EE44D8F0037BAA8 /* BaseAPITaskUpload.swift in Sources */,
+				5735C47E1EE44D8F0037BAA8 /* BudgetLimitAPI.swift in Sources */,
+				5735C47F1EE44D8F0037BAA8 /* RemoteLogsDestination.swift in Sources */,
+				5735C4801EE44D8F0037BAA8 /* BudgetDetailRouter.swift in Sources */,
+				5735C4811EE44D8F0037BAA8 /* EditExpensePresenter.swift in Sources */,
+				5735C4821EE44D8F0037BAA8 /* BudgetViewController.swift in Sources */,
+				5735C4831EE44D8F0037BAA8 /* User+CoreDataClass.swift in Sources */,
+				5735C4841EE44D8F0037BAA8 /* BudgetPresenter.swift in Sources */,
+				5735C4851EE44D8F0037BAA8 /* BudgetAPI.swift in Sources */,
+				5735C4861EE44D8F0037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
+				5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
+				5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */,
+				5735C4891EE44D8F0037BAA8 /* R.generated.swift in Sources */,
+				5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */,
+				5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */,
+				5735C48C1EE44D8F0037BAA8 /* LoginInteraction.swift in Sources */,
+				5735C48D1EE44D8F0037BAA8 /* EditExpenseView.swift in Sources */,
+				5735C48E1EE44D8F0037BAA8 /* LocalisedManager.swift in Sources */,
+				5735C48F1EE44D8F0037BAA8 /* CategoryView.swift in Sources */,
+				5735C4901EE44D8F0037BAA8 /* ExpensesViewController.swift in Sources */,
+				5735C4911EE44D8F0037BAA8 /* Validator.swift in Sources */,
+				5735C4921EE44D8F0037BAA8 /* ValidationTextField.swift in Sources */,
+				5735C4931EE44D8F0037BAA8 /* KeyboardProtocol.swift in Sources */,
+				5735C4941EE44D8F0037BAA8 /* BaseInteraction.swift in Sources */,
+				5735C4951EE44D8F0037BAA8 /* BudgetDetailInteraction.swift in Sources */,
+				5735C4961EE44D8F0037BAA8 /* PaginationAPI.swift in Sources */,
+				5735C4971EE44D8F0037BAA8 /* UtilityFormatter.swift in Sources */,
+				5735C4981EE44D8F0037BAA8 /* BaseAPILoadUpdatesTask.swift in Sources */,
+				5735C4991EE44D8F0037BAA8 /* RotateNavigationController.swift in Sources */,
+				5735C49A1EE44D8F0037BAA8 /* ModelManager.swift in Sources */,
+				5735C49B1EE44D8F0037BAA8 /* BudgetLimit+CoreDataProperties.swift in Sources */,
+				5735C49C1EE44D8F0037BAA8 /* BudgetDetailViewController.swift in Sources */,
+				5735C49D1EE44D8F0037BAA8 /* BaseView.swift in Sources */,
+				5735C49E1EE44D8F0037BAA8 /* EditExpenseRouter.swift in Sources */,
+				5735C49F1EE44D8F0037BAA8 /* BudgetDetailPresenter.swift in Sources */,
+				5735C4A01EE44D8F0037BAA8 /* BasePresenter.swift in Sources */,
+				5735C4A11EE44D8F0037BAA8 /* CategoryInteraction.swift in Sources */,
+				5735C4A21EE44D8F0037BAA8 /* Category+CoreDataProperties.swift in Sources */,
+				5735C4A31EE44D8F0037BAA8 /* Expense+CoreDataProperties.swift in Sources */,
+				5735C4A41EE44D8F0037BAA8 /* SettingsViewController.swift in Sources */,
+				5735C4A51EE44D8F0037BAA8 /* ExpenseTableViewHeader.swift in Sources */,
+				5735C4A61EE44D8F0037BAA8 /* CategoryRouter.swift in Sources */,
+				5735C4A71EE44D8F0037BAA8 /* BudgetView.swift in Sources */,
+				5735C4A81EE44D8F0037BAA8 /* SyncManager.swift in Sources */,
+				5735C4A91EE44D8F0037BAA8 /* BaseAPITask.swift in Sources */,
+				5735C4AA1EE44D8F0037BAA8 /* BudgetDetailView.swift in Sources */,
+				5735C4AB1EE44D8F0037BAA8 /* CreateSearchTableViewHeader.swift in Sources */,
+				5735C4AC1EE44D8F0037BAA8 /* LoginViewController.swift in Sources */,
+				5735C4AD1EE44D8F0037BAA8 /* LoginView.swift in Sources */,
+				5735C4AE1EE44D8F0037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */,
+				5735C4AF1EE44D8F0037BAA8 /* BudgetInteraction.swift in Sources */,
+				5735C4B01EE44D8F0037BAA8 /* Expense+CoreDataClass.swift in Sources */,
+				5735C4B11EE44D8F0037BAA8 /* UserCredentials.swift in Sources */,
+				5735C4B21EE44D8F0037BAA8 /* AuthorisationAPI.swift in Sources */,
+				5735C4B31EE44D8F0037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
+				5735C4B41EE44D8F0037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				5735C4B51EE44D8F0037BAA8 /* Constants.swift in Sources */,
+				5735C4B61EE44D8F0037BAA8 /* BaseRouter.swift in Sources */,
+				5735C4B71EE44D8F0037BAA8 /* EditExpenseViewController.swift in Sources */,
+				5735C4B81EE44D8F0037BAA8 /* Budget+CoreDataProperties.swift in Sources */,
+				5735C4B91EE44D8F0037BAA8 /* BudgetRouter.swift in Sources */,
+				5735C4BA1EE44D8F0037BAA8 /* ExpenseCalculator.swift in Sources */,
+				5735C4BB1EE44D8F0037BAA8 /* BaseModel+CoreDataClass.swift in Sources */,
+				5735C4BC1EE44D8F0037BAA8 /* EditExpenseInteraction.swift in Sources */,
+				5735C4BD1EE44D8F0037BAA8 /* UserAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		573F59981E295C4D00AEA72A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1043,6 +1655,74 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5735C4631EE445F40037BAA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B37314B3F77B600D4C3C8FD /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Local";
+				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				INFOPLIST_FILE = "ShareBudget Development Local-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_LOCAL\"";
+				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.local;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5735C4641EE445F40037BAA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Local";
+				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				INFOPLIST_FILE = "ShareBudget Development Local-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_LOCAL\"";
+				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.local;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5735C4CF1EE44D8F0037BAA8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Remote";
+				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				INFOPLIST_FILE = "ShareBudget Development Remote-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_REMOTE\"";
+				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.remote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5735C4D01EE44D8F0037BAA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Remote";
+				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				INFOPLIST_FILE = "ShareBudget Development Remote-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_REMOTE\"";
+				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.remote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		573F59C51E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1241,6 +1921,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5735C4621EE445F40037BAA8 /* Build configuration list for PBXNativeTarget "ShareBudgetDevelopmentLocal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5735C4631EE445F40037BAA8 /* Debug */,
+				5735C4641EE445F40037BAA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5735C4CE1EE44D8F0037BAA8 /* Build configuration list for PBXNativeTarget "ShareBudgetDevelopmentRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5735C4CF1EE44D8F0037BAA8 /* Debug */,
+				5735C4D01EE44D8F0037BAA8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		573F59971E295C4D00AEA72A /* Build configuration list for PBXProject "ShareBudget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

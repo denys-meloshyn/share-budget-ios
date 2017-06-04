@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureDependencies() {
         self.configureLogger()
         self.configureBackendConnection()
+        
+        Dependency.logger.info(Dependency.environment)
     }
     
     private func configureLogger() {
