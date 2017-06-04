@@ -23,6 +23,11 @@ target 'ShareBudget' do
       inherit! :search_paths
       developing_pods
   end
+  
+  target 'ShareBudgetDevelopmentRemote' do
+      inherit! :search_paths
+      developing_pods
+  end
 
   target 'ShareBudgetTests' do
     inherit! :search_paths
