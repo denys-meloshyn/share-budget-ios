@@ -75,18 +75,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add the destination to the logger
         Dependency.logger.add(destination: fileDestination)
         
-        // Remote destination
-        let remoteLogsDestination = RemoteLogsDestination(identifier: "advancedLogger.remoteDestination")
-        remoteLogsDestination.outputLevel = .debug
-        remoteLogsDestination.showLogIdentifier = false
-        remoteLogsDestination.showFunctionName = true
-        remoteLogsDestination.showThreadName = false
-        remoteLogsDestination.showLevel = true
-        remoteLogsDestination.showFileName = true
-        remoteLogsDestination.showLineNumber = true
-        remoteLogsDestination.showDate = true
-        
-        Dependency.logger.add(destination: remoteLogsDestination)
+        if (Dependency.environment == .production) {
+            // Remote destination
+            let remoteLogsDestination = RemoteLogsDestination(identifier: "advancedLogger.remoteDestination")
+            remoteLogsDestination.outputLevel = .debug
+            remoteLogsDestination.showLogIdentifier = false
+            remoteLogsDestination.showFunctionName = true
+            remoteLogsDestination.showThreadName = false
+            remoteLogsDestination.showLevel = true
+            remoteLogsDestination.showFileName = true
+            remoteLogsDestination.showLineNumber = true
+            remoteLogsDestination.showDate = true
+            
+            Dependency.logger.add(destination: remoteLogsDestination)
+        }
         
         // Add basic app info, version info etc, to the start of the logs
         Dependency.logger.logAppDetails()
