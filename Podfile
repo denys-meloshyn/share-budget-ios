@@ -14,6 +14,18 @@ target 'ShareBudget' do
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'le', '~> 1.1'
   pod 'BugfenderSDK', '~> 1.4'
+  
+  target 'ShareBudgetDevelopmentLocal' do
+      inherit! :search_paths
+      pod 'XCGLogger', '~> 5.0.1'
+      pod 'KeychainSwift', '~> 8.0'
+      pod 'R.swift', '~> 3.2'
+      pod 'SnapKit', '~> 3.2'
+      pod 'CorePlot', '~> 2.2'
+      pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+      pod 'le', '~> 1.1'
+      pod 'BugfenderSDK', '~> 1.4'
+  end
 
   target 'ShareBudgetTests' do
     inherit! :search_paths
