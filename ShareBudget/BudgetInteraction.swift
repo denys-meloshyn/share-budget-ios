@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import XCGLogger
 
 protocol BudgetInteractionDelegate: BaseInteractionDelegate {
     
@@ -34,7 +33,7 @@ class BudgetInteraction: BaseInteraction {
             try self.fetchedResultsController.performFetch()
         }
         catch {
-            XCGLogger.error("Can't perform fetch request")
+            Dependency.logger.error("Can't perform fetch request")
         }
     }
     

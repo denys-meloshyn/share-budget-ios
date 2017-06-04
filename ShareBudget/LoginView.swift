@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XCGLogger
 
 enum LoginTextField {
     case none

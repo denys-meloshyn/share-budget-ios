@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import XCGLogger
 
 class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelegate {
     var budgetID: NSManagedObjectID?

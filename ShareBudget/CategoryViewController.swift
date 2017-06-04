@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import XCGLogger
 
 protocol CategoryViewControllerDelegate: class {
     func didSelectCategory(_ categoryID: NSManagedObjectID)

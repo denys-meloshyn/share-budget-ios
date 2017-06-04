@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 class SyncManager {
     private static var timer: Timer?
@@ -28,7 +27,7 @@ class SyncManager {
     static var tasks = [BaseAPITask]()
 
     private class func loadUpdates(completion: APIResultBlock?) {
-        XCGLogger.info("Load updates from server")
+        Dependency.logger.info("Load updates from server")
         
         self.tasks.removeAll()
         var task: BaseAPITask
@@ -36,7 +35,7 @@ class SyncManager {
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
-                    XCGLogger.error("Token is expired")
+                    Dependency.logger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             SyncManager.loadUpdates(completion: completion)
@@ -130,12 +129,12 @@ class SyncManager {
     class func run() {
         SyncManager.stop()
         
-        XCGLogger.info("Start sync")
+        Dependency.logger.info("Start sync")
         SyncManager.loadUpdates(completion: nil)
     }
     
     class func stop() {
-        XCGLogger.info("Stop sync")
+        Dependency.logger.info("Stop sync")
         
         SyncManager.timer?.invalidate()
         SyncManager.loadingTask?.cancel()

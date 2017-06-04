@@ -6,7 +6,7 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import XCGLogger
+import Foundation
 
 class AuthorisationAPI: BaseAPI {
     class func login(email: String, password: String, completion: APIResultBlock?) -> URLSessionTask? {
@@ -30,25 +30,25 @@ class AuthorisationAPI: BaseAPI {
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                XCGLogger.error("Response has wrong structure")
+                Dependency.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let result = dict[kResult] as? [String: AnyObject?] else {
-                XCGLogger.error("'result' has wrong structure")
+                Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let userID = result[kUserID] as? Int else {
-                XCGLogger.error("'userID' is missed")
+                Dependency.logger.error("'userID' is missed")
                 completion?(data, .unknown)
                 return
             }
             
             guard let token = result[kToken] as? String else {
-                XCGLogger.error("'token' is missed")
+                Dependency.logger.error("'token' is missed")
                 completion?(data, .unknown)
                 return
             }

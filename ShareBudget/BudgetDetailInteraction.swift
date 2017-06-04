@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 protocol BudgetDetailInteractionDelegate: BaseInteractionDelegate {
     func limitChanged()
@@ -34,7 +33,7 @@ class BudgetDetailInteraction: BaseInteraction {
             try self.fetchedResultsController.performFetch()
         }
         catch {
-            XCGLogger.error("Error fetch \(error)")
+            Dependency.logger.error("Error fetch \(error)")
         }
         
         super.init()

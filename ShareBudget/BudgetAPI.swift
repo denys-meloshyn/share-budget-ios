@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 class BudgetAPI: BaseAPI {
     override func timestampStorageKey() -> String {

@@ -9,7 +9,6 @@
 import UIKit
 import CorePlot
 import CoreData
-import XCGLogger
 
 class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var monthLabel: UILabel?

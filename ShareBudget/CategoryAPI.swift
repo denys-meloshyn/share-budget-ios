@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 class CategoryAPI: BaseAPI {
     override func timestampStorageKey() -> String {

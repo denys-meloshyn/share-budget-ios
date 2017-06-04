@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import XCGLogger
 
 protocol CategoryInteractionDelegate: BaseInteractionDelegate {
     
@@ -39,7 +38,7 @@ class CategoryInteraction: BaseInteraction {
             try self.fetchedResultsController.performFetch()
         }
         catch {
-            XCGLogger.error("Error fetch \(error)")
+            Dependency.logger.error("Error fetch \(error)")
         }
     }
     

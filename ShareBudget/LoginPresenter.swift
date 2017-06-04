@@ -8,7 +8,6 @@
 
 import UIKit
 import Rswift
-import XCGLogger
 
 enum AuthorisationMode {
     case login
