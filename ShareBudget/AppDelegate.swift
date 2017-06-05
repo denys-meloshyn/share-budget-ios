@@ -17,111 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private let cacheDirectory: URL = {
-        let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        return urls[urls.endIndex - 1]
-    }()
-    
-    private func configureDependencies() {
-        self.configureLogger()
-        self.configureBackendConnection()
-        
-        Dependency.logger.info(Dependency.environment)
-    }
-    
-    private func configureLogger() {
-        //LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
-        
-        Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
-        Bugfender.setPrintToConsole(false)
-        Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
-        
-        // Create a logger object with no destinations
-        Dependency.logger = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
-        
-        // Create a destination for the system console log (via NSLog)
-        let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
-        
-        // Optionally set some configuration options
-        systemDestination.outputLevel = .debug
-        systemDestination.showLogIdentifier = false
-        systemDestination.showFunctionName = true
-        systemDestination.showThreadName = false
-        systemDestination.showLevel = true
-        systemDestination.showFileName = true
-        systemDestination.showLineNumber = true
-        systemDestination.showDate = true
-        
-        // Add the destination to the logger
-        Dependency.logger.add(destination: systemDestination)
-        
-        // Create a file log destination
-        let logPath: URL = self.cacheDirectory.appendingPathComponent("XCGLogger_Log.txt")
-        let fileDestination = FileDestination(writeToFile: logPath, identifier: "advancedLogger.fileDestination")
-        
-        // Optionally set some configuration options
-        fileDestination.outputLevel = .debug
-        fileDestination.showLogIdentifier = false
-        fileDestination.showFunctionName = true
-        fileDestination.showThreadName = true
-        fileDestination.showLevel = true
-        fileDestination.showFileName = true
-        fileDestination.showLineNumber = true
-        fileDestination.showDate = true
-        
-        // Process this destination in the background
-        fileDestination.logQueue = XCGLogger.logQueue
-        
-        // Add the destination to the logger
-        Dependency.logger.add(destination: fileDestination)
-        
-        if (Dependency.environment == .production) {
-            // Remote destination
-            let remoteLogsDestination = RemoteLogsDestination(identifier: "advancedLogger.remoteDestination")
-            remoteLogsDestination.outputLevel = .debug
-            remoteLogsDestination.showLogIdentifier = false
-            remoteLogsDestination.showFunctionName = true
-            remoteLogsDestination.showThreadName = false
-            remoteLogsDestination.showLevel = true
-            remoteLogsDestination.showFileName = true
-            remoteLogsDestination.showLineNumber = true
-            remoteLogsDestination.showDate = true
-            
-            Dependency.logger.add(destination: remoteLogsDestination)
-        }
-        
-        // Add basic app info, version info etc, to the start of the logs
-        Dependency.logger.logAppDetails()
-    }
-    
-    private func configureBackendConnection() {
-        let components = NSURLComponents()
-        
-        switch Dependency.environment {
-        case .developmentLocal:
-            components.scheme = "http"
-            components.host = "127.0.0.1"
-            components.port = 5000
-            
-        case .developmentRemote:
-            components.scheme = "https"
-            components.host = "sharebudget-development.herokuapp.com"
-
-        case .production:
-            components.scheme = "https"
-            components.host = "sharebudget-development.herokuapp.com"
-        }
-        
-        Dependency.backendConnection = components
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        self.configureDependencies()
+        Dependency.configure()
         self.configureAppearance()
         
-        if !UserCredentials.isLoggedIn {
+        if !Dependency.userCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
             self.window?.rootViewController = loginViewControler

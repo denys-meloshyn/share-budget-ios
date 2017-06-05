@@ -36,7 +36,7 @@ class SyncManager {
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             SyncManager.loadUpdates(completion: completion)
                         }
@@ -127,6 +127,10 @@ class SyncManager {
     }
     
     class func run() {
+        if (Dependency.environment() == .testing) {
+            return
+        }
+        
         SyncManager.stop()
         
         Dependency.logger.info("Start sync")

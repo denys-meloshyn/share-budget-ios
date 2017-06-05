@@ -68,14 +68,6 @@ class BaseAPI {
     
     class func components(_ resource: String) -> NSURLComponents {
         let components = Dependency.backendConnection!
-        
-//        components.scheme = "http"
-//        components.host = "127.0.0.1"
-//        components.port = 5000
-        
-//        components.scheme = "https"
-//        components.host = "sharebudget-development.herokuapp.com"
-        
         components.path = "/" + resource
         
         return components
@@ -174,8 +166,8 @@ class BaseAPI {
         let model = managedObjectContext.object(with: modelID) as! BaseModel
         var properties = model.uploadProperties()
         
-        properties[kToken] = UserCredentials.token
-        properties[kUserID] = String(UserCredentials.userID)
+        properties[kToken] = Dependency.userCredentials.token
+        properties[kUserID] = String(Dependency.userCredentials.userID)
         if !self.timestamp.isEmpty {
             properties[kTimeStamp] = self.timestamp
         }
@@ -193,7 +185,7 @@ class BaseAPI {
             guard errorType == .none else {
                 if errorType == .tokenExpired {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: UserCredentials.email, password: UserCredentials.password, completion: { (data, error) -> (Void) in
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             let task = self.upload(resource, modelID, completion)
                             task?.resume()

@@ -207,6 +207,9 @@
 		5735C4C91EE44D8F0037BAA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
 		5735C4CA1EE44D8F0037BAA8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
 		5735C4CB1EE44D8F0037BAA8 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
+		5735C4D41EE4963F0037BAA8 /* DependencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */; };
+		5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D51EE496630037BAA8 /* MockDependency.swift */; };
+		5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */; };
 		573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
 		573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
@@ -342,6 +345,9 @@
 		5735C4661EE445F40037BAA8 /* ShareBudget Development Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ShareBudget Development Local-Info.plist"; path = "/Users/denysmeloshyn/Programming/ShareBudget/ShareBudget Development Local-Info.plist"; sourceTree = "<absolute>"; };
 		5735C4D11EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudgetDevelopmentRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5735C4D21EE44D8F0037BAA8 /* ShareBudget Development Remote-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ShareBudget Development Remote-Info.plist"; path = "/Users/denysmeloshyn/Programming/ShareBudget/ShareBudget Development Remote-Info.plist"; sourceTree = "<absolute>"; };
+		5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyTest.swift; sourceTree = "<group>"; };
+		5735C4D51EE496630037BAA8 /* MockDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDependency.swift; sourceTree = "<group>"; };
+		5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUserCredentials.swift; sourceTree = "<group>"; };
 		573F599C1E295C4D00AEA72A /* ShareBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F599F1E295C4D00AEA72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		573F59A41E295C4D00AEA72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -572,6 +578,7 @@
 			children = (
 				573F59B91E295C4E00AEA72A /* Info.plist */,
 				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
+				5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
@@ -769,6 +776,8 @@
 				57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */,
 				57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */,
 				57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */,
+				5735C4D51EE496630037BAA8 /* MockDependency.swift */,
+				5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */,
 			);
 			name = Mock;
 			sourceTree = "<group>";
@@ -1574,13 +1583,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
+				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
 				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,
 				57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */,
 				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
 				57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */,
+				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
 				57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */,
 				57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */,
+				5735C4D41EE4963F0037BAA8 /* DependencyTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
