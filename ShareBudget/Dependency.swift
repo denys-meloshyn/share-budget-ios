@@ -42,8 +42,8 @@ class Dependency {
     }
     
     class func configure() {
-        self.configureLogger()
         self.configureUserCredentials()
+        self.configureLogger()
         self.configureBackendConnection()
         
         Dependency.logger.info(self.environment())
