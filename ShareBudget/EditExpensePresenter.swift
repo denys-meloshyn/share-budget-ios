@@ -90,7 +90,7 @@ class EditExpensePresenter: BasePresenter {
     private func updatePrice() {
         var formattedValue = ""
         if self.expenseInteraction.expense.price > 0.0 {
-            formattedValue = UtilityFormatter.priceFormatter.string(from: NSNumber(value: self.expenseInteraction.expense.price)) ?? ""
+            formattedValue = UtilityFormatter.priceEditFormatter.string(from: NSNumber(value: self.expenseInteraction.expense.price)) ?? ""
         }
         
         self.delegate?.updatePrice(formattedValue)
@@ -217,7 +217,7 @@ extension EditExpensePresenter: UITextFieldDelegate {
                 return true
             }
             
-            guard let price = UtilityFormatter.priceFormatter.number(from: newValue) else {
+            guard let price = UtilityFormatter.priceEditFormatter.number(from: newValue) else {
                 return false
             }
             

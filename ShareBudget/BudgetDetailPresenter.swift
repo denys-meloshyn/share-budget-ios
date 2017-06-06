@@ -197,12 +197,15 @@ class BudgetDetailPresenter: BasePresenter {
     }
     
     func changeBudgetLimit() {
+        let limit = NSNumber(value: self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0)
+        let formattedLimit = UtilityFormatter.priceEditFormatter.string(from: limit) ?? ""
+        
         self.delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
                                                message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
                                                create: LocalisedManager.generic.create,
                                                cancel: LocalisedManager.generic.cancel,
                                                placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
-                                               budgetLimit: String(self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0))
+                                               budgetLimit: formattedLimit)
     }
     
     func closePageAction() {

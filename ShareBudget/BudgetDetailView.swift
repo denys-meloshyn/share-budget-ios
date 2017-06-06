@@ -227,7 +227,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
         
         alertController.addTextField { (textField) in
             textField.text = budgetLimit
-            textField.keyboardType = .numbersAndPunctuation
+            textField.keyboardType = .decimalPad
             textField.placeholder = placeholder
             textField.autocapitalizationType = .none
             
@@ -236,7 +236,11 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
                     return
                 }
                 
-                createAction.isEnabled = Validator.isNumberValid(text)
+                if let _ = UtilityFormatter.priceEditFormatter.number(from: text) {
+                    createAction.isEnabled = true
+                } else {
+                    createAction.isEnabled = false
+                }
             }
         }
         

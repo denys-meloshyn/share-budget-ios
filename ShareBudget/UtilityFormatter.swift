@@ -33,6 +33,15 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    class var priceEditFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.usesGroupingSeparator = false
+        
+        return formatter
+    }
+    
     class var priceFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
