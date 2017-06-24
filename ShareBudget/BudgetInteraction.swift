@@ -61,10 +61,12 @@ class BudgetInteraction: BaseInteraction {
         self.createFetchedResultsController(with: text)
     }
     
-    func createNewBudget(with name: String?) {
+    func createNewBudget(with name: String) -> Budget {
         let budget = Budget(context: self.managedObjectContext)
         budget.name = name
         budget.isChanged = true
+        
+        return budget
     }
 }
 

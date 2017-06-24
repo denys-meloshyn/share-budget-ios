@@ -33,6 +33,12 @@ class BudgetPresenter: BasePresenter {
         }
     }
     
+    fileprivate var budgetRouter: BudgetRouter {
+        get {
+            return self.router as! BudgetRouter
+        }
+    }
+    
     override init(with interaction: BaseInteraction, router: BaseRouter) {
         super.init(with: interaction, router: router)
         
@@ -138,12 +144,7 @@ extension BudgetPresenter: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
         
         let budget = self.budgetInteraction.budgetModel(for: indexPath)
-        
-        guard let router = self.router as? BudgetRouter else {
-            return
-        }
-        
-        router.openDetailPage(for: budget.objectID)
+        self.budgetRouter.openDetailPage(for: budget.objectID)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -173,13 +174,15 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
+        self.delegate?.cancelSearch()
+        self.delegate?.showGroupList()
+        
         guard let title = title, !Validator.isNullOrBlank(title) else {
-            self.delegate?.cancelSearch()
-            self.delegate?.showGroupList()
             return
         }
         
-        self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
+        let newBudget = self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
+        self.budgetRouter.openDetailPage(for: newBudget.objectID)
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
