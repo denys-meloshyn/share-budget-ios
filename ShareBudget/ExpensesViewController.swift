@@ -58,7 +58,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         self.budgetRest.removeAll()
         for section in 0..<numberOfSections(in: self.tableView!) {
             let firstExpense = self.fc?.object(at: IndexPath(row: 0, section: section))
-            let date = (firstExpense?.creationDate)! as Date
+            let date = (firstExpense?.creationDate ?? NSDate()) as Date
             let total = budget?.limit(for: date)?.limit ?? 0
             var rest = total
             
