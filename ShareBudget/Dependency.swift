@@ -21,7 +21,12 @@ class Dependency {
     
     static var logger: XCGLogger!
     static var userCredentials: UserCredentials.Type!
-    @NSCopying static var backendConnection: NSURLComponents!
+    static var backendURLComponents: NSURLComponents!
+    static var backendConnection: NSURLComponents {
+        get {
+            return backendURLComponents.copy() as! NSURLComponents
+        }
+    }
     
     class func environment() -> Environment {
         if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
@@ -140,7 +145,7 @@ class Dependency {
             break
         }
         
-        self.backendConnection = components
+        self.backendURLComponents = components
     }
     
     class private func configureUserCredentials() {

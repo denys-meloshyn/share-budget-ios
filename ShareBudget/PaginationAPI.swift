@@ -9,10 +9,6 @@
 import UIKit
 
 class PaginationAPI {
-    let kPaginationStart = "start"
-    let kPaginationTotal = "total"
-    let kPaginationPageSize = "pageSize"
-    
     var size = 0
     var start = 0
     var total = 0

@@ -67,7 +67,7 @@ class BaseAPI {
     }
     
     class func components(_ resource: String) -> NSURLComponents {
-        let components = Dependency.backendConnection!
+        let components = Dependency.backendConnection
         components.path = "/" + resource
         
         return components
