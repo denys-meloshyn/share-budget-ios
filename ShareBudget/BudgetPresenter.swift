@@ -15,6 +15,7 @@ enum BudgetHeaderMode {
 }
 
 protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHeaderDataSource {
+    func clearSearch()
     func cancelSearch()
     func showGroupList()
     func removeBottomOffset()
@@ -175,11 +176,14 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
         self.delegate?.cancelSearch()
+        self.delegate?.clearSearch()
         self.delegate?.showGroupList()
+        self.budgetInteraction.updateWithSearch("")
         
         guard let title = title, !Validator.isNullOrBlank(title) else {
             return
         }
+        
         
         let newBudget = self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
         self.budgetRouter.openDetailPage(for: newBudget.objectID)

@@ -286,10 +286,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1p-Fe-VjH">
-                                <rect key="frame" x="0.0" y="124" width="320" height="395"/>
+                                <rect key="frame" x="0.0" y="124" width="320" height="444"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press &quot;+&quot; to create new group" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfK-Ue-g2l">
-                                        <rect key="frame" x="8" y="187" width="304" height="21"/>
+                                        <rect key="frame" x="8" y="211.5" width="304" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -307,16 +307,17 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Zo8-p7-DDd" secondAttribute="bottom" id="2at-8V-gpe"/>
                             <constraint firstItem="J1p-Fe-VjH" firstAttribute="leading" secondItem="gmg-zp-YOM" secondAttribute="leading" id="GwT-r9-tln"/>
+                            <constraint firstAttribute="bottom" secondItem="J1p-Fe-VjH" secondAttribute="bottom" id="IEp-JU-iOf"/>
                             <constraint firstItem="Zo8-p7-DDd" firstAttribute="top" secondItem="gmg-zp-YOM" secondAttribute="top" id="SOX-xb-rJs"/>
                             <constraint firstItem="J1p-Fe-VjH" firstAttribute="top" secondItem="UxD-yU-rwJ" secondAttribute="bottom" constant="60" id="Uf5-H3-oUE"/>
                             <constraint firstAttribute="trailing" secondItem="J1p-Fe-VjH" secondAttribute="trailing" id="c90-Ht-iJu"/>
-                            <constraint firstItem="cN9-kn-9yv" firstAttribute="top" secondItem="J1p-Fe-VjH" secondAttribute="bottom" id="cGf-zQ-yLW"/>
                             <constraint firstAttribute="trailing" secondItem="Zo8-p7-DDd" secondAttribute="trailing" id="rfl-uf-L3x"/>
                             <constraint firstItem="Zo8-p7-DDd" firstAttribute="leading" secondItem="gmg-zp-YOM" secondAttribute="leading" id="tl6-EF-fHF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="H3B-iK-cfR"/>
                     <connections>
+                        <outlet property="constantCreateNewGroupRootViewBottom" destination="IEp-JU-iOf" id="8dM-5r-j9r"/>
                         <outlet property="createNewGroupLabel" destination="SfK-Ue-g2l" id="b62-u1-xh9"/>
                         <outlet property="createNewGroupRootView" destination="J1p-Fe-VjH" id="Sjj-pb-z9j"/>
                         <outlet property="tableView" destination="Zo8-p7-DDd" id="RYH-SV-Tlm"/>

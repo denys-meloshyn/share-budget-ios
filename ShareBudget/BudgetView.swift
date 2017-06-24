@@ -56,6 +56,12 @@ class BudgetView: BaseView {
 // MARK: - BudgetPresenterDelegate
 
 extension BudgetView: BudgetPresenterDelegate {
+    func searchView() -> CreateSearchTableViewHeader? {
+        let searchView = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        
+        return searchView
+    }
+    
     func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
         let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
         header?.delegate = self.budgetPresenter
@@ -73,8 +79,13 @@ extension BudgetView: BudgetPresenterDelegate {
         return cell!
     }
     
+    func clearSearch() {
+        let searchView = self.searchView()
+        searchView?.textField?.text = ""
+    }
+    
     func cancelSearch() {
-        let searchView = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        let searchView = self.searchView()
         searchView?.textField?.resignFirstResponder()
     }
     
