@@ -40,9 +40,9 @@ class DependencyTest: XCTestCase {
         
         let result = MockDependency.backendConnection
         
-        expect(result?.scheme) == expectedComponents.scheme
-        expect(result?.host) == expectedComponents.host
-        expect(result?.port) == expectedComponents.port
+        expect(result.scheme) == expectedComponents.scheme
+        expect(result.host) == expectedComponents.host
+        expect(result.port) == expectedComponents.port
     }
     
     func testDevelopmentRemoteBackendConnection() {
@@ -55,7 +55,7 @@ class DependencyTest: XCTestCase {
         
         let result = MockDependency.backendConnection
         
-        expect(result?.scheme) == expectedComponents.scheme
-        expect(result?.host) == expectedComponents.host
+        expect(result.scheme) == expectedComponents.scheme
+        expect(result.host) == expectedComponents.host
     }
 }
