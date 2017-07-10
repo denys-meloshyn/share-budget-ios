@@ -70,6 +70,7 @@ class EditExpensePresenter: BasePresenter {
         self.expenseInteraction.expense.creationDate = sender.date as NSDate?
         
         self.updateDate()
+        self.updateSaveButton()
     }
     
     private func updateApplyButton() {
