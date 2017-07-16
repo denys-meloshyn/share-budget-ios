@@ -42,6 +42,8 @@ class BudgetDetailPresenter: BasePresenter {
         }
     }
     
+    // MARK: - Life cycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,6 +72,8 @@ class BudgetDetailPresenter: BasePresenter {
         self.delegate?.updateNativeNavigationVisibility(true)
         self.delegate?.updateCreateButtonAnimation(false)
     }
+    
+    // MARK: - Private methods
     
     private func configurePiChartColors() {
         self.pieChartColors.append(UIColor.flatRed)
@@ -210,6 +214,10 @@ class BudgetDetailPresenter: BasePresenter {
     
     func closePageAction() {
         self.budgetDetailRouter.closePage()
+    }
+    
+    func editMembers() {
+        
     }
 }
 

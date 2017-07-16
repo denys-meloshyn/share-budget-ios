@@ -46,6 +46,8 @@ class BudgetPresenter: BasePresenter {
         self.budgetInteraction.delegate = self
     }
     
+    // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

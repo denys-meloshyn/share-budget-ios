@@ -356,20 +356,30 @@
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msf-UM-cb5">
-                                        <rect key="frame" x="142" y="32" width="36.5" height="21"/>
+                                        <rect key="frame" x="142" y="32.5" width="36.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zo-o1-Ubg">
+                                        <rect key="frame" x="270" y="20" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="efg-zO-hSA"/>
+                                            <constraint firstAttribute="width" constant="50" id="n2d-QC-RJO"/>
+                                        </constraints>
+                                        <state key="normal" image="account_plus"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21224632199999999" green="0.62519564849999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="msf-UM-cb5" firstAttribute="centerY" secondItem="IxV-wS-s2h" secondAttribute="centerY" id="2hg-1B-fki"/>
+                                    <constraint firstItem="4zo-o1-Ubg" firstAttribute="centerY" secondItem="msf-UM-cb5" secondAttribute="centerY" id="Czl-ck-bMK"/>
                                     <constraint firstItem="msf-UM-cb5" firstAttribute="centerX" secondItem="odw-jQ-fev" secondAttribute="centerX" id="IKI-Zg-DJ5"/>
                                     <constraint firstItem="Hxq-Uz-7uI" firstAttribute="leading" secondItem="odw-jQ-fev" secondAttribute="leading" id="Kbh-xX-Fjv"/>
                                     <constraint firstItem="IxV-wS-s2h" firstAttribute="leading" secondItem="odw-jQ-fev" secondAttribute="leading" constant="15" id="Omf-Fh-vhc"/>
                                     <constraint firstAttribute="bottom" secondItem="IxV-wS-s2h" secondAttribute="bottom" constant="11" id="QX4-kw-tcL"/>
                                     <constraint firstItem="Hxq-Uz-7uI" firstAttribute="top" secondItem="odw-jQ-fev" secondAttribute="top" id="Th4-Fd-1KO"/>
+                                    <constraint firstAttribute="trailing" secondItem="4zo-o1-Ubg" secondAttribute="trailing" id="UZ9-yp-dbc"/>
                                     <constraint firstAttribute="bottom" secondItem="Hxq-Uz-7uI" secondAttribute="bottom" id="cCU-tC-tW4"/>
                                     <constraint firstAttribute="height" constant="64" id="kGV-Ye-PaG"/>
                                 </constraints>
@@ -615,6 +625,7 @@
                         <outlet property="constraintChartViewWidth" destination="psa-m6-f9S" id="NB3-8N-ggc"/>
                         <outlet property="createExpenseButton" destination="1Ql-yP-LX9" id="tRk-K7-hhx"/>
                         <outlet property="createNewExpenseContainerView" destination="DdS-tK-XCf" id="lWU-ty-HSS"/>
+                        <outlet property="editMemberButton" destination="4zo-o1-Ubg" id="Yfi-ob-OJA"/>
                         <outlet property="equalLabel" destination="Lk1-A8-rHu" id="y0A-C6-lGq"/>
                         <outlet property="expenseButton" destination="EaG-wT-5KY" id="2Wo-tn-ZvT"/>
                         <outlet property="expenseContainerView" destination="NYl-BY-Icn" id="Sjn-ed-o0E"/>
@@ -856,6 +867,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account_plus" width="27" height="19"/>
         <image name="back_icon" width="8" height="13"/>
     </resources>
 </document>

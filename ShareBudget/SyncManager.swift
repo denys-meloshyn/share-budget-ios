@@ -127,7 +127,7 @@ class SyncManager {
     }
     
     class func run() {
-        if (Dependency.environment() == .testing) {
+        if (Dependency.environment == .testing) {
             return
         }
         

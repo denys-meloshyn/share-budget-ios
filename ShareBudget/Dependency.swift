@@ -28,22 +28,24 @@ class Dependency {
         }
     }
     
-    class func environment() -> Environment {
-        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
-            let url = URL(fileURLWithPath: testPath)
-            
-            if url.pathExtension == "xctestconfiguration" {
-                return .testing
+    static var environment: Environment {
+        get {
+            if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
+                let url = URL(fileURLWithPath: testPath)
+                
+                if url.pathExtension == "xctestconfiguration" {
+                    return .testing
+                }
             }
+            
+            #if DEVELOPMENT_LOCAL
+                return Environment.developmentLocal
+            #elseif DEVELOPMENT_REMOTE
+                return Environment.developmentRemote
+            #else
+                return Environment.production
+            #endif
         }
-        
-        #if DEVELOPMENT_LOCAL
-            return Environment.developmentLocal
-        #elseif DEVELOPMENT_REMOTE
-            return Environment.developmentRemote
-        #else
-            return Environment.production
-        #endif
     }
     
     class func configure() {
@@ -51,7 +53,7 @@ class Dependency {
         self.configureLogger()
         self.configureBackendConnection()
         
-        Dependency.logger.info(self.environment())
+        Dependency.logger.info(self.environment)
     }
     
     static let cacheDirectory: URL = {
@@ -105,7 +107,7 @@ class Dependency {
         // Add the destination to the logger
         self.logger.add(destination: fileDestination)
         
-        if (self.environment() == .production) {
+        if (self.environment == .production) {
             // Remote destination
             let remoteLogsDestination = RemoteLogsDestination(identifier: self.loggerRemoteIdentifier)
             remoteLogsDestination.outputLevel = .debug
@@ -127,7 +129,7 @@ class Dependency {
     class private func configureBackendConnection() {
         let components = NSURLComponents()
         
-        switch self.environment() {
+        switch self.environment {
         case .developmentLocal:
             components.scheme = "http"
             components.host = "127.0.0.1"

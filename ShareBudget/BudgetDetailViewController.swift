@@ -23,6 +23,7 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var navigationView: UIView?
     @IBOutlet private var expenseButton: UIButton?
     @IBOutlet private var expenseCoverView: UIView?
+    @IBOutlet private var editMemberButton: UIButton?
     @IBOutlet private var budgetContainerView: UIView?
     @IBOutlet private var expenseContainerView: UIView?
     @IBOutlet private var balanceContainerView: UIView?
@@ -77,6 +78,7 @@ class BudgetDetailViewController: BaseViewController {
         view.expenseButton = self.expenseButton
         view.animationView = self.animationView
         view.navigationView = self.navigationView
+        view.editMemberButton = self.editMemberButton
         view.expenseCoverView = self.expenseCoverView
         view.backButtonImageView = self.backButtonImageView
         view.createExpenseButton = self.createExpenseButton

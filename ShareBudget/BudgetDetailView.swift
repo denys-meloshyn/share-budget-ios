@@ -23,6 +23,7 @@ class BudgetDetailView: BaseView {
     weak var budgetButton: UIButton?
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
+    weak var editMemberButton: UIButton?
     weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
@@ -57,11 +58,13 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.editMemberButton?.tintColor = Constants.defaultActionColor
         self.animationView?.backgroundColor = Constants.defaultActionColor
         self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
         self.createNewExpenseContainerView?.backgroundColor = Constants.defaultActionColor
         
         self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
+        self.editMemberButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.editMembers), for: .touchUpInside)
         self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
