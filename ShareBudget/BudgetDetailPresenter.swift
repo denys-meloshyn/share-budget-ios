@@ -217,7 +217,7 @@ class BudgetDetailPresenter: BasePresenter {
     }
     
     func editMembers() {
-        
+        self.budgetDetailRouter.openTeamMembersPage(with: self.budgetDetailInteraction.budget.objectID)
     }
 }
 

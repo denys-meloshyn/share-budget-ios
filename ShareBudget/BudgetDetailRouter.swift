@@ -27,4 +27,13 @@ class BudgetDetailRouter: BaseRouter {
         expensesViewController.categoryID = categoryID
         self.viewController?.navigationController?.pushViewController(expensesViewController, animated: true)
     }
+    
+    func openTeamMembersPage(with budgetID: NSManagedObjectID) {
+        guard let teamMembersViewController = R.storyboard.main.teamMembersViewController() else {
+            return
+        }
+        
+        teamMembersViewController.budgetID = budgetID
+        self.viewController?.navigationController?.pushViewController(teamMembersViewController, animated: true)
+    }
 }

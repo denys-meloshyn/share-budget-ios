@@ -776,6 +776,41 @@
             </objects>
             <point key="canvasLocation" x="3628.125" y="137.32394366197184"/>
         </scene>
+        <!--Team Members View Controller-->
+        <scene sceneID="vsa-Tx-TEy">
+            <objects>
+                <viewController storyboardIdentifier="TeamMembersViewController" id="jh4-Gn-W6N" customClass="TeamMembersViewController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IRy-Tx-F0t"/>
+                        <viewControllerLayoutGuide type="bottom" id="HqZ-aA-Am8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gB6-p1-xDH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yX0-Ee-LAm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yX0-Ee-LAm" firstAttribute="top" secondItem="gB6-p1-xDH" secondAttribute="top" id="2Hd-Lz-fOZ"/>
+                            <constraint firstAttribute="trailing" secondItem="yX0-Ee-LAm" secondAttribute="trailing" id="gWC-e3-lSM"/>
+                            <constraint firstItem="yX0-Ee-LAm" firstAttribute="leading" secondItem="gB6-p1-xDH" secondAttribute="leading" id="iLf-1d-vyY"/>
+                            <constraint firstAttribute="bottom" secondItem="yX0-Ee-LAm" secondAttribute="bottom" id="ryD-vb-nC8"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="yX0-Ee-LAm" id="f14-3o-e3f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dau-v2-nEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3626.25" y="842.95774647887322"/>
+        </scene>
         <!--Category View Controller-->
         <scene sceneID="ijw-wU-Hgc">
             <objects>

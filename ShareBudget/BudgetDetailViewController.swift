@@ -41,7 +41,6 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var constraintAnimationViewHeight: NSLayoutConstraint?
     
     var budgetID: NSManagedObjectID!
-    private let managedObjectContext = ModelManager.managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
