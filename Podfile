@@ -4,12 +4,12 @@ platform :ios, '10.2'
 def developing_pods
     pod 'XCGLogger', '~> 5.0.1'
     pod 'KeychainSwift', '~> 8.0'
-    pod 'R.swift', '~> 3.3.0'
+    pod 'R.swift', '~> 3.2'
     pod 'SnapKit', '~> 3.2'
     pod 'CorePlot', '~> 2.2'
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
     pod 'le', '~> 1.1'
-    pod 'BugfenderSDK', '~> 1.4.5'
+    pod 'BugfenderSDK', '~> 1.4'
 end
 
 target 'ShareBudget' do
