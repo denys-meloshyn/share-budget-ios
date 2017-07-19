@@ -1,7 +1,7 @@
 PODS:
-  - BugfenderSDK (1.4.3):
-    - BugfenderSDK/Swift (= 1.4.3)
-  - BugfenderSDK/Swift (1.4.3)
+  - BugfenderSDK (1.4.5):
+    - BugfenderSDK/Swift (= 1.4.5)
+  - BugfenderSDK/Swift (1.4.5)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -22,7 +22,7 @@ PODS:
     - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - BugfenderSDK (~> 1.4)
+  - BugfenderSDK (~> 1.4.5)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (~> 2.2)
   - KeychainSwift (~> 8.0)
@@ -42,7 +42,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
-  BugfenderSDK: 7c410a86de5f8d971a945d1c349167d94613a1f3
+  BugfenderSDK: 48e40e63015e936c25c164b15656452152e1e74e
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
@@ -54,6 +54,6 @@ SPEC CHECKSUMS:
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: e1c52970a8dd1c4f0918c1d053a8db19ac847436
+PODFILE CHECKSUM: 3ebc05dd5d516342fc8c0bf05c28f4bb5d153424
 
 COCOAPODS: 1.2.1

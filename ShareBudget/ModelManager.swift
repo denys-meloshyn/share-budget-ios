@@ -12,6 +12,8 @@ import CoreData
 class ModelManager {
     static let sharedInstance = ModelManager()
     
+    private static let fetchBatchSize = 30
+    
     private init() {
         
     }
@@ -21,7 +23,7 @@ class ModelManager {
     static private var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.denys.meloshyn.TeamExpenses" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return urls[urls.count-1]
+        return urls[urls.count - 1]
     }()
     
     static private var managedObjectModel: NSManagedObjectModel = {
@@ -185,9 +187,11 @@ class ModelManager {
         }
     }
     
+    // MARK: - NSFetchedResultsController
+    
     class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
         
@@ -208,7 +212,7 @@ class ModelManager {
     
     class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "") -> NSFetchedResultsController<Budget> {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         if text.characters.count > 0 {
             let predicate = NSPredicate(format: "name CONTAINS[c] %@", text)
@@ -225,7 +229,7 @@ class ModelManager {
     
     class func budgetLimitFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<BudgetLimit> {
         let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
         let predicate = NSPredicate(format: "%@ == budget", budget)
@@ -241,7 +245,7 @@ class ModelManager {
     
     class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Category> {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = fetchBatchSize
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -253,7 +257,7 @@ class ModelManager {
     
     class func expenseFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID, categoryID: NSManagedObjectID? = nil) -> NSFetchedResultsController<Expense> {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
         let predicate: NSPredicate
@@ -278,7 +282,7 @@ class ModelManager {
     
     class func expenseFetchController(for budgetID: NSManagedObjectID, _ date: NSDate, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
-        fetchRequest.fetchBatchSize = 30
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
         
@@ -300,6 +304,23 @@ class ModelManager {
         fetchRequest.sortDescriptors = [categoryNameSortDescriptor, sortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: "category.name", cacheName: nil)
+        
+        return fetchedResultsController
+    }
+    
+    class func teamMembersFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<User> {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        let predicate = NSPredicate(format: "%@ == group AND isRemoved == NO", budget)
+        fetchRequest.predicate = predicate
+        
+        let sortDescriptorLastName = NSSortDescriptor(key: "lastName", ascending: true)
+        let sortDescriptorFirstName = NSSortDescriptor(key: "firstName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptorLastName, sortDescriptorFirstName]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
         return fetchedResultsController
     }

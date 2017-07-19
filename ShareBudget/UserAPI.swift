@@ -17,7 +17,14 @@ class UserAPI: BaseAPI {
         var user: User?
         
         for item in items {
-            user = User(context: managedObjectContext)
+            if let modelID = item[User.modelKeyID()] as? Int {
+                user = ModelManager.findEntity(User.self, by: modelID, in: managedObjectContext) as? User
+            }
+            
+            if user == nil {
+                user = User(context: managedObjectContext)
+            }
+            
             user?.update(with: item, in: managedObjectContext)
         }
     }

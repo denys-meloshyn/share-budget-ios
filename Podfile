@@ -9,7 +9,7 @@ def developing_pods
     pod 'CorePlot', '~> 2.2'
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
     pod 'le', '~> 1.1'
-    pod 'BugfenderSDK', '~> 1.4'
+    pod 'BugfenderSDK', '~> 1.4.5'
 end
 
 target 'ShareBudget' do
