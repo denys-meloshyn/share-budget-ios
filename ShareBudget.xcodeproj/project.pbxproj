@@ -285,6 +285,9 @@
 		578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0711E3516BE00DE28C8 /* InfoPlist.strings */; };
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
+		57A2B2EB1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
+		57A2B2EC1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
+		57A2B2ED1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
 		57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */; };
 		57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */; };
@@ -438,6 +441,7 @@
 		578BD0701E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
 		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
+		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPresenterTest.swift; sourceTree = "<group>"; };
 		57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetPresenter.swift; sourceTree = "<group>"; };
@@ -672,6 +676,7 @@
 				573F59D61E295F6100AEA72A /* AsynchronousURLConnection.swift */,
 				57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */,
 				573F59D81E29627A00AEA72A /* BaseAPI.swift */,
+				57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */,
 				57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */,
 				57FAB42D1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift */,
 				57F128711E3FC1DF00E51C0C /* BudgetAPI.swift */,
@@ -679,10 +684,10 @@
 				575786341E4272980026A0BE /* BudgetUserAPI.swift */,
 				575A22631E4BA050004825C2 /* CategoryAPI.swift */,
 				578A04D01E5256B500330DCD /* ExpenseAPI.swift */,
+				57BEAD871ED07C5100CE372C /* PaginationAPI.swift */,
 				573F59E21E2AB9B000AEA72A /* SyncManager.swift */,
 				573F59DA1E29637E00AEA72A /* UserAPI.swift */,
-				57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */,
-				57BEAD871ED07C5100CE372C /* PaginationAPI.swift */,
+				57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */,
 			);
 			name = APIManager;
 			sourceTree = "<group>";
@@ -1360,6 +1365,7 @@
 				5735C4121EE445F40037BAA8 /* BaseAPITaskUpload.swift in Sources */,
 				5735C4131EE445F40037BAA8 /* BudgetLimitAPI.swift in Sources */,
 				5735C4141EE445F40037BAA8 /* RemoteLogsDestination.swift in Sources */,
+				57A2B2EC1F228A060061F1EB /* UserGroupAPI.swift in Sources */,
 				5735C4151EE445F40037BAA8 /* BudgetDetailRouter.swift in Sources */,
 				5735C4161EE445F40037BAA8 /* EditExpensePresenter.swift in Sources */,
 				5735C4171EE445F40037BAA8 /* BudgetViewController.swift in Sources */,
@@ -1455,6 +1461,7 @@
 				5735C47D1EE44D8F0037BAA8 /* BaseAPITaskUpload.swift in Sources */,
 				5735C47E1EE44D8F0037BAA8 /* BudgetLimitAPI.swift in Sources */,
 				5735C47F1EE44D8F0037BAA8 /* RemoteLogsDestination.swift in Sources */,
+				57A2B2ED1F228A060061F1EB /* UserGroupAPI.swift in Sources */,
 				5735C4801EE44D8F0037BAA8 /* BudgetDetailRouter.swift in Sources */,
 				5735C4811EE44D8F0037BAA8 /* EditExpensePresenter.swift in Sources */,
 				5735C4821EE44D8F0037BAA8 /* BudgetViewController.swift in Sources */,
@@ -1550,6 +1557,7 @@
 				57FAB42E1E64E1E000A2AEC7 /* BaseAPITaskUpload.swift in Sources */,
 				575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */,
 				572607E71EC3AD8D00B92604 /* RemoteLogsDestination.swift in Sources */,
+				57A2B2EB1F228A060061F1EB /* UserGroupAPI.swift in Sources */,
 				572749581E44F49F004A132F /* BudgetDetailRouter.swift in Sources */,
 				575A225C1E477258004825C2 /* EditExpensePresenter.swift in Sources */,
 				57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */,

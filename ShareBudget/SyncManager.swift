@@ -22,6 +22,7 @@ class SyncManager {
     static let budgetAPI = BudgetAPI()
     static let expenseAPI = ExpenseAPI()
     static let categoryAPI = CategoryAPI()
+    static let userGroupAPI = UserGroupAPI()
     static let budgetLimitAPI = BudgetLimitAPI()
     
     static var tasks = [BaseAPITask]()
@@ -96,6 +97,10 @@ class SyncManager {
         
         // Load all updates for 'Budget'
         task = BaseAPILoadUpdatesTask(resource: "group", entity: self.budgetAPI, completionBlock: completionBlock)
+        tasks.append(task)
+        
+        // Load all updates for 'User Groups'
+        task = BaseAPILoadUpdatesTask(resource: "user/group", entity: self.userGroupAPI, completionBlock: completionBlock)
         tasks.append(task)
         
         // Load all updates for 'Budget Limit'

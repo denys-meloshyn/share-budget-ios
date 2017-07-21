@@ -313,7 +313,7 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate = NSPredicate(format: "%@ == group AND isRemoved == NO", budget)
+        let predicate = NSPredicate(format: "%@ IN group AND isRemoved == NO", budget)
         fetchRequest.predicate = predicate
         
         let sortDescriptorLastName = NSSortDescriptor(key: "lastName", ascending: true)

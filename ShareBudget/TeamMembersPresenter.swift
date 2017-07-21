@@ -26,7 +26,7 @@ extension TeamMembersPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let c = UITableViewCell()
         let user = self.teamMembersInteraction.user(at: indexPath)
-        c.textLabel?.text = user.email
+        c.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "") \(user.email ?? "")"
         
         return c
     }

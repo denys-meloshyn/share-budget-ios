@@ -64,6 +64,7 @@ class UserCredentials {
         SyncManager.budgetAPI.timestamp = ""
         SyncManager.budgetLimitAPI.timestamp = ""
         SyncManager.userAPI.timestamp = ""
+        SyncManager.userGroupAPI.timestamp = ""
     }
     
     class var isLoggedIn: Bool {
