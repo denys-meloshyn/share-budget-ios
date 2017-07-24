@@ -20,7 +20,24 @@ class TeamMembersView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.teamMembersPresenter.delegate = self
         self.tableView?.dataSource = self.teamMembersPresenter
         self.tableView?.delegate = self.teamMembersPresenter
+    }
+    
+    func refreshData() {
+        self.tableView?.reloadData()
+    }
+}
+
+// MARK: - TeamMembersPresenterDelegate
+
+extension TeamMembersView: TeamMembersPresenterDelegate {
+    func createTeamMemberCell(with title: String?, and subTitle: String?) -> UITableViewCell {
+        let cell = tableView?.dequeueReusableCell(withIdentifier: "TeamMemberTableViewCell")
+        cell?.textLabel?.text = title
+        cell?.detailTextLabel?.text = subTitle
+        
+        return cell!
     }
 }

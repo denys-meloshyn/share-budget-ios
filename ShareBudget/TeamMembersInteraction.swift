@@ -11,6 +11,7 @@ import CoreData
 
 class TeamMembersInteraction: BaseInteraction {
     var budget: Budget
+    var delegate: BaseInteractionDelegate?
     
     private var managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<User>
@@ -54,10 +55,11 @@ class TeamMembersInteraction: BaseInteraction {
 
 extension TeamMembersInteraction: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
+        self.delegate?.willChangeContent?()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.delegate?.didChangeContent?()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

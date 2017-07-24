@@ -12,6 +12,7 @@ import Rswift
 struct LocalisedManager {
     struct generic {
         static let ok = NSLocalizedString("OK", comment: "Generic OK message")
+        static let delete = NSLocalizedString("Delete", comment: "Generic Delete message")
         static let errorTitle = NSLocalizedString("Error", comment: "Generic error title")
         static let errorMessage = NSLocalizedString("Something was wrong", comment: "Generic error message")
         static let next = NSLocalizedString("Next", comment: "Next title (ex keyboard)")

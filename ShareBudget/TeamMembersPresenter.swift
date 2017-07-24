@@ -8,11 +8,24 @@
 
 import UIKit
 
+protocol TeamMembersPresenterDelegate {
+    func refreshData()
+    func createTeamMemberCell(with title: String?, and subTitle: String?) -> UITableViewCell
+}
+
 class TeamMembersPresenter: BasePresenter {
+    var delegate: TeamMembersPresenterDelegate!
+    
     fileprivate var teamMembersInteraction: TeamMembersInteraction {
         get {
             return self.interaction as! TeamMembersInteraction
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.teamMembersInteraction.delegate = self
     }
 }
 
@@ -24,11 +37,25 @@ extension TeamMembersPresenter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let c = UITableViewCell()
         let user = self.teamMembersInteraction.user(at: indexPath)
-        c.textLabel?.text = "\(user.firstName ?? "") \(user.lastName ?? "") \(user.email ?? "")"
+        var items = [String]()
+        if let lastName = user.lastName {
+            items.append(lastName)
+        }
         
-        return c
+        if let firstName = user.firstName {
+            items.append(firstName)
+        }
+        
+        var title = NSArray(array: items).componentsJoined(by: " ")
+        var subtitle = user.email ?? ""
+        
+        if title.characters.count == 0 {
+            title = subtitle
+            subtitle = ""
+        }
+        
+        return self.delegate.createTeamMemberCell(with: title, and: subtitle)
     }
 }
 
@@ -44,6 +71,23 @@ extension TeamMembersPresenter: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        return nil
+        let action = UITableViewRowAction(style: .destructive, title: LocalisedManager.generic.delete) { (action, indexPath) in
+            let user = self.teamMembersInteraction.user(at: indexPath)
+            user.isRemoved = true
+        }
+        
+        return [action]
+    }
+}
+
+// MARK: - BaseInteractionDelegate
+
+extension TeamMembersPresenter: BaseInteractionDelegate {
+    func willChangeContent() {
+        self.delegate?.refreshData()
+    }
+    
+    func didChangeContent() {
+        self.delegate?.refreshData()
     }
 }
