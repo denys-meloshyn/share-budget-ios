@@ -34,7 +34,7 @@ class TeamMembersInteraction: BaseInteraction {
             try self.fetchedResultsController.performFetch()
         }
         catch {
-            Dependency.sharedInstance.logger.error("Can't perform fetch request")
+            Dependency.logger.error("Can't perform fetch request")
         }
     }
     

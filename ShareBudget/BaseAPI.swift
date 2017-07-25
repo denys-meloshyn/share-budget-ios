@@ -67,7 +67,7 @@ class BaseAPI {
     }
     
     class func components(_ resource: String) -> NSURLComponents {
-        let components = Dependency.sharedInstance.backendConnection
+        let components = Dependency.backendConnection
         components.path = "/" + resource
         
         return components
@@ -103,25 +103,25 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                Dependency.sharedInstance.logger.error("Error: \(errorType) message: \(String(describing: data))")
+                Dependency.logger.error("Error: \(errorType) message: \(String(describing: data))")
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                Dependency.sharedInstance.logger.error("Response has wrong structure")
+                Dependency.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let results = dict[kResult] as? [[String: AnyObject?]] else {
-                Dependency.sharedInstance.logger.error("'result' has wrong structure")
+                Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let timestamp = dict[kTimeStamp] as? String else {
-                Dependency.sharedInstance.logger.error("'timeStamp' missed")
+                Dependency.logger.error("'timeStamp' missed")
                 completion?(data, .unknown)
                 return
             }
@@ -166,8 +166,8 @@ class BaseAPI {
         let model = managedObjectContext.object(with: modelID) as! BaseModel
         var properties = model.uploadProperties()
         
-        properties[kToken] = Dependency.sharedInstance.userCredentials.token
-        properties[kUserID] = String(Dependency.sharedInstance.userCredentials.userID)
+        properties[kToken] = Dependency.userCredentials.token
+        properties[kUserID] = String(Dependency.userCredentials.userID)
         if !self.timestamp.isEmpty {
             properties[kTimeStamp] = self.timestamp
         }
@@ -184,8 +184,8 @@ class BaseAPI {
             
             guard errorType == .none else {
                 if errorType == .tokenExpired {
-                    Dependency.sharedInstance.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.sharedInstance.userCredentials.email, password: Dependency.sharedInstance.userCredentials.password, completion: { (data, error) -> (Void) in
+                    Dependency.logger.error("Token is expired")
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             let task = self.upload(resource, modelID, completion)
                             task?.resume()
@@ -198,20 +198,20 @@ class BaseAPI {
                     return
                 }
                 
-                Dependency.sharedInstance.logger.error("Error: '\(errorType)' message: \(String(describing: data))")
+                Dependency.logger.error("Error: '\(errorType)' message: \(String(describing: data))")
                 
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                Dependency.sharedInstance.logger.error("Response has wrong structure")
+                Dependency.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let result = dict[kResult] as? [String: AnyObject?] else {
-                Dependency.sharedInstance.logger.error("'result' has wrong structure")
+                Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }

@@ -13,6 +13,6 @@ import BugfenderSDK
 class RemoteLogsDestination: AppleSystemLogDestination {
     override func write(message: String) {
         //LELog.sharedInstance().log(NSString(string: message))
-        BFLog("\(Dependency.sharedInstance.userCredentials.email) -> \(message)")
+        BFLog("\(Dependency.userCredentials.email) -> \(message)")
     }
 }

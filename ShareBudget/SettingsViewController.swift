@@ -17,7 +17,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logout() {
         
-        Dependency.sharedInstance.userCredentials.logout()
+        Dependency.userCredentials.logout()
         ModelManager.dropAllEntities()
         
         if let loginViewControler = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationViewController") {
@@ -26,6 +26,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func reset() {
-        Dependency.sharedInstance.userCredentials.resetTimeStamps()
+        Dependency.userCredentials.resetTimeStamps()
     }
 }

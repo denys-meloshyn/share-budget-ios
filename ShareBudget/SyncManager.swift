@@ -28,7 +28,7 @@ class SyncManager {
     static var tasks = [BaseAPITask]()
 
     private class func loadUpdates(completion: APIResultBlock?) {
-        Dependency.sharedInstance.logger.info("Load updates from server")
+        Dependency.logger.info("Load updates from server")
         
         self.tasks.removeAll()
         var task: BaseAPITask
@@ -36,8 +36,8 @@ class SyncManager {
         let completionBlock: APIResultBlock = { (data, error) -> (Void) in
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
-                    Dependency.sharedInstance.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.sharedInstance.userCredentials.email, password: Dependency.sharedInstance.userCredentials.password, completion: { (data, error) -> (Void) in
+                    Dependency.logger.error("Token is expired")
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             SyncManager.loadUpdates(completion: completion)
                         }
@@ -132,18 +132,18 @@ class SyncManager {
     }
     
     class func run() {
-        if (Dependency.sharedInstance.environment() == .testing) {
+        if (Dependency.environment() == .testing) {
             return
         }
         
         SyncManager.stop()
         
-        Dependency.sharedInstance.logger.info("Start sync")
+        Dependency.logger.info("Start sync")
         SyncManager.loadUpdates(completion: nil)
     }
     
     class func stop() {
-        Dependency.sharedInstance.logger.info("Stop sync")
+        Dependency.logger.info("Stop sync")
         
         SyncManager.timer?.invalidate()
         SyncManager.loadingTask?.cancel()
