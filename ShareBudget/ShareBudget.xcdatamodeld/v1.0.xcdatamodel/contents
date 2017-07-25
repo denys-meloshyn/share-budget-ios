@@ -47,6 +47,7 @@
         <relationship name="userGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserGroup" inverseName="user" inverseEntity="UserGroup" syncable="YES"/>
     </entity>
     <entity name="UserGroup" representedClassName="UserGroup" parentEntity="BaseModel" syncable="YES" codeGenerationType="class">
+        <attribute name="asd" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="group" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Budget" inverseName="userGroup" inverseEntity="Budget" syncable="YES"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="userGroup" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -58,6 +59,6 @@
         <element name="CategoryLimit" positionX="36" positionY="81" width="128" height="90"/>
         <element name="Expense" positionX="0" positionY="72" width="128" height="135"/>
         <element name="User" positionX="-54" positionY="9" width="128" height="120"/>
-        <element name="UserGroup" positionX="-9" positionY="81" width="128" height="75"/>
+        <element name="UserGroup" positionX="-9" positionY="81" width="128" height="90"/>
     </elements>
 </model>

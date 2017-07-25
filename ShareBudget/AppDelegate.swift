@@ -14,13 +14,15 @@ import BugfenderSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    override init() {
+        super.init()
+        Dependency.configure()
+    }
 
-    var window: UIWindow?
+    var window: UIWindow? 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        Dependency.configure()
         self.configureAppearance()
         
         if !Dependency.userCredentials.isLoggedIn {
