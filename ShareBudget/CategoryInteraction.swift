@@ -38,7 +38,7 @@ class CategoryInteraction: BaseInteraction {
             try self.fetchedResultsController.performFetch()
         }
         catch {
-            Dependency.logger.error("Error fetch \(error)")
+            Dependency.sharedInstance.logger.error("Error fetch \(error)")
         }
     }
     

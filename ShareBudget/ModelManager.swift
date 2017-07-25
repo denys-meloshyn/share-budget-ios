@@ -20,6 +20,8 @@ class ModelManager {
     
     // MARK: - Core Data stack
     
+    static private let storeURL = ModelManager.applicationDocumentsDirectory.appendingPathComponent(ModelManager.dataBaseName())
+    
     static private var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.denys.meloshyn.TeamExpenses" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -40,7 +42,8 @@ class ModelManager {
         let url = ModelManager.applicationDocumentsDirectory.appendingPathComponent(ModelManager.dataBaseName())
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch {
             // Report any error we got.
             var dict = [String: Any]()
@@ -51,8 +54,19 @@ class ModelManager {
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            Dependency.logger.error("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
-            abort()
+            Dependency.sharedInstance.logger.warning("Remove old persistentStoreCoordinator")
+            
+            do {
+                try FileManager.default.removeItem(atPath: ModelManager.storeURL.path)
+                try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-shm"))
+                try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-wal"))
+                try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+                Dependency.sharedInstance.userCredentials.resetTimeStamps()
+            }
+            catch let removeError {
+                Dependency.sharedInstance.logger.error("\(removeError)")
+                abort()
+            }
         }
         
         return coordinator
@@ -75,7 +89,7 @@ class ModelManager {
     
     class func saveChildren(_ childrenManagedObjectContext: NSManagedObjectContext, block: (() -> Swift.Void)?) {
         guard let parentManagedObjectContext = childrenManagedObjectContext.parent else {
-            Dependency.logger.error("Parent managed object context is missed")
+            Dependency.sharedInstance.logger.error("Parent managed object context is missed")
             return
         }
         
@@ -116,7 +130,7 @@ class ModelManager {
             try fetchController.performFetch()
         }
         catch {
-            Dependency.logger.error("Error drop entity \(entity) \(error)")
+            Dependency.sharedInstance.logger.error("Error drop entity \(entity) \(error)")
         }
         
         let sections = fetchController.sections ?? []
@@ -167,7 +181,7 @@ class ModelManager {
             return items.first as? BaseModel
         }
         catch {
-            Dependency.logger.error("Finding model \(error)")
+            Dependency.sharedInstance.logger.error("Finding model \(error)")
             return nil
         }
     }
@@ -182,7 +196,7 @@ class ModelManager {
             return items.first
         }
         catch {
-            Dependency.logger.error("Finding model with internal ID \(error)")
+            Dependency.sharedInstance.logger.error("Finding model with internal ID \(error)")
             return nil
         }
     }
@@ -205,7 +219,7 @@ class ModelManager {
             return fetchedResultsController
         }
         catch {
-            Dependency.logger.error("Error fetch changedModels \(error)")
+            Dependency.sharedInstance.logger.error("Error fetch changedModels \(error)")
             return nil
         }
     }

@@ -17,18 +17,24 @@ enum Environment {
 }
 
 class Dependency {
-    static let loggerRemoteIdentifier = "advancedLogger.remoteDestination"
+    static let sharedInstance = Dependency()
     
-    static var logger: XCGLogger!
-    static var userCredentials: UserCredentials.Type!
-    static var backendURLComponents: NSURLComponents!
-    static var backendConnection: NSURLComponents {
+    private init() {
+        self.configure()
+    }
+    
+    let loggerRemoteIdentifier = "advancedLogger.remoteDestination"
+    
+    var logger: XCGLogger!
+    var userCredentials: UserCredentials.Type!
+    var backendURLComponents: NSURLComponents!
+    var backendConnection: NSURLComponents {
         get {
             return backendURLComponents.copy() as! NSURLComponents
         }
     }
     
-    class func environment() -> Environment {
+    func environment() -> Environment {
         if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
             let url = URL(fileURLWithPath: testPath)
             
@@ -46,20 +52,20 @@ class Dependency {
         #endif
     }
     
-    class func configure() {
+    func configure() {
         self.configureUserCredentials()
         self.configureLogger()
         self.configureBackendConnection()
         
-        Dependency.logger.info(self.environment)
+        self.logger.info(self.environment)
     }
     
-    static let cacheDirectory: URL = {
+    let cacheDirectory: URL = {
         let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         return urls[urls.endIndex - 1]
     }()
     
-    class private func configureLogger() {
+    private func configureLogger() {
         //LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
         
         Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
@@ -124,7 +130,7 @@ class Dependency {
         self.logger.logAppDetails()
     }
     
-    class private func configureBackendConnection() {
+    private func configureBackendConnection() {
         let components = NSURLComponents()
         
         switch self.environment() {
@@ -148,7 +154,7 @@ class Dependency {
         self.backendURLComponents = components
     }
     
-    class private func configureUserCredentials() {
+    private func configureUserCredentials() {
         self.userCredentials = UserCredentials.self
     }
 }

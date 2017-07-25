@@ -30,33 +30,33 @@ class AuthorisationAPI: BaseAPI {
             }
             
             guard let dict = data as? [String: AnyObject?] else {
-                Dependency.logger.error("Response has wrong structure")
+                Dependency.sharedInstance.logger.error("Response has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let result = dict[kResult] as? [String: AnyObject?] else {
-                Dependency.logger.error("'result' has wrong structure")
+                Dependency.sharedInstance.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
             guard let userID = result[kUserID] as? Int else {
-                Dependency.logger.error("'userID' is missed")
+                Dependency.sharedInstance.logger.error("'userID' is missed")
                 completion?(data, .unknown)
                 return
             }
             
             guard let token = result[kToken] as? String else {
-                Dependency.logger.error("'token' is missed")
+                Dependency.sharedInstance.logger.error("'token' is missed")
                 completion?(data, .unknown)
                 return
             }
             
-            Dependency.userCredentials.email = email
-            Dependency.userCredentials.token = token
-            Dependency.userCredentials.userID = userID
-            Dependency.userCredentials.password = password
+            Dependency.sharedInstance.userCredentials.email = email
+            Dependency.sharedInstance.userCredentials.token = token
+            Dependency.sharedInstance.userCredentials.userID = userID
+            Dependency.sharedInstance.userCredentials.password = password
             
             var user = ModelManager.findEntity(User.self, by: userID, in: ModelManager.managedObjectContext)
             if user == nil {

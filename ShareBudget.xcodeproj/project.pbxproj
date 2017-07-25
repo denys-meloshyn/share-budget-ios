@@ -353,6 +353,7 @@
 		570B713B1EE3127300C02DB1 /* Dependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
+		57234E9D1F27B89A0070080D /* v1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.xcdatamodel; sourceTree = "<group>"; };
 		572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLogsDestination.swift; sourceTree = "<group>"; };
 		5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		572749511E44F41B004A132F /* BudgetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
@@ -2042,9 +2043,10 @@
 		573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				57234E9D1F27B89A0070080D /* v1.0.xcdatamodel */,
 				573F59A71E295C4D00AEA72A /* ShareBudget.xcdatamodel */,
 			);
-			currentVersion = 573F59A71E295C4D00AEA72A /* ShareBudget.xcdatamodel */;
+			currentVersion = 57234E9D1F27B89A0070080D /* v1.0.xcdatamodel */;
 			path = ShareBudget.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

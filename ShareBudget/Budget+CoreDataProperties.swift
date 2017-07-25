@@ -2,7 +2,7 @@
 //  Budget+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 08.02.17.
+//  Created by Denys Meloshyn on 25.07.17.
 //
 //
 
@@ -13,7 +13,7 @@ import CoreData
 extension Budget {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Budget> {
-        return NSFetchRequest<Budget>(entityName: "Budget");
+        return NSFetchRequest<Budget>(entityName: "Budget")
     }
 
     @NSManaged public var name: String?
@@ -21,6 +21,7 @@ extension Budget {
     @NSManaged public var expenses: NSSet?
     @NSManaged public var limits: NSSet?
     @NSManaged public var users: NSSet?
+    @NSManaged public var userGroup: UserGroup?
 
 }
 

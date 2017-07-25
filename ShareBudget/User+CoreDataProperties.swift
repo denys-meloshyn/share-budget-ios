@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 21.07.17.
+//  Created by Denys Meloshyn on 25.07.17.
 //
 //
 
@@ -20,6 +20,7 @@ extension User {
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var group: NSSet?
+    @NSManaged public var userGroup: UserGroup?
 
 }
 
