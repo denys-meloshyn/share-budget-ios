@@ -20,7 +20,6 @@ extension Budget {
     @NSManaged public var categories: NSSet?
     @NSManaged public var expenses: NSSet?
     @NSManaged public var limits: NSSet?
-    @NSManaged public var users: NSSet?
     @NSManaged public var userGroup: UserGroup?
 
 }
@@ -73,22 +72,5 @@ extension Budget {
 
     @objc(removeLimits:)
     @NSManaged public func removeFromLimits(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for users
-extension Budget {
-
-    @objc(addUsersObject:)
-    @NSManaged public func addToUsers(_ value: User)
-
-    @objc(removeUsersObject:)
-    @NSManaged public func removeFromUsers(_ value: User)
-
-    @objc(addUsers:)
-    @NSManaged public func addToUsers(_ values: NSSet)
-
-    @objc(removeUsers:)
-    @NSManaged public func removeFromUsers(_ values: NSSet)
 
 }

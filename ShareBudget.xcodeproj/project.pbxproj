@@ -300,6 +300,12 @@
 		57BEAD881ED07C5100CE372C /* PaginationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD871ED07C5100CE372C /* PaginationAPI.swift */; };
 		57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */; };
 		57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */; };
+		57C53FB91F290C77004D3D80 /* UserGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */; };
+		57C53FBA1F290C77004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
+		57C53FBB1F290C7F004D3D80 /* UserGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */; };
+		57C53FBC1F290C7F004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
+		57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */; };
+		57C53FBE1F290C80004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
 		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
@@ -455,6 +461,8 @@
 		57BEAD871ED07C5100CE372C /* PaginationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginationAPI.swift; sourceTree = "<group>"; };
 		57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewHeader.swift; sourceTree = "<group>"; };
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
+		57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
+		57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
@@ -711,6 +719,8 @@
 				573F59E01E2A7E7800AEA72A /* ModelManager.swift */,
 				573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */,
 				573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */,
+				57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */,
+				57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */,
 			);
 			name = ModelManager;
 			sourceTree = "<group>";
@@ -1412,6 +1422,7 @@
 				5735C43D1EE445F40037BAA8 /* SyncManager.swift in Sources */,
 				5735C43E1EE445F40037BAA8 /* BaseAPITask.swift in Sources */,
 				575E11A01F1EA8CD000B2F07 /* TeamMembersViewController.swift in Sources */,
+				57C53FBC1F290C7F004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				5735C43F1EE445F40037BAA8 /* BudgetDetailView.swift in Sources */,
 				5735C4401EE445F40037BAA8 /* CreateSearchTableViewHeader.swift in Sources */,
 				5735C4411EE445F40037BAA8 /* LoginViewController.swift in Sources */,
@@ -1422,6 +1433,7 @@
 				5735C4461EE445F40037BAA8 /* UserCredentials.swift in Sources */,
 				5735C4471EE445F40037BAA8 /* AuthorisationAPI.swift in Sources */,
 				5735C4481EE445F40037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
+				57C53FBB1F290C7F004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4491EE445F40037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
 				5735C44A1EE445F40037BAA8 /* Constants.swift in Sources */,
 				5735C44B1EE445F40037BAA8 /* BaseRouter.swift in Sources */,
@@ -1508,6 +1520,7 @@
 				5735C4A81EE44D8F0037BAA8 /* SyncManager.swift in Sources */,
 				5735C4A91EE44D8F0037BAA8 /* BaseAPITask.swift in Sources */,
 				575E11A11F1EA8CE000B2F07 /* TeamMembersViewController.swift in Sources */,
+				57C53FBE1F290C80004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				5735C4AA1EE44D8F0037BAA8 /* BudgetDetailView.swift in Sources */,
 				5735C4AB1EE44D8F0037BAA8 /* CreateSearchTableViewHeader.swift in Sources */,
 				5735C4AC1EE44D8F0037BAA8 /* LoginViewController.swift in Sources */,
@@ -1518,6 +1531,7 @@
 				5735C4B11EE44D8F0037BAA8 /* UserCredentials.swift in Sources */,
 				5735C4B21EE44D8F0037BAA8 /* AuthorisationAPI.swift in Sources */,
 				5735C4B31EE44D8F0037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
+				57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4B41EE44D8F0037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
 				5735C4B51EE44D8F0037BAA8 /* Constants.swift in Sources */,
 				5735C4B61EE44D8F0037BAA8 /* BaseRouter.swift in Sources */,
@@ -1604,6 +1618,7 @@
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
 				57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */,
 				575E11991F1EA1C4000B2F07 /* TeamMembersViewController.swift in Sources */,
+				57C53FBA1F290C77004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,
 				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,
@@ -1614,6 +1629,7 @@
 				573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */,
 				57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */,
 				573F5A031E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift in Sources */,
+				57C53FB91F290C77004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				573F5A121E2C180400AEA72A /* CategoryLimit+CoreDataClass.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,

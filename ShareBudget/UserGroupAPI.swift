@@ -16,8 +16,17 @@ class UserGroupAPI: BaseAPI {
     override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
         var user: User?
         var group: Budget?
+        var userGroup: UserGroup?
         
         for item in items {
+            if let modelID = item[UserGroup.modelKeyID()] as? Int {
+                userGroup = ModelManager.findEntity(UserGroup.self, by: modelID, in: managedObjectContext) as? UserGroup
+            }
+            
+            if userGroup == nil {
+                userGroup = UserGroup(context: managedObjectContext)
+            }
+            
             if let userID = item[User.modelKeyID()] as? Int {
                 user = ModelManager.findEntity(User.self, by: userID, in: managedObjectContext) as? User
             }
@@ -30,8 +39,7 @@ class UserGroupAPI: BaseAPI {
                 continue
             }
             
-            user.addToGroup(group)
-            group.addToUsers(user)
+            
         }
     }
 }

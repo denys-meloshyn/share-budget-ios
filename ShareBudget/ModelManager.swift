@@ -224,6 +224,28 @@ class ModelManager {
         }
     }
     
+    class func changedTasks (_ entity: BaseModel.Type, _ entityAPI: BaseAPI, _ resource: String, _ managedObjectContext: NSManagedObjectContext, completionBlock: APIResultBlock?) -> [BaseAPITask] {
+        let fetchedResultsController = ModelManager.changedModels(entity, managedObjectContext)
+        
+        var tasks = [BaseAPITask]()
+        
+        let sections = fetchedResultsController?.sections ?? []
+        for i in 0..<sections.count {
+            let section = sections[i]
+            for j in 0..<section.numberOfObjects {
+                let indexPath = IndexPath(row: j, section: i)
+                guard let model = fetchedResultsController?.object(at: indexPath) as? BaseModel else {
+                    continue
+                }
+                
+                let task = BaseAPITaskUpload(resource: resource, entity: entityAPI, modelID: model.objectID, completionBlock: completionBlock)
+                tasks.append(task)
+            }
+        }
+        
+        return tasks
+    }
+    
     class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext, search text: String = "") -> NSFetchedResultsController<Budget> {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
