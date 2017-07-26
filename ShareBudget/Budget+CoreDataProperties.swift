@@ -2,7 +2,7 @@
 //  Budget+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 25.07.17.
+//  Created by Denys Meloshyn on 26.07.17.
 //
 //
 
@@ -20,7 +20,7 @@ extension Budget {
     @NSManaged public var categories: NSSet?
     @NSManaged public var expenses: NSSet?
     @NSManaged public var limits: NSSet?
-    @NSManaged public var userGroup: UserGroup?
+    @NSManaged public var userGroup: NSSet?
 
 }
 
@@ -72,5 +72,22 @@ extension Budget {
 
     @objc(removeLimits:)
     @NSManaged public func removeFromLimits(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for userGroup
+extension Budget {
+
+    @objc(addUserGroupObject:)
+    @NSManaged public func addToUserGroup(_ value: UserGroup)
+
+    @objc(removeUserGroupObject:)
+    @NSManaged public func removeFromUserGroup(_ value: UserGroup)
+
+    @objc(addUserGroup:)
+    @NSManaged public func addToUserGroup(_ values: NSSet)
+
+    @objc(removeUserGroup:)
+    @NSManaged public func removeFromUserGroup(_ values: NSSet)
 
 }

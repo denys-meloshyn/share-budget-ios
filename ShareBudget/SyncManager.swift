@@ -85,6 +85,9 @@ class SyncManager {
         // New or changed budget limits
         tasks += self.budgetLimitAPI.allChangedModels(completionBlock: completionBlock)
         
+        // New or changed user groups
+        tasks += self.userGroupAPI.allChangedModels(completionBlock: completionBlock)
+        
         // New or changed categories
         tasks += self.categoryAPI.allChangedModels(completionBlock: completionBlock)
         

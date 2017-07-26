@@ -17,13 +17,29 @@ public class UserGroup: BaseModel {
     
     override func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
-        self.configureModelID(dict: dict, for: kExpenseID)
+        self.configureModelID(dict: dict, for: kUserGroupID)
         
+        if let userID = dict[kUserID] as? Int {
+            self.user = ModelManager.findEntity(User.self, by: userID, in: managedObjectContext) as? User
+            self.user?.addToUserGroup(self)
+        }
+        
+        if let groupID = dict[kGroupID] as? Int {
+            self.group = ModelManager.findEntity(Budget.self, by: groupID, in: managedObjectContext) as? Budget
+            self.group?.addToUserGroup(self)
+        }
     }
     
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
+        if let modelID = self.user?.modelID {
+            result[kUserID] = String(modelID.intValue)
+        }
+        
+        if let modelID = self.group?.modelID {
+            result[kGroupID] = String(modelID.intValue)
+        }
         
         return result
     }

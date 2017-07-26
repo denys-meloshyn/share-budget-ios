@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 25.07.17.
+//  Created by Denys Meloshyn on 26.07.17.
 //
 //
 
@@ -19,6 +19,23 @@ extension User {
     @NSManaged public var email: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
-    @NSManaged public var userGroup: UserGroup?
+    @NSManaged public var userGroup: NSSet?
+
+}
+
+// MARK: Generated accessors for userGroup
+extension User {
+
+    @objc(addUserGroupObject:)
+    @NSManaged public func addToUserGroup(_ value: UserGroup)
+
+    @objc(removeUserGroupObject:)
+    @NSManaged public func removeFromUserGroup(_ value: UserGroup)
+
+    @objc(addUserGroup:)
+    @NSManaged public func addToUserGroup(_ values: NSSet)
+
+    @objc(removeUserGroup:)
+    @NSManaged public func removeFromUserGroup(_ values: NSSet)
 
 }

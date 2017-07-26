@@ -14,7 +14,7 @@ class TeamMembersInteraction: BaseInteraction {
     var delegate: BaseInteractionDelegate?
     
     private var managedObjectContext: NSManagedObjectContext
-    private let fetchedResultsController: NSFetchedResultsController<User>
+    private let fetchedResultsController: NSFetchedResultsController<UserGroup>
     
     init(with budgetID: NSManagedObjectID, context: NSManagedObjectContext) {
         self.managedObjectContext = context
@@ -46,8 +46,12 @@ class TeamMembersInteraction: BaseInteraction {
         return section.numberOfObjects
     }
     
-    func user(at indexPath: IndexPath) -> User {
+    func userGroup(at indexPath: IndexPath) -> UserGroup {
         return self.fetchedResultsController.object(at: indexPath)
+    }
+    
+    func save() {
+        ModelManager.saveChildren(self.managedObjectContext, block: nil)
     }
 }
 

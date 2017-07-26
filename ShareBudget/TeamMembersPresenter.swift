@@ -37,18 +37,18 @@ extension TeamMembersPresenter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = self.teamMembersInteraction.user(at: indexPath)
+        let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
         var items = [String]()
-        if let lastName = user.lastName {
+        if let lastName = userGroup.user?.lastName {
             items.append(lastName)
         }
         
-        if let firstName = user.firstName {
+        if let firstName = userGroup.user?.firstName {
             items.append(firstName)
         }
         
         var title = NSArray(array: items).componentsJoined(by: " ")
-        var subtitle = user.email ?? ""
+        var subtitle = userGroup.user?.email ?? ""
         
         if title.characters.count == 0 {
             title = subtitle
@@ -72,8 +72,9 @@ extension TeamMembersPresenter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let action = UITableViewRowAction(style: .destructive, title: LocalisedManager.generic.delete) { (action, indexPath) in
-            let user = self.teamMembersInteraction.user(at: indexPath)
-            user.isRemoved = true
+            let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
+            userGroup.isRemoved = true
+            userGroup.isChanged = true
         }
         
         return [action]

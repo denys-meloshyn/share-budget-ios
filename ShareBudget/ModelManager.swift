@@ -171,6 +171,19 @@ class ModelManager {
         return nil
     }
     
+    class func findOrCreateEntity(_ entity: BaseModel.Type, response: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+        var model: BaseModel?
+        if let modelID = response[entity.modelKeyID()] as? Int {
+            model = ModelManager.findEntity(entity, by: modelID, in: managedObjectContext)
+        }
+        
+        if model == nil {
+            model = entity.init(context: managedObjectContext)
+        }
+        
+        return model
+    }
+    
     class func findEntity(_ entity: BaseModel.Type, by modelID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "modelID==%i", modelID)
@@ -224,7 +237,7 @@ class ModelManager {
         }
     }
     
-    class func changedTasks (_ entity: BaseModel.Type, _ entityAPI: BaseAPI, _ resource: String, _ managedObjectContext: NSManagedObjectContext, completionBlock: APIResultBlock?) -> [BaseAPITask] {
+    class func changedTasks(modelEntity entity: BaseModel.Type, apiEntity entityAPI: BaseAPI, resource: String, managedObjectContext: NSManagedObjectContext, completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let fetchedResultsController = ModelManager.changedModels(entity, managedObjectContext)
         
         var tasks = [BaseAPITask]()
@@ -344,17 +357,16 @@ class ModelManager {
         return fetchedResultsController
     }
     
-    class func teamMembersFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<User> {
-        let fetchRequest: NSFetchRequest<User> = User.fetchRequest()
+    class func teamMembersFetchController(_ managedObjectContext: NSManagedObjectContext, for budgetID: NSManagedObjectID) -> NSFetchedResultsController<UserGroup> {
+        let fetchRequest: NSFetchRequest<UserGroup> = UserGroup.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate = NSPredicate(format: "%@ IN group AND isRemoved == NO", budget)
+        let predicate = NSPredicate(format: "%@ == group", budget)
         fetchRequest.predicate = predicate
         
-        let sortDescriptorLastName = NSSortDescriptor(key: "lastName", ascending: true)
-        let sortDescriptorFirstName = NSSortDescriptor(key: "firstName", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptorLastName, sortDescriptorFirstName]
+        let sortDescriptorID = NSSortDescriptor(key: "modelID", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptorID]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         

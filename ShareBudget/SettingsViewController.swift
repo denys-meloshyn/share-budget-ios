@@ -26,6 +26,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func reset() {
+        ModelManager.dropAllEntities()
         Dependency.userCredentials.resetTimeStamps()
     }
 }
