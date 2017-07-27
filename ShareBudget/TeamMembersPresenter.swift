@@ -75,6 +75,7 @@ extension TeamMembersPresenter: UITableViewDelegate {
             let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
             userGroup.isRemoved = true
             userGroup.isChanged = true
+            self.teamMembersInteraction.save()
         }
         
         return [action]

@@ -33,6 +33,10 @@ public class UserGroup: BaseModel {
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
+        if let modelID = self.modelID {
+            result[kUserGroupID] = String(modelID.intValue)
+        }
+        
         if let modelID = self.user?.modelID {
             result[kUserID] = String(modelID.intValue)
         }

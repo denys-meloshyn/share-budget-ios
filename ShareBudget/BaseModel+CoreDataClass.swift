@@ -32,7 +32,7 @@ public class BaseModel: NSManagedObject {
     func uploadProperties() -> [String: String] {
         var result = [String : String]()
         
-        result[kIsRemoved] = String(self.isRemoved)
+        result[kIsRemoved] = self.isRemoved.description
         
         return result
     }

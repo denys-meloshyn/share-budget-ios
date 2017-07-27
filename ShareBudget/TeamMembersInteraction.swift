@@ -51,7 +51,7 @@ class TeamMembersInteraction: BaseInteraction {
     }
     
     func save() {
-        ModelManager.saveChildren(self.managedObjectContext, block: nil)
+        ModelManager.saveContext(self.managedObjectContext)
     }
 }
 
