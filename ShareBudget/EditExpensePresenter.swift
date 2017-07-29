@@ -90,8 +90,8 @@ class EditExpensePresenter: BasePresenter {
     
     private func updatePrice() {
         var formattedValue = ""
-        if self.expenseInteraction.expense.price > 0.0 {
-            formattedValue = UtilityFormatter.priceEditFormatter.string(from: NSNumber(value: self.expenseInteraction.expense.price)) ?? ""
+        if let price = self.expenseInteraction.expense.price, price.doubleValue > 0.0 {
+            formattedValue = UtilityFormatter.priceEditFormatter.string(from: price) ?? ""
         }
         
         self.delegate?.updatePrice(formattedValue)
@@ -140,8 +140,7 @@ class EditExpensePresenter: BasePresenter {
             }
             
         case .price:
-            let price = NSNumber(value: self.expenseInteraction.expense.price)
-            if price.doubleValue > 0.0 {
+            if let price = self.expenseInteraction.expense.price, price.doubleValue > 0.0 {
                 formattedValue = UtilityFormatter.stringAmount(amount: price) ?? ""
             }
             
@@ -224,7 +223,7 @@ extension EditExpensePresenter: UITextFieldDelegate {
             
             let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
             if roundPrice == price {
-                self.expenseInteraction.expense.price = price.doubleValue
+                self.expenseInteraction.expense.price = price
             }
             else {
                 return false

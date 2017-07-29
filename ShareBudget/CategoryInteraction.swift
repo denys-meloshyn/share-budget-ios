@@ -43,14 +43,19 @@ class CategoryInteraction: BaseInteraction {
     }
     
     private func updatePredicate(with text: String) {
+        var predicates = [NSPredicate]()
+        var tmpPredicate = NSPredicate(format: "%@ == budget", self.expense.budget!)
+        predicates.append(tmpPredicate)
+        
+        predicates.append(ModelManager.removePredicate())
+        
         let predicate: NSPredicate
         if text.characters.count > 0 {
-            predicate = NSPredicate(format: "name CONTAINS[c] %@ AND %@ == budget", text, self.expense.budget!)
-        }
-        else {
-            predicate = NSPredicate(format: "%@ == budget", self.expense.budget!)
+            tmpPredicate = NSPredicate(format: "name CONTAINS[c] %@", text)
+            predicates.append(tmpPredicate)
         }
         
+        predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         self.fetchedResultsController.fetchRequest.predicate = predicate
         self.performFetch()
         

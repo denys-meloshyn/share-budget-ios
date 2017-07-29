@@ -2,7 +2,7 @@
 //  UserGroup+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 26.07.17.
+//  Created by Denys Meloshyn on 28.07.17.
 //
 //
 

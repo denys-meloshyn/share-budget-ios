@@ -19,7 +19,7 @@ public class BudgetLimit: BaseModel {
         super.update(with: dict, in: managedObjectContext)
         self.configureModelID(dict: dict, for: kBudgetLimitID)
         
-        self.limit = (dict[kLimit] as? Double) ?? 0.0
+        self.limit = NSNumber(value: dict[kLimit] as? Double ?? 0.0)
         
         if let date = dict[kDate] as? String {
             self.date = UtilityFormatter.date(from: date) as NSDate?
@@ -41,7 +41,7 @@ public class BudgetLimit: BaseModel {
             result[kGroupID] = String(groupID.intValue)
         }
         
-        result[kLimit] = String(limit)
+        result[kLimit] = String(describing: limit?.doubleValue ?? 0.0)
         
         return result
     }

@@ -214,6 +214,10 @@ class ModelManager {
         }
     }
     
+    class func removePredicate() -> NSPredicate {
+        return NSPredicate(format: "isRemoved == nil OR isRemoved == NO")
+    }
+    
     // MARK: - NSFetchedResultsController
     
     class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>? {
@@ -339,8 +343,7 @@ class ModelManager {
         var tmpPredicate = NSPredicate(format: "%@ == budget", budget)
         predicates.append(tmpPredicate)
         
-        tmpPredicate = NSPredicate(format: "isRemoved == NO")
-        predicates.append(tmpPredicate)
+        predicates.append(ModelManager.removePredicate())
 
         tmpPredicate = NSPredicate(format: "creationDate >= %@", date)
         predicates.append(tmpPredicate)
@@ -366,8 +369,7 @@ class ModelManager {
         var tmpPredicate = NSPredicate(format: "%@ == group", budget)
         predicates.append(tmpPredicate)
         
-        tmpPredicate = NSPredicate(format: "isRemoved == NO")
-        predicates.append(tmpPredicate)
+        predicates.append(ModelManager.removePredicate())
         
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         fetchRequest.predicate = predicate

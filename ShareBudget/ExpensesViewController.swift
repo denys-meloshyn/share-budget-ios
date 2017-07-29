@@ -59,7 +59,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         for section in 0..<numberOfSections(in: self.tableView!) {
             let firstExpense = self.fc?.object(at: IndexPath(row: 0, section: section))
             let date = (firstExpense?.creationDate ?? NSDate()) as Date
-            let total = budget?.limit(for: date)?.limit ?? 0
+            let total = budget?.limit(for: date)?.limit?.doubleValue ?? 0.0
             var rest = total
             
             var rowDict = [String: String]()
@@ -67,7 +67,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
             for i in 0..<rows {
                 let expense = self.fc?.object(at: IndexPath(row: rows - i - 1, section: section))
                 
-                rest -= expense?.price ?? 0.0
+                rest -= expense?.price?.doubleValue ?? 0.0
                 rowDict[expense?.modelID?.stringValue ?? ""] = String(rest)
             }
             self.budgetRest.append(rowDict)

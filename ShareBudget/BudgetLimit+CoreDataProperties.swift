@@ -2,7 +2,7 @@
 //  BudgetLimit+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 30.01.17.
+//  Created by Denys Meloshyn on 28.07.17.
 //
 //
 
@@ -13,11 +13,11 @@ import CoreData
 extension BudgetLimit {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BudgetLimit> {
-        return NSFetchRequest<BudgetLimit>(entityName: "BudgetLimit");
+        return NSFetchRequest<BudgetLimit>(entityName: "BudgetLimit")
     }
 
     @NSManaged public var date: NSDate?
-    @NSManaged public var limit: Double
+    @NSManaged public var limit: NSNumber?
     @NSManaged public var budget: Budget?
 
 }

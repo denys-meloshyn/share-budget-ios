@@ -76,7 +76,7 @@ class BudgetDetailInteraction: BaseInteraction {
     }
     
     func balance() -> Double {
-        let limit = self.lastMonthLimit()?.limit ?? 0.0
+        let limit = self.lastMonthLimit()?.limit?.doubleValue ?? 0.0
         let balance = limit - self.totalExpenses()
         
         return balance
@@ -108,7 +108,7 @@ class BudgetDetailInteraction: BaseInteraction {
             self.budget.addToLimits(newLimit)
         }
         
-        newLimit.limit = limit
+        newLimit.limit = NSNumber(value: limit)
         newLimit.isChanged = true
         
         ModelManager.saveContext(self.managedObjectContext)

@@ -196,7 +196,6 @@
 		5735C4BC1EE44D8F0037BAA8 /* EditExpenseInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A225D1E477281004825C2 /* EditExpenseInteraction.swift */; };
 		5735C4BD1EE44D8F0037BAA8 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F59DA1E29637E00AEA72A /* UserAPI.swift */; };
 		5735C4BF1EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
-		5735C4C01EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		5735C4C21EE44D8F0037BAA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */; };
 		5735C4C31EE44D8F0037BAA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
 		5735C4C41EE44D8F0037BAA8 /* RightTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22561E476CCA004825C2 /* RightTextFieldTableViewCell.xib */; };
@@ -327,7 +326,6 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
-		C83663BE7AFABE307871E3BE /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
@@ -514,7 +512,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5735C4BF1EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */,
-				5735C4C01EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */,
 				EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,7 +521,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */,
-				C83663BE7AFABE307871E3BE /* Pods_ShareBudget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

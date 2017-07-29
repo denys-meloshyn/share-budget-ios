@@ -33,7 +33,7 @@ class ExpenseCalculator {
         for i in 0..<sectionModel.numberOfObjects {
             let indexPath = IndexPath(row: i, section: section)
             let expense = self.fetchedResultsController.object(at: indexPath)
-            total += expense.price
+            total += expense.price?.doubleValue ?? 0.0
         }
         
         return total

@@ -106,7 +106,7 @@ class BudgetDetailPresenter: BasePresenter {
     }
     
     fileprivate func updateTotalSpentExpensesColor() {
-        let budget = self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0
+        let budget = self.budgetDetailInteraction.lastMonthLimit()?.limit?.doubleValue ?? 0.0
         
         let totalExpenses = self.budgetDetailInteraction.totalExpenses()
         
@@ -201,7 +201,7 @@ class BudgetDetailPresenter: BasePresenter {
     }
     
     func changeBudgetLimit() {
-        let limit = NSNumber(value: self.budgetDetailInteraction.lastMonthLimit()?.limit ?? 0.0)
+        let limit = NSNumber(value: self.budgetDetailInteraction.lastMonthLimit()?.limit?.doubleValue ?? 0.0)
         let formattedLimit = UtilityFormatter.priceEditFormatter.string(from: limit) ?? ""
         
         self.delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,

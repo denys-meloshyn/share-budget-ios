@@ -17,7 +17,7 @@ public class BaseModel: NSManagedObject {
     
     func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
         if let isRemoved = dict[kIsRemoved] as? Bool {
-            self.isRemoved = isRemoved
+            self.isRemoved = NSNumber(value: isRemoved)
         }
         
         self.timestamp = dict[kTimeStamp] as? String
@@ -32,7 +32,9 @@ public class BaseModel: NSManagedObject {
     func uploadProperties() -> [String: String] {
         var result = [String : String]()
         
-        result[kIsRemoved] = self.isRemoved.description
+        if let isRemoved = self.isRemoved {
+            result[kIsRemoved] = isRemoved.boolValue.description
+        }
         
         return result
     }

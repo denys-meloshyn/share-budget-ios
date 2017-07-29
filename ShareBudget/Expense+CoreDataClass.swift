@@ -53,13 +53,13 @@ public class Expense: BaseModel {
         }
         
         self.name = dict[kName] as? String
-        self.price = (dict[kPrice] as? Double) ?? 0.0
+        self.price =  NSNumber(value: dict[kPrice] as? Double ?? 0.0)
     }
     
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
-        result[kPrice] = String(self.price)
+        result[kPrice] = String(self.price?.doubleValue ?? 0.0)
         
         if let modelID = self.modelID {
             result[kExpenseID] = String(modelID.intValue)

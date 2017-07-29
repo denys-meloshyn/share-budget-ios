@@ -2,7 +2,7 @@
 //  Category+CoreDataProperties.swift
 //  
 //
-//  Created by Denys Meloshyn on 24.02.17.
+//  Created by Denys Meloshyn on 28.07.17.
 //
 //
 
@@ -13,30 +13,13 @@ import CoreData
 extension Category {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
-        return NSFetchRequest<Category>(entityName: "Category");
+        return NSFetchRequest<Category>(entityName: "Category")
     }
 
     @NSManaged public var name: String?
     @NSManaged public var budget: Budget?
-    @NSManaged public var limits: NSSet?
     @NSManaged public var expenses: NSSet?
-
-}
-
-// MARK: Generated accessors for limits
-extension Category {
-
-    @objc(addLimitsObject:)
-    @NSManaged public func addToLimits(_ value: CategoryLimit)
-
-    @objc(removeLimitsObject:)
-    @NSManaged public func removeFromLimits(_ value: CategoryLimit)
-
-    @objc(addLimits:)
-    @NSManaged public func addToLimits(_ values: NSSet)
-
-    @objc(removeLimits:)
-    @NSManaged public func removeFromLimits(_ values: NSSet)
+    @NSManaged public var limits: NSSet?
 
 }
 
@@ -54,5 +37,22 @@ extension Category {
 
     @objc(removeExpenses:)
     @NSManaged public func removeFromExpenses(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for limits
+extension Category {
+
+    @objc(addLimitsObject:)
+    @NSManaged public func addToLimits(_ value: CategoryLimit)
+
+    @objc(removeLimitsObject:)
+    @NSManaged public func removeFromLimits(_ value: CategoryLimit)
+
+    @objc(addLimits:)
+    @NSManaged public func addToLimits(_ values: NSSet)
+
+    @objc(removeLimits:)
+    @NSManaged public func removeFromLimits(_ values: NSSet)
 
 }
