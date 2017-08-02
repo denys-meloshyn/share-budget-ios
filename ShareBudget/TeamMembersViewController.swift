@@ -33,7 +33,7 @@ class TeamMembersViewController: BaseViewController {
         self.viperView?.viewDidLoad()
     }
     
-    private func linkStoryboardViews() {
+    override func linkStoryboardViews() {
         teamMembersView.tableView = self.tableView
     }
 }

@@ -18,7 +18,7 @@ class BudgetViewController: BaseViewController {
         super.awakeFromNib()
         
         let router = BudgetRouter(with: self)
-        let interactin = BudgetInteraction()
+        let interactin = BudgetInteraction(managedObjectContext: ModelManager.managedObjectContext)
         let presenter = BudgetPresenter(with: interactin, router: router)
         self.viperView = BudgetView(with: presenter, and: self)
     }

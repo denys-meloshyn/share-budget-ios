@@ -15,10 +15,11 @@ protocol BudgetInteractionDelegate: BaseInteractionDelegate {
 
 class BudgetInteraction: BaseInteraction {
     weak var delegate: BudgetInteractionDelegate?
-    let managedObjectContext = ModelManager.managedObjectContext
+    let managedObjectContext: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<Budget>
     
-    override init() {
+    init(managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext)
         
         super.init()

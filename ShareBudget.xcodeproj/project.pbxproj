@@ -274,6 +274,7 @@
 		575E11AA1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		575E11AB1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
+		577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
 		578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
@@ -305,6 +306,10 @@
 		57C53FBC1F290C7F004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
 		57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */; };
 		57C53FBE1F290C80004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
+		57D11C1F1F2E59A900FBDAA0 /* MockCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */; };
+		57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */; };
+		57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */; };
+		57D11C251F30EFB400FBDAA0 /* ModelManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ModelManagerTest.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
 		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
@@ -432,6 +437,7 @@
 		575E119E1F1EA369000B2F07 /* TeamMembersInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersInteraction.swift; sourceTree = "<group>"; };
 		575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersRouter.swift; sourceTree = "<group>"; };
 		576424B61E79E4CC000B595E /* NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
+		577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractionTest.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		578A04D01E5256B500330DCD /* ExpenseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseAPI.swift; sourceTree = "<group>"; };
@@ -461,6 +467,10 @@
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryViewController.swift; sourceTree = "<group>"; };
+		57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExpensesViewController.swift; sourceTree = "<group>"; };
+		57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBudgetDetailViewController.swift; sourceTree = "<group>"; };
+		57D11C241F30EFB400FBDAA0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerTest.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
@@ -607,7 +617,9 @@
 			children = (
 				573F59B91E295C4E00AEA72A /* Info.plist */,
 				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
+				577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */,
 				5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */,
+				57D11C241F30EFB400FBDAA0 /* ModelManagerTest.swift */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
@@ -813,8 +825,11 @@
 				57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */,
 				57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */,
 				57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */,
+				57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */,
 				5735C4D51EE496630037BAA8 /* MockDependency.swift */,
+				57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */,
 				5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */,
+				57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */,
 			);
 			name = Mock;
 			sourceTree = "<group>";
@@ -1646,13 +1661,18 @@
 			files = (
 				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
+				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
 				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,
 				57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */,
+				57D11C1F1F2E59A900FBDAA0 /* MockCategoryViewController.swift in Sources */,
 				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
 				57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */,
+				57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */,
 				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
+				57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */,
 				57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */,
+				57D11C251F30EFB400FBDAA0 /* ModelManagerTest.swift in Sources */,
 				57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */,
 				5735C4D41EE4963F0037BAA8 /* DependencyTest.swift in Sources */,
 			);

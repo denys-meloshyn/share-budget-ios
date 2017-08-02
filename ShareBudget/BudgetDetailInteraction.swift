@@ -26,7 +26,10 @@ class BudgetDetailInteraction: BaseInteraction {
         self.budgetID = budgetID
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
         
-        self.fetchedResultsController = ModelManager.expenseFetchController(for: budgetID, UtilityFormatter.firstMonthDay() as NSDate, self.managedObjectContext)
+        self.fetchedResultsController = ModelManager.expenseFetchController(for: budgetID,
+                                                                            startDate: UtilityFormatter.firstMonthDay() as NSDate,
+                                                                            finishDate: UtilityFormatter.lastMonthDay() as NSDate,
+                                                                            managedObjectContext: self.managedObjectContext)
         self.calculator = ExpenseCalculator(fetchedResultsController: self.fetchedResultsController)
         
         do {

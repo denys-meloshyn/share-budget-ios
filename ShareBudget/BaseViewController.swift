@@ -11,6 +11,15 @@ import UIKit
 class BaseViewController: UIViewController {
     var viperView: BaseView?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.configureVIPER()
+        
+        self.linkStoryboardViews()
+        self.viperView?.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -33,5 +42,11 @@ class BaseViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         self.viperView?.viewDidDisappear(animated)
+    }
+    
+    open func configureVIPER() {
+    }
+    
+    func linkStoryboardViews() {
     }
 }

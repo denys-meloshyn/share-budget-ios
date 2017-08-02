@@ -33,7 +33,7 @@ class EditExpenseViewController: BaseViewController {
         self.viperView?.viewDidLoad()
     }
     
-    private func linkStoryboardViews() {
+    override func linkStoryboardViews() {
         guard let view = self.viperView as? EditExpenseView else {
             return
         }

@@ -60,7 +60,7 @@ class BudgetDetailViewController: BaseViewController {
         }
     }
     
-    private func linkStoryboardViews() {
+    override func linkStoryboardViews() {
         guard let view = self.viperView as? BudgetDetailView else {
             return
         }

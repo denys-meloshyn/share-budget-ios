@@ -333,7 +333,7 @@ class ModelManager {
         return fetchedResultsController
     }
     
-    class func expenseFetchController(for budgetID: NSManagedObjectID, _ date: NSDate, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
+    class func expenseFetchController(for budgetID: NSManagedObjectID, startDate: NSDate, finishDate: NSDate, managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
@@ -345,7 +345,7 @@ class ModelManager {
         
         predicates.append(ModelManager.removePredicate())
 
-        tmpPredicate = NSPredicate(format: "creationDate >= %@", date)
+        tmpPredicate = NSPredicate(format: "(creationDate >= %@) AND (creationDate <= %@)", startDate, finishDate)
         predicates.append(tmpPredicate)
         
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
@@ -366,7 +366,7 @@ class ModelManager {
         
         let budget = managedObjectContext.object(with: budgetID)
         var predicates = [NSPredicate]()
-        var tmpPredicate = NSPredicate(format: "%@ == group", budget)
+        let tmpPredicate = NSPredicate(format: "%@ == group", budget)
         predicates.append(tmpPredicate)
         
         predicates.append(ModelManager.removePredicate())

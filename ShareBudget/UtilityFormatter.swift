@@ -121,23 +121,24 @@ class UtilityFormatter: NSObject {
         return formatter.number(from: formattedNumber)
     }
     
-    class func firstMonthDay() -> Date {
+    class func firstMonthDay(date: Date = Date()) -> Date {
         let calendar = Calendar.current
         let units = Set<Calendar.Component>([.year, .month, .day])
         
-        var dateComponents = calendar.dateComponents(units, from: Date())
+        var dateComponents = calendar.dateComponents(units, from: date)
         dateComponents.day = 1
         dateComponents.calendar = calendar
         
         return dateComponents.date!
     }
     
-    class func lastMonthDay() -> Date {
+    class func lastMonthDay(date: Date = Date()) -> Date {
         let calendar = Calendar.current
-        let units = Set<Calendar.Component>([.year, .month, .day, .hour, .minute, .second])
+        let units = Set<Calendar.Component>([.year, .month, .day])
+        let days = calendar.range(of: Calendar.Component.day, in: Calendar.Component.month, for: date)
         
-        var dateComponents = calendar.dateComponents(units, from: Date())
-        dateComponents.day = 1
+        var dateComponents = calendar.dateComponents(units, from: date)
+        dateComponents.day = days!.count - 1
         dateComponents.calendar = calendar
         
         return dateComponents.date!

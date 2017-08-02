@@ -20,19 +20,14 @@ class CategoryViewController: BaseViewController {
     var managedObjectContext: NSManagedObjectContext!
     weak var delegate: CategoryViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func configureVIPER() {
         let router = CategoryRouter(with: self)
         let interactin = CategoryInteraction(with: self.expenseID, managedObjectContext: self.managedObjectContext)
         let presenter = CategoryPresenter(with: interactin, router: router, delegate: self.delegate)
         self.viperView = CategoryView(with: presenter, and: self)
-        
-        self.linkStoryboardViews()
-        self.viperView?.viewDidLoad()
     }
     
-    private func linkStoryboardViews() {
+    override func linkStoryboardViews() {
         guard let view = self.viperView as? CategoryView else {
             return
         }
