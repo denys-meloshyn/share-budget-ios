@@ -142,6 +142,12 @@ class ModelManagerExpenseFetchControllerTest: XCTestCase {
         expense.name = "Expense 3"
         expense.creationDate = dateComponents.date! as NSDate
         
+        dateComponents.month = 3
+        dateComponents.day = 1
+        expense = self.createExpense()
+        expense.name = "Expense 4"
+        expense.creationDate = dateComponents.date! as NSDate
+        
         ModelManager.saveContext(self.managedObjectContext)
         self.createFetchedResultsController(startDate: startDate, finishDate: finishDate)
         self.performFetch()
