@@ -75,6 +75,8 @@ class UtilityFormatter: NSObject {
         return dateFormatter
     }
     
+    static let dateComponentsUnits = Set<Calendar.Component>([.year, .month, .day])
+    
     class func roundToTwoSeconds(date: Date) -> Date? {
         let roundedStr = self.pareseDateFormatter.string(from: date)
         
@@ -121,25 +123,27 @@ class UtilityFormatter: NSObject {
         return formatter.number(from: formattedNumber)
     }
     
-    class func firstMonthDay(date: Date = Date()) -> Date {
+    class func calendarComponentTilDay(date: Date = Date()) -> DateComponents {
         let calendar = Calendar.current
-        let units = Set<Calendar.Component>([.year, .month, .day])
-        
-        var dateComponents = calendar.dateComponents(units, from: date)
-        dateComponents.day = 1
+        var dateComponents = calendar.dateComponents(UtilityFormatter.dateComponentsUnits, from: date)
         dateComponents.calendar = calendar
+        
+        return dateComponents
+    }
+    
+    class func firstMonthDay(date: Date = Date()) -> Date {
+        var dateComponents = calendarComponentTilDay(date: date)
+        dateComponents.day = 1
         
         return dateComponents.date!
     }
     
     class func lastMonthDay(date: Date = Date()) -> Date {
         let calendar = Calendar.current
-        let units = Set<Calendar.Component>([.year, .month, .day])
         let days = calendar.range(of: Calendar.Component.day, in: Calendar.Component.month, for: date)
         
-        var dateComponents = calendar.dateComponents(units, from: date)
-        dateComponents.day = days!.count - 1
-        dateComponents.calendar = calendar
+        var dateComponents = calendarComponentTilDay(date: date)
+        dateComponents.day = days!.count
         
         return dateComponents.date!
     }
