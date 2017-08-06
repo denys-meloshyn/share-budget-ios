@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ym1-lX-6ty" customClass="ValidationTextField" customModule="ShareBudget" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-5c-xsx">
+                    <rect key="frame" x="8" y="8" width="359" height="57"/>
+                    <subviews>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8a-Xf-NVg">
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4y-XS-n3Z">
+                            <rect key="frame" x="0.0" y="40" width="359" height="17"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="textChangedWithSender:" destination="ym1-lX-6ty" eventType="editingChanged" id="O3a-aK-ur3"/>
+                                <outlet property="delegate" destination="-1" id="WNb-Pv-o4c"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UfP-5c-xsx" firstAttribute="top" secondItem="ym1-lX-6ty" secondAttribute="top" constant="8" id="7A9-I2-H2U"/>
+                <constraint firstItem="UfP-5c-xsx" firstAttribute="leading" secondItem="ym1-lX-6ty" secondAttribute="leading" constant="8" id="FMK-4T-veD"/>
+                <constraint firstAttribute="bottom" secondItem="UfP-5c-xsx" secondAttribute="bottom" constant="8" id="fRc-JR-oSm"/>
+                <constraint firstAttribute="trailing" secondItem="UfP-5c-xsx" secondAttribute="trailing" constant="8" id="zyy-r3-YEm"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textField" destination="t4y-XS-n3Z" id="oUN-eR-tU3"/>
+                <outlet property="titleLabel" destination="c8a-Xf-NVg" id="icO-uQ-xHH"/>
+            </connections>
+            <point key="canvasLocation" x="128.5" y="-267.5"/>
+        </view>
+    </objects>
+</document>

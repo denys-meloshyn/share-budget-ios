@@ -1,0 +1,59 @@
+PODS:
+  - BugfenderSDK (1.4.5):
+    - BugfenderSDK/Swift (= 1.4.5)
+  - BugfenderSDK/Swift (1.4.5)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - CorePlot (2.2)
+  - KeychainSwift (8.0.2)
+  - le (1.1)
+  - Nimble (7.0.1)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - R.swift (3.2.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - SnapKit (3.2.0)
+  - XCGLogger (5.0.1):
+    - XCGLogger/Core (= 5.0.1)
+  - XCGLogger/Core (5.0.1):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - BugfenderSDK (~> 1.4.5)
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - CorePlot (~> 2.2)
+  - KeychainSwift (~> 8.0)
+  - le (~> 1.1)
+  - Nimble (~> 7.0.1)
+  - R.swift (~> 3.2)
+  - SnapKit (~> 3.2)
+  - XCGLogger (~> 5.0.1)
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+SPEC CHECKSUMS:
+  BugfenderSDK: 48e40e63015e936c25c164b15656452152e1e74e
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
+  KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
+  le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
+  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  R.swift: 207a372a2b5977caef440c696a368009460641d1
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
+
+PODFILE CHECKSUM: a02616284ecd42fc5828daff5e0c63a66ff8e29e
+
+COCOAPODS: 1.2.1

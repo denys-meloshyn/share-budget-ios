@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "3ZL-Uy-f5u"; */
+"3ZL-Uy-f5u.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Switch"; ObjectID = "Bvs-9G-OI0"; */
+"Bvs-9G-OI0.normalTitle" = "Switch";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "O3n-HB-yUT"; */
+"O3n-HB-yUT.placeholder" = "Last Name";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "TeZ-js-Tjr"; */
+"TeZ-js-Tjr.placeholder" = "First Name";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "Y1Y-vY-AhO"; */
+"Y1Y-vY-AhO.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "ZLn-2L-mRK"; */
+"ZLn-2L-mRK.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "bum-9X-SWs"; */
+"bum-9X-SWs.placeholder" = "Repeat Password";
+
+/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "u32-n6-qUo"; */
+"u32-n6-qUo.placeholder" = "E-mail";
