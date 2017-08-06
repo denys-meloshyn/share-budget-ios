@@ -160,7 +160,7 @@ class ModelManager {
     
     class func findEntity(_ entity: BaseModel.Type, by modelID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "modelID==%i", modelID)
+        fetchRequest.predicate = NSPredicate(format: "modelID == %i", modelID)
         fetchRequest.fetchLimit = 1
         
         do {
@@ -175,7 +175,7 @@ class ModelManager {
     
     class func findEntity(_ entity: BaseModel.Type, internal internalID: Int, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
         let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "internalID==%i", internalID)
+        fetchRequest.predicate = NSPredicate(format: "internalID == %i", internalID)
         fetchRequest.fetchLimit = 1
         
         do {
@@ -219,20 +219,14 @@ class ModelManager {
         let fetchedResultsController = ModelManager.changedModels(entity, managedObjectContext)
         
         var tasks = [BaseAPITask]()
-        
-        let sections = fetchedResultsController?.sections ?? []
-        for i in 0..<sections.count {
-            let section = sections[i]
-            for j in 0..<section.numberOfObjects {
-                let indexPath = IndexPath(row: j, section: i)
-                guard let model = fetchedResultsController?.object(at: indexPath) as? BaseModel else {
-                    continue
-                }
-                
-                let task = BaseAPITaskUpload(resource: resource, entity: entityAPI, modelID: model.objectID, completionBlock: completionBlock)
-                tasks.append(task)
+        fetchedResultsController?.iterate(block: { indexPath in
+            guard let model = fetchedResultsController?.object(at: indexPath) as? BaseModel else {
+                return
             }
-        }
+            
+            let task = BaseAPITaskUpload(resource: resource, entity: entityAPI, modelID: model.objectID, completionBlock: completionBlock)
+            tasks.append(task)
+        })
         
         return tasks
     }

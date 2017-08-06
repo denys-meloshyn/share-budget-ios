@@ -31,18 +31,6 @@ class ExpenseFetchControllerTest: XCTestCase {
         super.tearDown()
     }
     
-    private func performFetch() {
-        try! self.fetchedResultsController.performFetch()
-    }
-    
-    private func numberOfObjects() -> Int {
-        let result = self.fetchedResultsController.sections!.reduce(0, { (result: Int, item: NSFetchedResultsSectionInfo) -> Int in
-            result + item.numberOfObjects
-        })
-        
-        return result
-    }
-    
     private func createExpense() -> Expense {
         let expense = Expense(context: self.managedObjectContext)
         expense.budget = self.budget
@@ -69,9 +57,9 @@ class ExpenseFetchControllerTest: XCTestCase {
     
     func testNoExpenses() {
         self.createFetchedResultsController()
-        self.performFetch()
+        self.fetchedResultsController.performSilentFailureFetch()
         
-        expect(self.numberOfObjects()) == 0
+        expect(self.fetchedResultsController.numberOfObjects()) == 0
     }
     
     func testOneExpense() {
@@ -87,9 +75,9 @@ class ExpenseFetchControllerTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         self.createFetchedResultsController()
-        self.performFetch()
+        self.fetchedResultsController.performSilentFailureFetch()
         
-        expect(self.numberOfObjects()) == 1
+        expect(self.fetchedResultsController.numberOfObjects()) == 1
     }
     
     func testAllExpensesInTheSameMonth() {
@@ -118,9 +106,9 @@ class ExpenseFetchControllerTest: XCTestCase {
         
         ModelManager.saveContext(self.managedObjectContext)
         self.createFetchedResultsController(startDate: startDate, finishDate: finishDate)
-        self.performFetch()
+        self.fetchedResultsController.performSilentFailureFetch()
         
-        expect(self.numberOfObjects()) == 3
+        expect(self.fetchedResultsController.numberOfObjects()) == 3
     }
     
     func testNoExpensesInCurrentMonth() {
@@ -156,8 +144,8 @@ class ExpenseFetchControllerTest: XCTestCase {
         
         ModelManager.saveContext(self.managedObjectContext)
         self.createFetchedResultsController(startDate: startDate, finishDate: finishDate)
-        self.performFetch()
+        self.fetchedResultsController.performSilentFailureFetch()
         
-        expect(self.numberOfObjects()) == 0
+        expect(self.fetchedResultsController.numberOfObjects()) == 0
     }
 }
