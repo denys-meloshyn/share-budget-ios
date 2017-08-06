@@ -14,7 +14,7 @@ import XCGLogger
 
 class DependencyTest: XCTestCase {
     override func tearDown() {
-        MockDependency.logger = nil
+        MockDependency.reset()
         
         super.tearDown()
     }
@@ -55,5 +55,19 @@ class DependencyTest: XCTestCase {
         
         expect(result.scheme) == expectedComponents.scheme
         expect(result.host) == expectedComponents.host
+    }
+    
+    func testDataBaseNameTesting() {
+        MockDependency.mock_environment = .testing
+        MockDependency.configure()
+        
+        expect(MockDependency.coreDataName) == "ShareBudgetTest"
+    }
+    
+    func testDataBaseNameProduction() {
+        MockDependency.mock_environment = .production
+        MockDependency.configure()
+        
+        expect(MockDependency.coreDataName) == "ShareBudget"
     }
 }

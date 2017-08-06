@@ -147,15 +147,18 @@ class BudgetDetailPresenter: BasePresenter {
                     let toColor = self.colors[rangeIndex]
                     
                     let cgiColors = fromColor.cgColor.components ?? []
-                    var resCGIColors = [Float]()
+                    var resCGIColors = [CGFloat]()
                     for i in 0..<cgiColors.count {
                         let toColorValue = toColor.cgColor.components![i]
                         let fromColorValue = cgiColors[i]
                         let resValue = (Double(toColorValue) - Double(fromColorValue)) * rangePercantage + Double(fromColorValue)
-                        resCGIColors.append(Float(resValue))
+                        resCGIColors.append(CGFloat(resValue))
                     }
                     
-                    let resColor = UIColor(colorLiteralRed: resCGIColors[0], green: resCGIColors[1], blue: resCGIColors[2], alpha: resCGIColors[3])
+                    let resColor = UIColor(red: resCGIColors[0],
+                                           green: resCGIColors[1],
+                                           blue: resCGIColors[2],
+                                           alpha: resCGIColors[3])
                     self.delegate?.updateExpenseCoverColor(resColor)
                 }
             }

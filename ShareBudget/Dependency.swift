@@ -161,6 +161,7 @@ class Dependency {
     class private func configureDataBaseName() {
         if self.environment() == .testing {
             self.coreDataName = "ShareBudgetTest"
+            return
         }
         
         self.coreDataName = "ShareBudget"

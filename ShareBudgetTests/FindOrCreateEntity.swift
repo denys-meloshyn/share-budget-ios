@@ -66,6 +66,19 @@ class FindOrCreateEntity: XCTestCase {
         expect(result.modelID).to(beNil())
     }
     
+    func testAnotherEntityWithTheSameIDExist() {
+        let budget = Budget(context: self.managedObjectContext)
+        budget.modelID = NSNumber(value: 1)
+        ModelManager.saveContext(self.managedObjectContext)
+        
+        let result = ModelManager.findOrCreateEntity(Expense.self,
+                                                     response: [Expense.modelKeyID():1],
+                                                     in: self.managedObjectContext)
+        
+        expect(result).notTo(beNil())
+        expect(result.modelID).to(beNil())
+    }
+    
     func testEntityExist() {
         let expense = Expense(context: self.managedObjectContext)
         expense.modelID = NSNumber(value: 1)
