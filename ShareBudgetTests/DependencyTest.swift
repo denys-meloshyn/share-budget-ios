@@ -13,12 +13,10 @@ import XCGLogger
 @testable import ShareBudget
 
 class DependencyTest: XCTestCase {
-    override func setUp() {
-        
-    }
-    
     override func tearDown() {
         MockDependency.logger = nil
+        
+        super.tearDown()
     }
     
     func testDevelopmentLocalNoRemoteLogger() {

@@ -11,7 +11,7 @@ import Nimble
 import CoreData
 @testable import ShareBudget
 
-class ModelManagerExpenseFetchControllerTest: XCTestCase {
+class ExpenseFetchControllerTest: XCTestCase {
     var budget: Budget!
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<Expense>!
@@ -23,6 +23,12 @@ class ModelManagerExpenseFetchControllerTest: XCTestCase {
         self.fetchedResultsController = nil
         self.budget = Budget(context: self.managedObjectContext)
         self.budget.name = "Test budget"
+    }
+    
+    override func tearDown() {
+        ModelManager.dropAllEntities()
+        
+        super.tearDown()
     }
     
     private func performFetch() {

@@ -306,10 +306,14 @@
 		57C53FBC1F290C7F004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
 		57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */; };
 		57C53FBE1F290C80004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */; };
+		57CA4FF51F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */; };
+		57CA4FF81F3509CD00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */; };
+		57CA4FF91F3509CE00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */; };
+		57CA4FFB1F350EFD00669ED7 /* FindOrCreateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA4FFA1F350EFD00669ED7 /* FindOrCreateEntity.swift */; };
 		57D11C1F1F2E59A900FBDAA0 /* MockCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */; };
 		57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */; };
 		57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */; };
-		57D11C251F30EFB400FBDAA0 /* ModelManagerExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ModelManagerExpenseFetchControllerTest.swift */; };
+		57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
 		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
@@ -467,10 +471,12 @@
 		57C17DEE1E85D11100CB3399 /* ExpenseTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseTableViewHeader.xib; sourceTree = "<group>"; };
 		57C53FB71F290C77004D3D80 /* UserGroup+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57C53FB81F290C77004D3D80 /* UserGroup+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserGroup+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Iterate.swift"; sourceTree = "<group>"; };
+		57CA4FFA1F350EFD00669ED7 /* FindOrCreateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindOrCreateEntity.swift; sourceTree = "<group>"; };
 		57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryViewController.swift; sourceTree = "<group>"; };
 		57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExpensesViewController.swift; sourceTree = "<group>"; };
 		57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBudgetDetailViewController.swift; sourceTree = "<group>"; };
-		57D11C241F30EFB400FBDAA0 /* ModelManagerExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManagerExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
+		57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
@@ -619,8 +625,8 @@
 				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
 				577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */,
 				5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */,
-				57D11C241F30EFB400FBDAA0 /* ModelManagerExpenseFetchControllerTest.swift */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
+				57CA4FF31F34FF7100669ED7 /* ModelManager */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
 			path = ShareBudgetTests;
@@ -799,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
+				57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -841,6 +848,15 @@
 				57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		57CA4FF31F34FF7100669ED7 /* ModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */,
+				57CA4FFA1F350EFD00669ED7 /* FindOrCreateEntity.swift */,
+			);
+			name = ModelManager;
 			sourceTree = "<group>";
 		};
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
@@ -1396,6 +1412,7 @@
 				5735C4191EE445F40037BAA8 /* BudgetPresenter.swift in Sources */,
 				5735C41A1EE445F40037BAA8 /* BudgetAPI.swift in Sources */,
 				5735C41B1EE445F40037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
+				57CA4FF81F3509CD00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
 				5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */,
 				5735C41E1EE445F40037BAA8 /* R.generated.swift in Sources */,
@@ -1494,6 +1511,7 @@
 				5735C4841EE44D8F0037BAA8 /* BudgetPresenter.swift in Sources */,
 				5735C4851EE44D8F0037BAA8 /* BudgetAPI.swift in Sources */,
 				5735C4861EE44D8F0037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
+				57CA4FF91F3509CE00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
 				5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */,
 				5735C4891EE44D8F0037BAA8 /* R.generated.swift in Sources */,
@@ -1626,6 +1644,7 @@
 				57C17DED1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift in Sources */,
 				57FAB4281E6248C700A2AEC7 /* CategoryRouter.swift in Sources */,
 				57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */,
+				57CA4FF51F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
 				57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */,
 				575E11991F1EA1C4000B2F07 /* TeamMembersViewController.swift in Sources */,
@@ -1663,6 +1682,7 @@
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
 				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
+				57CA4FFB1F350EFD00669ED7 /* FindOrCreateEntity.swift in Sources */,
 				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,
 				57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */,
 				57D11C1F1F2E59A900FBDAA0 /* MockCategoryViewController.swift in Sources */,
@@ -1672,7 +1692,7 @@
 				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
 				57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */,
 				57BEAD631ECE201400CE372C /* MockBudgetInteraction.swift in Sources */,
-				57D11C251F30EFB400FBDAA0 /* ModelManagerExpenseFetchControllerTest.swift in Sources */,
+				57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */,
 				57BEAD671ECE21B000CE372C /* MockBudgetRouter.swift in Sources */,
 				5735C4D41EE4963F0037BAA8 /* DependencyTest.swift in Sources */,
 			);

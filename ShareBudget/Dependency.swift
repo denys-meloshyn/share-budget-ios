@@ -24,6 +24,7 @@ class Dependency {
     static let loggerRemoteIdentifier = "advancedLogger.remoteDestination"
     
     static var logger: XCGLogger!
+    static var coreDataName: String!
     static var userCredentials: UserCredentials.Type!
     static var backendURLComponents: NSURLComponents!
     static var backendConnection: NSURLComponents {
@@ -54,6 +55,7 @@ class Dependency {
         self.configureUserCredentials()
         self.configureLogger()
         self.configureBackendConnection()
+        self.configureDataBaseName()
         
         self.logger.info(self.environment)
     }
@@ -154,5 +156,13 @@ class Dependency {
     
     class private func configureUserCredentials() {
         self.userCredentials = UserCredentials.self
+    }
+    
+    class private func configureDataBaseName() {
+        if self.environment() == .testing {
+            self.coreDataName = "ShareBudgetTest"
+        }
+        
+        self.coreDataName = "ShareBudget"
     }
 }

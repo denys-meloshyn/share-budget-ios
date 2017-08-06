@@ -20,7 +20,7 @@ class ModelManager {
     
     // MARK: - Core Data stack
     
-    static private let storeURL = ModelManager.applicationDocumentsDirectory.appendingPathComponent(ModelManager.dataBaseName())
+    static private let storeURL = ModelManager.applicationDocumentsDirectory.appendingPathComponent(Dependency.coreDataName)
     
     static private var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.denys.meloshyn.TeamExpenses" in the application's documents Application Support directory.
@@ -39,7 +39,7 @@ class ModelManager {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: ModelManager.managedObjectModel)
-        let url = ModelManager.applicationDocumentsDirectory.appendingPathComponent(ModelManager.dataBaseName())
+        let url = ModelManager.applicationDocumentsDirectory.appendingPathComponent(Dependency.coreDataName)
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
             let options = [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]
@@ -104,18 +104,6 @@ class ModelManager {
         }
     }
     
-    private class func dataBaseName() -> String {
-        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
-            let url = URL(fileURLWithPath: testPath)
-            
-            if url.pathExtension == "xctestconfiguration" {
-                return "ShareBudgetTest"
-            }
-        }
-        
-        return "ShareBudget"
-    }
-    
     private class func dropEntity(_ entity: BaseModel.Type) {
         let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
         fetchRequest.includesPropertyValues = false
@@ -133,14 +121,9 @@ class ModelManager {
             Dependency.logger.error("Error drop entity \(entity) \(error)")
         }
         
-        let sections = fetchController.sections ?? []
-        for sectionIndex in 0..<sections.count {
-            let section = sections[sectionIndex]
-            for rowIndex in 0..<section.numberOfObjects {
-                let indexPath = IndexPath(row: rowIndex, section: sectionIndex)
-                let model = fetchController.object(at: indexPath)
-                managedObjectContext.delete(model)
-            }
+        fetchController.iterate { (indexPath) -> (Void) in
+            let model = fetchController.object(at: indexPath)
+            managedObjectContext.delete(model)
         }
         
         ModelManager.saveContext(managedObjectContext)
@@ -167,18 +150,9 @@ class ModelManager {
         return childrenManagedObjectContext
     }
     
-    class func findEntity(fetchRequest: NSFetchRequest<NSFetchRequestResult>, in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
-        return nil
-    }
-    
-    class func findOrCreateEntity(_ entity: BaseModel.Type, response: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
-        var model: BaseModel?
-        if let modelID = response[entity.modelKeyID()] as? Int {
-            model = ModelManager.findEntity(entity, by: modelID, in: managedObjectContext)
-        }
-        
-        if model == nil {
-            model = entity.init(context: managedObjectContext)
+    class func findOrCreateEntity(_ entity: BaseModel.Type, response: [String: Any?], in managedObjectContext: NSManagedObjectContext) -> BaseModel {
+        guard let modelID = response[entity.modelKeyID()] as? Int, let model = ModelManager.findEntity(entity, by: modelID, in: managedObjectContext) else {
+            return entity.init(context: managedObjectContext)
         }
         
         return model
