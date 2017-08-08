@@ -111,4 +111,18 @@ class BudgetLimitFetchController: XCTestCase {
         
         expect(self.fetchedResultsController.numberOfObjects()) == 3
     }
+    
+    func testFilterCaseSensitive() {
+        var budget = Budget(context: self.managedObjectContext)
+        budget.name = "test"
+        budget = Budget(context: self.managedObjectContext)
+        budget.name = "tEsT"
+        budget = Budget(context: self.managedObjectContext)
+        budget.name = "TEST"
+        
+        self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext, search: "Test")
+        self.fetchedResultsController.performSilentFailureFetch()
+        
+        expect(self.fetchedResultsController.numberOfObjects()) == 3
+    }
 }
