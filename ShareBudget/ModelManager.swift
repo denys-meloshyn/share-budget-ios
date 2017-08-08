@@ -235,11 +235,14 @@ class ModelManager {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
+        var predicates = [NSPredicate]()
         if text.characters.count > 0 {
             let predicate = NSPredicate(format: "name CONTAINS[c] %@", text)
-            fetchRequest.predicate = predicate
+            predicates.append(predicate)
         }
+        predicates.append(ModelManager.removePredicate())
         
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -253,8 +256,13 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
+        
+        var predicates = [NSPredicate]()
         let predicate = NSPredicate(format: "%@ == budget", budget)
-        fetchRequest.predicate = predicate
+        predicates.append(predicate)
+        predicates.append(ModelManager.removePredicate())
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]

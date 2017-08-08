@@ -209,6 +209,7 @@
 		5735C4D41EE4963F0037BAA8 /* DependencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */; };
 		5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D51EE496630037BAA8 /* MockDependency.swift */; };
 		5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */; };
+		573738BA1F3A4D75007064EA /* BudgetLimitFetchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573738B91F3A4D75007064EA /* BudgetLimitFetchController.swift */; };
 		573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F599F1E295C4D00AEA72A /* AppDelegate.swift */; };
 		573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 573F59A31E295C4D00AEA72A /* Main.storyboard */; };
 		573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */; };
@@ -382,6 +383,7 @@
 		5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyTest.swift; sourceTree = "<group>"; };
 		5735C4D51EE496630037BAA8 /* MockDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDependency.swift; sourceTree = "<group>"; };
 		5735C4D71EE54FDD0037BAA8 /* MockUserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUserCredentials.swift; sourceTree = "<group>"; };
+		573738B91F3A4D75007064EA /* BudgetLimitFetchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetLimitFetchController.swift; sourceTree = "<group>"; };
 		573F599C1E295C4D00AEA72A /* ShareBudget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		573F599F1E295C4D00AEA72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		573F59A41E295C4D00AEA72A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 		57CA4FF31F34FF7100669ED7 /* ModelManager */ = {
 			isa = PBXGroup;
 			children = (
+				573738B91F3A4D75007064EA /* BudgetLimitFetchController.swift */,
 				57B120851F379D8300515921 /* ChangedModels.swift */,
 				57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */,
 				57CA4FFA1F350EFD00669ED7 /* FindOrCreateEntity.swift */,
@@ -1694,6 +1697,7 @@
 			files = (
 				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
+				573738BA1F3A4D75007064EA /* BudgetLimitFetchController.swift in Sources */,
 				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
 				57CA4FFB1F350EFD00669ED7 /* FindOrCreateEntity.swift in Sources */,
