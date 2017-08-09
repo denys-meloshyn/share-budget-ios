@@ -11,7 +11,7 @@ import Nimble
 import CoreData
 @testable import ShareBudget
 
-class FindOrCreateEntity: XCTestCase {
+class FindOrCreateEntityTest: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     
     override func setUp() {

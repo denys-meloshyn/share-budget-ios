@@ -11,7 +11,7 @@ import Nimble
 import CoreData
 @testable import ShareBudget
 
-class ChangedModels: XCTestCase {
+class ChangedModelsTest: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     

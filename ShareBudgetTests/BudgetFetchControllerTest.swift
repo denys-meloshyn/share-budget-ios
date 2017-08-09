@@ -11,7 +11,7 @@ import Nimble
 import CoreData
 @testable import ShareBudget
 
-class BudgetLimitFetchController: XCTestCase {
+class BudgetFetchControllerTest: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<Budget>!
     
