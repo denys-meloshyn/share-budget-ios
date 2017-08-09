@@ -289,16 +289,21 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate: NSPredicate
+        
+        var predicates = [NSPredicate]()
+        var tmpPredicate = ModelManager.removePredicate()
+        predicates.append(tmpPredicate)
+        
+        tmpPredicate = NSPredicate(format: "%@ == budget", budget)
+        predicates.append(tmpPredicate)
         
         if let categoryID = categoryID {
             let category = managedObjectContext.object(with: categoryID)
-            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO AND category == %@", budget, category)
-        } else {
-            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO", budget)
+            tmpPredicate = NSPredicate(format: "category == %@", budget, category)
+            predicates.append(tmpPredicate)
         }
         
-        fetchRequest.predicate = predicate
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let sortDescriptorDate = NSSortDescriptor(key: "creationDate", ascending: false)
         let sortDescriptorName = NSSortDescriptor(key: "name", ascending: true)

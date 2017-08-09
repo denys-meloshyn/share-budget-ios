@@ -46,7 +46,7 @@ class BudgetDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         let router = BudgetDetailRouter(with: self)
-        let interactin = BudgetDetailInteraction(with: self.budgetID)
+        let interactin = BudgetDetailInteraction(with: self.budgetID, managedObjectContext: ModelManager.managedObjectContext)
         let presenter = BudgetDetailPresenter(with: interactin, router: router)
         self.viperView = BudgetDetailView(with: presenter, and: self)
         

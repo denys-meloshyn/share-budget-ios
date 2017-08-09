@@ -19,10 +19,11 @@ class BudgetDetailInteraction: BaseInteraction {
     
     private var kvoContext: UInt8 = 1
     private let calculator: ExpenseCalculator
-    private let managedObjectContext = ModelManager.managedObjectContext
+    private let managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Expense>
     
-    init(with budgetID: NSManagedObjectID) {
+    init(with budgetID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
         self.budgetID = budgetID
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
         
