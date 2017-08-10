@@ -192,6 +192,36 @@ class ModelManager {
         return NSPredicate(format: "isRemoved == nil OR isRemoved == NO")
     }
     
+    class func lastLimit(for budgetID: NSManagedObjectID, date: NSDate = NSDate(), _ managedObjectContext: NSManagedObjectContext) -> BudgetLimit? {
+        let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
+        fetchRequest.fetchBatchSize = 1
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        
+        var predicates = [NSPredicate]()
+        var predicate = NSPredicate(format: "%@ == budget", budget)
+        predicates.append(predicate)
+        
+        predicates.append(ModelManager.removePredicate())
+        
+        predicate = NSPredicate(format: "date <= %@", date)
+        predicates.append(predicate)
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        var items = [BudgetLimit]()
+        do {
+            items = try managedObjectContext.fetch(fetchRequest)
+        } 
+        catch {
+            Dependency.logger.error("Error fetch budget limit \(error)")
+        }
+        
+        return items.last
+    }
+    
     // MARK: - NSFetchedResultsController
     
     class func changedModels(_ entity: BaseModel.Type, _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>? {

@@ -319,6 +319,7 @@
 		57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */; };
+		57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118D1F3CFDD900B5C32D /* LimitTest.swift */; };
 		57F1285C1E3D325300E51C0C /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285B1E3D325300E51C0C /* BudgetViewController.swift */; };
 		57F1285E1E3D332600E51C0C /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285D1E3D332600E51C0C /* BudgetView.swift */; };
 		57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */; };
@@ -486,6 +487,7 @@
 		57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteractionTest.swift; sourceTree = "<group>"; };
+		57EC118D1F3CFDD900B5C32D /* LimitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTest.swift; sourceTree = "<group>"; };
 		57F1285B1E3D325300E51C0C /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		57F1285D1E3D332600E51C0C /* BudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 		57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetRouter.swift; sourceTree = "<group>"; };
@@ -875,6 +877,7 @@
 				57B120851F379D8300515921 /* ChangedModelsTest.swift */,
 				57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */,
 				57CA4FFA1F350EFD00669ED7 /* FindOrCreateEntityTest.swift */,
+				57EC118D1F3CFDD900B5C32D /* LimitTest.swift */,
 			);
 			name = ModelManager;
 			sourceTree = "<group>";
@@ -1702,6 +1705,7 @@
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
 				573738BA1F3A4D75007064EA /* BudgetFetchControllerTest.swift in Sources */,
 				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
+				57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,
 				57CA4FFB1F350EFD00669ED7 /* FindOrCreateEntityTest.swift in Sources */,
 				57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */,

@@ -76,7 +76,7 @@ class BudgetDetailInteraction: BaseInteraction {
     }
     
     func lastMonthLimit() -> BudgetLimit? {
-        return self.budget.lastMonthLimit()
+        return ModelManager.lastLimit(for: self.budgetID, self.managedObjectContext)
     }
     
     func balance() -> Double {
