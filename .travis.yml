@@ -3,9 +3,10 @@ language: objective-c
 xcode_project: ShareBudget.xcodeproj # path to your xcodeproj folder
 xcode_scheme: ShareBudgetTests
 
+before_install:
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)  -J 'ShareBudget'
-
-script: xcodebuild test -project ShareBudget.xcodeproj -scheme ShareBudgetTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -enableCodeCoverage YES
 
 
