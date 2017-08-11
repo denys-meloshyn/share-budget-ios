@@ -1,7 +1,7 @@
 language: objective-c
 before_install: rvm use $RVM_RUBY_VERSION
 
-script: xcodebuild test -project ShareBudget.xcodeproj -scheme ShareBudgetTests -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -enableCodeCoverage YES
+script: xcodebuild test -project ShareBudget.xcodeproj -scheme ShareBudget -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES -enableCodeCoverage YES
 osx_image: xcode8.2
 
 
