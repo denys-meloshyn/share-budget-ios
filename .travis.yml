@@ -4,7 +4,7 @@ xcode_workspace: ShareBudget.xcworkspace
 xcode_scheme: ShareBudget
 
 script:
-    - xcodebuild test -sdk iphonesimulator -workspace ShareBudget.xcworkspace -scheme ShareBudget CODE_SIGNING_REQUIRED=NO
+    - xcodebuild test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 5s,OS=latest' -workspace ShareBudget.xcworkspace -scheme ShareBudget CODE_SIGNING_REQUIRED=NO
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)  -J 'ShareBudget'
