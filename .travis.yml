@@ -1,18 +1,7 @@
 osx_image: xcode8.3
 language: objective-c
-xcode_project: ShareBudget.xcodeproj
+xcode_workspace: ShareBudget.xcworkspace
 xcode_scheme: ShareBudget
-
-before_install:
-    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-    
-env:
-    global:
-        - XTC_PATH=$HOME/xtc 
-        - PATH=$XTC_PATH:$PATH
-        
-script:
-    - ./travis-scripts/install_xtc.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)  -J 'ShareBudget'
