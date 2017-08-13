@@ -3,5 +3,8 @@ language: objective-c
 xcode_workspace: ShareBudget.xcworkspace
 xcode_scheme: ShareBudget
 
+script:
+    - xcodebuild clean build -sdk iphonesimulator -workspace ShareBudget.xcworkspace -scheme ShareBudget CODE_SIGNING_REQUIRED=NO
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)  -J 'ShareBudget'
