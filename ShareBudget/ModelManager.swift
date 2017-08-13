@@ -304,7 +304,7 @@ class ModelManager {
     
     class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Category> {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.fetchBatchSize = fetchBatchSize
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]

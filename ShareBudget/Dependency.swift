@@ -6,6 +6,7 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
+import JustLog
 import XCGLogger
 import BugfenderSDK
 
@@ -71,6 +72,12 @@ class Dependency {
         Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
         Bugfender.setPrintToConsole(false)
         Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
+        
+        Logger.shared.logstashHost = "listener.logz.io"
+        Logger.shared.logstashPort = 5052
+        Logger.shared.logzioToken = "KwzGuzHVRmyojtidIOicPEZrQbZEzGCQ"
+        Logger.shared.enableConsoleLogging = false
+        Logger.shared.setup()
         
         // Create a logger object with no destinations
         self.logger = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)

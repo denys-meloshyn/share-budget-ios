@@ -5,17 +5,24 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - CocoaAsyncSocket (7.5.1):
+    - CocoaAsyncSocket/GCD (= 7.5.1)
+  - CocoaAsyncSocket/GCD (7.5.1)
   - CorePlot (2.2)
+  - JustLog (1.2.0):
+    - CocoaAsyncSocket (~> 7.5.0)
+    - SwiftyBeaver (~> 1.1.1)
   - KeychainSwift (8.0.2)
   - le (1.1)
   - Nimble (7.0.1)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - R.swift (3.2.0):
+  - R.swift (3.3.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - SnapKit (3.2.0)
+  - SwiftyBeaver (1.1.4)
   - XCGLogger (5.0.1):
     - XCGLogger/Core (= 5.0.1)
   - XCGLogger/Core (5.0.1):
@@ -25,10 +32,11 @@ DEPENDENCIES:
   - BugfenderSDK (~> 1.4.5)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (~> 2.2)
+  - JustLog (~> 1.2)
   - KeychainSwift (~> 8.0)
   - le (~> 1.1)
   - Nimble (~> 7.0.1)
-  - R.swift (~> 3.2)
+  - R.swift (~> 3.3)
   - SnapKit (~> 3.2)
   - XCGLogger (~> 5.0.1)
 
@@ -44,16 +52,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BugfenderSDK: 48e40e63015e936c25c164b15656452152e1e74e
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
+  JustLog: 035ff2d06efd8cae26aeaf05cb2471f03ee866bb
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  R.swift: 207a372a2b5977caef440c696a368009460641d1
+  R.swift: bde9704d50ff36820f49e266bc88ef545e1e9b36
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyBeaver: 9216b6e163c145628ccc7c0126df4287880d6e1e
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: a02616284ecd42fc5828daff5e0c63a66ff8e29e
+PODFILE CHECKSUM: 52fe6c2fd0bf3de8273b49067af81a20f51eeb75
 
 COCOAPODS: 1.2.1

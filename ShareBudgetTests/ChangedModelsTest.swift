@@ -40,7 +40,7 @@ class ChangedModelsTest: XCTestCase {
     
     func testOneChanged() {
         let expense = Expense(context: self.managedObjectContext)
-        expense.isChanged = NSNumber(value: true)
+        expense.isChanged = true
         
         let _ = Budget(context: self.managedObjectContext)
         
@@ -49,5 +49,22 @@ class ChangedModelsTest: XCTestCase {
         self.fetchedResultsController.performSilentFailureFetch()
         
         expect(self.fetchedResultsController.numberOfObjects()) == 1
+    }
+    
+    func testModelRemoved() {
+        var expense = Expense(context: self.managedObjectContext)
+        expense.isChanged = true
+        expense.isRemoved = true
+        
+        expense = Expense(context: self.managedObjectContext)
+        expense.isChanged = true
+        
+        expense = Expense(context: self.managedObjectContext)
+        
+        ModelManager.saveContext(self.managedObjectContext)
+        self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)
+        self.fetchedResultsController.performSilentFailureFetch()
+        
+        expect(self.fetchedResultsController.numberOfObjects()) == 2
     }
 }
