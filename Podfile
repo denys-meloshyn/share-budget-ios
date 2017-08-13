@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.2'
+source 'https://github.com/CocoaPods/Specs.git'
 
 def developing_pods
     pod 'XCGLogger', '~> 5.0.1'
