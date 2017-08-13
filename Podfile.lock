@@ -36,7 +36,7 @@ DEPENDENCIES:
   - KeychainSwift (~> 8.0)
   - le (~> 1.1)
   - Nimble (~> 7.0.1)
-  - R.swift (~> 3.3)
+  - R.swift (~> 3.2)
   - SnapKit (~> 3.2)
   - XCGLogger (~> 5.0.1)
 
@@ -65,6 +65,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 9216b6e163c145628ccc7c0126df4287880d6e1e
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 52fe6c2fd0bf3de8273b49067af81a20f51eeb75
+PODFILE CHECKSUM: 6d07fdb15b01ecb2399a2750b8b4e1d79e6a4c3e
 
 COCOAPODS: 1.2.1
