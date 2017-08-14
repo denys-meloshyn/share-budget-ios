@@ -74,7 +74,7 @@ class ModelManager {
     
     // MARK: - Core Data Saving support
     
-    class func saveContext (_ context: NSManagedObjectContext) {
+    class func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()
@@ -144,7 +144,7 @@ class ModelManager {
         ModelManager.dropEntity(BaseModel.self)
     }
     
-    class func childrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
+    class func childrenManagedObjectContext(from parentContext: NSManagedObjectContext) -> NSManagedObjectContext {
         let childrenManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         childrenManagedObjectContext.parent = parentContext
         

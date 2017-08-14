@@ -25,6 +25,7 @@ class RemoteLogsDestination: AppleSystemLogDestination {
         BFLog("\(Dependency.userCredentials.email) -> \(message)")
         
         var userInfo = logDetails.userInfo
+        userInfo["user"] = Dependency.userCredentials.email
         userInfo["log_type"] = self.logDetails.level.description
         userInfo["message"] = self.logDetails.message
         userInfo["function"] = self.logDetails.functionName
