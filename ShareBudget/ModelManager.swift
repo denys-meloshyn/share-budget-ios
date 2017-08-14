@@ -82,6 +82,7 @@ class ModelManager {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
+                Dependency.logger.error("Unresolved error \(nserror)", userInfo: ["error": nserror.userInfo])
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }

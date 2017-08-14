@@ -13,7 +13,7 @@ class UserGroupAPI: BaseAPI {
         return "user_group_timestamp"
     }
     
-    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var userGroup: UserGroup?
         
         for item in items {

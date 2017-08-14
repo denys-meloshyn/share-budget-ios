@@ -13,7 +13,7 @@ class UserAPI: BaseAPI {
         return "user_timestamp"
     }
     
-    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var user: User?
         
         for item in items {

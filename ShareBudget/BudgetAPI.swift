@@ -13,7 +13,7 @@ class BudgetAPI: BaseAPI {
         return "budget_timestamp"
     }
     
-    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var budget: Budget?
         
         for item in items {

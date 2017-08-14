@@ -52,6 +52,8 @@ let kEmailNotApproved = "email_not_approved"
 let kUserIsAlreadyExist = "user_is_already_exist"
 let kUserPasswordIsWrong = "user_password_is_wrong"
 
+let kLogBody = "response"
+
 enum ErrorTypeAPI {
     case none
     case userNotExist

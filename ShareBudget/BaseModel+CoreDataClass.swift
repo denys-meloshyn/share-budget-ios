@@ -15,7 +15,7 @@ public class BaseModel: NSManagedObject {
         return ""
     }
     
-    func update(with dict: [String: AnyObject?], in managedObjectContext: NSManagedObjectContext) {
+    func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         if let isRemoved = dict[kIsRemoved] as? Bool {
             self.isRemoved = NSNumber(value: isRemoved)
         }
@@ -23,7 +23,7 @@ public class BaseModel: NSManagedObject {
         self.timestamp = dict[kTimeStamp] as? String
     }
     
-    func configureModelID(dict: [String: AnyObject?], for key: String) {
+    func configureModelID(dict: [String: Any?], for key: String) {
         if let modelID = dict[key] as? Int {
             self.modelID = NSNumber(value: modelID)
         }

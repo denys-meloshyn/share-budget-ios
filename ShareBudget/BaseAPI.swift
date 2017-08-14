@@ -73,7 +73,7 @@ class BaseAPI {
         return components
     }
     
-    func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         
     }
     
@@ -103,25 +103,25 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                Dependency.logger.error("Error: \(errorType) message: \(String(describing: data))")
+                Dependency.logger.error("Error: \(errorType)", userInfo: [kLogBody: String(describing: data)])
                 completion?(data, errorType)
                 return
             }
             
-            guard let dict = data as? [String: AnyObject?] else {
-                Dependency.logger.error("Response has wrong structure")
+            guard let dict = data as? [String: Any?] else {
+                Dependency.logger.error("Response has wrong structure", userInfo: [kLogBody: String(describing: data)])
                 completion?(data, .unknown)
                 return
             }
             
-            guard let results = dict[kResult] as? [[String: AnyObject?]] else {
-                Dependency.logger.error("'result' has wrong structure")
+            guard let results = dict[kResult] as? [[String: Any?]] else {
+                Dependency.logger.error("'\(kResult)' has wrong structure", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return
             }
             
             guard let timestamp = dict[kTimeStamp] as? String else {
-                Dependency.logger.error("'timeStamp' missed")
+                Dependency.logger.error("'\(kTimeStamp)' missed", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return
             }
@@ -198,20 +198,19 @@ class BaseAPI {
                     return
                 }
                 
-                Dependency.logger.error("Error: '\(errorType)' message: \(String(describing: data))")
-                
+                Dependency.logger.error("Error: '\(errorType)'", userInfo: [kLogBody: String(describing: data)])
                 completion?(data, errorType)
                 return
             }
             
-            guard let dict = data as? [String: AnyObject?] else {
-                Dependency.logger.error("Response has wrong structure")
+            guard let dict = data as? [String: Any?] else {
+                Dependency.logger.error("Response has wrong structure", userInfo: [kLogBody: String(describing: data)])
                 completion?(data, .unknown)
                 return
             }
             
-            guard let result = dict[kResult] as? [String: AnyObject?] else {
-                Dependency.logger.error("'result' has wrong structure")
+            guard let result = dict[kResult] as? [String: Any?] else {
+                Dependency.logger.error("'result' has wrong structure", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return
             }
