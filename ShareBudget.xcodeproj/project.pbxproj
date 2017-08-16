@@ -245,6 +245,7 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */; };
 		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
 		575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
 		575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22531E4747E0004825C2 /* EditExpenseViewController.swift */; };
@@ -428,6 +429,7 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
 		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
 		575786361E4278620026A0BE /* BudgetLimitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPI.swift; sourceTree = "<group>"; };
 		575A22531E4747E0004825C2 /* EditExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseViewController.swift; sourceTree = "<group>"; };
@@ -634,11 +636,10 @@
 			isa = PBXGroup;
 			children = (
 				573F59B91E295C4E00AEA72A /* Info.plist */,
-				57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */,
 				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
-				577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */,
 				5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */,
 				57B120871F379F6100515921 /* Extension */,
+				57561D831F44DDF600FDB891 /* Interaction */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
 				57CA4FF31F34FF7100669ED7 /* ModelManager */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
@@ -824,6 +825,15 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		57561D831F44DDF600FDB891 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+				57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */,
+				577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */,
+			);
+			name = Interaction;
+			sourceTree = "<group>";
+		};
 		578BD0741E352DCD00DE28C8 /* Xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +852,7 @@
 			isa = PBXGroup;
 			children = (
 				57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */,
+				57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1719,6 +1730,7 @@
 				57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */,
 				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
 				57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */,
+				57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */,
 				57B120891F379F8900515921 /* NSFetchedResultsController+Testing.swift in Sources */,
 				57B120861F379D8300515921 /* ChangedModelsTest.swift in Sources */,
 				57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */,

@@ -17,7 +17,7 @@ extension URLRequest {
         self.addToken()
         self.setValue(String(Dependency.userCredentials.userID), forHTTPHeaderField: kUserID)
         
-        if timestamp.characters.count > 0 {
+        if !timestamp.isEmpty {
             self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
         }
     }

@@ -118,7 +118,7 @@ class Dependency {
         // Add the destination to the logger
         self.logger.add(destination: fileDestination)
         
-        if (self.environment() == .production) {
+        if (self.environment() == .production || self.environment() == .developmentRemote) {
             // Remote destination
             let remoteLogsDestination = RemoteLogsDestination(identifier: self.loggerRemoteIdentifier)
             remoteLogsDestination.outputLevel = .debug
