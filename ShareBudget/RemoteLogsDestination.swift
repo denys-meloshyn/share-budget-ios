@@ -9,7 +9,6 @@
 import le
 import JustLog
 import XCGLogger
-import BugfenderSDK
 
 class RemoteLogsDestination: AppleSystemLogDestination {
     private var logDetails = LogDetails(level: XCGLogger.Level.info, date: Date(), message: "", functionName: "", fileName: "", lineNumber: 0)
@@ -22,7 +21,7 @@ class RemoteLogsDestination: AppleSystemLogDestination {
     
     override func write(message: String) {
         //LELog.sharedInstance().log(NSString(string: message))
-        BFLog("\(Dependency.userCredentials.email) -> \(message)")
+//        BFLog("\(Dependency.userCredentials.email) -> \(message)")
         
         var userInfo = logDetails.userInfo
         userInfo["user"] = Dependency.userCredentials.email

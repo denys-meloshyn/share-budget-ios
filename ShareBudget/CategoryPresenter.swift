@@ -102,6 +102,10 @@ extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
+        guard let title = title, !Validator.removeWhiteSpaces(title).isEmpty else {
+            return
+        }
+        
         let newCategory = self.categoryInteraction.createCategory(with: title)
         self.categoryDelegate?.didSelectCategory(newCategory.objectID)
         self.router.closePage()

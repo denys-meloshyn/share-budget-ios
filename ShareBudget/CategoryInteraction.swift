@@ -79,7 +79,7 @@ class CategoryInteraction: BaseInteraction {
         self.updatePredicate(with: text)
     }
     
-    func createCategory(with name: String?) -> Category {
+    func createCategory(with name: String) -> Category {
         let category = Category(context: self.managedObjectContext)
         category.isChanged = true
         category.name = name

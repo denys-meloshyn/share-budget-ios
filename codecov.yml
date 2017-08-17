@@ -2,6 +2,4 @@ codecov:
   token: a44cd0d2-fce9-488f-b882-5fa1fbe18e30
 coverage:
   ignore:
-    - ./Pods/*
-    - ./ShareBudgetTests/*
-    - ./ShareBudgetUITests/*
+    - "Pods/"

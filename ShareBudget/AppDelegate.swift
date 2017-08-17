@@ -10,7 +10,6 @@ import UIKit
 
 import le
 import XCGLogger
-import BugfenderSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

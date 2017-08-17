@@ -109,4 +109,20 @@ class CategoryInteractionTest: XCTestCase {
         
         expect(self.interaction.numberOfCategories()) == 4
     }
+    
+    func testCreateCategoryEmptyString() {
+        let result = self.interaction.createCategory(with: "")
+        
+        expect(result.name) == ""
+        expect(self.budget) == result.budget
+        expect(result.isChanged?.boolValue).to(beTrue())
+    }
+    
+    func testCreateCategoryNameNotEmpty() {
+        let result = self.interaction.createCategory(with: "test")
+        
+        expect(result.name) == "test"
+        expect(self.budget) == result.budget
+        expect(result.isChanged?.boolValue).to(beTrue())
+    }
 }
