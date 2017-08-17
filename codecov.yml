@@ -3,3 +3,5 @@ codecov:
 coverage:
   ignore:
     - "Pods/"
+    - ./ShareBudgetTests/*
+    - ./ShareBudgetUITests/*
