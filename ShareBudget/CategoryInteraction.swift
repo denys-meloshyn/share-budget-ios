@@ -50,7 +50,7 @@ class CategoryInteraction: BaseInteraction {
         predicates.append(ModelManager.removePredicate())
         
         let predicate: NSPredicate
-        if text.characters.count > 0 {
+        if !text.isEmpty {
             tmpPredicate = NSPredicate(format: "name CONTAINS[c] %@", text)
             predicates.append(tmpPredicate)
         }

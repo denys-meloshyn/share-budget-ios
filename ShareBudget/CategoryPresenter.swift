@@ -102,7 +102,7 @@ extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
-        guard let title = title, !Validator.removeWhiteSpaces(title).isEmpty else {
+        guard let title = title, !Validator.isNullOrBlank(title) else {
             return
         }
         

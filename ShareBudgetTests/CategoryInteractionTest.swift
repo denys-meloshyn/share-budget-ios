@@ -125,4 +125,14 @@ class CategoryInteractionTest: XCTestCase {
         expect(self.budget) == result.budget
         expect(result.isChanged?.boolValue).to(beTrue())
     }
+    
+    func testCategoryForIndex() {
+        let _ = self.interaction.createCategory(with: "Category 1")
+        let _ = self.interaction.createCategory(with: "Category 2")
+        ModelManager.saveContext(self.managedObjectContext)
+        
+        let result = self.interaction.category(for: IndexPath(row: 1, section: 0))
+        
+        expect(result.name) == "Category 2"
+    }
 }
