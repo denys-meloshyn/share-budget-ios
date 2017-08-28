@@ -33,7 +33,7 @@ class AsynchronousURLConnection {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
-        Dependency.logger.info("\(request.httpMethod!) \(request.url!)")
+        Dependency.logger.info("\(request.httpMethod!) \(request.url!) \(request.allHTTPHeaderFields!)")
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             NetworkIndicator.shared.visible = false
             

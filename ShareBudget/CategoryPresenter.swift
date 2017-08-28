@@ -32,13 +32,11 @@ class CategoryPresenter: BasePresenter {
     }
     
     func headerMode() -> BudgetHeaderMode {
-        let rows = self.categoryInteraction.numberOfCategories()
-        
-        if rows > 0 {
-            return .search
+        guard self.categoryInteraction.numberOfCategories() > 0 else {
+            return .create
         }
         
-        return .create
+        return .search
     }
 }
 

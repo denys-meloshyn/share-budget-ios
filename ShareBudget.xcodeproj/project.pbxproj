@@ -277,6 +277,7 @@
 		575E11AA1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		575E11AB1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
+		576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */; };
 		577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
 		578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
@@ -452,6 +453,7 @@
 		575E119E1F1EA369000B2F07 /* TeamMembersInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersInteraction.swift; sourceTree = "<group>"; };
 		575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersRouter.swift; sourceTree = "<group>"; };
 		576424B61E79E4CC000B595E /* NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
+		576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTest.swift; sourceTree = "<group>"; };
 		577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractionTest.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
 		578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
@@ -638,12 +640,12 @@
 			isa = PBXGroup;
 			children = (
 				573F59B91E295C4E00AEA72A /* Info.plist */,
-				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
 				5735C4D31EE4963F0037BAA8 /* DependencyTest.swift */,
 				57B120871F379F6100515921 /* Extension */,
 				57561D831F44DDF600FDB891 /* Interaction */,
 				57BEAD611ECE1FC800CE372C /* Mock */,
 				57CA4FF31F34FF7100669ED7 /* ModelManager */,
+				576B606E1F54B49D00904D04 /* Presenter */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
 			path = ShareBudgetTests;
@@ -834,6 +836,15 @@
 				577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */,
 			);
 			name = Interaction;
+			sourceTree = "<group>";
+		};
+		576B606E1F54B49D00904D04 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */,
+				576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */,
+			);
+			name = Presenter;
 			sourceTree = "<group>";
 		};
 		578BD0741E352DCD00DE28C8 /* Xib */ = {
@@ -1720,6 +1731,7 @@
 			files = (
 				57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */,
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
+				576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */,
 				573738BA1F3A4D75007064EA /* BudgetFetchControllerTest.swift in Sources */,
 				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
 				57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */,
