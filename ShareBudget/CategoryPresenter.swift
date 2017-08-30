@@ -62,7 +62,7 @@ extension CategoryPresenter: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = self.delegate.createSearchTableHeaderView(with: self.headerMode(), placeholder: "")
+        let header = self.delegate.createSearchTableHeaderView(with: self.headerMode(), placeholder: LocalisedManager.category.headerPlaceholder)
         header?.delegate = self
         
         return header

@@ -53,6 +53,7 @@ extension CategoryView: CategoryPresenterDelegate {
     
     func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
         let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
+        header?.textField?.placeholder = placeholder
         header?.mode = mode
         
         return header

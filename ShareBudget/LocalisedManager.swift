@@ -57,6 +57,10 @@ struct LocalisedManager {
         }
     }
     
+    struct category {
+        static let headerPlaceholder = NSLocalizedString("Create or search category", comment: "Placeholder for search text field")
+    }
+    
     struct edit {
         struct expense {
             static let price = NSLocalizedString("Price", comment: "Expense price title in Edit expense page")
