@@ -31,8 +31,9 @@ class ModelManager {
     static private var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = Bundle.main.url(forResource: "ShareBudget", withExtension: "momd")!
+        var managedObjectModel: NSManagedObjectModel? = NSManagedObjectModel(contentsOf: modelURL)
         
-        return NSManagedObjectModel(contentsOf: modelURL)
+        return managedObjectModel!
     }()
     
     static private var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
