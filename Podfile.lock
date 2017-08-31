@@ -9,9 +9,9 @@ PODS:
     - CocoaAsyncSocket/GCD (= 7.5.1)
   - CocoaAsyncSocket/GCD (7.5.1)
   - CorePlot (2.2)
-  - JustLog (1.2.0):
+  - JustLog (1.3.0):
     - CocoaAsyncSocket (~> 7.5.0)
-    - SwiftyBeaver (~> 1.1.1)
+    - SwiftyBeaver (~> 1.4.0)
   - KeychainSwift (8.0.2)
   - le (1.1)
   - Nimble (7.0.1)
@@ -22,7 +22,7 @@ PODS:
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
   - SnapKit (3.2.0)
-  - SwiftyBeaver (1.1.4)
+  - SwiftyBeaver (1.4.0)
   - XCGLogger (5.0.1):
     - XCGLogger/Core (= 5.0.1)
   - XCGLogger/Core (5.0.1):
@@ -32,7 +32,7 @@ DEPENDENCIES:
   - BugfenderSDK (~> 1.4.5)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (~> 2.2)
-  - JustLog (~> 1.2)
+  - JustLog (~> 1.3)
   - KeychainSwift (~> 8.0)
   - le (~> 1.1)
   - Nimble (~> 7.0.1)
@@ -54,7 +54,7 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
-  JustLog: 035ff2d06efd8cae26aeaf05cb2471f03ee866bb
+  JustLog: 88ddc70d5c1e8dcc4de3b94899905975c180e9b2
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
@@ -62,9 +62,9 @@ SPEC CHECKSUMS:
   R.swift: bde9704d50ff36820f49e266bc88ef545e1e9b36
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SwiftyBeaver: 9216b6e163c145628ccc7c0126df4287880d6e1e
+  SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
   XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
-PODFILE CHECKSUM: 400bb856a47c4a763030df71c10557ae694969fe
+PODFILE CHECKSUM: 8139a44b62251e81239c5e663ebb7010d357812f
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

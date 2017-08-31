@@ -55,6 +55,8 @@ class ExpenseFetchControllerTest: XCTestCase {
                                                                             managedObjectContext: self.managedObjectContext)
     }
     
+    // MARK: - Tests
+    
     func testNoExpenses() {
         self.createFetchedResultsController()
         self.fetchedResultsController.performSilentFailureFetch()
@@ -78,6 +80,62 @@ class ExpenseFetchControllerTest: XCTestCase {
         self.fetchedResultsController.performSilentFailureFetch()
         
         expect(self.fetchedResultsController.numberOfObjects()) == 1
+    }
+    
+    func testExpsensesCreatedInTheLastDay() {
+        var dateComponents = UtilityFormatter.calendarComponentTilDay()
+        dateComponents.year = 2017
+        dateComponents.month = 8
+        dateComponents.day = 31
+        dateComponents.hour = 19
+        dateComponents.minute = 11
+        
+        let startDate = UtilityFormatter.firstMonthDay(date: dateComponents.date!)
+        let finishDate = UtilityFormatter.lastMonthDay(date: dateComponents.date!)
+        
+        var expense = self.createExpense()
+        expense.name = "Expense 1"
+        expense.creationDate = dateComponents.date! as NSDate
+        
+        dateComponents.hour = 23
+        dateComponents.minute = 59
+        expense = self.createExpense()
+        expense.name = "Expense 2"
+        expense.creationDate = dateComponents.date! as NSDate
+        
+        ModelManager.saveContext(self.managedObjectContext)
+        self.createFetchedResultsController(startDate: startDate, finishDate: finishDate)
+        self.fetchedResultsController.performSilentFailureFetch()
+        
+        expect(self.fetchedResultsController.numberOfObjects()) == 2
+    }
+    
+    func testExpsensesCreatedInTheFirstDay() {
+        var dateComponents = UtilityFormatter.calendarComponentTilDay()
+        dateComponents.year = 2017
+        dateComponents.month = 8
+        dateComponents.day = 1
+        dateComponents.hour = 19
+        dateComponents.minute = 11
+        
+        let startDate = UtilityFormatter.firstMonthDay(date: dateComponents.date!)
+        let finishDate = UtilityFormatter.lastMonthDay(date: dateComponents.date!)
+        
+        var expense = self.createExpense()
+        expense.name = "Expense 1"
+        expense.creationDate = dateComponents.date! as NSDate
+        
+        dateComponents.hour = 0
+        dateComponents.minute = 0
+        expense = self.createExpense()
+        expense.name = "Expense 2"
+        expense.creationDate = dateComponents.date! as NSDate
+        
+        ModelManager.saveContext(self.managedObjectContext)
+        self.createFetchedResultsController(startDate: startDate, finishDate: finishDate)
+        self.fetchedResultsController.performSilentFailureFetch()
+        
+        expect(self.fetchedResultsController.numberOfObjects()) == 2
     }
     
     func testAllExpensesInTheSameMonth() {

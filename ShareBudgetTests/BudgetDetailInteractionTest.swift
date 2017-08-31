@@ -33,11 +33,14 @@ class BudgetDetailInteractionTest: XCTestCase {
     private func createExpense() -> Expense {
         let expense = Expense(context: self.managedObjectContext)
         expense.budget = self.budget
+        expense.isRemoved = false
         expense.creationDate = NSDate()
         self.budget.addToExpenses(expense)
         
         return expense
     }
+    
+    // MARK: - Tests
     
     func testInit() {
         expect(self.budgetDetailInteraction.budgetID).notTo(beNil())
@@ -53,7 +56,7 @@ class BudgetDetailInteractionTest: XCTestCase {
         let _ = self.createExpense()
         ModelManager.saveContext(self.managedObjectContext)
         
-        expect(self.budgetDetailInteraction.isEmpty()).to(beFalse())
+        expect(self.budgetDetailInteraction.isEmpty()) == false
     }
     
     func testAllExpensesRemoved() {

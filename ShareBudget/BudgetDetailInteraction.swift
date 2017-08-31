@@ -17,7 +17,6 @@ class BudgetDetailInteraction: BaseInteraction {
     let budgetID: NSManagedObjectID
     weak var delegate: BudgetDetailInteractionDelegate?
     
-    private var kvoContext: UInt8 = 1
     private let calculator: ExpenseCalculator
     private let managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Expense>
