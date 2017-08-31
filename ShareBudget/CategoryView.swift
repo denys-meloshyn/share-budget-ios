@@ -10,6 +10,7 @@ import UIKit
 
 class CategoryView: BaseView {
     weak var tableView: UITableView?
+    fileprivate let tableDequeueReusableCell = "CategoryTableViewCell"
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"
     
     fileprivate var categoryPresenter: CategoryPresenter {
@@ -27,12 +28,13 @@ class CategoryView: BaseView {
         self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
         self.tableView?.delegate = self.categoryPresenter
         self.tableView?.dataSource = self.categoryPresenter
+        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: self.tableDequeueReusableCell)
     }
 }
 
 extension CategoryView: CategoryPresenterDelegate {
     internal func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell {
-        let cell = self.tableView?.dequeueReusableCell(withIdentifier: "CategoryTableViewCell")
+        let cell = self.tableView?.dequeueReusableCell(withIdentifier: self.tableDequeueReusableCell)
         cell?.textLabel?.text = text
         
         if isSelected {

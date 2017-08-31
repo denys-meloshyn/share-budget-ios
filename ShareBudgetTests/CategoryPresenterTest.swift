@@ -13,7 +13,7 @@ import Nimble
 
 class CategoryPresenterTest: XCTestCase {
     var view: CategoryView!
-    var router: CategoryRouter!
+    var router: MockCategoryRouter!
     var presenter: CategoryPresenter!
     var interaction: CategoryInteraction!
     var viewController: MockCategoryViewController!
@@ -35,7 +35,7 @@ class CategoryPresenterTest: XCTestCase {
         self.viewController = MockCategoryViewController()
         self.viewController.expenseID = self.expense.objectID
         self.viewController.managedObjectContext = self.managedObjectContext
-        self.router = CategoryRouter(with: self.viewController)
+        self.router = MockCategoryRouter(with: self.viewController)
         self.interaction = CategoryInteraction(with: self.expense.objectID, managedObjectContext: self.managedObjectContext)
         self.presenter = CategoryPresenter(with: self.interaction, router: self.router, delegate: nil)
         self.view = CategoryView(with: self.presenter, and: self.viewController)
@@ -93,5 +93,22 @@ class CategoryPresenterTest: XCTestCase {
         
         expect(header.textField?.text).notTo(beNil())
         expect(header.textField?.placeholder).notTo(beNil())
+    }
+    
+    func testCellCreated() {
+        self.addDefaultItems()
+        
+        let cell = presenter.tableView(self.view.tableView!, cellForRowAt: IndexPath(row: 0, section: 0))
+        
+        expect(cell.textLabel?.text).notTo(beNil())
+    }
+    
+    func testBudgetPageOpened() {
+        self.addDefaultItems()
+        
+        self.presenter.tableView(self.view.tableView!, didSelectRowAt: IndexPath(row: 0, section: 0))
+        
+        let expected = CalledMethod("closePage()")
+        expect(self.router.calledMethodManager.methods).to(contain(expected))
     }
 }

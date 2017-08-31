@@ -280,6 +280,7 @@
 		576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */; };
 		577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
+		5788448E1F588C34007DB0E7 /* MockCategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788448D1F588C34007DB0E7 /* MockCategoryRouter.swift */; };
 		578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
 		578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
 		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
@@ -456,6 +457,7 @@
 		576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTest.swift; sourceTree = "<group>"; };
 		577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractionTest.swift; sourceTree = "<group>"; };
 		57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorisationAPI.swift; sourceTree = "<group>"; };
+		5788448D1F588C34007DB0E7 /* MockCategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryRouter.swift; sourceTree = "<group>"; };
 		578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		578A04D01E5256B500330DCD /* ExpenseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseAPI.swift; sourceTree = "<group>"; };
 		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -880,6 +882,7 @@
 				57BEAD661ECE21B000CE372C /* MockBudgetRouter.swift */,
 				57BEAD6A1ECE230B00CE372C /* MockBudgetView.swift */,
 				57BEAD681ECE225F00CE372C /* MockBudgetViewController.swift */,
+				5788448D1F588C34007DB0E7 /* MockCategoryRouter.swift */,
 				57D11C1E1F2E59A900FBDAA0 /* MockCategoryViewController.swift */,
 				5735C4D51EE496630037BAA8 /* MockDependency.swift */,
 				57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */,
@@ -1837,6 +1840,7 @@
 				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
 				57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */,
 				57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */,
+				5788448E1F588C34007DB0E7 /* MockCategoryRouter.swift in Sources */,
 				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
 				57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */,
 				57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */,
