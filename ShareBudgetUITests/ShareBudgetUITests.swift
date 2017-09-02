@@ -29,7 +29,6 @@ class ShareBudgetUITests: XCTestCase {
     // MARK: - Tests
     
     func testGoingThroughOnboarding() {
-        let v = BudgetViewController()
         self.app.launchEnvironment = ["klaunchViewControllerID": "BudgetViewController"]
         self.app.launch()
         
