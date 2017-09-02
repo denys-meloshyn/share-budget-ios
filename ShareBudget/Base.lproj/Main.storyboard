@@ -274,7 +274,7 @@
         <!--Budget View Controller-->
         <scene sceneID="ERI-Km-cR9">
             <objects>
-                <viewController id="hmR-8E-o1P" customClass="BudgetViewController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BudgetViewController" id="hmR-8E-o1P" customClass="BudgetViewController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UxD-yU-rwJ"/>
                         <viewControllerLayoutGuide type="bottom" id="cN9-kn-9yv"/>

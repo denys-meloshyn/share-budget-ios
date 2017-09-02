@@ -96,7 +96,12 @@ extension CategoryPresenter: UITableViewDelegate {
 
 extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
     func textChanged(_ sender: CreateSearchTableViewHeader, _ text: String) {
-        self.categoryInteraction.updateWithSearch(text)
+        let newText = Validator.removeWhiteSpaces(text)
+        if text != newText {
+            sender.textField?.text = newText
+        }
+        
+        self.categoryInteraction.updateWithSearch(newText)
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {

@@ -12,15 +12,15 @@ import Nimble
 @testable import ShareBudget
 
 class CategoryPresenterTest: XCTestCase {
-    var view: CategoryView!
-    var router: MockCategoryRouter!
-    var presenter: CategoryPresenter!
-    var interaction: CategoryInteraction!
-    var viewController: MockCategoryViewController!
+    private var view: MockCategoryView!
+    private var router: MockCategoryRouter!
+    private var presenter: CategoryPresenter!
+    private var interaction: CategoryInteraction!
+    private var viewController: MockCategoryViewController!
     
-    var budget: Budget!
-    var expense: Expense!
-    var managedObjectContext: NSManagedObjectContext!
+    private var budget: Budget!
+    private var expense: Expense!
+    private var managedObjectContext: NSManagedObjectContext!
     
     override func setUp() {
         super.setUp()
@@ -38,7 +38,7 @@ class CategoryPresenterTest: XCTestCase {
         self.router = MockCategoryRouter(with: self.viewController)
         self.interaction = CategoryInteraction(with: self.expense.objectID, managedObjectContext: self.managedObjectContext)
         self.presenter = CategoryPresenter(with: self.interaction, router: self.router, delegate: nil)
-        self.view = CategoryView(with: self.presenter, and: self.viewController)
+        self.view = MockCategoryView(with: self.presenter, and: self.viewController)
         
         viewController.viperView = self.view
         
@@ -110,5 +110,9 @@ class CategoryPresenterTest: XCTestCase {
         
         let expected = CalledMethod("closePage()")
         expect(self.router.calledMethodManager.methods).to(contain(expected))
+    }
+    
+    func testTableRowHeightNotZero() {
+        expect(self.presenter.tableView(UITableView(), heightForHeaderInSection: 0)) > 0
     }
 }

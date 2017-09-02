@@ -65,7 +65,15 @@ enum ErrorTypeAPI {
     case unknown
 }
 
-class Constants {
+let launchViewControllerID = "klaunchViewControllerID"
+
+struct Constants {
+    struct key {
+        struct testing {
+            static let launchViewControllerID = "klaunchViewControllerID"
+        }
+    }
+    
     static let defaultTextTintColor = UIColor.black
     static let defaultInputTextColor = UIColor(hexString:"#C7C7CD")!
     static let defaultActionColor = UIColor(hexString: "#E91E63")!

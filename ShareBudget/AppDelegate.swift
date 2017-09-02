@@ -24,6 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.configureAppearance()
         
+        if let launchViewControllerID = ProcessInfo.processInfo.environment[Constants.key.testing.launchViewControllerID] {
+            let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: launchViewControllerID)
+            self.window?.rootViewController = viewController
+            return true
+        }
+        
         if !Dependency.userCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")

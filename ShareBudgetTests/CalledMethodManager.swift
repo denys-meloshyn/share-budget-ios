@@ -11,7 +11,7 @@ import UIKit
 class CalledMethodManager {
     var methods = [CalledMethod]()
     
-    func add(_ method: String) {
+    func add(_ method: String = #function) {
         let filterItems = methods.filter { (it) -> Bool in
             it.name == method
         }
