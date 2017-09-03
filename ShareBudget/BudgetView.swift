@@ -34,7 +34,7 @@ class BudgetView: BaseView {
         super.viewDidLoad()
         
         self.configureTable()
-        self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
+        self.viewController?.view.backgroundColor = Constants.appearance.dflt.backgroundColor
     }
     
     func configureTable() {

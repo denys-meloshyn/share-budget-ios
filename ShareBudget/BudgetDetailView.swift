@@ -58,10 +58,10 @@ class BudgetDetailView: BaseView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.editMemberButton?.tintColor = Constants.defaultActionColor
-        self.animationView?.backgroundColor = Constants.defaultActionColor
-        self.viewController?.view.backgroundColor = Constants.defaultBackgroundColor
-        self.createNewExpenseContainerView?.backgroundColor = Constants.defaultActionColor
+        self.editMemberButton?.tintColor = Constants.appearance.dflt.actionColor
+        self.animationView?.backgroundColor = Constants.appearance.dflt.actionColor
+        self.viewController?.view.backgroundColor = Constants.appearance.dflt.backgroundColor
+        self.createNewExpenseContainerView?.backgroundColor = Constants.appearance.dflt.actionColor
         
         self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
         self.editMemberButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.editMembers), for: .touchUpInside)
@@ -69,8 +69,8 @@ class BudgetDetailView: BaseView {
         self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
         self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
         
-        self.configureBorder(for: self.budgetContainerView, color: Constants.defaultActionColor)
-        self.configureBorder(for: self.expenseContainerView, color: Constants.defaultActionColor)
+        self.configureBorder(for: self.budgetContainerView, color: Constants.appearance.dflt.actionColor)
+        self.configureBorder(for: self.expenseContainerView, color: Constants.appearance.dflt.actionColor)
         self.configureBorder(for: self.balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
         
         self.configureChart()

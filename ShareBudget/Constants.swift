@@ -74,9 +74,13 @@ struct Constants {
         }
     }
     
-    static let defaultTextTintColor = UIColor.black
-    static let defaultInputTextColor = UIColor(hexString:"#C7C7CD")!
-    static let defaultActionColor = UIColor(hexString: "#E91E63")!
-    static let defaultApperanceColor = UIColor(hexString: "#EEEEEE")!
-    static let defaultBackgroundColor = UIColor(hexString: "#F5F5F5")
+    struct appearance {
+        struct dflt {
+            static let textTintColor = UIColor.black
+            static let inputTextColor = UIColor(hexString:"#C7C7CD")!
+            static let actionColor = UIColor(hexString: "#E91E63")!
+            static let apperanceColor = UIColor(hexString: "#EEEEEE")!
+            static let backgroundColor = UIColor(hexString: "#F5F5F5")
+        }
+    }
 }
