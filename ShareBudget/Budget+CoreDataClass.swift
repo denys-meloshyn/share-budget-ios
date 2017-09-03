@@ -12,25 +12,25 @@ import CoreData
 @objc(Budget)
 public class Budget: BaseModel {
     override class func modelKeyID() -> String {
-        return kGroupID
+        return Constants.key.json.groupID
     }
     
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
-        self.configureModelID(dict: dict, for: kGroupID)
+        self.configureModelID(dict: dict, for: Constants.key.json.groupID)
         
-        self.name = dict[kName] as? String
+        self.name = dict[Constants.key.json.name] as? String
     }
     
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
         if let modelID = self.modelID {
-            result[kGroupID] = String(modelID.intValue)
+            result[Constants.key.json.groupID] = String(modelID.intValue)
         }
         
         if let name = self.name {
-            result[kName] = name
+            result[Constants.key.json.name] = name
         }
         
         return result

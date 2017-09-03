@@ -26,7 +26,7 @@ class BaseAPI {
     var pagination: PaginationAPI?
     
     class private func mapErrorType(data: Any?) -> ErrorTypeAPI {
-        if let errorMessage = data as? [String: String], let errorCode = errorMessage[kMessage] {
+        if let errorMessage = data as? [String: String], let errorCode = errorMessage[Constants.key.json.message] {
             switch errorCode {
             case kEmailNotApproved:
                 return .emailNotApproved
@@ -82,12 +82,12 @@ class BaseAPI {
         components.path = "/" + resource + "/updates"
         
         if let pagination = self.pagination {
-            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(pagination.size))
-            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(pagination.start))
+            let sizePageQuery = URLQueryItem(name: Constants.key.json.paginationPageSize, value: String(pagination.size))
+            let startPageQuery = URLQueryItem(name: Constants.key.json.paginationStart, value: String(pagination.start))
             components.queryItems = [sizePageQuery, startPageQuery]
         } else {
-            let sizePageQuery = URLQueryItem(name: kPaginationPageSize, value: String(paginationSize))
-            let startPageQuery = URLQueryItem(name: kPaginationStart, value: String(1))
+            let sizePageQuery = URLQueryItem(name: Constants.key.json.paginationPageSize, value: String(paginationSize))
+            let startPageQuery = URLQueryItem(name: Constants.key.json.paginationStart, value: String(1))
             components.queryItems = [sizePageQuery, startPageQuery]
         }
         
@@ -114,19 +114,19 @@ class BaseAPI {
                 return
             }
             
-            guard let results = dict[kResult] as? [[String: Any?]] else {
-                Dependency.logger.error("'\(kResult)' has wrong structure", userInfo: [kLogBody: dict])
+            guard let results = dict[Constants.key.json.result] as? [[String: Any?]] else {
+                Dependency.logger.error("'\(Constants.key.json.result)' has wrong structure", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return
             }
             
-            guard let timestamp = dict[kTimeStamp] as? String else {
-                Dependency.logger.error("'\(kTimeStamp)' missed", userInfo: [kLogBody: dict])
+            guard let timestamp = dict[Constants.key.json.timeStamp] as? String else {
+                Dependency.logger.error("'\(Constants.key.json.timeStamp)' missed", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return
             }
             
-            if let pagination = dict[kPagination] as? [String: Any] {
+            if let pagination = dict[Constants.key.json.pagination] as? [String: Any] {
                 let pagination = PaginationAPI(with: pagination)
                 
                 if pagination.hasNext() {
@@ -166,10 +166,10 @@ class BaseAPI {
         let model = managedObjectContext.object(with: modelID) as! BaseModel
         var properties = model.uploadProperties()
         
-        properties[kToken] = Dependency.userCredentials.token
-        properties[kUserID] = String(Dependency.userCredentials.userID)
+        properties[Constants.key.json.token] = Dependency.userCredentials.token
+        properties[Constants.key.json.userID] = String(Dependency.userCredentials.userID)
         if !self.timestamp.isEmpty {
-            properties[kTimeStamp] = self.timestamp
+            properties[Constants.key.json.timeStamp] = self.timestamp
         }
         
         let formValues = properties.map { (key, value) -> String in
@@ -209,7 +209,7 @@ class BaseAPI {
                 return
             }
             
-            guard let result = dict[kResult] as? [String: Any?] else {
+            guard let result = dict[Constants.key.json.result] as? [String: Any?] else {
                 Dependency.logger.error("'result' has wrong structure", userInfo: [kLogBody: dict])
                 completion?(data, .unknown)
                 return

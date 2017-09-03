@@ -10,15 +10,15 @@ import UIKit
 
 extension URLRequest {
     mutating func addToken() {
-        self.setValue(Dependency.userCredentials.token, forHTTPHeaderField: kToken)
+        self.setValue(Dependency.userCredentials.token, forHTTPHeaderField: Constants.key.json.token)
     }
     
     mutating func addUpdateCredentials(timestamp: String) {
         self.addToken()
-        self.setValue(String(Dependency.userCredentials.userID), forHTTPHeaderField: kUserID)
+        self.setValue(String(Dependency.userCredentials.userID), forHTTPHeaderField: Constants.key.json.userID)
         
         if !timestamp.isEmpty {
-            self.setValue(timestamp, forHTTPHeaderField: kTimeStamp)
+            self.setValue(timestamp, forHTTPHeaderField: Constants.key.json.timeStamp)
         }
     }
 }

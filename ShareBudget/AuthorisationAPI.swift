@@ -18,8 +18,8 @@ class AuthorisationAPI: BaseAPI {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue(email, forHTTPHeaderField: kEmail)
-        request.setValue(password, forHTTPHeaderField: kPassword)
+        request.setValue(email, forHTTPHeaderField: Constants.key.json.email)
+        request.setValue(password, forHTTPHeaderField: Constants.key.json.password)
         
         return AsynchronousURLConnection.run(request, completion: { (data, response, error) -> (Void) in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
@@ -35,19 +35,19 @@ class AuthorisationAPI: BaseAPI {
                 return
             }
             
-            guard let result = dict[kResult] as? [String: AnyObject?] else {
+            guard let result = dict[Constants.key.json.result] as? [String: AnyObject?] else {
                 Dependency.logger.error("'result' has wrong structure")
                 completion?(data, .unknown)
                 return
             }
             
-            guard let userID = result[kUserID] as? Int else {
+            guard let userID = result[Constants.key.json.userID] as? Int else {
                 Dependency.logger.error("'userID' is missed")
                 completion?(data, .unknown)
                 return
             }
             
-            guard let token = result[kToken] as? String else {
+            guard let token = result[Constants.key.json.token] as? String else {
                 Dependency.logger.error("'token' is missed")
                 completion?(data, .unknown)
                 return
@@ -79,10 +79,10 @@ class AuthorisationAPI: BaseAPI {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue(email, forHTTPHeaderField: kEmail)
-        request.setValue(password, forHTTPHeaderField: kPassword)
-        request.setValue(firstName, forHTTPHeaderField: kFirstName)
-        request.setValue(lastName, forHTTPHeaderField: kLastName)
+        request.setValue(email, forHTTPHeaderField: Constants.key.json.email)
+        request.setValue(password, forHTTPHeaderField: Constants.key.json.password)
+        request.setValue(firstName, forHTTPHeaderField: Constants.key.json.firstName)
+        request.setValue(lastName, forHTTPHeaderField: Constants.key.json.lastName)
         
         return AsynchronousURLConnection.run(request, completion: completion)
     }
@@ -96,7 +96,7 @@ class AuthorisationAPI: BaseAPI {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue(email, forHTTPHeaderField: kEmail)
+        request.setValue(email, forHTTPHeaderField: Constants.key.json.email)
         
         _ = AsynchronousURLConnection.run(request, completion: nil)
     }

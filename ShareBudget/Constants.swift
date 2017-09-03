@@ -9,35 +9,6 @@
 import UIKit
 import ChameleonFramework
 
-let kDate = "date"
-let kName = "name"
-let kLimit = "limit"
-let kEmail = "email"
-let kPrice = "price"
-let kToken = "token"
-let kResult = "result"
-let kStatus = "status"
-let kUserID = "userID"
-let kGroupID = "groupID"
-let kMessage = "message"
-let kPassword = "password"
-let kLastName = "lastName"
-let kFirstName = "firstName"
-let kExpenseID = "expenseID"
-let kIsRemoved = "isRemoved"
-let kTimeStamp = "timeStamp"
-let kInternalID = "internalID"
-let kCategoryID = "categoryID"
-let kUserGroupID = "userGroupID"
-let kCreationDate = "creationDate"
-let kBudgetLimitID = "budgetLimitID"
-let kModifiedUserID = "modifiedUserID"
-let kCategoryLimitID = "categoryLimitID"
-
-let kPagination = "pagination"
-let kPaginationStart = "start"
-let kPaginationTotal = "total"
-let kPaginationPageSize = "pageSize"
 let paginationSize = 30
 
 let kPasswordMinLength = 1
@@ -65,12 +36,42 @@ enum ErrorTypeAPI {
     case unknown
 }
 
-let launchViewControllerID = "klaunchViewControllerID"
-
 struct Constants {
     struct key {
         struct testing {
             static let launchViewControllerID = "klaunchViewControllerID"
+        }
+        
+        struct json {
+            static let date = "date"
+            static let name = "name"
+            static let limit = "limit"
+            static let email = "email"
+            static let price = "price"
+            static let token = "token"
+            static let result = "result"
+            static let status = "status"
+            static let userID = "userID"
+            static let groupID = "groupID"
+            static let message = "message"
+            static let password = "password"
+            static let lastName = "lastName"
+            static let firstName = "firstName"
+            static let expenseID = "expenseID"
+            static let isRemoved = "isRemoved"
+            static let timeStamp = "timeStamp"
+            static let internalID = "internalID"
+            static let categoryID = "categoryID"
+            static let userGroupID = "userGroupID"
+            static let creationDate = "creationDate"
+            static let budgetLimitID = "budgetLimitID"
+            static let modifiedUserID = "modifiedUserID"
+            static let categoryLimitID = "categoryLimitID"
+            
+            static let pagination = "pagination"
+            static let paginationStart = "start"
+            static let paginationTotal = "total"
+            static let paginationPageSize = "pageSize"
         }
     }
     

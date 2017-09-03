@@ -17,7 +17,7 @@ class BudgetAPI: BaseAPI {
         var budget: Budget?
         
         for item in items {
-            if let internalID = item[kInternalID] as? Int {
+            if let internalID = item[Constants.key.json.internalID] as? Int {
                 budget = ModelManager.findEntity(Budget.self, internal: internalID, in: managedObjectContext) as? Budget
             } else if let modelID = item[Budget.modelKeyID()] as? Int {
                 budget = ModelManager.findEntity(Budget.self, by: modelID, in: managedObjectContext) as? Budget

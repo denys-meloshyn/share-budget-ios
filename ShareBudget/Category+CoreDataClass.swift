@@ -12,14 +12,14 @@ import CoreData
 @objc(Category)
 public class Category: BaseModel {
     override class func modelKeyID() -> String {
-        return kCategoryID
+        return Constants.key.json.categoryID
     }
     
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
-        self.configureModelID(dict: dict, for: kCategoryID)
+        self.configureModelID(dict: dict, for: Constants.key.json.categoryID)
         
-        self.name = dict[kName] as? String
+        self.name = dict[Constants.key.json.name] as? String
         
         if let modelID = dict[Budget.modelKeyID()] as? Int {
             self.budget = ModelManager.findEntity(Budget.self, by: modelID, in: managedObjectContext) as? Budget
@@ -31,15 +31,15 @@ public class Category: BaseModel {
         var result = super.uploadProperties()
         
         if let name = self.name {
-            result[kName] = name
+            result[Constants.key.json.name] = name
         }
         
         if let categoryID = self.modelID {
-            result[kCategoryID] = String(categoryID.intValue)
+            result[Constants.key.json.categoryID] = String(categoryID.intValue)
         }
         
         if let groupID = self.budget?.modelID {
-            result[kGroupID] = String(groupID.intValue)
+            result[Constants.key.json.groupID] = String(groupID.intValue)
         }
         
         return result

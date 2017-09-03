@@ -17,10 +17,10 @@ public class User: BaseModel {
     
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
-        self.configureModelID(dict: dict, for: kUserID)
+        self.configureModelID(dict: dict, for: Constants.key.json.userID)
         
-        self.email = dict[kEmail] as? String
-        self.firstName = dict[kFirstName] as? String
-        self.lastName = dict[kLastName] as? String
+        self.email = dict[Constants.key.json.email] as? String
+        self.firstName = dict[Constants.key.json.firstName] as? String
+        self.lastName = dict[Constants.key.json.lastName] as? String
     }
 }

@@ -12,7 +12,7 @@ import CoreData
 @objc(Expense)
 public class Expense: BaseModel {
     override class func modelKeyID() -> String {
-        return kExpenseID
+        return Constants.key.json.expenseID
     }
     
     override public func didChangeValue(forKey key: String) {
@@ -36,49 +36,49 @@ public class Expense: BaseModel {
     
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
-        self.configureModelID(dict: dict, for: kExpenseID)
+        self.configureModelID(dict: dict, for: Constants.key.json.expenseID)
         
-        if let budgetID = dict[kGroupID] as? Int {
+        if let budgetID = dict[Constants.key.json.groupID] as? Int {
             self.budget = ModelManager.findEntity(Budget.self, by: budgetID, in: managedObjectContext) as? Budget
             self.budget?.addToExpenses(self)
         }
         
-        if let categoryID = dict[kCategoryID] as? Int {
+        if let categoryID = dict[Constants.key.json.categoryID] as? Int {
             self.category = ModelManager.findEntity(Category.self, by: categoryID, in: managedObjectContext) as? Category
             self.category?.addToExpenses(self)
         }
         
-        if let date = dict[kCreationDate] as? String {
+        if let date = dict[Constants.key.json.creationDate] as? String {
             self.creationDate = UtilityFormatter.pareseDateFormatter.date(from: date) as NSDate?
         }
         
-        self.name = dict[kName] as? String
-        self.price =  NSNumber(value: dict[kPrice] as? Double ?? 0.0)
+        self.name = dict[Constants.key.json.name] as? String
+        self.price =  NSNumber(value: dict[Constants.key.json.price] as? Double ?? 0.0)
     }
     
     override func uploadProperties() -> [String : String] {
         var result = super.uploadProperties()
         
-        result[kPrice] = String(self.price?.doubleValue ?? 0.0)
+        result[Constants.key.json.price] = String(self.price?.doubleValue ?? 0.0)
         
         if let modelID = self.modelID {
-            result[kExpenseID] = String(modelID.intValue)
+            result[Constants.key.json.expenseID] = String(modelID.intValue)
         }
         
         if let name = self.name {
-            result[kName] = name
+            result[Constants.key.json.name] = name
         }
         
         if let modelID = self.budget?.modelID {
-            result[kGroupID] = String(modelID.intValue)
+            result[Constants.key.json.groupID] = String(modelID.intValue)
         }
         
         if let categoryID = self.category?.modelID {
-            result[kCategoryID] = String(categoryID.intValue)
+            result[Constants.key.json.categoryID] = String(categoryID.intValue)
         }
         
         if let creationDate = self.creationDate as Date? {
-            result[kCreationDate] = UtilityFormatter.iso8601DateFormatter.string(from: creationDate)
+            result[Constants.key.json.creationDate] = UtilityFormatter.iso8601DateFormatter.string(from: creationDate)
         }
         
         return result

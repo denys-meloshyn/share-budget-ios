@@ -16,11 +16,11 @@ public class BaseModel: NSManagedObject {
     }
     
     func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
-        if let isRemoved = dict[kIsRemoved] as? Bool {
+        if let isRemoved = dict[Constants.key.json.isRemoved] as? Bool {
             self.isRemoved = NSNumber(value: isRemoved)
         }
         
-        self.timestamp = dict[kTimeStamp] as? String
+        self.timestamp = dict[Constants.key.json.timeStamp] as? String
     }
     
     func configureModelID(dict: [String: Any?], for key: String) {
@@ -33,7 +33,7 @@ public class BaseModel: NSManagedObject {
         var result = [String : String]()
         
         if let isRemoved = self.isRemoved {
-            result[kIsRemoved] = isRemoved.boolValue.description
+            result[Constants.key.json.isRemoved] = isRemoved.boolValue.description
         }
         
         return result
