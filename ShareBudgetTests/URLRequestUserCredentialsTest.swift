@@ -24,37 +24,37 @@ class URLRequestUserCredentialsTest: XCTestCase {
     }
     
     func testUserCredentialsNotAdded() {
-        expect(self.urlRequest.allHTTPHeaderFields?[kToken]).to(beNil())
-        expect(self.urlRequest.allHTTPHeaderFields?[kUserID]).to(beNil())
-        expect(self.urlRequest.allHTTPHeaderFields?[kTimeStamp]).to(beNil())
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]).to(beNil())
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.userID]).to(beNil())
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]).to(beNil())
     }
     
     func testAddToken() {
         self.urlRequest.addToken()
         
-        expect(self.urlRequest.allHTTPHeaderFields?[kToken]) == "token"
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
     }
     
     func testTokenAddedTwice() {
         self.urlRequest.addToken()
         self.urlRequest.addToken()
         
-        expect(self.urlRequest.allHTTPHeaderFields?[kToken]) == "token"
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
     }
     
     func testAddUpdateCredentialsWithEmptyTimeStamp() {
         self.urlRequest.addUpdateCredentials(timestamp: "")
         
-        expect(self.urlRequest.allHTTPHeaderFields?[kToken]) == "token"
-        expect(Int(self.urlRequest.allHTTPHeaderFields![kUserID]!)) == -100
-        expect(self.urlRequest.allHTTPHeaderFields?[kTimeStamp]).to(beNil())
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
+        expect(Int(self.urlRequest.allHTTPHeaderFields![Constants.key.json.userID]!)) == -100
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]).to(beNil())
     }
     
     func testAddUpdateCredentialsWithEmpty() {
         self.urlRequest.addUpdateCredentials(timestamp: "timestamp")
         
-        expect(self.urlRequest.allHTTPHeaderFields?[kToken]) == "token"
-        expect(Int(self.urlRequest.allHTTPHeaderFields![kUserID]!)) == -100
-        expect(self.urlRequest.allHTTPHeaderFields?[kTimeStamp]) == "timestamp"
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
+        expect(Int(self.urlRequest.allHTTPHeaderFields![Constants.key.json.userID]!)) == -100
+        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]) == "timestamp"
     }
 }

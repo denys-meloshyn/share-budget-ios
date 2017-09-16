@@ -18,7 +18,7 @@ public class UserGroup: BaseModel {
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {
         super.update(with: dict, in: managedObjectContext)
         self.configureModelID(dict: dict, for: Constants.key.json.userGroupID)
-            
+        
         if let userID = dict[Constants.key.json.userID] as? Int {
             self.user = ModelManager.findEntity(User.self, by: userID, in: managedObjectContext) as? User
             self.user?.addToUserGroup(self)
