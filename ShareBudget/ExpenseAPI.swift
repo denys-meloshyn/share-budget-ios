@@ -35,19 +35,14 @@ class ExpenseAPI: BaseAPI {
         
         var tasks = [BaseAPITask]()
         
-        let sections = fetchedResultsController?.sections ?? []
-        for i in 0..<sections.count {
-            let section = sections[i]
-            for j in 0..<section.numberOfObjects {
-                let indexPath = IndexPath(row: j, section: i)
-                guard let model = fetchedResultsController?.object(at: indexPath) as? Expense else {
-                    continue
-                }
-                
-                let task = BaseAPITaskUpload(resource: "expense", entity: self, modelID: model.objectID, completionBlock: completionBlock)
-                tasks.append(task)
+        fetchedResultsController?.iterate(block: {indexPath in
+            guard let model = fetchedResultsController?.object(at: indexPath) as? Expense else {
+                return
             }
-        }
+            
+            let task = BaseAPITaskUpload(resource: "expense", entity: self, modelID: model.objectID, completionBlock: completionBlock)
+            tasks.append(task)
+        })
         
         return tasks
     }
