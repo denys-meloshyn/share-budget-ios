@@ -11,12 +11,12 @@ import UIKit
 class MockBudgetPresenter: BudgetPresenter {
     let calledMethodManager = CalledMethodManager()
     
-    override func startListenKeyboardNotifications() {
+    @objc override func startListenKeyboardNotifications() {
         let key = #selector(MockBudgetPresenter.startListenKeyboardNotifications)
         calledMethodManager.add(key)
     }
     
-    override func stopListenKeyboardNotifications() {
+    @objc override func stopListenKeyboardNotifications() {
         let key = #selector(MockBudgetPresenter.stopListenKeyboardNotifications)
         calledMethodManager.add(key)
     }

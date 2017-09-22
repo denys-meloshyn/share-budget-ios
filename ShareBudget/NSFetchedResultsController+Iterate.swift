@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension NSFetchedResultsController {
-    func iterate(block: (IndexPath) -> (Void)) {
+    @objc func iterate(block: (IndexPath) -> (Void)) {
         if let sections = self.sections {
             for sectionIndex in 0..<sections.count {
                 let section = sections[sectionIndex]

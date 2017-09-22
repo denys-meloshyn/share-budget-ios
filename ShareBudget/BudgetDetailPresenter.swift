@@ -179,11 +179,11 @@ class BudgetDetailPresenter: BasePresenter {
         self.delegate?.updateBalance(UtilityFormatter.priceFormatter.string(for: self.budgetDetailInteraction.balance()) ?? "0")
     }
     
-    func createNewExpense() {
+    @objc func createNewExpense() {
         self.budgetDetailRouter.openEditExpensePage(with: self.budgetDetailInteraction.budgetID)
     }
     
-    func showAllExpenses() {
+    @objc func showAllExpenses() {
         self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID)
     }
     
@@ -203,7 +203,7 @@ class BudgetDetailPresenter: BasePresenter {
         return res
     }
     
-    func changeBudgetLimit() {
+    @objc func changeBudgetLimit() {
         let limit = NSNumber(value: self.budgetDetailInteraction.lastMonthLimit()?.limit?.doubleValue ?? 0.0)
         let formattedLimit = UtilityFormatter.priceEditFormatter.string(from: limit) ?? ""
         
@@ -215,11 +215,11 @@ class BudgetDetailPresenter: BasePresenter {
                                                budgetLimit: formattedLimit)
     }
     
-    func closePageAction() {
+    @objc func closePageAction() {
         self.budgetDetailRouter.closePage()
     }
     
-    func editMembers() {
+    @objc func editMembers() {
         self.budgetDetailRouter.openTeamMembersPage(with: self.budgetDetailInteraction.budget.objectID)
     }
 }

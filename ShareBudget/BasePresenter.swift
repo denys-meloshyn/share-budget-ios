@@ -35,23 +35,23 @@ class BasePresenter: NSObject {
 }
 
 extension BasePresenter: LifeCycleStateProtocol {
-    func viewDidLoad() {
+    @objc func viewDidLoad() {
         
     }
     
-    func viewWillAppear(_ animated: Bool) {
+    @objc func viewWillAppear(_ animated: Bool) {
         
     }
     
-    func viewDidAppear(_ animated: Bool) {
+    @objc func viewDidAppear(_ animated: Bool) {
         
     }
     
-    func viewWillDisappear(_ animated: Bool) {
+    @objc func viewWillDisappear(_ animated: Bool) {
         
     }
     
-    func viewDidDisappear(_ animated: Bool) {
+    @objc func viewDidDisappear(_ animated: Bool) {
         
     }
 }

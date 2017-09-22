@@ -54,7 +54,7 @@ class LoginPresenter: BasePresenter {
     
     // MARK: - Public
     
-    func switchAuthorisationMode() {
+    @objc func switchAuthorisationMode() {
         if self.mode == .login {
             self.mode = .signUp
         } else {
@@ -66,7 +66,7 @@ class LoginPresenter: BasePresenter {
         self.resetAllLoginErrorStatuses()
     }
     
-    func authoriseUser() {
+    @objc func authoriseUser() {
         guard let delegate = self.delegate else {
             return
         }
@@ -160,7 +160,7 @@ class LoginPresenter: BasePresenter {
         textField?.delegate = self
     }
     
-    func keyboardWillShown(notofication: NSNotification) {
+    @objc func keyboardWillShown(notofication: NSNotification) {
         if let info = notofication.userInfo {
             if let kbSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 self.delegate?.shiftBottomOffset(kbSize.height)
@@ -168,7 +168,7 @@ class LoginPresenter: BasePresenter {
         }
     }
     
-    func keyboardWillBeHidden() {
+    @objc func keyboardWillBeHidden() {
         self.delegate?.removeBottomOffset()
     }
     

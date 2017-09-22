@@ -24,7 +24,7 @@ class BudgetDetailView: BaseView {
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
     weak var editMemberButton: UIButton?
-    weak var budgetContainerView: UIView?
+    @objc weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
     weak var createExpenseButton: UIButton?

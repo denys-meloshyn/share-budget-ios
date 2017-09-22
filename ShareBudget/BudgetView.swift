@@ -84,17 +84,17 @@ extension BudgetView: BudgetPresenterDelegate {
         searchView?.textField?.text = ""
     }
     
-    func cancelSearch() {
+    @objc func cancelSearch() {
         let searchView = self.searchView()
         searchView?.textField?.resignFirstResponder()
     }
     
-    func showGroupList() {
+    @objc func showGroupList() {
         self.tableView?.separatorStyle = .singleLine
         self.createNewGroupRootView?.isHidden = true
     }
     
-    func showCreateNewGroupMessage(message: NSAttributedString) {
+    @objc func showCreateNewGroupMessage(message: NSAttributedString) {
         self.tableView?.separatorStyle = .none
         self.createNewGroupRootView?.isHidden = false
         

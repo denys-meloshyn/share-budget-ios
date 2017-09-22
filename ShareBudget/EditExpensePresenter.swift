@@ -62,11 +62,11 @@ class EditExpensePresenter: BasePresenter {
         self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, color: Constants.appearance.dflt.apperanceColor, for: .price)
     }
     
-    func openCategoryPage() {
+    @objc func openCategoryPage() {
         self.expenseRouter.openCategoryPage(for: self.expenseInteraction.expense.objectID, managedObjectContext: self.expenseInteraction.managedObjectContext, delegate: self)
     }
     
-    func dateChanged(sender: UIDatePicker) {
+    @objc func dateChanged(sender: UIDatePicker) {
         self.expenseInteraction.expense.creationDate = sender.date as NSDate?
         
         self.updateDate()
@@ -175,7 +175,7 @@ class EditExpensePresenter: BasePresenter {
         self.delegate?.configureSaveButtonState(isEnable)
     }
     
-    func saveChanges() {
+    @objc func saveChanges() {
         self.expenseInteraction.save()
         self.expenseRouter.closePage()
     }

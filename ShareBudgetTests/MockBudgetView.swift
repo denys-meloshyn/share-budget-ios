@@ -21,12 +21,12 @@ class MockBudgetView: BudgetView {
         calledMethodManager.add(key)
     }
     
-    override func showCreateNewGroupMessage(message: NSAttributedString) {
+    @objc override func showCreateNewGroupMessage(message: NSAttributedString) {
         let key = #selector(MockBudgetView.showCreateNewGroupMessage(message:))
         calledMethodManager.add(key)
     }
     
-    override func showGroupList() {
+    @objc override func showGroupList() {
         calledMethodManager.add(#selector(MockBudgetView.showGroupList))
     }
     
@@ -34,7 +34,7 @@ class MockBudgetView: BudgetView {
         calledMethodManager.add(#selector(MockBudgetView.showGroupList))
     }
     
-    override func cancelSearch() {
+    @objc override func cancelSearch() {
         calledMethodManager.add(#selector(MockBudgetView.cancelSearch))
     }
 }

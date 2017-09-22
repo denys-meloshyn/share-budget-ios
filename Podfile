@@ -6,7 +6,7 @@ def developing_pods
     pod 'XCGLogger', '~> 5.0.1'
     pod 'KeychainSwift', '~> 8.0'
     pod 'R.swift', '~> 3.2'
-    pod 'SnapKit', '~> 3.2'
+    pod 'SnapKit', '~> 4.0'
     pod 'CorePlot', '~> 2.2'
     pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
     pod 'le', '~> 1.1'
@@ -40,6 +40,20 @@ target 'ShareBudget' do
   target 'ShareBudgetUITests' do
     inherit! :search_paths
     # Pods for testing
+  end
+  
+  # Manually making compiler version be swift 3.2
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          if target.name == 'XCGLogger' || target.name == 'JustLog' || target.name == 'Nimble'
+              print "\t - Changing "
+              print target.name
+              print " swift version to 3.2\n"
+              target.build_configurations.each do |config|
+                  config.build_settings['SWIFT_VERSION'] = '3.2'
+              end
+          end
+      end
   end
 
 end

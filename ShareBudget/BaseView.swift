@@ -27,7 +27,7 @@ class BaseView: NSObject {
 }
 
 extension BaseView: LifeCycleStateProtocol {
-    func viewDidLoad() {
+    @objc func viewDidLoad() {
         self.presenter.viewDidLoad()
     }
     
@@ -49,11 +49,11 @@ extension BaseView: LifeCycleStateProtocol {
 }
 
 extension BaseView: BasePresenterDelegate {
-    func showPage(title: String?) {
+    @objc func showPage(title: String?) {
         self.viewController?.navigationItem.title = title
     }
     
-    func showTabBar(title: String, image: UIImage, selected: UIImage) {
+    @objc func showTabBar(title: String, image: UIImage, selected: UIImage) {
         self.viewController?.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selected)
     }
     
