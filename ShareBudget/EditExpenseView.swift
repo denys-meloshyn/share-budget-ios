@@ -39,7 +39,7 @@ class EditExpenseView: BaseView {
         
         self.setBorderColor(for: self.dateContainerView)
         self.setBorderColor(for: self.categoryContainerView)
-        self.nameSeparatorLine?.backgroundColor = Constants.appearance.dflt.actionColor
+        self.nameSeparatorLine?.backgroundColor = Constants.color.dflt.actionColor
         self.categoryButton?.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
         
         self.configureDatePicker()
@@ -54,7 +54,7 @@ class EditExpenseView: BaseView {
     fileprivate func setBorderColor(for view: UIView?) {
         view?.layer.borderWidth = 1.0
         view?.layer.cornerRadius = 5.0
-        view?.layer.borderColor = Constants.appearance.dflt.actionColor.cgColor
+        view?.layer.borderColor = Constants.color.dflt.actionColor.cgColor
     }
 }
 

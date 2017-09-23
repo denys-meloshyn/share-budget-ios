@@ -82,10 +82,10 @@ class BudgetPresenter: BasePresenter {
             let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
             let attribetString = NSMutableAttributedString(string: descriptionText)
             var range = (descriptionText as NSString).range(of: searchText, options: .backwards)
-            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.appearance.dflt.actionColor, range: range)
+            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
             range = (descriptionText as NSString).range(of: "+")
-            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.appearance.dflt.actionColor, range: range)
+            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
             self.delegate?.showCreateNewGroupMessage(message: attribetString)
         }

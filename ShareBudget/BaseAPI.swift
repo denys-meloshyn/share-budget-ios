@@ -28,22 +28,22 @@ class BaseAPI {
     class private func mapErrorType(data: Any?) -> ErrorTypeAPI {
         if let errorMessage = data as? [String: String], let errorCode = errorMessage[Constants.key.json.message] {
             switch errorCode {
-            case kEmailNotApproved:
+            case Constants.key.error.emailNotApproved:
                 return .emailNotApproved
                 
-            case kUserNotExist:
+            case Constants.key.error.userNotExist:
                 return .userNotExist
                 
-            case kUserIsAlreadyExist:
+            case Constants.key.error.userIsAlreadyExist:
                 return .userIsAlreadyExist
                 
-            case kUserPasswordIsWrong:
+            case Constants.key.error.userPasswordIsWrong:
                 return .userPasswordIsWrong
                 
-            case kTokenExpired:
+            case Constants.key.error.tokenExpired:
                 return .tokenExpired
                 
-            case kTokenNotValid:
+            case Constants.key.error.tokenNotValid:
                 return .tokenNotValid
                 
             default:
@@ -86,7 +86,7 @@ class BaseAPI {
             let startPageQuery = URLQueryItem(name: Constants.key.json.paginationStart, value: String(pagination.start))
             components.queryItems = [sizePageQuery, startPageQuery]
         } else {
-            let sizePageQuery = URLQueryItem(name: Constants.key.json.paginationPageSize, value: String(paginationSize))
+            let sizePageQuery = URLQueryItem(name: Constants.key.json.paginationPageSize, value: String(Constants.values.paginationSize))
             let startPageQuery = URLQueryItem(name: Constants.key.json.paginationStart, value: String(1))
             components.queryItems = [sizePageQuery, startPageQuery]
         }
@@ -103,25 +103,25 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                Dependency.logger.error("Error: \(errorType)", userInfo: [kLogBody: String(describing: data)])
+                Dependency.logger.error("Error: \(errorType)", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: Any?] else {
-                Dependency.logger.error("Response has wrong structure", userInfo: [kLogBody: String(describing: data)])
+                Dependency.logger.error("Response has wrong structure", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, .unknown)
                 return
             }
             
             guard let results = dict[Constants.key.json.result] as? [[String: Any?]] else {
-                Dependency.logger.error("'\(Constants.key.json.result)' has wrong structure", userInfo: [kLogBody: dict])
+                Dependency.logger.error("'\(Constants.key.json.result)' has wrong structure", userInfo: [Constants.key.json.logBody: dict])
                 completion?(data, .unknown)
                 return
             }
             
             guard let timestamp = dict[Constants.key.json.timeStamp] as? String else {
-                Dependency.logger.error("'\(Constants.key.json.timeStamp)' missed", userInfo: [kLogBody: dict])
+                Dependency.logger.error("'\(Constants.key.json.timeStamp)' missed", userInfo: [Constants.key.json.logBody: dict])
                 completion?(data, .unknown)
                 return
             }
@@ -198,19 +198,19 @@ class BaseAPI {
                     return
                 }
                 
-                Dependency.logger.error("Error: '\(errorType)'", userInfo: [kLogBody: String(describing: data)])
+                Dependency.logger.error("Error: '\(errorType)'", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, errorType)
                 return
             }
             
             guard let dict = data as? [String: Any?] else {
-                Dependency.logger.error("Response has wrong structure", userInfo: [kLogBody: String(describing: data)])
+                Dependency.logger.error("Response has wrong structure", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, .unknown)
                 return
             }
             
             guard let result = dict[Constants.key.json.result] as? [String: Any?] else {
-                Dependency.logger.error("'result' has wrong structure", userInfo: [kLogBody: dict])
+                Dependency.logger.error("'result' has wrong structure", userInfo: [Constants.key.json.logBody: dict])
                 completion?(data, .unknown)
                 return
             }

@@ -9,22 +9,6 @@
 import UIKit
 import ChameleonFramework
 
-let paginationSize = 30
-
-let kPasswordMinLength = 1
-
-let loginBorderColor = UIColor.blue
-let loginErrorBorderColor = UIColor.red
-
-let kUserNotExist = "userNotExist"
-let kTokenExpired = "token_expired"
-let kTokenNotValid = "token_not_valid"
-let kEmailNotApproved = "email_not_approved"
-let kUserIsAlreadyExist = "user_is_already_exist"
-let kUserPasswordIsWrong = "user_password_is_wrong"
-
-let kLogBody = "response"
-
 enum ErrorTypeAPI {
     case none
     case userNotExist
@@ -37,9 +21,23 @@ enum ErrorTypeAPI {
 }
 
 struct Constants {
+    struct values {
+        static let paginationSize = 30
+        static let passwordMinLength = 1
+    }
+    
     struct key {
         struct testing {
             static let launchViewControllerID = "klaunchViewControllerID"
+        }
+        
+        struct error {
+            static let userNotExist = "userNotExist"
+            static let tokenExpired = "token_expired"
+            static let tokenNotValid = "token_not_valid"
+            static let emailNotApproved = "email_not_approved"
+            static let userIsAlreadyExist = "user_is_already_exist"
+            static let userPasswordIsWrong = "user_password_is_wrong"
         }
         
         struct json {
@@ -72,16 +70,23 @@ struct Constants {
             static let paginationStart = "start"
             static let paginationTotal = "total"
             static let paginationPageSize = "pageSize"
+            
+            static let logBody = "response"
         }
     }
     
-    struct appearance {
+    struct color {
         struct dflt {
             static let textTintColor = UIColor.black
             static let inputTextColor = UIColor(hexString:"#C7C7CD")!
             static let actionColor = UIColor(hexString: "#E91E63")!
             static let apperanceColor = UIColor(hexString: "#EEEEEE")!
             static let backgroundColor = UIColor(hexString: "#F5F5F5")
+        }
+        
+        struct login {
+            static let validBorderColor = UIColor.blue
+            static let errorBorderColor = UIColor.red
         }
     }
 }

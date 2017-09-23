@@ -69,19 +69,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureAppearance() {
         UITabBar.appearance().isTranslucent = true
-        UITabBar.appearance().tintColor = Constants.appearance.dflt.textTintColor
-        UITabBar.appearance().barTintColor = Constants.appearance.dflt.apperanceColor
+        UITabBar.appearance().tintColor = Constants.color.dflt.textTintColor
+        UITabBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Constants.appearance.dflt.actionColor], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Constants.color.dflt.actionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = Constants.appearance.dflt.actionColor
-        UINavigationBar.appearance().barTintColor = Constants.appearance.dflt.apperanceColor
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : Constants.appearance.dflt.textTintColor]
+        UINavigationBar.appearance().tintColor = Constants.color.dflt.actionColor
+        UINavigationBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : Constants.color.dflt.textTintColor]
         
-        UITextField.appearance().tintColor = Constants.appearance.dflt.actionColor
+        UITextField.appearance().tintColor = Constants.color.dflt.actionColor
         
-        self.window?.tintColor = Constants.appearance.dflt.actionColor
+        self.window?.tintColor = Constants.color.dflt.actionColor
     }
 }
 

@@ -57,9 +57,9 @@ class EditExpensePresenter: BasePresenter {
         self.delegate?.updateName(self.expenseInteraction.expense.name)
         
         self.delegate?.activateTextField(.price)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, color: Constants.appearance.dflt.apperanceColor, for: .name)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, color: Constants.appearance.dflt.apperanceColor, for: .date)
-        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, color: Constants.appearance.dflt.apperanceColor, for: .price)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.name, color: Constants.color.dflt.apperanceColor, for: .name)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.date, color: Constants.color.dflt.apperanceColor, for: .date)
+        self.delegate?.setPlaceholder(LocalisedManager.edit.expense.price, color: Constants.color.dflt.apperanceColor, for: .price)
     }
     
     @objc func openCategoryPage() {
@@ -99,10 +99,10 @@ class EditExpensePresenter: BasePresenter {
     
     fileprivate func updateCategory() {
         if let name = self.expenseInteraction.expense.category?.name {
-            self.delegate?.setPlaceholder(name, color: Constants.appearance.dflt.textTintColor, for: .category)
+            self.delegate?.setPlaceholder(name, color: Constants.color.dflt.textTintColor, for: .category)
         }
         else {
-            self.delegate?.setPlaceholder(LocalisedManager.edit.expense.category, color: Constants.appearance.dflt.inputTextColor, for: .category)
+            self.delegate?.setPlaceholder(LocalisedManager.edit.expense.category, color: Constants.color.dflt.inputTextColor, for: .category)
         }
     }
     

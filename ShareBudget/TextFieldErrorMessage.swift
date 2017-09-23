@@ -17,10 +17,10 @@ class TextFieldErrorMessage: UIView {
         didSet {
             if isErrorHidden {
                 self.errorMessageLabel?.text = ""
-                self.containerTextView?.layer.borderColor = loginBorderColor.cgColor
+                self.containerTextView?.layer.borderColor = Constants.color.login.validBorderColor.cgColor
             }
             else {
-                self.containerTextView?.layer.borderColor = loginErrorBorderColor.cgColor
+                self.containerTextView?.layer.borderColor = Constants.color.login.errorBorderColor.cgColor
             }
         }
     }
@@ -30,6 +30,6 @@ class TextFieldErrorMessage: UIView {
         
         self.containerTextView?.layer.borderWidth = 1.0
         self.containerTextView?.layer.cornerRadius = 5.0
-        self.containerTextView?.layer.borderColor = loginBorderColor.cgColor
+        self.containerTextView?.layer.borderColor = Constants.color.login.validBorderColor.cgColor
     }
 }
