@@ -331,7 +331,7 @@ class ModelManager {
         
         if let categoryID = categoryID {
             let category = managedObjectContext.object(with: categoryID)
-            tmpPredicate = NSPredicate(format: "category == %@", budget, category)
+            tmpPredicate = NSPredicate(format: "category == %@", category)
             predicates.append(tmpPredicate)
         }
         
