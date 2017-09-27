@@ -34,7 +34,7 @@ target 'ShareBudget' do
   target 'ShareBudgetTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Nimble', '~> 7.0.1'
+    pod 'Nimble', '~> 7.0.2'
   end
 
   target 'ShareBudgetUITests' do
@@ -45,7 +45,7 @@ target 'ShareBudget' do
   # Manually making compiler version be swift 3.2
   post_install do |installer|
       installer.pods_project.targets.each do |target|
-          if target.name == 'XCGLogger' || target.name == 'JustLog' || target.name == 'Nimble'
+          if target.name == 'XCGLogger' || target.name == 'JustLog'
               print "\t - Changing "
               print target.name
               print " swift version to 3.2\n"
