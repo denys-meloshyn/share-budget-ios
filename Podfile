@@ -3,7 +3,7 @@ platform :ios, '10.2'
 source 'https://github.com/CocoaPods/Specs.git'
 
 def developing_pods
-    pod 'XCGLogger', '~> 5.0.1'
+    pod 'XCGLogger', '~> 6.0.0'
     pod 'KeychainSwift', '~> 8.0'
     pod 'R.swift', '~> 3.2'
     pod 'SnapKit', '~> 4.0'
@@ -45,7 +45,7 @@ target 'ShareBudget' do
   # Manually making compiler version be swift 3.2
   post_install do |installer|
       installer.pods_project.targets.each do |target|
-          if target.name == 'XCGLogger' || target.name == 'JustLog'
+          if target.name == 'JustLog'
               print "\t - Changing "
               print target.name
               print " swift version to 3.2\n"
