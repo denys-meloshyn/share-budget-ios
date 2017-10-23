@@ -25,6 +25,7 @@ class Dependency {
     
     static var logger: XCGLogger!
     static var coreDataName: String!
+    static var restAPIVersion: String!
     static var userCredentials: UserCredentials.Type!
     static var backendURLComponents: NSURLComponents!
     static var backendConnection: NSURLComponents {
@@ -138,6 +139,7 @@ class Dependency {
     
     class private func configureBackendConnection() {
         let components = NSURLComponents()
+        Dependency.restAPIVersion = "/v1"
         
         switch self.environment() {
         case .developmentLocal:

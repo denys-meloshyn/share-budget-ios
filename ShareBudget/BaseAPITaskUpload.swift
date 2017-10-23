@@ -17,7 +17,7 @@ class BaseAPITaskUpload: BaseAPITask {
         super.init(resource: resource, entity: entity, completionBlock: completionBlock)
     }
     
-    override func request() -> URLSessionTask! {
+    override func request() -> URLSessionTask {
         let task = self.entity.upload(self.resource, self.modelID, self.completionBlock)
         
         return task

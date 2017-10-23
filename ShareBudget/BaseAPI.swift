@@ -68,7 +68,7 @@ class BaseAPI {
     
     class func components(_ resource: String) -> NSURLComponents {
         let components = Dependency.backendConnection
-        components.path = "/" + resource
+        components.path = Dependency.restAPIVersion + "/" + resource
         
         return components
     }
@@ -77,9 +77,9 @@ class BaseAPI {
         
     }
     
-    func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask? {
+    func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask {
         let components = BaseAPI.components(resource)
-        components.path = "/" + resource + "/updates"
+        components.path = Dependency.restAPIVersion + "/" + resource + "/updates"
         
         if let pagination = self.pagination {
             let sizePageQuery = URLQueryItem(name: Constants.key.json.paginationPageSize, value: String(pagination.size))
@@ -92,7 +92,7 @@ class BaseAPI {
         }
         
         guard let url = components.url else {
-            return nil
+            assert(false, "URL can't be nil")
         }
         
         var request = URLRequest(url: url)
@@ -152,11 +152,11 @@ class BaseAPI {
         return task
     }
     
-    func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask? {
+    func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask {
         let components = BaseAPI.components(resource)
         
         guard let url = components.url else {
-            return nil
+            assert(false, "URL can't be nil")
         }
         
         var request = URLRequest(url: url)
@@ -188,7 +188,7 @@ class BaseAPI {
                     _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
                         if error == .none {
                             let task = self.upload(resource, modelID, completion)
-                            task?.resume()
+                            task.resume()
                         }
                         else {
                             completion?(data, error)
