@@ -58,6 +58,8 @@ class BudgetPresenter: BasePresenter {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        SyncManager.delegate = self
+        
         self.startListenKeyboardNotifications()
     }
     
@@ -207,5 +209,11 @@ extension BudgetPresenter: KeyBoardProtocol {
     
     func keyboardWillShow(notification: NSNotification) {
         self.delegate?.setBottomOffset(self.keyboardHeight(from: notification))
+    }
+}
+
+extension BudgetPresenter: SyncManagerDelegate {
+    func error(_ error: ErrorTypeAPI) {
+        self.delegate?.showErrorSync(message: LocalisedManager.generic.errorMessage)
     }
 }

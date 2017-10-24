@@ -8,7 +8,13 @@
 
 import CoreData
 
+protocol SyncManagerDelegate: class {
+    func error(_ error: ErrorTypeAPI)
+}
+
 class SyncManager {
+    static weak var delegate: SyncManagerDelegate? = nil
+    
     private static var timer: Timer?
     private static var loadingTask: URLSessionTask?
     
@@ -38,15 +44,15 @@ class SyncManager {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
                     _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
-                        if error == .none {
+                        switch (error) {
+                        case .none:
                             SyncManager.loadUpdates(completion: completion)
-                        }
-                        else if error == .unknown{
+                        case .unknown:
                             DispatchQueue.main.async {
+                                SyncManager.delegate?.error(error)
                                 SyncManager.scheduleNextUpdate()
                             }
-                        }
-                        else {
+                        default:
                             completion?(data, error)
                         }
                     })
@@ -55,6 +61,7 @@ class SyncManager {
                 }
                 else if error == .unknown {
                     DispatchQueue.main.async {
+                        SyncManager.delegate?.error(error)
                         SyncManager.scheduleNextUpdate()
                     }
                 }

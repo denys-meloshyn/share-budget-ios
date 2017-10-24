@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 protocol LifeCycleStateProtocol: class {
     func viewDidLoad()
@@ -65,5 +66,9 @@ extension BaseView: BasePresenterDelegate {
         }
         
         self.viewController?.present(alertView, animated: true, completion: nil)
+    }
+    
+    func showErrorSync(message text: String) {
+        self.viewController?.view.makeToast(text, duration: 3.0, position: .center)
     }
 }
