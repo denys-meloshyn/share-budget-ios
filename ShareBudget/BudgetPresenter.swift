@@ -58,7 +58,7 @@ class BudgetPresenter: BasePresenter {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        SyncManager.delegate = self
+        SyncManager.shared.delegate = self
         
         self.startListenKeyboardNotifications()
     }

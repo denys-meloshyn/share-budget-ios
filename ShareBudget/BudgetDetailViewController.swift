@@ -31,9 +31,9 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var createExpenseButton: UIButton?
     @IBOutlet private var chartView: CPTGraphHostingView?
     @IBOutlet private var budgetDescriptionLabel: UILabel?
+    @IBOutlet private var safeAreaPlaceholderView: UIView?
     @IBOutlet private var balanceDescriptionLabel: UILabel?
     @IBOutlet private var expenseDescriptionLabel: UILabel?
-    @IBOutlet private var backButtonImageView: UIImageView?
     @IBOutlet private var createNewExpenseContainerView: UIView?
     @IBOutlet private var constraintChartViewWidth: NSLayoutConstraint?
     @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
@@ -79,7 +79,6 @@ class BudgetDetailViewController: BaseViewController {
         view.navigationView = self.navigationView
         view.editMemberButton = self.editMemberButton
         view.expenseCoverView = self.expenseCoverView
-        view.backButtonImageView = self.backButtonImageView
         view.createExpenseButton = self.createExpenseButton
         view.budgetContainerView = self.budgetContainerView
         view.expenseContainerView = self.expenseContainerView
@@ -88,6 +87,7 @@ class BudgetDetailViewController: BaseViewController {
         view.budgetDescriptionLabel = self.budgetDescriptionLabel
         view.balanceDescriptionLabel = self.balanceDescriptionLabel
         view.expenseDescriptionLabel = self.expenseDescriptionLabel
+        view.safeAreaPlaceholderView = self.safeAreaPlaceholderView
         view.constraintChartViewWidth = self.constraintChartViewWidth
         view.constraintChartViewHeight = self.constraintChartViewHeight
         view.constraintAnimationViewWidth = self.constraintAnimationViewWidth

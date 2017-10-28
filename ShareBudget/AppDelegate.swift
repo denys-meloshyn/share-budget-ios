@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = loginViewControler
         }
         else {
-            SyncManager.run()
+            SyncManager.shared.run()
         }
         
         return true

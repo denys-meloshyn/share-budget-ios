@@ -24,16 +24,16 @@ class BudgetDetailView: BaseView {
     weak var expenseButton: UIButton?
     weak var expenseCoverView: UIView?
     weak var editMemberButton: UIButton?
-    @objc weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
     weak var createExpenseButton: UIButton?
     weak var navigationTitleLabel: UILabel?
     weak var chartView: CPTGraphHostingView?
+    weak var safeAreaPlaceholderView: UIView?
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
-    weak var backButtonImageView: UIImageView?
+    @objc weak var budgetContainerView: UIView?
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?
@@ -99,6 +99,7 @@ class BudgetDetailView: BaseView {
         
         self.chartView?.hostedGraph = self.pieGraph
         
+        self.chartView?.layoutIfNeeded()
         let width = self.chartView?.frame.width ?? 0.0
         let height = self.chartView?.frame.height ?? 0.0
         let radius = min(width, height) * 0.5
@@ -219,6 +220,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     func updateExpenseCoverColor(_ color: UIColor?) {
         self.navigationView?.backgroundColor = color
         self.expenseCoverView?.backgroundColor = color
+        self.safeAreaPlaceholderView?.backgroundColor = color
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {

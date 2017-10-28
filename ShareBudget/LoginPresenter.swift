@@ -119,7 +119,7 @@ class LoginPresenter: BasePresenter {
                             return
                         }
                         
-                        SyncManager.run()
+                        SyncManager.shared.run()
                         router.showHomePage()
                     }
                 })

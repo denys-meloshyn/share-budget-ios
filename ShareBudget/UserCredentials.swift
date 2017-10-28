@@ -59,12 +59,12 @@ class UserCredentials {
     }
     
     class func resetTimeStamps() {
-        SyncManager.categoryAPI.timestamp = ""
-        SyncManager.expenseAPI.timestamp = ""
-        SyncManager.budgetAPI.timestamp = ""
-        SyncManager.budgetLimitAPI.timestamp = ""
-        SyncManager.userAPI.timestamp = ""
-        SyncManager.userGroupAPI.timestamp = ""
+        SyncManager.shared.categoryAPI.timestamp = ""
+        SyncManager.shared.expenseAPI.timestamp = ""
+        SyncManager.shared.budgetAPI.timestamp = ""
+        SyncManager.shared.budgetLimitAPI.timestamp = ""
+        SyncManager.shared.userAPI.timestamp = ""
+        SyncManager.shared.userGroupAPI.timestamp = ""
     }
     
     class var isLoggedIn: Bool {
