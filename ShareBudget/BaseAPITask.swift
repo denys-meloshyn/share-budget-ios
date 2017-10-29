@@ -21,5 +21,8 @@ class BaseAPITask {
     
     func request() -> URLSessionTask {
         assert(false, "request method should be implemented")
+        Dependency.logger.error("request method should be implemented")
+        
+        return URLSessionTask()
     }
 }

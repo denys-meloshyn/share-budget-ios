@@ -92,7 +92,9 @@ class BaseAPI {
         }
         
         guard let url = components.url else {
+            Dependency.logger.error("URL can't be nil \(components)")
             assert(false, "URL can't be nil")
+            return URLSessionTask()
         }
         
         var request = URLRequest(url: url)
@@ -155,7 +157,9 @@ class BaseAPI {
         let components = BaseAPI.components(resource)
         
         guard let url = components.url else {
+            Dependency.logger.error("URL can't be nil \(components)")
             assert(false, "URL can't be nil")
+            return URLSessionTask()
         }
         
         var request = URLRequest(url: url)
