@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension CategoryLimit {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CategoryLimit> {

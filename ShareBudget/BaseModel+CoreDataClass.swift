@@ -30,7 +30,7 @@ public class BaseModel: NSManagedObject {
     }
     
     func uploadProperties() -> [String: String] {
-        var result = [String : String]()
+        var result = [String: String]()
         
         if let isRemoved = self.isRemoved {
             result[Constants.key.json.isRemoved] = isRemoved.boolValue.description

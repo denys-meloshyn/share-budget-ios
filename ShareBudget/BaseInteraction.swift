@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-typealias APIResultBlock = (Any?, ErrorTypeAPI) -> (Void)
+typealias APIResultBlock = (Any?, ErrorTypeAPI) -> Void
 
 @objc protocol BaseInteractionDelegate: class {
     @objc optional func didChangeContent()

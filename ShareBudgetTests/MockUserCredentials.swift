@@ -9,5 +9,5 @@
 @testable import ShareBudget
 
 class MockUserCredentials: UserCredentials {
-    var mock_isLoggedIn = false
+    var mockIsLoggedIn = false
 }

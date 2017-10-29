@@ -14,7 +14,7 @@ protocol CategoryInteractionDelegate: BaseInteractionDelegate {
 
 class CategoryInteraction: BaseInteraction {
     var expense: Expense
-    var delegate: CategoryInteractionDelegate?
+    weak var delegate: CategoryInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
     var fetchedResultsController: NSFetchedResultsController<Category>!
     
@@ -36,8 +36,7 @@ class CategoryInteraction: BaseInteraction {
     private func performFetch() {
         do {
             try self.fetchedResultsController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error fetch \(error)")
         }
     }

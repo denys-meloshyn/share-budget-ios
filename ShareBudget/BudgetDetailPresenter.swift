@@ -25,9 +25,9 @@ class BudgetDetailPresenter: BasePresenter {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
-    fileprivate var pieChartColors: Array<UIColor> = [UIColor]()
+    fileprivate var pieChartColors = [UIColor]()
     
-    private var colorsRange: Array<Range<Double>> = [Range<Double>]()
+    private var colorsRange = [Range<Double>]()
     private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
     
     fileprivate var budgetDetailInteraction: BudgetDetailInteraction {
@@ -127,12 +127,10 @@ class BudgetDetailPresenter: BasePresenter {
         if percentColorIndex == 0 {
             let resColor = self.colors[percentColorIndex]
             self.delegate?.updateExpenseCoverColor(resColor)
-        }
-        else if percentColorIndex >= self.colors.count {
+        } else if percentColorIndex >= self.colors.count {
             let resColor = self.colors.last
             self.delegate?.updateExpenseCoverColor(resColor)
-        }
-        else {
+        } else {
             for range in self.colorsRange {
                 if range.contains(percent) {
                     guard let rangeIndex = self.colorsRange.index(of: range) else {
@@ -254,7 +252,7 @@ extension BudgetDetailPresenter: CPTPieChartDataSource {
             return nil
         }
         
-        let label = CPTTextLayer(text:self.budgetDetailInteraction.categoryTitle(for: Int(record)))
+        let label = CPTTextLayer(text: self.budgetDetailInteraction.categoryTitle(for: Int(record)))
         
         if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
             textStyle.color = CPTColor.white()
@@ -285,8 +283,7 @@ extension BudgetDetailPresenter: CPTPieChartDelegate {
     func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
         if self.selectedSlice == idx {
             self.selectedSlice = nil
-        }
-        else {
+        } else {
             self.selectedSlice = idx
         }
         

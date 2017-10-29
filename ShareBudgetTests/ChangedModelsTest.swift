@@ -28,8 +28,8 @@ class ChangedModelsTest: XCTestCase {
     }
     
     func testNoChanged() {
-        let _ = Expense(context: self.managedObjectContext)
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Expense(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         ModelManager.saveContext(self.managedObjectContext)
         self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)
@@ -42,7 +42,7 @@ class ChangedModelsTest: XCTestCase {
         let expense = Expense(context: self.managedObjectContext)
         expense.isChanged = true
         
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         ModelManager.saveContext(self.managedObjectContext)
         self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)

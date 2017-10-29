@@ -17,7 +17,7 @@ class LoginInteraction: BaseInteraction {
     }
     
     func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?) {
-        _ = AuthorisationAPI.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, response, error) -> (Void) in
+        _ = AuthorisationAPI.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, response, error) -> Void in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             completion?(data, errorType)

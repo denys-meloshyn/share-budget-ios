@@ -22,7 +22,7 @@ public class Budget: BaseModel {
         self.name = dict[Constants.key.json.name] as? String
     }
     
-    override func uploadProperties() -> [String : String] {
+    override func uploadProperties() -> [String: String] {
         var result = super.uploadProperties()
         
         if let modelID = self.modelID {

@@ -9,7 +9,7 @@
 @testable import ShareBudget
 
 class MockDependency: Dependency {
-    static var mock_environment = Environment.developmentLocal
+    static var mockEnvironment = Environment.developmentLocal
     
     class func reset() {
         self.logger = nil
@@ -19,6 +19,6 @@ class MockDependency: Dependency {
     }
     
     override class func environment() -> Environment {
-        return mock_environment
+        return mockEnvironment
     }
 }

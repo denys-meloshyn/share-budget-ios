@@ -35,8 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
             self.window?.rootViewController = loginViewControler
-        }
-        else {
+        } else {
             SyncManager.shared.run()
         }
         
@@ -72,16 +71,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = Constants.color.dflt.textTintColor
         UITabBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : Constants.color.dflt.actionColor], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Constants.color.dflt.actionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = Constants.color.dflt.actionColor
         UINavigationBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : Constants.color.dflt.textTintColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.color.dflt.textTintColor]
         
         UITextField.appearance().tintColor = Constants.color.dflt.actionColor
         
         self.window?.tintColor = Constants.color.dflt.actionColor
     }
 }
-

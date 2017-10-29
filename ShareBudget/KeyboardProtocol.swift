@@ -27,8 +27,8 @@ extension KeyBoardProtocol {
     }
     
     func addKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(notification:)), name:.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide(notification:)), name:.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func removeKeyboardNotifications() {

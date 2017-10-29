@@ -21,7 +21,7 @@ class AuthorisationAPI: BaseAPI {
         request.setValue(email, forHTTPHeaderField: Constants.key.json.email)
         request.setValue(password, forHTTPHeaderField: Constants.key.json.password)
         
-        return AsynchronousURLConnection.run(request, completion: { (data, response, error) -> (Void) in
+        return AsynchronousURLConnection.run(request, completion: { (data, response, error) -> Void in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {

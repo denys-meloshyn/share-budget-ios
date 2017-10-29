@@ -41,8 +41,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         do {
             try self.fc?.performFetch()
             self.calculateBudgetRestForExpenses()
-        }
-        catch {
+        } catch {
             
         }
     }

@@ -18,8 +18,7 @@ class TextFieldErrorMessage: UIView {
             if isErrorHidden {
                 self.errorMessageLabel?.text = ""
                 self.containerTextView?.layer.borderColor = Constants.color.login.validBorderColor.cgColor
-            }
-            else {
+            } else {
                 self.containerTextView?.layer.borderColor = Constants.color.login.errorBorderColor.cgColor
             }
         }

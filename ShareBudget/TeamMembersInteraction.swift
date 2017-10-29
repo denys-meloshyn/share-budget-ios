@@ -11,7 +11,7 @@ import CoreData
 
 class TeamMembersInteraction: BaseInteraction {
     var budget: Budget
-    var delegate: BaseInteractionDelegate?
+    weak var delegate: BaseInteractionDelegate?
     
     private var managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<UserGroup>
@@ -32,8 +32,7 @@ class TeamMembersInteraction: BaseInteraction {
         
         do {
             try self.fetchedResultsController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Can't perform fetch request")
         }
     }

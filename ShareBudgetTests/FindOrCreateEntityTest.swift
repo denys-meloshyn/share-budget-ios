@@ -35,7 +35,7 @@ class FindOrCreateEntityTest: XCTestCase {
     
     func testEntityNotExistDataBaseEmpty() {
         let result = ModelManager.findOrCreateEntity(Expense.self,
-                                                     response: [Expense.modelKeyID():1],
+                                                     response: [Expense.modelKeyID(): 1],
                                                      in: self.managedObjectContext)
         
         expect(result).notTo(beNil())
@@ -59,7 +59,7 @@ class FindOrCreateEntityTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         let result = ModelManager.findOrCreateEntity(Expense.self,
-                                                     response: [Expense.modelKeyID():2],
+                                                     response: [Expense.modelKeyID(): 2],
                                                      in: self.managedObjectContext)
         
         expect(result).notTo(beNil())
@@ -72,7 +72,7 @@ class FindOrCreateEntityTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         let result = ModelManager.findOrCreateEntity(Expense.self,
-                                                     response: [Expense.modelKeyID():1],
+                                                     response: [Expense.modelKeyID(): 1],
                                                      in: self.managedObjectContext)
         
         expect(result).notTo(beNil())
@@ -85,7 +85,7 @@ class FindOrCreateEntityTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         let result = ModelManager.findOrCreateEntity(Expense.self,
-                                                     response: [Expense.modelKeyID():1],
+                                                     response: [Expense.modelKeyID(): 1],
                                                      in: self.managedObjectContext)
         
         expect(result.modelID).notTo(beNil())

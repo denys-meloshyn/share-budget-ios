@@ -13,6 +13,7 @@ def developing_pods
     pod 'BugfenderSDK', '1.4.5'
     pod 'JustLog', '1.3'
     pod 'Toast-Swift', '2.0.0'
+    pod 'SwiftLint', '0.23'
 end
 
 target 'ShareBudget' do

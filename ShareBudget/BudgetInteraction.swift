@@ -32,8 +32,7 @@ class BudgetInteraction: BaseInteraction {
         
         do {
             try self.fetchedResultsController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Can't perform fetch request")
         }
     }

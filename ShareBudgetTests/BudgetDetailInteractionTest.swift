@@ -53,7 +53,7 @@ class BudgetDetailInteractionTest: XCTestCase {
     }
     
     func testExpensesExist() {
-        let _ = self.createExpense()
+        _ = self.createExpense()
         ModelManager.saveContext(self.managedObjectContext)
         
         expect(self.budgetDetailInteraction.isEmpty()) == false

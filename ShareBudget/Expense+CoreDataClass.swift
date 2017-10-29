@@ -56,7 +56,7 @@ public class Expense: BaseModel {
         self.price =  NSNumber(value: dict[Constants.key.json.price] as? Double ?? 0.0)
     }
     
-    override func uploadProperties() -> [String : String] {
+    override func uploadProperties() -> [String: String] {
         var result = super.uploadProperties()
         
         result[Constants.key.json.price] = String(self.price?.doubleValue ?? 0.0)

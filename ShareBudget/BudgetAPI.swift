@@ -33,7 +33,7 @@ class BudgetAPI: BaseAPI {
     
     override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
-        let fetchedResultsController = ModelManager.changedModels(Budget.self ,managedObjectContext)
+        let fetchedResultsController = ModelManager.changedModels(Budget.self, managedObjectContext)
         
         var tasks = [BaseAPITask]()
         

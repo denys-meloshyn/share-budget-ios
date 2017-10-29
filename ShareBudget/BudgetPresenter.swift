@@ -90,8 +90,7 @@ class BudgetPresenter: BasePresenter {
             attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
             self.delegate?.showCreateNewGroupMessage(message: attribetString)
-        }
-        else {
+        } else {
             self.delegate?.showGroupList()
         }
     }
@@ -187,7 +186,6 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
         guard let title = title, !Validator.isNullOrBlank(title) else {
             return
         }
-        
         
         let newBudget = self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
         self.budgetRouter.openDetailPage(for: newBudget.objectID)

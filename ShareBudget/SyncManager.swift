@@ -17,13 +17,13 @@ class SyncManager {
     
     private init() {}
     
-    weak var delegate: SyncManagerDelegate? = nil
+    weak var delegate: SyncManagerDelegate?
     
     private var timer: Timer?
     private var loadingTask: URLSessionTask?
     
     private func scheduleNextUpdate() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { (timer) in
+        self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { _ in
             self.loadUpdates(completion: nil)
         }
     }
@@ -43,12 +43,12 @@ class SyncManager {
         self.tasks.removeAll()
         var task: BaseAPITask
         
-        let completionBlock: APIResultBlock = { [weak self] (data, error) -> (Void) in
+        let completionBlock: APIResultBlock = { [weak self] (data, error) -> Void in
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
-                        switch (error) {
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
+                        switch error {
                         case .none:
                             self?.loadUpdates(completion: completion)
                         case .unknown:
@@ -62,14 +62,12 @@ class SyncManager {
                     })
                     
                     return
-                }
-                else if error == .unknown {
+                } else if error == .unknown {
                     DispatchQueue.main.async {
                         self?.delegate?.error(error)
                         self?.scheduleNextUpdate()
                     }
-                }
-                else {
+                } else {
                     completion?(data, error)
                 }
                 
@@ -82,8 +80,7 @@ class SyncManager {
                 DispatchQueue.main.async {
                     self?.scheduleNextUpdate()
                 }
-            }
-            else {
+            } else {
                 self?.loadingTask = self?.tasks.first?.request()
                 self?.loadingTask?.resume()
                 NetworkIndicator.shared.visible = true
@@ -133,8 +130,7 @@ class SyncManager {
         
         if tasks.count == 0 {
             self.scheduleNextUpdate()
-        }
-        else {
+        } else {
             self.loadingTask = tasks.first?.request()
             self.loadingTask?.resume()
             NetworkIndicator.shared.visible = true
@@ -146,7 +142,7 @@ class SyncManager {
     }
     
     func run() {
-        if (Dependency.environment() == .testing) {
+        if Dependency.environment() == .testing {
             return
         }
         

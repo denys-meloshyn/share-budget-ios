@@ -35,7 +35,7 @@ class Dependency {
     }
     
     class func environment() -> Environment {
-        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
+        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] {
             let url = URL(fileURLWithPath: testPath)
             
             if url.pathExtension == "xctestconfiguration" {
@@ -118,7 +118,7 @@ class Dependency {
         // Add the destination to the logger
         self.logger.add(destination: fileDestination)
         
-        if (self.environment() == .production || self.environment() == .developmentRemote) {
+        if self.environment() == .production || self.environment() == .developmentRemote {
             // Remote destination
             let remoteLogsDestination = RemoteLogsDestination(identifier: self.loggerRemoteIdentifier)
             remoteLogsDestination.outputLevel = .debug

@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol TeamMembersPresenterDelegate {
+protocol TeamMembersPresenterDelegate: class {
     func refreshData()
     func createTeamMemberCell(with title: String?, and subTitle: String?) -> UITableViewCell
 }
 
 class TeamMembersPresenter: BasePresenter {
-    var delegate: TeamMembersPresenterDelegate!
+    weak var delegate: TeamMembersPresenterDelegate!
     
     fileprivate var teamMembersInteraction: TeamMembersInteraction {
         get {
@@ -71,7 +71,7 @@ extension TeamMembersPresenter: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let action = UITableViewRowAction(style: .destructive, title: LocalisedManager.generic.delete) { (action, indexPath) in
+        let action = UITableViewRowAction(style: .destructive, title: LocalisedManager.generic.delete) { (_, indexPath) in
             let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
             userGroup.isRemoved = true
             userGroup.isChanged = true

@@ -127,8 +127,8 @@ class CategoryInteractionTest: XCTestCase {
     }
     
     func testCategoryForIndex() {
-        let _ = self.interaction.createCategory(with: "Category 1")
-        let _ = self.interaction.createCategory(with: "Category 2")
+        _ = self.interaction.createCategory(with: "Category 1")
+        _ = self.interaction.createCategory(with: "Category 2")
         ModelManager.saveContext(self.managedObjectContext)
         
         let result = self.interaction.category(for: IndexPath(row: 1, section: 0))

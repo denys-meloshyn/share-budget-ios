@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias APICompletionBlock = (Any?, URLResponse?, Error?) -> (Void)
+typealias APICompletionBlock = (Any?, URLResponse?, Error?) -> Void
 
 class AsynchronousURLConnection {
     private static func logError(data: Data?) {
@@ -37,7 +37,7 @@ class AsynchronousURLConnection {
         let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             NetworkIndicator.shared.visible = false
             
-            if let _ = error {
+            if error != nil {
                 Dependency.logger.error(error)
                 
                 completion?(data, response, error)
@@ -52,8 +52,7 @@ class AsynchronousURLConnection {
             do {
                 let result = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
                 completion?(result, response, error)
-            }
-            catch {
+            } catch {
                 AsynchronousURLConnection.logError(data: data)
                 completion?(data, response, error)
             }

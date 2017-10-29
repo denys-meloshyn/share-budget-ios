@@ -29,8 +29,8 @@ class BudgetFetchControllerTest: XCTestCase {
     }
     
     func testNoBudgets() {
-        let _ = Expense(context: self.managedObjectContext)
-        let _ = Category(context: self.managedObjectContext)
+        _ = Expense(context: self.managedObjectContext)
+        _ = Category(context: self.managedObjectContext)
         
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext)
         self.fetchedResultsController.performSilentFailureFetch()
@@ -38,8 +38,8 @@ class BudgetFetchControllerTest: XCTestCase {
     }
     
     func testBudgetsExist() {
-        let _ = Budget(context: self.managedObjectContext)
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext)
         self.fetchedResultsController.performSilentFailureFetch()
@@ -49,7 +49,7 @@ class BudgetFetchControllerTest: XCTestCase {
     func testExistedBudgetsWithRemoved() {
         let budget = Budget(context: self.managedObjectContext)
         budget.isRemoved = NSNumber(value: true)
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext)
         self.fetchedResultsController.performSilentFailureFetch()

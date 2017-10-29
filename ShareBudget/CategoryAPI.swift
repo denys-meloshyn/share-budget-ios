@@ -31,7 +31,7 @@ class CategoryAPI: BaseAPI {
     
     override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
-        let fetchedResultsController = ModelManager.changedModels(Category.self ,managedObjectContext)
+        let fetchedResultsController = ModelManager.changedModels(Category.self, managedObjectContext)
         
         var tasks = [BaseAPITask]()
         

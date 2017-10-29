@@ -41,7 +41,7 @@ class BudgetDetailView: BaseView {
     weak var constraintAnimationViewHeight: NSLayoutConstraint?
     
     fileprivate var piePlot: CPTPieChart!
-    fileprivate var pieGraph : CPTXYGraph?
+    fileprivate var pieGraph: CPTXYGraph?
     
     override init(with presenter: BasePresenter, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
@@ -145,14 +145,14 @@ class BudgetDetailView: BaseView {
         UIView.animate(withDuration: 5.0, animations: { [weak self] in
             self?.animationView?.alpha = 0.0
             self?.animationView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        }) { [weak self] (finished) in
-            if (finished) {
+        }, completion: { [weak self] finished in
+            if finished {
                 self?.animationView?.alpha = 1.0
                 self?.animationView?.transform = .identity
                 
                 self?.startAnimation()
             }
-        }
+        })
     }
     
     fileprivate func updateContrastColor(to color: UIColor) {
@@ -182,7 +182,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     }
     
     func updateNativeNavigationVisibility(_ isVisible: Bool) {
-        if (isVisible) {
+        if isVisible {
             self.viewController?.navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
             self.viewController?.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -190,7 +190,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     }
     
     func updateCreateButtonAnimation(_ isActive: Bool) {
-        if (isActive) {
+        if isActive {
             self.startAnimation()
         } else {
             self.stopAnimation()
@@ -226,7 +226,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let createAction = UIAlertAction(title: create, style: .default, handler:  self.budgetDetailPresenter.createHandler(with: alertController))
+        let createAction = UIAlertAction(title: create, style: .default, handler: self.budgetDetailPresenter.createHandler(with: alertController))
         
         let cancelAction = UIAlertAction(title: cancel, style: .cancel)
         
@@ -236,12 +236,12 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
             textField.placeholder = placeholder
             textField.autocapitalizationType = .none
             
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { (notification) in
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { _ in
                 guard let text = textField.text else {
                     return
                 }
                 
-                if let _ = UtilityFormatter.priceEditFormatter.number(from: text) {
+                if UtilityFormatter.priceEditFormatter.number(from: text) != nil {
                     createAction.isEnabled = true
                 } else {
                     createAction.isEnabled = false

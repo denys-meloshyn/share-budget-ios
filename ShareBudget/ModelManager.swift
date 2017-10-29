@@ -63,8 +63,7 @@ class ModelManager {
                 try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-wal"))
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
                 Dependency.userCredentials.resetTimeStamps()
-            }
-            catch let removeError {
+            } catch let removeError {
                 Dependency.logger.error("\(removeError)")
                 abort()
             }
@@ -118,12 +117,11 @@ class ModelManager {
         
         do {
             try fetchController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error drop entity \(entity) \(error)")
         }
         
-        fetchController.iterate { (indexPath) -> (Void) in
+        fetchController.iterate { (indexPath) -> Void in
             let model = fetchController.object(at: indexPath)
             managedObjectContext.delete(model)
         }
@@ -168,8 +166,7 @@ class ModelManager {
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
             return items.first as? BaseModel
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Finding model \(error)")
             return nil
         }
@@ -183,8 +180,7 @@ class ModelManager {
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
             return items.first
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Finding model with internal ID \(error)")
             return nil
         }
@@ -216,8 +212,7 @@ class ModelManager {
         var items = [BudgetLimit]()
         do {
             items = try managedObjectContext.fetch(fetchRequest)
-        } 
-        catch {
+        } catch {
             Dependency.logger.error("Error fetch budget limit \(error)")
         }
         
@@ -240,8 +235,7 @@ class ModelManager {
         do {
             try fetchedResultsController.performFetch()
             return fetchedResultsController
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error fetch changedModels \(error)")
             return nil
         }

@@ -84,8 +84,7 @@ class ValidationTextField: UIView {
         
         if self.isFieldEmpty {
             self.titleLabel?.isHidden = true
-        }
-        else {
+        } else {
             self.titleLabel?.isHidden = false
         }
     }

@@ -39,8 +39,7 @@ extension CategoryView: CategoryPresenterDelegate {
         
         if isSelected {
             cell?.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell?.accessoryType = .none
         }
         
@@ -61,5 +60,3 @@ extension CategoryView: CategoryPresenterDelegate {
         return header
     }
 }
-
-

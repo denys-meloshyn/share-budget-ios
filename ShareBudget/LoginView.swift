@@ -19,7 +19,7 @@ enum LoginTextField {
 }
 
 extension LoginTextField: Equatable {
-    static func ==(lhs: LoginTextField, rhs: LoginTextField) -> Bool {
+    static func == (lhs: LoginTextField, rhs: LoginTextField) -> Bool {
         switch (lhs, rhs) {
         case (.none, .none):
             return true
@@ -96,19 +96,19 @@ extension LoginView: LoginPresenterDelegate {
     
     private func textField(for type: LoginTextField) -> TextFieldErrorMessage? {
         switch type {
-        case .email(_):
+        case .email:
             return self.email
             
-        case .password(_):
+        case .password:
             return self.password
             
-        case .repeatPassword(_):
+        case .repeatPassword:
             return self.repeatPassword
             
-        case .firstName(_):
+        case .firstName:
             return self.firstName
             
-        case .lastName(_):
+        case .lastName:
             return self.lastName
             
         default:

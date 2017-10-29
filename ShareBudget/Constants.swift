@@ -78,7 +78,7 @@ struct Constants {
     struct color {
         struct dflt {
             static let textTintColor = UIColor.black
-            static let inputTextColor = UIColor(hexString:"#C7C7CD")!
+            static let inputTextColor = UIColor(hexString: "#C7C7CD")!
             static let actionColor = UIColor(hexString: "#E91E63")!
             static let apperanceColor = UIColor(hexString: "#EEEEEE")!
             static let backgroundColor = UIColor(hexString: "#F5F5F5")

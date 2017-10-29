@@ -55,7 +55,7 @@ class BaseAPI {
     }
     
     class func checkResponse(data: Any?, response: URLResponse?, error: Error?) -> ErrorTypeAPI {
-        if let _ = error {
+        if error != nil {
             return .unknown
         }
         
@@ -96,10 +96,10 @@ class BaseAPI {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET";
+        request.httpMethod = "GET"
         request.addUpdateCredentials(timestamp: self.timestamp)
         
-        let task = AsynchronousURLConnection.create(request) { (data, response, error) -> (Void) in
+        let task = AsynchronousURLConnection.create(request) { (data, response, error) -> Void in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
@@ -133,8 +133,7 @@ class BaseAPI {
                     let newPageTask = BaseAPILoadUpdatesTask(resource: resource, entity: self, completionBlock: completion)
                     SyncManager.shared.insertPaginationTask(newPageTask)
                     self.pagination = pagination
-                }
-                else {
+                } else {
                     self.pagination = nil
                 }
             }
@@ -179,18 +178,17 @@ class BaseAPI {
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpBody = formValues.data(using: .utf8)
         
-        return AsynchronousURLConnection.create(request, completion: { (data, response, error) -> (Void) in
+        return AsynchronousURLConnection.create(request, completion: { (data, response, error) -> Void in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
                 if errorType == .tokenExpired {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
                         if error == .none {
                             let task = self.upload(resource, modelID, completion)
                             task.resume()
-                        }
-                        else {
+                        } else {
                             completion?(data, error)
                         }
                     })

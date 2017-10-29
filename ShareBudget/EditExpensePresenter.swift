@@ -78,8 +78,7 @@ class EditExpensePresenter: BasePresenter {
         
         if self.expenseInteraction.isExpenseNew {
             title = LocalisedManager.edit.expense.create
-        }
-        else {
+        } else {
             title = LocalisedManager.edit.expense.update
         }
         
@@ -100,8 +99,7 @@ class EditExpensePresenter: BasePresenter {
     fileprivate func updateCategory() {
         if let name = self.expenseInteraction.expense.category?.name {
             self.delegate?.setPlaceholder(name, color: Constants.color.dflt.textTintColor, for: .category)
-        }
-        else {
+        } else {
             self.delegate?.setPlaceholder(LocalisedManager.edit.expense.category, color: Constants.color.dflt.inputTextColor, for: .category)
         }
     }
@@ -224,8 +222,7 @@ extension EditExpensePresenter: UITextFieldDelegate {
             let roundPrice = UtilityFormatter.roundStringDecimalForTwoPlacesToNumber(price)
             if roundPrice == price {
                 self.expenseInteraction.expense.price = price
-            }
-            else {
+            } else {
                 return false
             }
             

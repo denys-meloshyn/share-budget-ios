@@ -27,7 +27,7 @@ public class Category: BaseModel {
         }
     }
     
-    override func uploadProperties() -> [String : String] {
+    override func uploadProperties() -> [String: String] {
         var result = super.uploadProperties()
         
         if let name = self.name {

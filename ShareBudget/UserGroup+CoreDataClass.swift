@@ -30,7 +30,7 @@ public class UserGroup: BaseModel {
         }
     }
     
-    override func uploadProperties() -> [String : String] {
+    override func uploadProperties() -> [String: String] {
         var result = super.uploadProperties()
         
         if let modelID = self.modelID {

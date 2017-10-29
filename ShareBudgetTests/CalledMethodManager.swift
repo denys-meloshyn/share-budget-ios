@@ -19,8 +19,7 @@ class CalledMethodManager {
         if filterItems.count > 0 {
             let current = filterItems[0]
             current.counter += 1
-        }
-        else {
+        } else {
             let new = CalledMethod(method)
             methods.append(new)
         }

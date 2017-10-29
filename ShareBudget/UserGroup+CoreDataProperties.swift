@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension UserGroup {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<UserGroup> {

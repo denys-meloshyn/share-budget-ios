@@ -85,7 +85,7 @@ class LoginPresenter: BasePresenter {
             
             delegate.showSpinnerView()
             if self.mode == .login {
-                interaction.login(email: email, password: password, completion: { (data, error) -> (Void) in
+                interaction.login(email: email, password: password, completion: { (_, error) -> Void in
                     DispatchQueue.main.async {
                         delegate.hideSpinnerView()
                         
@@ -101,7 +101,7 @@ class LoginPresenter: BasePresenter {
                                 message = LocalisedManager.error.passwordIsWrong
                                 
                             case .emailNotApproved:
-                                let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { (action) in
+                                let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { _ in
                                     interaction.sendRegistrationEmail(email)
                                 })
                                 message = LocalisedManager.login.sendRegistrationEmailMessage
@@ -123,12 +123,11 @@ class LoginPresenter: BasePresenter {
                         router.showHomePage()
                     }
                 })
-            }
-            else {
+            } else {
                 let firstName = delegate.loginValue(for: .firstName(""))
                 let lastName = delegate.loginValue(for: .lastName(""))
                 
-                interaction.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, error) -> (Void) in
+                interaction.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (_, error) -> Void in
                     DispatchQueue.main.async {
                         delegate.hideSpinnerView()
                         
@@ -150,8 +149,7 @@ class LoginPresenter: BasePresenter {
                     }
                 })
             }
-        }
-        else {
+        } else {
             delegate.showError(for: notValidField)
         }
     }
@@ -232,8 +230,8 @@ class LoginPresenter: BasePresenter {
     }
     
     private func configureNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(LoginPresenter.keyboardWillShown(notofication:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(LoginPresenter.keyboardWillBeHidden), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginPresenter.keyboardWillShown(notofication:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginPresenter.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     fileprivate func validate(textField: UITextField) {
@@ -292,24 +290,23 @@ class LoginPresenter: BasePresenter {
         }
         
         switch loginTextField {
-        case .email(_):
+        case .email:
             self.delegate?.showKeyboard(for: .password(""))
             
-        case .password(_):
+        case .password:
             if self.mode == .login {
                 self.authoriseUser()
-            }
-            else {
+            } else {
                 self.delegate?.showKeyboard(for: .repeatPassword(""))
             }
             
-        case .repeatPassword(_):
+        case .repeatPassword:
             self.delegate?.showKeyboard(for: .firstName(""))
             
-        case .firstName(_):
+        case .firstName:
             self.delegate?.showKeyboard(for: .lastName(""))
             
-        case .lastName(_):
+        case .lastName:
             self.authoriseUser()
             
         default:

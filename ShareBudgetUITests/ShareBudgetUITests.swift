@@ -47,7 +47,5 @@ class ShareBudgetUITests: XCTestCase {
 //        eMailTextField.tap()
 //        passwordSecureTextField.tap()
 //        repeatPasswordSecureTextField.tap()
-
-        
     }
 }
