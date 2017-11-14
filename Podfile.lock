@@ -5,12 +5,10 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - CocoaAsyncSocket (7.5.1):
-    - CocoaAsyncSocket/GCD (= 7.5.1)
-  - CocoaAsyncSocket/GCD (7.5.1)
+  - CocoaAsyncSocket (7.6.1)
   - CorePlot (2.2)
-  - JustLog (1.3.0):
-    - CocoaAsyncSocket (~> 7.5.0)
+  - JustLog (2.0.0):
+    - CocoaAsyncSocket (~> 7.6.1)
     - SwiftyBeaver (~> 1.4.0)
   - KeychainSwift (8.0.2)
   - le (1.1)
@@ -23,18 +21,18 @@ PODS:
   - R.swift.Library (3.0.2)
   - SnapKit (4.0.0)
   - SwiftLint (0.23.0)
-  - SwiftyBeaver (1.4.2)
+  - SwiftyBeaver (1.4.3)
   - Toast-Swift (2.0.0)
-  - XCGLogger (6.0.0):
-    - XCGLogger/Core (= 6.0.0)
-  - XCGLogger/Core (6.0.0):
+  - XCGLogger (6.0.1):
+    - XCGLogger/Core (= 6.0.1)
+  - XCGLogger/Core (6.0.1):
     - ObjcExceptionBridging
 
 DEPENDENCIES:
   - BugfenderSDK (= 1.4.5)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (= 2.2)
-  - JustLog (= 1.3)
+  - JustLog (= 2.0.0)
   - KeychainSwift (= 8.0.2)
   - le (= 1.1)
   - Nimble (= 7.0.2)
@@ -42,7 +40,7 @@ DEPENDENCIES:
   - SnapKit (= 4.0)
   - SwiftLint (= 0.23)
   - Toast-Swift (= 2.0.0)
-  - XCGLogger (= 6.0.0)
+  - XCGLogger (= 6.0.1)
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -56,9 +54,9 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BugfenderSDK: 48e40e63015e936c25c164b15656452152e1e74e
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
-  JustLog: 88ddc70d5c1e8dcc4de3b94899905975c180e9b2
+  JustLog: 075863acc3463dd92e3c62a28fb64baa81c39fcd
   KeychainSwift: 213db04dfe7244988e61f77c72a2afb2f775954a
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
@@ -67,10 +65,10 @@ SPEC CHECKSUMS:
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftLint: 6ddf7d305644c2239cb768a11d97cce804816691
-  SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
+  SwiftyBeaver: e10b1668e0512229c36c34769b97eed3dfae2ca3
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
-  XCGLogger: 0bb32cfc1eb66f67df84cd327d75d11998747629
+  XCGLogger: b4ca980580108cfeaf221afe158f5d89c1be22e0
 
-PODFILE CHECKSUM: 922f52a4b33df8654d9e979fb158a14d18987398
+PODFILE CHECKSUM: db083976ca16f62e7defa50c2c2a49ac96bb5c0c
 
 COCOAPODS: 1.3.1
