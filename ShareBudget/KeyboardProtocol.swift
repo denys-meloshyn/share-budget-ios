@@ -8,9 +8,9 @@
 
 import UIKit
 
-@objc protocol KeyBoardProtocol {
-    @objc func keyboardWillShow(notification: NSNotification)
-    @objc func keyboardWillHide(notification: NSNotification)
+protocol KeyBoardProtocol {
+    func keyboardWillShow(notification: NSNotification)
+    func keyboardWillHide(notification: NSNotification)
 }
 
 extension KeyBoardProtocol {

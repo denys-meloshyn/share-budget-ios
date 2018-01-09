@@ -28,9 +28,9 @@ class BaseView<T: BasePresenterProtocol>: NSObject {
         self.presenter = presenter
         self.viewController = viewController
     }
-}
-
-extension BaseView: LifeCycleStateProtocol {
+    
+    // MARK: - LifeCycleStateProtocol
+    
     func viewDidLoad() {
         presenter.viewDidLoad()
     }
@@ -50,6 +50,9 @@ extension BaseView: LifeCycleStateProtocol {
     func viewDidDisappear(_ animated: Bool) {
         presenter.viewDidDisappear(animated)
     }
+}
+
+extension BaseView: LifeCycleStateProtocol {
 }
 
 extension BaseView: BasePresenterDelegate {

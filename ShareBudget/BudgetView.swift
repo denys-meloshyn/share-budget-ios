@@ -9,46 +9,40 @@
 import UIKit
 import Rswift
 
-class BudgetView: BaseView {
+class BudgetView<T: BudgetPresenterProtocol>: BaseView<T> {
     fileprivate let tableBudgetCellReuseIdentifier = "BudgetTableViewCell"
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"
-    
-    fileprivate var budgetPresenter: BudgetPresenter {
-        get {
-            return self.presenter as! BudgetPresenter
-        }
-    }
     
     weak var tableView: UITableView?
     weak var createNewGroupLabel: UILabel?
     weak var createNewGroupRootView: UIView?
     weak var constantCreateNewGroupRootViewBottom: NSLayoutConstraint?
     
-    override init(with presenter: BasePresenter, and viewController: UIViewController) {
+    override init(with presenter: T, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
         
-        self.budgetPresenter.delegate = self
+        presenter.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureTable()
-        self.viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
+        configureTable()
+        viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
     }
     
     func configureTable() {
         let nib = R.nib.createSearchTableViewHeader()
-        self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
-        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: self.tableBudgetCellReuseIdentifier)
-        self.tableView?.delegate = self.budgetPresenter
-        self.tableView?.dataSource = self.budgetPresenter
+        tableView?.register(nib, forHeaderFooterViewReuseIdentifier: tableHeaderReuseIdentifier)
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: tableBudgetCellReuseIdentifier)
+        tableView?.delegate = presenter
+        tableView?.dataSource = presenter
     }
     
     // Method of BudgetPresenterDelegate, need here to be able to test it
     func refreshData(for mode: BudgetHeaderMode) {
-        self.tableView?.reloadData()
-        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        tableView?.reloadData()
+        let header = tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
         header?.mode = mode
     }
 }
@@ -57,14 +51,14 @@ class BudgetView: BaseView {
 
 extension BudgetView: BudgetPresenterDelegate {
     func searchView() -> CreateSearchTableViewHeader? {
-        let searchView = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        let searchView = tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
         
         return searchView
     }
     
     func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
-        let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
-        header?.delegate = self.budgetPresenter
+        let header = tableView?.dequeueReusableHeaderFooterView(withIdentifier: tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
+        header?.delegate = presenter
         header?.textField?.placeholder = placeholder
         header?.mode = mode
         
@@ -72,7 +66,7 @@ extension BudgetView: BudgetPresenterDelegate {
     }
     
     func createBudgetCell(with title: String?) -> UITableViewCell {
-        let cell = self.tableView?.dequeueReusableCell(withIdentifier: self.tableBudgetCellReuseIdentifier)
+        let cell = tableView?.dequeueReusableCell(withIdentifier: tableBudgetCellReuseIdentifier)
         cell?.backgroundColor = UIColor.clear
         cell?.textLabel?.text = title
         
@@ -80,46 +74,44 @@ extension BudgetView: BudgetPresenterDelegate {
     }
     
     func clearSearch() {
-        let searchView = self.searchView()
-        searchView?.textField?.text = ""
+        searchView()?.textField?.text = ""
     }
     
-    @objc func cancelSearch() {
-        let searchView = self.searchView()
-        searchView?.textField?.resignFirstResponder()
+    func cancelSearch() {
+        searchView()?.textField?.resignFirstResponder()
     }
     
-    @objc func showGroupList() {
-        self.tableView?.separatorStyle = .singleLine
-        self.createNewGroupRootView?.isHidden = true
+    func showGroupList() {
+        tableView?.separatorStyle = .singleLine
+        createNewGroupRootView?.isHidden = true
     }
     
-    @objc func showCreateNewGroupMessage(message: NSAttributedString) {
-        self.tableView?.separatorStyle = .none
-        self.createNewGroupRootView?.isHidden = false
+    func showCreateNewGroupMessage(message: NSAttributedString) {
+        tableView?.separatorStyle = .none
+        createNewGroupRootView?.isHidden = false
         
-        self.createNewGroupLabel?.attributedText = message
+        createNewGroupLabel?.attributedText = message
     }
     
     func removeBottomOffset() {
-        guard var inset = self.tableView?.contentInset else {
+        guard var inset = tableView?.contentInset else {
             return
         }
-        inset.bottom = self.viewController?.bottomLayoutGuide.length ?? 0.0
+        inset.bottom = viewController?.bottomLayoutGuide.length ?? 0.0
         
-        self.tableView?.contentInset = inset
-        self.tableView?.scrollIndicatorInsets = inset
-        self.constantCreateNewGroupRootViewBottom?.constant = 0.0
+        tableView?.contentInset = inset
+        tableView?.scrollIndicatorInsets = inset
+        constantCreateNewGroupRootViewBottom?.constant = 0.0
     }
     
     func setBottomOffset(_ offset: Double) {
-        guard var inset = self.tableView?.contentInset else {
+        guard var inset = tableView?.contentInset else {
             return
         }
         inset.bottom = CGFloat(offset)
         
-        self.tableView?.contentInset = inset
-        self.tableView?.scrollIndicatorInsets = inset
-        self.constantCreateNewGroupRootViewBottom?.constant = CGFloat(offset)
+        tableView?.contentInset = inset
+        tableView?.scrollIndicatorInsets = inset
+        constantCreateNewGroupRootViewBottom?.constant = CGFloat(offset)
     }
 }

@@ -25,14 +25,12 @@ protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHe
     func createBudgetCell(with title: String?) -> UITableViewCell
 }
 
-class BudgetPresenter: BasePresenter {
+protocol BudgetPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UITableViewDataSource, CreateSearchTableViewHeaderDelegate {
+    weak var delegate: BudgetPresenterDelegate? { get set }
+}
+
+class BudgetPresenter<T: BudgetInteractionProtocol>: BasePresenter<T> {
     weak var delegate: BudgetPresenterDelegate?
-    
-    fileprivate var budgetInteraction: BudgetInteraction {
-        get {
-            return self.interaction as! BudgetInteraction
-        }
-    }
     
     fileprivate var budgetRouter: BudgetRouter {
         get {
@@ -40,37 +38,14 @@ class BudgetPresenter: BasePresenter {
         }
     }
     
-    override init(with interaction: BaseInteraction, router: BaseRouter) {
+    override init(with interaction: T, router: BaseRouter) {
         super.init(with: interaction, router: router)
         
-        self.budgetInteraction.delegate = self
-    }
-    
-    // MARK: Life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.delegate?.showTabBar(title: "Budgets", image: UIImage(), selected: UIImage())
-        self.delegate?.showPage(title: "Budgets")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        SyncManager.shared.delegate = self
-        
-        self.startListenKeyboardNotifications()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        self.stopListenKeyboardNotifications()
+        interaction.delegate = self
     }
     
     func headerMode() -> BudgetHeaderMode {
-        let rows = self.budgetInteraction.numberOfRowsInSection()
+        let rows = interaction.numberOfRowsInSection()
         
         if rows > 0 {
             return .search
@@ -80,7 +55,7 @@ class BudgetPresenter: BasePresenter {
     }
     
     func updateSearchPlaceholder(_ searchText: String) {
-        if self.headerMode() == .create {
+        if headerMode() == .create {
             let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
             let attribetString = NSMutableAttributedString(string: descriptionText)
             var range = (descriptionText as NSString).range(of: searchText, options: .backwards)
@@ -89,70 +64,49 @@ class BudgetPresenter: BasePresenter {
             range = (descriptionText as NSString).range(of: "+")
             attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
-            self.delegate?.showCreateNewGroupMessage(message: attribetString)
+            delegate?.showCreateNewGroupMessage(message: attribetString)
         } else {
-            self.delegate?.showGroupList()
+            delegate?.showGroupList()
         }
     }
     
     func startListenKeyboardNotifications() {
-        self.addKeyboardNotifications()
+        addKeyboardNotifications()
     }
     
     func stopListenKeyboardNotifications() {
-        self.removeKeyboardNotifications()
-    }
-}
-
-// MARK: - BudgetInteractionDelegate
-
-extension BudgetPresenter: BudgetInteractionDelegate {
-    func willChangeContent() {
-        self.delegate?.refreshData(for: self.headerMode())
+        removeKeyboardNotifications()
     }
     
-    func didChangeContent() {
-        self.delegate?.refreshData(for: self.headerMode())
-    }
+    // MARK: - UITableViewDataSource
     
-    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension BudgetPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.budgetInteraction.numberOfRowsInSection()
+        return interaction.numberOfRowsInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let budget = self.budgetInteraction.budgetModel(for: indexPath)
-        guard let cell = self.delegate?.createBudgetCell(with: budget.name) else {
+        let budget = interaction.budgetModel(for: indexPath)
+        guard let cell = delegate?.createBudgetCell(with: budget.name) else {
             return UITableViewCell()
         }
         
         return cell
     }
     
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.delegate?.createSearchTableHeaderView(with: self.headerMode(), placeholder: LocalisedManager.groups.headerPlaceholder)
+        return delegate?.createSearchTableHeaderView(with: headerMode(), placeholder: LocalisedManager.groups.headerPlaceholder)
     }
-}
-
-// MARK: - UITableViewDelegate
-
-extension BudgetPresenter: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let budget = self.budgetInteraction.budgetModel(for: indexPath)
-        self.budgetRouter.openDetailPage(for: budget.objectID)
+        let budget = interaction.budgetModel(for: indexPath)
+        budgetRouter.openDetailPage(for: budget.objectID)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -161,6 +115,46 @@ extension BudgetPresenter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
+    }
+}
+
+// MARK: - LifeCycleStateProtocol
+
+extension BudgetPresenter: LifeCycleStateProtocol {
+    func viewDidLoad() {
+        delegate?.showTabBar(title: "Budgets", image: UIImage(), selected: UIImage())
+        delegate?.showPage(title: "Budgets")
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+        SyncManager.shared.delegate = self
+        
+        startListenKeyboardNotifications()
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
+        stopListenKeyboardNotifications()
+    }
+}
+
+// MARK: - BudgetInteractionDelegate
+
+extension BudgetPresenter: BudgetInteractionDelegate {
+    func willChangeContent() {
+        delegate?.refreshData(for: self.headerMode())
+    }
+    
+    func didChangeContent() {
+        delegate?.refreshData(for: self.headerMode())
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
     }
 }
 
@@ -173,27 +167,27 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
             sender.textField?.text = newText
         }
         
-        self.budgetInteraction.updateWithSearch(newText)
-        self.updateSearchPlaceholder(newText)
+        interaction.updateWithSearch(newText)
+        updateSearchPlaceholder(newText)
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
-        self.delegate?.cancelSearch()
-        self.delegate?.clearSearch()
-        self.delegate?.showGroupList()
-        self.budgetInteraction.updateWithSearch("")
+        delegate?.cancelSearch()
+        delegate?.clearSearch()
+        delegate?.showGroupList()
+        interaction.updateWithSearch("")
         
         guard let title = title, !Validator.isNullOrBlank(title) else {
             return
         }
         
-        let newBudget = self.budgetInteraction.createNewBudget(with: Validator.removeWhiteSpaces(title))
-        self.budgetRouter.openDetailPage(for: newBudget.objectID)
+        let newBudget = interaction.createNewBudget(with: Validator.removeWhiteSpaces(title))
+        budgetRouter.openDetailPage(for: newBudget.objectID)
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
-        if self.headerMode() == .create {
-            self.createNewItem(sender, sender.textField?.text)
+        if headerMode() == .create {
+            createNewItem(sender, sender.textField?.text)
         }
     }
 }
@@ -202,16 +196,16 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
 
 extension BudgetPresenter: KeyBoardProtocol {
     func keyboardWillHide(notification: NSNotification) {
-        self.delegate?.removeBottomOffset()
+        delegate?.removeBottomOffset()
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        self.delegate?.setBottomOffset(self.keyboardHeight(from: notification))
+        delegate?.setBottomOffset(keyboardHeight(from: notification))
     }
 }
 
 extension BudgetPresenter: SyncManagerDelegate {
     func error(_ error: ErrorTypeAPI) {
-        self.delegate?.showErrorSync(message: LocalisedManager.generic.errorMessage)
+        delegate?.showErrorSync(message: LocalisedManager.generic.errorMessage)
     }
 }

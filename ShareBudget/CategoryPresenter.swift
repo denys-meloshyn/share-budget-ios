@@ -72,6 +72,8 @@ class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, Categ
     }
 }
 
+// MARK: - CategoryInteractionDelegate
+
 extension CategoryPresenter: CategoryInteractionDelegate {
     func willChangeContent() {
         delegate?.refreshData(for: headerMode())
@@ -82,6 +84,25 @@ extension CategoryPresenter: CategoryInteractionDelegate {
     }
     
     func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+}
+
+// MARK: - LifeCycleStateProtocol
+
+extension CategoryPresenter: LifeCycleStateProtocol {
+    func viewDidLoad() {
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
     }
 }
 
