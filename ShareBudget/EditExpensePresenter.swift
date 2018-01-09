@@ -28,7 +28,7 @@ protocol EditExpensePresenterDelegate: BasePresenterDelegate {
     func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField)
 }
 
-class EditExpensePresenter: BasePresenter {
+class EditExpensePresenter: BasePresenter<EditExpenseInteraction> {
     weak var delegate: EditExpensePresenterDelegate?
     fileprivate let items: [EditExpenseField] = [.price, .name, .category, .date]
     fileprivate var expenseInteraction: EditExpenseInteraction {

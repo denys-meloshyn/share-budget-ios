@@ -17,44 +17,47 @@ protocol LifeCycleStateProtocol: class {
     func viewDidDisappear(_ animated: Bool)
 }
 
-class BaseView: NSObject {
-    let presenter: BasePresenter
+protocol BaseViewProtocol: class {
+}
+
+class BaseView<T: BasePresenterProtocol>: NSObject {
+    let presenter: T
     weak var viewController: UIViewController?
     
-    init(with presenter: BasePresenter, and viewController: UIViewController) {
+    init(with presenter: T, and viewController: UIViewController) {
         self.presenter = presenter
         self.viewController = viewController
     }
 }
 
 extension BaseView: LifeCycleStateProtocol {
-    @objc func viewDidLoad() {
-        self.presenter.viewDidLoad()
+    func viewDidLoad() {
+        presenter.viewDidLoad()
     }
     
     func viewWillAppear(_ animated: Bool) {
-        self.presenter.viewWillAppear(animated)
+        presenter.viewWillAppear(animated)
     }
     
     func viewDidAppear(_ animated: Bool) {
-        self.presenter.viewDidAppear(animated)
+        presenter.viewDidAppear(animated)
     }
     
     func viewWillDisappear(_ animated: Bool) {
-        self.presenter.viewWillDisappear(animated)
+        presenter.viewWillDisappear(animated)
     }
     
     func viewDidDisappear(_ animated: Bool) {
-        self.presenter.viewDidDisappear(animated)
+        presenter.viewDidDisappear(animated)
     }
 }
 
 extension BaseView: BasePresenterDelegate {
-    @objc func showPage(title: String?) {
+    func showPage(title: String?) {
         self.viewController?.navigationItem.title = title
     }
     
-    @objc func showTabBar(title: String, image: UIImage, selected: UIImage) {
+    func showTabBar(title: String, image: UIImage, selected: UIImage) {
         self.viewController?.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: selected)
     }
     

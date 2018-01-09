@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryView: BaseView {
+class CategoryView<T: CategoryPresenterProtocol>: BaseView<T> {
     weak var tableView: UITableView?
     fileprivate let tableDequeueReusableCell = "CategoryTableViewCell"
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"

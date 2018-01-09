@@ -111,7 +111,7 @@ class LoginPresenter: BasePresenter {
                                 break
                             }
                             
-                            self.delegate?.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            delegate.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
                         
