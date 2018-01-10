@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+protocol LoginInteractionProtocol: BaseInteractionProtocol {
+}
+
 class LoginInteraction: BaseInteraction {
     let managedObjectContext = ModelManager.managedObjectContext
     

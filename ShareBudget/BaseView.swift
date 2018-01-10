@@ -50,12 +50,9 @@ class BaseView<T: BasePresenterProtocol>: NSObject {
     func viewDidDisappear(_ animated: Bool) {
         presenter.viewDidDisappear(animated)
     }
-}
-
-extension BaseView: LifeCycleStateProtocol {
-}
-
-extension BaseView: BasePresenterDelegate {
+    
+    // MARK: - BasePresenterDelegate
+    
     func showPage(title: String?) {
         self.viewController?.navigationItem.title = title
     }
@@ -77,4 +74,10 @@ extension BaseView: BasePresenterDelegate {
     func showErrorSync(message text: String) {
         self.viewController?.view.makeToast(text, duration: 3.0, position: .center)
     }
+}
+
+extension BaseView: LifeCycleStateProtocol {
+}
+
+extension BaseView: BasePresenterDelegate {
 }

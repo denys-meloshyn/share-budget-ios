@@ -31,25 +31,17 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
     func configureTextField(_ textField: LoginTextField, placeholder: String)
 }
 
-class LoginPresenter: BasePresenter {
+protocol LoginPresenterProtocol: BasePresenterProtocol {
+    weak var delegate: LoginPresenterDelegate? { get set }
+}
+
+class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T> {
     var mode = AuthorisationMode.login
     weak var delegate: LoginPresenterDelegate?
     
     override func configure() {
         self.updateAthorisationView()
         self.configureLoginTextFields()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.configureNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.removeNotifications()
     }
     
     // MARK: - Public
@@ -168,6 +160,32 @@ class LoginPresenter: BasePresenter {
     
     @objc func keyboardWillBeHidden() {
         self.delegate?.removeBottomOffset()
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text, text.count > 0 else {
+            return
+        }
+        
+        self.validate(textField: textField)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.activateNextKeyboard(for: textField)
+        
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let inputTextField = self.delegate?.textType(for: textField) else {
+            return true
+        }
+        
+        self.delegate?.hideError(for: inputTextField)
+        
+        return true
     }
     
     // MARK: - Private
@@ -315,28 +333,26 @@ class LoginPresenter: BasePresenter {
     }
 }
 
+// MARK: - LifeCycleStateProtocol
+
+extension LoginPresenter: LifeCycleStateProtocol {
+    func viewDidLoad() {
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+        configureNotifications()
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewWillDisappear(_ animated: Bool) {
+        removeNotifications()
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
+    }
+}
+
 extension LoginPresenter: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text, text.characters.count > 0 else {
-            return
-        }
-        
-        self.validate(textField: textField)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.activateNextKeyboard(for: textField)
-        
-        return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let inputTextField = self.delegate?.textType(for: textField) else {
-            return true
-        }
-        
-        self.delegate?.hideError(for: inputTextField)
-        
-        return true
-    }
 }

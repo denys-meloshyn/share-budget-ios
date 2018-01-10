@@ -10,23 +10,23 @@ import UIKit
 import CorePlot
 import ChameleonFramework
 
-class BudgetDetailView: BaseView {
+class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T> {
     weak var monthLabel: UILabel?
     weak var minusLabel: UILabel?
     weak var equalLabel: UILabel?
     weak var budgetLabel: UILabel?
-    weak var backButton: UIButton?
+    weak var backButton: ButtonListener?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
     weak var animationView: UIView?
     weak var navigationView: UIView?
-    weak var budgetButton: UIButton?
-    weak var expenseButton: UIButton?
+    weak var budgetButton: ButtonListener?
+    weak var expenseButton: ButtonListener?
     weak var expenseCoverView: UIView?
-    weak var editMemberButton: UIButton?
+    weak var editMemberButton: ButtonListener?
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
-    weak var createExpenseButton: UIButton?
+    weak var createExpenseButton: ButtonListener?
     weak var navigationTitleLabel: UILabel?
     weak var chartView: CPTGraphHostingView?
     weak var safeAreaPlaceholderView: UIView?
@@ -43,37 +43,53 @@ class BudgetDetailView: BaseView {
     fileprivate var piePlot: CPTPieChart!
     fileprivate var pieGraph: CPTXYGraph?
     
-    override init(with presenter: BasePresenter, and viewController: UIViewController) {
+    override init(with presenter: T, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
         
-        self.budgetDetailPresenter.delegate = self
-    }
-    
-    fileprivate var budgetDetailPresenter: BudgetDetailPresenter {
-        get {
-            return self.presenter as! BudgetDetailPresenter
-        }
+        presenter.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.editMemberButton?.tintColor = Constants.color.dflt.actionColor
-        self.animationView?.backgroundColor = Constants.color.dflt.actionColor
-        self.viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
-        self.createNewExpenseContainerView?.backgroundColor = Constants.color.dflt.actionColor
+        editMemberButton?.tintColor = Constants.color.dflt.actionColor
+        animationView?.backgroundColor = Constants.color.dflt.actionColor
+        viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
+        createNewExpenseContainerView?.backgroundColor = Constants.color.dflt.actionColor
         
-        self.backButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.closePageAction), for: .touchUpInside)
-        self.editMemberButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.editMembers), for: .touchUpInside)
-        self.expenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.showAllExpenses), for: .touchUpInside)
-        self.budgetButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.changeBudgetLimit), for: .touchUpInside)
-        self.createExpenseButton?.addTarget(self.budgetDetailPresenter, action: #selector(BudgetDetailPresenter.createNewExpense), for: .touchUpInside)
+        backButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.closePageAction()
+        })
         
-        self.configureBorder(for: self.budgetContainerView, color: Constants.color.dflt.actionColor)
-        self.configureBorder(for: self.expenseContainerView, color: Constants.color.dflt.actionColor)
-        self.configureBorder(for: self.balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
+        editMemberButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.editMembers()
+        })
         
-        self.configureChart()
+        expenseButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.showAllExpenses()
+        })
+        
+        budgetButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.changeBudgetLimit()
+        })
+        
+        createExpenseButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.createNewExpense()
+        })
+        
+        backButton?.addTouchUpInsideListener(completion: { sender in
+            self.presenter.closePageAction()
+        })
+        
+        configureBorder(for: budgetContainerView, color: Constants.color.dflt.actionColor)
+        configureBorder(for: expenseContainerView, color: Constants.color.dflt.actionColor)
+        configureBorder(for: balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
+        
+        configureChart()
+    }
+    
+    override func showPage(title: String?) {
+        navigationTitleLabel?.text = title
     }
     
     private func configureBorder(for view: UIView?, color: UIColor? = UIColor.white) {
@@ -84,63 +100,63 @@ class BudgetDetailView: BaseView {
     
     private func configureChart() {
         // Create graph from theme
-        self.pieGraph = CPTXYGraph(frame: .zero)
-        self.pieGraph?.apply(CPTTheme(named: .plainWhiteTheme))
-        self.pieGraph?.axisSet = nil
-        self.pieGraph?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
-        self.pieGraph?.plotAreaFrame?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
-        self.pieGraph?.plotAreaFrame?.borderLineStyle = nil
+        pieGraph = CPTXYGraph(frame: .zero)
+        pieGraph?.apply(CPTTheme(named: .plainWhiteTheme))
+        pieGraph?.axisSet = nil
+        pieGraph?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
+        pieGraph?.plotAreaFrame?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
+        pieGraph?.plotAreaFrame?.borderLineStyle = nil
         
         // Paddings
-        self.pieGraph?.paddingTop = 0.0
-        self.pieGraph?.paddingLeft = 0.0
-        self.pieGraph?.paddingRight = 0.0
-        self.pieGraph?.paddingBottom = 0.0
+        pieGraph?.paddingTop = 0.0
+        pieGraph?.paddingLeft = 0.0
+        pieGraph?.paddingRight = 0.0
+        pieGraph?.paddingBottom = 0.0
         
-        self.chartView?.hostedGraph = self.pieGraph
+        chartView?.hostedGraph = pieGraph
         
-        self.chartView?.layoutIfNeeded()
-        let width = self.chartView?.frame.width ?? 0.0
-        let height = self.chartView?.frame.height ?? 0.0
+        chartView?.layoutIfNeeded()
+        let width = chartView?.frame.width ?? 0.0
+        let height = chartView?.frame.height ?? 0.0
         let radius = min(width, height) * 0.5
         let innerRadius = radius * 0.5
         
         // Add pie chart
-        self.piePlot = CPTPieChart(frame: .zero)
-        self.piePlot.pieRadius = radius
-        self.piePlot.pieInnerRadius = innerRadius
-        self.piePlot.identifier = NSString.init(string: "Pie Chart 1")
-        self.piePlot.startAngle = CGFloat(Double.pi / 4)
-        self.piePlot.sliceDirection = .clockwise
-        self.piePlot.labelOffset = -60.0
-        self.piePlot.labelRotationRelativeToRadius = true
+        piePlot = CPTPieChart(frame: .zero)
+        piePlot.pieRadius = radius
+        piePlot.pieInnerRadius = innerRadius
+        piePlot.identifier = NSString.init(string: "Pie Chart 1")
+        piePlot.startAngle = CGFloat(Double.pi / 4)
+        piePlot.sliceDirection = .clockwise
+        piePlot.labelOffset = -60.0
+        piePlot.labelRotationRelativeToRadius = true
         
-        self.piePlot.delegate = self.budgetDetailPresenter
-        self.piePlot.dataSource = self.budgetDetailPresenter
+        piePlot.delegate = presenter
+        piePlot.dataSource = presenter
         
-        self.pieGraph?.add(piePlot)
+        pieGraph?.add(piePlot)
         
-        self.configureChartFrame()
+        configureChartFrame()
     }
     
     private func configureChartFrame() {
-        let buttonSize = self.piePlot.pieInnerRadius * 0.8 * 2
-        self.constraintChartViewWidth?.constant = buttonSize
-        self.constraintChartViewHeight?.constant = buttonSize
-        self.createNewExpenseContainerView?.layer.cornerRadius = buttonSize * 0.5
+        let buttonSize = piePlot.pieInnerRadius * 0.8 * 2
+        constraintChartViewWidth?.constant = buttonSize
+        constraintChartViewHeight?.constant = buttonSize
+        createNewExpenseContainerView?.layer.cornerRadius = buttonSize * 0.5
         
-        self.constraintAnimationViewWidth?.constant = (self.constraintChartViewWidth?.constant ?? 0.0)
-        self.constraintAnimationViewHeight?.constant = (self.constraintChartViewHeight?.constant ?? 0.0)
-        self.animationView?.layer.cornerRadius = (self.constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
-        self.viewController?.view.layoutIfNeeded()
+        constraintAnimationViewWidth?.constant = (constraintChartViewWidth?.constant ?? 0.0)
+        constraintAnimationViewHeight?.constant = (constraintChartViewHeight?.constant ?? 0.0)
+        animationView?.layer.cornerRadius = (constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
+        viewController?.view.layoutIfNeeded()
     }
     
     fileprivate func stopAnimation() {
-        self.animationView?.layer.removeAllAnimations()
+        animationView?.layer.removeAllAnimations()
     }
     
     fileprivate func startAnimation() {
-        self.stopAnimation()
+        stopAnimation()
         
         UIView.animate(withDuration: 5.0, animations: { [weak self] in
             self?.animationView?.alpha = 0.0
@@ -158,75 +174,71 @@ class BudgetDetailView: BaseView {
     fileprivate func updateContrastColor(to color: UIColor) {
         let newColor = UIColor(contrastingBlackOrWhiteColorOn: color, isFlat: true)
         
-        self.configureBorder(for: self.budgetContainerView, color: newColor)
-        self.configureBorder(for: self.expenseContainerView, color: newColor)
-        self.configureBorder(for: self.balanceContainerView, color: UIColor.lightGray)
+        configureBorder(for: budgetContainerView, color: newColor)
+        configureBorder(for: expenseContainerView, color: newColor)
+        configureBorder(for: balanceContainerView, color: UIColor.lightGray)
         
-        self.minusLabel?.textColor = newColor
-        self.equalLabel?.textColor = newColor
-        self.monthLabel?.textColor = newColor
-        self.budgetLabel?.textColor = newColor
-        self.balanceLabel?.textColor = newColor
-        self.expenseLabel?.textColor = newColor
-        self.budgetDescriptionLabel?.textColor = newColor
-        self.balanceDescriptionLabel?.textColor = newColor
-        self.expenseDescriptionLabel?.textColor = newColor
+        minusLabel?.textColor = newColor
+        equalLabel?.textColor = newColor
+        monthLabel?.textColor = newColor
+        budgetLabel?.textColor = newColor
+        balanceLabel?.textColor = newColor
+        expenseLabel?.textColor = newColor
+        budgetDescriptionLabel?.textColor = newColor
+        balanceDescriptionLabel?.textColor = newColor
+        expenseDescriptionLabel?.textColor = newColor
     }
 }
 
 // MARK: - BudgetDetailPresenterDelegate
 
 extension BudgetDetailView: BudgetDetailPresenterDelegate {
-    override func showPage(title: String?) {
-        self.navigationTitleLabel?.text = title
-    }
-    
     func updateNativeNavigationVisibility(_ isVisible: Bool) {
         if isVisible {
-            self.viewController?.navigationController?.setNavigationBarHidden(false, animated: true)
+            viewController?.navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
-            self.viewController?.navigationController?.setNavigationBarHidden(true, animated: true)
+            viewController?.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
     
     func updateCreateButtonAnimation(_ isActive: Bool) {
         if isActive {
-            self.startAnimation()
+            startAnimation()
         } else {
-            self.stopAnimation()
+            stopAnimation()
         }
     }
     
     func updateChart() {
-        self.piePlot.reloadData()
+        piePlot.reloadData()
     }
     
     func updateTotalExpense(_ total: String) {
-        self.expenseLabel?.text = total
+        expenseLabel?.text = total
     }
     
     func updateMonthLimit(_ limit: String) {
-        self.budgetLabel?.text = limit
+        budgetLabel?.text = limit
     }
     
     func updateBalance(_ balance: String) {
-        self.balanceLabel?.text = balance
+        balanceLabel?.text = balance
     }
     
     func updateCurrentMonthDate(_ date: String) {
-        self.monthLabel?.text = date
+        monthLabel?.text = date
     }
     
     func updateExpenseCoverColor(_ color: UIColor?) {
-        self.navigationView?.backgroundColor = color
-        self.expenseCoverView?.backgroundColor = color
-        self.safeAreaPlaceholderView?.backgroundColor = color
+        navigationView?.backgroundColor = color
+        expenseCoverView?.backgroundColor = color
+        safeAreaPlaceholderView?.backgroundColor = color
     }
     
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let createAction = UIAlertAction(title: create, style: .default, handler: self.budgetDetailPresenter.createHandler(with: alertController))
+        let createAction = UIAlertAction(title: create, style: .default, handler: presenter.createHandler(with: alertController))
         
         let cancelAction = UIAlertAction(title: cancel, style: .cancel)
         

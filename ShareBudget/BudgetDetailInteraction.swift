@@ -12,6 +12,22 @@ protocol BudgetDetailInteractionDelegate: BaseInteractionDelegate {
     func limitChanged()
 }
 
+protocol BudgetDetailInteractionProtocol: BaseInteractionProtocol {
+    var budget: Budget { get set }
+    var budgetID: NSManagedObjectID { get }
+    weak var delegate: BudgetDetailInteractionDelegate? { get set }
+    
+    func isEmpty() -> Bool
+    func balance() -> Double
+    func totalExpenses() -> Double
+    func lastMonthLimit() -> BudgetLimit?
+    func numberOfCategoryExpenses() -> Int
+    func category(for section: Int) -> Category?
+    func categoryTitle(for section: Int) -> String
+    func totalExpenses(for categoryIndex: Int) -> Double
+    func createOrUpdateCurrentBudgetLimit(_ limit: Double)
+}
+
 class BudgetDetailInteraction: BaseInteraction {
     var budget: Budget
     let budgetID: NSManagedObjectID

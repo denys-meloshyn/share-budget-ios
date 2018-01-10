@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditExpenseView: BaseView {
+class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T> {
     weak var categoryButton: UIButton?
     weak var dateContainerView: UIView?
     weak var nameSeparatorLine: UIView?
@@ -18,37 +18,31 @@ class EditExpenseView: BaseView {
     weak var priceTextField: UITextField?
     weak var categoryContainerView: UIView?
     
-    fileprivate var editExpensePresenter: EditExpensePresenter {
-        get {
-            return self.presenter as! EditExpensePresenter
-        }
-    }
-    
-    override init(with presenter: BasePresenter, and viewController: UIViewController) {
+    override init(with presenter: T, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
         
-        self.editExpensePresenter.delegate = self
+        presenter.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.nameTextField?.delegate = self.editExpensePresenter
-        self.dateTextField?.delegate = self.editExpensePresenter
-        self.priceTextField?.delegate = self.editExpensePresenter
+        nameTextField?.delegate = presenter
+        dateTextField?.delegate = presenter
+        priceTextField?.delegate = presenter
         
-        self.setBorderColor(for: self.dateContainerView)
-        self.setBorderColor(for: self.categoryContainerView)
-        self.nameSeparatorLine?.backgroundColor = Constants.color.dflt.actionColor
-        self.categoryButton?.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
+        setBorderColor(for: dateContainerView)
+        setBorderColor(for: categoryContainerView)
+        nameSeparatorLine?.backgroundColor = Constants.color.dflt.actionColor
+        categoryButton?.addTarget(presenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
         
-        self.configureDatePicker()
+        configureDatePicker()
     }
     
     private func configureDatePicker() {
-        self.datePicker.addTarget(self.editExpensePresenter, action: #selector(EditExpensePresenter.dateChanged(sender:)), for: .valueChanged)
-        self.datePicker.datePickerMode = .dateAndTime
-        self.dateTextField?.inputView = self.datePicker
+        datePicker.addTarget(presenter, action: #selector(EditExpensePresenter.dateChanged(sender:)), for: .valueChanged)
+        datePicker.datePickerMode = .dateAndTime
+        dateTextField?.inputView = datePicker
     }
     
     fileprivate func setBorderColor(for view: UIView?) {
@@ -60,19 +54,19 @@ class EditExpenseView: BaseView {
 
 extension EditExpenseView: EditExpensePresenterDelegate {
     func updateName(_ value: String?) {
-        self.nameTextField?.text = value
+        nameTextField?.text = value
     }
     
     func updateDate(_ value: String) {
-        self.dateTextField?.text = value
+        dateTextField?.text = value
     }
     
     func updateDatePicker(with date: Date) {
-        self.datePicker.date = date
+        datePicker.date = date
     }
     
     func updatePrice(_ value: String) {
-        self.priceTextField?.text = value
+        priceTextField?.text = value
     }
     
     func typeForTextField(_ textField: UITextField) -> EditExpenseField {
@@ -94,37 +88,37 @@ extension EditExpenseView: EditExpensePresenterDelegate {
     func setPlaceholder(_ value: String?, color: UIColor?, for textField: EditExpenseField) {
         switch textField {
         case .price:
-            self.priceTextField?.placeholder = value
+            priceTextField?.placeholder = value
             
         case .date:
-            self.dateTextField?.placeholder = value
+            dateTextField?.placeholder = value
             
         case .name:
-            self.nameTextField?.placeholder = value
+            nameTextField?.placeholder = value
             
         case .category:
-            self.categoryButton?.setTitle(value, for: .normal)
-            self.categoryButton?.setTitle(value, for: .highlighted)
-            self.categoryButton?.setTitleColor(color, for: .normal)
-            self.categoryButton?.setTitleColor(color, for: .highlighted)
+            categoryButton?.setTitle(value, for: .normal)
+            categoryButton?.setTitle(value, for: .highlighted)
+            categoryButton?.setTitleColor(color, for: .normal)
+            categoryButton?.setTitleColor(color, for: .highlighted)
         }
     }
     
     func activateTextField(_ textField: EditExpenseField) {
         switch textField {
         case .price:
-            self.priceTextField?.becomeFirstResponder()
+            priceTextField?.becomeFirstResponder()
         default:
             break
         }
     }
     
     func showApplyChangesButton(_ button: UIBarButtonItem) {
-        self.viewController?.navigationItem.rightBarButtonItem = button
+        viewController?.navigationItem.rightBarButtonItem = button
     }
     
     func configureSaveButtonState(_ state: Bool) {
-        let button = self.viewController?.navigationItem.rightBarButtonItem
+        let button = viewController?.navigationItem.rightBarButtonItem
         button?.isEnabled = state
     }
 }

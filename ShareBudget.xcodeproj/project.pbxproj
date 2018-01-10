@@ -245,6 +245,9 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		57500B662006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
+		57500B672006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
+		57500B682006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
 		57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */; };
 		57561D871F44EBBB00FDB891 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */; };
 		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
@@ -433,6 +436,7 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		57500B652006B9A300169F23 /* ButtonListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListener.swift; sourceTree = "<group>"; };
 		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
 		57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
 		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
@@ -829,6 +833,7 @@
 			children = (
 				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
 				57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */,
+				57500B652006B9A300169F23 /* ButtonListener.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1562,6 +1567,7 @@
 				5735C4031EE445F40037BAA8 /* AsynchronousURLConnection.swift in Sources */,
 				5735C4041EE445F40037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
 				5735C4051EE445F40037BAA8 /* BudgetUserAPI.swift in Sources */,
+				57500B672006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
 				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
@@ -1661,6 +1667,7 @@
 				5735C46E1EE44D8F0037BAA8 /* AsynchronousURLConnection.swift in Sources */,
 				5735C46F1EE44D8F0037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
 				5735C4701EE44D8F0037BAA8 /* BudgetUserAPI.swift in Sources */,
+				57500B682006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
 				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
@@ -1760,6 +1767,7 @@
 				573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */,
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
+				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
