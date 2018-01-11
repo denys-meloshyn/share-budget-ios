@@ -28,7 +28,7 @@ protocol BudgetDetailInteractionProtocol: BaseInteractionProtocol {
     func createOrUpdateCurrentBudgetLimit(_ limit: Double)
 }
 
-class BudgetDetailInteraction: BaseInteraction {
+class BudgetDetailInteraction: BaseInteraction, BudgetDetailInteractionProtocol {
     var budget: Budget
     let budgetID: NSManagedObjectID
     weak var delegate: BudgetDetailInteractionDelegate?
@@ -154,7 +154,7 @@ extension BudgetDetailInteraction: NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent?()
+        delegate?.didChangeContent()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

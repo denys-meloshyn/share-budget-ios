@@ -10,7 +10,38 @@ import UIKit
 import CorePlot
 import ChameleonFramework
 
-class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T> {
+protocol BudgetDetailViewProtocol: BaseViewProtocol {
+    weak var monthLabel: UILabel? { get set }
+    weak var minusLabel: UILabel? { get set }
+    weak var equalLabel: UILabel? { get set }
+    weak var budgetLabel: UILabel? { get set }
+    weak var backButton: ButtonListener? { get set }
+    weak var balanceLabel: UILabel? { get set }
+    weak var expenseLabel: UILabel? { get set }
+    weak var animationView: UIView? { get set }
+    weak var navigationView: UIView? { get set }
+    weak var budgetButton: ButtonListener? { get set }
+    weak var expenseButton: ButtonListener? { get set }
+    weak var expenseCoverView: UIView? { get set }
+    weak var editMemberButton: ButtonListener? { get set }
+    weak var expenseContainerView: UIView? { get set }
+    weak var balanceContainerView: UIView? { get set }
+    weak var createExpenseButton: ButtonListener? { get set }
+    weak var navigationTitleLabel: UILabel? { get set }
+    weak var chartView: CPTGraphHostingView? { get set }
+    weak var safeAreaPlaceholderView: UIView? { get set }
+    weak var budgetDescriptionLabel: UILabel? { get set }
+    weak var balanceDescriptionLabel: UILabel? { get set }
+    weak var expenseDescriptionLabel: UILabel? { get set }
+    weak var budgetContainerView: UIView? { get set }
+    weak var createNewExpenseContainerView: UIView? { get set }
+    weak var constraintChartViewWidth: NSLayoutConstraint? { get set }
+    weak var constraintChartViewHeight: NSLayoutConstraint? { get set }
+    weak var constraintAnimationViewWidth: NSLayoutConstraint? { get set }
+    weak var constraintAnimationViewHeight: NSLayoutConstraint? { get set }
+}
+
+class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDetailViewProtocol {
     weak var monthLabel: UILabel?
     weak var minusLabel: UILabel?
     weak var equalLabel: UILabel?
@@ -33,7 +64,7 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T> {
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
-    @objc weak var budgetContainerView: UIView?
+    weak var budgetContainerView: UIView?
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?

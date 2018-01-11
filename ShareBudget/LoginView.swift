@@ -49,9 +49,18 @@ extension LoginTextField: Equatable {
 }
 
 protocol LoginViewProtocol: BaseViewProtocol {
+    weak var stackView: UIStackView? { get set }
+    weak var scrollView: UIScrollView? { get set }
+    weak var email: TextFieldErrorMessage? { get set }
+    weak var authorisationButton: UIButton? { get set }
+    weak var password: TextFieldErrorMessage? { get set }
+    weak var lastName: TextFieldErrorMessage? { get set }
+    weak var firstName: TextFieldErrorMessage? { get set }
+    weak var authorisationModeButton: UIButton? { get set }
+    weak var repeatPassword: TextFieldErrorMessage? { get set }
 }
 
-class LoginView<T: LoginPresenterProtocol>: BaseView<T> {
+class LoginView<T: LoginPresenterProtocol>: BaseView<T>, LoginViewProtocol {
     weak var stackView: UIStackView?
     weak var scrollView: UIScrollView?
     weak var email: TextFieldErrorMessage?

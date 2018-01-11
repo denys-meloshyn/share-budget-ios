@@ -12,7 +12,7 @@ import CoreData
 protocol LoginInteractionProtocol: BaseInteractionProtocol {
 }
 
-class LoginInteraction: BaseInteraction {
+class LoginInteraction: BaseInteraction, LoginInteractionProtocol {
     let managedObjectContext = ModelManager.managedObjectContext
     
     func login(email: String, password: String, completion: APIResultBlock?) {

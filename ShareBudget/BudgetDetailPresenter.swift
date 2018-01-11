@@ -7,6 +7,7 @@
 //
 
 import CorePlot
+import CoreData
 import ChameleonFramework
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
@@ -32,7 +33,7 @@ protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSo
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)?
 }
 
-class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T> {
+class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T>, BudgetDetailPresenterProtocol  {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
@@ -70,6 +71,12 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     func viewWillDisappear(_ animated: Bool) {
         delegate?.updateNativeNavigationVisibility(true)
         delegate?.updateCreateButtonAnimation(false)
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
     }
     
     // MARK: - CPTPieChartDataSource
@@ -118,8 +125,8 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
         }
         
         let index = Int(idx)
-        if index < self.pieChartColors.count - 1 {
-            return CPTFill(color: CPTColor(cgColor: self.pieChartColors[index].cgColor))
+        if index < pieChartColors.count - 1 {
+            return CPTFill(color: CPTColor(cgColor: pieChartColors[index].cgColor))
         }
         
         return nil
@@ -128,14 +135,14 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     // MARK: - CPTPieChartDelegate
     
     func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
-        if self.selectedSlice == idx {
-            self.selectedSlice = nil
+        if selectedSlice == idx {
+            selectedSlice = nil
         } else {
-            self.selectedSlice = idx
+            selectedSlice = idx
         }
         
-        self.delegate?.updateChart()
-        self.budgetDetailRouter.showAllExpensesPage(with: interaction.budgetID, categoryID: interaction.category(for: Int(idx))?.objectID)
+        delegate?.updateChart()
+        budgetDetailRouter.showAllExpensesPage(with: interaction.budgetID, categoryID: interaction.category(for: Int(idx))?.objectID)
     }
     
     // MARK: - Private methods
@@ -287,27 +294,15 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     }
 }
 
-extension BudgetDetailPresenter: CPTPieChartDataSource {
-}
-
-// MARK: - CPTPieChartDelegate
-
-extension BudgetDetailPresenter: CPTPieChartDelegate {
-    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
-        if self.selectedSlice == idx {
-            self.selectedSlice = nil
-        } else {
-            self.selectedSlice = idx
-        }
-        
-        self.delegate?.updateChart()
-        self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID, categoryID: self.budgetDetailInteraction.category(for: Int(idx))?.objectID)
-    }
-}
-
 // MARK: - BudgetDetailInteractionDelegate
 
 extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
+    func willChangeContent() {
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+    
     func didChangeContent() {
         self.configureTotalExpenses()
         self.configureBalance()

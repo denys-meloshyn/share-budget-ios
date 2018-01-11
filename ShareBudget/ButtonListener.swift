@@ -8,12 +8,9 @@
 
 import UIKit
 
-protocol ButtonListenerProtocol {
-}
+typealias UIButtonActionBlock = (ButtonListener) -> Void
 
-typealias UIButtonActionBlock = (ButtonListenerProtocol) -> Void
-
-class ButtonListener: UIButton, ButtonListenerProtocol {
+class ButtonListener: UIButton {
     private var touchUpInsideBlock: UIButtonActionBlock?
     
     func addTouchUpInsideListener(completion: UIButtonActionBlock?) {

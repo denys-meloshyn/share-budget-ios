@@ -11,8 +11,8 @@ import UIKit
 class LoginViewController: BaseViewController {
     @IBOutlet private var stackView: UIStackView?
     @IBOutlet private var scrollView: UIScrollView?
-    @IBOutlet private var authorisationButton: UIButton?
-    @IBOutlet private var authorisationModeButton: UIButton?
+    @IBOutlet private var authorisationButton: ButtonListener?
+    @IBOutlet private var authorisationModeButton: ButtonListener?
     private let email = R.nib.textFieldErrorMessage.firstView(owner: nil)
     private var password = R.nib.textFieldErrorMessage.firstView(owner: nil)
     private var lastName = R.nib.textFieldErrorMessage.firstView(owner: nil)
@@ -22,72 +22,77 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let lastName = self.lastName {
+        if let lastName = lastName {
             lastName.isHidden = true
             lastName.textField?.returnKeyType = .go
-            self.stackView?.insertArrangedSubview(lastName, at: 0)
+            stackView?.insertArrangedSubview(lastName, at: 0)
         }
         
-        if let firstName = self.firstName {
+        if let firstName = firstName {
             firstName.isHidden = true
             firstName.textField?.returnKeyType = .next
-            self.stackView?.insertArrangedSubview(firstName, at: 0)
+            stackView?.insertArrangedSubview(firstName, at: 0)
         }
         
-        if let repeatPassword = self.repeatPassword {
+        if let repeatPassword = repeatPassword {
             repeatPassword.isHidden = true
             repeatPassword.textField?.returnKeyType = .go
             repeatPassword.textField?.isSecureTextEntry = true
-            self.stackView?.insertArrangedSubview(repeatPassword, at: 0)
+            stackView?.insertArrangedSubview(repeatPassword, at: 0)
         }
         
-        if let password = self.password {
+        if let password = password {
             password.textField?.isSecureTextEntry = true
-            self.stackView?.insertArrangedSubview(password, at: 0)
+            stackView?.insertArrangedSubview(password, at: 0)
         }
         
-        if let email = self.email {
+        if let email = email {
             email.textField?.returnKeyType = .next
             email.textField?.autocorrectionType = .no
             email.textField?.keyboardType = .emailAddress
-            self.stackView?.insertArrangedSubview(email, at: 0)
+            stackView?.insertArrangedSubview(email, at: 0)
         }
         
         let router = LoginRouter(with: self)
-        let interactin = LoginInteraction()
-        let presenter = LoginPresenter(with: interactin, router: router)
-        self.viperView = LoginView(with: presenter, and: self)
+        let interaction = LoginInteraction()
+        let presenter = LoginPresenter(with: interaction, router: router)
+        viperView = LoginView(with: presenter, and: self)
         
-        guard let view = self.viperView as? LoginView else {
+        guard let view = viperView as? LoginView else {
             return
         }
         
-        self.linkStoryboardViews(to: view)
-        self.linkViewActions(to: presenter)
+        linkStoryboardViews(to: view)
+        linkViewActions(to: presenter)
         
         presenter.configure()
     }
 
-    private func linkStoryboardViews(to view: LoginView) {
-        view.stackView = self.stackView
-        view.scrollView = self.scrollView
-        view.authorisationButton = self.authorisationButton
-        view.authorisationModeButton = self.authorisationModeButton
-        view.email = self.email
-        view.password = self.password
-        view.lastName = self.lastName
-        view.firstName = self.firstName
-        view.repeatPassword = self.repeatPassword
+    private func linkStoryboardViews(to view: LoginViewProtocol) {
+        view.stackView = stackView
+        view.scrollView = scrollView
+        view.authorisationButton = authorisationButton
+        view.authorisationModeButton = authorisationModeButton
+        view.email = email
+        view.password = password
+        view.lastName = lastName
+        view.firstName = firstName
+        view.repeatPassword = repeatPassword
     }
     
-    private func linkViewActions(to presenter: LoginPresenter) {
-        presenter.listenTextFieldChanges(self.email?.textField)
-        presenter.listenTextFieldChanges(self.password?.textField)
-        presenter.listenTextFieldChanges(self.lastName?.textField)
-        presenter.listenTextFieldChanges(self.firstName?.textField)
-        presenter.listenTextFieldChanges(self.repeatPassword?.textField)
+    private func linkViewActions(to presenter: LoginPresenterProtocol) {
+        presenter.listenTextFieldChanges(email?.textField)
+        presenter.listenTextFieldChanges(password?.textField)
+        presenter.listenTextFieldChanges(lastName?.textField)
+        presenter.listenTextFieldChanges(firstName?.textField)
+        presenter.listenTextFieldChanges(repeatPassword?.textField)
         
-        self.authorisationButton?.addTarget(presenter, action: #selector(LoginPresenter.authoriseUser), for: .touchUpInside)
-        self.authorisationModeButton?.addTarget(presenter, action: #selector(LoginPresenter.switchAuthorisationMode), for: .touchUpInside)
+        authorisationButton?.addTouchUpInsideListener(completion: { sender in
+            presenter.authoriseUser()
+        })
+        
+        authorisationModeButton?.addTouchUpInsideListener(completion: { sender in
+            presenter.switchAuthorisationMode()
+        })
     }
 }

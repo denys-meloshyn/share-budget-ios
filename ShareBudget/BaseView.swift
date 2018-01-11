@@ -17,10 +17,10 @@ protocol LifeCycleStateProtocol: class {
     func viewDidDisappear(_ animated: Bool)
 }
 
-protocol BaseViewProtocol: class {
+protocol BaseViewProtocol: LifeCycleStateProtocol {
 }
 
-class BaseView<T: BasePresenterProtocol>: NSObject {
+class BaseView<T: BasePresenterProtocol> {
     let presenter: T
     weak var viewController: UIViewController?
     
@@ -76,7 +76,7 @@ class BaseView<T: BasePresenterProtocol>: NSObject {
     }
 }
 
-extension BaseView: LifeCycleStateProtocol {
+extension BaseView: BaseViewProtocol {
 }
 
 extension BaseView: BasePresenterDelegate {

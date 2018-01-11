@@ -9,7 +9,14 @@
 import UIKit
 import Rswift
 
-class BudgetView<T: BudgetPresenterProtocol>: BaseView<T> {
+protocol BudgetViewProtocol: BaseViewProtocol {
+    weak var tableView: UITableView? { get set }
+    weak var createNewGroupLabel: UILabel? { get set }
+    weak var createNewGroupRootView: UIView? { get set }
+    weak var constantCreateNewGroupRootViewBottom: NSLayoutConstraint? { get set }
+}
+
+class BudgetView<T: BudgetPresenterProtocol>: BaseView<T>, BudgetViewProtocol {
     fileprivate let tableBudgetCellReuseIdentifier = "BudgetTableViewCell"
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"
     

@@ -29,7 +29,7 @@ protocol BudgetPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UI
     weak var delegate: BudgetPresenterDelegate? { get set }
 }
 
-class BudgetPresenter<T: BudgetInteractionProtocol>: BasePresenter<T> {
+class BudgetPresenter<T: BudgetInteractionProtocol>: BasePresenter<T>, BudgetPresenterProtocol {
     weak var delegate: BudgetPresenterDelegate?
     
     fileprivate var budgetRouter: BudgetRouter {

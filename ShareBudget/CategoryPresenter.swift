@@ -14,11 +14,11 @@ protocol CategoryPresenterDelegate: BasePresenterDelegate, CreateSearchTableView
     func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell
 }
 
-protocol CategoryPresenterProtocol: BasePresenterProtocol {
+protocol CategoryPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate {
     weak var delegate: CategoryPresenterDelegate! { get set }
 }
 
-class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, CategoryPresenterProtocol, UITableViewDataSource, UITableViewDelegate {
+class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, CategoryPresenterProtocol  {
     weak var delegate: CategoryPresenterDelegate!
     weak var categoryDelegate: CategoryViewControllerDelegate?
     

@@ -20,24 +20,24 @@ class BudgetViewController: BaseViewController {
         let router = BudgetRouter(with: self)
         let interactin = BudgetInteraction(managedObjectContext: ModelManager.managedObjectContext)
         let presenter = BudgetPresenter(with: interactin, router: router)
-        self.viperView = BudgetView(with: presenter, and: self)
+        viperView = BudgetView(with: presenter, and: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let view = self.viperView as? BudgetView else {
+        guard let view = viperView as? BudgetViewProtocol else {
             return
         }
         
-        self.linkStoryboardViews(to: view)
-        self.viperView?.viewDidLoad()
+        linkStoryboardViews(to: view)
+        viperView?.viewDidLoad()
     }
     
-    private func linkStoryboardViews(to view: BudgetView) {
-        view.tableView = self.tableView
-        view.createNewGroupLabel = self.createNewGroupLabel
-        view.createNewGroupRootView = self.createNewGroupRootView
-        view.constantCreateNewGroupRootViewBottom = self.constantCreateNewGroupRootViewBottom
+    private func linkStoryboardViews(to view: BudgetViewProtocol) {
+        view.tableView = tableView
+        view.createNewGroupLabel = createNewGroupLabel
+        view.createNewGroupRootView = createNewGroupRootView
+        view.constantCreateNewGroupRootViewBottom = constantCreateNewGroupRootViewBottom
     }
 }

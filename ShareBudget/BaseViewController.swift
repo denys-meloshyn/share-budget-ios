@@ -9,39 +9,39 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    var viperView: BaseView?
+    var viperView: BaseViewProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configureVIPER()
+        configureVIPER()
         
-        self.linkStoryboardViews()
-        self.viperView?.viewDidLoad()
+        linkStoryboardViews()
+        viperView?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.viperView?.viewWillAppear(animated)
+        viperView?.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.viperView?.viewDidAppear(animated)
+        viperView?.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.viperView?.viewWillDisappear(animated)
+        viperView?.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        self.viperView?.viewDidDisappear(animated)
+        viperView?.viewDidDisappear(animated)
     }
     
     open func configureVIPER() {

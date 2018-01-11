@@ -33,9 +33,13 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
 
 protocol LoginPresenterProtocol: BasePresenterProtocol {
     weak var delegate: LoginPresenterDelegate? { get set }
+    
+    func authoriseUser()
+    func switchAuthorisationMode()
+    func listenTextFieldChanges(_ textField: UITextField?)
 }
 
-class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T> {
+class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresenterProtocol {
     var mode = AuthorisationMode.login
     weak var delegate: LoginPresenterDelegate?
     
@@ -46,7 +50,7 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T> {
     
     // MARK: - Public
     
-    @objc func switchAuthorisationMode() {
+    func switchAuthorisationMode() {
         if self.mode == .login {
             self.mode = .signUp
         } else {
@@ -58,7 +62,7 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T> {
         self.resetAllLoginErrorStatuses()
     }
     
-    @objc func authoriseUser() {
+    func authoriseUser() {
         guard let delegate = self.delegate else {
             return
         }

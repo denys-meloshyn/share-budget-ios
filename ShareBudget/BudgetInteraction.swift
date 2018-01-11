@@ -21,7 +21,7 @@ protocol BudgetInteractionProtocol: BaseInteractionProtocol {
     func budgetModel(for indexPath: IndexPath) -> Budget
 }
 
-class BudgetInteraction: BaseInteraction {
+class BudgetInteraction: BaseInteraction, BudgetInteractionProtocol {
     weak var delegate: BudgetInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<Budget>
