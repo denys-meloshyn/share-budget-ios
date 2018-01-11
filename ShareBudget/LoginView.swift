@@ -204,8 +204,8 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func showAuthorisation(title: String) {
-        self.authorisationButton?.setTitle(title, for: .normal)
-        self.authorisationButton?.setTitle(title, for: .highlighted)
+        authorisationButton?.setTitle(title, for: .normal)
+        authorisationButton?.setTitle(title, for: .highlighted)
     }
     
     func configureTextField(_ textField: LoginTextField, placeholder: String) {

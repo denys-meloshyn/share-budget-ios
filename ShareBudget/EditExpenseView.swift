@@ -8,6 +8,16 @@
 
 import UIKit
 
+protocol EditExpenseViewProtocol: BasePresenterProtocol {
+    weak var categoryButton: UIButton? { get set }
+    weak var dateContainerView: UIView? { get set }
+    weak var nameSeparatorLine: UIView? { get set }
+    weak var dateTextField: UITextField? { get set }
+    weak var nameTextField: UITextField? { get set }
+    weak var priceTextField: UITextField? { get set }
+    weak var categoryContainerView: UIView? { get set }
+}
+
 class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T> {
     weak var categoryButton: UIButton?
     weak var dateContainerView: UIView?

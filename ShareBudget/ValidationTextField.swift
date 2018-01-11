@@ -40,7 +40,7 @@ class ValidationTextField: UIView {
     weak var delegate: ValidationTextFieldDelegate?
     
     private var isFieldEmpty: Bool {
-        return self.textField?.text?.characters.count == 0
+        return self.textField?.text?.count == 0
     }
     
     override func awakeFromNib() {

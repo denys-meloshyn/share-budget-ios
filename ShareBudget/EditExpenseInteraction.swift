@@ -8,7 +8,7 @@
 
 import CoreData
 
-class EditExpenseInteraction: BaseInteraction {
+class EditExpenseInteraction: BaseInteraction, BaseInteractionProtocol {
     var budget: Budget
     var expense: Expense
     let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)

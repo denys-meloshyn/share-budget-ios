@@ -25,25 +25,25 @@ class EditExpenseViewController: BaseViewController {
         super.viewDidLoad()
         
         let router = EditExpenseRouter(with: self)
-        let interactin = EditExpenseInteraction(with: self.budgetID!, expenseID: self.expenseID)
+        let interactin = EditExpenseInteraction(with: budgetID!, expenseID: expenseID)
         let presenter = EditExpensePresenter(with: interactin, router: router)
-        self.viperView = EditExpenseView(with: presenter, and: self)
+        viperView = EditExpenseView(with: presenter, and: self)
         
-        self.linkStoryboardViews()
-        self.viperView?.viewDidLoad()
+        linkStoryboardViews()
+        viperView?.viewDidLoad()
     }
     
     override func linkStoryboardViews() {
-        guard let view = self.viperView as? EditExpenseView else {
+        guard let view = viperView as? EditExpenseViewProtocol else {
             return
         }
         
-        view.dateTextField = self.dateTextField
-        view.nameTextField = self.nameTextField
-        view.categoryButton = self.categoryButton
-        view.priceTextField = self.priceTextField
-        view.nameSeparatorLine = self.nameSeparatorLine
-        view.dateContainerView = self.dateContainerView
-        view.categoryContainerView = self.categoryContainerView
+        view.dateTextField = dateTextField
+        view.nameTextField = nameTextField
+        view.categoryButton = categoryButton
+        view.priceTextField = priceTextField
+        view.nameSeparatorLine = nameSeparatorLine
+        view.dateContainerView = dateContainerView
+        view.categoryContainerView = categoryContainerView
     }
 }

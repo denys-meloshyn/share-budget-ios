@@ -32,7 +32,7 @@ protocol EditExpensePresenterProtocol: BasePresenterProtocol, UITextFieldDelegat
     weak var delegate: EditExpensePresenterDelegate? { get set }
 }
 
-class EditExpensePresenter: BasePresenter<EditExpenseInteraction> {
+class EditExpensePresenter: BasePresenter<EditExpenseInteraction>, EditExpensePresenterProtocol {
     weak var delegate: EditExpensePresenterDelegate?
     fileprivate let items: [EditExpenseField] = [.price, .name, .category, .date]
     fileprivate var expenseRouter: EditExpenseRouter {

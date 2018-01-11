@@ -20,5 +20,5 @@ protocol BaseInteractionDelegate: class {
 protocol BaseInteractionProtocol: class {
 }
 
-class BaseInteraction: NSObject, BaseInteractionProtocol {
+class BaseInteraction: NSObject {
 }

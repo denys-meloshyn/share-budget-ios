@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController {
         let presenter = LoginPresenter(with: interaction, router: router)
         viperView = LoginView(with: presenter, and: self)
         
-        guard let view = viperView as? LoginView else {
+        guard let view = viperView as? LoginViewProtocol else {
             return
         }
         
