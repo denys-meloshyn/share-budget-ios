@@ -12,7 +12,7 @@ import CoreData
 protocol BudgetInteractionDelegate: BaseInteractionDelegate {
 }
 
-protocol BudgetInteractionProtocol: BaseInteractionProtocol {
+protocol BudgetInteractionProtocol: BaseInteractionProtocol, NSFetchedResultsControllerDelegate {
     weak var delegate: BudgetInteractionDelegate? { get set }
     
     func numberOfRowsInSection() -> Int
@@ -76,11 +76,7 @@ class BudgetInteraction: BaseInteraction, BudgetInteractionProtocol {
         
         return budget
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension BudgetInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.willChangeContent()
     }

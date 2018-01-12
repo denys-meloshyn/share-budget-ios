@@ -69,15 +69,15 @@ class LoginViewController: BaseViewController {
     }
 
     private func linkStoryboardViews(to view: LoginViewProtocol) {
-        view.stackView = stackView
-        view.scrollView = scrollView
-        view.authorisationButton = authorisationButton
-        view.authorisationModeButton = authorisationModeButton
-        view.email = email
-        view.password = password
-        view.lastName = lastName
-        view.firstName = firstName
-        view.repeatPassword = repeatPassword
+        view.stackView = stackView!
+        view.scrollView = scrollView!
+        view.authorisationButton = authorisationButton!
+        view.authorisationModeButton = authorisationModeButton!
+        view.email = email!
+        view.password = password!
+        view.lastName = lastName!
+        view.firstName = firstName!
+        view.repeatPassword = repeatPassword!
     }
     
     private func linkViewActions(to presenter: LoginPresenterProtocol) {
@@ -86,12 +86,12 @@ class LoginViewController: BaseViewController {
         presenter.listenTextFieldChanges(lastName?.textField)
         presenter.listenTextFieldChanges(firstName?.textField)
         presenter.listenTextFieldChanges(repeatPassword?.textField)
-        
-        authorisationButton?.addTouchUpInsideListener(completion: { sender in
+
+        authorisationButton?.addTouchUpInsideListener(completion: { _ in
             presenter.authoriseUser()
         })
-        
-        authorisationModeButton?.addTouchUpInsideListener(completion: { sender in
+
+        authorisationModeButton?.addTouchUpInsideListener(completion: { _ in
             presenter.switchAuthorisationMode()
         })
     }

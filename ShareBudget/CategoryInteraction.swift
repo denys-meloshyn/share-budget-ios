@@ -21,7 +21,7 @@ protocol CategoryInteractionProtocol: BaseInteractionProtocol {
     func category(for indexPath: IndexPath) -> Category
 }
 
-class CategoryInteraction: BaseInteraction, CategoryInteractionProtocol {
+class CategoryInteraction: BaseInteraction, CategoryInteractionProtocol, NSFetchedResultsControllerDelegate {
     var expense: Expense
     weak var delegate: CategoryInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
@@ -97,11 +97,7 @@ class CategoryInteraction: BaseInteraction, CategoryInteractionProtocol {
         
         return category
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension CategoryInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.willChangeContent()
     }

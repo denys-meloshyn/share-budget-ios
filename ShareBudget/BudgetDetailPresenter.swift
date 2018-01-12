@@ -33,7 +33,7 @@ protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSo
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)?
 }
 
-class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T>, BudgetDetailPresenterProtocol  {
+class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T>, BudgetDetailPresenterProtocol {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?

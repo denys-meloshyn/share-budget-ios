@@ -88,27 +88,27 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
         viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
         createNewExpenseContainerView?.backgroundColor = Constants.color.dflt.actionColor
         
-        backButton?.addTouchUpInsideListener(completion: { sender in
+        backButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.closePageAction()
         })
         
-        editMemberButton?.addTouchUpInsideListener(completion: { sender in
+        editMemberButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.editMembers()
         })
         
-        expenseButton?.addTouchUpInsideListener(completion: { sender in
+        expenseButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.showAllExpenses()
         })
         
-        budgetButton?.addTouchUpInsideListener(completion: { sender in
+        budgetButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.changeBudgetLimit()
         })
         
-        createExpenseButton?.addTouchUpInsideListener(completion: { sender in
+        createExpenseButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.createNewExpense()
         })
         
-        backButton?.addTouchUpInsideListener(completion: { sender in
+        backButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.closePageAction()
         })
         

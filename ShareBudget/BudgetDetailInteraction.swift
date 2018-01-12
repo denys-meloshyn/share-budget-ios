@@ -28,7 +28,7 @@ protocol BudgetDetailInteractionProtocol: BaseInteractionProtocol {
     func createOrUpdateCurrentBudgetLimit(_ limit: Double)
 }
 
-class BudgetDetailInteraction: BaseInteraction, BudgetDetailInteractionProtocol {
+class BudgetDetailInteraction: BaseInteraction, BudgetDetailInteractionProtocol, NSFetchedResultsControllerDelegate {
     var budget: Budget
     let budgetID: NSManagedObjectID
     weak var delegate: BudgetDetailInteractionDelegate?
@@ -144,11 +144,7 @@ class BudgetDetailInteraction: BaseInteraction, BudgetDetailInteractionProtocol 
         
         return (inputComponents.month == currentComponents.month && inputComponents.year == currentComponents.year)
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension BudgetDetailInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
     }

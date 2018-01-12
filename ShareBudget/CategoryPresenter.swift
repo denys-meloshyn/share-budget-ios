@@ -18,7 +18,7 @@ protocol CategoryPresenterProtocol: BasePresenterProtocol, UITableViewDataSource
     weak var delegate: CategoryPresenterDelegate! { get set }
 }
 
-class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, CategoryPresenterProtocol  {
+class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, CategoryPresenterProtocol {
     weak var delegate: CategoryPresenterDelegate!
     weak var categoryDelegate: CategoryViewControllerDelegate?
     

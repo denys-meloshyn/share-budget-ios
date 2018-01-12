@@ -17,7 +17,7 @@ protocol TeamMembersInteractionProtocol: BaseInteractionProtocol {
     func userGroup(at indexPath: IndexPath) -> UserGroup
 }
 
-class TeamMembersInteraction: BaseInteraction, TeamMembersInteractionProtocol {
+class TeamMembersInteraction: BaseInteraction, TeamMembersInteractionProtocol, NSFetchedResultsControllerDelegate {
     var budget: Budget
     weak var delegate: BaseInteractionDelegate?
     
@@ -60,11 +60,7 @@ class TeamMembersInteraction: BaseInteraction, TeamMembersInteractionProtocol {
     func save() {
         ModelManager.saveContext(managedObjectContext)
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate
-
-extension TeamMembersInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.willChangeContent()
     }
