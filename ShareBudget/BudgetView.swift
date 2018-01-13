@@ -52,6 +52,22 @@ class BudgetView<T: BudgetPresenterProtocol>: BaseView<T>, BudgetViewProtocol {
         let header = tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
         header?.mode = mode
     }
+    
+    func showCreateNewGroupMessage(message: NSAttributedString) {
+        tableView?.separatorStyle = .none
+        createNewGroupRootView?.isHidden = false
+        
+        createNewGroupLabel?.attributedText = message
+    }
+    
+    func showGroupList() {
+        tableView?.separatorStyle = .singleLine
+        createNewGroupRootView?.isHidden = true
+    }
+    
+    func cancelSearch() {
+        searchView()?.textField?.resignFirstResponder()
+    }
 }
 
 // MARK: - BudgetPresenterDelegate
@@ -82,22 +98,6 @@ extension BudgetView: BudgetPresenterDelegate {
     
     func clearSearch() {
         searchView()?.textField?.text = ""
-    }
-    
-    func cancelSearch() {
-        searchView()?.textField?.resignFirstResponder()
-    }
-    
-    func showGroupList() {
-        tableView?.separatorStyle = .singleLine
-        createNewGroupRootView?.isHidden = true
-    }
-    
-    func showCreateNewGroupMessage(message: NSAttributedString) {
-        tableView?.separatorStyle = .none
-        createNewGroupRootView?.isHidden = false
-        
-        createNewGroupLabel?.attributedText = message
     }
     
     func removeBottomOffset() {

@@ -9,6 +9,7 @@
 import UIKit
 @testable import ShareBudget
 
-class MockCategoryView: CategoryView {
-    let calledMethodManager = CalledMethodManager()
-}
+//class MockCategoryView: CategoryView {
+//    let calledMethodManager = CalledMethodManager()
+//}
+
