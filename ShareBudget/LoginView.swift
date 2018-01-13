@@ -8,21 +8,25 @@
 
 import UIKit
 
-enum LoginTextField {
-    case none
+enum LoginTextFieldError {
     case email(String)
     case password(String)
     case repeatPassword(String)
     case firstName(String)
     case lastName(String)
-    case all
 }
 
-extension LoginTextField: Equatable {
-    static func == (lhs: LoginTextField, rhs: LoginTextField) -> Bool {
+enum LoginTextFieldName: String {
+    case email
+    case password
+    case lastName
+    case firstName
+    case repeatPassword
+}
+
+extension LoginTextFieldError: Equatable {
+    static func == (lhs: LoginTextFieldError, rhs: LoginTextFieldError) -> Bool {
         switch (lhs, rhs) {
-        case (.none, .none):
-            return true
             
         case (let .email(lEmail), let .email(rEmail)):
             return lEmail == rEmail
@@ -39,9 +43,6 @@ extension LoginTextField: Equatable {
         case (let .lastName(lLastName), let .lastName(rLastName)):
             return lLastName == rLastName
             
-        case (.all, .all):
-            return true
-            
         default:
             return false
         }
@@ -49,45 +50,86 @@ extension LoginTextField: Equatable {
 }
 
 protocol LoginViewProtocol: BaseViewProtocol {
-    var stackView: UIStackView { get set }
-    var scrollView: UIScrollView { get set }
-    var email: TextFieldErrorMessage { get set }
-    var authorisationButton: UIButton { get set }
-    var password: TextFieldErrorMessage { get set }
-    var lastName: TextFieldErrorMessage { get set }
-    var firstName: TextFieldErrorMessage { get set }
-    var authorisationModeButton: UIButton { get set }
-    var repeatPassword: TextFieldErrorMessage { get set }
+    weak var stackView: UIStackView? { get set }
+    weak var scrollView: UIScrollView? { get set }
+    weak var authorisationButton: UIButton? { get set }
+    weak var authorisationModeButton: UIButton? { get set }
 }
 
 class LoginView<T: LoginPresenterProtocol>: BaseView<T>, LoginViewProtocol {
-     var stackView: UIStackView = UIStackView()
-     var scrollView: UIScrollView = UIScrollView()
-     var email: TextFieldErrorMessage = TextFieldErrorMessage()
-     var authorisationButton: UIButton = UIButton()
-     var password: TextFieldErrorMessage = TextFieldErrorMessage()
-     var lastName: TextFieldErrorMessage = TextFieldErrorMessage()
-     var firstName: TextFieldErrorMessage = TextFieldErrorMessage()
-     var authorisationModeButton: UIButton = UIButton()
-     var repeatPassword: TextFieldErrorMessage = TextFieldErrorMessage()
+    weak var stackView: UIStackView?
+    weak var scrollView: UIScrollView?
+    weak var authorisationButton: UIButton?
+    weak var authorisationModeButton: UIButton?
+    
+    private let email = R.nib.textFieldErrorMessage.firstView(owner: nil)
+    private let password = R.nib.textFieldErrorMessage.firstView(owner: nil)
+    private let lastName = R.nib.textFieldErrorMessage.firstView(owner: nil)
+    private let firstName = R.nib.textFieldErrorMessage.firstView(owner: nil)
+    private let repeatPassword = R.nib.textFieldErrorMessage.firstView(owner: nil)
     
     override init(with presenter: T, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
         
         presenter.delegate = self
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let lastName = lastName {
+            lastName.isHidden = true
+            lastName.textField.delegate = presenter
+            lastName.textField.tagName = LoginTextFieldName.lastName.rawValue
+            lastName.textField.returnKeyType = .go
+            stackView?.insertArrangedSubview(lastName, at: 0)
+        }
+        
+        if let firstName = firstName {
+            firstName.isHidden = true
+            firstName.textField.delegate = presenter
+            firstName.textField.returnKeyType = .next
+            firstName.textField.tagName = LoginTextFieldName.firstName.rawValue
+            stackView?.insertArrangedSubview(firstName, at: 0)
+        }
+        
+        if let repeatPassword = repeatPassword {
+            repeatPassword.isHidden = true
+            repeatPassword.textField.delegate = presenter
+            repeatPassword.textField.returnKeyType = .go
+            repeatPassword.textField.isSecureTextEntry = true
+            repeatPassword.textField.tagName = LoginTextFieldName.repeatPassword.rawValue
+            stackView?.insertArrangedSubview(repeatPassword, at: 0)
+        }
+        
+        if let password = password {
+            password.textField.delegate = presenter
+            password.textField?.isSecureTextEntry = true
+            password.textField.tagName = LoginTextFieldName.password.rawValue
+            stackView?.insertArrangedSubview(password, at: 0)
+        }
+        
+        if let email = email {
+            email.textField.delegate = presenter
+            email.textField?.returnKeyType = .next
+            email.textField?.autocorrectionType = .no
+            email.textField?.keyboardType = .emailAddress
+            email.textField.tagName = LoginTextFieldName.email.rawValue
+            stackView?.insertArrangedSubview(email, at: 0)
+        }
+    }
 }
 
 extension LoginView: LoginPresenterDelegate {
     private func updateButton(title: String) {
-        authorisationModeButton.setTitle(title, for: .normal)
-        authorisationModeButton.setTitle(title, for: .selected)
+        authorisationModeButton?.setTitle(title, for: .normal)
+        authorisationModeButton?.setTitle(title, for: .selected)
     }
     
     private func updateSignUpViews(hidden: Bool) {
-        lastName.isHidden = hidden
-        firstName.isHidden = hidden
-        repeatPassword.isHidden = hidden
+        lastName?.isHidden = hidden
+        firstName?.isHidden = hidden
+        repeatPassword?.isHidden = hidden
     }
     
     private func createErrorLabel(with text: String) -> UILabel {
@@ -99,10 +141,10 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     private func updatePasswordReturnKey(_ returnKeyType: UIReturnKeyType) {
-        password.textField?.returnKeyType = returnKeyType
+        password?.textField?.returnKeyType = returnKeyType
     }
     
-    private func textField(for type: LoginTextField) -> TextFieldErrorMessage? {
+    private func textField(for type: LoginTextFieldName) -> TextFieldErrorMessage? {
         switch type {
         case .email:
             return email
@@ -118,9 +160,25 @@ extension LoginView: LoginPresenterDelegate {
             
         case .lastName:
             return lastName
+        }
+    }
+    
+    private func textField(for type: LoginTextFieldError) -> TextFieldErrorMessage? {
+        switch type {
+        case .email:
+            return email
             
-        default:
-            return nil
+        case .password:
+            return password
+            
+        case .repeatPassword:
+            return repeatPassword
+            
+        case .firstName:
+            return firstName
+            
+        case .lastName:
+            return lastName
         }
     }
     
@@ -142,44 +200,15 @@ extension LoginView: LoginPresenterDelegate {
         }
     }
     
-    func loginValue(for field: LoginTextField) -> String {
-        let login = textField(for: field)
-        return login?.textField?.text ?? ""
-    }
-    
-    func textType(for textField: UITextField) -> LoginTextField {
-        if textField === email.textField {
-            return .email(textField.text ?? "")
-        }
-        
-        if textField === password.textField {
-            return .password(textField.text ?? "")
-        }
-        
-        if textField === repeatPassword.textField {
-            return .repeatPassword(textField.text ?? "")
-        }
-        
-        if textField === firstName.textField {
-            return .firstName(textField.text ?? "")
-        }
-        
-        if textField === lastName.textField {
-            return .lastName(textField.text ?? "")
-        }
-        
-        return .none
-    }
-    
-    func hideError(for field: LoginTextField) {
+    func hideError(for field: LoginTextFieldName) {
         let login = textField(for: field)
         
         login?.isErrorHidden = true
     }
     
-    func showError(for field: LoginTextField) {
+    func showError(for field: LoginTextFieldError) {
         var errorMessage: String?
-        let login = textField(for: field)
+        let inputTextField = textField(for: field)
         
         switch field {
         case let .email(value):
@@ -192,11 +221,11 @@ extension LoginView: LoginPresenterDelegate {
             break
         }
         
-        login?.isErrorHidden = false
-        login?.errorMessageLabel?.text = errorMessage
+        inputTextField?.isErrorHidden = false
+        inputTextField?.errorMessageLabel?.text = errorMessage
     }
     
-    func showKeyboard(for textField: LoginTextField) {
+    func showKeyboard(for textField: LoginTextFieldName) {
         let login = self.textField(for: textField)
         let loginTextField = login?.textField
         
@@ -204,21 +233,21 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func showAuthorisation(title: String) {
-        authorisationButton.setTitle(title, for: .normal)
-        authorisationButton.setTitle(title, for: .highlighted)
+        authorisationButton?.setTitle(title, for: .normal)
+        authorisationButton?.setTitle(title, for: .highlighted)
     }
     
-    func configureTextField(_ textField: LoginTextField, placeholder: String) {
+    func configureTextField(_ textField: LoginTextFieldName, placeholder: String) {
         let login = self.textField(for: textField)
         login?.textField?.placeholder = placeholder
     }
     
     func hideKeyboard() {
-        _ = email.textField?.resignFirstResponder()
-        _ = password.textField?.resignFirstResponder()
-        _ = repeatPassword.textField?.resignFirstResponder()
-        _ = firstName.textField?.resignFirstResponder()
-        _ = lastName.textField?.resignFirstResponder()
+        _ = email?.textField?.resignFirstResponder()
+        _ = password?.textField?.resignFirstResponder()
+        _ = repeatPassword?.textField?.resignFirstResponder()
+        _ = firstName?.textField?.resignFirstResponder()
+        _ = lastName?.textField?.resignFirstResponder()
     }
     
     func showSpinnerView() {
@@ -228,27 +257,25 @@ extension LoginView: LoginPresenterDelegate {
     }
     
     func removeBottomOffset() {
-        var contentInsets = scrollView.contentInset
-//        guard var contentInsets = scrollView.contentInset else {
-//            return
-//        }
+        guard var contentInsets = scrollView?.contentInset else {
+            return
+        }
         
         if let length = viewController?.bottomLayoutGuide.length {
             contentInsets.bottom = length
         }
         
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
     }
     
     func shiftBottomOffset(_ offset: CGFloat) {
-        var contentInsets = scrollView.contentInset
-//        guard var contentInsets = scrollView.contentInset else {
-//            return
-//        }
+        guard var contentInsets = scrollView?.contentInset else {
+            return
+        }
         
         contentInsets.bottom = offset
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+        scrollView?.contentInset = contentInsets
+        scrollView?.scrollIndicatorInsets = contentInsets
     }
 }

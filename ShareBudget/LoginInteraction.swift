@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 protocol LoginInteractionProtocol: BaseInteractionProtocol {
+    func sendRegistrationEmail(_ email: String)
+    func login(email: String, password: String, completion: APIResultBlock?)
+    func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?)
 }
 
 class LoginInteraction: BaseInteraction, LoginInteractionProtocol {

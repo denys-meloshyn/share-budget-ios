@@ -23,26 +23,28 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
     func showSignUp(title: String)
     func showAuthorisation(title: String)
     func shiftBottomOffset(_ offset: CGFloat)
-    func showError(for field: LoginTextField)
-    func hideError(for field: LoginTextField)
-    func showKeyboard(for textField: LoginTextField)
-    func loginValue(for field: LoginTextField) -> String
-    func textType(for textField: UITextField) -> LoginTextField
-    func configureTextField(_ textField: LoginTextField, placeholder: String)
+    func showError(for field: LoginTextFieldError)
+    func hideError(for field: LoginTextFieldName)
+    func showKeyboard(for textField: LoginTextFieldName)
+    func configureTextField(_ textField: LoginTextFieldName, placeholder: String)
 }
 
-protocol LoginPresenterProtocol: BasePresenterProtocol {
+protocol LoginPresenterProtocol: BasePresenterProtocol, UITextFieldDelegate {
     weak var delegate: LoginPresenterDelegate? { get set }
 
     func authoriseUser()
     func switchAuthorisationMode()
-    func listenTextFieldChanges(_ textField: UITextField?)
 }
 
-class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresenterProtocol, UITextFieldDelegate {
-    weak var delegate: LoginPresenterDelegate?
-
+class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresenterProtocol {
+    private var email = ""
+    private var password = ""
+    private var lastName = ""
+    private var firstName = ""
+    private var repeatPassword = ""
     private var mode = AuthorisationMode.login
+    
+    weak var delegate: LoginPresenterDelegate?
 
     override func configure() {
         super.configure()
@@ -66,27 +68,16 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
     }
     
     func authoriseUser() {
-        guard let delegate = delegate else {
-            return
-        }
-
         let notValidField = findNotValidField()
 
         if notValidField == .none {
-            delegate.hideKeyboard()
+            delegate?.hideKeyboard()
 
-            guard let interaction = interaction as? LoginInteraction else {
-                return
-            }
-
-            let email = delegate.loginValue(for: .email(""))
-            let password = delegate.loginValue(for: .password(""))
-
-            delegate.showSpinnerView()
+            delegate?.showSpinnerView()
             if mode == .login {
-                interaction.login(email: email, password: password, completion: { (_, error) -> Void in
+                interaction.login(email: email, password: password) { (_, error) -> Void in
                     DispatchQueue.main.async {
-                        delegate.hideSpinnerView()
+                        self.delegate?.hideSpinnerView()
 
                         guard error == .none else {
                             var actions = [self.alertOkAction()]
@@ -100,9 +91,9 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
                                 message = LocalisedManager.error.passwordIsWrong
 
                             case .emailNotApproved:
-                                let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default, handler: { _ in
-                                    interaction.sendRegistrationEmail(email)
-                                })
+                                let sendEmailAction = UIAlertAction(title: LocalisedManager.login.sendAgain, style: .default) { _ in
+                                    self.interaction.sendRegistrationEmail(self.email)
+                                }
                                 message = LocalisedManager.login.sendRegistrationEmailMessage
                                 actions.append(sendEmailAction)
 
@@ -110,7 +101,7 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
                                 break
                             }
 
-                            delegate.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            self.delegate?.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
 
@@ -121,14 +112,11 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
                         SyncManager.shared.run()
                         router.showHomePage()
                     }
-                })
+                }
             } else {
-                let firstName = delegate.loginValue(for: .firstName(""))
-                let lastName = delegate.loginValue(for: .lastName(""))
-
-                interaction.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (_, error) -> Void in
+                interaction.singUp(email: email, password: password, firstName: firstName, lastName: lastName) { (_, error) -> Void in
                     DispatchQueue.main.async {
-                        delegate.hideSpinnerView()
+                        self.delegate?.hideSpinnerView()
 
                         guard error == .none else {
                             var message = LocalisedManager.generic.errorMessage
@@ -142,22 +130,18 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
                             }
 
                             let actions = [self.alertOkAction()]
-                            delegate.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
+                            self.delegate?.showMessage(with: LocalisedManager.generic.errorTitle, message, actions)
                             return
                         }
                     }
-                })
+                }
             }
         } else {
-            delegate.showError(for: notValidField)
+            delegate?.showError(for: notValidField!)
         }
     }
 
-    func listenTextFieldChanges(_ textField: UITextField?) {
-        textField?.delegate = self
-    }
-
-    func keyboardWillShown(notofication: NSNotification) {
+    func keyboardWillShown(notofication: Notification) {
         if let info = notofication.userInfo {
             if let kbSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 delegate?.shiftBottomOffset(kbSize.height)
@@ -186,11 +170,29 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let inputTextField = delegate?.textType(for: textField) else {
-            return true
+        let textFieldListener = textField as? TextFieldListener
+        
+        let stringObjc = NSString(string: textField.text ?? "")
+        let newValue = stringObjc.replacingCharacters(in: range, with: string)
+        
+        switch LoginTextFieldName(rawValue: textFieldListener?.tagName ?? "") {
+        case .email?:
+            email = newValue
+            
+        case .password?:
+            password = newValue
+            
+        case .repeatPassword?:
+            repeatPassword = newValue
+            
+        case .firstName?:
+            firstName = newValue
+            
+        default:
+            break
         }
-
-        delegate?.hideError(for: inputTextField)
+        
+        delegate?.hideError(for: LoginTextFieldName(rawValue: textFieldListener?.tagName ?? "")!)
 
         return true
     }
@@ -198,55 +200,42 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
     // MARK: - Private
 
     private func resetAllLoginErrorStatuses() {
-        delegate?.hideError(for: .email(""))
-        delegate?.hideError(for: .password(""))
-        delegate?.hideError(for: .repeatPassword(""))
-        delegate?.hideError(for: .firstName(""))
+        delegate?.hideError(for: .email)
+        delegate?.hideError(for: .password)
+        delegate?.hideError(for: .repeatPassword)
+        delegate?.hideError(for: .firstName)
     }
 
     private func configureLoginTextFields() {
-        delegate?.configureTextField(.email(""), placeholder: LocalisedManager.login.email)
-        delegate?.configureTextField(.password(""), placeholder: LocalisedManager.login.password)
-        delegate?.configureTextField(.repeatPassword(""), placeholder: LocalisedManager.login.repeatPassword)
-        delegate?.configureTextField(.firstName(""), placeholder: LocalisedManager.login.firstName)
-        delegate?.configureTextField(.lastName(""), placeholder: LocalisedManager.login.lastName)
+        delegate?.configureTextField(.email, placeholder: LocalisedManager.login.email)
+        delegate?.configureTextField(.password, placeholder: LocalisedManager.login.password)
+        delegate?.configureTextField(.repeatPassword, placeholder: LocalisedManager.login.repeatPassword)
+        delegate?.configureTextField(.firstName, placeholder: LocalisedManager.login.firstName)
+        delegate?.configureTextField(.lastName, placeholder: LocalisedManager.login.lastName)
     }
 
-    private func findNotValidField() -> LoginTextField {
-        guard let delegate = delegate else {
-            return .all
-        }
-
-        var value = delegate.loginValue(for: .email(""))
-        if !Validator.email(value) {
-            delegate.showKeyboard(for: .email(""))
+    private func findNotValidField() -> LoginTextFieldError? {
+        if !Validator.email(email) {
+            delegate?.showKeyboard(for: .email)
             return .email(LocalisedManager.validation.wrongEmailFormat)
         }
 
-        value = delegate.loginValue(for: .password(""))
-        if !Validator.password(value) {
-            delegate.showKeyboard(for: .password(""))
+        if !Validator.password(password) {
+            delegate?.showKeyboard(for: .password)
             return .password(LocalisedManager.validation.wrongPasswordFormat)
         }
 
-        if mode == .login {
-            return .none
-        }
-
-        let password = delegate.loginValue(for: .password(""))
-        value = delegate.loginValue(for: .repeatPassword(""))
-        if !Validator.repeatPassword(password: password, repeat: value) {
-            delegate.showKeyboard(for: .repeatPassword(""))
+        if !Validator.repeatPassword(password: password, repeat: repeatPassword) {
+            delegate?.showKeyboard(for: .repeatPassword)
             return .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent)
         }
 
-        value = delegate.loginValue(for: .firstName(""))
-        if !Validator.firstName(value) {
-            delegate.showKeyboard(for: .firstName(""))
+        if !Validator.firstName(firstName) {
+            delegate?.showKeyboard(for: .firstName)
             return .firstName(LocalisedManager.validation.firstNameIsEmpty)
         }
-
-        return .none
+        
+        return nil
     }
 
     private func removeNotifications() {
@@ -255,38 +244,36 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
     }
 
     private func configureNotifications() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(LoginPresenter.keyboardWillShown(notofication:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(LoginPresenter.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: nil) { (notification) in
+            self.keyboardWillShown(notofication: notification)
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: nil) { _ in
+            self.keyboardWillBeHidden()
+        }
     }
 
     fileprivate func validate(textField: UITextField) {
-        guard let input = delegate?.textType(for: textField) else {
-            return
-        }
-
-        switch input {
-        case let .email(value):
-            if !Validator.email(value) {
+        let textFieldListener = textField as? TextFieldListener
+        
+        switch LoginTextFieldName(rawValue: textFieldListener?.tagName ?? "") {
+        case .email?:
+            if !Validator.email(email) {
                 delegate?.showError(for: .email(LocalisedManager.validation.wrongEmailFormat))
             }
 
-        case let .password(value):
-            if !Validator.password(value) {
+        case .password?:
+            if !Validator.password(password) {
                 delegate?.showError(for: .password(LocalisedManager.validation.wrongPasswordFormat))
             }
 
-        case let .repeatPassword(value):
-            guard let delegate = delegate else {
-                return
+        case .repeatPassword?:
+            if !Validator.repeatPassword(password: password, repeat: repeatPassword) {
+                delegate?.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
             }
 
-            let password = delegate.loginValue(for: .password(""))
-            if !Validator.repeatPassword(password: password, repeat: value) {
-                delegate.showError(for: .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent))
-            }
-
-        case let .firstName(value):
-            if !Validator.firstName(value) {
+        case .firstName?:
+            if !Validator.firstName(firstName) {
                 delegate?.showError(for: .firstName(LocalisedManager.validation.firstNameIsEmpty))
             }
 
@@ -309,28 +296,26 @@ class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresen
     }
 
     fileprivate func activateNextKeyboard(for textField: UITextField) {
-        guard let loginTextField = delegate?.textType(for: textField) else {
-            return
-        }
+        let textFieldListener = textField as? TextFieldListener
 
-        switch loginTextField {
-        case .email:
-            delegate?.showKeyboard(for: .password(""))
+        switch LoginTextFieldName(rawValue: textFieldListener?.tagName ?? "") {
+        case .email?:
+            delegate?.showKeyboard(for: .password)
 
-        case .password:
+        case .password?:
             if mode == .login {
                 authoriseUser()
             } else {
-                delegate?.showKeyboard(for: .repeatPassword(""))
+                delegate?.showKeyboard(for: .repeatPassword)
             }
 
-        case .repeatPassword:
-            delegate?.showKeyboard(for: .firstName(""))
+        case .repeatPassword?:
+            delegate?.showKeyboard(for: .firstName)
 
-        case .firstName:
-            delegate?.showKeyboard(for: .lastName(""))
+        case .firstName?:
+            delegate?.showKeyboard(for: .lastName)
 
-        case .lastName:
+        case .lastName?:
             authoriseUser()
 
         default:
