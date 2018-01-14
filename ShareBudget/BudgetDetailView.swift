@@ -15,25 +15,25 @@ protocol BudgetDetailViewProtocol: BaseViewProtocol {
     weak var minusLabel: UILabel? { get set }
     weak var equalLabel: UILabel? { get set }
     weak var budgetLabel: UILabel? { get set }
-    weak var backButton: ButtonListener? { get set }
     weak var balanceLabel: UILabel? { get set }
     weak var expenseLabel: UILabel? { get set }
     weak var animationView: UIView? { get set }
     weak var navigationView: UIView? { get set }
-    weak var budgetButton: ButtonListener? { get set }
-    weak var expenseButton: ButtonListener? { get set }
     weak var expenseCoverView: UIView? { get set }
-    weak var editMemberButton: ButtonListener? { get set }
+    weak var backButton: ButtonListener? { get set }
+    weak var budgetContainerView: UIView? { get set }
     weak var expenseContainerView: UIView? { get set }
     weak var balanceContainerView: UIView? { get set }
-    weak var createExpenseButton: ButtonListener? { get set }
+    weak var budgetButton: ButtonListener? { get set }
+    weak var expenseButton: ButtonListener? { get set }
     weak var navigationTitleLabel: UILabel? { get set }
     weak var chartView: CPTGraphHostingView? { get set }
     weak var safeAreaPlaceholderView: UIView? { get set }
     weak var budgetDescriptionLabel: UILabel? { get set }
+    weak var editMemberButton: ButtonListener? { get set }
     weak var balanceDescriptionLabel: UILabel? { get set }
     weak var expenseDescriptionLabel: UILabel? { get set }
-    weak var budgetContainerView: UIView? { get set }
+    weak var createExpenseButton: ButtonListener? { get set }
     weak var createNewExpenseContainerView: UIView? { get set }
     weak var constraintChartViewWidth: NSLayoutConstraint? { get set }
     weak var constraintChartViewHeight: NSLayoutConstraint? { get set }
@@ -46,25 +46,25 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
     weak var minusLabel: UILabel?
     weak var equalLabel: UILabel?
     weak var budgetLabel: UILabel?
-    weak var backButton: ButtonListener?
     weak var balanceLabel: UILabel?
     weak var expenseLabel: UILabel?
     weak var animationView: UIView?
     weak var navigationView: UIView?
-    weak var budgetButton: ButtonListener?
-    weak var expenseButton: ButtonListener?
     weak var expenseCoverView: UIView?
-    weak var editMemberButton: ButtonListener?
+    weak var backButton: ButtonListener?
+    weak var budgetContainerView: UIView?
     weak var expenseContainerView: UIView?
     weak var balanceContainerView: UIView?
-    weak var createExpenseButton: ButtonListener?
+    weak var budgetButton: ButtonListener?
+    weak var expenseButton: ButtonListener?
     weak var navigationTitleLabel: UILabel?
     weak var chartView: CPTGraphHostingView?
     weak var safeAreaPlaceholderView: UIView?
     weak var budgetDescriptionLabel: UILabel?
     weak var balanceDescriptionLabel: UILabel?
     weak var expenseDescriptionLabel: UILabel?
-    weak var budgetContainerView: UIView?
+    weak var editMemberButton: ButtonListener?
+    weak var createExpenseButton: ButtonListener?
     weak var createNewExpenseContainerView: UIView?
     weak var constraintChartViewWidth: NSLayoutConstraint?
     weak var constraintChartViewHeight: NSLayoutConstraint?

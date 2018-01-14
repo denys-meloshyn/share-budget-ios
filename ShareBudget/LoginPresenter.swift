@@ -215,27 +215,43 @@ class LoginPresenter<I: LoginInteractionProtocol, R: LoginRouterProtocol>: BaseP
     }
 
     private func findNotValidField() -> LoginTextFieldError? {
+        if mode == .login {
+            return findNotValidFieldForLogin()
+        }
+        
+        return findNotValidFieldForSignUp()
+    }
+    
+    private func findNotValidFieldForLogin() -> LoginTextFieldError? {
         if !Validator.email(email) {
             delegate?.showKeyboard(for: .email)
             return .email(LocalisedManager.validation.wrongEmailFormat)
         }
-
+        
         if !Validator.password(password) {
             delegate?.showKeyboard(for: .password)
             return .password(LocalisedManager.validation.wrongPasswordFormat)
         }
-
-        if !Validator.repeatPassword(password: password, repeat: repeatPassword) {
-            delegate?.showKeyboard(for: .repeatPassword)
-            return .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent)
-        }
-
-        if !Validator.firstName(firstName) {
-            delegate?.showKeyboard(for: .firstName)
-            return .firstName(LocalisedManager.validation.firstNameIsEmpty)
-        }
         
         return nil
+    }
+    
+    private func findNotValidFieldForSignUp() -> LoginTextFieldError? {
+        let notValidLoginField = findNotValidFieldForLogin()
+        
+        if notValidLoginField == .none {
+            if !Validator.repeatPassword(password: password, repeat: repeatPassword) {
+                delegate?.showKeyboard(for: .repeatPassword)
+                return .repeatPassword(LocalisedManager.validation.repeatPasswordIsDifferent)
+            }
+            
+            if !Validator.firstName(firstName) {
+                delegate?.showKeyboard(for: .firstName)
+                return .firstName(LocalisedManager.validation.firstNameIsEmpty)
+            }
+        }
+        
+        return notValidLoginField
     }
 
     private func removeNotifications() {
