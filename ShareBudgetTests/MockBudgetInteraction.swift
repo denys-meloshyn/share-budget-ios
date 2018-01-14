@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 @testable import ShareBudget
 
+protocol MockBudgetInteractionProtocol: BudgetInteractionProtocol {
+}
+
 class MockBudgetInteraction: BudgetInteraction {
     
 }

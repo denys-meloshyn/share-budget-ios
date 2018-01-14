@@ -245,6 +245,12 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		57500B662006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
+		57500B672006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
+		57500B682006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
+		57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B6920093EC900169F23 /* TextFieldListener.swift */; };
+		57500B6B20093EC900169F23 /* TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B6920093EC900169F23 /* TextFieldListener.swift */; };
+		57500B6C20093EC900169F23 /* TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B6920093EC900169F23 /* TextFieldListener.swift */; };
 		57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */; };
 		57561D871F44EBBB00FDB891 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */; };
 		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
@@ -261,6 +267,9 @@
 		575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
 		575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
 		575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
+		575CA989200BF82E00613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
+		575CA98A200BF8B500613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
+		575CA98B200BF8B500613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
 		575E11991F1EA1C4000B2F07 /* TeamMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11981F1EA1C4000B2F07 /* TeamMembersViewController.swift */; };
 		575E119B1F1EA307000B2F07 /* TeamMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E119A1F1EA307000B2F07 /* TeamMembersView.swift */; };
 		575E119D1F1EA330000B2F07 /* TeamMembersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E119C1F1EA330000B2F07 /* TeamMembersPresenter.swift */; };
@@ -433,6 +442,8 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		57500B652006B9A300169F23 /* ButtonListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListener.swift; sourceTree = "<group>"; };
+		57500B6920093EC900169F23 /* TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldListener.swift; sourceTree = "<group>"; };
 		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
 		57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
 		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
@@ -449,6 +460,7 @@
 		575A22651E4D0189004825C2 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		575A22671E4D01A7004825C2 /* ValidationTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationTextField.xib; sourceTree = "<group>"; };
 		575A226B1E508FCA004825C2 /* UtilityFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFormatter.swift; sourceTree = "<group>"; };
+		575CA988200BF82E00613D8E /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		575E11981F1EA1C4000B2F07 /* TeamMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersViewController.swift; sourceTree = "<group>"; };
 		575E119A1F1EA307000B2F07 /* TeamMembersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersView.swift; sourceTree = "<group>"; };
 		575E119C1F1EA330000B2F07 /* TeamMembersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersPresenter.swift; sourceTree = "<group>"; };
@@ -768,6 +780,7 @@
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
 				572749511E44F41B004A132F /* BudgetDetailView.swift */,
 				57F1285D1E3D332600E51C0C /* BudgetView.swift */,
+				57500B652006B9A300169F23 /* ButtonListener.swift */,
 				57FAB4211E62483D00A2AEC7 /* CategoryView.swift */,
 				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
 				575A22591E477234004825C2 /* EditExpenseView.swift */,
@@ -775,9 +788,11 @@
 				57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
-				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
-				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
 				575E119A1F1EA307000B2F07 /* TeamMembersView.swift */,
+				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
+				57500B6920093EC900169F23 /* TextFieldListener.swift */,
+				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
+				575CA988200BF82E00613D8E /* DatePicker.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1562,6 +1577,7 @@
 				5735C4031EE445F40037BAA8 /* AsynchronousURLConnection.swift in Sources */,
 				5735C4041EE445F40037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
 				5735C4051EE445F40037BAA8 /* BudgetUserAPI.swift in Sources */,
+				57500B672006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
 				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
@@ -1632,12 +1648,14 @@
 				5735C4421EE445F40037BAA8 /* LoginView.swift in Sources */,
 				5735C4431EE445F40037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */,
 				5735C4441EE445F40037BAA8 /* BudgetInteraction.swift in Sources */,
+				57500B6B20093EC900169F23 /* TextFieldListener.swift in Sources */,
 				5735C4451EE445F40037BAA8 /* Expense+CoreDataClass.swift in Sources */,
 				5735C4461EE445F40037BAA8 /* UserCredentials.swift in Sources */,
 				5735C4471EE445F40037BAA8 /* AuthorisationAPI.swift in Sources */,
 				5735C4481EE445F40037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FBB1F290C7F004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4491EE445F40037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA98A200BF8B500613D8E /* DatePicker.swift in Sources */,
 				5735C44A1EE445F40037BAA8 /* Constants.swift in Sources */,
 				5735C44B1EE445F40037BAA8 /* BaseRouter.swift in Sources */,
 				5735C44C1EE445F40037BAA8 /* EditExpenseViewController.swift in Sources */,
@@ -1661,6 +1679,7 @@
 				5735C46E1EE44D8F0037BAA8 /* AsynchronousURLConnection.swift in Sources */,
 				5735C46F1EE44D8F0037BAA8 /* URLRequest+UserCredentials.swift in Sources */,
 				5735C4701EE44D8F0037BAA8 /* BudgetUserAPI.swift in Sources */,
+				57500B682006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
 				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
@@ -1731,12 +1750,14 @@
 				5735C4AD1EE44D8F0037BAA8 /* LoginView.swift in Sources */,
 				5735C4AE1EE44D8F0037BAA8 /* CategoryLimit+CoreDataProperties.swift in Sources */,
 				5735C4AF1EE44D8F0037BAA8 /* BudgetInteraction.swift in Sources */,
+				57500B6C20093EC900169F23 /* TextFieldListener.swift in Sources */,
 				5735C4B01EE44D8F0037BAA8 /* Expense+CoreDataClass.swift in Sources */,
 				5735C4B11EE44D8F0037BAA8 /* UserCredentials.swift in Sources */,
 				5735C4B21EE44D8F0037BAA8 /* AuthorisationAPI.swift in Sources */,
 				5735C4B31EE44D8F0037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4B41EE44D8F0037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA98B200BF8B500613D8E /* DatePicker.swift in Sources */,
 				5735C4B51EE44D8F0037BAA8 /* Constants.swift in Sources */,
 				5735C4B61EE44D8F0037BAA8 /* BaseRouter.swift in Sources */,
 				5735C4B71EE44D8F0037BAA8 /* EditExpenseViewController.swift in Sources */,
@@ -1760,6 +1781,7 @@
 				573F59D71E295F6100AEA72A /* AsynchronousURLConnection.swift in Sources */,
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
+				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
@@ -1830,12 +1852,14 @@
 				573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */,
 				573F5A131E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift in Sources */,
 				57F128641E3D341700E51C0C /* BudgetInteraction.swift in Sources */,
+				57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */,
 				573F5A141E2C180400AEA72A /* Expense+CoreDataClass.swift in Sources */,
 				573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */,
 				57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */,
 				573F5A031E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FB91F290C77004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				573F5A121E2C180400AEA72A /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA989200BF82E00613D8E /* DatePicker.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,
 				575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */,

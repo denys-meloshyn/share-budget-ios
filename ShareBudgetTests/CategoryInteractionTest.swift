@@ -12,11 +12,11 @@ import Nimble
 @testable import ShareBudget
 
 class CategoryInteractionTest: XCTestCase {
-    var view: CategoryView!
     var router: CategoryRouter!
-    var presenter: CategoryPresenter!
     var interaction: CategoryInteraction!
     var viewController: MockCategoryViewController!
+    var presenter: CategoryPresenter<CategoryInteraction, CategoryRouter>!
+    var view: CategoryView<CategoryPresenter<CategoryInteraction, CategoryRouter>>!
     
     var budget: Budget!
     var expense: Expense!
@@ -25,22 +25,22 @@ class CategoryInteractionTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
+        managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
         
-        self.budget = Budget(context: self.managedObjectContext)
-        self.budget.name = "Main budget"
-        self.expense = Expense(context: self.managedObjectContext)
-        self.budget.addToExpenses(expense)
+        budget = Budget(context: managedObjectContext)
+        budget.name = "Main budget"
+        expense = Expense(context: managedObjectContext)
+        budget.addToExpenses(expense)
         
-        self.viewController = MockCategoryViewController()
-        self.viewController.expenseID = self.expense.objectID
-        self.viewController.managedObjectContext = self.managedObjectContext
-        self.router = CategoryRouter(with: self.viewController)
-        self.interaction = CategoryInteraction(with: expense.objectID, managedObjectContext: self.managedObjectContext)
-        self.presenter = CategoryPresenter(with: interaction, router: router, delegate: nil)
-        self.view = CategoryView(with: self.presenter, and: self.viewController)
+        viewController = MockCategoryViewController()
+        viewController.expenseID = expense.objectID
+        viewController.managedObjectContext = managedObjectContext
+        router = CategoryRouter(with: viewController)
+        interaction = CategoryInteraction(with: expense.objectID, managedObjectContext: managedObjectContext)
+        presenter = CategoryPresenter(with: interaction, router: router, delegate: nil)
+        view = CategoryView(with: presenter, and: viewController)
         
-        viewController.viperView = self.view
+        viewController.viperView = view
     }
     
     override func tearDown() {
@@ -50,89 +50,89 @@ class CategoryInteractionTest: XCTestCase {
     }
     
     func testFilterRemoved() {
-        var category = Category(context: self.managedObjectContext)
+        var category = Category(context: managedObjectContext)
         category.name = "Category 1"
         category.isRemoved = NSNumber(value: true)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 2"
         category.isRemoved = NSNumber(value: true)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 3"
         category.isRemoved = NSNumber(value: true)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 4"
         category.isRemoved = NSNumber(value: false)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 5"
         category.isRemoved = NSNumber(value: true)
-        self.budget.addToCategories(category)
-        
-        ModelManager.saveContext(self.managedObjectContext)
-        
-        self.interaction.updateWithSearch("")
-        
+        budget.addToCategories(category)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateWithSearch("")
+
         expect(self.interaction.numberOfCategories()) == 1
     }
-    
+
     func testRemovedNotExist() {
-        var category = Category(context: self.managedObjectContext)
+        var category = Category(context: managedObjectContext)
         category.name = "Category 1"
         category.isRemoved = NSNumber(value: false)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 2"
         category.isRemoved = NSNumber(value: false)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 3"
         category.isRemoved = NSNumber(value: false)
-        self.budget.addToCategories(category)
-        
-        category = Category(context: self.managedObjectContext)
+        budget.addToCategories(category)
+
+        category = Category(context: managedObjectContext)
         category.name = "Category 4"
         category.isRemoved = NSNumber(value: false)
-        self.budget.addToCategories(category)
-        
-        ModelManager.saveContext(self.managedObjectContext)
-        
-        self.interaction.updateWithSearch("")
-        
+        budget.addToCategories(category)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateWithSearch("")
+
         expect(self.interaction.numberOfCategories()) == 4
     }
-    
+
     func testCreateCategoryEmptyString() {
-        let result = self.interaction.createCategory(with: "")
-        
+        let result = interaction.createCategory(with: "")
+
         expect(result.name) == ""
         expect(self.budget) == result.budget
         expect(result.isChanged?.boolValue).to(beTrue())
     }
-    
+
     func testCreateCategoryNameNotEmpty() {
-        let result = self.interaction.createCategory(with: "test")
-        
+        let result = interaction.createCategory(with: "test")
+
         expect(result.name) == "test"
         expect(self.budget) == result.budget
         expect(result.isChanged?.boolValue).to(beTrue())
     }
-    
+
     func testCategoryForIndex() {
-        _ = self.interaction.createCategory(with: "Category 1")
-        _ = self.interaction.createCategory(with: "Category 2")
-        ModelManager.saveContext(self.managedObjectContext)
-        
-        let result = self.interaction.category(for: IndexPath(row: 1, section: 0))
-        
+        _ = interaction.createCategory(with: "Category 1")
+        _ = interaction.createCategory(with: "Category 2")
+        ModelManager.saveContext(managedObjectContext)
+
+        let result = interaction.category(for: IndexPath(row: 1, section: 0))
+
         expect(result.name) == "Category 2"
     }
 }

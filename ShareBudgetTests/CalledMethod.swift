@@ -19,6 +19,10 @@ class CalledMethod {
     init(_ selector: String) {
         self.name = selector
     }
+    
+    var debugDescription: String {
+        return "CalledMethod \(name)"
+    }
 }
 
 extension CalledMethod: Hashable {

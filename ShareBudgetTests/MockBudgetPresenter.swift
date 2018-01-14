@@ -8,16 +8,14 @@
 import UIKit
 @testable import ShareBudget
 
-class MockBudgetPresenter: BudgetPresenter {
+class MockBudgetPresenter<I: BudgetInteractionProtocol, R: BudgetRouterProtocol>: BudgetPresenter<I, R> {
     let calledMethodManager = CalledMethodManager()
     
-    @objc override func startListenKeyboardNotifications() {
-        let key = #selector(MockBudgetPresenter.startListenKeyboardNotifications)
-        calledMethodManager.add(key)
+    override func startListenKeyboardNotifications() {
+        calledMethodManager.add("startListenKeyboardNotifications")
     }
-    
-    @objc override func stopListenKeyboardNotifications() {
-        let key = #selector(MockBudgetPresenter.stopListenKeyboardNotifications)
-        calledMethodManager.add(key)
+
+    override func stopListenKeyboardNotifications() {
+        calledMethodManager.add("stopListenKeyboardNotifications")
     }
 }

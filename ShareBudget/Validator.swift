@@ -17,7 +17,7 @@ class Validator {
     }
     
     class func password(_ password: String) -> Bool {
-        return password.characters.count >= Constants.values.passwordMinLength
+        return password.count >= Constants.values.passwordMinLength
     }
     
     class func repeatPassword(password: String, repeat repeatPassword: String) -> Bool {
@@ -26,7 +26,7 @@ class Validator {
     
     class func firstName(_ firstName: String) -> Bool {
         let cleanedValue = firstName.trimmingCharacters(in: CharacterSet.whitespaces)
-        return cleanedValue.characters.count > 0
+        return cleanedValue.count > 0
     }
     
     class func isNumberValid(_ value: String) -> Bool {

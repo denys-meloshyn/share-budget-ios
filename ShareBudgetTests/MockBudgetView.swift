@@ -8,33 +8,31 @@
 import UIKit
 @testable import ShareBudget
 
-class MockBudgetView: BudgetView {
+class MockBudgetView<T: BudgetPresenterProtocol>: BudgetView<T> {
+    
     let calledMethodManager = CalledMethodManager()
     
     override func showTabBar(title: String, image: UIImage, selected: UIImage) {
-        let key = #selector(MockBudgetView.showTabBar(title:image:selected:))
-        calledMethodManager.add(key)
+        calledMethodManager.add("showTabBar(title:image:selected:)")
     }
     
     override func showPage(title: String?) {
-        let key = #selector(MockBudgetView.showPage(title:))
-        calledMethodManager.add(key)
+        calledMethodManager.add("showPage(title:)")
     }
     
-    @objc override func showCreateNewGroupMessage(message: NSAttributedString) {
-        let key = #selector(MockBudgetView.showCreateNewGroupMessage(message:))
-        calledMethodManager.add(key)
+    override func showCreateNewGroupMessage(message: NSAttributedString) {
+        calledMethodManager.add("showCreateNewGroupMessage(message:)")
     }
     
-    @objc override func showGroupList() {
-        calledMethodManager.add(#selector(MockBudgetView.showGroupList))
+    override func showGroupList() {
+        calledMethodManager.add("showGroupList")
     }
     
     override func refreshData(for mode: BudgetHeaderMode) {
-        calledMethodManager.add(#selector(MockBudgetView.showGroupList))
+        calledMethodManager.add("showGroupList")
     }
     
-    @objc override func cancelSearch() {
-        calledMethodManager.add(#selector(MockBudgetView.cancelSearch))
+    override func cancelSearch() {
+        calledMethodManager.add("cancelSearch")
     }
 }

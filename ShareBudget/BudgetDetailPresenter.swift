@@ -7,6 +7,7 @@
 //
 
 import CorePlot
+import CoreData
 import ChameleonFramework
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
@@ -21,7 +22,18 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String)
 }
 
-class BudgetDetailPresenter: BasePresenter {
+protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSource, CPTPieChartDelegate {
+    weak var delegate: BudgetDetailPresenterDelegate? { get set }
+    
+    func editMembers()
+    func closePageAction()
+    func showAllExpenses()
+    func createNewExpense()
+    func changeBudgetLimit()
+    func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)?
+}
+
+class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailRouterProtocol>: BasePresenter<I, R>, BudgetDetailPresenterProtocol {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
@@ -30,74 +42,128 @@ class BudgetDetailPresenter: BasePresenter {
     private var colorsRange = [Range<Double>]()
     private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
     
-    fileprivate var budgetDetailInteraction: BudgetDetailInteraction {
-        get {
-            return self.interaction as! BudgetDetailInteraction
-        }
-    }
-    
-    fileprivate var budgetDetailRouter: BudgetDetailRouter {
-        get {
-            return self.router as! BudgetDetailRouter
-        }
-    }
-    
     // MARK: - Life cycle methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func viewDidLoad() {
+        interaction.delegate = self
         
-        self.budgetDetailInteraction.delegate = self
-        
-        self.delegate?.showPage(title: self.budgetDetailInteraction.budget.name)
-        self.delegate?.updateCurrentMonthDate(UtilityFormatter.yearMonthFormatter.string(from: Date()))
-        self.configureColors()
-        self.configurePiChartColors()
-        self.configureTotalExpenses()
-        self.configureMonthBudget()
-        self.configureBalance()
-        self.updateTotalSpentExpensesColor()
+        delegate?.showPage(title: interaction.budget.name)
+        delegate?.updateCurrentMonthDate(UtilityFormatter.yearMonthFormatter.string(from: Date()))
+        configureColors()
+        configurePiChartColors()
+        configureTotalExpenses()
+        configureMonthBudget()
+        configureBalance()
+        updateTotalSpentExpensesColor()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.delegate?.updateNativeNavigationVisibility(false)
-        self.delegate?.updateCreateButtonAnimation(true)
+    func viewWillAppear(_ animated: Bool) {
+        delegate?.updateNativeNavigationVisibility(false)
+        delegate?.updateCreateButtonAnimation(true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    func viewWillDisappear(_ animated: Bool) {
+        delegate?.updateNativeNavigationVisibility(true)
+        delegate?.updateCreateButtonAnimation(false)
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
+    }
+    
+    // MARK: - CPTPieChartDataSource
+    
+    func numberOfRecords(for plot: CPTPlot) -> UInt {
+        if interaction.isEmpty() {
+            return 1
+        }
         
-        self.delegate?.updateNativeNavigationVisibility(true)
-        self.delegate?.updateCreateButtonAnimation(false)
+        return UInt(interaction.numberOfCategoryExpenses())
+    }
+    
+    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any? {
+        if interaction.isEmpty() {
+            return 1 as NSNumber
+        }
+        
+        switch CPTPieChartField(rawValue: Int(field))! {
+        case .sliceWidth:
+            return NSNumber(value: interaction.totalExpenses(for: Int(record)))
+            
+        default:
+            return record as NSNumber
+        }
+    }
+    
+    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
+        if interaction.isEmpty() {
+            return nil
+        }
+        
+        let label = CPTTextLayer(text: interaction.categoryTitle(for: Int(record)))
+        
+        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
+            textStyle.color = CPTColor.white()
+            
+            label.textStyle = textStyle
+        }
+        
+        return label
+    }
+    
+    func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
+        if interaction.isEmpty() {
+            return CPTFill(color: CPTColor.gray())
+        }
+        
+        let index = Int(idx)
+        if index < pieChartColors.count - 1 {
+            return CPTFill(color: CPTColor(cgColor: pieChartColors[index].cgColor))
+        }
+        
+        return nil
+    }
+    
+    // MARK: - CPTPieChartDelegate
+    
+    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
+        if selectedSlice == idx {
+            selectedSlice = nil
+        } else {
+            selectedSlice = idx
+        }
+        
+        delegate?.updateChart()
+        router.showAllExpensesPage(with: interaction.budgetID, categoryID: interaction.category(for: Int(idx))?.objectID)
     }
     
     // MARK: - Private methods
     
     private func configurePiChartColors() {
-        self.pieChartColors.append(UIColor.flatRed)
-        self.pieChartColors.append(UIColor.flatOrange)
-        self.pieChartColors.append(UIColor.flatYellow)
-        self.pieChartColors.append(UIColor.flatSkyBlue)
-        self.pieChartColors.append(UIColor.flatGreen)
-        self.pieChartColors.append(UIColor.flatWatermelon)
-        self.pieChartColors.append(UIColor.flatMint)
-        self.pieChartColors.append(UIColor.flatPink)
-        self.pieChartColors.append(UIColor.flatPlum)
-        self.pieChartColors.append(UIColor.flatSand)
-        self.pieChartColors.append(UIColor.flatTeal)
-        self.pieChartColors.append(UIColor.flatLime)
-        self.pieChartColors.append(UIColor.flatBlue)
-        self.pieChartColors.append(UIColor.flatMagenta)
-        self.pieChartColors.append(UIColor.flatBrown)
-        self.pieChartColors.append(UIColor.flatGray)
+        pieChartColors.append(UIColor.flatRed)
+        pieChartColors.append(UIColor.flatOrange)
+        pieChartColors.append(UIColor.flatYellow)
+        pieChartColors.append(UIColor.flatSkyBlue)
+        pieChartColors.append(UIColor.flatGreen)
+        pieChartColors.append(UIColor.flatWatermelon)
+        pieChartColors.append(UIColor.flatMint)
+        pieChartColors.append(UIColor.flatPink)
+        pieChartColors.append(UIColor.flatPlum)
+        pieChartColors.append(UIColor.flatSand)
+        pieChartColors.append(UIColor.flatTeal)
+        pieChartColors.append(UIColor.flatLime)
+        pieChartColors.append(UIColor.flatBlue)
+        pieChartColors.append(UIColor.flatMagenta)
+        pieChartColors.append(UIColor.flatBrown)
+        pieChartColors.append(UIColor.flatGray)
     }
     
     private func configureColors() {
-        let rangeLength = 1.0 / Double(self.colors.count)
+        let rangeLength = 1.0 / Double(colors.count)
         
-        for i in 0..<self.colors.count {
+        for i in 0..<colors.count {
             let start = rangeLength * Double(i)
             let end = rangeLength * Double(i + 1)
             
@@ -106,34 +172,34 @@ class BudgetDetailPresenter: BasePresenter {
     }
     
     fileprivate func updateTotalSpentExpensesColor() {
-        let budget = self.budgetDetailInteraction.lastMonthLimit()?.limit?.doubleValue ?? 0.0
+        let budget = interaction.lastMonthLimit()?.limit?.doubleValue ?? 0.0
         
-        let totalExpenses = self.budgetDetailInteraction.totalExpenses()
+        let totalExpenses = interaction.totalExpenses()
         
         if totalExpenses == 0.0 {
-            self.delegate?.updateExpenseCoverColor(self.colors.first)
+            delegate?.updateExpenseCoverColor(colors.first)
             return
         }
         
         if budget == 0.0 {
-            self.delegate?.updateExpenseCoverColor(self.colors.last)
+            delegate?.updateExpenseCoverColor(colors.last)
             return
         }
         
         let percent = totalExpenses / budget
-        let percentColor = Double(self.colors.count) * percent
+        let percentColor = Double(colors.count) * percent
         let percentColorIndex = Int(floor(percentColor))
         
         if percentColorIndex == 0 {
-            let resColor = self.colors[percentColorIndex]
-            self.delegate?.updateExpenseCoverColor(resColor)
-        } else if percentColorIndex >= self.colors.count {
-            let resColor = self.colors.last
-            self.delegate?.updateExpenseCoverColor(resColor)
+            let resColor = colors[percentColorIndex]
+            delegate?.updateExpenseCoverColor(resColor)
+        } else if percentColorIndex >= colors.count {
+            let resColor = colors.last
+            delegate?.updateExpenseCoverColor(resColor)
         } else {
-            for range in self.colorsRange {
+            for range in colorsRange {
                 if range.contains(percent) {
-                    guard let rangeIndex = self.colorsRange.index(of: range) else {
+                    guard let rangeIndex = colorsRange.index(of: range) else {
                         continue
                     }
                     
@@ -141,8 +207,8 @@ class BudgetDetailPresenter: BasePresenter {
                     let rangeLength = range.upperBound - range.lowerBound
                     let rangePercantage = dif / rangeLength
                     
-                    let fromColor = self.colors[rangeIndex - 1]
-                    let toColor = self.colors[rangeIndex]
+                    let fromColor = colors[rangeIndex - 1]
+                    let toColor = colors[rangeIndex]
                     
                     let cgiColors = fromColor.cgColor.components ?? []
                     var resCGIColors = [CGFloat]()
@@ -157,32 +223,32 @@ class BudgetDetailPresenter: BasePresenter {
                                            green: resCGIColors[1],
                                            blue: resCGIColors[2],
                                            alpha: resCGIColors[3])
-                    self.delegate?.updateExpenseCoverColor(resColor)
+                    delegate?.updateExpenseCoverColor(resColor)
                 }
             }
         }
     }
     
     fileprivate func configureTotalExpenses() {
-        let total = self.budgetDetailInteraction.totalExpenses()
-        self.delegate?.updateTotalExpense(UtilityFormatter.priceFormatter.string(for: total) ?? "0")
+        let total = interaction.totalExpenses()
+        delegate?.updateTotalExpense(UtilityFormatter.priceFormatter.string(for: total) ?? "0")
     }
     
     fileprivate func configureMonthBudget() {
-        let month = self.budgetDetailInteraction.lastMonthLimit()
-        self.delegate?.updateMonthLimit(UtilityFormatter.priceFormatter.string(for: month?.limit ?? 0) ?? "0")
+        let month = interaction.lastMonthLimit()
+        delegate?.updateMonthLimit(UtilityFormatter.priceFormatter.string(for: month?.limit ?? 0) ?? "0")
     }
     
     fileprivate func configureBalance() {
-        self.delegate?.updateBalance(UtilityFormatter.priceFormatter.string(for: self.budgetDetailInteraction.balance()) ?? "0")
+        delegate?.updateBalance(UtilityFormatter.priceFormatter.string(for: interaction.balance()) ?? "0")
     }
     
-    @objc func createNewExpense() {
-        self.budgetDetailRouter.openEditExpensePage(with: self.budgetDetailInteraction.budgetID)
+    func createNewExpense() {
+        router.openEditExpensePage(with: interaction.budgetID)
     }
     
-    @objc func showAllExpenses() {
-        self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID)
+    func showAllExpenses() {
+        router.showAllExpensesPage(with: interaction.budgetID, categoryID: nil)
     }
     
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {
@@ -192,7 +258,7 @@ class BudgetDetailPresenter: BasePresenter {
             }
             
             let newLimit = UtilityFormatter.amount(from: text)
-            self.budgetDetailInteraction.createOrUpdateCurrentBudgetLimit(newLimit?.doubleValue ?? 0.0)
+            self.interaction.createOrUpdateCurrentBudgetLimit(newLimit?.doubleValue ?? 0.0)
             self.configureMonthBudget()
             self.updateTotalSpentExpensesColor()
             self.configureBalance()
@@ -201,108 +267,44 @@ class BudgetDetailPresenter: BasePresenter {
         return res
     }
     
-    @objc func changeBudgetLimit() {
-        let limit = NSNumber(value: self.budgetDetailInteraction.lastMonthLimit()?.limit?.doubleValue ?? 0.0)
+    func changeBudgetLimit() {
+        let limit = NSNumber(value: interaction.lastMonthLimit()?.limit?.doubleValue ?? 0.0)
         let formattedLimit = UtilityFormatter.priceEditFormatter.string(from: limit) ?? ""
         
-        self.delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
-                                               message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
-                                               create: LocalisedManager.generic.create,
-                                               cancel: LocalisedManager.generic.cancel,
-                                               placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
-                                               budgetLimit: formattedLimit)
+        delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
+                                          message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
+                                          create: LocalisedManager.generic.create,
+                                          cancel: LocalisedManager.generic.cancel,
+                                          placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
+                                          budgetLimit: formattedLimit)
     }
     
-    @objc func closePageAction() {
-        self.budgetDetailRouter.closePage()
+    func closePageAction() {
+        router.closePage()
     }
     
-    @objc func editMembers() {
-        self.budgetDetailRouter.openTeamMembersPage(with: self.budgetDetailInteraction.budget.objectID)
-    }
-}
-
-// MARK: - CPTPieChartDataSource
-
-extension BudgetDetailPresenter: CPTPieChartDataSource {
-    func numberOfRecords(for plot: CPTPlot) -> UInt {
-        if self.budgetDetailInteraction.isEmpty() {
-            return 1
-        }
-        
-        return UInt(self.budgetDetailInteraction.numberOfCategoryExpenses())
-    }
-    
-    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any? {
-        if self.budgetDetailInteraction.isEmpty() {
-            return 1 as NSNumber
-        }
-        
-        switch CPTPieChartField(rawValue: Int(field))! {
-        case .sliceWidth:
-            return NSNumber(value: self.budgetDetailInteraction.totalExpenses(for: Int(record)))
-            
-        default:
-            return record as NSNumber
-        }
-    }
-    
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
-        if self.budgetDetailInteraction.isEmpty() {
-            return nil
-        }
-        
-        let label = CPTTextLayer(text: self.budgetDetailInteraction.categoryTitle(for: Int(record)))
-        
-        if let textStyle = label.textStyle?.mutableCopy() as? CPTMutableTextStyle {
-            textStyle.color = CPTColor.white()
-            
-            label.textStyle = textStyle
-        }
-        
-        return label
-    }
-    
-    func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
-        if self.budgetDetailInteraction.isEmpty() {
-            return CPTFill(color: CPTColor.gray())
-        }
-        
-        let index = Int(idx)
-        if index < self.pieChartColors.count - 1 {
-            return CPTFill(color: CPTColor(cgColor: self.pieChartColors[index].cgColor))
-        }
-        
-        return nil
-    }
-}
-
-// MARK: - CPTPieChartDelegate
-
-extension BudgetDetailPresenter: CPTPieChartDelegate {
-    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
-        if self.selectedSlice == idx {
-            self.selectedSlice = nil
-        } else {
-            self.selectedSlice = idx
-        }
-        
-        self.delegate?.updateChart()
-        self.budgetDetailRouter.showAllExpensesPage(with: self.budgetDetailInteraction.budgetID, categoryID: self.budgetDetailInteraction.category(for: Int(idx))?.objectID)
+    func editMembers() {
+        router.openTeamMembersPage(with: interaction.budget.objectID)
     }
 }
 
 // MARK: - BudgetDetailInteractionDelegate
 
 extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
+    func willChangeContent() {
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+    
     func didChangeContent() {
-        self.configureTotalExpenses()
-        self.configureBalance()
-        self.updateTotalSpentExpensesColor()
-        self.delegate?.updateChart()
+        configureTotalExpenses()
+        configureBalance()
+        updateTotalSpentExpensesColor()
+        delegate?.updateChart()
     }
     
     func limitChanged() {
-        self.configureMonthBudget()
+        configureMonthBudget()
     }
 }

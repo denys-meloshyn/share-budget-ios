@@ -8,6 +8,9 @@
 
 import UIKit
 
-class TeamMembersRouter: BaseRouter {
+protocol TeamMembersRouterProtocol: BaseRouterProtocol {
+}
+
+class TeamMembersRouter: BaseRouter, TeamMembersRouterProtocol {
     
 }

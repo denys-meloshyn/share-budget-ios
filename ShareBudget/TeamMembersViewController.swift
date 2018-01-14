@@ -15,25 +15,23 @@ class TeamMembersViewController: BaseViewController {
     var budgetID: NSManagedObjectID!
     private let managedObjectContext = ModelManager.managedObjectContext
     
-    fileprivate var teamMembersView: TeamMembersView {
-        get {
-            return self.viperView as! TeamMembersView
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let router = TeamMembersRouter(with: self)
-        let interactin = TeamMembersInteraction(with: self.budgetID, context: self.managedObjectContext)
+        let interactin = TeamMembersInteraction(with: budgetID, context: managedObjectContext)
         let presenter = TeamMembersPresenter(with: interactin, router: router)
-        self.viperView = TeamMembersView(with: presenter, and: self)
+        viperView = TeamMembersView(with: presenter, and: self)
         
-        self.linkStoryboardViews()
-        self.viperView?.viewDidLoad()
+        linkStoryboardViews()
+        viperView?.viewDidLoad()
     }
     
     override func linkStoryboardViews() {
-        teamMembersView.tableView = self.tableView
+        guard let view = viperView as? TeamMembersViewProtocol else {
+            return
+        }
+        
+        view.tableView = tableView
     }
 }

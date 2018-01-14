@@ -11,12 +11,14 @@ import CoreData
 
 typealias APIResultBlock = (Any?, ErrorTypeAPI) -> Void
 
-@objc protocol BaseInteractionDelegate: class {
-    @objc optional func didChangeContent()
-    @objc optional func willChangeContent()
-    @objc optional func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+protocol BaseInteractionDelegate: class {
+    func didChangeContent()
+    func willChangeContent()
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+}
+
+protocol BaseInteractionProtocol: class {
 }
 
 class BaseInteraction: NSObject {
-    
 }

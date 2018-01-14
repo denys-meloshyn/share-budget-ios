@@ -9,6 +9,6 @@
 import UIKit
 @testable import ShareBudget
 
-class MockCategoryView: CategoryView {
+class MockCategoryView<T: CategoryPresenterProtocol>: CategoryView<T> {
     let calledMethodManager = CalledMethodManager()
 }

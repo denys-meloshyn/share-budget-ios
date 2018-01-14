@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-class BudgetRouter: BaseRouter {
+protocol BudgetRouterProtocol: BaseRouterProtocol {
+    func openDetailPage(for budgetID: NSManagedObjectID?)
+}
+
+class BudgetRouter: BaseRouter, BudgetRouterProtocol {
     func openDetailPage(for budgetID: NSManagedObjectID?) {
         guard let budgetDetailViewController = R.storyboard.main.budgetDetailViewController() else {
             return

@@ -7,37 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 protocol TeamMembersPresenterDelegate: class {
     func refreshData()
     func createTeamMemberCell(with title: String?, and subTitle: String?) -> UITableViewCell
 }
 
-class TeamMembersPresenter: BasePresenter {
-    weak var delegate: TeamMembersPresenterDelegate!
-    
-    fileprivate var teamMembersInteraction: TeamMembersInteraction {
-        get {
-            return self.interaction as! TeamMembersInteraction
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.teamMembersInteraction.delegate = self
-    }
+protocol TeamMembersPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UITableViewDataSource {
+    weak var delegate: TeamMembersPresenterDelegate! { get set }
 }
 
-// MARK: - UITableViewDataSource
-
-extension TeamMembersPresenter: UITableViewDataSource {
+class TeamMembersPresenter<I: TeamMembersInteractionProtocol, R: TeamMembersRouterProtocol>: BasePresenter<I, R>, TeamMembersPresenterProtocol {
+    weak var delegate: TeamMembersPresenterDelegate!
+    
+    func viewDidLoad() {
+        interaction.delegate = self
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
+    }
+    
+    // MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.teamMembersInteraction.userCount()
+        return interaction.userCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
+        let userGroup = interaction.userGroup(at: indexPath)
         var items = [String]()
         if let lastName = userGroup.user?.lastName {
             items.append(lastName)
@@ -50,32 +57,28 @@ extension TeamMembersPresenter: UITableViewDataSource {
         var title = NSArray(array: items).componentsJoined(by: " ")
         var subtitle = userGroup.user?.email ?? ""
         
-        if title.characters.count == 0 {
+        if title.count == 0 {
             title = subtitle
             subtitle = ""
         }
         
-        return self.delegate.createTeamMemberCell(with: title, and: subtitle)
+        return delegate.createTeamMemberCell(with: title, and: subtitle)
     }
-}
-
-// MARK: - UITableViewDelegate
-
-extension TeamMembersPresenter: UITableViewDelegate {
+    
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let action = UITableViewRowAction(style: .destructive, title: LocalisedManager.generic.delete) { (_, indexPath) in
-            let userGroup = self.teamMembersInteraction.userGroup(at: indexPath)
+            let userGroup = self.interaction.userGroup(at: indexPath)
             userGroup.isRemoved = true
             userGroup.isChanged = true
-            self.teamMembersInteraction.save()
+            self.interaction.save()
         }
         
         return [action]
@@ -85,11 +88,14 @@ extension TeamMembersPresenter: UITableViewDelegate {
 // MARK: - BaseInteractionDelegate
 
 extension TeamMembersPresenter: BaseInteractionDelegate {
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+    
     func willChangeContent() {
-        self.delegate?.refreshData()
+        delegate?.refreshData()
     }
     
     func didChangeContent() {
-        self.delegate?.refreshData()
+        delegate?.refreshData()
     }
 }

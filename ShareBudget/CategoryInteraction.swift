@@ -9,10 +9,19 @@
 import CoreData
 
 protocol CategoryInteractionDelegate: BaseInteractionDelegate {
-    
 }
 
-class CategoryInteraction: BaseInteraction {
+protocol CategoryInteractionProtocol: BaseInteractionProtocol {
+    var expense: Expense { get set }
+    weak var delegate: CategoryInteractionDelegate? { get set }
+    
+    func numberOfCategories() -> Int
+    func updateWithSearch(_ text: String)
+    func createCategory(with name: String) -> Category
+    func category(for indexPath: IndexPath) -> Category
+}
+
+class CategoryInteraction: BaseInteraction, CategoryInteractionProtocol, NSFetchedResultsControllerDelegate {
     var expense: Expense
     weak var delegate: CategoryInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
@@ -23,19 +32,19 @@ class CategoryInteraction: BaseInteraction {
     init(with expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
         self.expenseID = expenseID
         self.managedObjectContext = managedObjectContext
-        self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
+        expense = managedObjectContext.object(with: expenseID) as! Expense
         
         super.init()
         
-        self.fetchedResultsController = ModelManager.categoryFetchController(self.managedObjectContext)
-        self.fetchedResultsController.delegate = self
+        fetchedResultsController = ModelManager.categoryFetchController(managedObjectContext)
+        fetchedResultsController.delegate = self
         
-        self.updatePredicate(with: "")
+        updatePredicate(with: "")
     }
     
     private func performFetch() {
         do {
-            try self.fetchedResultsController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             Dependency.logger.error("Error fetch \(error)")
         }
@@ -43,7 +52,7 @@ class CategoryInteraction: BaseInteraction {
     
     private func updatePredicate(with text: String) {
         var predicates = [NSPredicate]()
-        var tmpPredicate = NSPredicate(format: "%@ == budget", self.expense.budget!)
+        var tmpPredicate = NSPredicate(format: "%@ == budget", expense.budget!)
         predicates.append(tmpPredicate)
         
         predicates.append(ModelManager.removePredicate())
@@ -55,53 +64,48 @@ class CategoryInteraction: BaseInteraction {
         }
         
         predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        self.fetchedResultsController.fetchRequest.predicate = predicate
-        self.performFetch()
+        fetchedResultsController.fetchRequest.predicate = predicate
+        performFetch()
         
-        self.delegate?.didChangeContent?()
+        delegate?.didChangeContent()
     }
     
     func numberOfCategories() -> Int {
-        let sections = self.fetchedResultsController.sections
+        let sections = fetchedResultsController.sections
         let section = sections?.first
         
         return section?.numberOfObjects ?? 0
     }
     
     func category(for indexPath: IndexPath) -> Category {
-        let model = self.fetchedResultsController.object(at: indexPath)
+        let model = fetchedResultsController.object(at: indexPath)
         
         return model
     }
     
     func updateWithSearch(_ text: String) {
-        self.updatePredicate(with: text)
+        updatePredicate(with: text)
     }
     
     func createCategory(with name: String) -> Category {
-        let category = Category(context: self.managedObjectContext)
+        let category = Category(context: managedObjectContext)
         category.isChanged = true
         category.name = name
         
-        category.budget = self.expense.budget
-        self.expense.budget?.addToCategories(category)
+        category.budget = expense.budget
+        expense.budget?.addToCategories(category)
         
         return category
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension CategoryInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.willChangeContent?()
+        delegate?.willChangeContent()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent?()
+        delegate?.didChangeContent()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
     }
 }

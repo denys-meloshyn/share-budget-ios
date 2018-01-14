@@ -262,7 +262,7 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         var predicates = [NSPredicate]()
-        if text.characters.count > 0 {
+        if text.count > 0 {
             let predicate = NSPredicate(format: "name CONTAINS[c] %@", text)
             predicates.append(predicate)
         }

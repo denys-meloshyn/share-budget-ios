@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-class EditExpenseRouter: BaseRouter {
+protocol EditExpenseRouterProtocol: BaseRouterProtocol {
+    func openCategoryPage(for expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext, delegate: CategoryViewControllerDelegate?)
+}
+
+class EditExpenseRouter: BaseRouter, EditExpenseRouterProtocol {
     func openCategoryPage(for expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext, delegate: CategoryViewControllerDelegate?) {
         if let viewController = R.storyboard.main.categoryViewController() {
             viewController.managedObjectContext = managedObjectContext
