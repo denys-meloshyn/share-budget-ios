@@ -12,7 +12,7 @@ typealias UIButtonActionBlock = (ButtonListener) -> Void
 
 class ButtonListener: UIButton {
     private var touchUpInsideBlock: UIButtonActionBlock?
-    
+
     func addTouchUpInsideListener(completion: UIButtonActionBlock?) {
         touchUpInsideBlock = completion
         addTarget(self, action: #selector(ButtonListener.touchUpInsideAction), for: .touchUpInside)

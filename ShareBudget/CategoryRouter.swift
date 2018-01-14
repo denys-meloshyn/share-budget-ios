@@ -6,7 +6,7 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-protocol CategoryRouterProtocol: BaseRouterProtocol{
+protocol CategoryRouterProtocol: BaseRouterProtocol {
 }
 
 class CategoryRouter: BaseRouter, CategoryRouterProtocol {

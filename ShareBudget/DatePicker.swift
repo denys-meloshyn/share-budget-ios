@@ -12,7 +12,7 @@ typealias DatePickerActionBlock = (DatePicker) -> Void
 
 class DatePicker: UIDatePicker {
     private var valueChangedBlock: DatePickerActionBlock?
-    
+
     func addValueChangedListener(completion: DatePickerActionBlock?) {
         valueChangedBlock = completion
         addTarget(self, action: #selector(DatePicker.valueChangedAction), for: .valueChanged)
