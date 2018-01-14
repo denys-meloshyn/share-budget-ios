@@ -14,8 +14,8 @@ class BudgetViewController: BaseViewController {
     @IBOutlet private var createNewGroupRootView: UIView?
     @IBOutlet private var constantCreateNewGroupRootViewBottom: NSLayoutConstraint?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func configureVIPER() {
+        super.configureVIPER()
         
         let router = BudgetRouter(with: self)
         let interactin = BudgetInteraction(managedObjectContext: ModelManager.managedObjectContext)
@@ -23,18 +23,11 @@ class BudgetViewController: BaseViewController {
         viperView = BudgetView(with: presenter, and: self)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func linkStoryboardViews() {
         guard let view = viperView as? BudgetViewProtocol else {
             return
         }
         
-        linkStoryboardViews(to: view)
-        viperView?.viewDidLoad()
-    }
-    
-    private func linkStoryboardViews(to view: BudgetViewProtocol) {
         view.tableView = tableView
         view.createNewGroupLabel = createNewGroupLabel
         view.createNewGroupRootView = createNewGroupRootView

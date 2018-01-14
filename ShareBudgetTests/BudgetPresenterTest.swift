@@ -33,7 +33,7 @@ class BudgetPresenterTest: XCTestCase {
 
         viewController.viperView = view
         viewController.tableView = UITableView()
-        viewController.viewDidLoad()
+        _ = viewController.view
     }
     
     override func tearDown() {
@@ -119,11 +119,11 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testCellCreated() {
-        let model = Budget(context: self.managedObjectContext)
+        let model = Budget(context: managedObjectContext)
         model.name = "Name_A"
-        ModelManager.saveContext(self.managedObjectContext)
+        ModelManager.saveContext(managedObjectContext)
 
-        let cell = presenter.tableView(UITableView(), cellForRowAt: IndexPath(row: 0, section: 0))
+        let cell = presenter.tableView(view.tableView!, cellForRowAt: IndexPath(row: 0, section: 0))
 
         expect(cell.textLabel?.text).notTo(beNil())
     }
