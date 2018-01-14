@@ -36,7 +36,7 @@ protocol LoginPresenterProtocol: BasePresenterProtocol, UITextFieldDelegate {
     func switchAuthorisationMode()
 }
 
-class LoginPresenter<T: LoginInteractionProtocol>: BasePresenter<T>, LoginPresenterProtocol {
+class LoginPresenter<I: LoginInteractionProtocol, R: LoginRouterProtocol>: BasePresenter<I, R>, LoginPresenterProtocol {
     private var email = ""
     private var password = ""
     private var lastName = ""

@@ -15,8 +15,8 @@ class CategoryPresenterTest: XCTestCase {
     private var router: MockCategoryRouter!
     private var interaction: CategoryInteraction!
     private var viewController: MockCategoryViewController!
-    private var presenter: CategoryPresenter<CategoryInteraction>!
-    private var view: CategoryView<CategoryPresenter<CategoryInteraction>>!
+    private var presenter: CategoryPresenter<CategoryInteraction, MockCategoryRouter>!
+    private var view: CategoryView<CategoryPresenter<CategoryInteraction, MockCategoryRouter>>!
     
     private var budget: Budget!
     private var expense: Expense!

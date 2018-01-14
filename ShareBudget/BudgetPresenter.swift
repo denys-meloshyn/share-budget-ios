@@ -29,16 +29,10 @@ protocol BudgetPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UI
     weak var delegate: BudgetPresenterDelegate? { get set }
 }
 
-class BudgetPresenter<T: BudgetInteractionProtocol>: BasePresenter<T>, BudgetPresenterProtocol {
+class BudgetPresenter<I: BudgetInteractionProtocol, R: BudgetRouterProtocol>: BasePresenter<I, R>, BudgetPresenterProtocol {
     weak var delegate: BudgetPresenterDelegate?
     
-    fileprivate var budgetRouter: BudgetRouter {
-        get {
-            return self.router as! BudgetRouter
-        }
-    }
-    
-    override init(with interaction: T, router: BaseRouter) {
+    override init(with interaction: I, router: R) {
         super.init(with: interaction, router: router)
         
         interaction.delegate = self
@@ -103,7 +97,7 @@ class BudgetPresenter<T: BudgetInteractionProtocol>: BasePresenter<T>, BudgetPre
         tableView.deselectRow(at: indexPath, animated: false)
         
         let budget = interaction.budgetModel(for: indexPath)
-        budgetRouter.openDetailPage(for: budget.objectID)
+        router.openDetailPage(for: budget.objectID)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -182,7 +176,7 @@ extension BudgetPresenter: CreateSearchTableViewHeaderDelegate {
         }
         
         let newBudget = interaction.createNewBudget(with: Validator.removeWhiteSpaces(title))
-        budgetRouter.openDetailPage(for: newBudget.objectID)
+        router.openDetailPage(for: newBudget.objectID)
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {

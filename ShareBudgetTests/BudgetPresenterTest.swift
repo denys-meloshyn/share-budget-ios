@@ -11,13 +11,13 @@ import CoreData
 @testable import ShareBudget
 
 class BudgetPresenterTest: XCTestCase {
-    var view: MockBudgetView<MockBudgetPresenter<BudgetInteraction>>!
     var router: MockBudgetRouter!
-    var presenter: MockBudgetPresenter<BudgetInteraction>!
     var interaction: BudgetInteraction!
     var viewController: MockBudgetViewController!
     var managedObjectContext: NSManagedObjectContext!
     var createSearchTableViewHeader: CreateSearchTableViewHeader!
+    var presenter: MockBudgetPresenter<BudgetInteraction, BudgetRouter>!
+    var view: MockBudgetView<MockBudgetPresenter<BudgetInteraction, BudgetRouter>>!
     
     override func setUp() {
         super.setUp()

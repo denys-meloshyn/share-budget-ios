@@ -698,7 +698,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXv-4Y-Psx">
                                                         <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="60"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1I-dJ-gyA">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1I-dJ-gyA" customClass="ButtonListener" customModule="ShareBudget" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="8" width="159.66666666666666" height="44"/>
                                                                 <state key="normal">
                                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

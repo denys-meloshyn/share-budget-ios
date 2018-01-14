@@ -18,11 +18,11 @@ protocol CategoryPresenterProtocol: BasePresenterProtocol, UITableViewDataSource
     weak var delegate: CategoryPresenterDelegate! { get set }
 }
 
-class CategoryPresenter<T: CategoryInteractionProtocol>: BasePresenter<T>, CategoryPresenterProtocol {
+class CategoryPresenter<I: CategoryInteractionProtocol, R: CategoryRouterProtocol>: BasePresenter<I, R>, CategoryPresenterProtocol {
     weak var delegate: CategoryPresenterDelegate!
     weak var categoryDelegate: CategoryViewControllerDelegate?
     
-    init(with interaction: T, router: BaseRouter, delegate: CategoryViewControllerDelegate?) {
+    init(with interaction: I, router: R, delegate: CategoryViewControllerDelegate?) {
         super.init(with: interaction, router: router)
         
         categoryDelegate = delegate

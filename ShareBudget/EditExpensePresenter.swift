@@ -30,22 +30,20 @@ protocol EditExpensePresenterDelegate: BasePresenterDelegate {
 
 protocol EditExpensePresenterProtocol: BasePresenterProtocol, UITextFieldDelegate {
     weak var delegate: EditExpensePresenterDelegate? { get set }
+    
+    func openCategoryPage()
+    func dateChanged(sender: UIDatePicker)
 }
 
-class EditExpensePresenter: BasePresenter<EditExpenseInteraction>, EditExpensePresenterProtocol {
+class EditExpensePresenter<I: EditExpenseInteraction, R: EditExpenseRouterProtocol>: BasePresenter<I, R>, EditExpensePresenterProtocol {
     weak var delegate: EditExpensePresenterDelegate?
     fileprivate let items: [EditExpenseField] = [.price, .name, .category, .date]
-    fileprivate var expenseRouter: EditExpenseRouter {
-        get {
-            return self.router as! EditExpenseRouter
-        }
+    
+    func openCategoryPage() {
+        router.openCategoryPage(for: interaction.expense.objectID, managedObjectContext: interaction.managedObjectContext, delegate: self)
     }
     
-    @objc func openCategoryPage() {
-        expenseRouter.openCategoryPage(for: interaction.expense.objectID, managedObjectContext: interaction.managedObjectContext, delegate: self)
-    }
-    
-    @objc func dateChanged(sender: UIDatePicker) {
+    func dateChanged(sender: UIDatePicker) {
         interaction.expense.creationDate = sender.date as NSDate?
         
         updateDate()
@@ -214,7 +212,7 @@ class EditExpensePresenter: BasePresenter<EditExpenseInteraction>, EditExpensePr
     
     @objc func saveChanges() {
         interaction.save()
-        expenseRouter.closePage()
+        router.closePage()
     }
 }
 
@@ -261,7 +259,4 @@ extension EditExpensePresenter: CategoryViewControllerDelegate {
         updateSaveButton()
         updateCategory()
     }
-}
-
-extension EditExpensePresenter: UITextFieldDelegate {
 }

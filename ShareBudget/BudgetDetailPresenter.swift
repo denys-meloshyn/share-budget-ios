@@ -33,7 +33,7 @@ protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSo
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)?
 }
 
-class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T>, BudgetDetailPresenterProtocol {
+class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailRouterProtocol>: BasePresenter<I, R>, BudgetDetailPresenterProtocol {
     weak var delegate: BudgetDetailPresenterDelegate?
     
     fileprivate var selectedSlice: UInt?
@@ -41,12 +41,6 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     
     private var colorsRange = [Range<Double>]()
     private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
-    
-    fileprivate var budgetDetailRouter: BudgetDetailRouter {
-        get {
-            return self.router as! BudgetDetailRouter
-        }
-    }
     
     // MARK: - Life cycle methods
     
@@ -142,7 +136,7 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
         }
         
         delegate?.updateChart()
-        budgetDetailRouter.showAllExpensesPage(with: interaction.budgetID, categoryID: interaction.category(for: Int(idx))?.objectID)
+        router.showAllExpensesPage(with: interaction.budgetID, categoryID: interaction.category(for: Int(idx))?.objectID)
     }
     
     // MARK: - Private methods
@@ -167,9 +161,9 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     }
     
     private func configureColors() {
-        let rangeLength = 1.0 / Double(self.colors.count)
+        let rangeLength = 1.0 / Double(colors.count)
         
-        for i in 0..<self.colors.count {
+        for i in 0..<colors.count {
             let start = rangeLength * Double(i)
             let end = rangeLength * Double(i + 1)
             
@@ -250,11 +244,11 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
     }
     
     func createNewExpense() {
-        budgetDetailRouter.openEditExpensePage(with: interaction.budgetID)
+        router.openEditExpensePage(with: interaction.budgetID)
     }
     
     func showAllExpenses() {
-        budgetDetailRouter.showAllExpensesPage(with: interaction.budgetID)
+        router.showAllExpensesPage(with: interaction.budgetID, categoryID: nil)
     }
     
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {
@@ -277,20 +271,20 @@ class BudgetDetailPresenter<T: BudgetDetailInteractionProtocol>: BasePresenter<T
         let limit = NSNumber(value: interaction.lastMonthLimit()?.limit?.doubleValue ?? 0.0)
         let formattedLimit = UtilityFormatter.priceEditFormatter.string(from: limit) ?? ""
         
-        self.delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
-                                               message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
-                                               create: LocalisedManager.generic.create,
-                                               cancel: LocalisedManager.generic.cancel,
-                                               placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
-                                               budgetLimit: formattedLimit)
+        delegate?.showEditBudgetLimitView(with: LocalisedManager.edit.budgetLimit.changeLimitTitle,
+                                          message: LocalisedManager.edit.budgetLimit.changeLimitMessage,
+                                          create: LocalisedManager.generic.create,
+                                          cancel: LocalisedManager.generic.cancel,
+                                          placeholder: LocalisedManager.edit.budgetLimit.changeLimitTextPlaceholder,
+                                          budgetLimit: formattedLimit)
     }
     
     func closePageAction() {
-        budgetDetailRouter.closePage()
+        router.closePage()
     }
     
     func editMembers() {
-        budgetDetailRouter.openTeamMembersPage(with: interaction.budget.objectID)
+        router.openTeamMembersPage(with: interaction.budget.objectID)
     }
 }
 
@@ -304,13 +298,13 @@ extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
     }
     
     func didChangeContent() {
-        self.configureTotalExpenses()
-        self.configureBalance()
-        self.updateTotalSpentExpensesColor()
-        self.delegate?.updateChart()
+        configureTotalExpenses()
+        configureBalance()
+        updateTotalSpentExpensesColor()
+        delegate?.updateChart()
     }
     
     func limitChanged() {
-        self.configureMonthBudget()
+        configureMonthBudget()
     }
 }

@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 
 class EditExpenseViewController: BaseViewController {
-    @IBOutlet private var categoryButton: UIButton?
     @IBOutlet private var dateContainerView: UIView?
     @IBOutlet private var nameSeparatorLine: UIView?
     @IBOutlet private var dateTextField: UITextField?
     @IBOutlet private var nameTextField: UITextField?
     @IBOutlet private var priceTextField: UITextField?
     @IBOutlet private var categoryContainerView: UIView?
+    @IBOutlet private var categoryButton: ButtonListener?
     
     var budgetID: NSManagedObjectID?
     var expenseID: NSManagedObjectID?

@@ -18,13 +18,13 @@ protocol BasePresenterDelegate: class {
 protocol BasePresenterProtocol: LifeCycleStateProtocol {
 }
 
-class BasePresenter<T: BaseInteractionProtocol>: NSObject {
-    var interaction: T
-    let router: BaseRouter
+class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProtocol>: NSObject {
+    let router: Router
+    let interaction: Interaction
     
-    init(with interaction: T, router: BaseRouter) {
-        self.interaction = interaction
+    init(with interaction: Interaction, router: Router) {
         self.router = router
+        self.interaction = interaction
     }
     
     func configure() {

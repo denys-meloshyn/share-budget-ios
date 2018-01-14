@@ -18,7 +18,7 @@ protocol TeamMembersPresenterProtocol: BasePresenterProtocol, UITableViewDelegat
     weak var delegate: TeamMembersPresenterDelegate! { get set }
 }
 
-class TeamMembersPresenter<T: TeamMembersInteractionProtocol>: BasePresenter<T>, TeamMembersPresenterProtocol {
+class TeamMembersPresenter<I: TeamMembersInteractionProtocol, R: TeamMembersRouterProtocol>: BasePresenter<I, R>, TeamMembersPresenterProtocol {
     weak var delegate: TeamMembersPresenterDelegate!
     
     func viewDidLoad() {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol EditExpenseViewProtocol: BasePresenterProtocol {
-    weak var categoryButton: UIButton? { get set }
+protocol EditExpenseViewProtocol: BaseViewProtocol {
+    weak var categoryButton: ButtonListener? { get set }
     weak var dateContainerView: UIView? { get set }
     weak var nameSeparatorLine: UIView? { get set }
     weak var dateTextField: UITextField? { get set }
@@ -18,13 +18,14 @@ protocol EditExpenseViewProtocol: BasePresenterProtocol {
     weak var categoryContainerView: UIView? { get set }
 }
 
-class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T> {
-    weak var categoryButton: UIButton?
+class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T>, EditExpenseViewProtocol {
+    lazy var datePicker = DatePicker()
+    
+    weak var categoryButton: ButtonListener?
     weak var dateContainerView: UIView?
     weak var nameSeparatorLine: UIView?
     weak var dateTextField: UITextField?
     weak var nameTextField: UITextField?
-    lazy var datePicker = UIDatePicker()
     weak var priceTextField: UITextField?
     weak var categoryContainerView: UIView?
     
@@ -44,13 +45,18 @@ class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T> {
         setBorderColor(for: dateContainerView)
         setBorderColor(for: categoryContainerView)
         nameSeparatorLine?.backgroundColor = Constants.color.dflt.actionColor
-        categoryButton?.addTarget(presenter, action: #selector(EditExpensePresenter.openCategoryPage), for: .touchUpInside)
+        categoryButton?.addTouchUpInsideListener(completion: { _ in
+            self.presenter.openCategoryPage()
+        })
         
         configureDatePicker()
     }
     
     private func configureDatePicker() {
-        datePicker.addTarget(presenter, action: #selector(EditExpensePresenter.dateChanged(sender:)), for: .valueChanged)
+        datePicker.addValueChangedListener { sender in
+            self.presenter.dateChanged(sender: sender)
+        }
+        
         datePicker.datePickerMode = .dateAndTime
         dateTextField?.inputView = datePicker
     }

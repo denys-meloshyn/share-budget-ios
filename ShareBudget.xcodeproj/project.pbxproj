@@ -267,6 +267,9 @@
 		575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22651E4D0189004825C2 /* ValidationTextField.swift */; };
 		575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 575A22671E4D01A7004825C2 /* ValidationTextField.xib */; };
 		575A226C1E508FCA004825C2 /* UtilityFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A226B1E508FCA004825C2 /* UtilityFormatter.swift */; };
+		575CA989200BF82E00613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
+		575CA98A200BF8B500613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
+		575CA98B200BF8B500613D8E /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575CA988200BF82E00613D8E /* DatePicker.swift */; };
 		575E11991F1EA1C4000B2F07 /* TeamMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11981F1EA1C4000B2F07 /* TeamMembersViewController.swift */; };
 		575E119B1F1EA307000B2F07 /* TeamMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E119A1F1EA307000B2F07 /* TeamMembersView.swift */; };
 		575E119D1F1EA330000B2F07 /* TeamMembersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E119C1F1EA330000B2F07 /* TeamMembersPresenter.swift */; };
@@ -457,6 +460,7 @@
 		575A22651E4D0189004825C2 /* ValidationTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationTextField.swift; sourceTree = "<group>"; };
 		575A22671E4D01A7004825C2 /* ValidationTextField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValidationTextField.xib; sourceTree = "<group>"; };
 		575A226B1E508FCA004825C2 /* UtilityFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFormatter.swift; sourceTree = "<group>"; };
+		575CA988200BF82E00613D8E /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		575E11981F1EA1C4000B2F07 /* TeamMembersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersViewController.swift; sourceTree = "<group>"; };
 		575E119A1F1EA307000B2F07 /* TeamMembersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersView.swift; sourceTree = "<group>"; };
 		575E119C1F1EA330000B2F07 /* TeamMembersPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersPresenter.swift; sourceTree = "<group>"; };
@@ -786,8 +790,9 @@
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
 				575E119A1F1EA307000B2F07 /* TeamMembersView.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
-				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
 				57500B6920093EC900169F23 /* TextFieldListener.swift */,
+				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
+				575CA988200BF82E00613D8E /* DatePicker.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1650,6 +1655,7 @@
 				5735C4481EE445F40037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FBB1F290C7F004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4491EE445F40037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA98A200BF8B500613D8E /* DatePicker.swift in Sources */,
 				5735C44A1EE445F40037BAA8 /* Constants.swift in Sources */,
 				5735C44B1EE445F40037BAA8 /* BaseRouter.swift in Sources */,
 				5735C44C1EE445F40037BAA8 /* EditExpenseViewController.swift in Sources */,
@@ -1751,6 +1757,7 @@
 				5735C4B31EE44D8F0037BAA8 /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FBD1F290C80004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				5735C4B41EE44D8F0037BAA8 /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA98B200BF8B500613D8E /* DatePicker.swift in Sources */,
 				5735C4B51EE44D8F0037BAA8 /* Constants.swift in Sources */,
 				5735C4B61EE44D8F0037BAA8 /* BaseRouter.swift in Sources */,
 				5735C4B71EE44D8F0037BAA8 /* EditExpenseViewController.swift in Sources */,
@@ -1852,6 +1859,7 @@
 				573F5A031E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift in Sources */,
 				57C53FB91F290C77004D3D80 /* UserGroup+CoreDataClass.swift in Sources */,
 				573F5A121E2C180400AEA72A /* CategoryLimit+CoreDataClass.swift in Sources */,
+				575CA989200BF82E00613D8E /* DatePicker.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,
 				575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */,

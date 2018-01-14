@@ -12,11 +12,11 @@ import Nimble
 @testable import ShareBudget
 
 class CategoryInteractionTest: XCTestCase {
-    var view: CategoryView<CategoryPresenter<CategoryInteraction>>!
     var router: CategoryRouter!
-    var presenter: CategoryPresenter<CategoryInteraction>!
     var interaction: CategoryInteraction!
     var viewController: MockCategoryViewController!
+    var presenter: CategoryPresenter<CategoryInteraction, CategoryRouter>!
+    var view: CategoryView<CategoryPresenter<CategoryInteraction, CategoryRouter>>!
     
     var budget: Budget!
     var expense: Expense!
