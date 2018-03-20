@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F54952DF12AA20E0920EBB0 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6644DAD5FE42E7F164B8CAFE /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */; };
 		237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		345AB200E0DA3B1351C5D3B1 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
@@ -245,6 +246,9 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		57495862206181590089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574958602061814C0089FC5B /* GoogleService-Info.plist */; };
+		57495863206181630089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574958602061814C0089FC5B /* GoogleService-Info.plist */; };
+		57495865206185410089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57495864206185400089FC5B /* GoogleService-Info.plist */; };
 		57500B662006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
 		57500B672006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
 		57500B682006B9A300169F23 /* ButtonListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B652006B9A300169F23 /* ButtonListener.swift */; };
@@ -355,6 +359,8 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
+		7243BFB48D171D80B5D762C7 /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B28952B5524FE841AAB94A /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework */; };
+		B88329B2F2554AA542F27A8D /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */; };
 		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
 		EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */; };
 		EE4ABE13383A0DC8A0A729F5 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
@@ -382,6 +388,8 @@
 		08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EA1928A8AFF8E994C217696 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4811E2DEDF0D30905976FA11 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig"; sourceTree = "<group>"; };
 		5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		570B713B1EE3127300C02DB1 /* Dependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
@@ -442,6 +450,8 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		574958602061814C0089FC5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		57495864206185400089FC5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57500B652006B9A300169F23 /* ButtonListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListener.swift; sourceTree = "<group>"; };
 		57500B6920093EC900169F23 /* TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldListener.swift; sourceTree = "<group>"; };
 		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
@@ -534,17 +544,23 @@
 		57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCalculator.swift; sourceTree = "<group>"; };
 		5B37314B3F77B600D4C3C8FD /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; sourceTree = "<group>"; };
 		5BBB14576CBDEA17EC1EA3B7 /* Pods_ShareBudget_Development_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_Development_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6644DAD5FE42E7F164B8CAFE /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
 		7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B28952B5524FE841AAB94A /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig"; sourceTree = "<group>"; };
 		A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
 		C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; sourceTree = "<group>"; };
 		C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECA90664024F53BAB01C342 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 		D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE9477B7C3CBFAF39D86E483 /* Pods-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; sourceTree = "<group>"; };
+		EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig"; sourceTree = "<group>"; };
 		F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; sourceTree = "<group>"; };
+		F32358ECE76FE28634AA2A7D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -554,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				345AB200E0DA3B1351C5D3B1 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */,
+				7243BFB48D171D80B5D762C7 /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +580,7 @@
 			files = (
 				5735C4BF1EE44D8F0037BAA8 /* Pods_ShareBudget.framework in Frameworks */,
 				EA29851F1D6570510B24DCE6 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */,
+				1F54952DF12AA20E0920EBB0 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */,
+				B88329B2F2554AA542F27A8D /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +625,12 @@
 				DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */,
 				F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */,
 				C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */,
+				EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */,
+				A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */,
+				F32358ECE76FE28634AA2A7D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */,
+				4811E2DEDF0D30905976FA11 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */,
+				2EA1928A8AFF8E994C217696 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */,
+				CECA90664024F53BAB01C342 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -716,6 +741,7 @@
 		573F59D41E295EC700AEA72A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				57495864206185400089FC5B /* GoogleService-Info.plist */,
 				573F59AE1E295C4D00AEA72A /* Info.plist */,
 				5735C4661EE445F40037BAA8 /* ShareBudget Development Local-Info.plist */,
 				5735C4D21EE44D8F0037BAA8 /* ShareBudget Development Remote-Info.plist */,
@@ -723,6 +749,7 @@
 				578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */,
 				578BD0671E3516BD00DE28C8 /* Localizable.strings */,
 				573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */,
+				574958662061854E0089FC5B /* Staging */,
 				578BD0741E352DCD00DE28C8 /* Xib */,
 			);
 			name = Resources;
@@ -848,6 +875,14 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		574958662061854E0089FC5B /* Staging */ = {
+			isa = PBXGroup;
+			children = (
+				574958602061814C0089FC5B /* GoogleService-Info.plist */,
+			);
+			name = Staging;
+			sourceTree = "<group>";
+		};
 		57561D831F44DDF600FDB891 /* Interaction */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,6 +977,8 @@
 				5BBB14576CBDEA17EC1EA3B7 /* Pods_ShareBudget_Development_Local.framework */,
 				7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */,
 				A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */,
+				93B28952B5524FE841AAB94A /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework */,
+				6644DAD5FE42E7F164B8CAFE /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -960,6 +997,7 @@
 				5735C4551EE445F40037BAA8 /* Resources */,
 				1FF9F15F9FDDA4C723DA2A6B /* [CP] Embed Pods Frameworks */,
 				70D84FE5024650CC2E507419 /* [CP] Copy Pods Resources */,
+				5749585E20617BFE0089FC5B /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -981,6 +1019,7 @@
 				5735C4C11EE44D8F0037BAA8 /* Resources */,
 				5735C4CC1EE44D8F0037BAA8 /* [CP] Embed Pods Frameworks */,
 				5735C4CD1EE44D8F0037BAA8 /* [CP] Copy Pods Resources */,
+				5749585F20617C030089FC5B /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1003,6 +1042,7 @@
 				0AD5DA39F3302C7A9315DF10 /* [CP] Embed Pods Frameworks */,
 				3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */,
 				57BEFB131FA633C200F561CA /* SwiftLint */,
+				5749585D20617BD80089FC5B /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -1129,6 +1169,7 @@
 				5735C45B1EE445F40037BAA8 /* ValidationTextField.xib in Resources */,
 				5735C45C1EE445F40037BAA8 /* Assets.xcassets in Resources */,
 				5735C45D1EE445F40037BAA8 /* Main.storyboard in Resources */,
+				57495863206181630089FC5B /* GoogleService-Info.plist in Resources */,
 				5735C45E1EE445F40037BAA8 /* InfoPlist.strings in Resources */,
 				5735C45F1EE445F40037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
 			);
@@ -1146,6 +1187,7 @@
 				5735C4C71EE44D8F0037BAA8 /* ValidationTextField.xib in Resources */,
 				5735C4C81EE44D8F0037BAA8 /* Assets.xcassets in Resources */,
 				5735C4C91EE44D8F0037BAA8 /* Main.storyboard in Resources */,
+				57495862206181590089FC5B /* GoogleService-Info.plist in Resources */,
 				5735C4CA1EE44D8F0037BAA8 /* InfoPlist.strings in Resources */,
 				5735C4CB1EE44D8F0037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
 			);
@@ -1163,6 +1205,7 @@
 				575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
+				57495865206185410089FC5B /* GoogleService-Info.plist in Resources */,
 				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
 				57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */,
 			);
@@ -1197,6 +1240,7 @@
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
@@ -1206,6 +1250,7 @@
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/le/le.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1213,6 +1258,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
@@ -1222,6 +1268,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1234,29 +1281,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1FF9F15F9FDDA4C723DA2A6B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
@@ -1266,6 +1296,8 @@
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/le/le.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1273,6 +1305,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
@@ -1282,10 +1315,58 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1FF9F15F9FDDA4C723DA2A6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
+				"${BUILT_PRODUCTS_DIR}/le/le.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */ = {
@@ -1376,7 +1457,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetDevelopmentRemote-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetDevelopmentRemote-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1403,11 +1484,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
@@ -1417,6 +1499,7 @@
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/le/le.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1424,6 +1507,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
@@ -1433,10 +1517,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5735C4CD1EE44D8F0037BAA8 /* [CP] Copy Pods Resources */ = {
@@ -1451,7 +1536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		573F5A391E350AE700AEA72A /* R.swift */ = {
@@ -1467,6 +1552,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
+		};
+		5749585D20617BD80089FC5B /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
+		5749585E20617BFE0089FC5B /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+		};
+		5749585F20617C030089FC5B /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 		};
 		57BEFB131FA633C200F561CA /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1494,7 +1621,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetTests/Pods-ShareBudget-ShareBudgetTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5E1FA8DC2DD9F00E65DF21DB /* [CP] Check Pods Manifest.lock */ = {
@@ -1508,7 +1635,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1527,7 +1654,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B76DD47989B9C831B3B091B9 /* [CP] Check Pods Manifest.lock */ = {
@@ -1541,7 +1668,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetDevelopmentLocal-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetDevelopmentLocal-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1983,7 +2110,7 @@
 /* Begin XCBuildConfiguration section */
 		5735C4631EE445F40037BAA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B37314B3F77B600D4C3C8FD /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */;
+			baseConfigurationReference = EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2001,7 +2128,7 @@
 		};
 		5735C4641EE445F40037BAA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEDC03EC032B4F5F4284E8B9 /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */;
+			baseConfigurationReference = A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2019,7 +2146,7 @@
 		};
 		5735C4CF1EE44D8F0037BAA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2A1FCC3FC7246835995CA44 /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */;
+			baseConfigurationReference = F32358ECE76FE28634AA2A7D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2036,7 +2163,7 @@
 		};
 		5735C4D01EE44D8F0037BAA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C83ACC95779E046FA76D98CA /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */;
+			baseConfigurationReference = 4811E2DEDF0D30905976FA11 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2194,7 +2321,7 @@
 		};
 		573F59CB1E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D86383C5F66BDF03F2953E47 /* Pods-ShareBudgetTests.debug.xcconfig */;
+			baseConfigurationReference = 2EA1928A8AFF8E994C217696 /* Pods-ShareBudget-ShareBudgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2213,7 +2340,7 @@
 		};
 		573F59CC1E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC31AA82AD1839854549050A /* Pods-ShareBudgetTests.release.xcconfig */;
+			baseConfigurationReference = CECA90664024F53BAB01C342 /* Pods-ShareBudget-ShareBudgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
