@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-        Fabric.sharedSDK().debug = true
+        if Dependency.environment() != .testing {
+            FirebaseApp.configure()
+            Fabric.sharedSDK().debug = true
+        }
         
         // Override point for customization after application launch.
         self.configureAppearance()

@@ -2,6 +2,9 @@
 platform :ios, '10.2'
 source 'https://github.com/CocoaPods/Specs.git'
 
+# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
+
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
@@ -20,9 +23,7 @@ pod 'Firebase/Core', '4.10.1'
 pod 'Crashlytics', '3.10.1'
 
 target 'ShareBudget' do
-    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-    use_frameworks!
-    
+
     target 'ShareBudgetDevelopmentLocal' do
         # inherit! :search_paths
     end
@@ -30,18 +31,7 @@ target 'ShareBudget' do
     target 'ShareBudgetDevelopmentRemote' do
         # inherit! :search_paths
     end
-    
-    target 'ShareBudgetTests' do
-        # inherit! :search_paths
-        # Pods for testing
-        pod 'Nimble', '7.0.3'
-    end
-    
-    target 'ShareBudgetUITests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
-    
+
     # Manually making compiler version be swift 3.2
     post_install do |installer|
         installer.pods_project.targets.each do |target|
@@ -55,6 +45,17 @@ target 'ShareBudget' do
             end
         end
     end
-    
+
+end
+
+target 'ShareBudgetTests' do
+    # inherit! :search_paths
+    # Pods for testing
+    pod 'Nimble', '7.0.3'
+end
+
+target 'ShareBudgetUITests' do
+    # inherit! :search_paths
+    # Pods for testing
 end
 
