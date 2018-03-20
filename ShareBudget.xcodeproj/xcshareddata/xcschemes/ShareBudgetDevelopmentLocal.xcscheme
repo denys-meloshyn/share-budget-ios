@@ -20,20 +20,6 @@
                ReferencedContainer = "container:ShareBudget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "573F59BD1E295C4E00AEA72A"
-               BuildableName = "ShareBudgetUITests.xctest"
-               BlueprintName = "ShareBudgetUITests"
-               ReferencedContainer = "container:ShareBudget.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -51,16 +37,6 @@
                BlueprintIdentifier = "573F59B21E295C4E00AEA72A"
                BuildableName = "ShareBudgetTests.xctest"
                BlueprintName = "ShareBudgetTests"
-               ReferencedContainer = "container:ShareBudget.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "573F59BD1E295C4E00AEA72A"
-               BuildableName = "ShareBudgetUITests.xctest"
-               BlueprintName = "ShareBudgetUITests"
                ReferencedContainer = "container:ShareBudget.xcodeproj">
             </BuildableReference>
          </TestableReference>

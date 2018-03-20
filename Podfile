@@ -23,15 +23,6 @@ pod 'Firebase/Core', '4.10.1'
 pod 'Crashlytics', '3.10.1'
 
 target 'ShareBudget' do
-
-    target 'ShareBudgetDevelopmentLocal' do
-        # inherit! :search_paths
-    end
-    
-    target 'ShareBudgetDevelopmentRemote' do
-        # inherit! :search_paths
-    end
-
     # Manually making compiler version be swift 3.2
     post_install do |installer|
         installer.pods_project.targets.each do |target|
@@ -46,6 +37,14 @@ target 'ShareBudget' do
         end
     end
 
+end
+
+target 'ShareBudgetDevelopmentLocal' do
+    # inherit! :search_paths
+end
+
+target 'ShareBudgetDevelopmentRemote' do
+    # inherit! :search_paths
 end
 
 target 'ShareBudgetTests' do
