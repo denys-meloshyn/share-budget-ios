@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		237A5602DC6D1934751D6F09 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
-		57085C632066798700C56524 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57085C642066798700C56524 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */; };
+		57085C652066857C00C56524 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57085C662066857C00C56524 /* Pods_ShareBudgetDevelopmentRemote.framework */; };
+		57085C672066867F00C56524 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57085C682066867F00C56524 /* Pods_ShareBudgetDevelopmentLocal.framework */; };
+		57085C69206687E900C56524 /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57085C6A206687E900C56524 /* Pods_ShareBudgetTests.framework */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
 		571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
 		571041E61E8085A40060CBBA /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
@@ -290,7 +292,6 @@
 		575E11AB1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
 		576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */; };
-		57750474206676FB00B83BB8 /* Pods_ShareBudget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */; };
 		577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */; };
 		577E79A31F58AE2E002F2B88 /* MockCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E79A21F58AE2E002F2B88 /* MockCategoryView.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
@@ -359,10 +360,8 @@
 		57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB42F1E66256700A2AEC7 /* BaseAPITask.swift */; };
 		57FAB4321E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */; };
 		57FAB4341E68A23600A2AEC7 /* ExpenseCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */; };
-		7243BFB48D171D80B5D762C7 /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93B28952B5524FE841AAB94A /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AAF053184A9D68073B104193 /* Pods_ShareBudget_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */; };
-		B88329B2F2554AA542F27A8D /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */; };
-		CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */; };
+		ABA19C3A149E42BF6CF128C2 /* Pods_ShareBudgetUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,12 +384,15 @@
 /* Begin PBXFileReference section */
 		08A05450EE8496E33979A606 /* Pods_ShareBudget_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CD13BC785BEBC92069F078E /* Pods_ShareBudget_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		21152209AAABB63C005B07D5 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		2C727AB84CE2542539F1AE59 /* Pods_ShareBudget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		57085C622066796000C56524 /* Pods_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57085C642066798700C56524 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57085C662066857C00C56524 /* Pods_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57085C682066867F00C56524 /* Pods_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57085C6A206687E900C56524 /* Pods_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570B713B1EE3127300C02DB1 /* Dependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
@@ -544,20 +546,20 @@
 		57FAB4311E6626F300A2AEC7 /* BaseAPILoadUpdatesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAPILoadUpdatesTask.swift; sourceTree = "<group>"; };
 		57FAB4331E68A23600A2AEC7 /* ExpenseCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCalculator.swift; sourceTree = "<group>"; };
 		5BBB14576CBDEA17EC1EA3B7 /* Pods_ShareBudget_Development_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_Development_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		61E0BC6FF891FE583B076D0F /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6644DAD5FE42E7F164B8CAFE /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.debug.xcconfig"; sourceTree = "<group>"; };
-		6E21E9C18F9BF7599B156DED /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7BF172940296EE95CEDE152A /* Pods_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C8C0CE28402CFC5A2B4A92D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig"; sourceTree = "<group>"; };
 		93B28952B5524FE841AAB94A /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C81CE4DFFE969C7E465A405 /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig"; sourceTree = "<group>"; };
+		9F5B02C23B0DDDB094D505CB /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.debug.xcconfig"; sourceTree = "<group>"; };
 		A73078AED2922004EF44AF34 /* Pods_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget/Pods-ShareBudget.release.xcconfig"; sourceTree = "<group>"; };
+		B11AD26514E1F9F1034B23AB /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.debug.xcconfig"; sourceTree = "<group>"; };
 		C9FC6ACC12024E662050F144 /* Pods_ShareBudgetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1341CADF8851576A099554E /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal.release.xcconfig"; sourceTree = "<group>"; };
+		D5D6AD7B76D0820FFF2440DD /* Pods-ShareBudgetUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E168A14FF6FEA5EAD82BCAF3 /* Pods-ShareBudgetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.release.xcconfig"; sourceTree = "<group>"; };
-		EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig"; sourceTree = "<group>"; };
+		EB8DAF0AACFED5A61F031AA4 /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -565,8 +567,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57750474206676FB00B83BB8 /* Pods_ShareBudget.framework in Frameworks */,
-				7243BFB48D171D80B5D762C7 /* Pods_ShareBudget_ShareBudgetDevelopmentLocal.framework in Frameworks */,
+				57085C672066867F00C56524 /* Pods_ShareBudgetDevelopmentLocal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +575,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57085C632066798700C56524 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework in Frameworks */,
+				57085C652066857C00C56524 /* Pods_ShareBudgetDevelopmentRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,8 +591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA1B698AD6157D79666538FC /* Pods_ShareBudgetTests.framework in Frameworks */,
-				B88329B2F2554AA542F27A8D /* Pods_ShareBudget_ShareBudgetTests.framework in Frameworks */,
+				57085C69206687E900C56524 /* Pods_ShareBudgetTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAF053184A9D68073B104193 /* Pods_ShareBudget_ShareBudgetUITests.framework in Frameworks */,
+				ABA19C3A149E42BF6CF128C2 /* Pods_ShareBudgetUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,14 +612,14 @@
 			children = (
 				6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */,
 				B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */,
-				EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */,
-				A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */,
-				21152209AAABB63C005B07D5 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */,
-				8C8C0CE28402CFC5A2B4A92D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */,
-				6E21E9C18F9BF7599B156DED /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */,
-				61E0BC6FF891FE583B076D0F /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */,
 				4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */,
 				E168A14FF6FEA5EAD82BCAF3 /* Pods-ShareBudgetTests.release.xcconfig */,
+				B11AD26514E1F9F1034B23AB /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */,
+				EB8DAF0AACFED5A61F031AA4 /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */,
+				D5D6AD7B76D0820FFF2440DD /* Pods-ShareBudgetUITests.debug.xcconfig */,
+				4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */,
+				9F5B02C23B0DDDB094D505CB /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */,
+				D1341CADF8851576A099554E /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -957,6 +958,9 @@
 		65F40D05A2993CB6515AC52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57085C6A206687E900C56524 /* Pods_ShareBudgetTests.framework */,
+				57085C682066867F00C56524 /* Pods_ShareBudgetDevelopmentLocal.framework */,
+				57085C662066857C00C56524 /* Pods_ShareBudgetDevelopmentRemote.framework */,
 				57085C642066798700C56524 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */,
 				57085C622066796000C56524 /* Pods_ShareBudgetDevelopmentRemote.framework */,
 				57750476206677A200B83BB8 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */,
@@ -1321,7 +1325,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
@@ -1358,7 +1362,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2E0B96101921AD4367A68CF2 /* [CP] Check Pods Manifest.lock */ = {
@@ -1372,7 +1376,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1391,7 +1395,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3DB4ACDA83CBD4C6FC9C5AE5 /* [CP] Copy Pods Resources */ = {
@@ -1452,7 +1456,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetDevelopmentRemote-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetDevelopmentRemote-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1479,7 +1483,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
@@ -1516,7 +1520,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5735C4CD1EE44D8F0037BAA8 /* [CP] Copy Pods Resources */ = {
@@ -1531,7 +1535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentRemote/Pods-ShareBudget-ShareBudgetDevelopmentRemote-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentRemote/Pods-ShareBudgetDevelopmentRemote-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		573F5A391E350AE700AEA72A /* R.swift */ = {
@@ -1649,7 +1653,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetDevelopmentLocal/Pods-ShareBudget-ShareBudgetDevelopmentLocal-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetDevelopmentLocal/Pods-ShareBudgetDevelopmentLocal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B76DD47989B9C831B3B091B9 /* [CP] Check Pods Manifest.lock */ = {
@@ -1663,7 +1667,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareBudget-ShareBudgetDevelopmentLocal-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ShareBudgetDevelopmentLocal-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1676,7 +1680,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
@@ -1713,7 +1717,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudget-ShareBudgetUITests/Pods-ShareBudget-ShareBudgetUITests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2133,7 +2137,7 @@
 /* Begin XCBuildConfiguration section */
 		5735C4631EE445F40037BAA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF97A86879D7F1E85D38969E /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.debug.xcconfig */;
+			baseConfigurationReference = 9F5B02C23B0DDDB094D505CB /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2151,7 +2155,7 @@
 		};
 		5735C4641EE445F40037BAA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A41DB0507E7121D5E32E9799 /* Pods-ShareBudget-ShareBudgetDevelopmentLocal.release.xcconfig */;
+			baseConfigurationReference = D1341CADF8851576A099554E /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2169,7 +2173,7 @@
 		};
 		5735C4CF1EE44D8F0037BAA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21152209AAABB63C005B07D5 /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.debug.xcconfig */;
+			baseConfigurationReference = B11AD26514E1F9F1034B23AB /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2186,7 +2190,7 @@
 		};
 		5735C4D01EE44D8F0037BAA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C8C0CE28402CFC5A2B4A92D /* Pods-ShareBudget-ShareBudgetDevelopmentRemote.release.xcconfig */;
+			baseConfigurationReference = EB8DAF0AACFED5A61F031AA4 /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2382,7 +2386,7 @@
 		};
 		573F59CE1E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E21E9C18F9BF7599B156DED /* Pods-ShareBudget-ShareBudgetUITests.debug.xcconfig */;
+			baseConfigurationReference = D5D6AD7B76D0820FFF2440DD /* Pods-ShareBudgetUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2400,7 +2404,7 @@
 		};
 		573F59CF1E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61E0BC6FF891FE583B076D0F /* Pods-ShareBudget-ShareBudgetUITests.release.xcconfig */;
+			baseConfigurationReference = 4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;

@@ -5,9 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-use_frameworks!
-
 def shared
 	pod 'XCGLogger', '6.0.1'
 	pod 'KeychainSwift', '10.0.0'
@@ -24,27 +21,28 @@ def shared
 	pod 'Crashlytics', '3.10.1'
 end
 
+# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
+
 target 'ShareBudget' do
 	shared
-	
-	target 'ShareBudgetDevelopmentLocal' do
-		shared
-	end
-	
-	target 'ShareBudgetDevelopmentRemote' do
-		shared
-	end
-	
-	target 'ShareBudgetTests' do
-		inherit! :search_paths
+end
 
-		shared
-		pod 'Nimble', '7.0.3'
-	end
+target 'ShareBudgetDevelopmentLocal' do
+	shared
+end
 	
-	target 'ShareBudgetUITests' do
-		shared
-	end
+target 'ShareBudgetDevelopmentRemote' do
+	shared
+end
+
+target 'ShareBudgetTests' do
+	shared
+	pod 'Nimble', '7.0.3'
+end
+	
+target 'ShareBudgetUITests' do
+	shared
 end
 
 # Manually making compiler version be swift 3.2
