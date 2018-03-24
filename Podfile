@@ -8,7 +8,7 @@ inhibit_all_warnings!
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
-target 'ShareBudget' do
+def shared
 	pod 'XCGLogger', '6.0.1'
 	pod 'KeychainSwift', '10.0.0'
 	pod 'R.swift', '4.0'
@@ -22,19 +22,28 @@ target 'ShareBudget' do
 	pod 'SwiftLint', '0.24.2'
 	pod 'Firebase/Core', '4.10.1'
 	pod 'Crashlytics', '3.10.1'
+end
+
+target 'ShareBudget' do
+	shared
 	
 	target 'ShareBudgetDevelopmentLocal' do
-	# 	inherit! :search_paths
+		shared
 	end
 	
 	target 'ShareBudgetDevelopmentRemote' do
-	# 	inherit! :search_paths
+		shared
 	end
 	
 	target 'ShareBudgetTests' do
-# 		inherit! :search_paths
+		inherit! :search_paths
+
+		shared
 		pod 'Nimble', '7.0.3'
-		pod 'Firebase/Core', '4.10.1'
+	end
+	
+	target 'ShareBudgetUITests' do
+		shared
 	end
 end
 
