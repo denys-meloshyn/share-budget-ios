@@ -8,7 +8,6 @@
 
 import UIKit
 
-import le
 import XCGLogger
 import Firebase
 import Fabric
