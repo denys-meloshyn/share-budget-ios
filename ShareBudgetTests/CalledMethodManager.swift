@@ -11,7 +11,7 @@ import UIKit
 class CalledMethodManager {
     var methods = [CalledMethod]()
     
-    func add(_ method: String) {
+    func add(_ method: String = #function) {
         let filterItems = methods.filter { (it) -> Bool in
             it.name == method
         }
@@ -19,8 +19,7 @@ class CalledMethodManager {
         if filterItems.count > 0 {
             let current = filterItems[0]
             current.counter += 1
-        }
-        else {
+        } else {
             let new = CalledMethod(method)
             methods.append(new)
         }

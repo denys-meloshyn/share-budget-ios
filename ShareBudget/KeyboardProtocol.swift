@@ -8,9 +8,9 @@
 
 import UIKit
 
-@objc protocol KeyBoardProtocol {
-    @objc func keyboardWillShow(notification: NSNotification)
-    @objc func keyboardWillHide(notification: NSNotification)
+protocol KeyBoardProtocol {
+    func keyboardWillShow(notification: NSNotification)
+    func keyboardWillHide(notification: NSNotification)
 }
 
 extension KeyBoardProtocol {
@@ -27,8 +27,8 @@ extension KeyBoardProtocol {
     }
     
     func addKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(notification:)), name:.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide(notification:)), name:.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func removeKeyboardNotifications() {

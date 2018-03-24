@@ -20,7 +20,7 @@ class DependencyTest: XCTestCase {
     }
     
     func testDevelopmentLocalNoRemoteLogger() {
-        MockDependency.mock_environment = .developmentLocal
+        MockDependency.mockEnvironment = .developmentLocal
         MockDependency.configure()
         
         let destination = MockDependency.logger.destination(withIdentifier: Dependency.loggerRemoteIdentifier)
@@ -28,7 +28,7 @@ class DependencyTest: XCTestCase {
     }
     
     func testDevelopmentLocalBackendConnection() {
-        MockDependency.mock_environment = .developmentLocal
+        MockDependency.mockEnvironment = .developmentLocal
         MockDependency.configure()
         
         let expectedComponents = NSURLComponents()
@@ -44,7 +44,7 @@ class DependencyTest: XCTestCase {
     }
     
     func testDevelopmentRemoteBackendConnection() {
-        MockDependency.mock_environment = .developmentRemote
+        MockDependency.mockEnvironment = .developmentRemote
         MockDependency.configure()
         
         let expectedComponents = NSURLComponents()
@@ -58,14 +58,14 @@ class DependencyTest: XCTestCase {
     }
     
     func testDataBaseNameTesting() {
-        MockDependency.mock_environment = .testing
+        MockDependency.mockEnvironment = .testing
         MockDependency.configure()
         
         expect(MockDependency.coreDataName) == "ShareBudgetTest"
     }
     
     func testDataBaseNameProduction() {
-        MockDependency.mock_environment = .production
+        MockDependency.mockEnvironment = .production
         MockDependency.configure()
         
         expect(MockDependency.coreDataName) == "ShareBudget"

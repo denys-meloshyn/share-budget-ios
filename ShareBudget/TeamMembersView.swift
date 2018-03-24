@@ -8,25 +8,23 @@
 
 import UIKit
 
-class TeamMembersView: BaseView {
+protocol TeamMembersViewProtocol: BaseViewProtocol {
+    weak var tableView: UITableView? { get set }
+}
+
+class TeamMembersView<T: TeamMembersPresenterProtocol>: BaseView<T>, TeamMembersViewProtocol {
     weak var tableView: UITableView?
-    
-    fileprivate var teamMembersPresenter: TeamMembersPresenter {
-        get {
-            return self.presenter as! TeamMembersPresenter
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.teamMembersPresenter.delegate = self
-        self.tableView?.dataSource = self.teamMembersPresenter
-        self.tableView?.delegate = self.teamMembersPresenter
+        presenter.delegate = self
+        tableView?.dataSource = presenter
+        tableView?.delegate = presenter
     }
     
     func refreshData() {
-        self.tableView?.reloadData()
+        tableView?.reloadData()
     }
 }
 

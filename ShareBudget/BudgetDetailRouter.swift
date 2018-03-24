@@ -8,7 +8,13 @@
 
 import CoreData
 
-class BudgetDetailRouter: BaseRouter {
+protocol BudgetDetailRouterProtocol: BaseRouterProtocol {
+    func openTeamMembersPage(with budgetID: NSManagedObjectID)
+    func openEditExpensePage(with budgetID: NSManagedObjectID?)
+    func showAllExpensesPage(with budgetID: NSManagedObjectID?, categoryID: NSManagedObjectID?)
+}
+
+class BudgetDetailRouter: BaseRouter, BudgetDetailRouterProtocol {
     func openEditExpensePage(with budgetID: NSManagedObjectID?) {
         guard let editExpenseViewController = R.storyboard.main.editExpenseViewController() else {
             return
@@ -18,7 +24,7 @@ class BudgetDetailRouter: BaseRouter {
         self.viewController?.navigationController?.pushViewController(editExpenseViewController, animated: true)
     }
     
-    func showAllExpensesPage(with budgetID: NSManagedObjectID?, categoryID: NSManagedObjectID? = nil) {
+    func showAllExpensesPage(with budgetID: NSManagedObjectID?, categoryID: NSManagedObjectID?) {
         guard let expensesViewController = R.storyboard.main.expensesViewController() else {
             return
         }

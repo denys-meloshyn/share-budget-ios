@@ -130,19 +130,19 @@ class RightTextFieldTableViewCell: UITableViewCell {
         self.textField?.addTarget(self, action: #selector(RightTextFieldTableViewCell.textChanged), for: .editingChanged)
     }
     
-    func dateChanged() {
+    @objc func dateChanged() {
         self.delegate?.valueChanged(sender: self)
     }
     
-    func doneAction() {
+    @objc func doneAction() {
         self.delegate?.done(sender: self)
     }
     
-    func nextKeyboardAction() {
+    @objc func nextKeyboardAction() {
         self.delegate?.nextKeyboard(sender: self)
     }
     
-    func textChanged() {
+    @objc func textChanged() {
         self.delegate?.valueChanged(sender: self)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 extension NSFetchedResultsController {
-    func numberOfObjects() -> Int {
+    @objc func numberOfObjects() -> Int {
         let result = self.sections!.reduce(0, { (result: Int, item: NSFetchedResultsSectionInfo) -> Int in
             result + item.numberOfObjects
         })
@@ -18,7 +18,7 @@ extension NSFetchedResultsController {
         return result
     }
     
-    func performSilentFailureFetch() {
+    @objc func performSilentFailureFetch() {
         try! self.performFetch()
     }
 }

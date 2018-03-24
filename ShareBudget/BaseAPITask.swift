@@ -19,7 +19,10 @@ class BaseAPITask {
         self.completionBlock = completionBlock
     }
     
-    func request() -> URLSessionTask! {
-        return nil
+    func request() -> URLSessionTask {
+        assert(false, "request method should be implemented")
+        Dependency.logger.error("request method should be implemented")
+        
+        return URLSessionTask()
     }
 }

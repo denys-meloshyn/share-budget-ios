@@ -8,37 +8,36 @@
 
 import UIKit
 
-class CategoryView: BaseView {
+protocol CategoryViewProtocol: BaseViewProtocol {
+    weak var tableView: UITableView? { get set }
+}
+
+class CategoryView<T: CategoryPresenterProtocol>: BaseView<T>, CategoryViewProtocol {
     weak var tableView: UITableView?
+    fileprivate let tableDequeueReusableCell = "CategoryTableViewCell"
     fileprivate let tableHeaderReuseIdentifier = "CreateSearchTableViewHeader"
-    
-    fileprivate var categoryPresenter: CategoryPresenter {
-        get {
-            return self.presenter as! CategoryPresenter
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.categoryPresenter.delegate = self
+        presenter.delegate = self
         
         let nib = R.nib.createSearchTableViewHeader()
-        self.tableView?.register(nib, forHeaderFooterViewReuseIdentifier: self.tableHeaderReuseIdentifier)
-        self.tableView?.delegate = self.categoryPresenter
-        self.tableView?.dataSource = self.categoryPresenter
+        tableView?.register(nib, forHeaderFooterViewReuseIdentifier: tableHeaderReuseIdentifier)
+        tableView?.delegate = presenter
+        tableView?.dataSource = presenter
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: tableDequeueReusableCell)
     }
 }
 
 extension CategoryView: CategoryPresenterDelegate {
     internal func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell {
-        let cell = self.tableView?.dequeueReusableCell(withIdentifier: "CategoryTableViewCell")
+        let cell = tableView?.dequeueReusableCell(withIdentifier: tableDequeueReusableCell)
         cell?.textLabel?.text = text
         
         if isSelected {
             cell?.accessoryType = .checkmark
-        }
-        else {
+        } else {
             cell?.accessoryType = .none
         }
         
@@ -46,17 +45,16 @@ extension CategoryView: CategoryPresenterDelegate {
     }
 
     func refreshData(for mode: BudgetHeaderMode) {
-        self.tableView?.reloadData()
-        let header = self.tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
+        tableView?.reloadData()
+        let header = tableView?.headerView(forSection: 0) as? CreateSearchTableViewHeader
         header?.mode = mode
     }
     
     func createSearchTableHeaderView(with mode: BudgetHeaderMode, placeholder: String) -> CreateSearchTableViewHeader? {
-        let header = self.tableView?.dequeueReusableHeaderFooterView(withIdentifier: self.tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
+        let header = tableView?.dequeueReusableHeaderFooterView(withIdentifier: tableHeaderReuseIdentifier) as? CreateSearchTableViewHeader
+        header?.textField?.placeholder = placeholder
         header?.mode = mode
         
         return header
     }
 }
-
-

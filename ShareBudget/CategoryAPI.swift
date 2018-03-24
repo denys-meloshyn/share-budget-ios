@@ -13,7 +13,7 @@ class CategoryAPI: BaseAPI {
         return "category_timestamp"
     }
     
-    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var category: Category?
         
         for item in items {
@@ -31,7 +31,7 @@ class CategoryAPI: BaseAPI {
     
     override func allChangedModels(completionBlock: APIResultBlock?) -> [BaseAPITask] {
         let managedObjectContext = ModelManager.managedObjectContext
-        let fetchedResultsController = ModelManager.changedModels(Category.self ,managedObjectContext)
+        let fetchedResultsController = ModelManager.changedModels(Category.self, managedObjectContext)
         
         var tasks = [BaseAPITask]()
         

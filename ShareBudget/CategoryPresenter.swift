@@ -14,66 +14,46 @@ protocol CategoryPresenterDelegate: BasePresenterDelegate, CreateSearchTableView
     func createCategoryCell(with text: String?, isSelected: Bool) -> UITableViewCell
 }
 
-class CategoryPresenter: BasePresenter {
+protocol CategoryPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate {
+    weak var delegate: CategoryPresenterDelegate! { get set }
+}
+
+class CategoryPresenter<I: CategoryInteractionProtocol, R: CategoryRouterProtocol>: BasePresenter<I, R>, CategoryPresenterProtocol {
     weak var delegate: CategoryPresenterDelegate!
     weak var categoryDelegate: CategoryViewControllerDelegate?
     
-    fileprivate var categoryInteraction: CategoryInteraction {
-        get {
-            return self.interaction as! CategoryInteraction
-        }
-    }
-    
-    init(with interaction: BaseInteraction, router: BaseRouter, delegate: CategoryViewControllerDelegate?) {
+    init(with interaction: I, router: R, delegate: CategoryViewControllerDelegate?) {
         super.init(with: interaction, router: router)
         
-        self.categoryDelegate = delegate
-        self.categoryInteraction.delegate = self
+        categoryDelegate = delegate
+        self.interaction.delegate = self
     }
     
     func headerMode() -> BudgetHeaderMode {
-        let rows = self.categoryInteraction.numberOfCategories()
-        
-        if rows > 0 {
-            return .search
+        guard interaction.numberOfCategories() > 0 else {
+            return .create
         }
         
-        return .create
-    }
-}
-
-extension CategoryPresenter: CategoryInteractionDelegate {
-    func willChangeContent() {
-        self.delegate?.refreshData(for: self.headerMode())
+        return .search
     }
     
-    func didChangeContent() {
-        self.delegate?.refreshData(for: self.headerMode())
-    }
+    // MARK: - UITableViewDataSource
     
-    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension CategoryPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryInteraction.numberOfCategories()
+        return interaction.numberOfCategories()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = self.delegate.createSearchTableHeaderView(with: self.headerMode(), placeholder: "")
+        let header = delegate.createSearchTableHeaderView(with: headerMode(), placeholder: LocalisedManager.category.headerPlaceholder)
         header?.delegate = self
         
         return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = self.categoryInteraction.category(for: indexPath)
-        let isCurrentCategory = self.categoryInteraction.expense.category?.objectID == model.objectID
-        let cell = self.delegate.createCategoryCell(with: model.name, isSelected: isCurrentCategory)
+        let model = interaction.category(for: indexPath)
+        let isCurrentCategory = interaction.expense.category?.objectID == model.objectID
+        let cell = delegate.createCategoryCell(with: model.name, isSelected: isCurrentCategory)
         
         return cell
     }
@@ -81,16 +61,48 @@ extension CategoryPresenter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.0
     }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = interaction.category(for: indexPath)
+        categoryDelegate?.didSelectCategory(category.objectID)
+        
+        router.closePage()
+    }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - CategoryInteractionDelegate
 
-extension CategoryPresenter: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = self.categoryInteraction.category(for: indexPath)
-        self.categoryDelegate?.didSelectCategory(category.objectID)
-        
-        self.router.closePage()
+extension CategoryPresenter: CategoryInteractionDelegate {
+    func willChangeContent() {
+        delegate?.refreshData(for: headerMode())
+    }
+    
+    func didChangeContent() {
+        delegate?.refreshData(for: headerMode())
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    }
+}
+
+// MARK: - LifeCycleStateProtocol
+
+extension CategoryPresenter: LifeCycleStateProtocol {
+    func viewDidLoad() {
+    }
+    
+    func viewWillAppear(_ animated: Bool) {
+    }
+    
+    func viewDidAppear(_ animated: Bool) {
+    }
+    
+    func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    func viewDidDisappear(_ animated: Bool) {
     }
 }
 
@@ -98,18 +110,27 @@ extension CategoryPresenter: UITableViewDelegate {
 
 extension CategoryPresenter: CreateSearchTableViewHeaderDelegate {
     func textChanged(_ sender: CreateSearchTableViewHeader, _ text: String) {
-        self.categoryInteraction.updateWithSearch(text)
+        let newText = Validator.removeWhiteSpaces(text)
+        if text != newText {
+            sender.textField?.text = newText
+        }
+        
+        interaction.updateWithSearch(newText)
     }
     
     func createNewItem(_ sender: CreateSearchTableViewHeader, _ title: String?) {
-        let newCategory = self.categoryInteraction.createCategory(with: title)
-        self.categoryDelegate?.didSelectCategory(newCategory.objectID)
-        self.router.closePage()
+        guard let title = title, !Validator.isNullOrBlank(title) else {
+            return
+        }
+        
+        let newCategory = interaction.createCategory(with: title)
+        categoryDelegate?.didSelectCategory(newCategory.objectID)
+        router.closePage()
     }
     
     func modeButtonPressed(_ sender: CreateSearchTableViewHeader) {
-        if self.headerMode() == .create {
-            self.createNewItem(sender, sender.textField?.text)
+        if headerMode() == .create {
+            createNewItem(sender, sender.textField?.text)
         }
     }
 }

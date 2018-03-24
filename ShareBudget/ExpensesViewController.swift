@@ -41,8 +41,7 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
         do {
             try self.fc?.performFetch()
             self.calculateBudgetRestForExpenses()
-        }
-        catch {
+        } catch {
             
         }
     }
@@ -53,13 +52,12 @@ class ExpensesViewController: UIViewController, NSFetchedResultsControllerDelega
     }
     
     func calculateBudgetRestForExpenses() {
-        let budget = self.managedObjectContext.object(with: self.budgetID!) as? Budget
-        
         self.budgetRest.removeAll()
         for section in 0..<numberOfSections(in: self.tableView!) {
             let firstExpense = self.fc?.object(at: IndexPath(row: 0, section: section))
-            let date = (firstExpense?.creationDate ?? NSDate()) as Date
-            let total = budget?.limit(for: date)?.limit?.doubleValue ?? 0.0
+            let date = firstExpense?.creationDate ?? NSDate()
+            let lastLimit = ModelManager.lastLimit(for: self.budgetID!, date: date, self.managedObjectContext)
+            let total = lastLimit?.limit?.doubleValue ?? 0.0
             var rest = total
             
             var rowDict = [String: String]()

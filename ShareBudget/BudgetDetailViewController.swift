@@ -14,26 +14,26 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var monthLabel: UILabel?
     @IBOutlet private var minusLabel: UILabel?
     @IBOutlet private var equalLabel: UILabel?
-    @IBOutlet private var backButton: UIButton?
+    @IBOutlet private var backButton: ButtonListener?
     @IBOutlet private var budgetLabel: UILabel?
     @IBOutlet private var balanceLabel: UILabel?
     @IBOutlet private var expenseLabel: UILabel?
     @IBOutlet private var animationView: UIView?
-    @IBOutlet private var budgetButton: UIButton?
+    @IBOutlet private var budgetButton: ButtonListener?
     @IBOutlet private var navigationView: UIView?
-    @IBOutlet private var expenseButton: UIButton?
+    @IBOutlet private var expenseButton: ButtonListener?
     @IBOutlet private var expenseCoverView: UIView?
-    @IBOutlet private var editMemberButton: UIButton?
+    @IBOutlet private var editMemberButton: ButtonListener?
     @IBOutlet private var budgetContainerView: UIView?
     @IBOutlet private var expenseContainerView: UIView?
     @IBOutlet private var balanceContainerView: UIView?
     @IBOutlet private var navigationTitleLabel: UILabel?
-    @IBOutlet private var createExpenseButton: UIButton?
+    @IBOutlet private var createExpenseButton: ButtonListener?
     @IBOutlet private var chartView: CPTGraphHostingView?
     @IBOutlet private var budgetDescriptionLabel: UILabel?
+    @IBOutlet private var safeAreaPlaceholderView: UIView?
     @IBOutlet private var balanceDescriptionLabel: UILabel?
     @IBOutlet private var expenseDescriptionLabel: UILabel?
-    @IBOutlet private var backButtonImageView: UIImageView?
     @IBOutlet private var createNewExpenseContainerView: UIView?
     @IBOutlet private var constraintChartViewWidth: NSLayoutConstraint?
     @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
@@ -46,12 +46,12 @@ class BudgetDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         let router = BudgetDetailRouter(with: self)
-        let interactin = BudgetDetailInteraction(with: self.budgetID)
-        let presenter = BudgetDetailPresenter(with: interactin, router: router)
-        self.viperView = BudgetDetailView(with: presenter, and: self)
+        let interaction = BudgetDetailInteraction(with: budgetID, managedObjectContext: ModelManager.managedObjectContext)
+        let presenter = BudgetDetailPresenter(with: interaction, router: router)
+        viperView = BudgetDetailView(with: presenter, and: self)
         
-        self.linkStoryboardViews()
-        self.viperView?.viewDidLoad()
+        linkStoryboardViews()
+        viperView?.viewDidLoad()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,37 +61,37 @@ class BudgetDetailViewController: BaseViewController {
     }
     
     override func linkStoryboardViews() {
-        guard let view = self.viperView as? BudgetDetailView else {
+        guard let view = viperView as? BudgetDetailViewProtocol else {
             return
         }
         
-        view.chartView = self.chartView
-        view.minusLabel = self.minusLabel
-        view.equalLabel = self.equalLabel
-        view.monthLabel = self.monthLabel
-        view.backButton = self.backButton
-        view.budgetLabel = self.budgetLabel
-        view.balanceLabel = self.balanceLabel
-        view.budgetButton = self.budgetButton
-        view.expenseLabel = self.expenseLabel
-        view.expenseButton = self.expenseButton
-        view.animationView = self.animationView
-        view.navigationView = self.navigationView
-        view.editMemberButton = self.editMemberButton
-        view.expenseCoverView = self.expenseCoverView
-        view.backButtonImageView = self.backButtonImageView
-        view.createExpenseButton = self.createExpenseButton
-        view.budgetContainerView = self.budgetContainerView
-        view.expenseContainerView = self.expenseContainerView
-        view.balanceContainerView = self.balanceContainerView
-        view.navigationTitleLabel = self.navigationTitleLabel
-        view.budgetDescriptionLabel = self.budgetDescriptionLabel
-        view.balanceDescriptionLabel = self.balanceDescriptionLabel
-        view.expenseDescriptionLabel = self.expenseDescriptionLabel
-        view.constraintChartViewWidth = self.constraintChartViewWidth
-        view.constraintChartViewHeight = self.constraintChartViewHeight
-        view.constraintAnimationViewWidth = self.constraintAnimationViewWidth
-        view.constraintAnimationViewHeight = self.constraintAnimationViewHeight
-        view.createNewExpenseContainerView = self.createNewExpenseContainerView
+        view.chartView = chartView
+        view.minusLabel = minusLabel
+        view.equalLabel = equalLabel
+        view.monthLabel = monthLabel
+        view.backButton = backButton
+        view.budgetLabel = budgetLabel
+        view.balanceLabel = balanceLabel
+        view.budgetButton = budgetButton
+        view.expenseLabel = expenseLabel
+        view.expenseButton = expenseButton
+        view.animationView = animationView
+        view.navigationView = navigationView
+        view.editMemberButton = editMemberButton
+        view.expenseCoverView = expenseCoverView
+        view.createExpenseButton = createExpenseButton
+        view.budgetContainerView = budgetContainerView
+        view.expenseContainerView = expenseContainerView
+        view.balanceContainerView = balanceContainerView
+        view.navigationTitleLabel = navigationTitleLabel
+        view.budgetDescriptionLabel = budgetDescriptionLabel
+        view.balanceDescriptionLabel = balanceDescriptionLabel
+        view.expenseDescriptionLabel = expenseDescriptionLabel
+        view.safeAreaPlaceholderView = safeAreaPlaceholderView
+        view.constraintChartViewWidth = constraintChartViewWidth
+        view.constraintChartViewHeight = constraintChartViewHeight
+        view.constraintAnimationViewWidth = constraintAnimationViewWidth
+        view.constraintAnimationViewHeight = constraintAnimationViewHeight
+        view.createNewExpenseContainerView = createNewExpenseContainerView
     }
 }

@@ -53,8 +53,11 @@ struct LocalisedManager {
             let localizedValue = NSLocalizedString("Press + to create new group with name \"%@\"", comment: "Tip to create new group during search")
             
             return String(format: localizedValue, groupName)
-            
         }
+    }
+    
+    struct category {
+        static let headerPlaceholder = NSLocalizedString("Create or search category", comment: "Placeholder for search text field")
     }
     
     struct edit {

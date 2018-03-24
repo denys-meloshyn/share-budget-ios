@@ -15,6 +15,6 @@ class ExpenseTableViewHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.backgroundColor = Constants.defaultApperanceColor
+        self.contentView.backgroundColor = Constants.color.dflt.apperanceColor
     }
 }

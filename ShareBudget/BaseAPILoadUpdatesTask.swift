@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseAPILoadUpdatesTask: BaseAPITask {
-    override func request() -> URLSessionTask! {
+    override func request() -> URLSessionTask {
         let task = self.entity.updates(self.resource, completionBlock)
         
         return task

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class BaseRouter {
+protocol BaseRouterProtocol: class {
+    func closePage()
+}
+
+class BaseRouter: BaseRouterProtocol {
     weak var viewController: UIViewController?
     
     init(with viewController: UIViewController) {
@@ -16,6 +20,6 @@ class BaseRouter {
     }
     
     func closePage() {
-        _ = self.viewController?.navigationController?.popViewController(animated: true)
+        _ = viewController?.navigationController?.popViewController(animated: true)
     }
 }

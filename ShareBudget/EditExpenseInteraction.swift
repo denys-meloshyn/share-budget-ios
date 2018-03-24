@@ -8,7 +8,7 @@
 
 import CoreData
 
-class EditExpenseInteraction: BaseInteraction {
+class EditExpenseInteraction: BaseInteraction, BaseInteractionProtocol {
     var budget: Budget
     var expense: Expense
     let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
@@ -21,8 +21,7 @@ class EditExpenseInteraction: BaseInteraction {
         
         if let expenseID = expenseID {
             self.expense = self.managedObjectContext.object(with: expenseID) as! Expense
-        }
-        else {
+        } else {
             self.expense = Expense(context: self.managedObjectContext)
             self.expense.creationDate = UtilityFormatter.roundToTwoSeconds(date: Date()) as NSDate?
             self.expense.budget = self.budget

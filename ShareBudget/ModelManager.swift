@@ -31,8 +31,9 @@ class ModelManager {
     static private var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = Bundle.main.url(forResource: "ShareBudget", withExtension: "momd")!
+        var managedObjectModel: NSManagedObjectModel? = NSManagedObjectModel(contentsOf: modelURL)
         
-        return NSManagedObjectModel(contentsOf: modelURL)!
+        return managedObjectModel!
     }()
     
     static private var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
@@ -62,8 +63,7 @@ class ModelManager {
                 try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-wal"))
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
                 Dependency.userCredentials.resetTimeStamps()
-            }
-            catch let removeError {
+            } catch let removeError {
                 Dependency.logger.error("\(removeError)")
                 abort()
             }
@@ -74,7 +74,7 @@ class ModelManager {
     
     // MARK: - Core Data Saving support
     
-    class func saveContext (_ context: NSManagedObjectContext) {
+    class func saveContext(_ context: NSManagedObjectContext) {
         if context.hasChanges {
             do {
                 try context.save()
@@ -82,6 +82,7 @@ class ModelManager {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
+                Dependency.logger.error("Unresolved error \(nserror)", userInfo: ["error": nserror.userInfo])
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
@@ -116,12 +117,11 @@ class ModelManager {
         
         do {
             try fetchController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error drop entity \(entity) \(error)")
         }
         
-        fetchController.iterate { (indexPath) -> (Void) in
+        fetchController.iterate { (indexPath) -> Void in
             let model = fetchController.object(at: indexPath)
             managedObjectContext.delete(model)
         }
@@ -143,7 +143,7 @@ class ModelManager {
         ModelManager.dropEntity(BaseModel.self)
     }
     
-    class func childrenManagedObjectContext(from parentContext: NSManagedObjectContext?) -> NSManagedObjectContext {
+    class func childrenManagedObjectContext(from parentContext: NSManagedObjectContext) -> NSManagedObjectContext {
         let childrenManagedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         childrenManagedObjectContext.parent = parentContext
         
@@ -166,8 +166,7 @@ class ModelManager {
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
             return items.first as? BaseModel
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Finding model \(error)")
             return nil
         }
@@ -181,8 +180,7 @@ class ModelManager {
         do {
             let items = try managedObjectContext.fetch(fetchRequest)
             return items.first
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Finding model with internal ID \(error)")
             return nil
         }
@@ -190,6 +188,35 @@ class ModelManager {
     
     class func removePredicate() -> NSPredicate {
         return NSPredicate(format: "isRemoved == nil OR isRemoved == NO")
+    }
+    
+    class func lastLimit(for budgetID: NSManagedObjectID, date: NSDate = NSDate(), _ managedObjectContext: NSManagedObjectContext) -> BudgetLimit? {
+        let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
+        fetchRequest.fetchBatchSize = 1
+        
+        let budget = managedObjectContext.object(with: budgetID)
+        
+        var predicates = [NSPredicate]()
+        var predicate = NSPredicate(format: "%@ == budget", budget)
+        predicates.append(predicate)
+        
+        predicates.append(ModelManager.removePredicate())
+        
+        predicate = NSPredicate(format: "date <= %@", date)
+        predicates.append(predicate)
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        var items = [BudgetLimit]()
+        do {
+            items = try managedObjectContext.fetch(fetchRequest)
+        } catch {
+            Dependency.logger.error("Error fetch budget limit \(error)")
+        }
+        
+        return items.last
     }
     
     // MARK: - NSFetchedResultsController
@@ -208,8 +235,7 @@ class ModelManager {
         do {
             try fetchedResultsController.performFetch()
             return fetchedResultsController
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error fetch changedModels \(error)")
             return nil
         }
@@ -235,11 +261,14 @@ class ModelManager {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
-        if text.characters.count > 0 {
+        var predicates = [NSPredicate]()
+        if text.count > 0 {
             let predicate = NSPredicate(format: "name CONTAINS[c] %@", text)
-            fetchRequest.predicate = predicate
+            predicates.append(predicate)
         }
+        predicates.append(ModelManager.removePredicate())
         
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -253,8 +282,13 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
+        
+        var predicates = [NSPredicate]()
         let predicate = NSPredicate(format: "%@ == budget", budget)
-        fetchRequest.predicate = predicate
+        predicates.append(predicate)
+        predicates.append(ModelManager.removePredicate())
+        
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -266,7 +300,7 @@ class ModelManager {
     
     class func categoryFetchController(_ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Category> {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
-        fetchRequest.fetchBatchSize = fetchBatchSize
+        fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -281,16 +315,21 @@ class ModelManager {
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
         
         let budget = managedObjectContext.object(with: budgetID)
-        let predicate: NSPredicate
+        
+        var predicates = [NSPredicate]()
+        var tmpPredicate = ModelManager.removePredicate()
+        predicates.append(tmpPredicate)
+        
+        tmpPredicate = NSPredicate(format: "%@ == budget", budget)
+        predicates.append(tmpPredicate)
         
         if let categoryID = categoryID {
             let category = managedObjectContext.object(with: categoryID)
-            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO AND category == %@", budget, category)
-        } else {
-            predicate = NSPredicate(format: "%@ == budget AND isRemoved == NO", budget)
+            tmpPredicate = NSPredicate(format: "category == %@", category)
+            predicates.append(tmpPredicate)
         }
         
-        fetchRequest.predicate = predicate
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         
         let sortDescriptorDate = NSSortDescriptor(key: "creationDate", ascending: false)
         let sortDescriptorName = NSSortDescriptor(key: "name", ascending: true)

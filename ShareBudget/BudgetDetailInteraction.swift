@@ -12,17 +12,33 @@ protocol BudgetDetailInteractionDelegate: BaseInteractionDelegate {
     func limitChanged()
 }
 
-class BudgetDetailInteraction: BaseInteraction {
+protocol BudgetDetailInteractionProtocol: BaseInteractionProtocol {
+    var budget: Budget { get set }
+    var budgetID: NSManagedObjectID { get }
+    weak var delegate: BudgetDetailInteractionDelegate? { get set }
+    
+    func isEmpty() -> Bool
+    func balance() -> Double
+    func totalExpenses() -> Double
+    func lastMonthLimit() -> BudgetLimit?
+    func numberOfCategoryExpenses() -> Int
+    func category(for section: Int) -> Category?
+    func categoryTitle(for section: Int) -> String
+    func totalExpenses(for categoryIndex: Int) -> Double
+    func createOrUpdateCurrentBudgetLimit(_ limit: Double)
+}
+
+class BudgetDetailInteraction: BaseInteraction, BudgetDetailInteractionProtocol, NSFetchedResultsControllerDelegate {
     var budget: Budget
     let budgetID: NSManagedObjectID
     weak var delegate: BudgetDetailInteractionDelegate?
     
-    private var kvoContext: UInt8 = 1
     private let calculator: ExpenseCalculator
-    private let managedObjectContext = ModelManager.managedObjectContext
+    private let managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Expense>
     
-    init(with budgetID: NSManagedObjectID) {
+    init(with budgetID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext) {
+        self.managedObjectContext = managedObjectContext
         self.budgetID = budgetID
         self.budget = self.managedObjectContext.object(with: budgetID) as! Budget
         
@@ -34,8 +50,7 @@ class BudgetDetailInteraction: BaseInteraction {
         
         do {
             try self.fetchedResultsController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Error fetch \(error)")
         }
         
@@ -75,7 +90,7 @@ class BudgetDetailInteraction: BaseInteraction {
     }
     
     func lastMonthLimit() -> BudgetLimit? {
-        return self.budget.lastMonthLimit()
+        return ModelManager.lastLimit(for: self.budgetID, self.managedObjectContext)
     }
     
     func balance() -> Double {
@@ -129,17 +144,13 @@ class BudgetDetailInteraction: BaseInteraction {
         
         return (inputComponents.month == currentComponents.month && inputComponents.year == currentComponents.year)
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension BudgetDetailInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent?()
+        delegate?.didChangeContent()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

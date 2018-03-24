@@ -9,18 +9,17 @@
 import UIKit
 
 class TextFieldErrorMessage: UIView {
-    @IBOutlet var textField: UITextField?
-    @IBOutlet var errorMessageLabel: UILabel?
-    @IBOutlet private var containerTextView: UIView?
+    @IBOutlet var errorMessageLabel: UILabel!
+    @IBOutlet var textField: TextFieldListener!
+    @IBOutlet private var containerTextView: UIView!
     
     var isErrorHidden = true {
         didSet {
             if isErrorHidden {
-                self.errorMessageLabel?.text = ""
-                self.containerTextView?.layer.borderColor = loginBorderColor.cgColor
-            }
-            else {
-                self.containerTextView?.layer.borderColor = loginErrorBorderColor.cgColor
+                errorMessageLabel.text = ""
+                containerTextView.layer.borderColor = Constants.color.login.validBorderColor.cgColor
+            } else {
+                containerTextView.layer.borderColor = Constants.color.login.errorBorderColor.cgColor
             }
         }
     }
@@ -28,8 +27,8 @@ class TextFieldErrorMessage: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.containerTextView?.layer.borderWidth = 1.0
-        self.containerTextView?.layer.cornerRadius = 5.0
-        self.containerTextView?.layer.borderColor = loginBorderColor.cgColor
+        containerTextView.layer.borderWidth = 1.0
+        containerTextView.layer.cornerRadius = 5.0
+        containerTextView.layer.borderColor = Constants.color.login.validBorderColor.cgColor
     }
 }

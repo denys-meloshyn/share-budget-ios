@@ -13,7 +13,7 @@ class BudgetLimitAPI: BaseAPI {
         return "budget_limit_timestamp"
     }
     
-    override func parseUpdates(items: [[String: AnyObject?]], in managedObjectContext: NSManagedObjectContext) {
+    override func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var limit: BudgetLimit?
         
         for item in items {

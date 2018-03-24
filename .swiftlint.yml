@@ -1,0 +1,30 @@
+disabled_rules:
+    - trailing_whitespace
+    - force_cast
+    - implicit_getter
+    - type_name
+    - nesting
+    - force_try
+    - legacy_constructor
+    - discarded_notification_center_observer
+    
+excluded:
+    - R.generated.swift
+    - Pods
+    
+line_length: 300
+
+function_body_length:
+    warning: 60
+    
+function_parameter_count:
+    - 6
+    
+identifier_name:
+    min_length: 2
+    
+type_body_length:
+    warning: 300
+    
+cyclomatic_complexity:
+    warning: 15

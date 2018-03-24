@@ -22,16 +22,16 @@ class CategoryViewController: BaseViewController {
     
     override func configureVIPER() {
         let router = CategoryRouter(with: self)
-        let interactin = CategoryInteraction(with: self.expenseID, managedObjectContext: self.managedObjectContext)
-        let presenter = CategoryPresenter(with: interactin, router: router, delegate: self.delegate)
-        self.viperView = CategoryView(with: presenter, and: self)
+        let interactin = CategoryInteraction(with: expenseID, managedObjectContext: managedObjectContext)
+        let presenter = CategoryPresenter(with: interactin, router: router, delegate: delegate)
+        viperView = CategoryView(with: presenter, and: self)
     }
     
     override func linkStoryboardViews() {
-        guard let view = self.viperView as? CategoryView else {
+        guard let view = viperView as? CategoryViewProtocol else {
             return
         }
         
-        view.tableView = self.tableView
+        view.tableView = tableView
     }
 }

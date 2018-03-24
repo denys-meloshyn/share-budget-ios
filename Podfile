@@ -1,43 +1,62 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.2'
+source 'https://github.com/CocoaPods/Specs.git'
 
-def developing_pods
-    pod 'XCGLogger', '~> 5.0.1'
-    pod 'KeychainSwift', '~> 8.0'
-    pod 'R.swift', '~> 3.2'
-    pod 'SnapKit', '~> 3.2'
-    pod 'CorePlot', '~> 2.2'
-    pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
-    pod 'le', '~> 1.1'
-    pod 'BugfenderSDK', '~> 1.4.5'
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+# Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+use_frameworks!
+
+def shared
+	pod 'XCGLogger', '6.0.1'
+	pod 'KeychainSwift', '10.0.0'
+	pod 'R.swift', '4.0'
+	pod 'SnapKit', '4.0'
+	pod 'CorePlot', '2.2'
+	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+	pod 'le', '1.1'
+	pod 'BugfenderSDK', '1.5.0'
+	pod 'JustLog', '2.0.1'
+	pod 'Toast-Swift', '3.0.1'
+	pod 'SwiftLint', '0.24.2'
+	pod 'Firebase/Core', '4.10.1'
+	pod 'Crashlytics', '3.10.1'
 end
 
 target 'ShareBudget' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+	shared
+	
+	target 'ShareBudgetDevelopmentLocal' do
+		shared
+	end
+	
+	target 'ShareBudgetDevelopmentRemote' do
+		shared
+	end
+	
+	target 'ShareBudgetTests' do
+		inherit! :search_paths
 
-  # Pods for ShareBudget
-  developing_pods
-  
-  target 'ShareBudgetDevelopmentLocal' do
-      inherit! :search_paths
-      developing_pods
-  end
-  
-  target 'ShareBudgetDevelopmentRemote' do
-      inherit! :search_paths
-      developing_pods
-  end
+		shared
+		pod 'Nimble', '7.0.3'
+	end
+	
+	target 'ShareBudgetUITests' do
+		shared
+	end
+end
 
-  target 'ShareBudgetTests' do
-    inherit! :search_paths
-    # Pods for testing
-    pod 'Nimble', '~> 7.0.1'
-  end
-
-  target 'ShareBudgetUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+# Manually making compiler version be swift 3.2
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == 'Toast-Swift'
+            print "\t - Changing "
+            print target.name
+            print " swift version to 3.2\n"
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.2'
+            end
+        end
+    end
 end

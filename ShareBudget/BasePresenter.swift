@@ -10,48 +10,29 @@ import UIKit
 
 protocol BasePresenterDelegate: class {
     func showPage(title: String?)
+    func showErrorSync(message text: String)
     func showTabBar(title: String, image: UIImage, selected: UIImage)
     func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
 }
 
-class BasePresenter: NSObject {
-    var interaction: BaseInteraction
-    let router: BaseRouter
+protocol BasePresenterProtocol: LifeCycleStateProtocol {
+}
+
+class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProtocol>: NSObject {
+    let router: Router
+    let interaction: Interaction
     
-    init(with interaction: BaseInteraction, router: BaseRouter) {
-        self.interaction = interaction
+    init(with interaction: Interaction, router: Router) {
         self.router = router
+        self.interaction = interaction
     }
     
     func configure() {
-        
     }
     
     func alertOkAction(title: String = LocalisedManager.generic.ok) -> UIAlertAction {
         let action = UIAlertAction(title: title, style: .cancel, handler: nil)
         
         return action
-    }
-}
-
-extension BasePresenter: LifeCycleStateProtocol {
-    func viewDidLoad() {
-        
-    }
-    
-    func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
-    func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
-    func viewDidDisappear(_ animated: Bool) {
-        
     }
 }

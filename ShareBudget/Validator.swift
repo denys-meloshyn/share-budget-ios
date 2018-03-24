@@ -17,7 +17,7 @@ class Validator {
     }
     
     class func password(_ password: String) -> Bool {
-        return password.characters.count >= kPasswordMinLength
+        return password.count >= Constants.values.passwordMinLength
     }
     
     class func repeatPassword(password: String, repeat repeatPassword: String) -> Bool {
@@ -26,11 +26,11 @@ class Validator {
     
     class func firstName(_ firstName: String) -> Bool {
         let cleanedValue = firstName.trimmingCharacters(in: CharacterSet.whitespaces)
-        return cleanedValue.characters.count > 0
+        return cleanedValue.count > 0
     }
     
     class func isNumberValid(_ value: String) -> Bool {
-        guard let _ = Double(value) else {
+        if Double(value) == nil {
             return false
         }
         
@@ -39,7 +39,8 @@ class Validator {
     
     class func removeWhiteSpaces(_ string: String) -> String {
         let nsString = string as NSString
-        let result = nsString.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression, range: NSMakeRange(0, nsString.length))
+        let range = NSMakeRange(0, nsString.length)
+        let result = nsString.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression, range: range)
         
         if result == " " {
             return ""

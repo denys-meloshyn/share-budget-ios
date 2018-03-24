@@ -11,6 +11,5 @@ import UIKit
 
 class MockCategoryViewController: CategoryViewController {
     override func configureVIPER() {
-        
     }
 }

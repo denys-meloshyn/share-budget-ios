@@ -9,7 +9,13 @@
 import UIKit
 import CoreData
 
-class LoginInteraction: BaseInteraction {
+protocol LoginInteractionProtocol: BaseInteractionProtocol {
+    func sendRegistrationEmail(_ email: String)
+    func login(email: String, password: String, completion: APIResultBlock?)
+    func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?)
+}
+
+class LoginInteraction: BaseInteraction, LoginInteractionProtocol {
     let managedObjectContext = ModelManager.managedObjectContext
     
     func login(email: String, password: String, completion: APIResultBlock?) {
@@ -17,7 +23,7 @@ class LoginInteraction: BaseInteraction {
     }
     
     func singUp(email: String, password: String, firstName: String, lastName: String?, completion: APIResultBlock?) {
-        _ = AuthorisationAPI.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, response, error) -> (Void) in
+        _ = AuthorisationAPI.singUp(email: email, password: password, firstName: firstName, lastName: lastName, completion: { (data, response, error) -> Void in
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             completion?(data, errorType)

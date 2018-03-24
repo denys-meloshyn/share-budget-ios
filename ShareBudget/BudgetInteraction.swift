@@ -10,10 +10,18 @@ import UIKit
 import CoreData
 
 protocol BudgetInteractionDelegate: BaseInteractionDelegate {
-    
 }
 
-class BudgetInteraction: BaseInteraction {
+protocol BudgetInteractionProtocol: BaseInteractionProtocol, NSFetchedResultsControllerDelegate {
+    weak var delegate: BudgetInteractionDelegate? { get set }
+    
+    func numberOfRowsInSection() -> Int
+    func updateWithSearch(_ text: String)
+    func createNewBudget(with name: String) -> Budget
+    func budgetModel(for indexPath: IndexPath) -> Budget
+}
+
+class BudgetInteraction: BaseInteraction, BudgetInteractionProtocol {
     weak var delegate: BudgetInteractionDelegate?
     let managedObjectContext: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<Budget>
@@ -32,20 +40,19 @@ class BudgetInteraction: BaseInteraction {
         
         do {
             try self.fetchedResultsController.performFetch()
-        }
-        catch {
+        } catch {
             Dependency.logger.error("Can't perform fetch request")
         }
     }
     
     private func createFetchedResultsController(with text: String) {
-        self.fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext, search: text)
-        self.performFetch()
-        self.delegate?.didChangeContent?()
+        fetchedResultsController = ModelManager.budgetFetchController(self.managedObjectContext, search: text)
+        performFetch()
+        delegate?.didChangeContent()
     }
     
     func numberOfRowsInSection() -> Int {
-        guard let section = self.fetchedResultsController.sections?.first else {
+        guard let section = fetchedResultsController.sections?.first else {
             return 0
         }
         
@@ -53,36 +60,31 @@ class BudgetInteraction: BaseInteraction {
     }
     
     func budgetModel(for indexPath: IndexPath) -> Budget {
-        let budget = self.fetchedResultsController.object(at: indexPath)
+        let budget = fetchedResultsController.object(at: indexPath)
         
         return budget
     }
     
     func updateWithSearch(_ text: String) {
-        self.createFetchedResultsController(with: text)
+        createFetchedResultsController(with: text)
     }
     
     func createNewBudget(with name: String) -> Budget {
-        let budget = Budget(context: self.managedObjectContext)
+        let budget = Budget(context: managedObjectContext)
         budget.name = name
         budget.isChanged = true
         
         return budget
     }
-}
-
-// MARK: - NSFetchedResultsControllerDelegate methds
-
-extension BudgetInteraction: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.willChangeContent?()
+        delegate?.willChangeContent()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.delegate?.didChangeContent?()
+        delegate?.didChangeContent()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 protocol LifeCycleStateProtocol: class {
     func viewDidLoad()
@@ -16,39 +17,42 @@ protocol LifeCycleStateProtocol: class {
     func viewDidDisappear(_ animated: Bool)
 }
 
-class BaseView: NSObject {
-    let presenter: BasePresenter
+protocol BaseViewProtocol: LifeCycleStateProtocol {
+}
+
+class BaseView<T: BasePresenterProtocol> {
+    let presenter: T
     weak var viewController: UIViewController?
     
-    init(with presenter: BasePresenter, and viewController: UIViewController) {
+    init(with presenter: T, and viewController: UIViewController) {
         self.presenter = presenter
         self.viewController = viewController
     }
-}
-
-extension BaseView: LifeCycleStateProtocol {
+    
+    // MARK: - LifeCycleStateProtocol
+    
     func viewDidLoad() {
-        self.presenter.viewDidLoad()
+        presenter.viewDidLoad()
     }
     
     func viewWillAppear(_ animated: Bool) {
-        self.presenter.viewWillAppear(animated)
+        presenter.viewWillAppear(animated)
     }
     
     func viewDidAppear(_ animated: Bool) {
-        self.presenter.viewDidAppear(animated)
+        presenter.viewDidAppear(animated)
     }
     
     func viewWillDisappear(_ animated: Bool) {
-        self.presenter.viewWillDisappear(animated)
+        presenter.viewWillDisappear(animated)
     }
     
     func viewDidDisappear(_ animated: Bool) {
-        self.presenter.viewDidDisappear(animated)
+        presenter.viewDidDisappear(animated)
     }
-}
-
-extension BaseView: BasePresenterDelegate {
+    
+    // MARK: - BasePresenterDelegate
+    
     func showPage(title: String?) {
         self.viewController?.navigationItem.title = title
     }
@@ -66,4 +70,14 @@ extension BaseView: BasePresenterDelegate {
         
         self.viewController?.present(alertView, animated: true, completion: nil)
     }
+    
+    func showErrorSync(message text: String) {
+        self.viewController?.view.makeToast(text, duration: 3.0, position: .center)
+    }
+}
+
+extension BaseView: BaseViewProtocol {
+}
+
+extension BaseView: BasePresenterDelegate {
 }

@@ -11,7 +11,7 @@ import Nimble
 import CoreData
 @testable import ShareBudget
 
-class ChangedModels: XCTestCase {
+class ChangedModelsTest: XCTestCase {
     var managedObjectContext: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
@@ -28,8 +28,8 @@ class ChangedModels: XCTestCase {
     }
     
     func testNoChanged() {
-        let _ = Expense(context: self.managedObjectContext)
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Expense(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         ModelManager.saveContext(self.managedObjectContext)
         self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)
@@ -40,14 +40,31 @@ class ChangedModels: XCTestCase {
     
     func testOneChanged() {
         let expense = Expense(context: self.managedObjectContext)
-        expense.isChanged = NSNumber(value: true)
+        expense.isChanged = true
         
-        let _ = Budget(context: self.managedObjectContext)
+        _ = Budget(context: self.managedObjectContext)
         
         ModelManager.saveContext(self.managedObjectContext)
         self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)
         self.fetchedResultsController.performSilentFailureFetch()
         
         expect(self.fetchedResultsController.numberOfObjects()) == 1
+    }
+    
+    func testModelRemoved() {
+        var expense = Expense(context: self.managedObjectContext)
+        expense.isChanged = true
+        expense.isRemoved = true
+        
+        expense = Expense(context: self.managedObjectContext)
+        expense.isChanged = true
+        
+        expense = Expense(context: self.managedObjectContext)
+        
+        ModelManager.saveContext(self.managedObjectContext)
+        self.fetchedResultsController = ModelManager.changedModels(Expense.self, self.managedObjectContext)
+        self.fetchedResultsController.performSilentFailureFetch()
+        
+        expect(self.fetchedResultsController.numberOfObjects()) == 2
     }
 }

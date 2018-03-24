@@ -40,7 +40,7 @@ class ValidationTextField: UIView {
     weak var delegate: ValidationTextFieldDelegate?
     
     private var isFieldEmpty: Bool {
-        return self.textField?.text?.characters.count == 0
+        return self.textField?.text?.count == 0
     }
     
     override func awakeFromNib() {
@@ -84,8 +84,7 @@ class ValidationTextField: UIView {
         
         if self.isFieldEmpty {
             self.titleLabel?.isHidden = true
-        }
-        else {
+        } else {
             self.titleLabel?.isHidden = false
         }
     }

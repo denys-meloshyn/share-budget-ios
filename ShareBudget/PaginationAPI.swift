@@ -14,9 +14,9 @@ class PaginationAPI {
     var total = 0
     
     init(with dict: [String: Any]) {
-        self.size = dict[kPaginationPageSize] as? Int ?? 0
-        self.start = dict[kPaginationStart] as? Int ?? 0
-        self.total = dict[kPaginationTotal] as? Int ?? 0
+        self.size = dict[Constants.key.json.paginationPageSize] as? Int ?? 0
+        self.start = dict[Constants.key.json.paginationStart] as? Int ?? 0
+        self.total = dict[Constants.key.json.paginationTotal] as? Int ?? 0
     }
     
     func hasNext() -> Bool {

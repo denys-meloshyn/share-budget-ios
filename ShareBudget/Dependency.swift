@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
+import JustLog
 import XCGLogger
-import BugfenderSDK
 
 enum Environment {
     case testing
@@ -25,6 +25,7 @@ class Dependency {
     
     static var logger: XCGLogger!
     static var coreDataName: String!
+    static var restAPIVersion: String!
     static var userCredentials: UserCredentials.Type!
     static var backendURLComponents: NSURLComponents!
     static var backendConnection: NSURLComponents {
@@ -34,7 +35,7 @@ class Dependency {
     }
     
     class func environment() -> Environment {
-        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"]  {
+        if let testPath = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] {
             let url = URL(fileURLWithPath: testPath)
             
             if url.pathExtension == "xctestconfiguration" {
@@ -68,9 +69,15 @@ class Dependency {
     class private func configureLogger() {
         //LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
         
-        Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
-        Bugfender.setPrintToConsole(false)
-        Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
+//        Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
+//        Bugfender.setPrintToConsole(false)
+//        Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
+        
+        Logger.shared.logstashHost = "listener.logz.io"
+        Logger.shared.logstashPort = 5052
+        Logger.shared.logzioToken = "KwzGuzHVRmyojtidIOicPEZrQbZEzGCQ"
+        Logger.shared.enableConsoleLogging = false
+        Logger.shared.setup()
         
         // Create a logger object with no destinations
         self.logger = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
@@ -111,7 +118,7 @@ class Dependency {
         // Add the destination to the logger
         self.logger.add(destination: fileDestination)
         
-        if (self.environment() == .production) {
+        if self.environment() == .production || self.environment() == .developmentRemote {
             // Remote destination
             let remoteLogsDestination = RemoteLogsDestination(identifier: self.loggerRemoteIdentifier)
             remoteLogsDestination.outputLevel = .debug
@@ -132,6 +139,7 @@ class Dependency {
     
     class private func configureBackendConnection() {
         let components = NSURLComponents()
+        Dependency.restAPIVersion = "/v1"
         
         switch self.environment() {
         case .developmentLocal:

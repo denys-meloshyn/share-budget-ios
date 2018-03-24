@@ -19,8 +19,7 @@ class NetworkIndicator: NSObject {
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
-            }
-            else {
+            } else {
                 DispatchQueue.main.async {
                     UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 }
@@ -32,21 +31,20 @@ class NetworkIndicator: NSObject {
         didSet {
             if self.visible {
                 self.startActivity()
-            }
-            else {
+            } else {
                 self.stopActivity()
             }
         }
     }
     
     private func startActivity() {
-        self.lockQueue.sync() {
+        self.lockQueue.sync {
             self.statusActivities += 1
         }
     }
     
     private func stopActivity() {
-        self.lockQueue.sync() {
+        self.lockQueue.sync {
             self.statusActivities -= 1
         }
     }

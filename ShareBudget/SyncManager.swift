@@ -8,73 +8,81 @@
 
 import CoreData
 
+protocol SyncManagerDelegate: class {
+    func error(_ error: ErrorTypeAPI)
+}
+
 class SyncManager {
-    private static var timer: Timer?
-    private static var loadingTask: URLSessionTask?
+    static let shared = SyncManager()
     
-    private class func scheduleNextUpdate() {
-        SyncManager.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { (timer) in
-            SyncManager.loadUpdates(completion: nil)
+    private init() {}
+    
+    weak var delegate: SyncManagerDelegate?
+    
+    private var timer: Timer?
+    private var loadingTask: URLSessionTask?
+    
+    private func scheduleNextUpdate() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { _ in
+            self.loadUpdates(completion: nil)
         }
     }
     
-    static let userAPI = UserAPI()
-    static let budgetAPI = BudgetAPI()
-    static let expenseAPI = ExpenseAPI()
-    static let categoryAPI = CategoryAPI()
-    static let userGroupAPI = UserGroupAPI()
-    static let budgetLimitAPI = BudgetLimitAPI()
+    let userAPI = UserAPI()
+    let budgetAPI = BudgetAPI()
+    let expenseAPI = ExpenseAPI()
+    let categoryAPI = CategoryAPI()
+    let userGroupAPI = UserGroupAPI()
+    let budgetLimitAPI = BudgetLimitAPI()
     
-    static var tasks = [BaseAPITask]()
+    var tasks = [BaseAPITask]()
 
-    private class func loadUpdates(completion: APIResultBlock?) {
+    private func loadUpdates(completion: APIResultBlock?) {
         Dependency.logger.info("Load updates from server")
         
         self.tasks.removeAll()
         var task: BaseAPITask
         
-        let completionBlock: APIResultBlock = { (data, error) -> (Void) in
+        let completionBlock: APIResultBlock = { [weak self] (data, error) -> Void in
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> (Void) in
-                        if error == .none {
-                            SyncManager.loadUpdates(completion: completion)
-                        }
-                        else if error == .unknown{
+                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
+                        switch error {
+                        case .none:
+                            self?.loadUpdates(completion: completion)
+                        case .unknown:
                             DispatchQueue.main.async {
-                                SyncManager.scheduleNextUpdate()
+                                self?.delegate?.error(error)
+                                self?.scheduleNextUpdate()
                             }
-                        }
-                        else {
+                        default:
                             completion?(data, error)
                         }
                     })
                     
                     return
-                }
-                else if error == .unknown {
+                } else if error == .unknown {
                     DispatchQueue.main.async {
-                        SyncManager.scheduleNextUpdate()
+                        self?.delegate?.error(error)
+                        self?.scheduleNextUpdate()
                     }
-                }
-                else {
+                } else {
                     completion?(data, error)
                 }
                 
                 return
             }
             
-            self.tasks.remove(at: 0)
+            self?.tasks.remove(at: 0)
             
-            if self.tasks.count == 0 {
+            if self?.tasks.count == 0 {
                 DispatchQueue.main.async {
-                    SyncManager.scheduleNextUpdate()
+                    self?.scheduleNextUpdate()
                 }
-            }
-            else {
-                SyncManager.loadingTask = tasks.first?.request()
-                SyncManager.loadingTask?.resume()
+            } else {
+                self?.loadingTask = self?.tasks.first?.request()
+                self?.loadingTask?.resume()
                 NetworkIndicator.shared.visible = true
             }
         }
@@ -121,34 +129,33 @@ class SyncManager {
         // -----------------
         
         if tasks.count == 0 {
-            SyncManager.scheduleNextUpdate()
-        }
-        else {
-            SyncManager.loadingTask = tasks.first?.request()
-            SyncManager.loadingTask?.resume()
+            self.scheduleNextUpdate()
+        } else {
+            self.loadingTask = tasks.first?.request()
+            self.loadingTask?.resume()
             NetworkIndicator.shared.visible = true
         }
     }
     
-    class func insertPaginationTask(_ task: BaseAPITask) {
+    func insertPaginationTask(_ task: BaseAPITask) {
         self.tasks.insert(task, at: 1)
     }
     
-    class func run() {
-        if (Dependency.environment() == .testing) {
+    func run() {
+        if Dependency.environment() == .testing {
             return
         }
         
-        SyncManager.stop()
+        self.stop()
         
         Dependency.logger.info("Start sync")
-        SyncManager.loadUpdates(completion: nil)
+        self.loadUpdates(completion: nil)
     }
     
-    class func stop() {
+    func stop() {
         Dependency.logger.info("Stop sync")
         
-        SyncManager.timer?.invalidate()
-        SyncManager.loadingTask?.cancel()
+        self.timer?.invalidate()
+        self.loadingTask?.cancel()
     }
 }

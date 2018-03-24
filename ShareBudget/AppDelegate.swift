@@ -8,9 +8,8 @@
 
 import UIKit
 
-import le
-import XCGLogger
-import BugfenderSDK
+import Firebase
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,16 +21,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        if Dependency.environment() != .testing {
+            FirebaseApp.configure()
+            Fabric.sharedSDK().debug = true
+        }
+        
         // Override point for customization after application launch.
         self.configureAppearance()
+        
+        if let launchViewControllerID = ProcessInfo.processInfo.environment[Constants.key.testing.launchViewControllerID] {
+            let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: launchViewControllerID)
+            self.window?.rootViewController = viewController
+            return true
+        }
         
         if !Dependency.userCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
             self.window?.rootViewController = loginViewControler
-        }
-        else {
-            SyncManager.run()
+        } else {
+            SyncManager.shared.run()
         }
         
         return true
@@ -63,18 +73,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureAppearance() {
         UITabBar.appearance().isTranslucent = true
-        UITabBar.appearance().tintColor = Constants.defaultTextTintColor
-        UITabBar.appearance().barTintColor = Constants.defaultApperanceColor
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : Constants.defaultActionColor], for: .selected)
+        UITabBar.appearance().tintColor = Constants.color.dflt.textTintColor
+        UITabBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Constants.color.dflt.actionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = Constants.defaultActionColor
-        UINavigationBar.appearance().barTintColor = Constants.defaultApperanceColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : Constants.defaultTextTintColor]
+        UINavigationBar.appearance().tintColor = Constants.color.dflt.actionColor
+        UINavigationBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.color.dflt.textTintColor]
         
-        UITextField.appearance().tintColor = Constants.defaultActionColor
+        UITextField.appearance().tintColor = Constants.color.dflt.actionColor
         
-        self.window?.tintColor = Constants.defaultActionColor
+        self.window?.tintColor = Constants.color.dflt.actionColor
     }
 }
-
