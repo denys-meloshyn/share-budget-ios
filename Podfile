@@ -19,6 +19,7 @@ def shared
 	pod 'SwiftLint', '0.24.2'
 	pod 'Firebase/Core', '4.10.1'
 	pod 'Crashlytics', '3.10.1'
+	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
 
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -54,6 +55,10 @@ post_install do |installer|
             print " swift version to 3.2\n"
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.2'
+            end
+            
+            if target.name == 'CorePlot'
+                config.build_settings['ALWAYS_SEARCH_USER_PATHS'] = 'NO'
             end
         end
     end

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import HTTPNetworking
 
 class AuthorisationAPI: BaseAPI {
     class func login(email: String, password: String, completion: APIResultBlock?) -> URLSessionTask? {
@@ -17,7 +18,7 @@ class AuthorisationAPI: BaseAPI {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.method = .POST
         request.setValue(email, forHTTPHeaderField: Constants.key.json.email)
         request.setValue(password, forHTTPHeaderField: Constants.key.json.password)
         
