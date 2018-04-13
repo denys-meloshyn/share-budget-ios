@@ -25,6 +25,7 @@ identifier_name:
     min_length: 2
     excluded:
     - i
+    - j
     
 type_body_length:
     warning: 300

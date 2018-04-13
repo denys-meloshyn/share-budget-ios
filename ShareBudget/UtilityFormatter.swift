@@ -60,7 +60,7 @@ class UtilityFormatter: NSObject {
     class var iso8601DateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.locale = enUSPosixLocale as Locale!
+        dateFormatter.locale = enUSPosixLocale as Locale
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
         
         return dateFormatter
@@ -69,7 +69,7 @@ class UtilityFormatter: NSObject {
     class var pareseDateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.locale = enUSPosixLocale as Locale!
+        dateFormatter.locale = enUSPosixLocale as Locale
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         return dateFormatter

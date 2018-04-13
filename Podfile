@@ -49,18 +49,23 @@ end
 
 # Manually making compiler version be swift 3.2
 post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if target.name == 'Toast-Swift'
-            print "\t - Changing "
-            print target.name
-            print " swift version to 3.2\n"
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3.2'
-            end
-            
-            if target.name == 'CorePlot'
-                config.build_settings['ALWAYS_SEARCH_USER_PATHS'] = 'NO'
-            end
-        end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
     end
+
+    if target.name == 'Toast-Swift'
+      print "\t - Changing "
+      print target.name
+      print " swift version to 3.2\n"
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '3.2'
+      end
+
+      if target.name == 'CorePlot'
+        config.build_settings['ALWAYS_SEARCH_USER_PATHS'] = 'NO'
+      end
+    end
+  end
 end
+

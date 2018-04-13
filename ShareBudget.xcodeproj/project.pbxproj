@@ -2131,7 +2131,7 @@
 			baseConfigurationReference = 9F5B02C23B0DDDB094D505CB /* Pods-ShareBudgetDevelopmentLocal.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Local";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = "ShareBudget Development Local-Info.plist";
@@ -2150,7 +2150,7 @@
 			baseConfigurationReference = D1341CADF8851576A099554E /* Pods-ShareBudgetDevelopmentLocal.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Local";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = "ShareBudget Development Local-Info.plist";
@@ -2169,7 +2169,7 @@
 			baseConfigurationReference = B11AD26514E1F9F1034B23AB /* Pods-ShareBudgetDevelopmentRemote.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Remote";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = "ShareBudget Development Remote-Info.plist";
@@ -2187,7 +2187,7 @@
 			baseConfigurationReference = EB8DAF0AACFED5A61F031AA4 /* Pods-ShareBudgetDevelopmentRemote.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dev-Remote";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = "ShareBudget Development Remote-Info.plist";
@@ -2315,7 +2315,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
@@ -2335,7 +2335,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -2357,7 +2357,7 @@
 			baseConfigurationReference = 4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -2376,7 +2376,7 @@
 			baseConfigurationReference = E168A14FF6FEA5EAD82BCAF3 /* Pods-ShareBudgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -2395,7 +2395,7 @@
 			baseConfigurationReference = D5D6AD7B76D0820FFF2440DD /* Pods-ShareBudgetUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
@@ -2413,7 +2413,7 @@
 			baseConfigurationReference = 4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
