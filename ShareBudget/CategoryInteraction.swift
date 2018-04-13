@@ -13,7 +13,7 @@ protocol CategoryInteractionDelegate: BaseInteractionDelegate {
 
 protocol CategoryInteractionProtocol: BaseInteractionProtocol {
     var expense: Expense { get set }
-    weak var delegate: CategoryInteractionDelegate? { get set }
+    var delegate: CategoryInteractionDelegate? { get set }
     
     func numberOfCategories() -> Int
     func updateWithSearch(_ text: String)

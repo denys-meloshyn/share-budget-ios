@@ -15,7 +15,7 @@ protocol CategoryPresenterDelegate: BasePresenterDelegate, CreateSearchTableView
 }
 
 protocol CategoryPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate {
-    weak var delegate: CategoryPresenterDelegate! { get set }
+    var delegate: CategoryPresenterDelegate! { get set }
 }
 
 class CategoryPresenter<I: CategoryInteractionProtocol, R: CategoryRouterProtocol>: BasePresenter<I, R>, CategoryPresenterProtocol {

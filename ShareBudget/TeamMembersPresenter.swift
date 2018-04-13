@@ -15,7 +15,7 @@ protocol TeamMembersPresenterDelegate: class {
 }
 
 protocol TeamMembersPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UITableViewDataSource {
-    weak var delegate: TeamMembersPresenterDelegate! { get set }
+    var delegate: TeamMembersPresenterDelegate! { get set }
 }
 
 class TeamMembersPresenter<I: TeamMembersInteractionProtocol, R: TeamMembersRouterProtocol>: BasePresenter<I, R>, TeamMembersPresenterProtocol {

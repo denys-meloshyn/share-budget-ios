@@ -9,13 +9,13 @@
 import UIKit
 
 protocol EditExpenseViewProtocol: BaseViewProtocol {
-    weak var categoryButton: ButtonListener? { get set }
-    weak var dateContainerView: UIView? { get set }
-    weak var nameSeparatorLine: UIView? { get set }
-    weak var dateTextField: UITextField? { get set }
-    weak var nameTextField: UITextField? { get set }
-    weak var priceTextField: UITextField? { get set }
-    weak var categoryContainerView: UIView? { get set }
+    var categoryButton: ButtonListener? { get set }
+    var dateContainerView: UIView? { get set }
+    var nameSeparatorLine: UIView? { get set }
+    var dateTextField: UITextField? { get set }
+    var nameTextField: UITextField? { get set }
+    var priceTextField: UITextField? { get set }
+    var categoryContainerView: UIView? { get set }
 }
 
 class EditExpenseView<T: EditExpensePresenterProtocol>: BaseView<T>, EditExpenseViewProtocol {

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TeamMembersViewProtocol: BaseViewProtocol {
-    weak var tableView: UITableView? { get set }
+    var tableView: UITableView? { get set }
 }
 
 class TeamMembersView<T: TeamMembersPresenterProtocol>: BaseView<T>, TeamMembersViewProtocol {

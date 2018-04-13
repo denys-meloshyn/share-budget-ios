@@ -29,7 +29,7 @@ protocol EditExpensePresenterDelegate: BasePresenterDelegate {
 }
 
 protocol EditExpensePresenterProtocol: BasePresenterProtocol, UITextFieldDelegate {
-    weak var delegate: EditExpensePresenterDelegate? { get set }
+    var delegate: EditExpensePresenterDelegate? { get set }
     
     func openCategoryPage()
     func dateChanged(sender: UIDatePicker)

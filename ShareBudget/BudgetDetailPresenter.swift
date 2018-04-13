@@ -23,7 +23,7 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
 }
 
 protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSource, CPTPieChartDelegate {
-    weak var delegate: BudgetDetailPresenterDelegate? { get set }
+    var delegate: BudgetDetailPresenterDelegate? { get set }
     
     func editMembers()
     func closePageAction()

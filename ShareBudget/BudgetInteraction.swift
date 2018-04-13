@@ -13,7 +13,7 @@ protocol BudgetInteractionDelegate: BaseInteractionDelegate {
 }
 
 protocol BudgetInteractionProtocol: BaseInteractionProtocol, NSFetchedResultsControllerDelegate {
-    weak var delegate: BudgetInteractionDelegate? { get set }
+    var delegate: BudgetInteractionDelegate? { get set }
     
     func numberOfRowsInSection() -> Int
     func updateWithSearch(_ text: String)

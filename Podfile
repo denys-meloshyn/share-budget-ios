@@ -16,9 +16,10 @@ def shared
 	pod 'BugfenderSDK', '1.5.0'
 	pod 'JustLog', '2.0.1'
 	pod 'Toast-Swift', '3.0.1'
-	pod 'SwiftLint', '0.24.2'
+	pod 'SwiftLint', '0.25.1'
 	pod 'Firebase/Core', '4.10.1'
 	pod 'Crashlytics', '3.10.1'
+	pod 'Sourcery', '0.11.0'
 	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LoginTextFieldError {
+enum LoginTextFieldError: AutoEquatable {
     case email(String)
     case password(String)
     case repeatPassword(String)
@@ -24,36 +24,11 @@ enum LoginTextFieldName: String {
     case repeatPassword
 }
 
-extension LoginTextFieldError: Equatable {
-    static func == (lhs: LoginTextFieldError, rhs: LoginTextFieldError) -> Bool {
-        switch (lhs, rhs) {
-            
-        case (let .email(lEmail), let .email(rEmail)):
-            return lEmail == rEmail
-            
-        case (let .password(lPassword), let .password(rPassword)):
-            return lPassword == rPassword
-            
-        case (let .repeatPassword(lRepeatPassword), let .repeatPassword(rRepeatPassword)):
-            return lRepeatPassword == rRepeatPassword
-            
-        case (let .firstName(lFirstName), let .firstName(rFirstName)):
-            return lFirstName == rFirstName
-            
-        case (let .lastName(lLastName), let .lastName(rLastName)):
-            return lLastName == rLastName
-            
-        default:
-            return false
-        }
-    }
-}
-
 protocol LoginViewProtocol: BaseViewProtocol {
-    weak var stackView: UIStackView? { get set }
-    weak var scrollView: UIScrollView? { get set }
-    weak var authorisationButton: UIButton? { get set }
-    weak var authorisationModeButton: UIButton? { get set }
+    var stackView: UIStackView? { get set }
+    var scrollView: UIScrollView? { get set }
+    var authorisationButton: UIButton? { get set }
+    var authorisationModeButton: UIButton? { get set }
 }
 
 class LoginView<T: LoginPresenterProtocol>: BaseView<T>, LoginViewProtocol {

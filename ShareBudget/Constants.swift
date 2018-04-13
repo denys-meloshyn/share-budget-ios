@@ -20,6 +20,8 @@ enum ErrorTypeAPI {
     case unknown
 }
 
+protocol AutoEquatable {}
+
 struct Constants {
     struct values {
         static let paginationSize = 30

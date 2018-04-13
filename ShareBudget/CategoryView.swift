@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CategoryViewProtocol: BaseViewProtocol {
-    weak var tableView: UITableView? { get set }
+    var tableView: UITableView? { get set }
 }
 
 class CategoryView<T: CategoryPresenterProtocol>: BaseView<T>, CategoryViewProtocol {

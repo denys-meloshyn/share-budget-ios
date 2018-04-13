@@ -26,7 +26,7 @@ protocol BudgetPresenterDelegate: BasePresenterDelegate, CreateSearchTableViewHe
 }
 
 protocol BudgetPresenterProtocol: BasePresenterProtocol, UITableViewDelegate, UITableViewDataSource, CreateSearchTableViewHeaderDelegate {
-    weak var delegate: BudgetPresenterDelegate? { get set }
+    var delegate: BudgetPresenterDelegate? { get set }
 }
 
 class BudgetPresenter<I: BudgetInteractionProtocol, R: BudgetRouterProtocol>: BasePresenter<I, R>, BudgetPresenterProtocol {

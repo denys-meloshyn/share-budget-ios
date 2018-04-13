@@ -11,34 +11,34 @@ import CorePlot
 import ChameleonFramework
 
 protocol BudgetDetailViewProtocol: BaseViewProtocol {
-    weak var monthLabel: UILabel? { get set }
-    weak var minusLabel: UILabel? { get set }
-    weak var equalLabel: UILabel? { get set }
-    weak var budgetLabel: UILabel? { get set }
-    weak var balanceLabel: UILabel? { get set }
-    weak var expenseLabel: UILabel? { get set }
-    weak var animationView: UIView? { get set }
-    weak var navigationView: UIView? { get set }
-    weak var expenseCoverView: UIView? { get set }
-    weak var backButton: ButtonListener? { get set }
-    weak var budgetContainerView: UIView? { get set }
-    weak var expenseContainerView: UIView? { get set }
-    weak var balanceContainerView: UIView? { get set }
-    weak var budgetButton: ButtonListener? { get set }
-    weak var expenseButton: ButtonListener? { get set }
-    weak var navigationTitleLabel: UILabel? { get set }
-    weak var chartView: CPTGraphHostingView? { get set }
-    weak var safeAreaPlaceholderView: UIView? { get set }
-    weak var budgetDescriptionLabel: UILabel? { get set }
-    weak var editMemberButton: ButtonListener? { get set }
-    weak var balanceDescriptionLabel: UILabel? { get set }
-    weak var expenseDescriptionLabel: UILabel? { get set }
-    weak var createExpenseButton: ButtonListener? { get set }
-    weak var createNewExpenseContainerView: UIView? { get set }
-    weak var constraintChartViewWidth: NSLayoutConstraint? { get set }
-    weak var constraintChartViewHeight: NSLayoutConstraint? { get set }
-    weak var constraintAnimationViewWidth: NSLayoutConstraint? { get set }
-    weak var constraintAnimationViewHeight: NSLayoutConstraint? { get set }
+    var monthLabel: UILabel? { get set }
+    var minusLabel: UILabel? { get set }
+    var equalLabel: UILabel? { get set }
+    var budgetLabel: UILabel? { get set }
+    var balanceLabel: UILabel? { get set }
+    var expenseLabel: UILabel? { get set }
+    var animationView: UIView? { get set }
+    var navigationView: UIView? { get set }
+    var expenseCoverView: UIView? { get set }
+    var backButton: ButtonListener? { get set }
+    var budgetContainerView: UIView? { get set }
+    var expenseContainerView: UIView? { get set }
+    var balanceContainerView: UIView? { get set }
+    var budgetButton: ButtonListener? { get set }
+    var expenseButton: ButtonListener? { get set }
+    var navigationTitleLabel: UILabel? { get set }
+    var chartView: CPTGraphHostingView? { get set }
+    var safeAreaPlaceholderView: UIView? { get set }
+    var budgetDescriptionLabel: UILabel? { get set }
+    var editMemberButton: ButtonListener? { get set }
+    var balanceDescriptionLabel: UILabel? { get set }
+    var expenseDescriptionLabel: UILabel? { get set }
+    var createExpenseButton: ButtonListener? { get set }
+    var createNewExpenseContainerView: UIView? { get set }
+    var constraintChartViewWidth: NSLayoutConstraint? { get set }
+    var constraintChartViewHeight: NSLayoutConstraint? { get set }
+    var constraintAnimationViewWidth: NSLayoutConstraint? { get set }
+    var constraintAnimationViewHeight: NSLayoutConstraint? { get set }
 }
 
 class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDetailViewProtocol {

@@ -10,10 +10,10 @@ import UIKit
 import Rswift
 
 protocol BudgetViewProtocol: BaseViewProtocol {
-    weak var tableView: UITableView? { get set }
-    weak var createNewGroupLabel: UILabel? { get set }
-    weak var createNewGroupRootView: UIView? { get set }
-    weak var constantCreateNewGroupRootViewBottom: NSLayoutConstraint? { get set }
+    var tableView: UITableView? { get set }
+    var createNewGroupLabel: UILabel? { get set }
+    var createNewGroupRootView: UIView? { get set }
+    var constantCreateNewGroupRootViewBottom: NSLayoutConstraint? { get set }
 }
 
 class BudgetView<T: BudgetPresenterProtocol>: BaseView<T>, BudgetViewProtocol {

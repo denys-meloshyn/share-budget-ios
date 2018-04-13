@@ -30,7 +30,7 @@ protocol LoginPresenterDelegate: BasePresenterDelegate {
 }
 
 protocol LoginPresenterProtocol: BasePresenterProtocol, UITextFieldDelegate {
-    weak var delegate: LoginPresenterDelegate? { get set }
+    var delegate: LoginPresenterDelegate? { get set }
 
     func authoriseUser()
     func switchAuthorisationMode()

@@ -15,7 +15,7 @@ protocol BudgetDetailInteractionDelegate: BaseInteractionDelegate {
 protocol BudgetDetailInteractionProtocol: BaseInteractionProtocol {
     var budget: Budget { get set }
     var budgetID: NSManagedObjectID { get }
-    weak var delegate: BudgetDetailInteractionDelegate? { get set }
+    var delegate: BudgetDetailInteractionDelegate? { get set }
     
     func isEmpty() -> Bool
     func balance() -> Double

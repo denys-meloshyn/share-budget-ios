@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol TeamMembersInteractionProtocol: BaseInteractionProtocol {
-    weak var delegate: BaseInteractionDelegate? { get set }
+    var delegate: BaseInteractionDelegate? { get set }
     
     func save()
     func userCount() -> Int
