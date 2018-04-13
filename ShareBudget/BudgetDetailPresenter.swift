@@ -22,7 +22,7 @@ protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String)
 }
 
-protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSource, CPTPieChartDelegate {
+protocol BudgetDetailPresenterProtocol: BasePresenterProtocol, CPTPieChartDataSource, CPTPieChartDelegate, AutoMockable {
     var delegate: BudgetDetailPresenterDelegate? { get set }
     
     func editMembers()

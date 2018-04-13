@@ -24,6 +24,8 @@
 		572960B42081231300D5E97A /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B32081231300D5E97A /* AutoEquatable.generated.swift */; };
 		572960B52081231300D5E97A /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B32081231300D5E97A /* AutoEquatable.generated.swift */; };
 		572960B62081231300D5E97A /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B32081231300D5E97A /* AutoEquatable.generated.swift */; };
+		572960BA2081318100D5E97A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B92081318100D5E97A /* R.generated.swift */; };
+		572960BB2081319F00D5E97A /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B92081318100D5E97A /* R.generated.swift */; };
 		5735C4001EE445F40037BAA8 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		5735C4011EE445F40037BAA8 /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22631E4BA050004825C2 /* CategoryAPI.swift */; };
 		5735C4021EE445F40037BAA8 /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
@@ -54,7 +56,6 @@
 		5735C41B1EE445F40037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */; };
 		5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */; };
 		5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */; };
-		5735C41E1EE445F40037BAA8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
 		5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
 		5735C4211EE445F40037BAA8 /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
@@ -147,7 +148,6 @@
 		5735C4861EE44D8F0037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F1286B1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift */; };
 		5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */; };
 		5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */; };
-		5735C4891EE44D8F0037BAA8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
 		5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
 		5735C48C1EE44D8F0037BAA8 /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
@@ -249,6 +249,8 @@
 		573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A321E2D5F4100AEA72A /* BaseViewController.swift */; };
 		573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A341E2FFFEC00AEA72A /* Validator.swift */; };
 		573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */; };
+		57428196208131AE00903929 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572960B92081318100D5E97A /* R.generated.swift */; };
+		57428198208132D200903929 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57428197208132D100903929 /* AutoMockable.generated.swift */; };
 		57495862206181590089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574958602061814C0089FC5B /* GoogleService-Info.plist */; };
 		57495863206181630089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 574958602061814C0089FC5B /* GoogleService-Info.plist */; };
 		57495865206185410089FC5B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57495864206185400089FC5B /* GoogleService-Info.plist */; };
@@ -301,7 +303,6 @@
 		5788448E1F588C34007DB0E7 /* MockCategoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788448D1F588C34007DB0E7 /* MockCategoryRouter.swift */; };
 		578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */; };
 		578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A04D01E5256B500330DCD /* ExpenseAPI.swift */; };
-		578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05B1E35103100DE28C8 /* R.generated.swift */; };
 		578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */; };
 		578BD0651E3516BD00DE28C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0671E3516BD00DE28C8 /* Localizable.strings */; };
 		578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD06C1E3516BE00DE28C8 /* InfoPlist.strings */; };
@@ -407,6 +408,7 @@
 		572749551E44F480004A132F /* BudgetDetailInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteraction.swift; sourceTree = "<group>"; };
 		572749571E44F49F004A132F /* BudgetDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailRouter.swift; sourceTree = "<group>"; };
 		572960B32081231300D5E97A /* AutoEquatable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoEquatable.generated.swift; path = Autogenerated/AutoEquatable.generated.swift; sourceTree = SOURCE_ROOT; };
+		572960B92081318100D5E97A /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = Autogenerated/R.generated.swift; sourceTree = SOURCE_ROOT; };
 		5735C4651EE445F40037BAA8 /* ShareBudgetDevelopmentLocal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudgetDevelopmentLocal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5735C4661EE445F40037BAA8 /* ShareBudget Development Local-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ShareBudget Development Local-Info.plist"; path = "/Users/denysmeloshyn/Programming/ShareBudget/ShareBudget Development Local-Info.plist"; sourceTree = "<absolute>"; };
 		5735C4D11EE44D8F0037BAA8 /* ShareBudgetDevelopmentRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShareBudgetDevelopmentRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -456,6 +458,7 @@
 		573F5A321E2D5F4100AEA72A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		573F5A341E2FFFEC00AEA72A /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+UserCredentials.swift"; sourceTree = "<group>"; };
+		57428197208132D100903929 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoMockable.generated.swift; path = Autogenerated/AutoMockable.generated.swift; sourceTree = SOURCE_ROOT; };
 		574958602061814C0089FC5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		57495864206185400089FC5B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57500B652006B9A300169F23 /* ButtonListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListener.swift; sourceTree = "<group>"; };
@@ -491,7 +494,6 @@
 		5788448D1F588C34007DB0E7 /* MockCategoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryRouter.swift; sourceTree = "<group>"; };
 		578A04CE1E524CBA00330DCD /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		578A04D01E5256B500330DCD /* ExpenseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseAPI.swift; sourceTree = "<group>"; };
-		578BD05B1E35103100DE28C8 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisedManager.swift; sourceTree = "<group>"; };
 		578BD05F1E35158D00DE28C8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		578BD0601E35158D00DE28C8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				572960B32081231300D5E97A /* AutoEquatable.generated.swift */,
+				572960B92081318100D5E97A /* R.generated.swift */,
 			);
 			name = Autogenerated;
 			sourceTree = "<group>";
@@ -713,7 +716,6 @@
 				57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */,
 				578BD05D1E35126D00DE28C8 /* LocalisedManager.swift */,
 				576424B61E79E4CC000B595E /* NetworkIndicator.swift */,
-				578BD05B1E35103100DE28C8 /* R.generated.swift */,
 				572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */,
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
@@ -929,6 +931,7 @@
 		57BEAD611ECE1FC800CE372C /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				57428197208132D100903929 /* AutoMockable.generated.swift */,
 				57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */,
 				57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */,
 				57BEAD621ECE201400CE372C /* MockBudgetInteraction.swift */,
@@ -1430,7 +1433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/Sourcery/bin/sourcery --sources $SRCROOT/ShareBudget --templates $PODS_ROOT/Sourcery/Templates/AutoEquatable.stencil --output $SRCROOT/Autogenerated";
+			shellScript = "$PODS_ROOT/Sourcery/bin/sourcery --sources $SRCROOT/ShareBudget --templates $PODS_ROOT/Sourcery/Templates/AutoEquatable.stencil --templates $PODS_ROOT/Sourcery/Templates/AutoMockable.stencil --output $SRCROOT/Autogenerated";
 		};
 		572960B7208126A700D5E97A /* Sourcery */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1472,7 +1475,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Autogenerated\"";
 		};
 		5735C4681EE44D8F0037BAA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1504,7 +1507,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Autogenerated\"";
 		};
 		5735C4CC1EE44D8F0037BAA8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1566,7 +1569,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Autogenerated\"";
 		};
 		5749585D20617BD80089FC5B /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1750,7 +1753,6 @@
 				57CA4FF81F3509CD00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
 				5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */,
-				5735C41E1EE445F40037BAA8 /* R.generated.swift in Sources */,
 				5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */,
 				5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */,
 				5735C4211EE445F40037BAA8 /* LoginInteraction.swift in Sources */,
@@ -1775,6 +1777,7 @@
 				5735C4331EE445F40037BAA8 /* EditExpenseRouter.swift in Sources */,
 				5735C4341EE445F40037BAA8 /* BudgetDetailPresenter.swift in Sources */,
 				5735C4351EE445F40037BAA8 /* BasePresenter.swift in Sources */,
+				572960BB2081319F00D5E97A /* R.generated.swift in Sources */,
 				5735C4361EE445F40037BAA8 /* CategoryInteraction.swift in Sources */,
 				5735C4371EE445F40037BAA8 /* Category+CoreDataProperties.swift in Sources */,
 				5735C4381EE445F40037BAA8 /* Expense+CoreDataProperties.swift in Sources */,
@@ -1853,7 +1856,6 @@
 				57CA4FF91F3509CE00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
 				5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */,
-				5735C4891EE44D8F0037BAA8 /* R.generated.swift in Sources */,
 				5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */,
 				5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */,
 				5735C48C1EE44D8F0037BAA8 /* LoginInteraction.swift in Sources */,
@@ -1878,6 +1880,7 @@
 				5735C49E1EE44D8F0037BAA8 /* EditExpenseRouter.swift in Sources */,
 				5735C49F1EE44D8F0037BAA8 /* BudgetDetailPresenter.swift in Sources */,
 				5735C4A01EE44D8F0037BAA8 /* BasePresenter.swift in Sources */,
+				57428196208131AE00903929 /* R.generated.swift in Sources */,
 				5735C4A11EE44D8F0037BAA8 /* CategoryInteraction.swift in Sources */,
 				5735C4A21EE44D8F0037BAA8 /* Category+CoreDataProperties.swift in Sources */,
 				5735C4A31EE44D8F0037BAA8 /* Expense+CoreDataProperties.swift in Sources */,
@@ -1955,7 +1958,6 @@
 				57F1286F1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift in Sources */,
 				575A22571E476CCA004825C2 /* RightTextFieldTableViewCell.swift in Sources */,
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
-				578BD05C1E35103100DE28C8 /* R.generated.swift in Sources */,
 				570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
@@ -1981,6 +1983,7 @@
 				572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */,
 				573F5A2A1E2D50E100AEA72A /* BasePresenter.swift in Sources */,
 				57FAB4261E6248A700A2AEC7 /* CategoryInteraction.swift in Sources */,
+				572960BA2081318100D5E97A /* R.generated.swift in Sources */,
 				573F5A111E2C180400AEA72A /* Category+CoreDataProperties.swift in Sources */,
 				573F5A151E2C180400AEA72A /* Expense+CoreDataProperties.swift in Sources */,
 				57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */,
@@ -2028,6 +2031,7 @@
 				5735C4D81EE54FDD0037BAA8 /* MockUserCredentials.swift in Sources */,
 				576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */,
 				573738BA1F3A4D75007064EA /* BudgetFetchControllerTest.swift in Sources */,
+				57428198208132D200903929 /* AutoMockable.generated.swift in Sources */,
 				577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */,
 				57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */,
 				57BEAD6B1ECE230B00CE372C /* MockBudgetView.swift in Sources */,

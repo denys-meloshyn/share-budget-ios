@@ -20,6 +20,7 @@ enum ErrorTypeAPI {
     case unknown
 }
 
+protocol AutoMockable {}
 protocol AutoEquatable {}
 
 struct Constants {
