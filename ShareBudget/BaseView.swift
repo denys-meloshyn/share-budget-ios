@@ -18,6 +18,7 @@ protocol LifeCycleStateProtocol: class {
 }
 
 protocol BaseViewProtocol: LifeCycleStateProtocol, AutoMockable {
+    
 }
 
 class BaseView<T: BasePresenterProtocol> {
