@@ -17,7 +17,8 @@ protocol LifeCycleStateProtocol: class {
     func viewDidDisappear(_ animated: Bool)
 }
 
-protocol BaseViewProtocol: LifeCycleStateProtocol, AutoMockable { 
+protocol BaseViewProtocol: LifeCycleStateProtocol, AutoMockable {
+    
 }
 
 class BaseView<T: BasePresenterProtocol> {
