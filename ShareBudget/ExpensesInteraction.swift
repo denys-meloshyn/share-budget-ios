@@ -25,7 +25,7 @@ protocol ExpensesInteractionDelegate: BaseInteractionDelegate {
 
 class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     let budget: Budget
-    var category: Category? = nil
+    var category: Category?
     var budgetRest = [[String: String]]()
     weak var delegate: ExpensesInteractionDelegate?
 

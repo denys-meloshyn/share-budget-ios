@@ -28,7 +28,7 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
         interaction.delegate = self
         
         delegate.showPage(title: interaction.budget.name)
-        delegate.showCreateNewExpenseButton { listener in
+        delegate.showCreateNewExpenseButton { _ in
             self.router.openCreateExpenseViewController(budgetID: self.interaction.budget.objectID)
         }
     }
