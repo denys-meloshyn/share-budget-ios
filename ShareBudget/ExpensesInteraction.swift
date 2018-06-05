@@ -11,6 +11,7 @@ import CoreData
 protocol ExpensesInteractionProtocol: BaseInteractionProtocol {
     var budget: Budget { get }
     var budgetRest: [[String: String]] { get }
+    var delegate: ExpensesInteractionDelegate? { get set }
 
     func numberOfSections() -> Int
     func date(for section: Int) -> NSDate
@@ -26,10 +27,10 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     let budget: Budget
     var category: Category? = nil
     var budgetRest = [[String: String]]()
+    weak var delegate: ExpensesInteractionDelegate?
 
     private let budgetID: NSManagedObjectID
     private let calculator: ExpenseCalculator
-    private weak var delegate: ExpensesInteractionDelegate?
     private let managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Expense>
 

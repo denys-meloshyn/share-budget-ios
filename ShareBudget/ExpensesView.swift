@@ -14,11 +14,11 @@ protocol ExpensesViewProtocol: BaseViewProtocol {
 
 class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>, ExpensesViewProtocol {
     var tableView: UITableView!
+    var addBarButtonItem: BarButtonItemListener?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presenter.delegate = self
+
         tableView.delegate = presenter
         tableView.dataSource = presenter
 
@@ -30,6 +30,11 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>, E
 }
 
 extension ExpensesView: ExpensesPresenterDelegate {
+    func showCreateNewExpenseButton(action: @escaping BarButtonItemListenerActionBlock) {
+        addBarButtonItem = BarButtonItemListener(with: .add, action: action)
+        viewController?.navigationItem.rightBarButtonItem = addBarButtonItem?.barButtonItem
+    }
+    
     func createExpenseDateSectionHeaderView(month: String?, expenses: String?) -> ExpenseTableViewHeader? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ExpenseTableViewHeader") as? ExpenseTableViewHeader
         headerView?.monthLabel?.text = month
@@ -48,5 +53,9 @@ extension ExpensesView: ExpensesPresenterDelegate {
         cell?.dateLabel?.text = date
 
         return cell
+    }
+
+    func refresh() {
+        tableView.reloadData()
     }
 }

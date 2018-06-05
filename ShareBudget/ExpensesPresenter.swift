@@ -7,21 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 protocol ExpensesPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate {
     var delegate: ExpensesPresenterDelegate! { get set }
 }
 
 protocol ExpensesPresenterDelegate: BasePresenterDelegate {
+    func refresh()
+    func showCreateNewExpenseButton(action: @escaping BarButtonItemListenerActionBlock)
     func createExpenseDateSectionHeaderView(month: String?, expenses: String?) -> ExpenseTableViewHeader?
     func createExpenseTableViewCell(at indexPath: IndexPath, title: String?, price: String?, category: String?, budget: String?, date: String?) -> ExpenseTableViewCell?
 }
 
-class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: ExpensesRouterProtocol>: BasePresenter<Interaction, Router>, ExpensesPresenterProtocol {
+class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: ExpensesRouterProtocol>: BasePresenter<Interaction, Router>, ExpensesPresenterProtocol, ExpensesInteractionDelegate {
+    
     weak var delegate: ExpensesPresenterDelegate!
 
     func viewDidLoad() {
-        delegate?.showPage(title: interaction.budget.name)
+        interaction.delegate = self
+        
+        delegate.showPage(title: interaction.budget.name)
+        delegate.showCreateNewExpenseButton { listener in
+            self.router.openCreateExpenseViewController(budgetID: self.interaction.budget.objectID)
+        }
     }
     
     func viewWillAppear(_ animated: Bool) {
@@ -34,6 +43,16 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
     }
     
     func viewDidDisappear(_ animated: Bool) {
+    }
+    
+    func didChangeContent() {
+        delegate.refresh()
+    }
+    
+    func willChangeContent() {
+    }
+    
+    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
     }
     
     // MARK: - UITableViewDataSource

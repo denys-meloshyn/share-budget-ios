@@ -20,6 +20,8 @@ class ExpensesViewController: BaseViewController {
         let interaction = ExpensesInteraction(managedObjectContext: ModelManager.managedObjectContext, budgetID: budgetID, categoryID: categoryID)
         let presenter = ExpensesPresenter(with: interaction, router: router)
         viperView = ExpensesView(with: presenter, and: self)
+
+        presenter.delegate = viperView as! ExpensesPresenterDelegate
     }
 
     override func linkStoryboardViews() {

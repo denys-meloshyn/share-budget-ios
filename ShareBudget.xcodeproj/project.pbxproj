@@ -325,6 +325,9 @@
 		57A2B2ED1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
 		57B120861F379D8300515921 /* ChangedModelsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120851F379D8300515921 /* ChangedModelsTest.swift */; };
 		57B120891F379F8900515921 /* NSFetchedResultsController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */; };
+		57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
+		57B31A8E20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
+		57B31A8F20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
 		57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */; };
 		57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */; };
@@ -521,6 +524,7 @@
 		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57B120851F379D8300515921 /* ChangedModelsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedModelsTest.swift; sourceTree = "<group>"; };
 		57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Testing.swift"; sourceTree = "<group>"; };
+		57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItemListener.swift; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPresenterTest.swift; sourceTree = "<group>"; };
 		57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetPresenter.swift; sourceTree = "<group>"; };
@@ -822,6 +826,7 @@
 		573F5A1E1E2D4F8C00AEA72A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */,
 				573F5A271E2D50B400AEA72A /* BaseView.swift */,
 				572749511E44F41B004A132F /* BudgetDetailView.swift */,
 				57F1285D1E3D332600E51C0C /* BudgetView.swift */,
@@ -1772,6 +1777,7 @@
 				5735C41B1EE445F40037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
 				57CA4FF81F3509CD00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C41C1EE445F40037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
+				57B31A8E20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */,
 				5735C41D1EE445F40037BAA8 /* LoginRouter.swift in Sources */,
 				5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */,
 				5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */,
@@ -1879,6 +1885,7 @@
 				5735C4861EE44D8F0037BAA8 /* BudgetLimit+CoreDataClass.swift in Sources */,
 				57CA4FF91F3509CE00669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				5735C4871EE44D8F0037BAA8 /* RightTextFieldTableViewCell.swift in Sources */,
+				57B31A8F20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */,
 				5735C4881EE44D8F0037BAA8 /* LoginRouter.swift in Sources */,
 				5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */,
 				5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */,
@@ -1986,6 +1993,7 @@
 				57F1286F1E3DF76200E51C0C /* BudgetLimit+CoreDataClass.swift in Sources */,
 				575A22571E476CCA004825C2 /* RightTextFieldTableViewCell.swift in Sources */,
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
+				57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */,
 				570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
