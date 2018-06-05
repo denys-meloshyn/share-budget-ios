@@ -601,6 +601,83 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
     }
 
 }
+class ExpensesViewProtocolMock: ExpensesViewProtocol {
+    var tableView: UITableView!
+
+    //MARK: - viewDidLoad
+
+    var viewDidLoadCallsCount = 0
+    var viewDidLoadCalled: Bool {
+        return viewDidLoadCallsCount > 0
+    }
+    var viewDidLoadClosure: (() -> Void)?
+
+    func viewDidLoad() {
+        viewDidLoadCallsCount += 1
+        viewDidLoadClosure?()
+    }
+
+    //MARK: - viewWillAppear
+
+    var viewWillAppearCallsCount = 0
+    var viewWillAppearCalled: Bool {
+        return viewWillAppearCallsCount > 0
+    }
+    var viewWillAppearReceivedAnimated: Bool?
+    var viewWillAppearClosure: ((Bool) -> Void)?
+
+    func viewWillAppear(_ animated: Bool) {
+        viewWillAppearCallsCount += 1
+        viewWillAppearReceivedAnimated = animated
+        viewWillAppearClosure?(animated)
+    }
+
+    //MARK: - viewDidAppear
+
+    var viewDidAppearCallsCount = 0
+    var viewDidAppearCalled: Bool {
+        return viewDidAppearCallsCount > 0
+    }
+    var viewDidAppearReceivedAnimated: Bool?
+    var viewDidAppearClosure: ((Bool) -> Void)?
+
+    func viewDidAppear(_ animated: Bool) {
+        viewDidAppearCallsCount += 1
+        viewDidAppearReceivedAnimated = animated
+        viewDidAppearClosure?(animated)
+    }
+
+    //MARK: - viewWillDisappear
+
+    var viewWillDisappearCallsCount = 0
+    var viewWillDisappearCalled: Bool {
+        return viewWillDisappearCallsCount > 0
+    }
+    var viewWillDisappearReceivedAnimated: Bool?
+    var viewWillDisappearClosure: ((Bool) -> Void)?
+
+    func viewWillDisappear(_ animated: Bool) {
+        viewWillDisappearCallsCount += 1
+        viewWillDisappearReceivedAnimated = animated
+        viewWillDisappearClosure?(animated)
+    }
+
+    //MARK: - viewDidDisappear
+
+    var viewDidDisappearCallsCount = 0
+    var viewDidDisappearCalled: Bool {
+        return viewDidDisappearCallsCount > 0
+    }
+    var viewDidDisappearReceivedAnimated: Bool?
+    var viewDidDisappearClosure: ((Bool) -> Void)?
+
+    func viewDidDisappear(_ animated: Bool) {
+        viewDidDisappearCallsCount += 1
+        viewDidDisappearReceivedAnimated = animated
+        viewDidDisappearClosure?(animated)
+    }
+
+}
 class LoginViewProtocolMock: LoginViewProtocol {
     var stackView: UIStackView?
     var scrollView: UIScrollView?

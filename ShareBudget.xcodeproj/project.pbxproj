@@ -308,6 +308,18 @@
 		578BD06F1E3516BE00DE28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0711E3516BE00DE28C8 /* InfoPlist.strings */; };
 		578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */; };
 		578BD0781E352F2E00DE28C8 /* TextFieldErrorMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */; };
+		579359ED20C6F6A7005A2D2B /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359EC20C6F6A7005A2D2B /* ExpensesView.swift */; };
+		579359EE20C6F6A7005A2D2B /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359EC20C6F6A7005A2D2B /* ExpensesView.swift */; };
+		579359EF20C6F6A7005A2D2B /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359EC20C6F6A7005A2D2B /* ExpensesView.swift */; };
+		579359F120C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */; };
+		579359F220C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */; };
+		579359F320C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */; };
+		579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F420C6F706005A2D2B /* ExpensesRouter.swift */; };
+		579359F620C6F706005A2D2B /* ExpensesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F420C6F706005A2D2B /* ExpensesRouter.swift */; };
+		579359F720C6F706005A2D2B /* ExpensesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F420C6F706005A2D2B /* ExpensesRouter.swift */; };
+		579359F920C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */; };
+		579359FA20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */; };
+		579359FB20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */; };
 		57A2B2EB1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
 		57A2B2EC1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
 		57A2B2ED1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
@@ -502,6 +514,10 @@
 		578BD0701E3516BE00DE28C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldErrorMessage.swift; sourceTree = "<group>"; };
 		578BD0771E352F2E00DE28C8 /* TextFieldErrorMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldErrorMessage.xib; sourceTree = "<group>"; };
+		579359EC20C6F6A7005A2D2B /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
+		579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPresenter.swift; sourceTree = "<group>"; };
+		579359F420C6F706005A2D2B /* ExpensesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRouter.swift; sourceTree = "<group>"; };
+		579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteraction.swift; sourceTree = "<group>"; };
 		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57B120851F379D8300515921 /* ChangedModelsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedModelsTest.swift; sourceTree = "<group>"; };
 		57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Testing.swift"; sourceTree = "<group>"; };
@@ -812,7 +828,9 @@
 				57500B652006B9A300169F23 /* ButtonListener.swift */,
 				57FAB4211E62483D00A2AEC7 /* CategoryView.swift */,
 				57F128671E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift */,
+				575CA988200BF82E00613D8E /* DatePicker.swift */,
 				575A22591E477234004825C2 /* EditExpenseView.swift */,
+				579359EC20C6F6A7005A2D2B /* ExpensesView.swift */,
 				5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */,
 				57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */,
 				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
@@ -821,7 +839,6 @@
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
 				57500B6920093EC900169F23 /* TextFieldListener.swift */,
 				575A22651E4D0189004825C2 /* ValidationTextField.swift */,
-				575CA988200BF82E00613D8E /* DatePicker.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -834,6 +851,7 @@
 				57F128611E3D33E800E51C0C /* BudgetPresenter.swift */,
 				57FAB4231E62486900A2AEC7 /* CategoryPresenter.swift */,
 				575A225B1E477258004825C2 /* EditExpensePresenter.swift */,
+				579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */,
 				573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */,
 				575E119C1F1EA330000B2F07 /* TeamMembersPresenter.swift */,
 			);
@@ -848,6 +866,7 @@
 				57F128631E3D341700E51C0C /* BudgetInteraction.swift */,
 				57FAB4251E6248A700A2AEC7 /* CategoryInteraction.swift */,
 				575A225D1E477281004825C2 /* EditExpenseInteraction.swift */,
+				579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */,
 				573F5A251E2D502100AEA72A /* LoginInteraction.swift */,
 				575E119E1F1EA369000B2F07 /* TeamMembersInteraction.swift */,
 			);
@@ -862,6 +881,7 @@
 				57F1285F1E3D33AE00E51C0C /* BudgetRouter.swift */,
 				57FAB4271E6248C700A2AEC7 /* CategoryRouter.swift */,
 				575A225F1E4772D3004825C2 /* EditExpenseRouter.swift */,
+				579359F420C6F706005A2D2B /* ExpensesRouter.swift */,
 				573F5A2C1E2D54DE00AEA72A /* LoginRouter.swift */,
 				575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */,
 			);
@@ -1723,8 +1743,10 @@
 				5735C4051EE445F40037BAA8 /* BudgetUserAPI.swift in Sources */,
 				57500B672006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
+				579359F620C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
+				579359FA20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
 				5735C4091EE445F40037BAA8 /* Budget+CoreDataClass.swift in Sources */,
 				575E11A21F1EA8E3000B2F07 /* TeamMembersView.swift in Sources */,
 				5735C40A1EE445F40037BAA8 /* BaseViewController.swift in Sources */,
@@ -1732,6 +1754,7 @@
 				5735C40C1EE445F40037BAA8 /* Category+CoreDataClass.swift in Sources */,
 				5735C40D1EE445F40037BAA8 /* NetworkIndicator.swift in Sources */,
 				5735C40E1EE445F40037BAA8 /* TextFieldErrorMessage.swift in Sources */,
+				579359EE20C6F6A7005A2D2B /* ExpensesView.swift in Sources */,
 				5735C40F1EE445F40037BAA8 /* BaseAPI.swift in Sources */,
 				5735C4101EE445F40037BAA8 /* AppDelegate.swift in Sources */,
 				5735C4111EE445F40037BAA8 /* ExpenseAPI.swift in Sources */,
@@ -1753,6 +1776,7 @@
 				5735C41F1EE445F40037BAA8 /* Dependency.swift in Sources */,
 				5735C4201EE445F40037BAA8 /* LoginPresenter.swift in Sources */,
 				5735C4211EE445F40037BAA8 /* LoginInteraction.swift in Sources */,
+				579359F220C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */,
 				5735C4221EE445F40037BAA8 /* EditExpenseView.swift in Sources */,
 				5735C4231EE445F40037BAA8 /* LocalisedManager.swift in Sources */,
 				5735C4241EE445F40037BAA8 /* CategoryView.swift in Sources */,
@@ -1826,8 +1850,10 @@
 				5735C4701EE44D8F0037BAA8 /* BudgetUserAPI.swift in Sources */,
 				57500B682006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
+				579359F720C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
+				579359FB20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
 				5735C4741EE44D8F0037BAA8 /* Budget+CoreDataClass.swift in Sources */,
 				575E11A31F1EA8E3000B2F07 /* TeamMembersView.swift in Sources */,
 				5735C4751EE44D8F0037BAA8 /* BaseViewController.swift in Sources */,
@@ -1835,6 +1861,7 @@
 				5735C4771EE44D8F0037BAA8 /* Category+CoreDataClass.swift in Sources */,
 				5735C4781EE44D8F0037BAA8 /* NetworkIndicator.swift in Sources */,
 				5735C4791EE44D8F0037BAA8 /* TextFieldErrorMessage.swift in Sources */,
+				579359EF20C6F6A7005A2D2B /* ExpensesView.swift in Sources */,
 				5735C47A1EE44D8F0037BAA8 /* BaseAPI.swift in Sources */,
 				5735C47B1EE44D8F0037BAA8 /* AppDelegate.swift in Sources */,
 				5735C47C1EE44D8F0037BAA8 /* ExpenseAPI.swift in Sources */,
@@ -1856,6 +1883,7 @@
 				5735C48A1EE44D8F0037BAA8 /* Dependency.swift in Sources */,
 				5735C48B1EE44D8F0037BAA8 /* LoginPresenter.swift in Sources */,
 				5735C48C1EE44D8F0037BAA8 /* LoginInteraction.swift in Sources */,
+				579359F320C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */,
 				5735C48D1EE44D8F0037BAA8 /* EditExpenseView.swift in Sources */,
 				5735C48E1EE44D8F0037BAA8 /* LocalisedManager.swift in Sources */,
 				5735C48F1EE44D8F0037BAA8 /* CategoryView.swift in Sources */,
@@ -1929,8 +1957,10 @@
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
 				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
+				579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
+				579359F920C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
 				57F1286D1E3DF76200E51C0C /* Budget+CoreDataClass.swift in Sources */,
 				575E119B1F1EA307000B2F07 /* TeamMembersView.swift in Sources */,
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
@@ -1938,6 +1968,7 @@
 				573F5A101E2C180400AEA72A /* Category+CoreDataClass.swift in Sources */,
 				576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */,
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
+				579359ED20C6F6A7005A2D2B /* ExpensesView.swift in Sources */,
 				573F59D91E29627A00AEA72A /* BaseAPI.swift in Sources */,
 				573F59A01E295C4D00AEA72A /* AppDelegate.swift in Sources */,
 				578A04D11E5256B500330DCD /* ExpenseAPI.swift in Sources */,
@@ -1959,6 +1990,7 @@
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
 				575A225A1E477234004825C2 /* EditExpenseView.swift in Sources */,
+				579359F120C6F6E6005A2D2B /* ExpensesPresenter.swift in Sources */,
 				578BD05E1E35126D00DE28C8 /* LocalisedManager.swift in Sources */,
 				57FAB4221E62483D00A2AEC7 /* CategoryView.swift in Sources */,
 				578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */,
