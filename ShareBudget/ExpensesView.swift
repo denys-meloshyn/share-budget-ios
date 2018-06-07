@@ -14,18 +14,38 @@ protocol ExpensesViewProtocol: BaseViewProtocol {
 
 class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>, ExpensesViewProtocol {
     var tableView: UITableView!
-    var addBarButtonItem: BarButtonItemListener?
+
+    private var searchController: UISearchController!
+    private var addBarButtonItem: BarButtonItemListener?
+    private var searchTableViewController = UITableViewController()
+
+    fileprivate let headerViewReuseIdentifier = "ExpenseTableViewHeader"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = presenter
-        tableView.dataSource = presenter
+        configureSearchTable()
+        configureTable()
+    }
 
+    private func configureTable() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80.0
         tableView.sectionHeaderHeight = 40.0
-        tableView.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: "ExpenseTableViewHeader")
+        tableView.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: headerViewReuseIdentifier)
+
+        tableView.delegate = presenter
+        tableView.dataSource = presenter
+
+        tableView.tableHeaderView = searchController.searchBar
+    }
+
+    private func configureSearchTable() {
+        searchTableViewController.tableView.delegate = presenter
+        searchTableViewController.tableView.dataSource = presenter
+
+        searchController = UISearchController(searchResultsController: searchTableViewController)
+        searchController.delegate = presenter
     }
 }
 

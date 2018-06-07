@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-protocol ExpensesPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate {
+protocol ExpensesPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate {
     var delegate: ExpensesPresenterDelegate! { get set }
 }
 
@@ -21,7 +21,6 @@ protocol ExpensesPresenterDelegate: BasePresenterDelegate {
 }
 
 class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: ExpensesRouterProtocol>: BasePresenter<Interaction, Router>, ExpensesPresenterProtocol, ExpensesInteractionDelegate {
-    
     weak var delegate: ExpensesPresenterDelegate!
 
     func viewDidLoad() {
@@ -101,5 +100,27 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
         tableView.deselectRow(at: indexPath, animated: false)
         let expense = interaction.object(at: indexPath)
         router.openEditExpenseViewController(budgetID: interaction.budget.objectID, expenseID: expense.objectID)
+    }
+
+    // MARK: - UISearchControllerDelegate
+
+    func willPresentSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func didPresentSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func willDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func didDismissSearchController(_ searchController: UISearchController) {
+
+    }
+
+    func presentSearchController(_ searchController: UISearchController) {
+
     }
 }

@@ -214,10 +214,19 @@
                         <viewLayoutGuide key="safeArea" id="kOt-8V-UxE"/>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="REU-AA-p32" id="u0t-ke-Ppl"/>
                         <outlet property="tableView" destination="bWQ-Oc-cNh" id="WJv-ZM-GNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7V1-0O-WGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="REU-AA-p32">
+                    <connections>
+                        <outlet property="delegate" destination="ClV-72-GJA" id="Ffc-Bz-CYQ"/>
+                        <outlet property="searchContentsController" destination="ClV-72-GJA" id="IXL-iv-d1o"/>
+                        <outlet property="searchResultsDataSource" destination="ClV-72-GJA" id="kz0-jn-jsx"/>
+                        <outlet property="searchResultsDelegate" destination="ClV-72-GJA" id="cXf-cJ-HJW"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2771.25" y="844.0140845070423"/>
         </scene>
