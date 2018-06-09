@@ -9,19 +9,31 @@
 import UIKit
 import CoreData
 
-protocol ExpensesPresenterProtocol: BasePresenterProtocol,
-        UITableViewDataSource,
-        UITableViewDelegate,
-        UISearchControllerDelegate,
-        UISearchResultsUpdating {
+protocol ExpensesPresenterProtocol: BasePresenterProtocol {
     var delegate: ExpensesPresenterDelegate! { get set }
+
+    func expenseSelected(at indexPath: IndexPath)
+    func interaction() -> ExpensesInteractionProtocol
+    func headerViewModel(for section: Int) -> ExpenseTableViewHeaderViewModel
+    func cellViewModel(for indexPath: IndexPath) -> ExpenseTableViewCellViewModel
+}
+
+struct ExpenseTableViewCellViewModel {
+    var date: String?
+    var title: String?
+    var price: String?
+    var budget: String?
+    var category: String?
+}
+
+struct ExpenseTableViewHeaderViewModel {
+    var month: String?
+    var expenses: String?
 }
 
 protocol ExpensesPresenterDelegate: BasePresenterDelegate {
     func refresh()
     func showCreateNewExpenseButton(action: @escaping BarButtonItemListenerActionBlock)
-    func createExpenseDateSectionHeaderView(month: String?, expenses: String?) -> ExpenseTableViewHeader?
-    func createExpenseTableViewCell(at indexPath: IndexPath, title: String?, price: String?, category: String?, budget: String?, date: String?) -> ExpenseTableViewCell?
 }
 
 class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: ExpensesRouterProtocol>: BasePresenter<Interaction, Router>, ExpensesPresenterProtocol, ExpensesInteractionDelegate {
@@ -57,20 +69,14 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
     
     func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
     }
-    
-    // MARK: - UITableViewDataSource
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return interaction.numberOfSections()
+
+    func interaction() -> ExpensesInteractionProtocol {
+        return interaction
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return interaction.numberOfRows(inSection: section)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func cellViewModel(for indexPath: IndexPath) -> ExpenseTableViewCellViewModel {
         let expense = interaction.object(at: indexPath)
-        
+
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
 
@@ -78,59 +84,25 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
         if let creationDate = expense.creationDate as Date? {
             date = UtilityFormatter.expenseCreationFormatter.string(for: creationDate) ?? ""
         }
-
         let dict = interaction.budgetRest[indexPath.section]
-        let cell = delegate?.createExpenseTableViewCell(at: indexPath,
+
+        return ExpenseTableViewCellViewModel(date: date,
                 title: expense.name,
                 price: UtilityFormatter.priceFormatter.string(for: expense.price),
-                category: expense.category?.name,
                 budget: dict[expense.modelID?.stringValue ?? ""],
-                date: date)
-        
-        return cell!
+                category: expense.category?.name)
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+    func headerViewModel(for section: Int) -> ExpenseTableViewHeaderViewModel {
         let creationDate = interaction.date(for: section)
         let total = interaction.totalExpense(for: section)
 
-        return delegate?.createExpenseDateSectionHeaderView(month: UtilityFormatter.yearMonthFormatter.string(from: creationDate as Date),
+        return ExpenseTableViewHeaderViewModel(month: UtilityFormatter.yearMonthFormatter.string(from: creationDate as Date),
                 expenses: UtilityFormatter.priceFormatter.string(for: total))
     }
 
-    // MARK: - UITableViewDelegate
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+    func expenseSelected(at indexPath: IndexPath) {
         let expense = interaction.object(at: indexPath)
         router.openEditExpenseViewController(budgetID: interaction.budget.objectID, expenseID: expense.objectID)
-    }
-
-    // MARK: - UISearchControllerDelegate
-
-    func willPresentSearchController(_ searchController: UISearchController) {
-
-    }
-
-    func didPresentSearchController(_ searchController: UISearchController) {
-
-    }
-
-    func willDismissSearchController(_ searchController: UISearchController) {
-
-    }
-
-    func didDismissSearchController(_ searchController: UISearchController) {
-
-    }
-
-    func presentSearchController(_ searchController: UISearchController) {
-
-    }
-
-    // MARK: - UISearchResultsUpdating
-
-    func updateSearchResults(for searchController: UISearchController) {
-        interaction.updateFilter(with: searchController.searchBar.text ?? "")
     }
 }

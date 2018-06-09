@@ -20,8 +20,8 @@ protocol LifeCycleStateProtocol: class {
 protocol BaseViewProtocol: LifeCycleStateProtocol, AutoMockable { 
 }
 
-class BaseView<T: BasePresenterProtocol> {
-    let presenter: T
+class BaseView<T: BasePresenterProtocol>: NSObject {
+    let presenter: T    
     weak var viewController: UIViewController?
     
     init(with presenter: T, and viewController: UIViewController) {
