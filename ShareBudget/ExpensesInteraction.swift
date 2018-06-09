@@ -14,9 +14,10 @@ protocol ExpensesInteractionProtocol: BaseInteractionProtocol {
     var delegate: ExpensesInteractionDelegate? { get set }
 
     func numberOfSections() -> Int
+    func updateFilter(with value: String)
     func date(for section: Int) -> NSDate
-    func object(at indexPath: IndexPath) -> Expense
     func totalExpense(for section: Int) -> Double
+    func object(at indexPath: IndexPath) -> Expense
     func numberOfRows(inSection section: Int) -> Int
 }
 
@@ -29,13 +30,20 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     var budgetRest = [[String: String]]()
     weak var delegate: ExpensesInteractionDelegate?
 
+    private let logger: LoggerProtocol
     private let budgetID: NSManagedObjectID
     private let calculator: ExpenseCalculator
+    private let categoryID: NSManagedObjectID?
     private let managedObjectContext: NSManagedObjectContext
-    private let fetchedResultsController: NSFetchedResultsController<Expense>
+    private var fetchedResultsController: NSFetchedResultsController<Expense>
 
-    init(managedObjectContext: NSManagedObjectContext, budgetID: NSManagedObjectID, categoryID: NSManagedObjectID?) {
+    init(managedObjectContext: NSManagedObjectContext,
+         budgetID: NSManagedObjectID,
+         categoryID: NSManagedObjectID?,
+         logger: LoggerProtocol) {
+        self.logger = logger
         self.budgetID = budgetID
+        self.categoryID = categoryID
         self.managedObjectContext = managedObjectContext
         fetchedResultsController = ModelManager.expenseFetchController(managedObjectContext, for: budgetID, categoryID: categoryID)
         calculator = ExpenseCalculator(fetchedResultsController: fetchedResultsController)
@@ -53,15 +61,9 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
         self.budget = budget
 
         super.init()
-        
-        fetchedResultsController.delegate = self
 
-        do {
-            try fetchedResultsController.performFetch()
-            calculateBudgetRestForExpenses()
-        } catch {
-
-        }
+        performFetch()
+        calculateBudgetRestForExpenses()
     }
 
     func numberOfSections() -> Int {
@@ -91,6 +93,25 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
     func totalExpense(for section: Int) -> Double {
         return calculator.totalExpense(for: section)
+    }
+
+    func updateFilter(with value: String) {
+        fetchedResultsController = ModelManager.expenseFetchController(managedObjectContext,
+                for: budgetID,
+                categoryID: categoryID,
+                searchText: value)
+        performFetch()
+        delegate?.didChangeContent()
+    }
+
+    private func performFetch() {
+        fetchedResultsController.delegate = self
+
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            logger.logError("Can't perform fetch request")
+        }
     }
 
     private func calculateBudgetRestForExpenses() {

@@ -9,7 +9,11 @@
 import UIKit
 import CoreData
 
-protocol ExpensesPresenterProtocol: BasePresenterProtocol, UITableViewDataSource, UITableViewDelegate, UISearchControllerDelegate {
+protocol ExpensesPresenterProtocol: BasePresenterProtocol,
+        UITableViewDataSource,
+        UITableViewDelegate,
+        UISearchControllerDelegate,
+        UISearchResultsUpdating {
     var delegate: ExpensesPresenterDelegate! { get set }
 }
 
@@ -122,5 +126,11 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
 
     func presentSearchController(_ searchController: UISearchController) {
 
+    }
+
+    // MARK: - UISearchResultsUpdating
+
+    func updateSearchResults(for searchController: UISearchController) {
+        interaction.updateFilter(with: searchController.searchBar.text ?? "")
     }
 }

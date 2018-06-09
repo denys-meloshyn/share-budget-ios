@@ -28,24 +28,32 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>, E
         configureTable()
     }
 
-    private func configureTable() {
+    private func configureTableWithDefaultProperties(tableView: UITableView) {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80.0
         tableView.sectionHeaderHeight = 40.0
-        tableView.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: headerViewReuseIdentifier)
+        addCells(to: tableView)
 
         tableView.delegate = presenter
         tableView.dataSource = presenter
+    }
 
+    private func addCells(to tableView: UITableView) {
+        tableView.register(R.nib.expenseTableViewCell)
+        tableView.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: headerViewReuseIdentifier)
+    }
+
+    private func configureTable() {
+        configureTableWithDefaultProperties(tableView: tableView)
         tableView.tableHeaderView = searchController.searchBar
     }
 
     private func configureSearchTable() {
-        searchTableViewController.tableView.delegate = presenter
-        searchTableViewController.tableView.dataSource = presenter
+        configureTableWithDefaultProperties(tableView: searchTableViewController.tableView)
 
         searchController = UISearchController(searchResultsController: searchTableViewController)
         searchController.delegate = presenter
+        searchController.searchResultsUpdater = presenter
     }
 }
 
@@ -63,8 +71,13 @@ extension ExpensesView: ExpensesPresenterDelegate {
         return headerView
     }
     
-    func createExpenseTableViewCell(at indexPath: IndexPath, title: String?, price: String?, category: String?, budget: String?, date: String?) -> ExpenseTableViewCell? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell") as? ExpenseTableViewCell
+    func createExpenseTableViewCell(at indexPath: IndexPath,
+                                    title: String?,
+                                    price: String?,
+                                    category: String?,
+                                    budget: String?,
+                                    date: String?) -> ExpenseTableViewCell? {
+        let cell = searchTableViewController.tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.expenseCell, for: indexPath)
 
         cell?.titleLabel?.text = title
         cell?.priceLabel?.text = price
@@ -77,5 +90,6 @@ extension ExpensesView: ExpensesPresenterDelegate {
 
     func refresh() {
         tableView.reloadData()
+        searchTableViewController.tableView.reloadData()
     }
 }

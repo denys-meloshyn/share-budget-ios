@@ -328,6 +328,12 @@
 		57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
 		57B31A8E20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
 		57B31A8F20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
+		57B31A9220CBC23700670F60 /* LoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A9120CBC23700670F60 /* LoggerProtocol.swift */; };
+		57B31A9320CBC23700670F60 /* LoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A9120CBC23700670F60 /* LoggerProtocol.swift */; };
+		57B31A9420CBC23700670F60 /* LoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A9120CBC23700670F60 /* LoggerProtocol.swift */; };
+		57B31A9620CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */; };
+		57B31A9720CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */; };
+		57B31A9820CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */; };
 		57B9B0301E3D007800085E19 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9B02F1E3D007800085E19 /* SettingsViewController.swift */; };
 		57BEAD5E1ECE1FA400CE372C /* BudgetPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */; };
 		57BEAD601ECE1FBA00CE372C /* MockBudgetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */; };
@@ -525,6 +531,8 @@
 		57B120851F379D8300515921 /* ChangedModelsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedModelsTest.swift; sourceTree = "<group>"; };
 		57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Testing.swift"; sourceTree = "<group>"; };
 		57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItemListener.swift; sourceTree = "<group>"; };
+		57B31A9120CBC23700670F60 /* LoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerProtocol.swift; sourceTree = "<group>"; };
+		57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpenseTableViewCell.xib; sourceTree = "<group>"; };
 		57B9B02F1E3D007800085E19 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		57BEAD5D1ECE1FA400CE372C /* BudgetPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetPresenterTest.swift; sourceTree = "<group>"; };
 		57BEAD5F1ECE1FBA00CE372C /* MockBudgetPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBudgetPresenter.swift; sourceTree = "<group>"; };
@@ -691,6 +699,7 @@
 				573F5A201E2D4FA500AEA72A /* Interaction */,
 				573F59DF1E2A7E3F00AEA72A /* ModelManager */,
 				573F5A1F1E2D4F9E00AEA72A /* Presenter */,
+				57B31A9020CB14B800670F60 /* Protocols */,
 				573F59D41E295EC700AEA72A /* Resources */,
 				573F5A2B1E2D54C300AEA72A /* Router */,
 				573F59D21E295EA200AEA72A /* Utility */,
@@ -938,6 +947,7 @@
 				575A22671E4D01A7004825C2 /* ValidationTextField.xib */,
 				573F59AB1E295C4D00AEA72A /* LaunchScreen.storyboard */,
 				573F59A31E295C4D00AEA72A /* Main.storyboard */,
+				57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */,
 			);
 			name = Xib;
 			sourceTree = "<group>";
@@ -949,6 +959,14 @@
 				57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		57B31A9020CB14B800670F60 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				57B31A9120CBC23700670F60 /* LoggerProtocol.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		57BEAD611ECE1FC800CE372C /* Mock */ = {
@@ -1200,6 +1218,7 @@
 				5735C45B1EE445F40037BAA8 /* ValidationTextField.xib in Resources */,
 				5735C45C1EE445F40037BAA8 /* Assets.xcassets in Resources */,
 				5735C45D1EE445F40037BAA8 /* Main.storyboard in Resources */,
+				57B31A9720CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */,
 				57495863206181630089FC5B /* GoogleService-Info.plist in Resources */,
 				5735C45E1EE445F40037BAA8 /* InfoPlist.strings in Resources */,
 				5735C45F1EE445F40037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
@@ -1218,6 +1237,7 @@
 				5735C4C71EE44D8F0037BAA8 /* ValidationTextField.xib in Resources */,
 				5735C4C81EE44D8F0037BAA8 /* Assets.xcassets in Resources */,
 				5735C4C91EE44D8F0037BAA8 /* Main.storyboard in Resources */,
+				57B31A9820CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */,
 				57495862206181590089FC5B /* GoogleService-Info.plist in Resources */,
 				5735C4CA1EE44D8F0037BAA8 /* InfoPlist.strings in Resources */,
 				5735C4CB1EE44D8F0037BAA8 /* ExpenseTableViewHeader.xib in Resources */,
@@ -1236,6 +1256,7 @@
 				575A22681E4D01A7004825C2 /* ValidationTextField.xib in Resources */,
 				573F59AA1E295C4D00AEA72A /* Assets.xcassets in Resources */,
 				573F59A51E295C4D00AEA72A /* Main.storyboard in Resources */,
+				57B31A9620CC4CA600670F60 /* ExpenseTableViewCell.xib in Resources */,
 				57495865206185410089FC5B /* GoogleService-Info.plist in Resources */,
 				578BD06A1E3516BE00DE28C8 /* InfoPlist.strings in Resources */,
 				57C17DEF1E85D11100CB3399 /* ExpenseTableViewHeader.xib in Resources */,
@@ -1815,6 +1836,7 @@
 				5735C43C1EE445F40037BAA8 /* BudgetView.swift in Sources */,
 				5735C43D1EE445F40037BAA8 /* SyncManager.swift in Sources */,
 				5735C43E1EE445F40037BAA8 /* BaseAPITask.swift in Sources */,
+				57B31A9320CBC23700670F60 /* LoggerProtocol.swift in Sources */,
 				575E11A01F1EA8CD000B2F07 /* TeamMembersViewController.swift in Sources */,
 				57C53FBC1F290C7F004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				5735C43F1EE445F40037BAA8 /* BudgetDetailView.swift in Sources */,
@@ -1923,6 +1945,7 @@
 				5735C4A71EE44D8F0037BAA8 /* BudgetView.swift in Sources */,
 				5735C4A81EE44D8F0037BAA8 /* SyncManager.swift in Sources */,
 				5735C4A91EE44D8F0037BAA8 /* BaseAPITask.swift in Sources */,
+				57B31A9420CBC23700670F60 /* LoggerProtocol.swift in Sources */,
 				575E11A11F1EA8CE000B2F07 /* TeamMembersViewController.swift in Sources */,
 				57C53FBE1F290C80004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				5735C4AA1EE44D8F0037BAA8 /* BudgetDetailView.swift in Sources */,
@@ -2031,6 +2054,7 @@
 				57CA4FF51F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift in Sources */,
 				573F59E31E2AB9B000AEA72A /* SyncManager.swift in Sources */,
 				57FAB4301E66256700A2AEC7 /* BaseAPITask.swift in Sources */,
+				57B31A9220CBC23700670F60 /* LoggerProtocol.swift in Sources */,
 				575E11991F1EA1C4000B2F07 /* TeamMembersViewController.swift in Sources */,
 				57C53FBA1F290C77004D3D80 /* UserGroup+CoreDataProperties.swift in Sources */,
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,

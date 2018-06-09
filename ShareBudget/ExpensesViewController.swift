@@ -17,7 +17,10 @@ class ExpensesViewController: BaseViewController {
 
     override func configureVIPER() {
         let router = ExpensesRouter(with: self)
-        let interaction = ExpensesInteraction(managedObjectContext: ModelManager.managedObjectContext, budgetID: budgetID, categoryID: categoryID)
+        let interaction = ExpensesInteraction(managedObjectContext: ModelManager.managedObjectContext,
+                budgetID: budgetID,
+                categoryID: categoryID,
+                logger: Dependency.logger)
         let presenter = ExpensesPresenter(with: interaction, router: router)
         viperView = ExpensesView(with: presenter, and: self)
 
