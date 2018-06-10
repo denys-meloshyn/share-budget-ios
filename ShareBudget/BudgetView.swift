@@ -104,7 +104,7 @@ extension BudgetView: BudgetPresenterDelegate {
         guard var inset = tableView?.contentInset else {
             return
         }
-        inset.bottom = viewController?.bottomLayoutGuide.length ?? 0.0
+        inset.bottom = viewController.view.safeAreaInsets.bottom
         
         tableView?.contentInset = inset
         tableView?.scrollIndicatorInsets = inset

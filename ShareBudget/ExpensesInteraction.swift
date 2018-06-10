@@ -32,7 +32,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
     private let logger: LoggerProtocol
     private let budgetID: NSManagedObjectID
-    private let calculator: ExpenseCalculator
+    private var calculator: ExpenseCalculator
     private let categoryID: NSManagedObjectID?
     private let managedObjectContext: NSManagedObjectContext
     private var fetchedResultsController: NSFetchedResultsController<Expense>
@@ -100,6 +100,8 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
                 for: budgetID,
                 categoryID: categoryID,
                 searchText: value)
+        calculator = ExpenseCalculator(fetchedResultsController: fetchedResultsController)
+
         performFetch()
         delegate?.didChangeContent()
     }

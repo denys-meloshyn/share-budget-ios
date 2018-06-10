@@ -235,10 +235,8 @@ extension LoginView: LoginPresenterDelegate {
         guard var contentInsets = scrollView?.contentInset else {
             return
         }
-        
-        if let length = viewController?.bottomLayoutGuide.length {
-            contentInsets.bottom = length
-        }
+
+        contentInsets.bottom = viewController.view.safeAreaInsets.bottom
         
         scrollView?.contentInset = contentInsets
         scrollView?.scrollIndicatorInsets = contentInsets

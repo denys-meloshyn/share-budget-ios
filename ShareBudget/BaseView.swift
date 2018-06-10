@@ -22,7 +22,7 @@ protocol BaseViewProtocol: LifeCycleStateProtocol, AutoMockable {
 
 class BaseView<T: BasePresenterProtocol>: NSObject {
     let presenter: T    
-    weak var viewController: UIViewController?
+    weak var viewController: UIViewController!
     
     init(with presenter: T, and viewController: UIViewController) {
         self.presenter = presenter
