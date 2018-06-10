@@ -14,8 +14,8 @@ protocol ExpensesInteractionProtocol: BaseInteractionProtocol {
     var delegate: ExpensesInteractionDelegate? { get set }
 
     func numberOfSections() -> Int
-    func updateFilter(with value: String)
     func date(for section: Int) -> NSDate
+    func updateFilter(with value: String?)
     func totalExpense(for section: Int) -> Double
     func object(at indexPath: IndexPath) -> Expense
     func numberOfRows(inSection section: Int) -> Int
@@ -95,7 +95,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
         return calculator.totalExpense(for: section)
     }
 
-    func updateFilter(with value: String) {
+    func updateFilter(with value: String?) {
         fetchedResultsController = ModelManager.expenseFetchController(managedObjectContext,
                 for: budgetID,
                 categoryID: categoryID,

@@ -296,6 +296,9 @@
 		575E11AB1F1EA96D000B2F07 /* TeamMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */; };
 		576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576424B61E79E4CC000B595E /* NetworkIndicator.swift */; };
 		576B60701F54B4DD00904D04 /* CategoryPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */; };
+		576CC8A420CD437A005B0658 /* UILabel+HighlightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */; };
+		576CC8A520CD437A005B0658 /* UILabel+HighlightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */; };
+		576CC8A620CD437A005B0658 /* UILabel+HighlightText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */; };
 		577DB9241F2C952100CC05EB /* CategoryInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */; };
 		577E79A31F58AE2E002F2B88 /* MockCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E79A21F58AE2E002F2B88 /* MockCategoryView.swift */; };
 		57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57801AF51E3A6A66003AD57E /* AuthorisationAPI.swift */; };
@@ -506,6 +509,7 @@
 		575E11A81F1EA96D000B2F07 /* TeamMembersRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamMembersRouter.swift; sourceTree = "<group>"; };
 		576424B61E79E4CC000B595E /* NetworkIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkIndicator.swift; sourceTree = "<group>"; };
 		576B606F1F54B4DD00904D04 /* CategoryPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPresenterTest.swift; sourceTree = "<group>"; };
+		576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+HighlightText.swift"; sourceTree = "<group>"; };
 		57750476206677A200B83BB8 /* Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ShareBudget_ShareBudgetDevelopmentRemote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		577DB9231F2C952100CC05EB /* CategoryInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractionTest.swift; sourceTree = "<group>"; };
 		577E79A21F58AE2E002F2B88 /* MockCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategoryView.swift; sourceTree = "<group>"; };
@@ -905,8 +909,9 @@
 		573F5A381E34F2DB00AEA72A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
 				57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */,
+				576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */,
+				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1770,6 +1775,7 @@
 				57500B672006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
 				579359F620C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
+				576CC8A520CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
 				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
 				579359FA20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
@@ -1879,6 +1885,7 @@
 				57500B682006B9A300169F23 /* ButtonListener.swift in Sources */,
 				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
 				579359F720C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
+				576CC8A620CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
 				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
 				579359FB20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
@@ -1988,6 +1995,7 @@
 				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
+				576CC8A420CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
 				579359F920C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,

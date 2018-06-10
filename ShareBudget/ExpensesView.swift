@@ -15,7 +15,8 @@ protocol ExpensesViewProtocol: BaseViewProtocol {
 class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         ExpensesViewProtocol,
         UITableViewDataSource,
-        UITableViewDelegate     {
+        UITableViewDelegate,
+        UISearchResultsUpdating {
     var tableView: UITableView!
 
     private var searchController: UISearchController!
@@ -52,6 +53,16 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         cell.categoryLabel?.text = viewModel.category
         cell.budgetRestLabel?.text = viewModel.budget
         cell.dateLabel?.text = viewModel.date
+
+        let labelsToHighlight:[UILabel?] = [cell.titleLabel,
+                                 cell.priceLabel,
+                                 cell.categoryLabel,
+                                 cell.budgetRestLabel,
+                                 cell.dateLabel]
+
+        labelsToHighlight.forEach { label in
+            label?.highlightAllOrNothing(viewModel.highlightedText ?? "", color: Constants.color.dflt.actionColor)
+        }
 
         return cell
     }
@@ -99,7 +110,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        presenter.interaction().updateFilter(with: searchController.searchBar.text ?? "")
+        presenter.updateSearchText(newValue: searchController.searchBar.text)
     }
 
     private func configureTableWithDefaultProperties(tableView: UITableView) {
@@ -125,6 +136,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     private func configureSearchTable() {
         configureTableWithDefaultProperties(tableView: searchTableViewController.tableView)
         searchController = UISearchController(searchResultsController: searchTableViewController)
+        searchController.searchResultsUpdater = self
     }
 }
 

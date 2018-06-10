@@ -81,10 +81,10 @@ struct Constants {
     struct color {
         struct dflt {
             static let textTintColor = UIColor.black
-            static let inputTextColor = UIColor(hexString: "#C7C7CD")!
-            static let actionColor = UIColor(hexString: "#E91E63")!
-            static let apperanceColor = UIColor(hexString: "#EEEEEE")!
-            static let backgroundColor = UIColor(hexString: "#F5F5F5")
+            static let inputTextColor = #colorLiteral(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1) // #C7C7CD
+            static let actionColor = #colorLiteral(red: 0.9137254902, green: 0.1176470588, blue: 0.3882352941, alpha: 1) // #E91E63
+            static let apperanceColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1) // #EEEEEE
+            static let backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1) // #F5F5F5
         }
         
         struct login {

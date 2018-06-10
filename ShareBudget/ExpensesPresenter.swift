@@ -12,6 +12,7 @@ import CoreData
 protocol ExpensesPresenterProtocol: BasePresenterProtocol {
     var delegate: ExpensesPresenterDelegate! { get set }
 
+    func updateSearchText(newValue: String?)
     func expenseSelected(at indexPath: IndexPath)
     func interaction() -> ExpensesInteractionProtocol
     func headerViewModel(for section: Int) -> ExpenseTableViewHeaderViewModel
@@ -24,6 +25,7 @@ struct ExpenseTableViewCellViewModel {
     var price: String?
     var budget: String?
     var category: String?
+    var highlightedText: String?
 }
 
 struct ExpenseTableViewHeaderViewModel {
@@ -38,6 +40,8 @@ protocol ExpensesPresenterDelegate: BasePresenterDelegate {
 
 class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: ExpensesRouterProtocol>: BasePresenter<Interaction, Router>, ExpensesPresenterProtocol, ExpensesInteractionDelegate {
     weak var delegate: ExpensesPresenterDelegate!
+
+    private var searchText: String?
 
     func viewDidLoad() {
         interaction.delegate = self
@@ -90,7 +94,8 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
                 title: expense.name,
                 price: UtilityFormatter.priceFormatter.string(for: expense.price),
                 budget: dict[expense.modelID?.stringValue ?? ""],
-                category: expense.category?.name)
+                category: expense.category?.name,
+                highlightedText: searchText)
     }
 
     func headerViewModel(for section: Int) -> ExpenseTableViewHeaderViewModel {
@@ -104,5 +109,10 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
     func expenseSelected(at indexPath: IndexPath) {
         let expense = interaction.object(at: indexPath)
         router.openEditExpenseViewController(budgetID: interaction.budget.objectID, expenseID: expense.objectID)
+    }
+
+    func updateSearchText(newValue: String?) {
+        searchText = newValue
+        interaction.updateFilter(with: searchText)
     }
 }

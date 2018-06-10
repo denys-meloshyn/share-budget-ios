@@ -350,8 +350,12 @@ class ModelManager {
         }
 
         if let searchText = searchText, !searchText.isEmpty {
-            tmpPredicate = NSPredicate(format: "name CONTAINS[c] %@", searchText)
-            predicates.append(tmpPredicate)
+            let properties = ["name", "creationDateSearch"]
+            let searchTextPredicates = properties.map { name in
+                NSPredicate(format: "%K CONTAINS[c] %@", name, searchText)
+            }
+
+            predicates.append(NSCompoundPredicate(orPredicateWithSubpredicates: searchTextPredicates))
         }
         
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

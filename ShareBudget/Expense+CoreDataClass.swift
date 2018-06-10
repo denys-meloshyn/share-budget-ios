@@ -27,8 +27,12 @@ public class Expense: BaseModel {
                 let section = dateFormatter.string(from: creationDate)
                 
                 willChangeValue(forKey: "sectionCreationDate")
-                self.sectionCreationDate = section
+                sectionCreationDate = section
                 didChangeValue(forKey: "sectionCreationDate")
+
+                willChangeValue(forKey: "creationDateSearch")
+                creationDateSearch = UtilityFormatter.expenseCreationFormatter.string(for: creationDate) ?? ""
+                didChangeValue(forKey: "creationDateSearch")
             }
             didAccessValue(forKey: "creationDate")
         }
