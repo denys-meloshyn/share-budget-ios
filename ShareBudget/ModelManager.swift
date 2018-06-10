@@ -350,10 +350,11 @@ class ModelManager {
         }
 
         if let searchText = searchText, !searchText.isEmpty {
-            let properties = ["name", "creationDateSearch"]
-            let searchTextPredicates = properties.map { name in
+            let properties = ["name", "creationDateSearch", "category.name"]
+            var searchTextPredicates = properties.map { name in
                 NSPredicate(format: "%K CONTAINS[c] %@", name, searchText)
             }
+            searchTextPredicates.append(NSPredicate(format: "price.stringValue CONTAINS[c] %@", searchText))
 
             predicates.append(NSCompoundPredicate(orPredicateWithSubpredicates: searchTextPredicates))
         }

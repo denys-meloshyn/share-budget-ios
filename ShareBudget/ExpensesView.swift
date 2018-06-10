@@ -57,7 +57,6 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         let labelsToHighlight:[UILabel?] = [cell.titleLabel,
                                  cell.priceLabel,
                                  cell.categoryLabel,
-                                 cell.budgetRestLabel,
                                  cell.dateLabel]
 
         labelsToHighlight.forEach { label in
