@@ -18,6 +18,13 @@ extension UILabel {
         let attributedString = NSMutableAttributedString(string: text)
         var lastFoundIndex = 0
 
+        if let range = text.range(of: characters) {
+            let nsRange = NSRange(range, in: text)
+            attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: nsRange)
+            attributedText = attributedString
+            return
+        }
+
         for character in characters {
             let rangeStart = text.index(text.startIndex, offsetBy: lastFoundIndex)
 
