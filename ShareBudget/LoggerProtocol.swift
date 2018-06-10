@@ -17,4 +17,3 @@ extension XCGLogger: LoggerProtocol {
         error("Can't perform fetch request")
     }
 }
-

@@ -16,6 +16,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         ExpensesViewProtocol,
         UITableViewDataSource,
         UITableViewDelegate,
+        UISearchControllerDelegate,
         UISearchResultsUpdating {
     var tableView: UITableView!
 
@@ -30,6 +31,8 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
         configureSearchTable()
         configureTable()
+
+        viewController?.navigationItem.searchController = searchController
     }
 
     // MARK: - UITableViewDataSource
@@ -54,7 +57,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         cell.budgetRestLabel?.text = viewModel.budget
         cell.dateLabel?.text = viewModel.date
 
-        let labelsToHighlight:[UILabel?] = [cell.titleLabel,
+        let labelsToHighlight: [UILabel?] = [cell.titleLabel,
                                  cell.priceLabel,
                                  cell.categoryLabel,
                                  cell.dateLabel]
@@ -87,23 +90,18 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     // MARK: - UISearchControllerDelegate
 
     func willPresentSearchController(_ searchController: UISearchController) {
-
     }
 
     func didPresentSearchController(_ searchController: UISearchController) {
-
     }
 
     func willDismissSearchController(_ searchController: UISearchController) {
-
     }
 
     func didDismissSearchController(_ searchController: UISearchController) {
-
     }
 
     func presentSearchController(_ searchController: UISearchController) {
-
     }
 
     // MARK: - UISearchResultsUpdating
@@ -129,12 +127,12 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
     private func configureTable() {
         configureTableWithDefaultProperties(tableView: tableView)
-        tableView.tableHeaderView = searchController.searchBar
     }
 
     private func configureSearchTable() {
         configureTableWithDefaultProperties(tableView: searchTableViewController.tableView)
         searchController = UISearchController(searchResultsController: searchTableViewController)
+        searchController.delegate = self
         searchController.searchResultsUpdater = self
     }
 }
@@ -143,6 +141,8 @@ extension ExpensesView: ExpensesPresenterDelegate {
     func showCreateNewExpenseButton(action: @escaping BarButtonItemListenerActionBlock) {
         addBarButtonItem = BarButtonItemListener(with: .add, action: action)
         viewController?.navigationItem.rightBarButtonItem = addBarButtonItem?.barButtonItem
+        viewController?.navigationItem.hidesSearchBarWhenScrolling = false
+        viewController?.definesPresentationContext = true
     }
 
     func refresh() {
