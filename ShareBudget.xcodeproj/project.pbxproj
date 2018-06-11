@@ -2440,6 +2440,7 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2459,6 +2460,7 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
