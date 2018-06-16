@@ -39,6 +39,10 @@ class ExpensesInteractionTest: XCTestCase {
         super.tearDown()
     }
 
+    func testNumberOfSectionNoExpenses() {
+        expect(self.interaction.numberOfSections()) == 0
+    }
+
     func testOneSectionWhenAllExpensesInSameMonth() {
         let expense = Expense(context: managedObjectContext)
         expense.name = "Test expense"
@@ -124,5 +128,85 @@ class ExpensesInteractionTest: XCTestCase {
 
             expect(value) == "Wrong budget object"
         })
+    }
+
+    func testNumberOfRowsAllExpensesInSameMonth() {
+        let expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateFilter(with: nil)
+        expect(self.interaction.numberOfRows(inSection: 0)) == 1
+    }
+
+    func testNumberOfRowsExpensesInDifferentMonths() {
+        var expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense previous month"
+        expense.creationDate = Date() - 60.days as NSDate
+        budget.addToExpenses(expense)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateFilter(with: nil)
+        expect(self.interaction.numberOfRows(inSection: 0)) == 2
+        expect(self.interaction.numberOfRows(inSection: 1)) == 1
+    }
+
+    func testObjectAtIndexPath() {
+        let expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateFilter(with: nil)
+        expect(self.interaction.object(at: IndexPath(row: 0, section: 0))) == expense
+    }
+
+    func testDateForSection() {
+        let date = NSDate()
+
+        let expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.creationDate = date
+        budget.addToExpenses(expense)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateFilter(with: nil)
+        expect(self.interaction.date(for: 0)) == date
+    }
+
+    func testTotalExpenseForSection() {
+        var expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.price = 100
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        expense = Expense(context: managedObjectContext)
+        expense.name = "Test expense"
+        expense.price = 50
+        expense.creationDate = NSDate()
+        budget.addToExpenses(expense)
+
+        ModelManager.saveContext(managedObjectContext)
+
+        interaction.updateFilter(with: nil)
+        expect(self.interaction.totalExpense(for: 0)) == 150
     }
 }
