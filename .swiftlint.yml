@@ -7,6 +7,7 @@ disabled_rules:
     - force_try
     - legacy_constructor
     - discarded_notification_center_observer
+    - file_length
     
 excluded:
     - R.generated.swift

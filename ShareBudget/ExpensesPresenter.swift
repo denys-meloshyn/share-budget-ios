@@ -89,11 +89,16 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
             date = UtilityFormatter.expenseCreationFormatter.string(for: creationDate) ?? ""
         }
         let dict = interaction.budgetRest[indexPath.section]
+        
+        var moneyLeft = ""
+        if let left = dict[expense.modelID?.stringValue ?? ""] {
+            moneyLeft = String(left)
+        }
 
         return ExpenseTableViewCellViewModel(date: date,
                 title: expense.name,
                 price: UtilityFormatter.priceFormatter.string(for: expense.price),
-                budget: dict[expense.modelID?.stringValue ?? ""],
+                budget: moneyLeft,
                 category: expense.category?.name,
                 highlightedText: searchText)
     }

@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.11.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.12.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 // swiftlint:disable line_length
@@ -174,7 +174,7 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         return createHandlerWithCallsCount > 0
     }
     var createHandlerWithReceivedAlertController: UIAlertController?
-    var createHandlerWithReturnValue: ((UIAlertAction) -> Swift.Void)?!
+    var createHandlerWithReturnValue: ((UIAlertAction) -> Swift.Void)?
     var createHandlerWithClosure: ((UIAlertController) -> ((UIAlertAction) -> Swift.Void)?)?
 
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {

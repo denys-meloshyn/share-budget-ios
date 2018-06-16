@@ -47,7 +47,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.expenseCell, for: indexPath) else {
-            fatalError("")
+            fatalError("Cell \(R.reuseIdentifier.expenseCell) should exist")
         }
 
         let viewModel = presenter.cellViewModel(for: indexPath)

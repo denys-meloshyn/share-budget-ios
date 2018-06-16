@@ -6,20 +6,21 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 def shared
-	pod 'XCGLogger', '6.0.1'
-	pod 'KeychainSwift', '10.0.0'
+	pod 'XCGLogger', '6.0.2'
+	pod 'KeychainSwift', '11.0.0'
 	pod 'R.swift', '4.0'
 	pod 'SnapKit', '4.0'
 	pod 'CorePlot', '2.2'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'le', '1.1'
-	pod 'BugfenderSDK', '1.5.0'
-	pod 'JustLog', '2.0.1'
+	pod 'BugfenderSDK', '1.5.2'
+	pod 'JustLog', '2.3.0'
 	pod 'Toast-Swift', '3.0.1'
 	pod 'SwiftLint', '0.25.1'
-	pod 'Firebase/Core', '4.10.1'
+	pod 'Firebase/Core', '4.12.0'
 	pod 'Crashlytics', '3.10.1'
-	pod 'Sourcery', '0.11.0'
+	pod 'Sourcery', '0.12.0'
+	pod 'TimeIntervals', '1.0.0'
 	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
 

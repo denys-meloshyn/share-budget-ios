@@ -10,7 +10,7 @@ import CoreData
 
 protocol ExpensesInteractionProtocol: BaseInteractionProtocol {
     var budget: Budget { get }
-    var budgetRest: [[String: String]] { get }
+    var budgetRest: [[String: Double]] { get }
     var delegate: ExpensesInteractionDelegate? { get set }
 
     func numberOfSections() -> Int
@@ -27,7 +27,7 @@ protocol ExpensesInteractionDelegate: BaseInteractionDelegate {
 class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     let budget: Budget
     var category: Category?
-    var budgetRest = [[String: String]]()
+    var budgetRest = [[String: Double]]()
     weak var delegate: ExpensesInteractionDelegate?
 
     private let logger: LoggerProtocol
@@ -63,7 +63,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
         super.init()
 
         performFetch()
-        calculateBudgetRestForExpenses()
+        budgetRest = calculateBudgetRestForExpenses()
     }
 
     func numberOfSections() -> Int {
@@ -106,18 +106,8 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
         delegate?.didChangeContent()
     }
 
-    private func performFetch() {
-        fetchedResultsController.delegate = self
-
-        do {
-            try fetchedResultsController.performFetch()
-        } catch {
-            logger.logError("Can't perform fetch request")
-        }
-    }
-
-    private func calculateBudgetRestForExpenses() {
-        budgetRest.removeAll()
+    func calculateBudgetRestForExpenses() -> [[String: Double]] {
+        var result = [[String: Double]]()
         let sections = fetchedResultsController.sections ?? [NSFetchedResultsSectionInfo]()
         for section in 0..<sections.count {
             let firstExpense = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
@@ -126,16 +116,28 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
             let total = lastLimit?.limit?.doubleValue ?? 0.0
             var rest = total
 
-            var rowDict = [String: String]()
+            var rowDict = [String: Double]()
             let fetchedResultsSectionInfo = sections[section]
             for i in 0..<fetchedResultsSectionInfo.numberOfObjects {
                 let indexPath = IndexPath(row: fetchedResultsSectionInfo.numberOfObjects - i - 1, section: section)
                 let expense = fetchedResultsController.object(at: indexPath)
 
                 rest -= expense.price?.doubleValue ?? 0.0
-                rowDict[expense.modelID?.stringValue ?? ""] = String(rest)
+                rowDict[expense.modelID?.stringValue ?? ""] = rest
             }
-            budgetRest.append(rowDict)
+            result.append(rowDict)
+        }
+
+        return result
+    }
+
+    private func performFetch() {
+        fetchedResultsController.delegate = self
+
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            logger.logError("Can't perform fetch request")
         }
     }
 }
@@ -146,7 +148,7 @@ extension ExpensesInteraction: NSFetchedResultsControllerDelegate {
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        calculateBudgetRestForExpenses()
+        budgetRest = calculateBudgetRestForExpenses()
         delegate?.didChangeContent()
     }
 
