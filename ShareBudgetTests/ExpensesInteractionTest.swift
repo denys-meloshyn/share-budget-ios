@@ -14,13 +14,10 @@ import TimeIntervals
 @testable import ShareBudget
 
 class ExpensesInteractionTest: XCTestCase {
-    var interaction: ExpensesInteraction!
-    
-    var router: ExpensesRouter!
-    var presenter: ExpensesPresenter<ExpensesInteraction, ExpensesRouter>!
+    private var interaction: ExpensesInteraction!
 
-    var budget: Budget!
-    var managedObjectContext: NSManagedObjectContext!
+    private var budget: Budget!
+    private var managedObjectContext: NSManagedObjectContext!
 
     override func setUp() {
         super.setUp()
@@ -30,12 +27,10 @@ class ExpensesInteractionTest: XCTestCase {
         budget = Budget(context: managedObjectContext)
         budget.name = "Test budget"
 
-        router = ExpensesRouter(with: UIViewController())
-        interaction = ExpensesInteraction(managedObjectContext: managedObjectContext,
+        interaction = try! ExpensesInteraction(managedObjectContext: managedObjectContext,
                 budgetID: budget.objectID,
                 categoryID: nil,
                 logger: MockLogger())
-        presenter = ExpensesPresenter(with: interaction, router: router)
     }
 
     override func tearDown() {
@@ -95,5 +90,39 @@ class ExpensesInteractionTest: XCTestCase {
         ModelManager.saveContext(managedObjectContext)
 
         expect(self.interaction.calculateBudgetRestForExpenses()) == result
+    }
+
+    func testCategoryNotExistOrReceivedWrongObject() {
+        expect {
+            try ExpensesInteraction(managedObjectContext: self.managedObjectContext,
+                    budgetID: self.budget.objectID,
+                    categoryID: self.budget.objectID,
+                    logger: MockLogger())
+        }.to(throwError { (error: Error) in
+            guard case ShareBudgetError.runtime(let value) = error else {
+                fail("Wrong error type \(error)")
+                return
+            }
+
+            expect(value) == "Wrong category object"
+        })
+    }
+
+    func testBudgetNotExistOrReceivedWrongObject() {
+        let expense = Expense(context: managedObjectContext)
+
+        expect {
+            try ExpensesInteraction(managedObjectContext: self.managedObjectContext,
+                    budgetID: expense.objectID,
+                    categoryID: nil,
+                    logger: MockLogger())
+        }.to(throwError { (error: Error) in
+            guard case ShareBudgetError.runtime(let value) = error else {
+                fail("Wrong error type \(error)")
+                return
+            }
+
+            expect(value) == "Wrong budget object"
+        })
     }
 }

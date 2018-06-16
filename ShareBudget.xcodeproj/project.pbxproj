@@ -327,6 +327,9 @@
 		57A2B2ED1F228A060061F1EB /* UserGroupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */; };
 		57AEFCF520D56E4E001FF1EF /* ExpensesInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCF420D56E4E001FF1EF /* ExpensesInteractionTest.swift */; };
 		57AEFCF720D57059001FF1EF /* MockLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCF620D57059001FF1EF /* MockLogger.swift */; };
+		57AEFCFD20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
+		57AEFCFE20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
+		57AEFCFF20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
 		57B120861F379D8300515921 /* ChangedModelsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120851F379D8300515921 /* ChangedModelsTest.swift */; };
 		57B120891F379F8900515921 /* NSFetchedResultsController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */; };
 		57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
@@ -532,6 +535,7 @@
 		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57AEFCF420D56E4E001FF1EF /* ExpensesInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteractionTest.swift; sourceTree = "<group>"; };
 		57AEFCF620D57059001FF1EF /* MockLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogger.swift; sourceTree = "<group>"; };
+		57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetError.swift; sourceTree = "<group>"; };
 		57B120851F379D8300515921 /* ChangedModelsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedModelsTest.swift; sourceTree = "<group>"; };
 		57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Testing.swift"; sourceTree = "<group>"; };
 		57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItemListener.swift; sourceTree = "<group>"; };
@@ -751,6 +755,7 @@
 				573F59DC1E296F4F00AEA72A /* UserCredentials.swift */,
 				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
+				57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1784,6 +1789,7 @@
 				5735C4061EE445F40037BAA8 /* CategoryPresenter.swift in Sources */,
 				579359F620C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				576CC8A520CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
+				57AEFCFE20D59A36001FF1EF /* ShareBudgetError.swift in Sources */,
 				5735C4071EE445F40037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4081EE445F40037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
 				579359FA20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
@@ -1894,6 +1900,7 @@
 				5735C4711EE44D8F0037BAA8 /* CategoryPresenter.swift in Sources */,
 				579359F720C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				576CC8A620CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
+				57AEFCFF20D59A36001FF1EF /* ShareBudgetError.swift in Sources */,
 				5735C4721EE44D8F0037BAA8 /* CategoryViewController.swift in Sources */,
 				5735C4731EE44D8F0037BAA8 /* ShareBudget.xcdatamodeld in Sources */,
 				579359FB20C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,
@@ -2004,6 +2011,7 @@
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				576CC8A420CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
+				57AEFCFD20D59A36001FF1EF /* ShareBudgetError.swift in Sources */,
 				575A22621E4917B8004825C2 /* CategoryViewController.swift in Sources */,
 				573F59A81E295C4D00AEA72A /* ShareBudget.xcdatamodeld in Sources */,
 				579359F920C6F72D005A2D2B /* ExpensesInteraction.swift in Sources */,

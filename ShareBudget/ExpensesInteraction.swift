@@ -40,7 +40,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     init(managedObjectContext: NSManagedObjectContext,
          budgetID: NSManagedObjectID,
          categoryID: NSManagedObjectID?,
-         logger: LoggerProtocol) {
+         logger: LoggerProtocol) throws {
         self.logger = logger
         self.budgetID = budgetID
         self.categoryID = categoryID
@@ -50,13 +50,13 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
         if let categoryID = categoryID {
             guard let category = managedObjectContext.object(with: categoryID) as? Category else {
-                fatalError("Wrong category object")
+                throw ShareBudgetError.runtime("Wrong category object")
             }
             self.category = category
         }
 
         guard let budget = managedObjectContext.object(with: budgetID) as? Budget else {
-            fatalError("Wrong budget object")
+            throw ShareBudgetError.runtime("Wrong budget object")
         }
         self.budget = budget
 
