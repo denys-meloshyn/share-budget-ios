@@ -330,6 +330,7 @@
 		57AEFCFD20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
 		57AEFCFE20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
 		57AEFCFF20D59A36001FF1EF /* ShareBudgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */; };
+		57AEFD0220D6ED7C001FF1EF /* BaseRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEFD0120D6ED7C001FF1EF /* BaseRouterTest.swift */; };
 		57B120861F379D8300515921 /* ChangedModelsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120851F379D8300515921 /* ChangedModelsTest.swift */; };
 		57B120891F379F8900515921 /* NSFetchedResultsController+Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */; };
 		57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */; };
@@ -536,6 +537,7 @@
 		57AEFCF420D56E4E001FF1EF /* ExpensesInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteractionTest.swift; sourceTree = "<group>"; };
 		57AEFCF620D57059001FF1EF /* MockLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogger.swift; sourceTree = "<group>"; };
 		57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBudgetError.swift; sourceTree = "<group>"; };
+		57AEFD0120D6ED7C001FF1EF /* BaseRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterTest.swift; sourceTree = "<group>"; };
 		57B120851F379D8300515921 /* ChangedModelsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangedModelsTest.swift; sourceTree = "<group>"; };
 		57B120881F379F8900515921 /* NSFetchedResultsController+Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSFetchedResultsController+Testing.swift"; sourceTree = "<group>"; };
 		57B31A8C20C72D8F00670F60 /* BarButtonItemListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItemListener.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 				57BEAD611ECE1FC800CE372C /* Mock */,
 				57CA4FF31F34FF7100669ED7 /* ModelManager */,
 				576B606E1F54B49D00904D04 /* Presenter */,
+				57AEFD0020D6ED57001FF1EF /* Router */,
 				57BEAD861ECF6F6400CE372C /* Utility */,
 			);
 			path = ShareBudgetTests;
@@ -961,6 +964,14 @@
 				57B31A9520CC4CA500670F60 /* ExpenseTableViewCell.xib */,
 			);
 			name = Xib;
+			sourceTree = "<group>";
+		};
+		57AEFD0020D6ED57001FF1EF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				57AEFD0120D6ED7C001FF1EF /* BaseRouterTest.swift */,
+			);
+			name = Router;
 			sourceTree = "<group>";
 		};
 		57B120871F379F6100515921 /* Extension */ = {
@@ -2124,6 +2135,7 @@
 				57BEAD851ECF64FE00CE372C /* CalledMethod.swift in Sources */,
 				57561D871F44EBBB00FDB891 /* MockBaseViewController.swift in Sources */,
 				57AEFCF720D57059001FF1EF /* MockLogger.swift in Sources */,
+				57AEFD0220D6ED7C001FF1EF /* BaseRouterTest.swift in Sources */,
 				57D11C1F1F2E59A900FBDAA0 /* MockCategoryViewController.swift in Sources */,
 				57BEAD691ECE225F00CE372C /* MockBudgetViewController.swift in Sources */,
 				57BEAD831ECF64EE00CE372C /* CalledMethodManager.swift in Sources */,

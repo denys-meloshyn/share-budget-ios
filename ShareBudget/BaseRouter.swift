@@ -10,6 +10,7 @@ import UIKit
 
 protocol BaseRouterProtocol: class {
     func closePage()
+    func closePage(animated: Bool)
 }
 
 class BaseRouter: BaseRouterProtocol {
@@ -20,6 +21,10 @@ class BaseRouter: BaseRouterProtocol {
     }
     
     func closePage() {
-        _ = viewController?.navigationController?.popViewController(animated: true)
+        closePage(animated: false)
+    }
+
+    func closePage(animated: Bool) {
+        _ = viewController?.navigationController?.popViewController(animated: animated)
     }
 }
