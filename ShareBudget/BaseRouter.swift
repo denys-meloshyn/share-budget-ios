@@ -21,7 +21,7 @@ class BaseRouter: BaseRouterProtocol {
     }
     
     func closePage() {
-        closePage(animated: false)
+        closePage(animated: true)
     }
 
     func closePage(animated: Bool) {

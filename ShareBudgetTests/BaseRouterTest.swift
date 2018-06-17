@@ -19,7 +19,7 @@ class BaseRouterTest: XCTestCase {
         let router = BaseRouter(with: rootViewController)
         expect(navigationController.viewControllers.count) == 2
 
-        router.closePage()
+        router.closePage(animated: false)
         expect(navigationController.viewControllers.count) == 1
     }
 }
