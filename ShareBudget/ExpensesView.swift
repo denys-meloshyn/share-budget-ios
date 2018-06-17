@@ -50,6 +50,10 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
             fatalError("Cell \(R.reuseIdentifier.expenseCell) should exist")
         }
 
+        let selectedView = UIView()
+        selectedView.backgroundColor = Constants.color.dflt.actionColor
+        cell.selectedBackgroundView = selectedView
+
         let viewModel = presenter.cellViewModel(for: indexPath)
         cell.titleLabel?.text = viewModel.title
         cell.priceLabel?.text = viewModel.price

@@ -90,8 +90,13 @@ extension BudgetView: BudgetPresenterDelegate {
     
     func createBudgetCell(with title: String?) -> UITableViewCell {
         let cell = tableView?.dequeueReusableCell(withIdentifier: tableBudgetCellReuseIdentifier)
-        cell?.backgroundColor = UIColor.clear
+        cell?.backgroundColor = .clear
         cell?.textLabel?.text = title
+        cell?.textLabel?.highlightedTextColor = .white
+        
+        let selectedView = UIView()
+        selectedView.backgroundColor = Constants.color.dflt.actionColor
+        cell?.selectedBackgroundView = selectedView
         
         return cell!
     }
