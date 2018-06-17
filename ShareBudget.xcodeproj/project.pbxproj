@@ -15,6 +15,7 @@
 		571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
 		571041E61E8085A40060CBBA /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
 		572607E71EC3AD8D00B92604 /* RemoteLogsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */; };
+		5726AE8E20D701CF0022EAB7 /* ValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5726AE8D20D701CF0022EAB7 /* ValidatorTest.swift */; };
 		572749501E43D9E0004A132F /* BudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */; };
 		572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749511E44F41B004A132F /* BudgetDetailView.swift */; };
 		572749541E44F450004A132F /* BudgetDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572749531E44F450004A132F /* BudgetDetailPresenter.swift */; };
@@ -427,6 +428,7 @@
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
 		57234E9D1F27B89A0070080D /* v1.0.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.xcdatamodel; sourceTree = "<group>"; };
 		572607E61EC3AD8D00B92604 /* RemoteLogsDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLogsDestination.swift; sourceTree = "<group>"; };
+		5726AE8D20D701CF0022EAB7 /* ValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTest.swift; sourceTree = "<group>"; };
 		5727494F1E43D9E0004A132F /* BudgetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailViewController.swift; sourceTree = "<group>"; };
 		572749511E44F41B004A132F /* BudgetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 		572749531E44F450004A132F /* BudgetDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetDetailPresenter.swift; sourceTree = "<group>"; };
@@ -1017,6 +1019,7 @@
 			children = (
 				57BEAD841ECF64FE00CE372C /* CalledMethod.swift */,
 				57BEAD821ECF64EE00CE372C /* CalledMethodManager.swift */,
+				5726AE8D20D701CF0022EAB7 /* ValidatorTest.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -2143,6 +2146,7 @@
 				5788448E1F588C34007DB0E7 /* MockCategoryRouter.swift in Sources */,
 				5735C4D61EE496630037BAA8 /* MockDependency.swift in Sources */,
 				57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */,
+				5726AE8E20D701CF0022EAB7 /* ValidatorTest.swift in Sources */,
 				57AEFCF520D56E4E001FF1EF /* ExpensesInteractionTest.swift in Sources */,
 				57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */,
 				57B120891F379F8900515921 /* NSFetchedResultsController+Testing.swift in Sources */,
