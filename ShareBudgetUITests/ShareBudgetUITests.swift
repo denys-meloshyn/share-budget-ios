@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import ShareBudget
 
 class ShareBudgetUITests: XCTestCase {
     private var app: XCUIApplication!
