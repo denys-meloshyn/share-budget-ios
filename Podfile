@@ -6,20 +6,20 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 def shared
-	pod 'XCGLogger', '6.0.2'
+	pod 'XCGLogger', '6.0.4'
 	pod 'KeychainSwift', '11.0.0'
-	pod 'R.swift', '4.0'
+	pod 'R.swift', '5.0.0.alpha1'
 	pod 'SnapKit', '4.0'
 	pod 'CorePlot', '2.2'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'le', '1.1'
-	pod 'BugfenderSDK', '1.5.2'
+	pod 'BugfenderSDK', '1.5.3'
 	pod 'JustLog', '2.3.0'
 	pod 'Toast-Swift', '3.0.1'
-	pod 'SwiftLint', '0.25.1'
-	pod 'Firebase/Core', '4.12.0'
-	pod 'Crashlytics', '3.10.1'
-	pod 'Sourcery', '0.12.0'
+	pod 'SwiftLint', '0.26.0'
+	pod 'Firebase/Core', '5.4.0'
+	pod 'Crashlytics', '3.10.3'
+	pod 'Sourcery', '0.13.1'
 	pod 'TimeIntervals', '1.0.0'
 	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
@@ -41,7 +41,7 @@ end
 
 target 'ShareBudgetTests' do
 	shared
-	pod 'Nimble', '7.0.3'
+	pod 'Nimble', '7.1.2'
 end
 	
 target 'ShareBudgetUITests' do
