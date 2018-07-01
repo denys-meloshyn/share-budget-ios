@@ -46,8 +46,8 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.expenseCell, for: indexPath) else {
-            fatalError("Cell \(R.reuseIdentifier.expenseCell) should exist")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.expenseTableViewCell, for: indexPath) else {
+            fatalError("Cell \(R.reuseIdentifier.expenseTableViewCell) should exist")
         }
 
         let selectedView = UIView()
@@ -126,7 +126,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
     private func addCells(to tableView: UITableView) {
         tableView.register(R.nib.expenseTableViewCell)
-        tableView.register(R.nib.expenseTableViewHeader(), forHeaderFooterViewReuseIdentifier: headerViewReuseIdentifier)
+        tableView.register(UINib(resource: R.nib.expenseTableViewHeader), forHeaderFooterViewReuseIdentifier: headerViewReuseIdentifier)
     }
 
     private func configureTable() {

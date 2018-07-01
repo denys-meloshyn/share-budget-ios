@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LoginTextFieldError: AutoEquatable {
+public enum LoginTextFieldError: AutoEquatable {
     case email(String)
     case password(String)
     case repeatPassword(String)

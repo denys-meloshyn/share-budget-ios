@@ -1,7 +1,7 @@
 PODS:
-  - BugfenderSDK (1.5.3):
-    - BugfenderSDK/Swift (= 1.5.3)
-  - BugfenderSDK/Swift (1.5.3)
+  - BugfenderSDK (1.5.4):
+    - BugfenderSDK/Swift (= 1.5.4)
+  - BugfenderSDK/Swift (1.5.4)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -42,11 +42,11 @@ PODS:
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - R.swift (5.0.0.alpha.1):
-    - R.swift.Library (~> 5.0.0.alpha.1)
-  - R.swift.Library (5.0.0.alpha.1)
+  - R.swift (4.0.0):
+    - R.swift.Library (~> 4.0.0)
+  - R.swift.Library (4.0.0)
   - SnapKit (4.0.0)
-  - Sourcery (0.13.1)
+  - Sourcery (0.12.0)
   - SwiftLint (0.26.0)
   - SwiftyBeaver (1.5.2)
   - TimeIntervals (1.0.0)
@@ -57,7 +57,7 @@ PODS:
     - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - BugfenderSDK (= 1.5.3)
+  - BugfenderSDK (= 1.5.4)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (= 2.2)
   - Crashlytics (= 3.10.3)
@@ -67,9 +67,9 @@ DEPENDENCIES:
   - KeychainSwift (= 11.0.0)
   - le (= 1.1)
   - Nimble (= 7.1.2)
-  - R.swift (= 5.0.0.alpha1)
+  - R.swift (= 4.0.0)
   - SnapKit (= 4.0)
-  - Sourcery (= 0.13.1)
+  - Sourcery (= 0.12.0)
   - SwiftLint (= 0.26.0)
   - TimeIntervals (= 1.0.0)
   - Toast-Swift (= 3.0.1)
@@ -118,7 +118,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ned1988/HttpNetworking.git
 
 SPEC CHECKSUMS:
-  BugfenderSDK: c18a70d4fb70c2f9b9b4d59d485ba7489de4d182
+  BugfenderSDK: 9db2cb0f7afe616b4122f018c23e01685441b413
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
@@ -136,16 +136,16 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Nimble: 3835ba9f459daa6b347f8a8e110aaae8ca1920a8
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  R.swift: 4fe17ab7e97da3942cf907235d07b6c320e23202
-  R.swift.Library: 50421682fe36726a830ad2b727c5362b8959cc1e
+  R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
+  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Sourcery: 9ef51b8777516f204d82996441f293813158d0d7
+  Sourcery: 10fa92cd8890864856ee3657ca460d597ebc064b
   SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftyBeaver: 85daaaa2b3ae6e31b7b55c99430e8b91dac088af
   TimeIntervals: 1ae58fc906d35311c5ca84a689c86c69c2209575
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   XCGLogger: 4fc1bc0bdd5828cb8dc8da7a843536cda1bea8f3
 
-PODFILE CHECKSUM: 298018d54d2e31de696a0f1657ea00f1a7136267
+PODFILE CHECKSUM: c4f1efdfac00dd2584f02ecee5858a28fe0008f2
 
 COCOAPODS: 1.5.0

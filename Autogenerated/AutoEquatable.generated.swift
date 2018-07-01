@@ -28,7 +28,7 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 // MARK: - AutoEquatable for Enums
 // MARK: - LoginTextFieldError AutoEquatable
 extension LoginTextFieldError: Equatable {}
-internal func == (lhs: LoginTextFieldError, rhs: LoginTextFieldError) -> Bool {
+public func == (lhs: LoginTextFieldError, rhs: LoginTextFieldError) -> Bool {
     switch (lhs, rhs) {
     case (.email(let lhs), .email(let rhs)):
         return lhs == rhs
