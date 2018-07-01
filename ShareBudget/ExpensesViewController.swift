@@ -25,7 +25,7 @@ class ExpensesViewController: BaseViewController {
             let presenter = ExpensesPresenter(with: interaction, router: router)
             viperView = ExpensesView(with: presenter, and: self)
 
-            presenter.delegate = viperView as! ExpensesPresenterDelegate
+            presenter.delegate = viperView as? ExpensesPresenterDelegate
         } catch {
             fatalError("\(error)")
         }
