@@ -129,6 +129,10 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     // MARK: - CPTPieChartDelegate
     
     func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
+        if interaction.isEmpty() {
+            return
+        }
+
         if selectedSlice == idx {
             selectedSlice = nil
         } else {
