@@ -8,17 +8,17 @@ inhibit_all_warnings!
 def shared
 	pod 'XCGLogger', '6.1.0'
 	pod 'KeychainSwift', '11.0.0'
-	pod 'R.swift', '4.0'
+	pod 'R.swift', '4.0.0'
 	pod 'SnapKit', '4.0'
 	pod 'CorePlot', '2.2'
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'le', '1.1'
-	pod 'BugfenderSDK', '1.5.2'
+	pod 'BugfenderSDK', '1.5.4'
 	pod 'JustLog', '2.3.0'
 	pod 'Toast-Swift', '3.0.1'
-	pod 'SwiftLint', '0.25.1'
-	pod 'Firebase/Core', '4.12.0'
-	pod 'Crashlytics', '3.10.1'
+	pod 'SwiftLint', '0.26.0'
+	pod 'Firebase/Core', '5.4.0'
+	pod 'Crashlytics', '3.10.3'
 	pod 'Sourcery', '0.16.0'
 	pod 'TimeIntervals', '1.0.0'
 	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
@@ -41,7 +41,7 @@ end
 
 target 'ShareBudgetTests' do
 	shared
-	pod 'Nimble', '7.0.3'
+	pod 'Nimble', '7.1.2'
 end
 	
 target 'ShareBudgetUITests' do
