@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 def shared
-	pod 'XCGLogger', '6.0.2'
+	pod 'XCGLogger', '6.1.0'
 	pod 'KeychainSwift', '11.0.0'
 	pod 'R.swift', '4.0'
 	pod 'SnapKit', '4.0'
@@ -19,7 +19,7 @@ def shared
 	pod 'SwiftLint', '0.25.1'
 	pod 'Firebase/Core', '4.12.0'
 	pod 'Crashlytics', '3.10.1'
-	pod 'Sourcery', '0.12.0'
+	pod 'Sourcery', '0.16.0'
 	pod 'TimeIntervals', '1.0.0'
 	pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
