@@ -10,13 +10,13 @@
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "NO"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5735C3FC1EE445F40037BAA8"
-               BuildableName = "ShareBudgetDevelopmentLocal.app"
-               BlueprintName = "ShareBudgetDevelopmentLocal"
+               BlueprintIdentifier = "573F599B1E295C4D00AEA72A"
+               BuildableName = "ShareBudget.app"
+               BlueprintName = "ShareBudget"
                ReferencedContainer = "container:ShareBudget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5735C3FC1EE445F40037BAA8"
-            BuildableName = "ShareBudgetDevelopmentLocal.app"
-            BlueprintName = "ShareBudgetDevelopmentLocal"
+            BlueprintIdentifier = "573F599B1E295C4D00AEA72A"
+            BuildableName = "ShareBudget.app"
+            BlueprintName = "ShareBudget"
             ReferencedContainer = "container:ShareBudget.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -53,7 +53,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Local"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -66,9 +66,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5735C3FC1EE445F40037BAA8"
-            BuildableName = "ShareBudgetDevelopmentLocal.app"
-            BlueprintName = "ShareBudgetDevelopmentLocal"
+            BlueprintIdentifier = "573F599B1E295C4D00AEA72A"
+            BuildableName = "ShareBudget.app"
+            BlueprintName = "ShareBudget"
             ReferencedContainer = "container:ShareBudget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,9 +85,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5735C3FC1EE445F40037BAA8"
-            BuildableName = "ShareBudgetDevelopmentLocal.app"
-            BlueprintName = "ShareBudgetDevelopmentLocal"
+            BlueprintIdentifier = "573F599B1E295C4D00AEA72A"
+            BuildableName = "ShareBudget.app"
+            BlueprintName = "ShareBudget"
             ReferencedContainer = "container:ShareBudget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

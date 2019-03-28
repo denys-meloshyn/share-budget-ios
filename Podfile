@@ -16,7 +16,7 @@ def shared
 	pod 'BugfenderSDK', '1.5.4'
 	pod 'JustLog', '2.5.0'
 	pod 'Toast-Swift', '4.0.1'
-	pod 'SwiftLint', '0.26.0'
+	pod 'SwiftLint', '0.27.0'
 	pod 'Firebase/Core', '5.4.0'
 	pod 'Crashlytics', '3.10.3'
 	pod 'Sourcery', '0.16.0'
@@ -28,14 +28,6 @@ end
 use_frameworks!
 
 target 'ShareBudget' do
-	shared
-end
-
-target 'ShareBudgetDevelopmentLocal' do
-	shared
-end
-	
-target 'ShareBudgetDevelopmentRemote' do
 	shared
 end
 
@@ -55,8 +47,6 @@ post_install do |installer|
       config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
     end
 
-    print target.name
-    print "\n"
     if ['R.swift.Library', 'SnapKit', 'XCGLogger', 'SwiftyBeaver'].include? target.name
       print "\t - Changing "
       print target.name

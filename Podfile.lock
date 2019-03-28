@@ -47,7 +47,7 @@ PODS:
   - R.swift.Library (4.0.0)
   - SnapKit (4.0.0)
   - Sourcery (0.16.0)
-  - SwiftLint (0.26.0)
+  - SwiftLint (0.27.0)
   - SwiftyBeaver (1.6.2)
   - TimeIntervals (1.0.0)
   - Toast-Swift (4.0.1)
@@ -70,7 +70,7 @@ DEPENDENCIES:
   - R.swift (= 4.0.0)
   - SnapKit (= 4.0)
   - Sourcery (= 0.16.0)
-  - SwiftLint (= 0.26.0)
+  - SwiftLint (= 0.27.0)
   - TimeIntervals (= 1.0.0)
   - Toast-Swift (= 4.0.1)
   - XCGLogger (= 6.1.0)
@@ -140,12 +140,12 @@ SPEC CHECKSUMS:
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
-  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftyBeaver: 8e67ab3cd94389cbbb7a9c7cc02748d98bfee68e
   TimeIntervals: 1ae58fc906d35311c5ca84a689c86c69c2209575
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: e17254c3e4a29c445e69a3dbe4fd6e7f0b1ba9ca
+PODFILE CHECKSUM: 35d5dcfb521fcb3e3bec76f3bc15a2990ca4fb15
 
 COCOAPODS: 1.5.3
