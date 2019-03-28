@@ -53,10 +53,10 @@ class BudgetPresenter<I: BudgetInteractionProtocol, R: BudgetRouterProtocol>: Ba
             let descriptionText = LocalisedManager.groups.createNewGroupTip(searchText)
             let attribetString = NSMutableAttributedString(string: descriptionText)
             var range = (descriptionText as NSString).range(of: searchText, options: .backwards)
-            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
+            attribetString.addAttribute(NSAttributedString.Key.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
             range = (descriptionText as NSString).range(of: "+")
-            attribetString.addAttribute(NSAttributedStringKey.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
+            attribetString.addAttribute(NSAttributedString.Key.foregroundColor, value: Constants.color.dflt.actionColor, range: range)
             
             delegate?.showCreateNewGroupMessage(message: attribetString)
         } else {
@@ -100,7 +100,7 @@ class BudgetPresenter<I: BudgetInteractionProtocol, R: BudgetRouterProtocol>: Ba
         router.openDetailPage(for: budget.objectID)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

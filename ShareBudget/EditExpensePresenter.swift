@@ -119,7 +119,7 @@ class EditExpensePresenter<I: EditExpenseInteraction, R: EditExpenseRouterProtoc
             title = LocalisedManager.edit.expense.update
         }
         
-        let button = UIBarButtonItem(title: title, style: UIBarButtonItemStyle.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
+        let button = UIBarButtonItem(title: title, style: UIBarButtonItem.Style.plain, target: self, action: #selector(EditExpensePresenter.saveChanges))
         
         delegate?.showApplyChangesButton(button)
     }

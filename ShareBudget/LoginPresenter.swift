@@ -143,7 +143,7 @@ class LoginPresenter<I: LoginInteractionProtocol, R: LoginRouterProtocol>: BaseP
 
     func keyboardWillShown(notofication: Notification) {
         if let info = notofication.userInfo {
-            if let kbSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if let kbSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 delegate?.shiftBottomOffset(kbSize.height)
             }
         }

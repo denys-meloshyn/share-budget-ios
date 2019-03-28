@@ -1194,8 +1194,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = 573F59931E295C4D00AEA72A;
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
@@ -2232,7 +2235,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2252,7 +2255,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2271,7 +2274,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_REMOTE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.remote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2290,7 +2293,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEVELOPMENT_REMOTE\"";
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget.development.remote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2349,7 +2352,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -2400,7 +2403,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2422,7 +2425,7 @@
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
 				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*) Develop";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2444,7 +2447,7 @@
 				PROVISIONING_PROFILE = "ccf9e56f-e142-4553-ab51-9a27034caf3a";
 				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2463,7 +2466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareBudget.app/ShareBudget";
 			};
 			name = Debug;
@@ -2483,7 +2486,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShareBudget.app/ShareBudget";
 			};
 			name = Release;
@@ -2501,7 +2504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = ShareBudget;
 			};
 			name = Debug;
@@ -2519,7 +2522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = ShareBudget;
 			};
 			name = Release;

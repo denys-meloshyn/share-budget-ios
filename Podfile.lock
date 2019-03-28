@@ -28,9 +28,9 @@ PODS:
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - HTTPNetworking (0.1.0)
-  - JustLog (2.3.0):
+  - JustLog (2.5.0):
     - CocoaAsyncSocket (~> 7.6.3)
-    - SwiftyBeaver (~> 1.5.2)
+    - SwiftyBeaver (~> 1.6.1)
   - KeychainSwift (11.0.0)
   - le (1.1)
   - nanopb (0.3.8):
@@ -48,9 +48,9 @@ PODS:
   - SnapKit (4.0.0)
   - Sourcery (0.16.0)
   - SwiftLint (0.26.0)
-  - SwiftyBeaver (1.5.2)
+  - SwiftyBeaver (1.6.2)
   - TimeIntervals (1.0.0)
-  - Toast-Swift (3.0.1)
+  - Toast-Swift (4.0.1)
   - XCGLogger (6.1.0):
     - XCGLogger/Core (= 6.1.0)
   - XCGLogger/Core (6.1.0):
@@ -63,7 +63,7 @@ DEPENDENCIES:
   - Crashlytics (= 3.10.3)
   - Firebase/Core (= 5.4.0)
   - HTTPNetworking (from `https://github.com/ned1988/HttpNetworking.git`)
-  - JustLog (= 2.3.0)
+  - JustLog (= 2.5.0)
   - KeychainSwift (= 11.0.0)
   - le (= 1.1)
   - Nimble (= 7.1.2)
@@ -72,7 +72,7 @@ DEPENDENCIES:
   - Sourcery (= 0.16.0)
   - SwiftLint (= 0.26.0)
   - TimeIntervals (= 1.0.0)
-  - Toast-Swift (= 3.0.1)
+  - Toast-Swift (= 4.0.1)
   - XCGLogger (= 6.1.0)
 
 SPEC REPOS:
@@ -130,7 +130,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   HTTPNetworking: cb31ca12f4fe4150509b0b3f8357fff7ad0ea376
-  JustLog: f45d7e84353e34742b177f0156fcfa1b65b7bd4e
+  JustLog: 24d4dbdd4d4b65fc04069f222ee34b1d9c9004cf
   KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -141,11 +141,11 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
   SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
-  SwiftyBeaver: 85daaaa2b3ae6e31b7b55c99430e8b91dac088af
+  SwiftyBeaver: 8e67ab3cd94389cbbb7a9c7cc02748d98bfee68e
   TimeIntervals: 1ae58fc906d35311c5ca84a689c86c69c2209575
-  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: e852ddc542eacf9c3eda3d6183bc56a93b01faed
+PODFILE CHECKSUM: e17254c3e4a29c445e69a3dbe4fd6e7f0b1ba9ca
 
 COCOAPODS: 1.5.3
