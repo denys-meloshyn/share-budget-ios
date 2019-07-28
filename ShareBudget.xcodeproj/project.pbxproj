@@ -1449,7 +1449,7 @@
 		573F59C51E295C4E00AEA72A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1508,7 +1508,7 @@
 		573F59C61E295C4E00AEA72A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1561,7 +1561,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6AC311A8BFD0B15554304EF1 /* Pods-ShareBudget.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
@@ -1582,7 +1582,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B05234E4E08A4C399266793E /* Pods-ShareBudget.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -1605,7 +1605,7 @@
 			baseConfigurationReference = 4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -1625,7 +1625,7 @@
 			baseConfigurationReference = E168A14FF6FEA5EAD82BCAF3 /* Pods-ShareBudgetTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -1645,7 +1645,7 @@
 			baseConfigurationReference = D5D6AD7B76D0820FFF2440DD /* Pods-ShareBudgetUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
@@ -1663,7 +1663,7 @@
 			baseConfigurationReference = 4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
@@ -1679,7 +1679,7 @@
 		576A7A89224D19D8006C49BD /* ProductionDebug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1739,7 +1739,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C5D2ECE6F33E50F391C38EA0 /* Pods-ShareBudget.productiondebug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
@@ -1762,7 +1762,7 @@
 			baseConfigurationReference = FDDE74B8BED875CBE7CB7F5D /* Pods-ShareBudgetTests.productiondebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -1782,7 +1782,7 @@
 			baseConfigurationReference = 0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
@@ -1798,7 +1798,7 @@
 		576A7A8D224D19F3006C49BD /* Local */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1858,7 +1858,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7850FFABBBC61D4FC6DC56C2 /* Pods-ShareBudget.local.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
@@ -1881,7 +1881,7 @@
 			baseConfigurationReference = CB4583897178E7C35C33F989 /* Pods-ShareBudgetTests.local.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
@@ -1901,7 +1901,7 @@
 			baseConfigurationReference = CCF12828704C0D64A8980A3B /* Pods-ShareBudgetUITests.local.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
