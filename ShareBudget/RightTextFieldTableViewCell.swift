@@ -108,9 +108,9 @@ class RightTextFieldTableViewCell: UITableViewCell {
     private func addToolBar() {
         let toolBar = self.keyboardToolBar()
         
-        let doneToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(RightTextFieldTableViewCell.doneAction))
-        let flexibleSpaceToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let nextToolBarItem = UIBarButtonItem(title: LocalisedManager.generic.next, style: UIBarButtonItemStyle.done, target: self, action: #selector(RightTextFieldTableViewCell.nextKeyboardAction))
+        let doneToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(RightTextFieldTableViewCell.doneAction))
+        let flexibleSpaceToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let nextToolBarItem = UIBarButtonItem(title: LocalisedManager.generic.next, style: UIBarButtonItem.Style.done, target: self, action: #selector(RightTextFieldTableViewCell.nextKeyboardAction))
         toolBar.items = [doneToolBarItem, flexibleSpaceToolBarItem, nextToolBarItem]
         
         self.textField?.inputAccessoryView = toolBar
@@ -119,8 +119,8 @@ class RightTextFieldTableViewCell: UITableViewCell {
     private func addDateToolBar() {
         let toolBar = self.keyboardToolBar()
         
-        let doneToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(RightTextFieldTableViewCell.doneAction))
-        let flexibleSpaceToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(RightTextFieldTableViewCell.doneAction))
+        let flexibleSpaceToolBarItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         toolBar.items = [flexibleSpaceToolBarItem, doneToolBarItem]
         
         self.textField?.inputAccessoryView = toolBar

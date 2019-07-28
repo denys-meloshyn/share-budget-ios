@@ -14,9 +14,9 @@ def shared
 	pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 	pod 'le', '1.1'
 	pod 'BugfenderSDK', '1.5.4'
-	pod 'JustLog', '2.3.0'
-	pod 'Toast-Swift', '3.0.1'
-	pod 'SwiftLint', '0.26.0'
+	pod 'JustLog', '2.5.0'
+	pod 'Toast-Swift', '4.0.1'
+	pod 'SwiftLint', '0.27.0'
 	pod 'Firebase/Core', '5.4.0'
 	pod 'Crashlytics', '3.10.3'
 	pod 'Sourcery', '0.16.0'
@@ -28,14 +28,6 @@ end
 use_frameworks!
 
 target 'ShareBudget' do
-	shared
-end
-
-target 'ShareBudgetDevelopmentLocal' do
-	shared
-end
-	
-target 'ShareBudgetDevelopmentRemote' do
 	shared
 end
 
@@ -55,12 +47,12 @@ post_install do |installer|
       config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
     end
 
-    if target.name == 'Toast-Swift'
+    if ['R.swift.Library', 'SnapKit', 'XCGLogger', 'SwiftyBeaver'].include? target.name
       print "\t - Changing "
       print target.name
-      print " swift version to 3.2\n"
+      print " swift version to 4.2\n"
       target.build_configurations.each do |config|
-        config.build_settings['SWIFT_VERSION'] = '3.2'
+        config.build_settings['SWIFT_VERSION'] = '4.0'
       end
 
       if target.name == 'CorePlot'

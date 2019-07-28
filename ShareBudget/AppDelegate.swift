@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow? 
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if Dependency.environment() != .testing {
             FirebaseApp.configure()
             Fabric.sharedSDK().debug = true
@@ -76,12 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = Constants.color.dflt.textTintColor
         UITabBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: Constants.color.dflt.actionColor], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Constants.color.dflt.actionColor], for: .selected)
         
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = Constants.color.dflt.actionColor
         UINavigationBar.appearance().barTintColor = Constants.color.dflt.apperanceColor
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.color.dflt.textTintColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.color.dflt.textTintColor]
         
         UITextField.appearance().tintColor = Constants.color.dflt.actionColor
         

@@ -19,7 +19,7 @@ extension KeyBoardProtocol {
             return 0.0
         }
             
-        guard let kbSize = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+        guard let kbSize = (info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return 0.0
         }
             
@@ -32,7 +32,7 @@ extension KeyBoardProtocol {
     }
     
     func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
