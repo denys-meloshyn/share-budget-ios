@@ -1194,8 +1194,11 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = 573F59931E295C4D00AEA72A;
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
