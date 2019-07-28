@@ -66,7 +66,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Nimble (7.1.2)
+  - Nimble (8.0.2)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
@@ -79,9 +79,9 @@ PODS:
   - SwiftyBeaver (1.7.0)
   - TimeIntervals (1.0.1)
   - Toast-Swift (5.0.0)
-  - XCGLogger (6.1.0):
-    - XCGLogger/Core (= 6.1.0)
-  - XCGLogger/Core (6.1.0):
+  - XCGLogger (7.0.0):
+    - XCGLogger/Core (= 7.0.0)
+  - XCGLogger/Core (7.0.0):
     - ObjcExceptionBridging
 
 DEPENDENCIES:
@@ -94,14 +94,14 @@ DEPENDENCIES:
   - JustLog (= 3.0.0)
   - KeychainSwift (= 11.0.0)
   - le (= 1.1)
-  - Nimble (= 7.1.2)
+  - Nimble (= 8.0.2)
   - R.swift (= 5.0.3)
   - SnapKit (= 5.0.0)
   - Sourcery (= 0.16.1)
   - SwiftLint (= 0.33.1)
   - TimeIntervals (= 1.0.1)
   - Toast-Swift (= 5.0.0)
-  - XCGLogger (= 6.1.0)
+  - XCGLogger (= 7.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -164,7 +164,7 @@ SPEC CHECKSUMS:
   KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Nimble: 3835ba9f459daa6b347f8a8e110aaae8ca1920a8
+  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
   R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
@@ -174,8 +174,8 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
   TimeIntervals: 533dbd48fdc76f85d65ab8bf0d73d2d74967cec7
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
-  XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
+  XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
 
-PODFILE CHECKSUM: d8ab8354f70ad9932a171046b60c1a8a02ff5f73
+PODFILE CHECKSUM: 6d35eeae9bd937b2d2591d1519ef931cce640407
 
 COCOAPODS: 1.7.4

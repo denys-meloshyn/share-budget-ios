@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 def shared
-  pod 'XCGLogger', '6.1.0'
+  pod 'XCGLogger', '7.0.0'
   pod 'KeychainSwift', '11.0.0'
   pod 'R.swift', '5.0.3'
   pod 'SnapKit', '5.0.0'
@@ -33,7 +33,7 @@ end
 
 target 'ShareBudgetTests' do
   shared
-  pod 'Nimble', '7.1.2'
+  pod 'Nimble', '8.0.2'
 end
 
 target 'ShareBudgetUITests' do
