@@ -81,7 +81,7 @@ class LimitTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         dateComponents.month = 2
-        let result = ModelManager.lastLimit(for: self.budget.objectID, date: dateComponents.date as NSDate!, self.managedObjectContext)
+        let result = ModelManager.lastLimit(for: self.budget.objectID, date: dateComponents.date as! NSDate, self.managedObjectContext)
         expect(result?.limit) == 200.0
     }
     
@@ -105,7 +105,7 @@ class LimitTest: XCTestCase {
         ModelManager.saveContext(self.managedObjectContext)
         
         dateComponents.month = 2
-        let result = ModelManager.lastLimit(for: self.budget.objectID, date: dateComponents.date as NSDate!, self.managedObjectContext)
+        let result = ModelManager.lastLimit(for: self.budget.objectID, date: dateComponents.date as! NSDate, self.managedObjectContext)
         expect(result).to(beNil())
     }
 }
