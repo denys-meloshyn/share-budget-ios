@@ -115,7 +115,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     }
 
     private func configureTableWithDefaultProperties(tableView: UITableView) {
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 80.0
         tableView.sectionHeaderHeight = 40.0
         addCells(to: tableView)
@@ -143,7 +143,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
 extension ExpensesView: ExpensesPresenterDelegate {
     func showCreateNewExpenseButton(action: @escaping BarButtonItemListenerActionBlock) {
-        addBarButtonItem = BarButtonItemListener(with: .add, action: action)
+        addBarButtonItem = BarButtonItemListener(with: UIBarButtonItem.SystemItem.add, action: action)
         viewController?.navigationItem.rightBarButtonItem = addBarButtonItem?.barButtonItem
         viewController?.navigationItem.hidesSearchBarWhenScrolling = false
         viewController?.definesPresentationContext = true

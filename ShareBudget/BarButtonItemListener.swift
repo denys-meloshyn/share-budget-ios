@@ -15,10 +15,10 @@ class BarButtonItemListener {
         return UIBarButtonItem(barButtonSystemItem: style, target: self, action: #selector(BarButtonItemListener.targetAction))
     }
     
-    private let style: UIBarButtonSystemItem
+    private let style: UIBarButtonItem.SystemItem
     private let actionBlock: BarButtonItemListenerActionBlock?
     
-    init(with style: UIBarButtonSystemItem, action: @escaping BarButtonItemListenerActionBlock) {
+    init(with style: UIBarButtonItem.SystemItem, action: @escaping BarButtonItemListenerActionBlock) {
         self.style = style
         actionBlock = action
     }

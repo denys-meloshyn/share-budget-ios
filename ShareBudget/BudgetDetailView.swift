@@ -279,7 +279,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
             textField.placeholder = placeholder
             textField.autocapitalizationType = .none
             
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { _ in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { _ in
                 guard let text = textField.text else {
                     return
                 }
