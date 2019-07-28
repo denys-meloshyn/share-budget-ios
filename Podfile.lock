@@ -1,78 +1,106 @@
 PODS:
-  - BugfenderSDK (1.5.4):
-    - BugfenderSDK/Swift (= 1.5.4)
-  - BugfenderSDK/Swift (1.5.4)
+  - BugfenderSDK (1.6.6):
+    - BugfenderSDK/Swift (= 1.6.6)
+  - BugfenderSDK/Swift (1.6.6)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CocoaAsyncSocket (7.6.3)
   - CorePlot (2.2)
-  - Crashlytics (3.10.3):
-    - Fabric (~> 1.7.8)
-  - Fabric (1.7.8)
-  - Firebase/Core (5.4.0):
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
+  - Firebase/Core (6.4.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.0.1)
-  - Firebase/CoreOnly (5.4.0):
-    - FirebaseCore (= 5.0.5)
-  - FirebaseAnalytics (5.0.1):
-    - FirebaseCore (~> 5.0)
-    - FirebaseInstanceID (~> 3.0)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - FirebaseAnalytics (= 6.0.3)
+  - Firebase/CoreOnly (6.4.0):
+    - FirebaseCore (= 6.0.4)
+  - FirebaseAnalytics (6.0.3):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleAppMeasurement (= 6.0.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.0.5):
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-  - FirebaseInstanceID (3.1.1):
-    - FirebaseCore (~> 5.0)
-  - GoogleToolboxForMac/Defines (2.1.4)
-  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
-    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - FirebaseCore (6.0.4):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseInstanceID (4.2.1):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - GoogleAppMeasurement (6.0.3):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (6.2.3):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.2.3)
+  - GoogleUtilities/Logger (6.2.3):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.2.3):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.2.3):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.2.3)"
+  - GoogleUtilities/Reachability (6.2.3):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.2.3):
+    - GoogleUtilities/Logger
   - HTTPNetworking (0.1.0)
-  - JustLog (2.5.0):
+  - JustLog (3.0.0):
     - CocoaAsyncSocket (~> 7.6.3)
-    - SwiftyBeaver (~> 1.6.1)
+    - SwiftyBeaver (~> 1.7.0)
   - KeychainSwift (11.0.0)
   - le (1.1)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - Nimble (7.1.2)
   - ObjcExceptionBridging (1.0.1):
     - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
   - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
-  - R.swift (4.0.0):
-    - R.swift.Library (~> 4.0.0)
-  - R.swift.Library (4.0.0)
-  - SnapKit (4.0.0)
-  - Sourcery (0.16.0)
-  - SwiftLint (0.27.0)
-  - SwiftyBeaver (1.6.2)
-  - TimeIntervals (1.0.0)
-  - Toast-Swift (4.0.1)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
+  - SnapKit (5.0.0)
+  - Sourcery (0.16.1)
+  - SwiftLint (0.33.1)
+  - SwiftyBeaver (1.7.0)
+  - TimeIntervals (1.0.1)
+  - Toast-Swift (5.0.0)
   - XCGLogger (6.1.0):
     - XCGLogger/Core (= 6.1.0)
   - XCGLogger/Core (6.1.0):
     - ObjcExceptionBridging
 
 DEPENDENCIES:
-  - BugfenderSDK (= 1.5.4)
+  - BugfenderSDK (= 1.6.6)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CorePlot (= 2.2)
-  - Crashlytics (= 3.10.3)
-  - Firebase/Core (= 5.4.0)
+  - Crashlytics (= 3.13.4)
+  - Firebase/Core (= 6.4.0)
   - HTTPNetworking (from `https://github.com/ned1988/HttpNetworking.git`)
-  - JustLog (= 2.5.0)
+  - JustLog (= 3.0.0)
   - KeychainSwift (= 11.0.0)
   - le (= 1.1)
   - Nimble (= 7.1.2)
-  - R.swift (= 4.0.0)
-  - SnapKit (= 4.0)
-  - Sourcery (= 0.16.0)
-  - SwiftLint (= 0.27.0)
-  - TimeIntervals (= 1.0.0)
-  - Toast-Swift (= 4.0.1)
+  - R.swift (= 5.0.3)
+  - SnapKit (= 5.0.0)
+  - Sourcery (= 0.16.1)
+  - SwiftLint (= 0.33.1)
+  - TimeIntervals (= 1.0.1)
+  - Toast-Swift (= 5.0.0)
   - XCGLogger (= 6.1.0)
 
 SPEC REPOS:
@@ -86,7 +114,8 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
-    - GoogleToolboxForMac
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - JustLog
     - KeychainSwift
     - le
@@ -118,34 +147,35 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ned1988/HttpNetworking.git
 
 SPEC CHECKSUMS:
-  BugfenderSDK: 9db2cb0f7afe616b4122f018c23e01685441b413
+  BugfenderSDK: d5ad218b13df453bb072a3c46f5a29b7de6d514c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
-  Crashlytics: 2aea305161a2122492698c75af27f2b98aa49a25
-  Fabric: fba4684a95df789565b0b27fc5b6e68f1755af32
-  Firebase: d66f4f29c23f22d96808d9abc174d81d8eee968f
-  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
-  FirebaseCore: 42b3267233bd21a5abd54117ccc38ca3dd0f8e83
-  FirebaseInstanceID: f3f0657372592ecdfdfe2cac604a5a75758376a6
-  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Firebase: 9445469655a98e9010737f4bc4720e5bda465873
+  FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
+  FirebaseCore: 7ea99e200f0024262650be56623fbe6a7bef1707
+  FirebaseInstanceID: 9782fcfb89e4d7da76cc28eac4b8543dc7be4a4b
+  GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
+  GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   HTTPNetworking: cb31ca12f4fe4150509b0b3f8357fff7ad0ea376
-  JustLog: 24d4dbdd4d4b65fc04069f222ee34b1d9c9004cf
+  JustLog: e4287208ea6364f867d7c5f1a974f549f55fdfd0
   KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
   le: c54f8a67be9c0b068fa779f00641520c6e72e6ec
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Nimble: 3835ba9f459daa6b347f8a8e110aaae8ca1920a8
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
-  R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
-  R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Sourcery: 3e55aad9719ee5782ab81eb16addd44d272e4d13
-  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
-  SwiftyBeaver: 8e67ab3cd94389cbbb7a9c7cc02748d98bfee68e
-  TimeIntervals: 1ae58fc906d35311c5ca84a689c86c69c2209575
-  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  Sourcery: 16779170d35ee204666843b09031f36721a84bcc
+  SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
+  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
+  TimeIntervals: 533dbd48fdc76f85d65ab8bf0d73d2d74967cec7
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   XCGLogger: 7f7f43f15dfe3a305fa1342b7dc29af656289abd
 
-PODFILE CHECKSUM: 35d5dcfb521fcb3e3bec76f3bc15a2990ca4fb15
+PODFILE CHECKSUM: d8ab8354f70ad9932a171046b60c1a8a02ff5f73
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.4
