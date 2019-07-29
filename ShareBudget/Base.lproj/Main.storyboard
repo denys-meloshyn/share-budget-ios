@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g16-2X-JoY">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g16-2X-JoY">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,49 +14,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="Gf8-Xu-xnd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hnr-uM-3JY">
-                                        <rect key="frame" x="15" y="15" width="345" height="68"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ZL-Uy-f5u" customClass="ButtonListener" customModule="ShareBudget" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
-                                                <state key="normal" title="Login"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvs-9G-OI0" customClass="ButtonListener" customModule="ShareBudget" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="38" width="345" height="30"/>
-                                                <state key="normal" title="Switch"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="leading" secondItem="Gf8-Xu-xnd" secondAttribute="leading" constant="15" id="8lw-bv-jiS"/>
-                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="top" secondItem="Gf8-Xu-xnd" secondAttribute="top" constant="15" id="Khz-4T-PTx"/>
-                                    <constraint firstItem="Hnr-uM-3JY" firstAttribute="width" secondItem="Gf8-Xu-xnd" secondAttribute="width" constant="-30" id="MK8-i5-SUb"/>
-                                    <constraint firstAttribute="bottom" secondItem="Hnr-uM-3JY" secondAttribute="bottom" constant="15" id="Ywb-xq-9Oh"/>
-                                    <constraint firstAttribute="trailing" secondItem="Hnr-uM-3JY" secondAttribute="trailing" constant="15" id="n1K-ee-aqa"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Gf8-Xu-xnd" firstAttribute="leading" secondItem="0Dt-jY-Dda" secondAttribute="leading" id="MBg-VE-tQ4"/>
-                            <constraint firstAttribute="bottom" secondItem="Gf8-Xu-xnd" secondAttribute="bottom" id="Rbi-Xo-glc"/>
-                            <constraint firstItem="0Dt-jY-Dda" firstAttribute="trailing" secondItem="Gf8-Xu-xnd" secondAttribute="trailing" id="WIa-rm-Pnw"/>
-                            <constraint firstItem="Gf8-Xu-xnd" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jNf-bx-Des"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0Dt-jY-Dda"/>
                     </view>
                     <navigationItem key="navigationItem" id="mzH-TX-idC"/>
-                    <connections>
-                        <outlet property="authorisationButton" destination="3ZL-Uy-f5u" id="p0a-vq-uFB"/>
-                        <outlet property="authorisationModeButton" destination="Bvs-9G-OI0" id="asn-70-6G5"/>
-                        <outlet property="scrollView" destination="Gf8-Xu-xnd" id="hby-eg-x1h"/>
-                        <outlet property="stackView" destination="Hnr-uM-3JY" id="TIR-N8-q4a"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -704,7 +662,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C8s-Bu-uQg" id="2Jl-1H-Dwk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8co-10-RDR">
@@ -779,10 +737,9 @@
         <!--Rotate Navigation Controller-->
         <scene sceneID="CaR-x0-r93">
             <objects>
-                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="dM5-2a-nhH" customClass="RotateNavigationController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="dM5-2a-nhH" customClass="RotateNavigationController" customModule="ShareBudget" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i3X-IJ-Ob7">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

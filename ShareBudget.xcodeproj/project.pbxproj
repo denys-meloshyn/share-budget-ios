@@ -295,6 +295,7 @@
 		579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPresenter.swift; sourceTree = "<group>"; };
 		579359F420C6F706005A2D2B /* ExpensesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRouter.swift; sourceTree = "<group>"; };
 		579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteraction.swift; sourceTree = "<group>"; };
+		579F30AD22EF8EBE00F99EE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57AEFCF420D56E4E001FF1EF /* ExpensesInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteractionTest.swift; sourceTree = "<group>"; };
 		57AEFCF620D57059001FF1EF /* MockLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogger.swift; sourceTree = "<group>"; };
@@ -1407,6 +1408,7 @@
 				573F59A41E295C4D00AEA72A /* Base */,
 				578BD0601E35158D00DE28C8 /* uk */,
 				578BD0621E35159300DE28C8 /* ru */,
+				579F30AD22EF8EBE00F99EE5 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
