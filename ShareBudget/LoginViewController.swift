@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import AuthenticationServices
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     @IBOutlet private var stackView: UIStackView?
     @IBOutlet private var scrollView: UIScrollView?
     @IBOutlet private var authorisationButton: ButtonListener?
@@ -16,6 +17,10 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let button = ASAuthorizationAppleIDButton()
+        button.addTarget(self, action: #selector(handleAuthorizationButtonPress),for: .touchUpInside)
+        stackView?.addArrangedSubview(button)
         
         let router = LoginRouter(with: self)
         let interaction = LoginInteraction()
@@ -31,6 +36,34 @@ class LoginViewController: BaseViewController {
         view.viewDidLoad()
         
         presenter.configure()
+    }
+    
+    @objc func handleAuthorizationButtonPress() {
+     let request = ASAuthorizationAppleIDProvider().createRequest()
+     request.requestedScopes = [.fullName, .email]
+     let controller = ASAuthorizationController(authorizationRequests: [request])
+     controller.delegate = self
+     controller.presentationContextProvider = self
+     controller.performRequests()
+    }
+    
+    func authorizationController(controller _: ASAuthorizationController,
+     didCompleteWithAuthorization authorization: ASAuthorization) {
+     if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+     let userIdentifier = credential.user
+     let identityToken = credential.identityToken
+     let authCode = credential.authorizationCode
+     let realUserStatus = credential.realUserStatus
+     // Create account in your system
+     }
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller _: ASAuthorizationController, didCompleteWithError error: Error) {
+     // Handle error
     }
 
     private func linkStoryboardViews(to view: LoginViewProtocol) {
