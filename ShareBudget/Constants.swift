@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ChameleonFramework
 
 enum ErrorTypeAPI {
     case none

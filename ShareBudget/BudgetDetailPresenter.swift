@@ -8,7 +8,7 @@
 
 import CorePlot
 import CoreData
-import ChameleonFramework
+import MaterialColor
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
     func updateChart()
@@ -40,7 +40,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     fileprivate var pieChartColors = [UIColor]()
     
     private var colorsRange = [Range<Double>]()
-    private let colors = [UIColor.flatGreen, UIColor.flatYellow, UIColor.flatRed]
+    private let colors = [UIColor.green, UIColor.yellow, UIColor.red]
     
     // MARK: - Life cycle methods
     
@@ -146,22 +146,22 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     // MARK: - Private methods
     
     private func configurePiChartColors() {
-        pieChartColors.append(UIColor.flatRed)
-        pieChartColors.append(UIColor.flatOrange)
-        pieChartColors.append(UIColor.flatYellow)
-        pieChartColors.append(UIColor.flatSkyBlue)
-        pieChartColors.append(UIColor.flatGreen)
-        pieChartColors.append(UIColor.flatWatermelon)
-        pieChartColors.append(UIColor.flatMint)
-        pieChartColors.append(UIColor.flatPink)
-        pieChartColors.append(UIColor.flatPlum)
-        pieChartColors.append(UIColor.flatSand)
-        pieChartColors.append(UIColor.flatTeal)
-        pieChartColors.append(UIColor.flatLime)
-        pieChartColors.append(UIColor.flatBlue)
-        pieChartColors.append(UIColor.flatMagenta)
-        pieChartColors.append(UIColor.flatBrown)
-        pieChartColors.append(UIColor.flatGray)
+        pieChartColors.append(UIColor.red)
+        pieChartColors.append(UIColor.orange)
+        pieChartColors.append(UIColor.yellow)
+        pieChartColors.append(MaterialColor.blue.base)
+        pieChartColors.append(UIColor.green)
+//        pieChartColors.append(UIColor.flatWatermelon)
+//        pieChartColors.append(UIColor.flatMint)
+//        pieChartColors.append(UIColor.flatPink)
+//        pieChartColors.append(UIColor.flatPlum)
+//        pieChartColors.append(UIColor.flatSand)
+//        pieChartColors.append(UIColor.flatTeal)
+//        pieChartColors.append(UIColor.flatLime)
+//        pieChartColors.append(UIColor.flatBlue)
+//        pieChartColors.append(UIColor.flatMagenta)
+//        pieChartColors.append(UIColor.flatBrown)
+//        pieChartColors.append(UIColor.flatGray)
     }
     
     private func configureColors() {
