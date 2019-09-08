@@ -10,54 +10,76 @@ import UIKit
 
 import KeychainSwift
 
-private let keychain = KeychainSwift()
-private let keyUserID = "userID"
-private let keychainToken = "token"
-private let keychainEmail = "email"
-private let keyTimestamp = "timestamp"
-private let keychainPassword = "password"
+protocol UserCredentialsProtocol {
+    var isLoggedIn: Bool { get }
+    var userID: String { get set }
+    var accessToken: String { get set }
+    var refreshToken: String { get set }
 
-class UserCredentials {
-    class var token: String {
-        get {
-            return keychain.get(keychainToken) ?? ""
-        }
-        
-        set {
-            keychain.set(newValue, forKey: keychainToken)
-        }
+    func logout()
+}
+
+class UserCredentials: UserCredentialsProtocol {
+    enum Constants {
+        static let keyUserID = "userID"
+        static let keyAccessToken = "accessToken"
+        static let keyRefreshToken = "refreshToken"
     }
     
-    class var password: String {
-        get {
-            return keychain.get(keychainPassword) ?? ""
+    static let instance = UserCredentials(keychain: KeychainSwift())
+
+    private let keychain: KeychainSwift
+
+    var isLoggedIn: Bool {
+        guard !userID.isEmpty, !accessToken.isEmpty, !refreshToken.isEmpty else {
+            return false
         }
-        
+
+        return true
+    }
+
+    var userID: String {
+        get {
+            return keychain.get(Constants.keyUserID) ?? ""
+        }
+
         set {
-            keychain.set(newValue, forKey: keychainPassword)
+            keychain.set(newValue, forKey: Constants.keyUserID)
         }
     }
-    
-    class var email: String {
+
+    var accessToken: String {
         get {
-            return keychain.get(keychainEmail) ?? ""
+            return keychain.get(Constants.keyAccessToken) ?? ""
         }
-        
+
         set {
-            keychain.set(newValue, forKey: keychainEmail)
+            keychain.set(newValue, forKey: Constants.keyAccessToken)
         }
     }
-    
-    class var userID: Int {
+
+    var refreshToken: String {
         get {
-            return Int(UserDefaults.standard.string(forKey: keyUserID) ?? "-1") ?? -1
+            return keychain.get(Constants.keyRefreshToken) ?? ""
         }
-        
+
         set {
-            UserDefaults.standard.set(String(newValue), forKey: keyUserID)
+            keychain.set(newValue, forKey: Constants.keyRefreshToken)
         }
     }
-    
+
+    init(keychain: KeychainSwift) {
+        self.keychain = keychain
+    }
+
+    func logout() {
+        userID = ""
+        accessToken = ""
+        refreshToken = ""
+        
+        UserCredentials.resetTimeStamps()
+    }
+
     class func resetTimeStamps() {
         SyncManager.shared.categoryAPI.timestamp = ""
         SyncManager.shared.expenseAPI.timestamp = ""
@@ -65,18 +87,5 @@ class UserCredentials {
         SyncManager.shared.budgetLimitAPI.timestamp = ""
         SyncManager.shared.userAPI.timestamp = ""
         SyncManager.shared.userGroupAPI.timestamp = ""
-    }
-    
-    class var isLoggedIn: Bool {
-        return UserCredentials.userID >= 0
-    }
-    
-    class func logout() {
-        self.token = ""
-        self.email = ""
-        self.userID = -1
-        self.password = ""
-        
-        self.resetTimeStamps()
     }
 }

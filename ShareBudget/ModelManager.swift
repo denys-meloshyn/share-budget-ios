@@ -62,7 +62,7 @@ class ModelManager {
                 try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-shm"))
                 try FileManager.default.removeItem(atPath: ModelManager.storeURL.path.appending("-wal"))
                 try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-                Dependency.userCredentials.resetTimeStamps()
+                UserCredentials.resetTimeStamps()
             } catch let removeError {
                 Dependency.logger.error("\(removeError)")
                 abort()

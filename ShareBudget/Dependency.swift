@@ -26,7 +26,7 @@ class Dependency {
     static var logger: XCGLogger!
     static var coreDataName: String!
     static var restAPIVersion: String!
-    static var userCredentials: UserCredentials.Type!
+    static var userCredentials: UserCredentialsProtocol!
     static var backendURLComponents: NSURLComponents!
     static var backendConnection: NSURLComponents {
         get {
@@ -163,7 +163,7 @@ class Dependency {
     }
     
     class private func configureUserCredentials() {
-        self.userCredentials = UserCredentials.self
+        self.userCredentials = UserCredentials.instance
     }
     
     class private func configureDataBaseName() {

@@ -169,7 +169,7 @@ class BaseAPI {
         let model = managedObjectContext.object(with: modelID) as! BaseModel
         var properties = model.uploadProperties()
         
-        properties[Constants.key.json.token] = Dependency.userCredentials.token
+        properties[Constants.key.json.token] = Dependency.userCredentials.accessToken
         properties[Constants.key.json.userID] = String(Dependency.userCredentials.userID)
         if !self.timestamp.isEmpty {
             properties[Constants.key.json.timeStamp] = self.timestamp
@@ -188,14 +188,14 @@ class BaseAPI {
             guard errorType == .none else {
                 if errorType == .tokenExpired {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
-                        if error == .none {
-                            let task = self.upload(resource, modelID, completion)
-                            task.resume()
-                        } else {
-                            completion?(data, error)
-                        }
-                    })
+//                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
+//                        if error == .none {
+//                            let task = self.upload(resource, modelID, completion)
+//                            task.resume()
+//                        } else {
+//                            completion?(data, error)
+//                        }
+//                    })
                     
                     return
                 }

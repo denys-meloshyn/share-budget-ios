@@ -54,11 +54,6 @@ class AuthorisationAPI: BaseAPI {
                 return
             }
             
-            Dependency.userCredentials.email = email
-            Dependency.userCredentials.token = token
-            Dependency.userCredentials.userID = userID
-            Dependency.userCredentials.password = password
-            
             var user = ModelManager.findEntity(User.self, by: userID, in: ModelManager.managedObjectContext)
             if user == nil {
                 user = User(context: ModelManager.managedObjectContext)

@@ -47,19 +47,19 @@ class SyncManager {
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
-                        switch error {
-                        case .none:
-                            self?.loadUpdates(completion: completion)
-                        case .unknown:
-                            DispatchQueue.main.async {
-                                self?.delegate?.error(error)
-                                self?.scheduleNextUpdate()
-                            }
-                        default:
-                            completion?(data, error)
-                        }
-                    })
+//                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
+//                        switch error {
+//                        case .none:
+//                            self?.loadUpdates(completion: completion)
+//                        case .unknown:
+//                            DispatchQueue.main.async {
+//                                self?.delegate?.error(error)
+//                                self?.scheduleNextUpdate()
+//                            }
+//                        default:
+//                            completion?(data, error)
+//                        }
+//                    })
                     
                     return
                 } else if error == .unknown {
