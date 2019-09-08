@@ -25,11 +25,30 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         button.snp.makeConstraints { maker in
             maker.center.equalToSuperview()
         }
+        
+        let userIdentifier = ""
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+                // The Apple ID credential is valid. Show Home UI Here
+                break
+            case .revoked:
+                // The Apple ID credential is revoked. Show SignIn UI Here.
+                break
+            case .notFound:
+                // No credential was found. Show SignIn UI Here.
+                break
+            default:
+                break
+            }
+        }
+
     }
 
     @objc func handleAuthorizationButtonPress() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.fullName]
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = self
         controller.presentationContextProvider = self
@@ -40,15 +59,19 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifier = credential.user
-            let identityToken = credential.identityToken
             let authCode = credential.authorizationCode
             let realUserStatus = credential.realUserStatus
+            if let identityTokenData = credential.identityToken,
+                let identityToken = String(bytes: identityTokenData, encoding: .utf8) {
+                print(identityToken)
+            }
+            
             // Create account in your system
         }
     }
 
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
+        return view.window!
     }
 
     func authorizationController(controller _: ASAuthorizationController, didCompleteWithError error: Error) {
