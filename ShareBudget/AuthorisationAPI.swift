@@ -13,6 +13,8 @@ import RxCocoa
 import HTTPNetworking
 
 class AuthorisationAPI: BaseAPI {
+    static let instance = AuthorisationAPI()
+    
     struct ResponseAppleLogin {
         let accessToken: String
         let refreshToken: String
@@ -35,6 +37,8 @@ class AuthorisationAPI: BaseAPI {
             
             var request = URLRequest(url: url)
             request.method = .POST
+            let properties = ["userID": userIdentifier, "identityToken": identityToken, "lastName": lastName ?? "", "firstName": firstName ?? ""]
+            request.httpBody = self.formValues(properties: properties)
             
             let task = self.loader.loadJSON(request) { data, _, error in
                 if let error = error {
@@ -42,12 +46,12 @@ class AuthorisationAPI: BaseAPI {
                     return
                 }
                 
-                guard let json = data as? [String: String] else {
+                guard let json = data as? [String: Any] else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }
                 
-                guard let accessToken = json["accessToken"], let refreshToken = json["refreshToken"] else {
+                guard let accessToken = json["accessToken"] as? String, let refreshToken = json["refreshToken"] as? String else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }

@@ -162,6 +162,14 @@ class BaseAPI {
         return task
     }
     
+    func formValues(properties: [String: Any]) -> Data? {
+        let formValues = properties.map { (key, value) -> String in
+            return "\(key)=\(value)"
+        }.joined(separator: "&")
+        
+        return formValues.data(using: .utf8)
+    }
+    
     func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask {
         let components = BaseAPI.components(resource)
         

@@ -7,8 +7,8 @@
 //
 
 struct UserEntity: Codable {
+    let userID: Int?
     let email: String?
-    let userID: String?
     let isRemoved: Bool?
     let lastName: String?
     let firstName: String?

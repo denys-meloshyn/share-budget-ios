@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+import RxCocoa
+import RxSwift
 import SnapKit
 import AuthenticationServices
 
@@ -15,6 +18,8 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
     @IBOutlet private var scrollView: UIScrollView?
     @IBOutlet private var authorisationButton: ButtonListener?
     @IBOutlet private var authorisationModeButton: ButtonListener?
+    
+    let disposeBag = DisposeBag()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +68,8 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
             let realUserStatus = credential.realUserStatus
             if let identityTokenData = credential.identityToken,
                 let identityToken = String(bytes: identityTokenData, encoding: .utf8) {
-                print(identityToken)
+                AuthorisationAPI.instance.appleLogin(userIdentifier: userIdentifier, identityToken: identityToken, firstName: credential.fullName?.givenName, lastName: credential.fullName?.familyName).subscribe { _ in
+                }.disposed(by: disposeBag)
             }
             
             // Create account in your system
