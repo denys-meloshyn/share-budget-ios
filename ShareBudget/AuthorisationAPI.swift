@@ -7,9 +7,69 @@
 //
 
 import Foundation
+
+import RxSwift
+import RxCocoa
 import HTTPNetworking
 
 class AuthorisationAPI: BaseAPI {
+    struct ResponseAppleLogin {
+        let accessToken: String
+        let refreshToken: String
+        let user: UserEntity
+    }
+    
+    func componentsLoginApple() -> URLComponents {
+        var components = Dependency.backendConnection
+        components.path = Dependency.restAPIVersion + "/login/apple"
+        
+        return components
+    }
+    
+    func appleLogin(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<ResponseAppleLogin> {
+        return Single.create { event in
+            guard let url = self.componentsLoginApple().url else {
+                event(.error(Constants.Errors.urlNotValid))
+                return Disposables.create()
+            }
+            
+            var request = URLRequest(url: url)
+            request.method = .POST
+            
+            let task = self.loader.loadJSON(request) { data, _, error in
+                if let error = error {
+                    event(.error(error))
+                    return
+                }
+                
+                guard let json = data as? [String: String] else {
+                    event(.error(Constants.Errors.wrongResponseFormat))
+                    return
+                }
+                
+                guard let accessToken = json["accessToken"], let refreshToken = json["refreshToken"] else {
+                    event(.error(Constants.Errors.wrongResponseFormat))
+                    return
+                }
+                
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions())
+                    
+                    let decoder = JSONDecoder()
+                    let user = try decoder.decode(UserEntity.self, from: jsonData)
+                    event(.success(ResponseAppleLogin(accessToken: accessToken, refreshToken: refreshToken, user: user)))
+                } catch {
+                    event(.error(error))
+                }
+            }
+            
+            task.resume()
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
     class func login(email: String, password: String, completion: APIResultBlock?) -> URLSessionTask? {
         let components = AuthorisationAPI.components("login")
         

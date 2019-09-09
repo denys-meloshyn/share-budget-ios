@@ -17,8 +17,9 @@ enum Environment {
 }
 
 class Dependency {
+    static let instance = Dependency()
+    
     private init() {
-        
     }
     
     static let loggerRemoteIdentifier = "advancedLogger.remoteDestination"
@@ -28,10 +29,9 @@ class Dependency {
     static var restAPIVersion: String!
     static var userCredentials: UserCredentialsProtocol!
     static var backendURLComponents: NSURLComponents!
-    static var backendConnection: NSURLComponents {
-        get {
-            return backendURLComponents.copy() as! NSURLComponents
-        }
+    
+    static var backendConnection: URLComponents {
+        Dependency.instance.restApiComponents()
     }
     
     class func environment() -> Environment {
@@ -160,6 +160,30 @@ class Dependency {
         }
         
         self.backendURLComponents = components
+    }
+    
+    func restApiComponents() -> URLComponents {
+        var components = URLComponents()
+        
+        switch Dependency.environment() {
+        case .developmentLocal:
+            components.scheme = "http"
+            components.host = "127.0.0.1"
+            components.port = 5000
+            
+        case .developmentRemote:
+            components.scheme = "https"
+            components.host = "sharebudget-development.herokuapp.com"
+            
+        case .production:
+            components.scheme = "https"
+            components.host = "sharebudget-development.herokuapp.com"
+            
+        default:
+            break
+        }
+        
+        return components
     }
     
     class private func configureUserCredentials() {

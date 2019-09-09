@@ -23,6 +23,11 @@ protocol AutoMockable {}
 protocol AutoEquatable {}
 
 struct Constants {
+    enum Errors: Error {
+        case urlNotValid
+        case wrongResponseFormat
+    }
+    
     struct values {
         static let paginationSize = 30
         static let passwordMinLength = 1

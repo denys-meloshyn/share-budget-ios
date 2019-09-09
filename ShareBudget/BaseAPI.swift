@@ -6,9 +6,18 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
+import HTTPNetworking
 import CoreData
 
 class BaseAPI {
+    let loader: HTTPProtocol
+    private let environment: Environment
+    
+    init(environment: Environment = Dependency.environment(), loader: HTTPProtocol = HTTPNetwork.instance) {
+        self.loader = loader
+        self.environment = environment
+    }
+    
     func timestampStorageKey() -> String {
         return ""
     }
@@ -66,8 +75,8 @@ class BaseAPI {
         return .none
     }
     
-    class func components(_ resource: String) -> NSURLComponents {
-        let components = Dependency.backendConnection
+    class func components(_ resource: String) -> URLComponents {
+        var components = Dependency.backendConnection
         components.path = Dependency.restAPIVersion + "/" + resource
         
         return components
@@ -78,7 +87,7 @@ class BaseAPI {
     }
     
     func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask {
-        let components = BaseAPI.components(resource)
+        var components = BaseAPI.components(resource)
         components.path = Dependency.restAPIVersion + "/" + resource + "/updates"
         
         if let pagination = self.pagination {
