@@ -14,15 +14,14 @@ import SnapKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    @IBOutlet private var stackView: UIStackView?
-    @IBOutlet private var scrollView: UIScrollView?
-    @IBOutlet private var authorisationButton: ButtonListener?
-    @IBOutlet private var authorisationModeButton: ButtonListener?
+    private var presenter: LoginPresenterProtocol!
     
-    let disposeBag = DisposeBag()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let router = LoginRouter(with: self)
+        let interactor = LoginInteraction(authorisationAPI: AuthorisationAPI.instance)
+        presenter = LoginPresenter(interactor: interactor, router: router)
         
         let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .whiteOutline)
         button.addTarget(self, action: #selector(handleAuthorizationButtonPress), for: .touchUpInside)
@@ -30,25 +29,6 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
         button.snp.makeConstraints { maker in
             maker.center.equalToSuperview()
         }
-        
-        let userIdentifier = ""
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
-            switch credentialState {
-            case .authorized:
-                // The Apple ID credential is valid. Show Home UI Here
-                break
-            case .revoked:
-                // The Apple ID credential is revoked. Show SignIn UI Here.
-                break
-            case .notFound:
-                // No credential was found. Show SignIn UI Here.
-                break
-            default:
-                break
-            }
-        }
-
     }
 
     @objc func handleAuthorizationButtonPress() {
@@ -64,15 +44,12 @@ class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, 
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifier = credential.user
-            let authCode = credential.authorizationCode
-            let realUserStatus = credential.realUserStatus
-            if let identityTokenData = credential.identityToken,
-                let identityToken = String(bytes: identityTokenData, encoding: .utf8) {
-                AuthorisationAPI.instance.appleLogin(userIdentifier: userIdentifier, identityToken: identityToken, firstName: credential.fullName?.givenName, lastName: credential.fullName?.familyName).subscribe { _ in
-                }.disposed(by: disposeBag)
+            guard let identityTokenData = credential.identityToken,
+                let identityToken = String(bytes: identityTokenData, encoding: .utf8) else {
+                return
             }
             
-            // Create account in your system
+            presenter.login(userIdentifier: userIdentifier, identityToken: identityToken, firstName: credential.fullName?.givenName, lastName: credential.fullName?.familyName)
         }
     }
 

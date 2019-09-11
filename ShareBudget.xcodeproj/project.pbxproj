@@ -49,7 +49,6 @@
 		573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */; };
 		573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */; };
 		573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */; };
-		573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A211E2D4FCF00AEA72A /* LoginView.swift */; };
 		573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
 		573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
 		573F5A281E2D50B400AEA72A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A271E2D50B400AEA72A /* BaseView.swift */; };
@@ -237,7 +236,6 @@
 		573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		573F5A211E2D4FCF00AEA72A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		573F5A251E2D502100AEA72A /* LoginInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteraction.swift; sourceTree = "<group>"; };
 		573F5A271E2D50B400AEA72A /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -624,7 +622,6 @@
 				579359EC20C6F6A7005A2D2B /* ExpensesView.swift */,
 				5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */,
 				57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */,
-				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
 				575E119A1F1EA307000B2F07 /* TeamMembersView.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
@@ -1344,7 +1341,6 @@
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,
 				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,
-				573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */,
 				573F5A131E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift in Sources */,
 				57F128641E3D341700E51C0C /* BudgetInteraction.swift in Sources */,
 				57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */,

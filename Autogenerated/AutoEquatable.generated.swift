@@ -26,20 +26,3 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 // MARK: - AutoEquatable for classes, protocols, structs
 
 // MARK: - AutoEquatable for Enums
-// MARK: - LoginTextFieldError AutoEquatable
-extension LoginTextFieldError: Equatable {}
-public func == (lhs: LoginTextFieldError, rhs: LoginTextFieldError) -> Bool {
-    switch (lhs, rhs) {
-    case (.email(let lhs), .email(let rhs)):
-        return lhs == rhs
-    case (.password(let lhs), .password(let rhs)):
-        return lhs == rhs
-    case (.repeatPassword(let lhs), .repeatPassword(let rhs)):
-        return lhs == rhs
-    case (.firstName(let lhs), .firstName(let rhs)):
-        return lhs == rhs
-    case (.lastName(let lhs), .lastName(let rhs)):
-        return lhs == rhs
-    default: return false
-    }
-}

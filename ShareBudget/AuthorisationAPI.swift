@@ -12,7 +12,11 @@ import RxSwift
 import RxCocoa
 import HTTPNetworking
 
-class AuthorisationAPI: BaseAPI {
+protocol AuthorisationAPIProtocol {
+    func appleLogin(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin>
+}
+
+class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
     static let instance = AuthorisationAPI()
     
     struct ResponseAppleLogin {

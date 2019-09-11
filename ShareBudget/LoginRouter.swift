@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol LoginRouterProtocol: BaseRouterProtocol {
+protocol LoginRouterProtocol {
     func showHomePage()
 }
 
