@@ -35,7 +35,7 @@ class LoginPresenter: LoginPresenterProtocol {
             case .success(let model):
                 UserCredentials.instance.accessToken = model.accessToken
                 UserCredentials.instance.refreshToken = model.refreshToken
-                UserCredentials.instance.userID = userIdentifier
+                UserCredentials.instance.userID = String("\(model.user.userID ?? -1)")
                 
                 self.router.showHomePage()
             case .error:

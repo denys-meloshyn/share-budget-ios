@@ -58,9 +58,17 @@ class BaseAPI {
             default:
                 return .unknown
             }
+        } else if let errorMessage = data as? [String: String], let errorCode = errorMessage["msg"] {
+            switch errorCode {
+            case "Token has expired":
+                return .tokenExpired
+                
+            default:
+                return .unknown
+            }
         }
         
-        return .unknown
+        return .unknown 
     }
     
     class func checkResponse(data: Any?, response: URLResponse?, error: Error?) -> ErrorTypeAPI {
@@ -101,13 +109,11 @@ class BaseAPI {
         }
         
         guard let url = components.url else {
-            Dependency.logger.error("URL can't be nil \(components)")
-            assert(false, "URL can't be nil")
-            return URLSessionTask()
+            fatalError()
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.method = .GET
         request.addUpdateCredentials(timestamp: self.timestamp)
         
         let task = AsynchronousURLConnection.create(request) { (data, response, error) -> Void in

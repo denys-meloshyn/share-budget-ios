@@ -7,6 +7,8 @@
 //
 
 import CoreData
+import RxSwift
+import RxCocoa
 
 protocol SyncManagerDelegate: class {
     func error(_ error: ErrorTypeAPI)
@@ -20,6 +22,7 @@ class SyncManager {
     weak var delegate: SyncManagerDelegate?
     
     private var timer: Timer?
+    private let disposeBag = DisposeBag()
     private var loadingTask: URLSessionTask?
     
     private func scheduleNextUpdate() {
@@ -47,19 +50,17 @@ class SyncManager {
             guard error == .none else {
                 if error == .tokenExpired || error == .tokenNotValid {
                     Dependency.logger.error("Token is expired")
-//                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
-//                        switch error {
-//                        case .none:
-//                            self?.loadUpdates(completion: completion)
-//                        case .unknown:
-//                            DispatchQueue.main.async {
-//                                self?.delegate?.error(error)
-//                                self?.scheduleNextUpdate()
-//                            }
-//                        default:
-//                            completion?(data, error)
-//                        }
-//                    })
+                    AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
+                        switch event {
+                        case .success(let model):
+                            UserCredentials.instance.accessToken = model.accessToken
+                            UserCredentials.instance.refreshToken = model.refreshToken
+                            
+                            self?.loadUpdates(completion: completion)
+                        case .error:
+                            self?.loadUpdates(completion: completion)
+                        }
+                    }.disposed(by: self!.disposeBag)
                     
                     return
                 } else if error == .unknown {
