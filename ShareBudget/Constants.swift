@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum ErrorTypeAPI {
+enum ErrorTypeAPI: Error {
     case none
     case userNotExist
     case emailNotApproved

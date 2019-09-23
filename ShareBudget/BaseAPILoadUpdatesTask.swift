@@ -6,7 +6,10 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
+import Foundation
+
+import RxSwift
+import RxCocoa
 
 class BaseAPILoadUpdatesTask: BaseAPITask {
     override func request() -> URLSessionTask {

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1850D0A7C934D414973282BB /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D67F5D2CEB559C0C57C8 /* URLBuilder.swift */; };
+		1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */; };
+		1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */; };
+		1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		57042AC62326CED600371963 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57042AC52326CED600371963 /* UserEntity.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
@@ -182,6 +186,10 @@
 
 /* Begin PBXFileReference section */
 		0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.productiondebug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.productiondebug.xcconfig"; sourceTree = "<group>"; };
+		1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStampStorageManager.swift; sourceTree = "<group>"; };
+		1850D67F5D2CEB559C0C57C8 /* URLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPIUpdateTask.swift; sourceTree = "<group>"; };
+		1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateTask.swift; sourceTree = "<group>"; };
 		448BD2EE5E2DB6834EA12C3B /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,6 +406,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1850D83BACE78DEEC572E0EE /* APIUpdateTask */ = {
+			isa = PBXGroup;
+			children = (
+				1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */,
+				1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */,
+			);
+			path = APIUpdateTask;
+			sourceTree = "<group>";
+		};
 		49FCCB1B3CC09002AC3E8412 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +495,7 @@
 				573F59D21E295EA200AEA72A /* Utility */,
 				573F5A1E1E2D4F8C00AEA72A /* View */,
 				573F59D31E295EAF00AEA72A /* ViewController */,
+				1850D83BACE78DEEC572E0EE /* APIUpdateTask */,
 			);
 			path = ShareBudget;
 			sourceTree = "<group>";
@@ -522,6 +540,8 @@
 				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
 				57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */,
+				1850D67F5D2CEB559C0C57C8 /* URLBuilder.swift */,
+				1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1362,6 +1382,10 @@
 				573F5A021E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift in Sources */,
 				575A225E1E477281004825C2 /* EditExpenseInteraction.swift in Sources */,
 				573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */,
+				1850D0A7C934D414973282BB /* URLBuilder.swift in Sources */,
+				1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */,
+				1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */,
+				1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

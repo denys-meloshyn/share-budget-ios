@@ -13,11 +13,11 @@ extension URLRequest {
         self.setValue("Bearer \(Dependency.userCredentials.accessToken)", forHTTPHeaderField: "Authorization")
     }
     
-    mutating func addUpdateCredentials(timestamp: String) {
+    mutating func addUpdateCredentials(timestamp: String?) {
         self.addToken()
         self.setValue(UserCredentials.instance.userID, forHTTPHeaderField: Constants.key.json.userID)
         
-        if !timestamp.isEmpty {
+        if let timestamp = timestamp, !timestamp.isEmpty {
             self.setValue(timestamp, forHTTPHeaderField: Constants.key.json.timeStamp)
         }
     }

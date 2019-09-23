@@ -6,8 +6,12 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
+import Foundation
+
 import HTTPNetworking
 import CoreData
+import RxCocoa
+import RxSwift
 
 class BaseAPI {
     let loader: HTTPProtocol
@@ -93,7 +97,7 @@ class BaseAPI {
     func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         
     }
-    
+
     func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask {
         var components = BaseAPI.components(resource)
         components.path = Dependency.restAPIVersion + "/" + resource + "/updates"
@@ -180,13 +184,11 @@ class BaseAPI {
         let components = BaseAPI.components(resource)
         
         guard let url = components.url else {
-            Dependency.logger.error("URL can't be nil \(components)")
-            assert(false, "URL can't be nil")
-            return URLSessionTask()
+            fatalError()
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
+        request.method = .PUT
         
         let managedObjectContext = ModelManager.managedObjectContext
         let model = managedObjectContext.object(with: modelID) as! BaseModel
@@ -209,8 +211,8 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                if errorType == .tokenExpired {
-                    Dependency.logger.error("Token is expired")
+//                if errorType == .tokenExpired {
+//                    Dependency.logger.error("Token is expired")
 //                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
 //                        if error == .none {
 //                            let task = self.upload(resource, modelID, completion)
@@ -219,9 +221,9 @@ class BaseAPI {
 //                            completion?(data, error)
 //                        }
 //                    })
-                    
-                    return
-                }
+//
+//                    return
+//                }
                 
                 Dependency.logger.error("Error: '\(errorType)'", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, errorType)
