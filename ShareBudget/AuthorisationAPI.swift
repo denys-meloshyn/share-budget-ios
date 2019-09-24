@@ -32,14 +32,14 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
     
     func componentsLoginApple() -> URLComponents {
         var components = Dependency.backendConnection
-        components.path = Dependency.restAPIVersion + "/login/apple"
+        components.path = "/" + Dependency.restAPIVersion + "/login/apple"
         
         return components
     }
     
     func componentsAccessRefreshToken() -> URLComponents {
         var components = Dependency.backendConnection
-        components.path = Dependency.restAPIVersion + "/login/jwt/refresh"
+        components.path = "/" + Dependency.restAPIVersion + "/login/jwt/refresh"
         
         return components
     }

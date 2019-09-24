@@ -139,7 +139,7 @@ class Dependency {
 
     class private func configureBackendConnection() {
         let components = NSURLComponents()
-        Dependency.restAPIVersion = "/v1"
+        Dependency.restAPIVersion = "v1"
 
         switch self.environment() {
         case .developmentLocal:
@@ -167,7 +167,7 @@ class Dependency {
 
         switch environment {
         case .developmentLocal:
-            builder = URL.Builder().scheme("http").host("127.0.0.1").port(5000)
+            builder = URL.Builder().scheme("http").host("127.0.0.1").appendPath(Dependency.restAPIVersion).port(5000)
 
         case .developmentRemote:
             builder = URL.Builder()

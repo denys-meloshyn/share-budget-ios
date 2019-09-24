@@ -28,5 +28,7 @@ class SettingsViewController: UIViewController {
     @IBAction func reset() {
         ModelManager.dropAllEntities()
         UserCredentials.resetTimeStamps()
+        SyncManager.shared.stop()
+        SyncManager.shared.run()
     }
 }

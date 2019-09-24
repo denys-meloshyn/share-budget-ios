@@ -30,7 +30,7 @@ extension URL {
             urlComponents.scheme = scheme
             urlComponents.host = host
             urlComponents.port = port
-            urlComponents.path = paths.joined(separator: "/")
+            urlComponents.path = "/" + paths.joined(separator: "/")
             urlComponents.queryItems = queryItems
 
             return urlComponents.url

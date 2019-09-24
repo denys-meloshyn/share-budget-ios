@@ -14,6 +14,10 @@ protocol SyncManagerDelegate: class {
     func error(_ error: ErrorTypeAPI)
 }
 
+enum SyncTask {
+    case update(task: APIUpdateTaskProtocol)
+}
+
 class SyncManager {
     static let shared = SyncManager()
 
@@ -23,14 +27,9 @@ class SyncManager {
     weak var delegate: SyncManagerDelegate?
 
     private var timer: Timer?
-    private var disposeBag = DisposeBag()
-    private var loadingTask: URLSessionTask?
 
-    private func scheduleNextUpdate() {
-        self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { _ in
-            self.loadUpdates(completion: nil)
-        }
-    }
+    private var loadingTask: URLSessionTask?
+    private var disposeBag: DisposeBag? = DisposeBag()
 
     let userAPI = UserAPI()
     let budgetAPI = BudgetAPI()
@@ -39,104 +38,87 @@ class SyncManager {
     let userGroupAPI = UserGroupAPI()
     let budgetLimitAPI = BudgetLimitAPI()
 
+    var syncTasks = [SyncTask]()
     var tasks = [BaseAPITask]()
 
     func sync() {
         Dependency.logger.info("Load updates from server")
 
         disposeBag = DisposeBag()
-
-        let errorHandler: ((SingleEvent<Bool>) -> Void) = { [weak self] event in
-            switch event {
-            case .error(let error as ErrorTypeAPI):
-                if error == .tokenExpired || error == .tokenNotValid {
-                    Dependency.logger.error("Token is expired")
-                    AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
-                        switch event {
-                        case .success(let model):
-                            UserCredentials.instance.accessToken = model.accessToken
-                            UserCredentials.instance.refreshToken = model.refreshToken
-
-                            self?.sync()
-                        case .error:
-                            self?.sync()
-                        }
-                    }.disposed(by: self!.disposeBag)
-                }
-
-            default:
-                break
-            }
-        }
-
-        let budgetAPIUpdateTaskHandler: ((SingleEvent<Bool>) -> Void) = { [weak self] event in
-            switch event {
-            case .success(let hasNextPage):
-                if hasNextPage {
-                    
-                }
-            default:
-                break
-            }
-        }
-
         let budgetAPIUpdateTask = BudgetAPIUpdateTask(restApiURLBuilder: Dependency.instance.restApiUrlBuilder(environment: Dependency.environment()))
-        budgetAPIUpdateTask.updates().subscribe { event in
-            switch event {
-            case .success:
-                budgetAPIUpdateTaskHandler(event)
-            case .error:
-                errorHandler(event)
-            }
-        }.disposed(by: disposeBag)
+        syncTasks.append(.update(task: budgetAPIUpdateTask))
+
+        if let nextTask = syncTasks.first {
+            handle(syncTask: nextTask)
+        } else {
+            scheduleNextUpdate()
+        }
     }
 
-    private func loadUpdates(completion: APIResultBlock?) {
+    private func scheduleNextUpdate() {
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { [weak self] _ in
+            self?.run()
+        }
+    }
+
+    private func handle(syncTask: SyncTask) {
+        guard let disposeBag = disposeBag else {
+            return
+        }
+        
+        let errorHandler: ((ErrorTypeAPI) -> Void) = { [weak self] error in
+            if error == .tokenExpired || error == .tokenNotValid {
+                Dependency.logger.error("Token is expired")
+                AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
+                    switch event {
+                    case .success(let model):
+                        UserCredentials.instance.accessToken = model.accessToken
+                        UserCredentials.instance.refreshToken = model.refreshToken
+
+                        self?.scheduleNextUpdate()
+                    case .error:
+                        self?.scheduleNextUpdate()
+                    }
+                }.disposed(by: disposeBag)
+            }
+        }
+        
+        switch syncTask {
+        case .update(let task):
+            task.updates().subscribe { [weak self] event in
+                switch event {
+                case .success(let hasNext):
+                    if self?.syncTasks.count ?? 0 > 0 {
+                        self?.syncTasks.remove(at: 0)
+                    }
+                    
+                    if hasNext {
+                        self?.syncTasks.insert(syncTask, at: 0)
+                    }
+
+                    if let nextTask = self?.syncTasks.first {
+                        self?.handle(syncTask: nextTask)
+                    } else {
+                        self?.scheduleNextUpdate()
+                    }
+
+                case .error(let error as ErrorTypeAPI):
+                    errorHandler(error)
+
+                case .error:
+                    self?.scheduleNextUpdate()
+                }
+            }.disposed(by: disposeBag)
+        }
+    }
+
+    func loadUpdates(completion: APIResultBlock?) {
         Dependency.logger.info("Load updates from server")
 
         self.tasks.removeAll()
         var task: BaseAPITask
 
         let completionBlock: APIResultBlock = { [weak self] (data, error) -> Void in
-            guard error == .none else {
-                if error == .tokenExpired || error == .tokenNotValid {
-                    Dependency.logger.error("Token is expired")
-                    AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
-                        switch event {
-                        case .success(let model):
-                            UserCredentials.instance.accessToken = model.accessToken
-                            UserCredentials.instance.refreshToken = model.refreshToken
-
-                            self?.loadUpdates(completion: completion)
-                        case .error:
-                            self?.loadUpdates(completion: completion)
-                        }
-                    }.disposed(by: self!.disposeBag)
-
-                    return
-                } else if error == .unknown {
-                    DispatchQueue.main.async {
-                        self?.delegate?.error(error)
-                        self?.scheduleNextUpdate()
-                    }
-                } else {
-                    completion?(data, error)
-                }
-
-                return
-            }
-
-            self?.tasks.remove(at: 0)
-
-            if self?.tasks.count == 0 {
-                DispatchQueue.main.async {
-                    self?.scheduleNextUpdate()
-                }
-            } else {
-                self?.loadingTask = self?.tasks.first?.request()
-                self?.loadingTask?.resume()
-                NetworkIndicator.shared.visible = true
-            }
         }
 
         // New or changed budgets
@@ -179,14 +161,6 @@ class SyncManager {
         tasks.append(task)
 
         // -----------------
-
-        if tasks.count == 0 {
-            self.scheduleNextUpdate()
-        } else {
-            self.loadingTask = tasks.first?.request()
-            self.loadingTask?.resume()
-            NetworkIndicator.shared.visible = true
-        }
     }
 
     func insertPaginationTask(_ task: BaseAPITask) {
@@ -201,13 +175,13 @@ class SyncManager {
         self.stop()
 
         Dependency.logger.info("Start sync")
-        self.loadUpdates(completion: nil)
+        sync()
     }
 
     func stop() {
         Dependency.logger.info("Stop sync")
 
-        self.timer?.invalidate()
-        self.loadingTask?.cancel()
+        timer?.invalidate()
+        disposeBag = nil
     }
 }
