@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1850D0A7C934D414973282BB /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D67F5D2CEB559C0C57C8 /* URLBuilder.swift */; };
+		1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */; };
 		1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */; };
 		1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */; };
 		1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */; };
+		1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */; };
+		1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */; };
+		1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		57042AC62326CED600371963 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57042AC52326CED600371963 /* UserEntity.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
@@ -186,10 +190,14 @@
 
 /* Begin PBXFileReference section */
 		0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.productiondebug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.productiondebug.xcconfig"; sourceTree = "<group>"; };
+		1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStampStorageManager.swift; sourceTree = "<group>"; };
+		1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		1850D67F5D2CEB559C0C57C8 /* URLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
+		1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateTask.swift; sourceTree = "<group>"; };
+		1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPIUpdateTask.swift; sourceTree = "<group>"; };
 		448BD2EE5E2DB6834EA12C3B /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -411,6 +419,9 @@
 			children = (
 				1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */,
 				1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */,
+				1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */,
+				1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */,
+				1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */,
 			);
 			path = APIUpdateTask;
 			sourceTree = "<group>";
@@ -702,6 +713,7 @@
 				57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */,
 				576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */,
 				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
+				1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -1385,6 +1397,10 @@
 				1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */,
 				1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */,
 				1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */,
+				1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */,
+				1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */,
+				1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */,
+				1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

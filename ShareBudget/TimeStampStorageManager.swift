@@ -5,20 +5,27 @@
 
 import Foundation
 
+enum TimeStampKey: String {
+    case user
+    case budget
+    case budgetLimit
+    case userGroup
+}
+
 class TimeStampStorageManager {
-    private let key: String
+    private let key: TimeStampKey
 
     var timestamp: String? {
         get {
-            UserDefaults.standard.string(forKey: key)
+            UserDefaults.standard.string(forKey: key.rawValue + "_timestamp")
         }
 
         set {
-            UserDefaults.standard.set(newValue, forKey: key)
+            UserDefaults.standard.set(newValue, forKey: key.rawValue + "_timestamp")
         }
     }
 
-    init(key: String) {
+    init(key: TimeStampKey) {
         self.key = key
     }
 }

@@ -8,7 +8,7 @@ import Foundation
 import CoreData
 
 class BudgetAPIUpdateTask: APIUpdateTask, APIUpdateTaskProtocol {
-    let timeStampStorageManager = TimeStampStorageManager(key: "budget_timestamp")
+    let timeStampStorageManager = TimeStampStorageManager(key: .budget)
 
     var endpointURLBuilder: URL.Builder {
         restApiURLBuilder.appendPath("group")

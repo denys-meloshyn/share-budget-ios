@@ -45,8 +45,14 @@ class SyncManager {
         Dependency.logger.info("Load updates from server")
 
         disposeBag = DisposeBag()
-        let budgetAPIUpdateTask = BudgetAPIUpdateTask(restApiURLBuilder: Dependency.instance.restApiUrlBuilder(environment: Dependency.environment()))
+        let restApiURLBuilder = Dependency.instance.restApiUrlBuilder(environment: Dependency.environment())
+        let userAPIUpdateTask = UserAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
+        let budgetAPIUpdateTask = BudgetAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
+        let userGroupsAPIUpdateTask = UserGroupsAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
+
+        syncTasks.append(.update(task: userAPIUpdateTask))
         syncTasks.append(.update(task: budgetAPIUpdateTask))
+        syncTasks.append(.update(task: userGroupsAPIUpdateTask))
 
         if let nextTask = syncTasks.first {
             handle(syncTask: nextTask)
