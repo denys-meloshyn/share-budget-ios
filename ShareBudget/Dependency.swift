@@ -8,6 +8,7 @@
 
 import JustLog
 import XCGLogger
+import url_builder
 
 enum Environment {
     case testing
@@ -167,22 +168,22 @@ class Dependency {
 
         switch environment {
         case .developmentLocal:
-            builder = URL.Builder().scheme("http").host("127.0.0.1").appendPath(Dependency.restAPIVersion).port(5000)
+            builder = URL.Builder.http.host("127.0.0.1").appendPath(Dependency.restAPIVersion).port(5000)
 
         case .developmentRemote:
-            builder = URL.Builder()
-                         .scheme("https")
+            builder = URL.Builder
+                         .https
                          .host("sharebudget-development.herokuapp.com")
                          .appendPath(Dependency.restAPIVersion)
 
         case .production:
-            builder = URL.Builder()
-                         .scheme("https")
+            builder = URL.Builder
+                         .https
                          .host("sharebudget-development.herokuapp.com")
                          .appendPath(Dependency.restAPIVersion)
 
         case .testing:
-            builder = URL.Builder()
+            builder = URL.Builder.scheme("")
         }
 
         return builder

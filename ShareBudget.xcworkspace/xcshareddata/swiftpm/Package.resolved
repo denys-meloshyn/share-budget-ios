@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "url-builder",
+        "repositoryURL": "https://gitlab.com/denys.meloshyn/url-builder.git",
+        "state": {
+          "branch": null,
+          "revision": "e0fb4d7e33a4179f4b1cfbbeb1615de2acde52cf",
+          "version": "0.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

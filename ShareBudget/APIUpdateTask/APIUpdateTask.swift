@@ -8,6 +8,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import CoreData
+import url_builder
 
 protocol APIUpdateTaskProtocol {
     var endpointURLBuilder: URL.Builder { get }
