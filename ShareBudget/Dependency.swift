@@ -68,12 +68,6 @@ class Dependency {
     }()
 
     class private func configureLogger() {
-        //LELog.sharedInstance().token = "3c7c276a-44b2-4804-8f48-03c7cf3b43fb"
-
-//        Bugfender.activateLogger("x041vOzFfgsTGl7PGfHlzlof9lPXxBjb")
-//        Bugfender.setPrintToConsole(false)
-//        Bugfender.enableUIEventLogging()  // optional, log user interactions automatically
-
         Logger.shared.logstashHost = "listener.logz.io"
         Logger.shared.logstashPort = 5052
         Logger.shared.logzioToken = "KwzGuzHVRmyojtidIOicPEZrQbZEzGCQ"
@@ -163,7 +157,7 @@ class Dependency {
         self.backendURLComponents = components
     }
 
-    func restApiUrlBuilder(environment: Environment) -> URL.Builder {
+    func restApiUrlBuilder(environment: Environment = Dependency.environment()) -> URL.Builder {
         let builder: URL.Builder
 
         switch environment {

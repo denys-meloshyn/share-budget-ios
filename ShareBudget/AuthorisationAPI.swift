@@ -10,6 +10,7 @@ import Foundation
 
 import RxSwift
 import RxCocoa
+import url_builder
 import HTTPNetworking
 
 protocol AuthorisationAPIProtocol {
@@ -30,30 +31,29 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
         let refreshToken: String
     }
     
-    func componentsLoginApple() -> URLComponents {
-        var components = Dependency.backendConnection
-        components.path = "/" + Dependency.restAPIVersion + "/login/apple"
-        
-        return components
+    func urlBuilderLoginApple() -> URL.Builder {
+        Dependency.instance.restApiUrlBuilder()
+                           .appendPath("login")
+                           .appendPath("apple")
     }
     
-    func componentsAccessRefreshToken() -> URLComponents {
-        var components = Dependency.backendConnection
-        components.path = "/" + Dependency.restAPIVersion + "/login/jwt/refresh"
-        
-        return components
+    func urlBuilderAccessRefreshToken() -> URL.Builder {
+        Dependency.instance.restApiUrlBuilder()
+                           .appendPath("login")
+                           .appendPath("jwt")
+                           .appendPath("refresh")
     }
     
     func appleLogin(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<ResponseAppleLogin> {
-        return Single.create { event in
-            guard let url = self.componentsLoginApple().url else {
+        Single.create { event in
+            guard let url = self.urlBuilderLoginApple().build() else {
                 event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()
             }
             
             var request = URLRequest(url: url)
             request.method = .POST
-            let properties = ["userID": userIdentifier, "identityToken": identityToken, "lastName": lastName ?? "", "firstName": firstName ?? ""]
+            let properties = ["appleID": userIdentifier, "identityToken": identityToken, "lastName": lastName ?? "", "firstName": firstName ?? ""]
             request.httpBody = self.formValues(properties: properties)
             
             let task = self.loader.loadJSON(request) { data, _, error in
@@ -67,7 +67,8 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
                     return
                 }
                 
-                guard let accessToken = json["accessToken"] as? String, let refreshToken = json["refreshToken"] as? String else {
+                guard let accessToken = json["accessToken"] as? String, 
+                      let refreshToken = json["refreshToken"] as? String else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }
@@ -91,8 +92,8 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
     }
     
     func getRefreshAccessToke(refreshToken: String) -> Single<ResponseAccessRefreshToken> {
-        return Single.create { event in
-            guard let url = self.componentsAccessRefreshToken().url else {
+        Single.create { event in
+            guard let url = self.urlBuilderAccessRefreshToken().build() else {
                 event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()
             }
@@ -112,7 +113,8 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
                     return
                 }
                 
-                guard let accessToken = json["accessToken"] as? String, let refreshToken = json["refreshToken"] as? String else {
+                guard let accessToken = json["accessToken"] as? String, 
+                      let refreshToken = json["refreshToken"] as? String else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }
