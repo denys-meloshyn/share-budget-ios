@@ -53,7 +53,10 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
             
             var request = URLRequest(url: url)
             request.method = .POST
-            let properties = ["appleID": userIdentifier, "identityToken": identityToken, "lastName": lastName ?? "", "firstName": firstName ?? ""]
+            let properties = ["appleID": userIdentifier, 
+                              "identityToken": identityToken,
+                              "lastName": lastName ?? "",
+                              "firstName": firstName ?? ""]
             request.httpBody = self.formValues(properties: properties)
             
             let task = self.loader.loadJSON(request) { data, _, error in
