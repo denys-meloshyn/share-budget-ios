@@ -23,6 +23,6 @@ class LoginInteraction: LoginInteractionProtocol {
     }
     
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin> {
-        return authorisationAPI.appleLogin(userIdentifier: userIdentifier, identityToken: identityToken, firstName: firstName, lastName: lastName)
+        authorisationAPI.appleLogin(userIdentifier: userIdentifier, identityToken: identityToken, firstName: firstName, lastName: lastName)
     }
 }

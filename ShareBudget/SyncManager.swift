@@ -21,7 +21,10 @@ enum SyncTask {
 class SyncManager {
     static let shared = SyncManager()
 
-    private init() {
+    private let logger: LoggerProtocol
+
+    private init(logger: LoggerProtocol = Dependency.logger) {
+        self.logger = logger
     }
 
     weak var delegate: SyncManagerDelegate?

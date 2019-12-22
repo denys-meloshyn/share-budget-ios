@@ -38,8 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if !Dependency.userCredentials.isLoggedIn {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewControler = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
-            self.window?.rootViewController = loginViewControler
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginNavigationViewController")
+            self.window?.rootViewController = loginViewController
         } else {
             SyncManager.shared.run()
         }

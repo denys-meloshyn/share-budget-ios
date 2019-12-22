@@ -34,7 +34,7 @@ class AsynchronousURLConnection {
         let session = URLSession(configuration: sessionConfig)
         
         Dependency.logger.info("\(request.httpMethod!) \(request.url!)")
-        let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let completionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if error != nil {
                 Dependency.logger.error(error)
                 
@@ -56,7 +56,7 @@ class AsynchronousURLConnection {
             }
         }
         
-        let task = session.dataTask(with: request, completionHandler: complitionResponseBlock)
+        let task = session.dataTask(with: request, completionHandler: completionResponseBlock)
         
         return task
     }
