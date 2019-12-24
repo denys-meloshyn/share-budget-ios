@@ -8,8 +8,19 @@ import RxSwift
 import CoreData
 
 protocol APIUploadTaskProtocol {
+    var json: [String: Any] { get }
     var endpointURLBuilder: URL.Builder { get }
-    func parseUpdates(items: [String: Any?], in managedObjectContext: NSManagedObjectContext)
+    func parseUpdate(item: [String: Any?], in managedObjectContext: NSManagedObjectContext)
+}
+
+class APIUploadTask {
+    let json: [String: Any]
+    let restApiURLBuilder: URL.Builder
+
+    init(restApiURLBuilder: URL.Builder, json: [String: Any]) {
+        self.json = json
+        self.restApiURLBuilder = restApiURLBuilder
+    }
 }
 
 extension APIUploadTaskProtocol {
@@ -23,6 +34,12 @@ extension APIUploadTaskProtocol {
             var request = URLRequest(url: url)
             request.method = .PUT
             request.addUploadCredentials()
+            
+            let formValues = self.json.map { (key, value) -> String in
+                "\(key)=\(value)"
+            }.joined(separator: "&")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpBody = formValues.data(using: .utf8)
 
             let task = AsynchronousURLConnection.create(request) { (data, response, error) -> Void in
                 let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
@@ -46,8 +63,7 @@ extension APIUploadTaskProtocol {
                 }
 
                 let managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
-
-                self.parseUpdates(items: result, in: managedObjectContext)
+                self.parseUpdate(item: result, in: managedObjectContext)
                 ModelManager.saveChildren(managedObjectContext) {
                     event(.completed)
                 }

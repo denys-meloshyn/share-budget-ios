@@ -10,11 +10,14 @@
 		1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */; };
 		1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */; };
 		1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */; };
+		1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */; };
 		1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */; };
 		1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */; };
+		1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */; };
 		1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DA404EBC870240EF9B5A /* APIUploadTask.swift */; };
 		1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */; };
 		1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */; };
+		1850DED0956999E78B0540E9 /* UserAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		57042AC62326CED600371963 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57042AC52326CED600371963 /* UserEntity.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
@@ -142,6 +145,8 @@
 		57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */; };
 		57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */; };
 		57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */; };
+		57DE756323B22829005A1DB5 /* url-builder in Frameworks */ = {isa = PBXBuildFile; productRef = 57CD7D58237D4DE50037702E /* url-builder */; };
+		57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */; };
 		57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118D1F3CFDD900B5C32D /* LimitTest.swift */; };
@@ -192,8 +197,11 @@
 		0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.productiondebug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.productiondebug.xcconfig"; sourceTree = "<group>"; };
 		1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStampStorageManager.swift; sourceTree = "<group>"; };
+		1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsAPIUploadTask.swift; sourceTree = "<group>"; };
+		1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryKeyProtocol.swift; sourceTree = "<group>"; };
 		1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		1850DA404EBC870240EF9B5A /* APIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadTask.swift; sourceTree = "<group>"; };
+		1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUploadTask.swift; sourceTree = "<group>"; };
 		1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateTask.swift; sourceTree = "<group>"; };
@@ -343,6 +351,7 @@
 		57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBudgetDetailViewController.swift; sourceTree = "<group>"; };
 		57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
 		57D9CB6922EF303F0046933D /* ShareBudget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareBudget.entitlements; sourceTree = "<group>"; };
+		57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIUploadTask.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteractionTest.swift; sourceTree = "<group>"; };
 		57EC118D1F3CFDD900B5C32D /* LimitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTest.swift; sourceTree = "<group>"; };
@@ -391,6 +400,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DE756323B22829005A1DB5 /* url-builder in Frameworks */,
 				6FCB1CDD3E3E1930477B41B6 /* Pods_ShareBudget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +428,9 @@
 			isa = PBXGroup;
 			children = (
 				1850DA404EBC870240EF9B5A /* APIUploadTask.swift */,
+				1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */,
+				1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */,
+				57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */,
 			);
 			path = APIUploadTask;
 			sourceTree = "<group>";
@@ -561,6 +574,7 @@
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
 				57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */,
 				1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */,
+				1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -872,7 +886,7 @@
 			);
 			name = ShareBudget;
 			packageProductDependencies = (
-				57CD7D58237D4DE50037702E /* XCSwiftPackageProductDependency */,
+				57CD7D58237D4DE50037702E /* url-builder */,
 			);
 			productName = ShareBudget;
 			productReference = 573F599C1E295C4D00AEA72A /* ShareBudget.app */;
@@ -962,7 +976,7 @@
 			);
 			mainGroup = 573F59931E295C4D00AEA72A;
 			packageReferences = (
-				57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference */,
+				57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */,
 			);
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
 			projectDirPath = "";
@@ -1202,6 +1216,7 @@
 				575E119B1F1EA307000B2F07 /* TeamMembersView.swift in Sources */,
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
 				573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */,
+				57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */,
 				573F5A101E2C180400AEA72A /* Category+CoreDataClass.swift in Sources */,
 				576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */,
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
@@ -1296,6 +1311,9 @@
 				1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */,
 				1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */,
 				1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */,
+				1850DED0956999E78B0540E9 /* UserAPIUploadTask.swift in Sources */,
+				1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */,
+				1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1981,7 +1999,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference */ = {
+		57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitlab.com/denys.meloshyn/url-builder.git";
 			requirement = {
@@ -1992,9 +2010,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		57CD7D58237D4DE50037702E /* XCSwiftPackageProductDependency */ = {
+		57CD7D58237D4DE50037702E /* url-builder */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference */;
+			package = 57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */;
 			productName = "url-builder";
 		};
 /* End XCSwiftPackageProductDependency section */

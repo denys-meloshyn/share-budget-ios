@@ -16,6 +16,7 @@ protocol SyncManagerDelegate: class {
 
 enum SyncTask {
     case update(task: APIUpdateTaskProtocol)
+    case upload(task: APIUploadTaskProtocol)
 }
 
 class SyncManager {
@@ -56,6 +57,16 @@ class SyncManager {
         syncTasks.append(.update(task: userAPIUpdateTask))
         syncTasks.append(.update(task: budgetAPIUpdateTask))
         syncTasks.append(.update(task: userGroupsAPIUpdateTask))
+        
+        let groups: [Budget] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += groups.map { item -> SyncTask in
+            .upload(task: GroupAPIUploadTask(restApiURLBuilder: restApiURLBuilder, json: item.uploadProperties()))
+        }
+
+        let userGroups: [UserGroup] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += userGroups.map { item -> SyncTask in
+            .upload(task: UserGroupsAPIUploadTask(restApiURLBuilder: restApiURLBuilder, json: item.uploadProperties()))
+        }
 
         if let nextTask = syncTasks.first {
             handle(syncTask: nextTask)
@@ -114,6 +125,24 @@ class SyncManager {
                 case .error(let error as ErrorTypeAPI):
                     errorHandler(error)
 
+                case .error:
+                    self?.scheduleNextUpdate()
+                }
+            }.disposed(by: disposeBag)
+        case .upload(let task):
+            task.upload().subscribe { [weak self] event in
+                switch event {
+                case .completed:
+                    if self?.syncTasks.isEmpty == false {
+                        self?.syncTasks.remove(at: 0)
+                    }
+                    if let nextTask = self?.syncTasks.first {
+                        self?.handle(syncTask: nextTask)
+                    } else {
+                        self?.scheduleNextUpdate()
+                    }
+                case .error(let error as ErrorTypeAPI):
+                    errorHandler(error)
                 case .error:
                     self?.scheduleNextUpdate()
                 }

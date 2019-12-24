@@ -228,6 +228,17 @@ class ModelManager {
         return items.last
     }
 
+    func changedModels<T: NSManagedObject>(managedObjectContext: NSManagedObjectContext) -> [T]? {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = T.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isChanged == YES")
+        do {
+            return try managedObjectContext.fetch(fetchRequest) as? [T]
+        } catch {
+            Dependency.logger.error("Error fetch changedModels \(error)")
+            return nil
+        }
+    }
+
     // MARK: - NSFetchedResultsController
 
     class func changedModels(_ entity: BaseModel.Type,

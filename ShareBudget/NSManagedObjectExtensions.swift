@@ -17,4 +17,13 @@ extension NSManagedObject {
     class func findOrCreate(modelID: Int, managedObjectContext: NSManagedObjectContext) -> Self {
         find(modelID: modelID, managedObjectContext: managedObjectContext) ?? self.init(context: managedObjectContext)
     }
+
+    class func findOrCreateEntityIfIdExist(response: [String: Any?], in managedObjectContext: NSManagedObjectContext) -> Self? {
+        guard let entity = self as? PrimaryKeyProtocol,
+              let modelID = response[entity.primaryKey()] as? Int else {
+            return nil
+        }
+
+        return findOrCreate(modelID: modelID, managedObjectContext: managedObjectContext)
+    }
 }
