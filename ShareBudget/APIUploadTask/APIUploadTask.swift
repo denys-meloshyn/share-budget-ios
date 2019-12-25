@@ -35,7 +35,10 @@ extension APIUploadTaskProtocol {
             request.method = .PUT
             request.addUploadCredentials()
             
-            let formValues = self.json.map { (key, value) -> String in
+            var json = self.json
+            json[Constants.key.json.userID] = Dependency.userCredentials.userID
+            
+            let formValues = json.map { (key, value) -> String in
                 "\(key)=\(value)"
             }.joined(separator: "&")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")

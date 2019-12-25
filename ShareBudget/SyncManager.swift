@@ -15,7 +15,7 @@ protocol SyncManagerDelegate: class {
 }
 
 enum SyncTask {
-    case update(task: APIUpdateTaskProtocol)
+    case fetch(task: APIUpdateTaskProtocol)
     case upload(task: APIUploadTaskProtocol)
 }
 
@@ -53,10 +53,6 @@ class SyncManager {
         let userAPIUpdateTask = UserAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
         let budgetAPIUpdateTask = BudgetAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
         let userGroupsAPIUpdateTask = UserGroupsAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
-
-        syncTasks.append(.update(task: userAPIUpdateTask))
-        syncTasks.append(.update(task: budgetAPIUpdateTask))
-        syncTasks.append(.update(task: userGroupsAPIUpdateTask))
         
         let groups: [Budget] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += groups.map { item -> SyncTask in
@@ -67,6 +63,10 @@ class SyncManager {
         syncTasks += userGroups.map { item -> SyncTask in
             .upload(task: UserGroupsAPIUploadTask(restApiURLBuilder: restApiURLBuilder, json: item.uploadProperties()))
         }
+        
+        syncTasks.append(.fetch(task: userAPIUpdateTask))
+        syncTasks.append(.fetch(task: budgetAPIUpdateTask))
+        syncTasks.append(.fetch(task: userGroupsAPIUpdateTask))
 
         if let nextTask = syncTasks.first {
             handle(syncTask: nextTask)
@@ -100,11 +100,13 @@ class SyncManager {
                         self?.scheduleNextUpdate()
                     }
                 }.disposed(by: disposeBag)
+            } else {
+                self?.scheduleNextUpdate()
             }
         }
         
         switch syncTask {
-        case .update(let task):
+        case .fetch(let task):
             task.updates().subscribe { [weak self] event in
                 switch event {
                 case .success(let hasNext):
