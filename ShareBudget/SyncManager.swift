@@ -50,23 +50,40 @@ class SyncManager {
 
         disposeBag = DisposeBag()
         let restApiURLBuilder = Dependency.instance.restApiUrlBuilder(environment: Dependency.environment())
-        let userAPIUpdateTask = UserAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
-        let budgetAPIUpdateTask = BudgetAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
-        let userGroupsAPIUpdateTask = UserGroupsAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)
         
+        // New or changed groups
         let groups: [Budget] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += groups.map { item -> SyncTask in
-            .upload(task: GroupAPIUploadTask(restApiURLBuilder: restApiURLBuilder, json: item.uploadProperties()))
-        }
-
-        let userGroups: [UserGroup] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
-        syncTasks += userGroups.map { item -> SyncTask in
-            .upload(task: UserGroupsAPIUploadTask(restApiURLBuilder: restApiURLBuilder, json: item.uploadProperties()))
+            .upload(task: GroupAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
         }
         
-        syncTasks.append(.fetch(task: userAPIUpdateTask))
-        syncTasks.append(.fetch(task: budgetAPIUpdateTask))
-        syncTasks.append(.fetch(task: userGroupsAPIUpdateTask))
+        // New or changed group limits
+        let groupLimits: [BudgetLimit] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += groupLimits.map { item -> SyncTask in
+            .upload(task: GroupLimitAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
+        }
+
+        // New or changed user groups
+        let userGroups: [UserGroup] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += userGroups.map { item -> SyncTask in
+            .upload(task: UserGroupsAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
+        }
+        
+        // New or changed user groups
+        let categories: [Category] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += categories.map { item -> SyncTask in
+            .upload(task: CategoryAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
+        }
+        
+        // New or changed expenses
+        let expenses: [Expense] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
+        syncTasks += expenses.map { item -> SyncTask in
+            .upload(task: CategoryAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
+        }
+
+        syncTasks.append(.fetch(task: UserAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
+        syncTasks.append(.fetch(task: BudgetAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
+        syncTasks.append(.fetch(task: UserGroupsAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
 
         if let nextTask = syncTasks.first {
             handle(syncTask: nextTask)
@@ -76,9 +93,7 @@ class SyncManager {
     }
 
     private func scheduleNextUpdate() {
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(10.0), repeats: false) { [weak self] _ in
-            self?.run()
-        }
+        run()
     }
 
     private func handle(syncTask: SyncTask) {

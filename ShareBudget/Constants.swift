@@ -24,6 +24,7 @@ protocol AutoEquatable {}
 
 struct Constants {
     enum Errors: Error {
+        case nilObject
         case urlNotValid
         case wrongResponseFormat
     }

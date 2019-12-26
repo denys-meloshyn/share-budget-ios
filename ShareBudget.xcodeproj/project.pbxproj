@@ -17,7 +17,6 @@
 		1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DA404EBC870240EF9B5A /* APIUploadTask.swift */; };
 		1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */; };
 		1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */; };
-		1850DED0956999E78B0540E9 /* UserAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
 		57042AC62326CED600371963 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57042AC52326CED600371963 /* UserEntity.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
@@ -76,6 +75,9 @@
 		57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B6920093EC900169F23 /* TextFieldListener.swift */; };
 		57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */; };
 		57561D871F44EBBB00FDB891 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */; };
+		57569CA123B4FC7A002C316E /* GroupLimitAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */; };
+		57569CA323B5000D002C316E /* CategoryAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */; };
+		57569CA523B50090002C316E /* ExpenseAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */; };
 		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
 		575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
 		575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22531E4747E0004825C2 /* EditExpenseViewController.swift */; };
@@ -201,7 +203,6 @@
 		1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryKeyProtocol.swift; sourceTree = "<group>"; };
 		1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		1850DA404EBC870240EF9B5A /* APIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadTask.swift; sourceTree = "<group>"; };
-		1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUploadTask.swift; sourceTree = "<group>"; };
 		1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPIUpdateTask.swift; sourceTree = "<group>"; };
 		1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateTask.swift; sourceTree = "<group>"; };
@@ -276,6 +277,9 @@
 		57500B6920093EC900169F23 /* TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldListener.swift; sourceTree = "<group>"; };
 		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
 		57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
+		57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLimitAPIUploadTask.swift; sourceTree = "<group>"; };
+		57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIUploadTask.swift; sourceTree = "<group>"; };
+		57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAPIUploadTask.swift; sourceTree = "<group>"; };
 		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
 		575786361E4278620026A0BE /* BudgetLimitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPI.swift; sourceTree = "<group>"; };
 		575A22531E4747E0004825C2 /* EditExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseViewController.swift; sourceTree = "<group>"; };
@@ -428,9 +432,11 @@
 			isa = PBXGroup;
 			children = (
 				1850DA404EBC870240EF9B5A /* APIUploadTask.swift */,
-				1850DB21A2785790E0C112DD /* UserAPIUploadTask.swift */,
-				1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */,
+				57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */,
+				57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */,
 				57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */,
+				57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */,
+				1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */,
 			);
 			path = APIUploadTask;
 			sourceTree = "<group>";
@@ -1240,6 +1246,7 @@
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
 				57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */,
 				570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */,
+				57569CA323B5000D002C316E /* CategoryAPIUploadTask.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
 				575A225A1E477234004825C2 /* EditExpenseView.swift in Sources */,
@@ -1248,6 +1255,7 @@
 				57FAB4221E62483D00A2AEC7 /* CategoryView.swift in Sources */,
 				578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
+				57569CA523B50090002C316E /* ExpenseAPIUploadTask.swift in Sources */,
 				575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */,
 				57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
@@ -1295,6 +1303,7 @@
 				575CA989200BF82E00613D8E /* DatePicker.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,
+				57569CA123B4FC7A002C316E /* GroupLimitAPIUploadTask.swift in Sources */,
 				575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */,
 				57F1286E1E3DF76200E51C0C /* Budget+CoreDataProperties.swift in Sources */,
 				57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */,
@@ -1311,7 +1320,6 @@
 				1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */,
 				1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */,
 				1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */,
-				1850DED0956999E78B0540E9 /* UserAPIUploadTask.swift in Sources */,
 				1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */,
 				1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */,
 			);
