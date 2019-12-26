@@ -149,6 +149,8 @@
 		57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */; };
 		57DE756323B22829005A1DB5 /* url-builder in Frameworks */ = {isa = PBXBuildFile; productRef = 57CD7D58237D4DE50037702E /* url-builder */; };
 		57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */; };
+		57E4B07423B569F4006E5954 /* CategoryAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */; };
+		57E4B07623B56B3F006E5954 /* ExpenseAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */; };
 		57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118D1F3CFDD900B5C32D /* LimitTest.swift */; };
@@ -356,6 +358,8 @@
 		57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
 		57D9CB6922EF303F0046933D /* ShareBudget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareBudget.entitlements; sourceTree = "<group>"; };
 		57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIUploadTask.swift; sourceTree = "<group>"; };
+		57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIUpdateTask.swift; sourceTree = "<group>"; };
+		57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAPIUpdateTask.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteractionTest.swift; sourceTree = "<group>"; };
 		57EC118D1F3CFDD900B5C32D /* LimitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTest.swift; sourceTree = "<group>"; };
@@ -449,6 +453,8 @@
 				1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */,
 				1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */,
 				1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */,
+				57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */,
+				57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */,
 			);
 			path = APIUpdateTask;
 			sourceTree = "<group>";
@@ -1211,6 +1217,7 @@
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
 				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
+				57E4B07423B569F4006E5954 /* CategoryAPIUpdateTask.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				576CC8A420CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
@@ -1320,6 +1327,7 @@
 				1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */,
 				1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */,
 				1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */,
+				57E4B07623B56B3F006E5954 /* ExpenseAPIUpdateTask.swift in Sources */,
 				1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */,
 				1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */,
 			);

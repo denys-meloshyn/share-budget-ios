@@ -29,7 +29,7 @@ extension APIUpdateTaskProtocol {
     func updates() -> Single<Bool> {
         Single.create { event in
             guard let url = self.endpointURLBuilder.appendPath("updates").build() else {
-                event(.error(NSError(domain: "", code: -1)))
+                event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()
             }
 

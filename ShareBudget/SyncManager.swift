@@ -33,7 +33,7 @@ class SyncManager {
     private var timer: Timer?
 
     private var loadingTask: URLSessionTask?
-    private var disposeBag: DisposeBag? = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     let userAPI = UserAPI()
     let budgetAPI = BudgetAPI()
@@ -78,12 +78,15 @@ class SyncManager {
         // New or changed expenses
         let expenses: [Expense] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += expenses.map { item -> SyncTask in
-            .upload(task: CategoryAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
+            .upload(task: ExpenseAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
         }
 
         syncTasks.append(.fetch(task: UserAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
         syncTasks.append(.fetch(task: BudgetAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
         syncTasks.append(.fetch(task: UserGroupsAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
+        syncTasks.append(.fetch(task: BudgetLimitAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
+        syncTasks.append(.fetch(task: CategoryAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
+        syncTasks.append(.fetch(task: ExpenseAPIUpdateTask(restApiURLBuilder: restApiURLBuilder)))
 
         if let nextTask = syncTasks.first {
             handle(syncTask: nextTask)
@@ -93,16 +96,17 @@ class SyncManager {
     }
 
     private func scheduleNextUpdate() {
-        run()
+        Observable.just(0).delay(.seconds(10), scheduler: MainScheduler.instance).subscribe { [weak self] _ in
+            self?.run()
+        }.disposed(by: disposeBag)
     }
 
     private func handle(syncTask: SyncTask) {
-        guard let disposeBag = disposeBag else {
-            return
-        }
-        
         let errorHandler: ((ErrorTypeAPI) -> Void) = { [weak self] error in
             if error == .tokenExpired || error == .tokenNotValid {
+                guard let disposeBag = self?.disposeBag else {
+                    return
+                }
                 Dependency.logger.error("Token is expired")
                 AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
                     switch event {
@@ -167,68 +171,12 @@ class SyncManager {
         }
     }
 
-    func loadUpdates(completion: APIResultBlock?) {
-        Dependency.logger.info("Load updates from server")
-
-        self.tasks.removeAll()
-        var task: BaseAPITask
-
-        let completionBlock: APIResultBlock = { [weak self] (data, error) -> Void in
-        }
-
-        // New or changed budgets
-        tasks += self.budgetAPI.allChangedModels(completionBlock: completionBlock)
-
-        // New or changed budget limits
-        tasks += self.budgetLimitAPI.allChangedModels(completionBlock: completionBlock)
-
-        // New or changed user groups
-        tasks += self.userGroupAPI.allChangedModels(completionBlock: completionBlock)
-
-        // New or changed categories
-        tasks += self.categoryAPI.allChangedModels(completionBlock: completionBlock)
-
-        // New or changed expenses
-        tasks += self.expenseAPI.allChangedModels(completionBlock: completionBlock)
-
-        // Load all updates for 'User'
-        task = BaseAPILoadUpdatesTask(resource: "user", entity: self.userAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // Load all updates for 'Budget'
-        task = BaseAPILoadUpdatesTask(resource: "group", entity: self.budgetAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // Load all updates for 'User Groups'
-        task = BaseAPILoadUpdatesTask(resource: "user/group", entity: self.userGroupAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // Load all updates for 'Budget Limit'
-        task = BaseAPILoadUpdatesTask(resource: "group/limit", entity: self.budgetLimitAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // Load all updates for 'Category'
-        task = BaseAPILoadUpdatesTask(resource: "category", entity: self.categoryAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // Load all updates for 'Expense'
-        task = BaseAPILoadUpdatesTask(resource: "expense", entity: self.expenseAPI, completionBlock: completionBlock)
-        tasks.append(task)
-
-        // -----------------
-    }
-
-    func insertPaginationTask(_ task: BaseAPITask) {
-        self.tasks.insert(task, at: 1)
-    }
-
     func run() {
         if Dependency.environment() == .testing {
             return
         }
 
         self.stop()
-
         Dependency.logger.info("Start sync")
         sync()
     }
@@ -237,6 +185,7 @@ class SyncManager {
         Dependency.logger.info("Stop sync")
 
         timer?.invalidate()
-        disposeBag = nil
+        syncTasks.removeAll()
+        disposeBag = DisposeBag()
     }
 }

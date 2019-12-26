@@ -152,7 +152,7 @@ class BaseAPI {
                 
                 if pagination.hasNext() {
                     let newPageTask = BaseAPILoadUpdatesTask(resource: resource, entity: self, completionBlock: completion)
-                    SyncManager.shared.insertPaginationTask(newPageTask)
+//                    SyncManager.shared.insertPaginationTask(newPageTask)
                     self.pagination = pagination
                 } else {
                     self.pagination = nil

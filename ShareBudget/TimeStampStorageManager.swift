@@ -10,6 +10,8 @@ enum TimeStampKey: String {
     case budget
     case budgetLimit
     case userGroup
+    case category
+    case expense
 }
 
 class TimeStampStorageManager {
