@@ -30,17 +30,8 @@ class SyncManager {
 
     weak var delegate: SyncManagerDelegate?
 
-    private var timer: Timer?
-
     private var loadingTask: URLSessionTask?
     private var disposeBag = DisposeBag()
-
-    let userAPI = UserAPI()
-    let budgetAPI = BudgetAPI()
-    let expenseAPI = ExpenseAPI()
-    let categoryAPI = CategoryAPI()
-    let userGroupAPI = UserGroupAPI()
-    let budgetLimitAPI = BudgetLimitAPI()
 
     var syncTasks = [SyncTask]()
     var tasks = [BaseAPITask]()
@@ -184,7 +175,6 @@ class SyncManager {
     func stop() {
         Dependency.logger.info("Stop sync")
 
-        timer?.invalidate()
         syncTasks.removeAll()
         disposeBag = DisposeBag()
     }

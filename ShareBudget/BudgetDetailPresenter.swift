@@ -146,10 +146,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     // MARK: - Private methods
 
     private func configurePiChartColors() {
-        let base: [ColorPalette.Type] = [MaterialColor.grey.self,
-                                         MaterialColor.blueGrey.self,
-                                         MaterialColor.indigo.self,
-                                         MaterialColor.indigo.self,
+        let base: [ColorPalette.Type] = [MaterialColor.indigo.self,
                                          MaterialColor.blue.self,
                                          MaterialColor.lightBlue.self,
                                          MaterialColor.cyan.self,
@@ -165,7 +162,9 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
                                          MaterialColor.red.self,
                                          MaterialColor.pink.self,
                                          MaterialColor.purple.self,
-                                         MaterialColor.deepPurple.self
+                                         MaterialColor.deepPurple.self,
+                                         MaterialColor.grey.self,
+                                         MaterialColor.blueGrey.self
         ]
         pieChartColors += base.map {
             $0.base

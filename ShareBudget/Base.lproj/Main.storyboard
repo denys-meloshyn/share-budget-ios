@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g16-2X-JoY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g16-2X-JoY">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,19 +84,10 @@
                         <viewLayoutGuide key="safeArea" id="kOt-8V-UxE"/>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="REU-AA-p32" id="u0t-ke-Ppl"/>
                         <outlet property="tableView" destination="bWQ-Oc-cNh" id="WJv-ZM-GNp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7V1-0O-WGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="REU-AA-p32">
-                    <connections>
-                        <outlet property="delegate" destination="ClV-72-GJA" id="Ffc-Bz-CYQ"/>
-                        <outlet property="searchContentsController" destination="ClV-72-GJA" id="IXL-iv-d1o"/>
-                        <outlet property="searchResultsDataSource" destination="ClV-72-GJA" id="kz0-jn-jsx"/>
-                        <outlet property="searchResultsDelegate" destination="ClV-72-GJA" id="cXf-cJ-HJW"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="2771.25" y="844.0140845070423"/>
         </scene>

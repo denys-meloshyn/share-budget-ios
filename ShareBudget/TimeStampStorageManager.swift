@@ -5,7 +5,7 @@
 
 import Foundation
 
-enum TimeStampKey: String {
+enum TimeStampKey: String, CaseIterable {
     case user
     case budget
     case budgetLimit

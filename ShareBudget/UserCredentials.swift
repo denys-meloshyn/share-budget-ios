@@ -81,11 +81,9 @@ class UserCredentials: UserCredentialsProtocol {
     }
 
     class func resetTimeStamps() {
-        SyncManager.shared.categoryAPI.timestamp = ""
-        SyncManager.shared.expenseAPI.timestamp = ""
-        SyncManager.shared.budgetAPI.timestamp = ""
-        SyncManager.shared.budgetLimitAPI.timestamp = ""
-        SyncManager.shared.userAPI.timestamp = ""
-        SyncManager.shared.userGroupAPI.timestamp = ""
+        TimeStampKey.allCases.forEach { key in
+            let manager = TimeStampStorageManager(key: key)
+            manager.timestamp = nil
+        }
     }
 }

@@ -1588,7 +1588,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Share budget Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1793,7 +1793,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Share budget Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1925,7 +1925,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Share budget Development";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};

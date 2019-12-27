@@ -28,7 +28,12 @@ class APIUpdateTask {
 extension APIUpdateTaskProtocol {
     func updates() -> Single<Bool> {
         Single.create { event in
-            guard let url = self.endpointURLBuilder.appendPath("updates").build() else {
+            let builder = self.endpointURLBuilder
+                .appendPath("updates")
+                .appendQueryParameter(key: Constants.key.json.paginationStart, value: "0")
+                .appendQueryParameter(key: Constants.key.json.paginationPageSize, value: "30")
+            
+            guard let url = builder.build() else {
                 event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()
             }
