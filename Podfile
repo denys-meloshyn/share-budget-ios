@@ -6,10 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
 def shared
-  pod 'XCGLogger', '7.0.0'
-  pod 'KeychainSwift', '16.0.1'
   pod 'R.swift', '5.0.3'
-  pod 'SnapKit', '5.0.1'
   pod 'CorePlot', '2.2'
   pod 'MaterialColor', '1.1.1'
   pod 'le', '1.1'

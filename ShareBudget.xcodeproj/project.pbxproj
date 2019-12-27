@@ -151,6 +151,9 @@
 		57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */; };
 		57E4B07423B569F4006E5954 /* CategoryAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */; };
 		57E4B07623B56B3F006E5954 /* ExpenseAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */; };
+		57E4B07923B576AF006E5954 /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B07823B576AF006E5954 /* XCGLogger */; };
+		57E4B07C23B5775C006E5954 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B07B23B5775C006E5954 /* KeychainSwift */; };
+		57E4B08323B57A8F006E5954 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B08223B57A8F006E5954 /* SnapKit */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */; };
 		57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118D1F3CFDD900B5C32D /* LimitTest.swift */; };
@@ -410,6 +413,9 @@
 			files = (
 				57DE756323B22829005A1DB5 /* url-builder in Frameworks */,
 				6FCB1CDD3E3E1930477B41B6 /* Pods_ShareBudget.framework in Frameworks */,
+				57E4B07C23B5775C006E5954 /* KeychainSwift in Frameworks */,
+				57E4B07923B576AF006E5954 /* XCGLogger in Frameworks */,
+				57E4B08323B57A8F006E5954 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +905,9 @@
 			name = ShareBudget;
 			packageProductDependencies = (
 				57CD7D58237D4DE50037702E /* url-builder */,
+				57E4B07823B576AF006E5954 /* XCGLogger */,
+				57E4B07B23B5775C006E5954 /* KeychainSwift */,
+				57E4B08223B57A8F006E5954 /* SnapKit */,
 			);
 			productName = ShareBudget;
 			productReference = 573F599C1E295C4D00AEA72A /* ShareBudget.app */;
@@ -989,6 +998,9 @@
 			mainGroup = 573F59931E295C4D00AEA72A;
 			packageReferences = (
 				57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */,
+				57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */,
+				57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
 			projectDirPath = "";
@@ -2023,6 +2035,30 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 18.0.0;
+			};
+		};
+		57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2030,6 +2066,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */;
 			productName = "url-builder";
+		};
+		57E4B07823B576AF006E5954 /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
+		};
+		57E4B07B23B5775C006E5954 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		57E4B08223B57A8F006E5954 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

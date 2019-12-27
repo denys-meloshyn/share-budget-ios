@@ -2,12 +2,39 @@
   "object": {
     "pins": [
       {
+        "package": "KeychainSwift",
+        "repositoryURL": "https://github.com/evgenyneu/keychain-swift",
+        "state": {
+          "branch": null,
+          "revision": "d9b76fba09c2eb5c0bb9312092d309c833996cd2",
+          "version": "18.0.0"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit",
+        "state": {
+          "branch": null,
+          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+          "version": "5.0.1"
+        }
+      },
+      {
         "package": "url-builder",
         "repositoryURL": "https://gitlab.com/denys.meloshyn/url-builder.git",
         "state": {
           "branch": null,
           "revision": "e0fb4d7e33a4179f4b1cfbbeb1615de2acde52cf",
           "version": "0.0.1"
+        }
+      },
+      {
+        "package": "XCGLogger",
+        "repositoryURL": "https://github.com/DaveWoodCom/XCGLogger",
+        "state": {
+          "branch": null,
+          "revision": "f0daefd2a472f0c8d3d12a4b0d45594195a6c74d",
+          "version": "7.0.0"
         }
       }
     ]
