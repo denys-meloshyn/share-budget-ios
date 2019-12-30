@@ -8,7 +8,6 @@
 
 import UIKit
 import CorePlot
-import ChameleonFramework
 
 protocol BudgetDetailViewProtocol: BaseViewProtocol {
     var monthLabel: UILabel? { get set }
@@ -203,7 +202,7 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
     }
     
     fileprivate func updateContrastColor(to color: UIColor) {
-        let newColor = UIColor(contrastingBlackOrWhiteColorOn: color, isFlat: true)
+        let newColor = color
         
         configureBorder(for: budgetContainerView, color: newColor)
         configureBorder(for: expenseContainerView, color: newColor)

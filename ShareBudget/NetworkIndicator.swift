@@ -16,13 +16,7 @@ class NetworkIndicator: NSObject {
     private var statusActivities = 0 {
         didSet {
             if self.statusActivities <= 0 {
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
             } else {
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                }
             }
         }
     }

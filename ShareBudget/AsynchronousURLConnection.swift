@@ -33,10 +33,8 @@ class AsynchronousURLConnection {
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         
-        Dependency.logger.info("\(request.httpMethod!) \(request.url!) \(request.allHTTPHeaderFields!)")
-        let complitionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            NetworkIndicator.shared.visible = false
-            
+        Dependency.logger.info("\(request.httpMethod!) \(request.url!)")
+        let completionResponseBlock = { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             if error != nil {
                 Dependency.logger.error(error)
                 
@@ -58,7 +56,7 @@ class AsynchronousURLConnection {
             }
         }
         
-        let task = session.dataTask(with: request, completionHandler: complitionResponseBlock)
+        let task = session.dataTask(with: request, completionHandler: completionResponseBlock)
         
         return task
     }

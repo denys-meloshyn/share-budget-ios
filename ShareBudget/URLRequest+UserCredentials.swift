@@ -10,15 +10,24 @@ import UIKit
 
 extension URLRequest {
     mutating func addToken() {
-        self.setValue(Dependency.userCredentials.token, forHTTPHeaderField: Constants.key.json.token)
+        self.setValue("Bearer \(Dependency.userCredentials.accessToken)", forHTTPHeaderField: "Authorization")
     }
-    
-    mutating func addUpdateCredentials(timestamp: String) {
+
+    mutating func addUserID() {
+        self.setValue(UserCredentials.instance.userID, forHTTPHeaderField: Constants.key.json.userID)
+    }
+
+    mutating func addUpdateCredentials(timestamp: String?) {
         self.addToken()
-        self.setValue(String(Dependency.userCredentials.userID), forHTTPHeaderField: Constants.key.json.userID)
-        
-        if !timestamp.isEmpty {
+        self.addUserID()
+
+        if let timestamp = timestamp, !timestamp.isEmpty {
             self.setValue(timestamp, forHTTPHeaderField: Constants.key.json.timeStamp)
         }
+    }
+
+    mutating func addUploadCredentials() {
+        self.addToken()
+        self.addUserID()
     }
 }

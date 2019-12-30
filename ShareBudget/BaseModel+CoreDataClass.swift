@@ -39,3 +39,9 @@ public class BaseModel: NSManagedObject {
         return result
     }
 }
+
+extension BaseModel: PrimaryKeyProtocol {
+    func primaryKey() -> String {
+        Self.modelKeyID()
+    }
+}

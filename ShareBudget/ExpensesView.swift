@@ -20,9 +20,9 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         UISearchResultsUpdating {
     var tableView: UITableView!
 
-    private var searchController: UISearchController!
+//    private var searchController: UISearchController!
     private var addBarButtonItem: BarButtonItemListener?
-    private var searchTableViewController = UITableViewController()
+//    private var searchTableViewController = UITableViewController()
 
     fileprivate let headerViewReuseIdentifier = "ExpenseTableViewHeader"
 
@@ -32,7 +32,7 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         configureSearchTable()
         configureTable()
 
-        viewController?.navigationItem.searchController = searchController
+//        viewController?.navigationItem.searchController = searchController
     }
 
     // MARK: - UITableViewDataSource
@@ -134,10 +134,10 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
     }
 
     private func configureSearchTable() {
-        configureTableWithDefaultProperties(tableView: searchTableViewController.tableView)
-        searchController = UISearchController(searchResultsController: searchTableViewController)
-        searchController.delegate = self
-        searchController.searchResultsUpdater = self
+//        configureTableWithDefaultProperties(tableView: searchTableViewController.tableView)
+//        searchController = UISearchController(searchResultsController: searchTableViewController)
+//        searchController.delegate = self
+//        searchController.searchResultsUpdater = self
     }
 }
 
@@ -151,6 +151,6 @@ extension ExpensesView: ExpensesPresenterDelegate {
 
     func refresh() {
         tableView.reloadData()
-        searchTableViewController.tableView.reloadData()
+//        searchTableViewController.tableView.reloadData()
     }
 }

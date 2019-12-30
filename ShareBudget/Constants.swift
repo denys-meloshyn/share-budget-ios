@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import ChameleonFramework
 
-enum ErrorTypeAPI {
+enum ErrorTypeAPI: Error {
     case none
+    case canceled
     case userNotExist
     case emailNotApproved
     case userPasswordIsWrong
@@ -24,6 +24,12 @@ protocol AutoMockable {}
 protocol AutoEquatable {}
 
 struct Constants {
+    enum Errors: Error {
+        case nilObject
+        case urlNotValid
+        case wrongResponseFormat
+    }
+    
     struct values {
         static let paginationSize = 30
         static let passwordMinLength = 1

@@ -8,45 +8,56 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController {
-    @IBOutlet private var stackView: UIStackView?
-    @IBOutlet private var scrollView: UIScrollView?
-    @IBOutlet private var authorisationButton: ButtonListener?
-    @IBOutlet private var authorisationModeButton: ButtonListener?
+import RxCocoa
+import RxSwift
+import SnapKit
+import AuthenticationServices
+
+class LoginViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    private var presenter: LoginPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let router = LoginRouter(with: self)
-        let interaction = LoginInteraction()
-        let presenter = LoginPresenter(with: interaction, router: router)
-        viperView = LoginView(with: presenter, and: self)
+        let interactor = LoginInteraction(authorisationAPI: AuthorisationAPI.instance)
+        presenter = LoginPresenter(interactor: interactor, router: router)
         
-        guard let view = viperView as? LoginViewProtocol else {
-            return
+        let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .whiteOutline)
+        button.addTarget(self, action: #selector(handleAuthorizationButtonPress), for: .touchUpInside)
+        view.addSubview(button)
+        button.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
         }
-        
-        linkStoryboardViews(to: view)
-        linkViewActions(to: presenter)
-        view.viewDidLoad()
-        
-        presenter.configure()
     }
 
-    private func linkStoryboardViews(to view: LoginViewProtocol) {
-        view.stackView = stackView
-        view.scrollView = scrollView
-        view.authorisationButton = authorisationButton
-        view.authorisationModeButton = authorisationModeButton
+    @objc func handleAuthorizationButtonPress() {
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self
+        controller.presentationContextProvider = self
+        controller.performRequests()
     }
-    
-    private func linkViewActions(to presenter: LoginPresenterProtocol) {
-        authorisationButton?.addTouchUpInsideListener(completion: { _ in
-            presenter.authoriseUser()
-        })
 
-        authorisationModeButton?.addTouchUpInsideListener(completion: { _ in
-            presenter.switchAuthorisationMode()
-        })
+    func authorizationController(controller _: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userIdentifier = credential.user
+            guard let identityTokenData = credential.identityToken,
+                let identityToken = String(bytes: identityTokenData, encoding: .utf8) else {
+                return
+            }
+            
+            presenter.login(userIdentifier: userIdentifier, identityToken: identityToken, firstName: credential.fullName?.givenName, lastName: credential.fullName?.familyName)
+        }
+    }
+
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
+    }
+
+    func authorizationController(controller _: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error
     }
 }

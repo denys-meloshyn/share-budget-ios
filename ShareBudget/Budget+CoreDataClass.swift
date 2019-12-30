@@ -12,7 +12,7 @@ import CoreData
 @objc(Budget)
 public class Budget: BaseModel {
     override class func modelKeyID() -> String {
-        return Constants.key.json.groupID
+        Constants.key.json.groupID
     }
     
     override func update(with dict: [String: Any?], in managedObjectContext: NSManagedObjectContext) {

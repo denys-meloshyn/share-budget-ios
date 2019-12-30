@@ -6,9 +6,22 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
+import Foundation
+
+import HTTPNetworking
 import CoreData
+import RxCocoa
+import RxSwift
 
 class BaseAPI {
+    let loader: HTTPProtocol
+    private let environment: Environment
+    
+    init(environment: Environment = Dependency.environment(), loader: HTTPProtocol = HTTPNetwork.instance) {
+        self.loader = loader
+        self.environment = environment
+    }
+    
     func timestampStorageKey() -> String {
         return ""
     }
@@ -49,12 +62,24 @@ class BaseAPI {
             default:
                 return .unknown
             }
+        } else if let errorMessage = data as? [String: String], let errorCode = errorMessage["msg"] {
+            switch errorCode {
+            case "Token has expired":
+                return .tokenExpired
+                
+            default:
+                return .unknown
+            }
         }
         
-        return .unknown
+        return .unknown 
     }
     
     class func checkResponse(data: Any?, response: URLResponse?, error: Error?) -> ErrorTypeAPI {
+        if let cancelError = error as NSError?, cancelError.code == NSURLErrorCancelled {
+            return .canceled
+        }
+
         if error != nil {
             return .unknown
         }
@@ -66,8 +91,8 @@ class BaseAPI {
         return .none
     }
     
-    class func components(_ resource: String) -> NSURLComponents {
-        let components = Dependency.backendConnection
+    class func components(_ resource: String) -> URLComponents {
+        var components = Dependency.backendConnection
         components.path = Dependency.restAPIVersion + "/" + resource
         
         return components
@@ -76,9 +101,9 @@ class BaseAPI {
     func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         
     }
-    
+
     func updates(_ resource: String, _ completion: APIResultBlock?) -> URLSessionTask {
-        let components = BaseAPI.components(resource)
+        var components = BaseAPI.components(resource)
         components.path = Dependency.restAPIVersion + "/" + resource + "/updates"
         
         if let pagination = self.pagination {
@@ -92,13 +117,11 @@ class BaseAPI {
         }
         
         guard let url = components.url else {
-            Dependency.logger.error("URL can't be nil \(components)")
-            assert(false, "URL can't be nil")
-            return URLSessionTask()
+            fatalError()
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        request.method = .GET
         request.addUpdateCredentials(timestamp: self.timestamp)
         
         let task = AsynchronousURLConnection.create(request) { (data, response, error) -> Void in
@@ -133,7 +156,7 @@ class BaseAPI {
                 
                 if pagination.hasNext() {
                     let newPageTask = BaseAPILoadUpdatesTask(resource: resource, entity: self, completionBlock: completion)
-                    SyncManager.shared.insertPaginationTask(newPageTask)
+//                    SyncManager.shared.insertPaginationTask(newPageTask)
                     self.pagination = pagination
                 } else {
                     self.pagination = nil
@@ -153,23 +176,29 @@ class BaseAPI {
         return task
     }
     
+    func formValues(properties: [String: Any]) -> Data? {
+        let formValues = properties.map { (key, value) -> String in
+            return "\(key)=\(value)"
+        }.joined(separator: "&")
+        
+        return formValues.data(using: .utf8)
+    }
+    
     func upload(_ resource: String, _ modelID: NSManagedObjectID, _ completion: APIResultBlock?) -> URLSessionTask {
         let components = BaseAPI.components(resource)
         
         guard let url = components.url else {
-            Dependency.logger.error("URL can't be nil \(components)")
-            assert(false, "URL can't be nil")
-            return URLSessionTask()
+            fatalError()
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = "PUT"
+        request.method = .PUT
         
         let managedObjectContext = ModelManager.managedObjectContext
         let model = managedObjectContext.object(with: modelID) as! BaseModel
         var properties = model.uploadProperties()
         
-        properties[Constants.key.json.token] = Dependency.userCredentials.token
+        properties[Constants.key.json.token] = Dependency.userCredentials.accessToken
         properties[Constants.key.json.userID] = String(Dependency.userCredentials.userID)
         if !self.timestamp.isEmpty {
             properties[Constants.key.json.timeStamp] = self.timestamp
@@ -186,19 +215,19 @@ class BaseAPI {
             let errorType = BaseAPI.checkResponse(data: data, response: response, error: error)
             
             guard errorType == .none else {
-                if errorType == .tokenExpired {
-                    Dependency.logger.error("Token is expired")
-                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
-                        if error == .none {
-                            let task = self.upload(resource, modelID, completion)
-                            task.resume()
-                        } else {
-                            completion?(data, error)
-                        }
-                    })
-                    
-                    return
-                }
+//                if errorType == .tokenExpired {
+//                    Dependency.logger.error("Token is expired")
+//                    _ = AuthorisationAPI.login(email: Dependency.userCredentials.email, password: Dependency.userCredentials.password, completion: { (data, error) -> Void in
+//                        if error == .none {
+//                            let task = self.upload(resource, modelID, completion)
+//                            task.resume()
+//                        } else {
+//                            completion?(data, error)
+//                        }
+//                    })
+//
+//                    return
+//                }
                 
                 Dependency.logger.error("Error: '\(errorType)'", userInfo: [Constants.key.json.logBody: String(describing: data)])
                 completion?(data, errorType)

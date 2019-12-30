@@ -3,11 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */; };
+		1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */; };
+		1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */; };
+		1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */; };
+		1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */; };
+		1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */; };
+		1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */; };
+		1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DA404EBC870240EF9B5A /* APIUploadTask.swift */; };
+		1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */; };
+		1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */; };
 		5702D4D51E6B747200B86263 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */; };
+		57042AC62326CED600371963 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57042AC52326CED600371963 /* UserEntity.swift */; };
 		570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570B713B1EE3127300C02DB1 /* Dependency.swift */; };
 		571041E41E8085310060CBBA /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E31E8085310060CBBA /* RotateNavigationController.swift */; };
 		571041E61E8085A40060CBBA /* RotateTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571041E51E8085A40060CBBA /* RotateTabBarController.swift */; };
@@ -48,7 +59,6 @@
 		573F5A1A1E2C180400AEA72A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */; };
 		573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */; };
 		573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */; };
-		573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A211E2D4FCF00AEA72A /* LoginView.swift */; };
 		573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */; };
 		573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A251E2D502100AEA72A /* LoginInteraction.swift */; };
 		573F5A281E2D50B400AEA72A /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F5A271E2D50B400AEA72A /* BaseView.swift */; };
@@ -65,6 +75,9 @@
 		57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57500B6920093EC900169F23 /* TextFieldListener.swift */; };
 		57561D851F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */; };
 		57561D871F44EBBB00FDB891 /* MockBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */; };
+		57569CA123B4FC7A002C316E /* GroupLimitAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */; };
+		57569CA323B5000D002C316E /* CategoryAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */; };
+		57569CA523B50090002C316E /* ExpenseAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */; };
 		575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786341E4272980026A0BE /* BudgetUserAPI.swift */; };
 		575786371E4278620026A0BE /* BudgetLimitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575786361E4278620026A0BE /* BudgetLimitAPI.swift */; };
 		575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575A22531E4747E0004825C2 /* EditExpenseViewController.swift */; };
@@ -134,6 +147,13 @@
 		57D11C211F30ED4C00FBDAA0 /* MockExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */; };
 		57D11C231F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */; };
 		57D11C251F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */; };
+		57DE756323B22829005A1DB5 /* url-builder in Frameworks */ = {isa = PBXBuildFile; productRef = 57CD7D58237D4DE50037702E /* url-builder */; };
+		57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */; };
+		57E4B07423B569F4006E5954 /* CategoryAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */; };
+		57E4B07623B56B3F006E5954 /* ExpenseAPIUpdateTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */; };
+		57E4B07923B576AF006E5954 /* XCGLogger in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B07823B576AF006E5954 /* XCGLogger */; };
+		57E4B07C23B5775C006E5954 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B07B23B5775C006E5954 /* KeychainSwift */; };
+		57E4B08323B57A8F006E5954 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57E4B08223B57A8F006E5954 /* SnapKit */; };
 		57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */; };
 		57EC118C1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */; };
 		57EC118E1F3CFDD900B5C32D /* LimitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC118D1F3CFDD900B5C32D /* LimitTest.swift */; };
@@ -182,10 +202,21 @@
 
 /* Begin PBXFileReference section */
 		0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.productiondebug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.productiondebug.xcconfig"; sourceTree = "<group>"; };
+		1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsAPIUpdateTask.swift; sourceTree = "<group>"; };
+		1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeStampStorageManager.swift; sourceTree = "<group>"; };
+		1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupsAPIUploadTask.swift; sourceTree = "<group>"; };
+		1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryKeyProtocol.swift; sourceTree = "<group>"; };
+		1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
+		1850DA404EBC870240EF9B5A /* APIUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUploadTask.swift; sourceTree = "<group>"; };
+		1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIUpdateTask.swift; sourceTree = "<group>"; };
+		1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetAPIUpdateTask.swift; sourceTree = "<group>"; };
+		1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIUpdateTask.swift; sourceTree = "<group>"; };
+		1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPIUpdateTask.swift; sourceTree = "<group>"; };
 		448BD2EE5E2DB6834EA12C3B /* Pods_ShareBudgetUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareBudgetUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7DC67DB96943BF16F0A67C /* Pods-ShareBudgetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E6A5A7897FFEA5750025A1F /* Pods-ShareBudgetUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareBudgetUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		57042AC52326CED600371963 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		570B713B1EE3127300C02DB1 /* Dependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		571041E31E8085310060CBBA /* RotateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
 		571041E51E8085A40060CBBA /* RotateTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateTabBarController.swift; sourceTree = "<group>"; };
@@ -235,7 +266,6 @@
 		573F5A0E1E2C180400AEA72A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		573F5A0F1E2C180400AEA72A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		573F5A1C1E2D4F7300AEA72A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		573F5A211E2D4FCF00AEA72A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		573F5A231E2D4FF400AEA72A /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		573F5A251E2D502100AEA72A /* LoginInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteraction.swift; sourceTree = "<group>"; };
 		573F5A271E2D50B400AEA72A /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -252,6 +282,9 @@
 		57500B6920093EC900169F23 /* TextFieldListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldListener.swift; sourceTree = "<group>"; };
 		57561D841F44DF5A00FDB891 /* URLRequestUserCredentialsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequestUserCredentialsTest.swift; sourceTree = "<group>"; };
 		57561D861F44EBBB00FDB891 /* MockBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBaseViewController.swift; sourceTree = "<group>"; };
+		57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupLimitAPIUploadTask.swift; sourceTree = "<group>"; };
+		57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIUploadTask.swift; sourceTree = "<group>"; };
+		57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAPIUploadTask.swift; sourceTree = "<group>"; };
 		575786341E4272980026A0BE /* BudgetUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetUserAPI.swift; sourceTree = "<group>"; };
 		575786361E4278620026A0BE /* BudgetLimitAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetLimitAPI.swift; sourceTree = "<group>"; };
 		575A22531E4747E0004825C2 /* EditExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExpenseViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +328,7 @@
 		579359F020C6F6E6005A2D2B /* ExpensesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPresenter.swift; sourceTree = "<group>"; };
 		579359F420C6F706005A2D2B /* ExpensesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRouter.swift; sourceTree = "<group>"; };
 		579359F820C6F72D005A2D2B /* ExpensesInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteraction.swift; sourceTree = "<group>"; };
+		579F30AD22EF8EBE00F99EE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		57A2B2EA1F228A060061F1EB /* UserGroupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGroupAPI.swift; sourceTree = "<group>"; };
 		57AEFCF420D56E4E001FF1EF /* ExpensesInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteractionTest.swift; sourceTree = "<group>"; };
 		57AEFCF620D57059001FF1EF /* MockLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLogger.swift; sourceTree = "<group>"; };
@@ -325,6 +359,10 @@
 		57D11C201F30ED4C00FBDAA0 /* MockExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExpensesViewController.swift; sourceTree = "<group>"; };
 		57D11C221F30EE4100FBDAA0 /* MockBudgetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBudgetDetailViewController.swift; sourceTree = "<group>"; };
 		57D11C241F30EFB400FBDAA0 /* ExpenseFetchControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseFetchControllerTest.swift; sourceTree = "<group>"; };
+		57D9CB6922EF303F0046933D /* ShareBudget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareBudget.entitlements; sourceTree = "<group>"; };
+		57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAPIUploadTask.swift; sourceTree = "<group>"; };
+		57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPIUpdateTask.swift; sourceTree = "<group>"; };
+		57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseAPIUpdateTask.swift; sourceTree = "<group>"; };
 		57E9EDE91EC7A0F200999F55 /* KeyboardProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardProtocol.swift; sourceTree = "<group>"; };
 		57EC118B1F3BB35900B5C32D /* BudgetDetailInteractionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailInteractionTest.swift; sourceTree = "<group>"; };
 		57EC118D1F3CFDD900B5C32D /* LimitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTest.swift; sourceTree = "<group>"; };
@@ -373,7 +411,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DE756323B22829005A1DB5 /* url-builder in Frameworks */,
 				6FCB1CDD3E3E1930477B41B6 /* Pods_ShareBudget.framework in Frameworks */,
+				57E4B07C23B5775C006E5954 /* KeychainSwift in Frameworks */,
+				57E4B07923B576AF006E5954 /* XCGLogger in Frameworks */,
+				57E4B08323B57A8F006E5954 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +438,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1850D764ABCD5DE965D368EB /* APIUploadTask */ = {
+			isa = PBXGroup;
+			children = (
+				1850DA404EBC870240EF9B5A /* APIUploadTask.swift */,
+				57569CA223B5000D002C316E /* CategoryAPIUploadTask.swift */,
+				57569CA423B50090002C316E /* ExpenseAPIUploadTask.swift */,
+				57DE756423B2CB85005A1DB5 /* GroupAPIUploadTask.swift */,
+				57569CA023B4FC7A002C316E /* GroupLimitAPIUploadTask.swift */,
+				1850D44F5A6127FB87AC4779 /* UserGroupsAPIUploadTask.swift */,
+			);
+			path = APIUploadTask;
+			sourceTree = "<group>";
+		};
+		1850D83BACE78DEEC572E0EE /* APIUpdateTask */ = {
+			isa = PBXGroup;
+			children = (
+				1850DEA9EF7ADE3F71B93E9D /* APIUpdateTask.swift */,
+				1850DD14DF9C6BE1FF0B283C /* BudgetAPIUpdateTask.swift */,
+				1850DB60C9CA1DE130F5FE3B /* UserAPIUpdateTask.swift */,
+				1850DEC8BE0394C08D824B58 /* BudgetLimitAPIUpdateTask.swift */,
+				1850D17A6A60781432CD6D29 /* UserGroupsAPIUpdateTask.swift */,
+				57E4B07323B569F4006E5954 /* CategoryAPIUpdateTask.swift */,
+				57E4B07523B56B3F006E5954 /* ExpenseAPIUpdateTask.swift */,
+			);
+			path = APIUpdateTask;
+			sourceTree = "<group>";
+		};
 		49FCCB1B3CC09002AC3E8412 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +486,14 @@
 				0214D334C4D8A0906FA55631 /* Pods-ShareBudgetUITests.productiondebug.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		57042AC42326CE9800371963 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				57042AC52326CED600371963 /* UserEntity.swift */,
+			);
+			name = Entity;
 			sourceTree = "<group>";
 		};
 		572960AE20811EFB00D5E97A /* Autogenerated */ = {
@@ -453,9 +530,11 @@
 		573F599E1E295C4D00AEA72A /* ShareBudget */ = {
 			isa = PBXGroup;
 			children = (
+				57D9CB6922EF303F0046933D /* ShareBudget.entitlements */,
 				573F599F1E295C4D00AEA72A /* AppDelegate.swift */,
 				573F59D51E295F4700AEA72A /* APIManager */,
 				572960AE20811EFB00D5E97A /* Autogenerated */,
+				57042AC42326CE9800371963 /* Entity */,
 				573F5A381E34F2DB00AEA72A /* Extension */,
 				573F5A201E2D4FA500AEA72A /* Interaction */,
 				573F59DF1E2A7E3F00AEA72A /* ModelManager */,
@@ -466,6 +545,8 @@
 				573F59D21E295EA200AEA72A /* Utility */,
 				573F5A1E1E2D4F8C00AEA72A /* View */,
 				573F59D31E295EAF00AEA72A /* ViewController */,
+				1850D83BACE78DEEC572E0EE /* APIUpdateTask */,
+				1850D764ABCD5DE965D368EB /* APIUploadTask */,
 			);
 			path = ShareBudget;
 			sourceTree = "<group>";
@@ -510,6 +591,8 @@
 				575A226B1E508FCA004825C2 /* UtilityFormatter.swift */,
 				573F5A341E2FFFEC00AEA72A /* Validator.swift */,
 				57AEFCFC20D59A36001FF1EF /* ShareBudgetError.swift */,
+				1850D2F2FD39F7FECF31A716 /* TimeStampStorageManager.swift */,
+				1850D55176B33D6A4179A39E /* PrimaryKeyProtocol.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -610,7 +693,6 @@
 				579359EC20C6F6A7005A2D2B /* ExpensesView.swift */,
 				5702D4D41E6B747200B86263 /* ExpenseTableViewCell.swift */,
 				57C17DEC1E85D0CB00CB3399 /* ExpenseTableViewHeader.swift */,
-				573F5A211E2D4FCF00AEA72A /* LoginView.swift */,
 				575A22551E476CCA004825C2 /* RightTextFieldTableViewCell.swift */,
 				575E119A1F1EA307000B2F07 /* TeamMembersView.swift */,
 				578BD0751E352EEB00DE28C8 /* TextFieldErrorMessage.swift */,
@@ -671,6 +753,7 @@
 				57CA4FF41F3507C100669ED7 /* NSFetchedResultsController+Iterate.swift */,
 				576CC8A320CD437A005B0658 /* UILabel+HighlightText.swift */,
 				573F5A361E34F2C200AEA72A /* URLRequest+UserCredentials.swift */,
+				1850D554D277C3D875087375 /* NSManagedObjectExtensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -820,6 +903,12 @@
 			dependencies = (
 			);
 			name = ShareBudget;
+			packageProductDependencies = (
+				57CD7D58237D4DE50037702E /* url-builder */,
+				57E4B07823B576AF006E5954 /* XCGLogger */,
+				57E4B07B23B5775C006E5954 /* KeychainSwift */,
+				57E4B08223B57A8F006E5954 /* SnapKit */,
+			);
 			productName = ShareBudget;
 			productReference = 573F599C1E295C4D00AEA72A /* ShareBudget.app */;
 			productType = "com.apple.product-type.application";
@@ -898,16 +987,21 @@
 			};
 			buildConfigurationList = 573F59971E295C4D00AEA72A /* Build configuration list for PBXProject "ShareBudget" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 				ru,
 				uk,
 			);
 			mainGroup = 573F59931E295C4D00AEA72A;
+			packageReferences = (
+				57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */,
+				57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */,
+				57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1075,45 +1169,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/HTTPNetworking/HTTPNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${BUILT_PRODUCTS_DIR}/TimeIntervals/TimeIntervals.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/le/le.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimeIntervals.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetUITests/Pods-ShareBudgetUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1125,47 +1186,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/HTTPNetworking/HTTPNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${BUILT_PRODUCTS_DIR}/TimeIntervals/TimeIntervals.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/le/le.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimeIntervals.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudgetTests/Pods-ShareBudgetTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1177,45 +1203,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShareBudget/Pods-ShareBudget-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BugfenderSDK/BugfenderSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
-				"${BUILT_PRODUCTS_DIR}/CorePlot/CorePlot.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/HTTPNetworking/HTTPNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/JustLog/JustLog.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${BUILT_PRODUCTS_DIR}/TimeIntervals/TimeIntervals.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/le/le.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudget/Pods-ShareBudget-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BugfenderSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CorePlot.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTTPNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JustLog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjcExceptionBridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TimeIntervals.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCGLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/le.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareBudget/Pods-ShareBudget-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1236,6 +1229,7 @@
 				573F5A371E34F2C200AEA72A /* URLRequest+UserCredentials.swift in Sources */,
 				575786351E4272980026A0BE /* BudgetUserAPI.swift in Sources */,
 				57500B662006B9A300169F23 /* ButtonListener.swift in Sources */,
+				57E4B07423B569F4006E5954 /* CategoryAPIUpdateTask.swift in Sources */,
 				57FAB4241E62486900A2AEC7 /* CategoryPresenter.swift in Sources */,
 				579359F520C6F706005A2D2B /* ExpensesRouter.swift in Sources */,
 				576CC8A420CD437A005B0658 /* UILabel+HighlightText.swift in Sources */,
@@ -1247,6 +1241,7 @@
 				575E119B1F1EA307000B2F07 /* TeamMembersView.swift in Sources */,
 				573F5A331E2D5F4100AEA72A /* BaseViewController.swift in Sources */,
 				573F5A1B1E2C180400AEA72A /* User+CoreDataProperties.swift in Sources */,
+				57DE756523B2CB85005A1DB5 /* GroupAPIUploadTask.swift in Sources */,
 				573F5A101E2C180400AEA72A /* Category+CoreDataClass.swift in Sources */,
 				576424B71E79E4CC000B595E /* NetworkIndicator.swift in Sources */,
 				578BD0761E352EEB00DE28C8 /* TextFieldErrorMessage.swift in Sources */,
@@ -1270,6 +1265,7 @@
 				573F5A2D1E2D54DE00AEA72A /* LoginRouter.swift in Sources */,
 				57B31A8D20C72D8F00670F60 /* BarButtonItemListener.swift in Sources */,
 				570B713C1EE3127300C02DB1 /* Dependency.swift in Sources */,
+				57569CA323B5000D002C316E /* CategoryAPIUploadTask.swift in Sources */,
 				573F5A241E2D4FF400AEA72A /* LoginPresenter.swift in Sources */,
 				573F5A261E2D502100AEA72A /* LoginInteraction.swift in Sources */,
 				575A225A1E477234004825C2 /* EditExpenseView.swift in Sources */,
@@ -1278,6 +1274,7 @@
 				57FAB4221E62483D00A2AEC7 /* CategoryView.swift in Sources */,
 				578A04CF1E524CBA00330DCD /* ExpensesViewController.swift in Sources */,
 				573F5A351E2FFFEC00AEA72A /* Validator.swift in Sources */,
+				57569CA523B50090002C316E /* ExpenseAPIUploadTask.swift in Sources */,
 				575A22661E4D0189004825C2 /* ValidationTextField.swift in Sources */,
 				57E9EDEA1EC7A0F200999F55 /* KeyboardProtocol.swift in Sources */,
 				573F5A311E2D557900AEA72A /* BaseInteraction.swift in Sources */,
@@ -1312,11 +1309,11 @@
 				572749521E44F41B004A132F /* BudgetDetailView.swift in Sources */,
 				57F128681E3D3B0500E51C0C /* CreateSearchTableViewHeader.swift in Sources */,
 				573F5A1D1E2D4F7300AEA72A /* LoginViewController.swift in Sources */,
-				573F5A221E2D4FCF00AEA72A /* LoginView.swift in Sources */,
 				573F5A131E2C180400AEA72A /* CategoryLimit+CoreDataProperties.swift in Sources */,
 				57F128641E3D341700E51C0C /* BudgetInteraction.swift in Sources */,
 				57500B6A20093EC900169F23 /* TextFieldListener.swift in Sources */,
 				573F5A141E2C180400AEA72A /* Expense+CoreDataClass.swift in Sources */,
+				57042AC62326CED600371963 /* UserEntity.swift in Sources */,
 				573F59DD1E296F4F00AEA72A /* UserCredentials.swift in Sources */,
 				57801AF61E3A6A66003AD57E /* AuthorisationAPI.swift in Sources */,
 				573F5A031E2C17EB00AEA72A /* BaseModel+CoreDataProperties.swift in Sources */,
@@ -1325,6 +1322,7 @@
 				575CA989200BF82E00613D8E /* DatePicker.swift in Sources */,
 				573F59D11E295D4900AEA72A /* Constants.swift in Sources */,
 				573F5A2F1E2D54F500AEA72A /* BaseRouter.swift in Sources */,
+				57569CA123B4FC7A002C316E /* GroupLimitAPIUploadTask.swift in Sources */,
 				575A22541E4747E0004825C2 /* EditExpenseViewController.swift in Sources */,
 				57F1286E1E3DF76200E51C0C /* Budget+CoreDataProperties.swift in Sources */,
 				57F128601E3D33AE00E51C0C /* BudgetRouter.swift in Sources */,
@@ -1333,6 +1331,17 @@
 				573F5A021E2C17EB00AEA72A /* BaseModel+CoreDataClass.swift in Sources */,
 				575A225E1E477281004825C2 /* EditExpenseInteraction.swift in Sources */,
 				573F59DB1E29637E00AEA72A /* UserAPI.swift in Sources */,
+				1850D8B7D34B00081CD3A19F /* APIUpdateTask.swift in Sources */,
+				1850D6E9D95BC1246A8DF2FE /* BudgetAPIUpdateTask.swift in Sources */,
+				1850D241AA0BF5537958F307 /* TimeStampStorageManager.swift in Sources */,
+				1850DC6AC1989AB5A45C28EB /* UserAPIUpdateTask.swift in Sources */,
+				1850DDF13536C0D97D310070 /* NSManagedObjectExtensions.swift in Sources */,
+				1850D2136B87C11B67016FF9 /* BudgetLimitAPIUpdateTask.swift in Sources */,
+				1850DAFD32F8F554394DB21F /* UserGroupsAPIUpdateTask.swift in Sources */,
+				1850DBA52036553A00BB33E7 /* APIUploadTask.swift in Sources */,
+				57E4B07623B56B3F006E5954 /* ExpenseAPIUpdateTask.swift in Sources */,
+				1850D6F4546EBDDC7F17CF72 /* UserGroupsAPIUploadTask.swift in Sources */,
+				1850DB7CA2C7E131086B12BC /* PrimaryKeyProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1405,6 +1414,7 @@
 				573F59A41E295C4D00AEA72A /* Base */,
 				578BD0601E35158D00DE28C8 /* uk */,
 				578BD0621E35159300DE28C8 /* ru */,
+				579F30AD22EF8EBE00F99EE5 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1551,7 +1561,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1563,16 +1574,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = ShareBudget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget;
+				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*) Develop";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1584,14 +1600,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = ShareBudget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget;
+				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ccf9e56f-e142-4553-ab51-9a27034caf3a";
 				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*)";
@@ -1611,7 +1632,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1631,7 +1656,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1649,7 +1678,11 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1667,7 +1700,11 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1741,17 +1778,22 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = ShareBudget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEVELOPMENT_REMOTE";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget;
+				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*) Develop";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1768,7 +1810,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1786,7 +1832,11 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1860,17 +1910,22 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = ShareBudget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEVELOPMENT_LOCAL";
-				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudget;
+				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode iOS Wildcard App ID (4ZT9N5NKNU.*) Develop";
+				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1887,7 +1942,11 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1905,7 +1964,11 @@
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ShareBudgetUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = denys.meloshyn.ShareBudgetUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
@@ -1962,6 +2025,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.com/denys.meloshyn/url-builder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DaveWoodCom/XCGLogger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 18.0.0;
+			};
+		};
+		57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		57CD7D58237D4DE50037702E /* url-builder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57CD7D57237D4DE50037702E /* XCRemoteSwiftPackageReference "url-builder" */;
+			productName = "url-builder";
+		};
+		57E4B07823B576AF006E5954 /* XCGLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */;
+			productName = XCGLogger;
+		};
+		57E4B07B23B5775C006E5954 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+		57E4B08223B57A8F006E5954 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		573F59A61E295C4D00AEA72A /* ShareBudget.xcdatamodeld */ = {
