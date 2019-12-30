@@ -76,6 +76,10 @@ class BaseAPI {
     }
     
     class func checkResponse(data: Any?, response: URLResponse?, error: Error?) -> ErrorTypeAPI {
+        if let cancelError = error as NSError?, cancelError.code == NSURLErrorCancelled {
+            return .canceled
+        }
+
         if error != nil {
             return .unknown
         }

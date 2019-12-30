@@ -16,13 +16,11 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logout() {
-        
+        SyncManager.shared.stop()
         Dependency.userCredentials.logout()
         ModelManager.dropAllEntities()
-        
-        if let loginViewControler = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavigationViewController") {
-            UIApplication.shared.delegate?.window??.rootViewController = loginViewControler
-        }
+
+        UIApplication.shared.delegate?.window??.rootViewController = R.storyboard.main.loginNavigationViewController()
     }
     
     @IBAction func reset() {

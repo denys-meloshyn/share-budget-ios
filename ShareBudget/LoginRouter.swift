@@ -14,7 +14,7 @@ protocol LoginRouterProtocol {
 
 class LoginRouter: BaseRouter, LoginRouterProtocol {
     func showHomePage() {
-        let loginViewControler = self.viewController?.storyboard?.instantiateInitialViewController()
-        UIApplication.shared.delegate?.window??.rootViewController = loginViewControler
+        let loginViewController = viewController?.storyboard?.instantiateInitialViewController()
+        UIApplication.shared.delegate?.window??.rootViewController = loginViewController
     }
 }

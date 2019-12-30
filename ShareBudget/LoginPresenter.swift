@@ -36,6 +36,8 @@ class LoginPresenter: LoginPresenterProtocol {
                 UserCredentials.instance.accessToken = model.accessToken
                 UserCredentials.instance.refreshToken = model.refreshToken
                 UserCredentials.instance.userID = String("\(model.user.userID ?? -1)")
+
+                SyncManager.shared.run()
                 
                 self.router.showHomePage()
             case .error:

@@ -10,6 +10,7 @@ import UIKit
 
 enum ErrorTypeAPI: Error {
     case none
+    case canceled
     case userNotExist
     case emailNotApproved
     case userPasswordIsWrong

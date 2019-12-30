@@ -5,6 +5,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import CoreData
 
 protocol APIUploadTaskProtocol: class {

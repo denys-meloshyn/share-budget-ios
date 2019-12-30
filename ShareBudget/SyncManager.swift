@@ -94,6 +94,10 @@ class SyncManager {
 
     private func handle(syncTask: SyncTask) {
         let errorHandler: ((ErrorTypeAPI) -> Void) = { [weak self] error in
+            if error == .canceled {
+                return
+            }
+
             if error == .tokenExpired || error == .tokenNotValid {
                 guard let disposeBag = self?.disposeBag else {
                     return

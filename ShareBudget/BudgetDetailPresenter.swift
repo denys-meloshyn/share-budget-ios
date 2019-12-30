@@ -40,7 +40,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     fileprivate var pieChartColors = [UIColor]()
 
     private var colorsRange = [Range<Double>]()
-    private let colors = [MaterialColor.green.base, MaterialColor.yellow.base, MaterialColor.red.base]
+    private let colors = [MaterialColor.green.dark1, MaterialColor.yellow.dark1, MaterialColor.red.dark1]
 
     // MARK: - Life cycle methods
 
