@@ -9,5 +9,6 @@ import CoreData
 class UserGroupsAPIUploadTask: APIUploadTask, APIUploadTaskProtocol {
     var endpointURLBuilder: URL.Builder {
         restApiURLBuilder.appendPath("user").appendPath("group")
+        
     }
 }

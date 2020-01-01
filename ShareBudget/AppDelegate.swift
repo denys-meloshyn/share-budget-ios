@@ -8,11 +8,15 @@
 
 import UIKit
 
-import Firebase
 import Fabric
+import RxSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    private let disposeBag = DisposeBag()
+    let userGroupAPI = UserGroupAPI()
+    
     override init() {
         super.init()
         Dependency.configure()
@@ -47,6 +51,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard let incomingURL = userActivity.webpageURL,
+            let components = NSURLComponents(url: incomingURL, resolvingAgainstBaseURL: true),
+            let path = components.path,
+            path == "/v1/user/group",
+            let params = components.queryItems,
+            let token = params.first(where: { $0.name == "token" } )?.value else {
+                return false
+        }
+
+        userGroupAPI.addUserToGroup(token: token).subscribe { event in
+
+        }.disposed(by: disposeBag)
+
         return true
     }
 
