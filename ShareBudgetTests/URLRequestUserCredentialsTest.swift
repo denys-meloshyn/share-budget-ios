@@ -17,8 +17,7 @@ class URLRequestUserCredentialsTest: XCTestCase {
         super.setUp()
         
         Dependency.configure()
-        Dependency.userCredentials.userID = -100
-        Dependency.userCredentials.token = "token"
+        Dependency.userCredentials.userID = "-100"
         
         self.urlRequest = URLRequest(url: URL(fileURLWithPath: "google.com"))
     }
@@ -27,34 +26,5 @@ class URLRequestUserCredentialsTest: XCTestCase {
         expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]).to(beNil())
         expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.userID]).to(beNil())
         expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]).to(beNil())
-    }
-    
-    func testAddToken() {
-        self.urlRequest.addToken()
-        
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
-    }
-    
-    func testTokenAddedTwice() {
-        self.urlRequest.addToken()
-        self.urlRequest.addToken()
-        
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
-    }
-    
-    func testAddUpdateCredentialsWithEmptyTimeStamp() {
-        self.urlRequest.addUpdateCredentials(timestamp: "")
-        
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
-        expect(Int(self.urlRequest.allHTTPHeaderFields![Constants.key.json.userID]!)) == -100
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]).to(beNil())
-    }
-    
-    func testAddUpdateCredentialsWithEmpty() {
-        self.urlRequest.addUpdateCredentials(timestamp: "timestamp")
-        
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]) == "token"
-        expect(Int(self.urlRequest.allHTTPHeaderFields![Constants.key.json.userID]!)) == -100
-        expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.timeStamp]) == "timestamp"
     }
 }

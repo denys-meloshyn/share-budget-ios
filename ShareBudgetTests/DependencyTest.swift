@@ -27,36 +27,6 @@ class DependencyTest: XCTestCase {
         expect(destination).to(beNil())
     }
     
-    func testDevelopmentLocalBackendConnection() {
-        MockDependency.mockEnvironment = .developmentLocal
-        MockDependency.configure()
-        
-        let expectedComponents = NSURLComponents()
-        expectedComponents.scheme = "http"
-        expectedComponents.host = "127.0.0.1"
-        expectedComponents.port = 5000
-        
-        let result = MockDependency.backendConnection
-        
-        expect(result.scheme) == expectedComponents.scheme
-        expect(result.host) == expectedComponents.host
-        expect(result.port) == expectedComponents.port
-    }
-    
-    func testDevelopmentRemoteBackendConnection() {
-        MockDependency.mockEnvironment = .developmentRemote
-        MockDependency.configure()
-        
-        let expectedComponents = NSURLComponents()
-        expectedComponents.scheme = "https"
-        expectedComponents.host = "sharebudget-development.herokuapp.com"        
-        
-        let result = MockDependency.backendConnection
-        
-        expect(result.scheme) == expectedComponents.scheme
-        expect(result.host) == expectedComponents.host
-    }
-    
     func testDataBaseNameTesting() {
         MockDependency.mockEnvironment = .testing
         MockDependency.configure()
