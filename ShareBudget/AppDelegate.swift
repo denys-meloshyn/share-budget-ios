@@ -8,9 +8,7 @@
 
 import UIKit
 
-import Fabric
 import RxSwift
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         if Dependency.environment() != .testing {
-            FirebaseApp.configure()
-            Fabric.sharedSDK().debug = true
         }
         
         // Override point for customization after application launch.

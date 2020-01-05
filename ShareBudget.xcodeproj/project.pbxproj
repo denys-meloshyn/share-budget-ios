@@ -965,9 +965,7 @@
 				TargetAttributes = {
 					573F599B1E295C4D00AEA72A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4ZT9N5NKNU;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
 					};
 					573F59B21E295C4E00AEA72A = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1130,7 +1128,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "#\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		57BEFB131FA633C200F561CA /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1575,9 +1573,11 @@
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ShareBudget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1588,9 +1588,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1604,7 +1607,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ShareBudget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1615,9 +1619,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ccf9e56f-e142-4553-ab51-9a27034caf3a";
-				PROVISIONING_PROFILE_SPECIFIER = "Share budget App Store";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1779,8 +1786,11 @@
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Denys Meloshyn (432U3S33M6)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				CODE_SIGN_STYLE = Manual;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
 				INFOPLIST_FILE = ShareBudget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1794,8 +1804,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
 				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = ProductionDebug;
 		};
@@ -1911,9 +1924,11 @@
 				ALWAYS_SEARCH_USER_PATHS = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareBudget/ShareBudget.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4ZT9N5NKNU;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ShareBudget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1925,9 +1940,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "denys.meloshyn.share-budget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a10a8e62-0a62-4d65-a603-5260f32adde7";
-				PROVISIONING_PROFILE_SPECIFIER = "Share Budget Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Local;
 		};

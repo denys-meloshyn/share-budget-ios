@@ -9,7 +9,6 @@
 import Foundation
 
 import RxSwift
-import RxCocoa
 
 protocol LoginInteractionProtocol: BaseInteractionProtocol {
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin>

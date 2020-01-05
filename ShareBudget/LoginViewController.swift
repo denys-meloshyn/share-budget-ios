@@ -8,7 +8,6 @@
 
 import UIKit
 
-import RxCocoa
 import RxSwift
 import SnapKit
 import AuthenticationServices

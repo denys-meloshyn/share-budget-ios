@@ -10,7 +10,6 @@ import Foundation
 
 import HTTPNetworking
 import CoreData
-import RxCocoa
 import RxSwift
 
 class BaseAPI {

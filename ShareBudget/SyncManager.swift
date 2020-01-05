@@ -8,7 +8,6 @@
 
 import CoreData
 import RxSwift
-import RxCocoa
 
 protocol SyncManagerDelegate: class {
     func error(_ error: ErrorTypeAPI)

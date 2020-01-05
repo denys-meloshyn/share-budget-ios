@@ -9,7 +9,6 @@
 import Foundation
 
 import RxSwift
-import RxCocoa
 
 class BaseAPILoadUpdatesTask: BaseAPITask {
     override func request() -> URLSessionTask {

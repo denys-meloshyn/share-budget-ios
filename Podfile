@@ -10,16 +10,12 @@ def shared
   pod 'CorePlot', '2.2'
   pod 'MaterialColor', '1.1.1'
   pod 'le', '1.1'
-  pod 'BugfenderSDK', '1.7.0'
   pod 'JustLog', '3.0.0'
   pod 'Toast-Swift', '5.0.0'
   pod 'SwiftLint', '0.34.0'
-  pod 'Firebase/Core', '6.7.0'
-  pod 'Crashlytics', '3.13.4'
   pod 'Sourcery', '0.16.2'
   pod 'TimeIntervals', '1.0.1'
   pod 'RxSwift', '5.0.0'
-  pod 'RxCocoa', '5.0.0'
   pod 'HTTPNetworking', :git => 'https://github.com/ned1988/HttpNetworking.git'
 end
 
