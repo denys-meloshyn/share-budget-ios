@@ -2,49 +2,42 @@
 //  ShareBudgetUITests.swift
 //  ShareBudgetUITests
 //
-//  Created by Denys Meloshyn on 13.01.17.
-//  Copyright © 2017 Denys Meloshyn. All rights reserved.
+//  Created by Denys Meloshyn on 05/01/2020.
+//  Copyright © 2020 Denys Meloshyn. All rights reserved.
 //
 
 import XCTest
 
 class ShareBudgetUITests: XCTestCase {
-    private var app: XCUIApplication!
-    
+
     override func setUp() {
-        super.setUp()
-        
-        // Since UI tests are more expensive to run, it's
-        // usually a good idea to exit if a failure was encountered
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-        
-        app = XCUIApplication()
-        
-        // We send a command line argument to our app,
-        // to enable it to reset its state
-//        app.launchArguments.append("--uitesting")
+
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-    
-    // MARK: - Tests
-    
-    func testGoingThroughOnboarding() {
-        self.app.launchEnvironment = ["klaunchViewControllerID": "BudgetViewController"]
-        self.app.launch()
-        
-//        let elementsQuery = XCUIApplication().scrollViews.otherElements
-//        let eMailTextField = elementsQuery.textFields["E-mail"]
-//        eMailTextField.tap()
-//
-//        let passwordSecureTextField = elementsQuery.secureTextFields["Password"]
-//        passwordSecureTextField.tap()
-//        elementsQuery.buttons["Don't have an account?"].tap()
-//
-//        let repeatPasswordSecureTextField = elementsQuery.secureTextFields["Repeat password"]
-//        repeatPasswordSecureTextField.tap()
-//        passwordSecureTextField.tap()
-//        elementsQuery.textFields["Last name"].tap()
-//        eMailTextField.tap()
-//        passwordSecureTextField.tap()
-//        repeatPasswordSecureTextField.tap()
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testExample() {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testLaunchPerformance() {
+        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
+            // This measures how long it takes to launch your application.
+            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+                XCUIApplication().launch()
+            }
+        }
     }
 }
