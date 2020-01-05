@@ -397,7 +397,6 @@
 		578DD45023C27608002C2FBF /* ShareBudget */ = {
 			isa = PBXGroup;
 			children = (
-				57CFB0A823C285B1001EC19C /* ShareBudget.xcdatamodeld */,
 				578DD48423C2762E002C2FBF /* ShareBudget.entitlements */,
 				578DD4C523C2775C002C2FBF /* GoogleService-Info.plist */,
 				578DD46223C2760A002C2FBF /* Info.plist */,
@@ -412,27 +411,15 @@
 				578DD4E523C27764002C2FBF /* BaseInteraction.swift */,
 				578DD4AC23C27757002C2FBF /* BaseModel+CoreDataClass.swift */,
 				578DD48823C27751002C2FBF /* BaseModel+CoreDataProperties.swift */,
-				578DD50223C27768002C2FBF /* BasePresenter.swift */,
-				578DD4E923C27765002C2FBF /* BaseRouter.swift */,
-				578DD4D623C27761002C2FBF /* BaseView.swift */,
-				578DD4C923C2775D002C2FBF /* BaseViewController.swift */,
 				578DD4F623C27766002C2FBF /* Budget+CoreDataClass.swift */,
 				578DD4DB23C27762002C2FBF /* Budget+CoreDataProperties.swift */,
 				578DD4FE23C27768002C2FBF /* BudgetAPI.swift */,
 				578DD4FC23C27768002C2FBF /* BudgetDetailInteraction.swift */,
-				578DD4A123C27754002C2FBF /* BudgetDetailPresenter.swift */,
-				578DD49023C27752002C2FBF /* BudgetDetailRouter.swift */,
-				578DD4A023C27754002C2FBF /* BudgetDetailView.swift */,
-				578DD4A823C27757002C2FBF /* BudgetDetailViewController.swift */,
 				578DD50423C27769002C2FBF /* BudgetInteraction.swift */,
 				578DD49423C27752002C2FBF /* BudgetLimit+CoreDataClass.swift */,
 				578DD4D323C27760002C2FBF /* BudgetLimit+CoreDataProperties.swift */,
 				578DD48923C27751002C2FBF /* BudgetLimitAPI.swift */,
-				578DD4B723C2775A002C2FBF /* BudgetPresenter.swift */,
-				578DD4B623C27759002C2FBF /* BudgetRouter.swift */,
 				578DD4CC23C2775F002C2FBF /* BudgetUserAPI.swift */,
-				578DD49B23C27753002C2FBF /* BudgetView.swift */,
-				578DD4C423C2775C002C2FBF /* BudgetViewController.swift */,
 				578DD4D923C27762002C2FBF /* ButtonListener.swift */,
 				578DD4DD23C27763002C2FBF /* Category+CoreDataClass.swift */,
 				578DD4FD23C27768002C2FBF /* Category+CoreDataProperties.swift */,
@@ -440,37 +427,19 @@
 				578DD4FA23C27767002C2FBF /* CategoryInteraction.swift */,
 				578DD4E123C27763002C2FBF /* CategoryLimit+CoreDataClass.swift */,
 				578DD4A723C27754002C2FBF /* CategoryLimit+CoreDataProperties.swift */,
-				578DD4C223C2775B002C2FBF /* CategoryPresenter.swift */,
-				578DD4DC23C27762002C2FBF /* CategoryRouter.swift */,
-				578DD4A423C27754002C2FBF /* CategoryView.swift */,
-				578DD48623C27751002C2FBF /* CategoryViewController.swift */,
 				578DD49223C27752002C2FBF /* Constants.swift */,
-				578DD4D123C27760002C2FBF /* CreateSearchTableViewHeader.swift */,
 				578DD4B523C27759002C2FBF /* DatePicker.swift */,
 				578DD49F23C27753002C2FBF /* Dependency.swift */,
 				578DD4F923C27767002C2FBF /* EditExpenseInteraction.swift */,
-				578DD48E23C27752002C2FBF /* EditExpensePresenter.swift */,
-				578DD4F523C27766002C2FBF /* EditExpenseRouter.swift */,
-				578DD4B123C27758002C2FBF /* EditExpenseView.swift */,
-				578DD49D23C27753002C2FBF /* EditExpenseViewController.swift */,
 				578DD4F423C27766002C2FBF /* Expense+CoreDataClass.swift */,
 				578DD49E23C27753002C2FBF /* Expense+CoreDataProperties.swift */,
 				578DD48F23C27752002C2FBF /* ExpenseAPI.swift */,
 				578DD4EA23C27765002C2FBF /* ExpenseCalculator.swift */,
 				578DD50323C27769002C2FBF /* ExpensesInteraction.swift */,
-				578DD4E323C27764002C2FBF /* ExpensesPresenter.swift */,
-				578DD4E023C27763002C2FBF /* ExpensesRouter.swift */,
-				578DD4B323C27759002C2FBF /* ExpensesView.swift */,
-				578DD4C623C2775C002C2FBF /* ExpensesViewController.swift */,
-				578DD4DE23C27763002C2FBF /* ExpenseTableViewCell.swift */,
-				578DD4E623C27764002C2FBF /* ExpenseTableViewHeader.swift */,
 				578DD4AF23C27758002C2FBF /* KeyboardProtocol.swift */,
 				578DD4E223C27764002C2FBF /* LocalisedManager.swift */,
 				578DD49A23C27753002C2FBF /* LoggerProtocol.swift */,
 				578DD4F823C27767002C2FBF /* LoginInteraction.swift */,
-				578DD4C023C2775A002C2FBF /* LoginPresenter.swift */,
-				578DD4CF23C2775F002C2FBF /* LoginRouter.swift */,
-				578DD4D023C2775F002C2FBF /* LoginViewController.swift */,
 				578DD4D823C27761002C2FBF /* ModelManager.swift */,
 				578DD4D723C27761002C2FBF /* NetworkIndicator.swift */,
 				578DD4AB23C27757002C2FBF /* NSFetchedResultsController+Iterate.swift */,
@@ -478,18 +447,12 @@
 				578DD4DA23C27762002C2FBF /* PaginationAPI.swift */,
 				578DD4DF23C27763002C2FBF /* PrimaryKeyProtocol.swift */,
 				578DD4F323C27766002C2FBF /* RemoteLogsDestination.swift */,
-				578DD49623C27752002C2FBF /* RightTextFieldTableViewCell.swift */,
 				578DD4D223C27760002C2FBF /* RotateNavigationController.swift */,
 				578DD48723C27751002C2FBF /* RotateTabBarController.swift */,
 				578DD45323C27608002C2FBF /* SceneDelegate.swift */,
-				578DD4A623C27754002C2FBF /* SettingsViewController.swift */,
 				578DD4F223C27766002C2FBF /* ShareBudgetError.swift */,
 				578DD4B223C27758002C2FBF /* SyncManager.swift */,
 				578DD48D23C27752002C2FBF /* TeamMembersInteraction.swift */,
-				578DD4B023C27758002C2FBF /* TeamMembersPresenter.swift */,
-				578DD4CD23C2775F002C2FBF /* TeamMembersRouter.swift */,
-				578DD4C823C2775D002C2FBF /* TeamMembersView.swift */,
-				578DD4AD23C27758002C2FBF /* TeamMembersViewController.swift */,
 				578DD49923C27753002C2FBF /* TextFieldErrorMessage.swift */,
 				578DD49C23C27753002C2FBF /* TextFieldListener.swift */,
 				578DD4AA23C27757002C2FBF /* TimeStampStorageManager.swift */,
@@ -507,17 +470,15 @@
 				578DD4A523C27754002C2FBF /* ValidationTextField.swift */,
 				578DD4E423C27764002C2FBF /* Validator.swift */,
 				578DD45D23C2760A002C2FBF /* Assets.xcassets */,
-				578DD4CE23C2775F002C2FBF /* CreateSearchTableViewHeader.xib */,
-				578DD4CA23C2775E002C2FBF /* ExpenseTableViewCell.xib */,
-				578DD4F723C27767002C2FBF /* ExpenseTableViewHeader.xib */,
-				578DD48B23C27751002C2FBF /* RightTextFieldTableViewCell.xib */,
-				578DD4C723C2775D002C2FBF /* TextFieldErrorMessage.xib */,
-				578DD4A323C27754002C2FBF /* ValidationTextField.xib */,
 				578DD4B823C2775A002C2FBF /* APIUpdateTask */,
 				578DD4EB23C27765002C2FBF /* APIUploadTask */,
 				578DD58E23C2797E002C2FBF /* Autogenerated */,
-				578DD45F23C2760A002C2FBF /* LaunchScreen.storyboard */,
-				578DD45723C27608002C2FBF /* Main.storyboard */,
+				57CFB0AC23C28DFD001EC19C /* Presenter */,
+				57CFB0AE23C28E7C001EC19C /* Router */,
+				57CFB0A823C285B1001EC19C /* ShareBudget.xcdatamodeld */,
+				57CFB0AF23C28EBA001EC19C /* View */,
+				57CFB0AD23C28E24001EC19C /* ViewController */,
+				57CFB0B023C28EEE001EC19C /* Xib */,
 			);
 			path = ShareBudget;
 			sourceTree = "<group>";
@@ -574,6 +535,85 @@
 			);
 			path = Autogenerated;
 			sourceTree = SOURCE_ROOT;
+		};
+		57CFB0AC23C28DFD001EC19C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				578DD50223C27768002C2FBF /* BasePresenter.swift */,
+				578DD4A123C27754002C2FBF /* BudgetDetailPresenter.swift */,
+				578DD4B723C2775A002C2FBF /* BudgetPresenter.swift */,
+				578DD4C223C2775B002C2FBF /* CategoryPresenter.swift */,
+				578DD48E23C27752002C2FBF /* EditExpensePresenter.swift */,
+				578DD4E323C27764002C2FBF /* ExpensesPresenter.swift */,
+				578DD4C023C2775A002C2FBF /* LoginPresenter.swift */,
+				578DD4B023C27758002C2FBF /* TeamMembersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		57CFB0AD23C28E24001EC19C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				578DD4C923C2775D002C2FBF /* BaseViewController.swift */,
+				578DD4A823C27757002C2FBF /* BudgetDetailViewController.swift */,
+				578DD4C423C2775C002C2FBF /* BudgetViewController.swift */,
+				578DD48623C27751002C2FBF /* CategoryViewController.swift */,
+				578DD49D23C27753002C2FBF /* EditExpenseViewController.swift */,
+				578DD4C623C2775C002C2FBF /* ExpensesViewController.swift */,
+				578DD4D023C2775F002C2FBF /* LoginViewController.swift */,
+				578DD4A623C27754002C2FBF /* SettingsViewController.swift */,
+				578DD4AD23C27758002C2FBF /* TeamMembersViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		57CFB0AE23C28E7C001EC19C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				578DD4E923C27765002C2FBF /* BaseRouter.swift */,
+				578DD49023C27752002C2FBF /* BudgetDetailRouter.swift */,
+				578DD4B623C27759002C2FBF /* BudgetRouter.swift */,
+				578DD4DC23C27762002C2FBF /* CategoryRouter.swift */,
+				578DD4F523C27766002C2FBF /* EditExpenseRouter.swift */,
+				578DD4E023C27763002C2FBF /* ExpensesRouter.swift */,
+				578DD4CF23C2775F002C2FBF /* LoginRouter.swift */,
+				578DD4CD23C2775F002C2FBF /* TeamMembersRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		57CFB0AF23C28EBA001EC19C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				578DD4D623C27761002C2FBF /* BaseView.swift */,
+				578DD4A023C27754002C2FBF /* BudgetDetailView.swift */,
+				578DD49B23C27753002C2FBF /* BudgetView.swift */,
+				578DD4A423C27754002C2FBF /* CategoryView.swift */,
+				578DD4D123C27760002C2FBF /* CreateSearchTableViewHeader.swift */,
+				578DD4B123C27758002C2FBF /* EditExpenseView.swift */,
+				578DD4B323C27759002C2FBF /* ExpensesView.swift */,
+				578DD4DE23C27763002C2FBF /* ExpenseTableViewCell.swift */,
+				578DD4E623C27764002C2FBF /* ExpenseTableViewHeader.swift */,
+				578DD49623C27752002C2FBF /* RightTextFieldTableViewCell.swift */,
+				578DD4C823C2775D002C2FBF /* TeamMembersView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		57CFB0B023C28EEE001EC19C /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				578DD4CE23C2775F002C2FBF /* CreateSearchTableViewHeader.xib */,
+				578DD4CA23C2775E002C2FBF /* ExpenseTableViewCell.xib */,
+				578DD4F723C27767002C2FBF /* ExpenseTableViewHeader.xib */,
+				578DD48B23C27751002C2FBF /* RightTextFieldTableViewCell.xib */,
+				578DD4C723C2775D002C2FBF /* TextFieldErrorMessage.xib */,
+				578DD4A323C27754002C2FBF /* ValidationTextField.xib */,
+				578DD45F23C2760A002C2FBF /* LaunchScreen.storyboard */,
+				578DD45723C27608002C2FBF /* Main.storyboard */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
