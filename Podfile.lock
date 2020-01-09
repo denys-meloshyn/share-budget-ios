@@ -14,7 +14,7 @@ PODS:
   - RxSwift (5.0.0)
   - Sourcery (0.16.2)
   - SwiftLint (0.34.0)
-  - SwiftyBeaver (1.7.0)
+  - SwiftyBeaver (1.7.1)
   - TimeIntervals (1.0.1)
   - Toast-Swift (5.0.0)
 
@@ -33,7 +33,7 @@ DEPENDENCIES:
   - Toast-Swift (= 5.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - CocoaAsyncSocket
     - CorePlot
     - JustLog
@@ -55,7 +55,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   HTTPNetworking:
-    :commit: 0fc54ca96d3d008329dfacbdaf41e2f4d17727e1
+    :commit: b27a7346f6bbb9b3567e6358042af26b55ac137f
     :git: https://github.com/ned1988/HttpNetworking.git
 
 SPEC CHECKSUMS:
@@ -71,10 +71,10 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   Sourcery: 3f406d227efd179773b3c3599ebd1700d1a6013c
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
-  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
+  SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
   TimeIntervals: 533dbd48fdc76f85d65ab8bf0d73d2d74967cec7
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 08860a5d7529b37494dbc43a185cc9b90120e4c3
+PODFILE CHECKSUM: 3f5496e4efb9b87399f0aa5add671ee42a06e512
 
 COCOAPODS: 1.8.4
