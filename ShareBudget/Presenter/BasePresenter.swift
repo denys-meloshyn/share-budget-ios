@@ -16,7 +16,7 @@ protocol BasePresenterDelegate: class {
 }
 
 protocol BasePresenterProtocol: LifeCycleStateProtocol {
-    
+
 }
 
 class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProtocol>: NSObject {
@@ -29,6 +29,10 @@ class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProt
     }
     
     func configure() {
+
+
+
+        
     }
     
     func alertOkAction(title: String = LocalisedManager.generic.ok) -> UIAlertAction {
