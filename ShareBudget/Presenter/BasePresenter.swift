@@ -16,6 +16,7 @@ protocol BasePresenterDelegate: class {
 }
 
 protocol BasePresenterProtocol: LifeCycleStateProtocol {
+    
 }
 
 class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProtocol>: NSObject {
