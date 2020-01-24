@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override init() {
         super.init()
         Dependency.configure()
+        
     }
 
     var window: UIWindow? 
