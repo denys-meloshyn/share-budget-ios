@@ -7,6 +7,7 @@
 //
 
 protocol CategoryRouterProtocol: BaseRouterProtocol {
+    
 }
 
 class CategoryRouter: BaseRouter, CategoryRouterProtocol {
