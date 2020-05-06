@@ -1,23 +1,56 @@
-/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "3ZL-Uy-f5u"; */
-"3ZL-Uy-f5u.normalTitle" = "Login";
+/* Class = "UILabel"; text = "Detail"; ObjectID = "27d-zH-jJG"; */
+"27d-zH-jJG.text" = "Detail";
 
-/* Class = "UIButton"; normalTitle = "Switch"; ObjectID = "Bvs-9G-OI0"; */
-"Bvs-9G-OI0.normalTitle" = "Switch";
+/* Class = "UILabel"; text = "+"; ObjectID = "2WU-6b-bhX"; */
+"2WU-6b-bhX.text" = "+";
 
-/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "O3n-HB-yUT"; */
-"O3n-HB-yUT.placeholder" = "Last Name";
+/* Class = "UILabel"; text = "Expenses"; ObjectID = "6x1-Cf-8Ea"; */
+"6x1-Cf-8Ea.text" = "Expenses";
 
-/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "TeZ-js-Tjr"; */
-"TeZ-js-Tjr.placeholder" = "First Name";
+/* Class = "UILabel"; text = "Title"; ObjectID = "8co-10-RDR"; */
+"8co-10-RDR.text" = "Title";
+
+/* Class = "UILabel"; text = "1000"; ObjectID = "IIF-vM-23D"; */
+"IIF-vM-23D.text" = "1000";
+
+/* Class = "UILabel"; text = "400"; ObjectID = "JV6-Oy-cZf"; */
+"JV6-Oy-cZf.text" = "400";
+
+/* Class = "UILabel"; text = "="; ObjectID = "Lk1-A8-rHu"; */
+"Lk1-A8-rHu.text" = "=";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "PmU-Sv-rBb"; */
+"PmU-Sv-rBb.text" = "-";
+
+/* Class = "UILabel"; text = "Press \"+\" to create new group"; ObjectID = "SfK-Ue-g2l"; */
+"SfK-Ue-g2l.text" = "Press \"+\" to create new group";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "Y1Y-vY-AhO"; */
 "Y1Y-vY-AhO.title" = "Item";
 
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "ZLn-2L-mRK"; */
-"ZLn-2L-mRK.placeholder" = "Password";
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "a2L-eF-Ooi"; */
+"a2L-eF-Ooi.normalTitle" = "Reset";
 
-/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "bum-9X-SWs"; */
-"bum-9X-SWs.placeholder" = "Repeat Password";
+/* Class = "UILabel"; text = "600"; ObjectID = "bTJ-9A-mil"; */
+"bTJ-9A-mil.text" = "600";
 
-/* Class = "UITextField"; placeholder = "E-mail"; ObjectID = "u32-n6-qUo"; */
-"u32-n6-qUo.placeholder" = "E-mail";
+/* Class = "UILabel"; text = "Feb 2017"; ObjectID = "ecD-GC-n56"; */
+"ecD-GC-n56.text" = "Feb 2017";
+
+/* Class = "UILabel"; text = "Budget"; ObjectID = "h3z-lE-hpv"; */
+"h3z-lE-hpv.text" = "Budget";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "msf-UM-cb5"; */
+"msf-UM-cb5.text" = "Title";
+
+/* Class = "UILabel"; text = "Balance"; ObjectID = "pfd-Md-qTF"; */
+"pfd-Md-qTF.text" = "Balance";
+
+/* Class = "UITextField"; text = "135.37"; ObjectID = "uct-mi-mIk"; */
+"uct-mi-mIk.text" = "135.37";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "yj1-pU-SR9"; */
+"yj1-pU-SR9.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "zpT-Xk-Oty"; */
+"zpT-Xk-Oty.normalTitle" = "Log out";
