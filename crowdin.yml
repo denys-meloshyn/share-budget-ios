@@ -1,0 +1,3 @@
+files:
+  - source: /ShareBudget/*.lproj/*.strings
+    translation: '%original_file_name%'
