@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "CrowdinSDK",
+        "repositoryURL": "/Users/denys/Projects/mobile-sdk-ios",
+        "state": {
+          "branch": "feature/spm",
+          "revision": "508e3b1aee5860f1c0b42931d9fac2f3568b23ab",
+          "version": null
+        }
+      },
+      {
         "package": "SnapKit",
         "repositoryURL": "https://github.com/SnapKit/SnapKit",
         "state": {
@@ -33,8 +42,8 @@
         "repositoryURL": "https://github.com/DaveWoodCom/XCGLogger",
         "state": {
           "branch": null,
-          "revision": "f0daefd2a472f0c8d3d12a4b0d45594195a6c74d",
-          "version": "7.0.0"
+          "revision": "a9c4667b247928a29bdd41be2ec2c8d304215a54",
+          "version": "7.0.1"
         }
       }
     ]

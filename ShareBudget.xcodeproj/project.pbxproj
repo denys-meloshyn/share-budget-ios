@@ -1001,6 +1001,7 @@
 				57E4B07723B576AF006E5954 /* XCRemoteSwiftPackageReference "XCGLogger" */,
 				57E4B07A23B5775C006E5954 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 				57E4B08123B57A8F006E5954 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9AABBE4A2471BA7100981E50 /* XCRemoteSwiftPackageReference "mobile-sdk-ios" */,
 			);
 			productRefGroup = 573F599D1E295C4D00AEA72A /* Products */;
 			projectDirPath = "";
@@ -2057,6 +2058,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.1;
+			};
+		};
+		9AABBE4A2471BA7100981E50 /* XCRemoteSwiftPackageReference "mobile-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/denys/Projects/mobile-sdk-ios";
+			requirement = {
+				branch = feature/spm;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

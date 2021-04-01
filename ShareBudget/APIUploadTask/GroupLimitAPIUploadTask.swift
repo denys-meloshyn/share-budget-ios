@@ -10,6 +10,6 @@ import CoreData
 
 class GroupLimitAPIUploadTask: APIUploadTask, APIUploadTaskProtocol {
     var endpointURLBuilder: URL.Builder {
-        restApiURLBuilder.appendPath("budget").appendPath("limit")
+        restApiURLBuilder.appendPath("group").appendPath("limit")
     }
 }
