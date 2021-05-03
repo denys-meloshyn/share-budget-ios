@@ -21,8 +21,7 @@ protocol ExpensesInteractionProtocol: BaseInteractionProtocol {
     func numberOfRows(inSection section: Int) -> Int
 }
 
-protocol ExpensesInteractionDelegate: BaseInteractionDelegate {
-}
+protocol ExpensesInteractionDelegate: BaseInteractionDelegate {}
 
 class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     let budget: Budget
@@ -40,7 +39,8 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     init(managedObjectContext: NSManagedObjectContext,
          budgetID: NSManagedObjectID,
          categoryID: NSManagedObjectID?,
-         logger: LoggerProtocol) throws {
+         logger: LoggerProtocol) throws
+    {
         self.logger = logger
         self.budgetID = budgetID
         self.categoryID = categoryID
@@ -82,7 +82,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
     func date(for section: Int) -> NSDate {
         let sectionModel = fetchedResultsController.sections?[section]
-        var expense: Expense? = nil
+        var expense: Expense?
 
         if sectionModel?.numberOfObjects ?? 0 > 0 {
             expense = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
@@ -97,9 +97,9 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
     func updateFilter(with value: String?) {
         fetchedResultsController = ModelManager.expenseFetchController(managedObjectContext,
-                for: budgetID,
-                categoryID: categoryID,
-                searchText: value)
+                                                                       for: budgetID,
+                                                                       categoryID: categoryID,
+                                                                       searchText: value)
         calculator = ExpenseCalculator(fetchedResultsController: fetchedResultsController)
 
         performFetch()
@@ -109,7 +109,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
     func calculateBudgetRestForExpenses() -> [[String: Double]] {
         var result = [[String: Double]]()
         let sections = fetchedResultsController.sections ?? [NSFetchedResultsSectionInfo]()
-        for section in 0..<sections.count {
+        for section in 0 ..< sections.count {
             let firstExpense = fetchedResultsController.object(at: IndexPath(row: 0, section: section))
             let date = firstExpense.creationDate ?? NSDate()
             let lastLimit = ModelManager.lastLimit(for: budgetID, date: date, managedObjectContext)
@@ -118,7 +118,7 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 
             var rowDict = [String: Double]()
             let fetchedResultsSectionInfo = sections[section]
-            for i in 0..<fetchedResultsSectionInfo.numberOfObjects {
+            for i in 0 ..< fetchedResultsSectionInfo.numberOfObjects {
                 let indexPath = IndexPath(row: fetchedResultsSectionInfo.numberOfObjects - i - 1, section: section)
                 let expense = fetchedResultsController.object(at: indexPath)
 
@@ -143,19 +143,18 @@ class ExpensesInteraction: BaseInteraction, ExpensesInteractionProtocol {
 }
 
 extension ExpensesInteraction: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerWillChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         delegate?.willChangeContent()
     }
 
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    func controllerDidChangeContent(_: NSFetchedResultsController<NSFetchRequestResult>) {
         budgetRest = calculateBudgetRestForExpenses()
         delegate?.didChangeContent()
     }
 
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any,
-                    at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType,
-                    newIndexPath: IndexPath?) {
-    }
+    func controller(_: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange _: Any,
+                    at _: IndexPath?,
+                    for _: NSFetchedResultsChangeType,
+                    newIndexPath _: IndexPath?) {}
 }

@@ -1,22 +1,20 @@
 //
 //  CategoryLimit+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Denys Meloshyn on 28.07.17.
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-extension CategoryLimit {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CategoryLimit> {
+public extension CategoryLimit {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<CategoryLimit> {
         return NSFetchRequest<CategoryLimit>(entityName: "CategoryLimit")
     }
 
-    @NSManaged public var date: NSDate?
-    @NSManaged public var limit: NSNumber?
-    @NSManaged public var category: Category?
-
+    @NSManaged var date: NSDate?
+    @NSManaged var limit: NSNumber?
+    @NSManaged var category: Category?
 }

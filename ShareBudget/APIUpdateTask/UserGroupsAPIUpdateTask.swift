@@ -21,4 +21,3 @@ class UserGroupsAPIUpdateTask: APIUpdateTask, APIUpdateTaskProtocol {
         }
     }
 }
-

@@ -6,10 +6,10 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import XCTest
 import CoreData
 import Nimble
 @testable import ShareBudget
+import XCTest
 
 class CategoryInteractionTest: XCTestCase {
     var router: CategoryRouter!
@@ -17,21 +17,21 @@ class CategoryInteractionTest: XCTestCase {
     var viewController: MockCategoryViewController!
     var presenter: CategoryPresenter<CategoryInteraction, CategoryRouter>!
     var view: CategoryView<CategoryPresenter<CategoryInteraction, CategoryRouter>>!
-    
+
     var budget: Budget!
     var expense: Expense!
     var managedObjectContext: NSManagedObjectContext!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
-        
+
         budget = Budget(context: managedObjectContext)
         budget.name = "Main budget"
         expense = Expense(context: managedObjectContext)
         budget.addToExpenses(expense)
-        
+
         viewController = MockCategoryViewController()
         viewController.expenseID = expense.objectID
         viewController.managedObjectContext = managedObjectContext
@@ -39,16 +39,16 @@ class CategoryInteractionTest: XCTestCase {
         interaction = CategoryInteraction(with: expense.objectID, managedObjectContext: managedObjectContext)
         presenter = CategoryPresenter(with: interaction, router: router, delegate: nil)
         view = CategoryView(with: presenter, and: viewController)
-        
+
         viewController.viperView = view
     }
-    
+
     override func tearDown() {
         ModelManager.dropAllEntities()
-        
+
         super.tearDown()
     }
-    
+
     func testFilterRemoved() {
         var category = Category(context: managedObjectContext)
         category.name = "Category 1"

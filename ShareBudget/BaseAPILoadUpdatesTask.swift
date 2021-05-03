@@ -8,13 +8,13 @@
 
 import Foundation
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 class BaseAPILoadUpdatesTask: BaseAPITask {
     override func request() -> URLSessionTask {
-        let task = self.entity.updates(self.resource, completionBlock)
-        
+        let task = entity.updates(resource, completionBlock)
+
         return task
     }
 }

@@ -17,7 +17,7 @@ class ButtonListener: UIButton {
         touchUpInsideBlock = completion
         addTarget(self, action: #selector(ButtonListener.touchUpInsideAction), for: .touchUpInside)
     }
-    
+
     @objc func touchUpInsideAction() {
         touchUpInsideBlock?(self)
     }

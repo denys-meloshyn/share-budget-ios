@@ -13,11 +13,12 @@ protocol ExpensesViewProtocol: BaseViewProtocol {
 }
 
 class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
-        ExpensesViewProtocol,
-        UITableViewDataSource,
-        UITableViewDelegate,
-        UISearchControllerDelegate,
-        UISearchResultsUpdating {
+    ExpensesViewProtocol,
+    UITableViewDataSource,
+    UITableViewDelegate,
+    UISearchControllerDelegate,
+    UISearchResultsUpdating
+{
     var tableView: UITableView!
 
 //    private var searchController: UISearchController!
@@ -37,11 +38,11 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
     // MARK: - UITableViewDataSource
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return presenter.interaction().numberOfSections()
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.interaction().numberOfRows(inSection: section)
     }
 
@@ -62,9 +63,9 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
         cell.dateLabel?.text = viewModel.date
 
         let labelsToHighlight: [UILabel?] = [cell.titleLabel,
-                                 cell.priceLabel,
-                                 cell.categoryLabel,
-                                 cell.dateLabel]
+                                             cell.priceLabel,
+                                             cell.categoryLabel,
+                                             cell.dateLabel]
 
         labelsToHighlight.forEach { label in
             label?.highlightAllOrNothing(viewModel.highlightedText ?? "", color: Constants.color.dflt.actionColor)
@@ -93,20 +94,15 @@ class ExpensesView<Presenter: ExpensesPresenterProtocol>: BaseView<Presenter>,
 
     // MARK: - UISearchControllerDelegate
 
-    func willPresentSearchController(_ searchController: UISearchController) {
-    }
+    func willPresentSearchController(_: UISearchController) {}
 
-    func didPresentSearchController(_ searchController: UISearchController) {
-    }
+    func didPresentSearchController(_: UISearchController) {}
 
-    func willDismissSearchController(_ searchController: UISearchController) {
-    }
+    func willDismissSearchController(_: UISearchController) {}
 
-    func didDismissSearchController(_ searchController: UISearchController) {
-    }
+    func didDismissSearchController(_: UISearchController) {}
 
-    func presentSearchController(_ searchController: UISearchController) {
-    }
+    func presentSearchController(_: UISearchController) {}
 
     // MARK: - UISearchResultsUpdating
 

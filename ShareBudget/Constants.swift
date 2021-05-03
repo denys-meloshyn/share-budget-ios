@@ -23,24 +23,24 @@ enum ErrorTypeAPI: Error {
 protocol AutoMockable {}
 protocol AutoEquatable {}
 
-struct Constants {
+enum Constants {
     enum Errors: Error {
         case nilObject
         case urlNotValid
         case wrongResponseFormat
     }
-    
-    struct values {
+
+    enum values {
         static let paginationSize = 30
         static let passwordMinLength = 1
     }
-    
-    struct key {
-        struct testing {
+
+    enum key {
+        enum testing {
             static let launchViewControllerID = "klaunchViewControllerID"
         }
-        
-        struct error {
+
+        enum error {
             static let userNotExist = "userNotExist"
             static let tokenExpired = "token_expired"
             static let tokenNotValid = "token_not_valid"
@@ -48,8 +48,8 @@ struct Constants {
             static let userIsAlreadyExist = "user_is_already_exist"
             static let userPasswordIsWrong = "user_password_is_wrong"
         }
-        
-        struct json {
+
+        enum json {
             static let date = "date"
             static let name = "name"
             static let limit = "limit"
@@ -74,26 +74,26 @@ struct Constants {
             static let budgetLimitID = "budgetLimitID"
             static let modifiedUserID = "modifiedUserID"
             static let categoryLimitID = "categoryLimitID"
-            
+
             static let pagination = "pagination"
             static let paginationStart = "start"
             static let paginationTotal = "total"
             static let paginationPageSize = "pageSize"
-            
+
             static let logBody = "response"
         }
     }
-    
-    struct color {
-        struct dflt {
+
+    enum color {
+        enum dflt {
             static let textTintColor = UIColor.black
             static let inputTextColor = #colorLiteral(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1) // #C7C7CD
             static let actionColor = #colorLiteral(red: 0.9137254902, green: 0.1176470588, blue: 0.3882352941, alpha: 1) // #E91E63
             static let apperanceColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1) // #EEEEEE
             static let backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1) // #F5F5F5
         }
-        
-        struct login {
+
+        enum login {
             static let validBorderColor = UIColor.blue
             static let errorBorderColor = UIColor.red
         }

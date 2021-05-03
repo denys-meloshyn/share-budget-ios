@@ -1,7 +1,4 @@
 PODS:
-  - BugfenderSDK (1.7.0):
-    - BugfenderSDK/Swift (= 1.7.0)
-  - BugfenderSDK/Swift (1.7.0)
   - CocoaAsyncSocket (7.6.3)
   - CorePlot (2.2)
   - Crashlytics (3.13.4):
@@ -92,7 +89,6 @@ PODS:
   - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
-  - BugfenderSDK (= 1.7.0)
   - CorePlot (= 2.2)
   - Crashlytics (= 3.13.4)
   - Firebase/Core (= 6.7.0)
@@ -111,7 +107,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - BugfenderSDK
     - CocoaAsyncSocket
     - CorePlot
     - Crashlytics
@@ -152,7 +147,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ned1988/HttpNetworking.git
 
 SPEC CHECKSUMS:
-  BugfenderSDK: cc587f83e8cec9ae1567ec1d837969a6df7dcbca
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
@@ -184,6 +178,6 @@ SPEC CHECKSUMS:
   TimeIntervals: 533dbd48fdc76f85d65ab8bf0d73d2d74967cec7
   Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 51d88f768c1d51ee767c4f03299fd3386eb241a1
+PODFILE CHECKSUM: c668bdde7529d12d391b8dfa8f33640630bbc8fe
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

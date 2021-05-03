@@ -8,10 +8,10 @@
 
 import Foundation
 
-import RxSwift
-import RxCocoa
-import url_builder
 import HTTPNetworking
+import RxCocoa
+import RxSwift
+import url_builder
 
 protocol AuthorisationAPIProtocol {
     func appleLogin(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin>
@@ -33,15 +33,15 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
 
     func urlBuilderLoginApple() -> URL.Builder {
         Dependency.instance.restApiUrlBuilder()
-                           .appendPath("login")
-                           .appendPath("apple")
+            .appendPath("login")
+            .appendPath("apple")
     }
 
     func urlBuilderAccessRefreshToken() -> URL.Builder {
         Dependency.instance.restApiUrlBuilder()
-                           .appendPath("login")
-                           .appendPath("jwt")
-                           .appendPath("refresh")
+            .appendPath("login")
+            .appendPath("jwt")
+            .appendPath("refresh")
     }
 
     func appleLogin(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<ResponseAppleLogin> {
@@ -75,7 +75,8 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
                 }
 
                 guard let accessToken = json["accessToken"] as? String,
-                      let refreshToken = json["refreshToken"] as? String else {
+                      let refreshToken = json["refreshToken"] as? String
+                else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }
@@ -121,7 +122,8 @@ class AuthorisationAPI: BaseAPI, AuthorisationAPIProtocol {
                 }
 
                 guard let accessToken = json["accessToken"] as? String,
-                      let refreshToken = json["refreshToken"] as? String else {
+                      let refreshToken = json["refreshToken"] as? String
+                else {
                     event(.error(Constants.Errors.wrongResponseFormat))
                     return
                 }

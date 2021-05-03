@@ -10,35 +10,34 @@ import UIKit
 
 class NetworkIndicator: NSObject {
     static let shared = NetworkIndicator()
-    
+
     private let lockQueue = DispatchQueue(label: "NetworkIndicator")
-    
+
     private var statusActivities = 0 {
         didSet {
-            if self.statusActivities <= 0 {
-            } else {
-            }
+            if statusActivities <= 0 {
+            } else {}
         }
     }
-    
+
     var visible = true {
         didSet {
-            if self.visible {
-                self.startActivity()
+            if visible {
+                startActivity()
             } else {
-                self.stopActivity()
+                stopActivity()
             }
         }
     }
-    
+
     private func startActivity() {
-        self.lockQueue.sync {
+        lockQueue.sync {
             self.statusActivities += 1
         }
     }
-    
+
     private func stopActivity() {
-        self.lockQueue.sync {
+        lockQueue.sync {
             self.statusActivities -= 1
         }
     }

@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func logout() {
         SyncManager.shared.stop()
         Dependency.userCredentials.logout()
@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
 
         UIApplication.shared.delegate?.window??.rootViewController = R.storyboard.main.loginNavigationViewController()
     }
-    
+
     @IBAction func reset() {
         ModelManager.dropAllEntities()
         UserCredentials.resetTimeStamps()

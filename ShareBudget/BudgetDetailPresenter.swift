@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import CorePlot
 import CoreData
+import CorePlot
 import MaterialColor
 
 protocol BudgetDetailPresenterDelegate: BasePresenterDelegate {
@@ -57,25 +57,23 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
         updateTotalSpentExpensesColor()
     }
 
-    func viewWillAppear(_ animated: Bool) {
+    func viewWillAppear(_: Bool) {
         delegate?.updateNativeNavigationVisibility(false)
         delegate?.updateCreateButtonAnimation(true)
     }
 
-    func viewWillDisappear(_ animated: Bool) {
+    func viewWillDisappear(_: Bool) {
         delegate?.updateNativeNavigationVisibility(true)
         delegate?.updateCreateButtonAnimation(false)
     }
 
-    func viewDidAppear(_ animated: Bool) {
-    }
+    func viewDidAppear(_: Bool) {}
 
-    func viewDidDisappear(_ animated: Bool) {
-    }
+    func viewDidDisappear(_: Bool) {}
 
     // MARK: - CPTPieChartDataSource
 
-    func numberOfRecords(for plot: CPTPlot) -> UInt {
+    func numberOfRecords(for _: CPTPlot) -> UInt {
         if interaction.isEmpty() {
             return 1
         }
@@ -83,7 +81,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
         return UInt(interaction.numberOfCategoryExpenses())
     }
 
-    func number(for plot: CPTPlot, field: UInt, record: UInt) -> Any? {
+    func number(for _: CPTPlot, field: UInt, record: UInt) -> Any? {
         if interaction.isEmpty() {
             return 1 as NSNumber
         }
@@ -97,7 +95,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
         }
     }
 
-    func dataLabel(for plot: CPTPlot, record: UInt) -> CPTLayer? {
+    func dataLabel(for _: CPTPlot, record: UInt) -> CPTLayer? {
         if interaction.isEmpty() {
             return nil
         }
@@ -113,7 +111,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
         return label
     }
 
-    func sliceFill(for pieChart: CPTPieChart, record idx: UInt) -> CPTFill? {
+    func sliceFill(for _: CPTPieChart, record idx: UInt) -> CPTFill? {
         if interaction.isEmpty() {
             return CPTFill(color: CPTColor.gray())
         }
@@ -128,7 +126,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
 
     // MARK: - CPTPieChartDelegate
 
-    func pieChart(_ plot: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
+    func pieChart(_: CPTPieChart, sliceTouchDownAtRecord idx: UInt) {
         if interaction.isEmpty() {
             return
         }
@@ -164,8 +162,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
                                          MaterialColor.purple.self,
                                          MaterialColor.deepPurple.self,
                                          MaterialColor.grey.self,
-                                         MaterialColor.blueGrey.self
-        ]
+                                         MaterialColor.blueGrey.self]
         pieChartColors += base.map {
             $0.base
         }
@@ -201,11 +198,11 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     private func configureColors() {
         let rangeLength = 1.0 / Double(colors.count)
 
-        for i in 0..<colors.count {
+        for i in 0 ..< colors.count {
             let start = rangeLength * Double(i)
             let end = rangeLength * Double(i + 1)
 
-            self.colorsRange.append(start..<end)
+            colorsRange.append(start ..< end)
         }
     }
 
@@ -250,7 +247,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
 
                     let cgiColors = fromColor.cgColor.components ?? []
                     var resCGIColors = [CGFloat]()
-                    for i in 0..<cgiColors.count {
+                    for i in 0 ..< cgiColors.count {
                         let toColorValue = toColor.cgColor.components![i]
                         let fromColorValue = cgiColors[i]
                         let resValue = (Double(toColorValue) - Double(fromColorValue)) * rangePercantage + Double(fromColorValue)
@@ -290,7 +287,7 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
     }
 
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {
-        let res: ((UIAlertAction) -> Swift.Void)? = { (action) in
+        let res: ((UIAlertAction) -> Swift.Void)? = { _ in
             guard let text = alertController.textFields?.first?.text else {
                 return
             }
@@ -329,11 +326,9 @@ class BudgetDetailPresenter<I: BudgetDetailInteractionProtocol, R: BudgetDetailR
 // MARK: - BudgetDetailInteractionDelegate
 
 extension BudgetDetailPresenter: BudgetDetailInteractionDelegate {
-    func willChangeContent() {
-    }
+    func willChangeContent() {}
 
-    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    }
+    func changed(at _: IndexPath?, for _: NSFetchedResultsChangeType, newIndexPath _: IndexPath?) {}
 
     func didChangeContent() {
         configureTotalExpenses()

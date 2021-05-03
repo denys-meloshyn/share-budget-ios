@@ -10,14 +10,14 @@
 
 class MockDependency: Dependency {
     static var mockEnvironment = Environment.developmentLocal
-    
+
     class func reset() {
-        self.logger = nil
-        self.coreDataName = nil
-        self.userCredentials = nil
-        self.backendURLComponents = nil
+        logger = nil
+        coreDataName = nil
+        userCredentials = nil
+        backendURLComponents = nil
     }
-    
+
     override class func environment() -> Environment {
         return mockEnvironment
     }

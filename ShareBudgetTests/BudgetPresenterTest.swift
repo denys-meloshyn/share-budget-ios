@@ -5,10 +5,10 @@
 //  Created by Denys Meloshyn on 18.05.17.
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
-import XCTest
-import Nimble
 import CoreData
+import Nimble
 @testable import ShareBudget
+import XCTest
 
 class BudgetPresenterTest: XCTestCase {
     var router: MockBudgetRouter!
@@ -18,13 +18,13 @@ class BudgetPresenterTest: XCTestCase {
     var createSearchTableViewHeader: CreateSearchTableViewHeader!
     var presenter: MockBudgetPresenter<BudgetInteraction, BudgetRouter>!
     var view: MockBudgetView<MockBudgetPresenter<BudgetInteraction, BudgetRouter>>!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         managedObjectContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
         createSearchTableViewHeader = R.nib.createSearchTableViewHeader().instantiate(withOwner: nil, options: nil).first as! CreateSearchTableViewHeader
-        
+
         viewController = MockBudgetViewController()
         router = MockBudgetRouter(with: viewController)
         interaction = BudgetInteraction(managedObjectContext: managedObjectContext)
@@ -35,13 +35,13 @@ class BudgetPresenterTest: XCTestCase {
         viewController.tableView = UITableView()
         _ = viewController.view
     }
-    
+
     override func tearDown() {
         ModelManager.dropAllEntities()
-        
+
         super.tearDown()
     }
-    
+
     func testStartListenKeyboardNotifications() {
         viewController.viewWillAppear(false)
         expect(self.presenter.calledMethodManager.methods).to(contain(CalledMethod("startListenKeyboardNotifications")))
@@ -94,7 +94,7 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testNumberOfGroupToShow() {
-        for i in 0..<10 {
+        for i in 0 ..< 10 {
             let model = Budget(context: managedObjectContext)
             model.name = "Name_\(i)"
         }
@@ -129,18 +129,18 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testHeaderCreated() {
-        let header = self.presenter.tableView(UITableView(), viewForHeaderInSection: 0) as! CreateSearchTableViewHeader
+        let header = presenter.tableView(UITableView(), viewForHeaderInSection: 0) as! CreateSearchTableViewHeader
 
         expect(header.textField?.text).notTo(beNil())
         expect(header.textField?.placeholder).notTo(beNil())
     }
 
     func testDetailPageOpened() {
-        let model = Budget(context: self.managedObjectContext)
+        let model = Budget(context: managedObjectContext)
         model.name = "Name_A"
-        ModelManager.saveContext(self.managedObjectContext)
+        ModelManager.saveContext(managedObjectContext)
 
-        self.presenter.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
+        presenter.tableView(UITableView(), didSelectRowAt: IndexPath(row: 0, section: 0))
 
         let expected = CalledMethod("openDetailPage")
         expect(self.router.calledMethodManager.methods).to(contain(expected))
@@ -151,9 +151,9 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testSearchTextChangedWithoutWhiteSpaces() {
-        self.createSearchTableViewHeader.textField?.text = "Test"
+        createSearchTableViewHeader.textField?.text = "Test"
 
-        self.presenter.textChanged(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text!)
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
 
         expect(self.createSearchTableViewHeader.textField?.text) == "Test"
     }
@@ -161,23 +161,23 @@ class BudgetPresenterTest: XCTestCase {
     func testSearchTextChangedWithOneWhiteSpace() {
         createSearchTableViewHeader.textField?.text = "Test "
 
-        self.presenter.textChanged(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text!)
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
 
         expect(self.createSearchTableViewHeader.textField?.text) == "Test "
     }
 
     func testSearchTextChangedWithMoreThaOneWhiteSpace() {
-        self.createSearchTableViewHeader.textField?.text = "Test    "
+        createSearchTableViewHeader.textField?.text = "Test    "
 
-        self.presenter.textChanged(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text!)
+        presenter.textChanged(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text!)
 
         expect(self.createSearchTableViewHeader.textField?.text) == "Test "
     }
 
     func testCreateNewBudgetEmptyName() {
-        self.createSearchTableViewHeader.textField?.text = ""
+        createSearchTableViewHeader.textField?.text = ""
 
-        self.presenter.createNewItem(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text)
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text)
 
         var expected = CalledMethod("cancelSearch")
         expect(self.view.calledMethodManager.methods).to(contain(expected))
@@ -186,9 +186,9 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testCreateNewBudgetEmptyNameWithWhiteSpaces() {
-        self.createSearchTableViewHeader.textField?.text = "      "
+        createSearchTableViewHeader.textField?.text = "      "
 
-        self.presenter.createNewItem(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text)
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text)
 
         var expected = CalledMethod("cancelSearch")
         expect(self.view.calledMethodManager.methods).to(contain(expected))
@@ -197,10 +197,10 @@ class BudgetPresenterTest: XCTestCase {
     }
 
     func testCreateNewBudgetEmptyNameValid() {
-        self.createSearchTableViewHeader.textField?.text = "Test"
+        createSearchTableViewHeader.textField?.text = "Test"
 
-        self.presenter.createNewItem(self.createSearchTableViewHeader, self.createSearchTableViewHeader.textField!.text)
-        ModelManager.saveContext(self.managedObjectContext)
+        presenter.createNewItem(createSearchTableViewHeader, createSearchTableViewHeader.textField!.text)
+        ModelManager.saveContext(managedObjectContext)
 
         expect(self.interaction.numberOfRowsInSection()) == 1
 

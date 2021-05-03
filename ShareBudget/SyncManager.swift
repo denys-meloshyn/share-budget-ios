@@ -7,8 +7,8 @@
 //
 
 import CoreData
-import RxSwift
 import RxCocoa
+import RxSwift
 
 protocol SyncManagerDelegate: class {
     func error(_ error: ErrorTypeAPI)
@@ -41,13 +41,13 @@ class SyncManager {
 
         disposeBag = DisposeBag()
         let restApiURLBuilder = Dependency.instance.restApiUrlBuilder(environment: Dependency.environment())
-        
+
         // New or changed groups
         let groups: [Budget] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += groups.map { item -> SyncTask in
             .upload(task: GroupAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
         }
-        
+
         // New or changed group limits
         let groupLimits: [BudgetLimit] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += groupLimits.map { item -> SyncTask in
@@ -59,13 +59,13 @@ class SyncManager {
         syncTasks += userGroups.map { item -> SyncTask in
             .upload(task: UserGroupsAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
         }
-        
+
         // New or changed user groups
         let categories: [Category] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += categories.map { item -> SyncTask in
             .upload(task: CategoryAPIUploadTask(restApiURLBuilder: restApiURLBuilder, modelID: item.objectID))
         }
-        
+
         // New or changed expenses
         let expenses: [Expense] = ModelManager.sharedInstance.changedModels(managedObjectContext: ModelManager.managedObjectContext) ?? []
         syncTasks += expenses.map { item -> SyncTask in
@@ -105,7 +105,7 @@ class SyncManager {
                 Dependency.logger.error("Token is expired")
                 AuthorisationAPI.instance.getRefreshAccessToke(refreshToken: UserCredentials.instance.refreshToken).subscribe { event in
                     switch event {
-                    case .success(let model):
+                    case let .success(model):
                         UserCredentials.instance.accessToken = model.accessToken
                         UserCredentials.instance.refreshToken = model.refreshToken
 
@@ -118,16 +118,16 @@ class SyncManager {
                 self?.scheduleNextUpdate()
             }
         }
-        
+
         switch syncTask {
-        case .fetch(let task):
+        case let .fetch(task):
             task.updates().subscribe { [weak self] event in
                 switch event {
-                case .success(let hasNext):
+                case let .success(hasNext):
                     if self?.syncTasks.count ?? 0 > 0 {
                         self?.syncTasks.remove(at: 0)
                     }
-                    
+
                     if hasNext {
                         self?.syncTasks.insert(syncTask, at: 0)
                     }
@@ -138,14 +138,14 @@ class SyncManager {
                         self?.scheduleNextUpdate()
                     }
 
-                case .error(let error as ErrorTypeAPI):
+                case let .error(error as ErrorTypeAPI):
                     errorHandler(error)
 
                 case .error:
                     self?.scheduleNextUpdate()
                 }
             }.disposed(by: disposeBag)
-        case .upload(let task):
+        case let .upload(task):
             task.upload().subscribe { [weak self] event in
                 switch event {
                 case .completed:
@@ -157,7 +157,7 @@ class SyncManager {
                     } else {
                         self?.scheduleNextUpdate()
                     }
-                case .error(let error as ErrorTypeAPI):
+                case let .error(error as ErrorTypeAPI):
                     errorHandler(error)
                 case .error:
                     self?.scheduleNextUpdate()
@@ -171,7 +171,7 @@ class SyncManager {
             return
         }
 
-        self.stop()
+        stop()
         Dependency.logger.info("Start sync")
         sync()
     }

@@ -14,15 +14,15 @@ protocol TeamMembersViewProtocol: BaseViewProtocol {
 
 class TeamMembersView<T: TeamMembersPresenterProtocol>: BaseView<T>, TeamMembersViewProtocol {
     weak var tableView: UITableView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         presenter.delegate = self
         tableView?.dataSource = presenter
         tableView?.delegate = presenter
     }
-    
+
     func refreshData() {
         tableView?.reloadData()
     }
@@ -35,7 +35,7 @@ extension TeamMembersView: TeamMembersPresenterDelegate {
         let cell = tableView?.dequeueReusableCell(withIdentifier: "TeamMemberTableViewCell")
         cell?.textLabel?.text = title
         cell?.detailTextLabel?.text = subTitle
-        
+
         return cell!
     }
 }

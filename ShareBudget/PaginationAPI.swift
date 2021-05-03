@@ -12,18 +12,18 @@ class PaginationAPI {
     var size = 0
     var start = 0
     var total = 0
-    
+
     init(with dict: [String: Any]) {
-        self.size = dict[Constants.key.json.paginationPageSize] as? Int ?? 0
-        self.start = dict[Constants.key.json.paginationStart] as? Int ?? 0
-        self.total = dict[Constants.key.json.paginationTotal] as? Int ?? 0
+        size = dict[Constants.key.json.paginationPageSize] as? Int ?? 0
+        start = dict[Constants.key.json.paginationStart] as? Int ?? 0
+        total = dict[Constants.key.json.paginationTotal] as? Int ?? 0
     }
-    
+
     func hasNext() -> Bool {
-        if self.start + self.size > self.total {
+        if start + size > total {
             return false
         }
-        
+
         return true
     }
 }

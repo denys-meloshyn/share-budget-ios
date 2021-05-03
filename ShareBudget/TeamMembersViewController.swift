@@ -8,8 +8,8 @@
 
 import UIKit
 
-import RxSwift
 import CoreData
+import RxSwift
 
 class TeamMembersViewController: BaseViewController {
     @IBOutlet private var tableView: UITableView?
@@ -44,7 +44,8 @@ class TeamMembersViewController: BaseViewController {
 
     @objc func inviteUserToGroup() {
         guard let group = managedObjectContext.object(with: budgetID) as? Budget,
-              let groupID = group.modelID else {
+              let groupID = group.modelID
+        else {
             return
         }
 
@@ -53,7 +54,7 @@ class TeamMembersViewController: BaseViewController {
             self.navigationItem.rightBarButtonItem?.isEnabled = true
 
             switch event {
-            case .success(let token):
+            case let .success(token):
                 guard let url = Dependency.instance.restApiUrlBuilder().appendPath("user").appendPath("group").appendQueryParameter(key: "token", value: token).build() else {
                     return
                 }

@@ -10,7 +10,6 @@ def shared
   pod 'CorePlot', '2.2'
   pod 'MaterialColor', '1.1.1'
   pod 'le', '1.1'
-  pod 'BugfenderSDK', '1.7.0'
   pod 'JustLog', '3.0.0'
   pod 'Toast-Swift', '5.0.0'
   pod 'SwiftLint', '0.34.0'

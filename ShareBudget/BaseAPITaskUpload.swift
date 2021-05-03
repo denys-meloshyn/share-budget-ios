@@ -10,16 +10,16 @@ import CoreData
 
 class BaseAPITaskUpload: BaseAPITask {
     var modelID: NSManagedObjectID
-    
+
     init(resource: String, entity: BaseAPI, modelID: NSManagedObjectID, completionBlock: APIResultBlock?) {
         self.modelID = modelID
-        
+
         super.init(resource: resource, entity: entity, completionBlock: completionBlock)
     }
-    
+
     override func request() -> URLSessionTask {
-        let task = self.entity.upload(self.resource, self.modelID, self.completionBlock)
-        
+        let task = entity.upload(resource, modelID, completionBlock)
+
         return task
     }
 }

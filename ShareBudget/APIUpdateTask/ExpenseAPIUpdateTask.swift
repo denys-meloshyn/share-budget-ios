@@ -17,16 +17,16 @@ class ExpenseAPIUpdateTask: APIUpdateTask, APIUpdateTaskProtocol {
 
     func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var expense: Expense?
-        
+
         for item in items {
             if let modelID = item[Expense.modelKeyID()] as? Int {
                 expense = ModelManager.findEntity(Expense.self, by: modelID, in: managedObjectContext) as? Expense
             }
-            
+
             if expense == nil {
                 expense = Expense(context: managedObjectContext)
             }
-            
+
             expense?.update(with: item, in: managedObjectContext)
         }
     }

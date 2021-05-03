@@ -15,24 +15,22 @@ protocol BasePresenterDelegate: class {
     func showMessage(with title: String, _ message: String, _ actions: [UIAlertAction])
 }
 
-protocol BasePresenterProtocol: LifeCycleStateProtocol {
-}
+protocol BasePresenterProtocol: LifeCycleStateProtocol {}
 
 class BasePresenter<Interaction: BaseInteractionProtocol, Router: BaseRouterProtocol>: NSObject {
     let router: Router
     let interaction: Interaction
-    
+
     init(with interaction: Interaction, router: Router) {
         self.router = router
         self.interaction = interaction
     }
-    
-    func configure() {
-    }
-    
+
+    func configure() {}
+
     func alertOkAction(title: String = LocalisedManager.generic.ok) -> UIAlertAction {
         let action = UIAlertAction(title: title, style: .cancel, handler: nil)
-        
+
         return action
     }
 }

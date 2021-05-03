@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol EditExpenseRouterProtocol: BaseRouterProtocol {
     func openCategoryPage(for expenseID: NSManagedObjectID, managedObjectContext: NSManagedObjectContext, delegate: CategoryViewControllerDelegate?)

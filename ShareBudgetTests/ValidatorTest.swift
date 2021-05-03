@@ -51,7 +51,7 @@ class ValidatorTest: XCTestCase {
     func testIsNumberValidWrong() {
         expect(Validator.isNumberValid("Test")) == false
     }
-    
+
     func testRemoveWhiteSpaces() {
         expect(Validator.removeWhiteSpaces("      ")) == ""
     }

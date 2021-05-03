@@ -8,8 +8,8 @@
 
 import Foundation
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 protocol LoginInteractionProtocol: BaseInteractionProtocol {
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin>
@@ -17,11 +17,11 @@ protocol LoginInteractionProtocol: BaseInteractionProtocol {
 
 class LoginInteraction: LoginInteractionProtocol {
     private let authorisationAPI: AuthorisationAPIProtocol
-    
-    init(authorisationAPI: AuthorisationAPIProtocol ) {
+
+    init(authorisationAPI: AuthorisationAPIProtocol) {
         self.authorisationAPI = authorisationAPI
     }
-    
+
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) -> Single<AuthorisationAPI.ResponseAppleLogin> {
         authorisationAPI.appleLogin(userIdentifier: userIdentifier, identityToken: identityToken, firstName: firstName, lastName: lastName)
     }

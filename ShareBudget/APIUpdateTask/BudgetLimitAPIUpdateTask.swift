@@ -17,7 +17,8 @@ class BudgetLimitAPIUpdateTask: APIUpdateTask, APIUpdateTaskProtocol {
     func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         for item in items {
             guard let budgetID = item[Budget.modelKeyID()] as? Int,
-                  let limitID = item[BudgetLimit.modelKeyID()] as? Int else {
+                  let limitID = item[BudgetLimit.modelKeyID()] as? Int
+            else {
                 continue
             }
 

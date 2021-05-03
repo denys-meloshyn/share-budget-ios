@@ -6,22 +6,22 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class ExpensesViewController: BaseViewController {
     var budgetID: NSManagedObjectID!
     var categoryID: NSManagedObjectID?
-    
+
     @IBOutlet var tableView: UITableView!
 
     override func configureVIPER() {
         do {
             let router = ExpensesRouter(with: self)
             let interaction = try ExpensesInteraction(managedObjectContext: ModelManager.managedObjectContext,
-                    budgetID: budgetID,
-                    categoryID: categoryID,
-                    logger: Dependency.logger)
+                                                      budgetID: budgetID,
+                                                      categoryID: categoryID,
+                                                      logger: Dependency.logger)
             let presenter = ExpensesPresenter(with: interaction, router: router)
             viperView = ExpensesView(with: presenter, and: self)
 

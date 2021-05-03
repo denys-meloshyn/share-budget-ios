@@ -6,16 +6,16 @@
 //  Copyright © 2018 Denys Meloshyn. All rights reserved.
 //
 
-import XCTest
 import Nimble
 @testable import ShareBudget
+import XCTest
 
 class BaseRouterTest: XCTestCase {
     func testClosePage() {
         let rootViewController = UIViewController()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         navigationController.pushViewController(UIViewController(), animated: false)
-        
+
         let router = BaseRouter(with: rootViewController)
         expect(navigationController.viewControllers.count) == 2
 

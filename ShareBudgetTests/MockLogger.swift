@@ -9,6 +9,5 @@
 @testable import ShareBudget
 
 class MockLogger: LoggerProtocol {
-    func logError(_ message: String) {
-    }
+    func logError(_: String) {}
 }

@@ -3,10 +3,10 @@
 // Copyright (c) 2019 Denys Meloshyn. All rights reserved.
 //
 
-import Foundation
-import RxSwift
-import RxCocoa
 import CoreData
+import Foundation
+import RxCocoa
+import RxSwift
 
 protocol APIUploadTaskProtocol: class {
     var modelID: NSManagedObjectID { get }
@@ -29,14 +29,14 @@ extension APIUploadTaskProtocol {
         model?.update(with: item, in: managedObjectContext)
         model?.isChanged = NSNumber(false)
     }
-    
+
     func upload() -> Completable {
         Completable.create { event in
             guard let url = self.endpointURLBuilder.build() else {
                 event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()
             }
-            
+
             let backgroundContext = ModelManager.childrenManagedObjectContext(from: ModelManager.managedObjectContext)
             guard let model = backgroundContext.object(with: self.modelID) as? BaseModel else {
                 event(.error(Constants.Errors.nilObject))

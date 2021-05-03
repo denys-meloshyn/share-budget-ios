@@ -6,13 +6,10 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
 @testable import ShareBudget
+import UIKit
 
-protocol MockBudgetInteractionProtocol: BudgetInteractionProtocol {
-}
+protocol MockBudgetInteractionProtocol: BudgetInteractionProtocol {}
 
-class MockBudgetInteraction: BudgetInteraction {
-    
-}
+class MockBudgetInteraction: BudgetInteraction {}

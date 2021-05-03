@@ -6,9 +6,9 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
-import CorePlot
 import CoreData
+import CorePlot
+import UIKit
 
 class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var monthLabel: UILabel?
@@ -39,32 +39,30 @@ class BudgetDetailViewController: BaseViewController {
     @IBOutlet private var constraintChartViewHeight: NSLayoutConstraint?
     @IBOutlet private var constraintAnimationViewWidth: NSLayoutConstraint?
     @IBOutlet private var constraintAnimationViewHeight: NSLayoutConstraint?
-    
+
     var budgetID: NSManagedObjectID!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let router = BudgetDetailRouter(with: self)
         let interaction = BudgetDetailInteraction(with: budgetID, managedObjectContext: ModelManager.managedObjectContext)
         let presenter = BudgetDetailPresenter(with: interaction, router: router)
         viperView = BudgetDetailView(with: presenter, and: self)
-        
+
         linkStoryboardViews()
         viperView?.viewDidLoad()
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
-        }
+        return .lightContent
     }
-    
+
     override func linkStoryboardViews() {
         guard let view = viperView as? BudgetDetailViewProtocol else {
             return
         }
-        
+
         view.chartView = chartView
         view.minusLabel = minusLabel
         view.equalLabel = equalLabel

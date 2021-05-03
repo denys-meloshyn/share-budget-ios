@@ -20,7 +20,8 @@ extension NSManagedObject {
 
     class func findOrCreateEntityIfIdExist(response: [String: Any?], in managedObjectContext: NSManagedObjectContext) -> Self? {
         guard let entity = self as? PrimaryKeyProtocol,
-              let modelID = response[entity.primaryKey()] as? Int else {
+              let modelID = response[entity.primaryKey()] as? Int
+        else {
             return nil
         }
 

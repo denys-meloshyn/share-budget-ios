@@ -11,10 +11,10 @@ import UIKit
 class ExpenseTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet var monthLabel: UILabel?
     @IBOutlet var monthExpensesLabel: UILabel?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.contentView.backgroundColor = Constants.color.dflt.apperanceColor
+
+        contentView.backgroundColor = Constants.color.dflt.apperanceColor
     }
 }

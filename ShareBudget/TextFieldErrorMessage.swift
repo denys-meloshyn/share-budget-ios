@@ -12,7 +12,7 @@ class TextFieldErrorMessage: UIView {
     @IBOutlet var errorMessageLabel: UILabel!
     @IBOutlet var textField: TextFieldListener!
     @IBOutlet private var containerTextView: UIView!
-    
+
     var isErrorHidden = true {
         didSet {
             if isErrorHidden {
@@ -23,10 +23,10 @@ class TextFieldErrorMessage: UIView {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         containerTextView.layer.borderWidth = 1.0
         containerTextView.layer.cornerRadius = 5.0
         containerTextView.layer.borderColor = Constants.color.login.validBorderColor.cgColor

@@ -25,7 +25,7 @@ class UserCredentials: UserCredentialsProtocol {
         static let keyAccessToken = "accessToken"
         static let keyRefreshToken = "refreshToken"
     }
-    
+
     static let instance = UserCredentials(keychain: KeychainSwift())
 
     private let keychain: KeychainSwift
@@ -76,7 +76,7 @@ class UserCredentials: UserCredentialsProtocol {
         userID = ""
         accessToken = ""
         refreshToken = ""
-        
+
         UserCredentials.resetTimeStamps()
     }
 

@@ -15,11 +15,11 @@ protocol BaseRouterProtocol: class {
 
 class BaseRouter: BaseRouterProtocol {
     weak var viewController: UIViewController?
-    
+
     init(with viewController: UIViewController) {
         self.viewController = viewController
     }
-    
+
     func closePage() {
         closePage(animated: true)
     }

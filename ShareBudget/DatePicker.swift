@@ -17,7 +17,7 @@ class DatePicker: UIDatePicker {
         valueChangedBlock = completion
         addTarget(self, action: #selector(DatePicker.valueChangedAction), for: .valueChanged)
     }
-    
+
     @objc func valueChangedAction() {
         valueChangedBlock?(self)
     }

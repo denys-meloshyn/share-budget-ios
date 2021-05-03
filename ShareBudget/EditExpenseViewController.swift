@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class EditExpenseViewController: BaseViewController {
     @IBOutlet private var dateContainerView: UIView?
@@ -17,27 +17,27 @@ class EditExpenseViewController: BaseViewController {
     @IBOutlet private var priceTextField: UITextField?
     @IBOutlet private var categoryContainerView: UIView?
     @IBOutlet private var categoryButton: ButtonListener?
-    
+
     var budgetID: NSManagedObjectID?
     var expenseID: NSManagedObjectID?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let router = EditExpenseRouter(with: self)
         let interactin = EditExpenseInteraction(with: budgetID!, expenseID: expenseID)
         let presenter = EditExpensePresenter(with: interactin, router: router)
         viperView = EditExpenseView(with: presenter, and: self)
-        
+
         linkStoryboardViews()
         viperView?.viewDidLoad()
     }
-    
+
     override func linkStoryboardViews() {
         guard let view = viperView as? EditExpenseViewProtocol else {
             return
         }
-        
+
         view.dateTextField = dateTextField
         view.nameTextField = nameTextField
         view.categoryButton = categoryButton

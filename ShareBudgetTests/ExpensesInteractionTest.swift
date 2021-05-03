@@ -8,10 +8,10 @@
 
 import XCTest
 
-import Nimble
 import CoreData
-import TimeIntervals
+import Nimble
 @testable import ShareBudget
+import TimeIntervals
 
 class ExpensesInteractionTest: XCTestCase {
     private var interaction: ExpensesInteraction!
@@ -28,9 +28,9 @@ class ExpensesInteractionTest: XCTestCase {
         budget.name = "Test budget"
 
         interaction = try! ExpensesInteraction(managedObjectContext: managedObjectContext,
-                budgetID: budget.objectID,
-                categoryID: nil,
-                logger: MockLogger())
+                                               budgetID: budget.objectID,
+                                               categoryID: nil,
+                                               logger: MockLogger())
     }
 
     override func tearDown() {
@@ -99,11 +99,11 @@ class ExpensesInteractionTest: XCTestCase {
     func testCategoryNotExistOrReceivedWrongObject() {
         expect {
             try ExpensesInteraction(managedObjectContext: self.managedObjectContext,
-                    budgetID: self.budget.objectID,
-                    categoryID: self.budget.objectID,
-                    logger: MockLogger())
+                                    budgetID: self.budget.objectID,
+                                    categoryID: self.budget.objectID,
+                                    logger: MockLogger())
         }.to(throwError { (error: Error) in
-            guard case ShareBudgetError.runtime(let value) = error else {
+            guard case let ShareBudgetError.runtime(value) = error else {
                 fail("Wrong error type \(error)")
                 return
             }
@@ -117,11 +117,11 @@ class ExpensesInteractionTest: XCTestCase {
 
         expect {
             try ExpensesInteraction(managedObjectContext: self.managedObjectContext,
-                    budgetID: expense.objectID,
-                    categoryID: nil,
-                    logger: MockLogger())
+                                    budgetID: expense.objectID,
+                                    categoryID: nil,
+                                    logger: MockLogger())
         }.to(throwError { (error: Error) in
-            guard case ShareBudgetError.runtime(let value) = error else {
+            guard case let ShareBudgetError.runtime(value) = error else {
                 fail("Wrong error type \(error)")
                 return
             }

@@ -17,16 +17,16 @@ class CategoryAPIUpdateTask: APIUpdateTask, APIUpdateTaskProtocol {
 
     func parseUpdates(items: [[String: Any?]], in managedObjectContext: NSManagedObjectContext) {
         var category: Category?
-        
+
         for item in items {
             if let modelID = item[Category.modelKeyID()] as? Int {
                 category = ModelManager.findEntity(Category.self, by: modelID, in: managedObjectContext) as? Category
             }
-            
+
             if category == nil {
                 category = Category(context: managedObjectContext)
             }
-            
+
             category?.update(with: item, in: managedObjectContext)
         }
     }

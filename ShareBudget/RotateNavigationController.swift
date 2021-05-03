@@ -10,26 +10,18 @@ import UIKit
 
 class RotateNavigationController: UINavigationController {
     override var shouldAutorotate: Bool {
-        get {
-            return self.topViewController?.shouldAutorotate ?? true
-        }
+        return self.topViewController?.shouldAutorotate ?? true
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return self.topViewController?.supportedInterfaceOrientations ?? .portrait
-        }
+        return self.topViewController?.supportedInterfaceOrientations ?? .portrait
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        get {
-            return self.topViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
-        }
+        return self.topViewController?.preferredInterfaceOrientationForPresentation ?? .portrait
     }
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return self.topViewController?.preferredStatusBarStyle ?? .lightContent
-        }
+        return topViewController?.preferredStatusBarStyle ?? .lightContent
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2018 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol ExpensesPresenterProtocol: BasePresenterProtocol {
     var delegate: ExpensesPresenterDelegate! { get set }
@@ -45,34 +45,28 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
 
     func viewDidLoad() {
         interaction.delegate = self
-        
+
         delegate.showPage(title: interaction.budget.name)
         delegate.showCreateNewExpenseButton { _ in
             self.router.openCreateExpenseViewController(budgetID: self.interaction.budget.objectID)
         }
     }
-    
-    func viewWillAppear(_ animated: Bool) {
-    }
-    
-    func viewDidAppear(_ animated: Bool) {
-    }
-    
-    func viewWillDisappear(_ animated: Bool) {
-    }
-    
-    func viewDidDisappear(_ animated: Bool) {
-    }
-    
+
+    func viewWillAppear(_: Bool) {}
+
+    func viewDidAppear(_: Bool) {}
+
+    func viewWillDisappear(_: Bool) {}
+
+    func viewDidDisappear(_: Bool) {}
+
     func didChangeContent() {
         delegate.refresh()
     }
-    
-    func willChangeContent() {
-    }
-    
-    func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    }
+
+    func willChangeContent() {}
+
+    func changed(at _: IndexPath?, for _: NSFetchedResultsChangeType, newIndexPath _: IndexPath?) {}
 
     func interaction() -> ExpensesInteractionProtocol {
         return interaction
@@ -89,18 +83,18 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
             date = UtilityFormatter.expenseCreationFormatter.string(for: creationDate) ?? ""
         }
         let dict = interaction.budgetRest[indexPath.section]
-        
+
         var moneyLeft = ""
         if let left = dict[expense.modelID?.stringValue ?? ""] {
             moneyLeft = String(left)
         }
 
         return ExpenseTableViewCellViewModel(date: date,
-                title: expense.name,
-                price: UtilityFormatter.priceFormatter.string(for: expense.price),
-                budget: moneyLeft,
-                category: expense.category?.name,
-                highlightedText: searchText)
+                                             title: expense.name,
+                                             price: UtilityFormatter.priceFormatter.string(for: expense.price),
+                                             budget: moneyLeft,
+                                             category: expense.category?.name,
+                                             highlightedText: searchText)
     }
 
     func headerViewModel(for section: Int) -> ExpenseTableViewHeaderViewModel {
@@ -108,7 +102,7 @@ class ExpensesPresenter<Interaction: ExpensesInteractionProtocol, Router: Expens
         let total = interaction.totalExpense(for: section)
 
         return ExpenseTableViewHeaderViewModel(month: UtilityFormatter.yearMonthFormatter.string(from: creationDate as Date),
-                expenses: UtilityFormatter.priceFormatter.string(for: total))
+                                               expenses: UtilityFormatter.priceFormatter.string(for: total))
     }
 
     func expenseSelected(at indexPath: IndexPath) {

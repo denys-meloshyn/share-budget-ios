@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 protocol BudgetRouterProtocol: BaseRouterProtocol {
     func openDetailPage(for budgetID: NSManagedObjectID?)
@@ -18,9 +18,9 @@ class BudgetRouter: BaseRouter, BudgetRouterProtocol {
         guard let budgetDetailViewController = R.storyboard.main.budgetDetailViewController() else {
             return
         }
-        
+
         budgetDetailViewController.budgetID = budgetID
         budgetDetailViewController.hidesBottomBarWhenPushed = true
-        self.viewController?.navigationController?.pushViewController(budgetDetailViewController, animated: true)
+        viewController?.navigationController?.pushViewController(budgetDetailViewController, animated: true)
     }
 }

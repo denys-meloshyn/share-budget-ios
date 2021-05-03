@@ -8,11 +8,10 @@
 
 import Foundation
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
-protocol LoginPresenterDelegate: class {
-}
+protocol LoginPresenterDelegate: class {}
 
 protocol LoginPresenterProtocol {
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?)
@@ -23,7 +22,7 @@ class LoginPresenter: LoginPresenterProtocol {
     private let router: LoginRouterProtocol
     private let interactor: LoginInteractionProtocol
     private weak var delegate: LoginPresenterDelegate?
-    
+
     init(interactor: LoginInteractionProtocol, router: LoginRouterProtocol) {
         self.router = router
         self.interactor = interactor
@@ -32,13 +31,13 @@ class LoginPresenter: LoginPresenterProtocol {
     func login(userIdentifier: String, identityToken: String, firstName: String?, lastName: String?) {
         interactor.login(userIdentifier: userIdentifier, identityToken: identityToken, firstName: firstName, lastName: lastName).subscribe { event in
             switch event {
-            case .success(let model):
+            case let .success(model):
                 UserCredentials.instance.accessToken = model.accessToken
                 UserCredentials.instance.refreshToken = model.refreshToken
                 UserCredentials.instance.userID = String("\(model.user.userID ?? -1)")
 
                 SyncManager.shared.run()
-                
+
                 self.router.showHomePage()
             case .error:
                 break

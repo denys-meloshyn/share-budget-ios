@@ -26,80 +26,82 @@ enum FieldState {
 class ValidationTextField: UIView {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet var textField: UITextField?
-    
+
     var textFieldState: FieldState = .inactive {
         didSet {
-            self.updateUI()
+            updateUI()
         }
     }
+
     var validationState: ValidationState = .notValid {
         didSet {
             self.updateUI()
         }
     }
+
     weak var delegate: ValidationTextFieldDelegate?
-    
+
     private var isFieldEmpty: Bool {
         return self.textField?.text?.count == 0
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.layer.borderWidth = 1.0
+
+        layer.borderWidth = 1.0
     }
-    
+
     private func updateUI() {
         var labelColor = UIColor.white
         var borderColor = UIColor.white
-        
-        switch (self.validationState, self.textFieldState) {
+
+        switch (validationState, textFieldState) {
         case (.notValid, .active):
             borderColor = UIColor.red
             labelColor = UIColor.red
-            
+
         case (.notValid, .inactive):
             borderColor = UIColor.purple
             labelColor = UIColor.purple
-            
+
         case (.valid, .active):
             borderColor = UIColor.green
             labelColor = UIColor.green
-            
+
         case (.valid, .inactive):
             borderColor = UIColor.gray
             labelColor = UIColor.green
-            
+
         case (.none, .active):
             borderColor = UIColor.gray
             labelColor = UIColor.blue
-            
+
         case (.none, .inactive):
             borderColor = UIColor.gray
             labelColor = UIColor.gray
         }
-        
-        self.titleLabel?.textColor = labelColor
-        self.layer.borderColor = borderColor.cgColor
-        
-        if self.isFieldEmpty {
-            self.titleLabel?.isHidden = true
+
+        titleLabel?.textColor = labelColor
+        layer.borderColor = borderColor.cgColor
+
+        if isFieldEmpty {
+            titleLabel?.isHidden = true
         } else {
-            self.titleLabel?.isHidden = false
+            titleLabel?.isHidden = false
         }
     }
-    
+
     @IBAction func textChanged(sender: UITextField) {
-        self.delegate?.textChanged(sender.text ?? "")
+        delegate?.textChanged(sender.text ?? "")
     }
 }
 
 extension ValidationTextField: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.textFieldState = .active
+    func textFieldDidBeginEditing(_: UITextField) {
+        textFieldState = .active
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.textFieldState = .inactive
+
+    func textFieldDidEndEditing(_: UITextField) {
+        textFieldState = .inactive
     }
 }

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 typealias APIResultBlock = (Any?, ErrorTypeAPI) -> Void
 
@@ -17,8 +17,6 @@ protocol BaseInteractionDelegate: class {
     func changed(at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
 }
 
-protocol BaseInteractionProtocol: class {
-}
+protocol BaseInteractionProtocol: class {}
 
-class BaseInteraction: NSObject {
-}
+class BaseInteraction: NSObject {}

@@ -5,9 +5,9 @@
 
 import Foundation
 
-import RxSwift
-import RxCocoa
 import CoreData
+import RxCocoa
+import RxSwift
 import url_builder
 
 protocol APIUpdateTaskProtocol {
@@ -32,7 +32,7 @@ extension APIUpdateTaskProtocol {
                 .appendPath("updates")
                 .appendQueryParameter(key: Constants.key.json.paginationStart, value: "1")
                 .appendQueryParameter(key: Constants.key.json.paginationPageSize, value: "100")
-            
+
             guard let url = builder.build() else {
                 event(.error(Constants.Errors.urlNotValid))
                 return Disposables.create()

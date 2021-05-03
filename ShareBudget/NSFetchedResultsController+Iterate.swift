@@ -6,15 +6,15 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension NSFetchedResultsController {
     @objc func iterate(block: (IndexPath) -> Void) {
         if let sections = self.sections {
-            for sectionIndex in 0..<sections.count {
+            for sectionIndex in 0 ..< sections.count {
                 let section = sections[sectionIndex]
-                for rowIndex in 0..<section.numberOfObjects {
+                for rowIndex in 0 ..< section.numberOfObjects {
                     let indexPath = IndexPath(row: rowIndex, section: sectionIndex)
                     block(indexPath)
                 }

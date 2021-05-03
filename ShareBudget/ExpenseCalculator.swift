@@ -10,32 +10,32 @@ import CoreData
 
 class ExpenseCalculator {
     private let fetchedResultsController: NSFetchedResultsController<Expense>
-    
+
     init(fetchedResultsController: NSFetchedResultsController<Expense>) {
         self.fetchedResultsController = fetchedResultsController
     }
-    
+
     func totalExpenses() -> Double {
         var total = 0.0
-        let sections = self.fetchedResultsController.sections ?? []
-        for i in 0..<sections.count {
-            total += self.totalExpense(for: i)
+        let sections = fetchedResultsController.sections ?? []
+        for i in 0 ..< sections.count {
+            total += totalExpense(for: i)
         }
-        
+
         return total
     }
-    
+
     func totalExpense(for section: Int) -> Double {
-        let sections = self.fetchedResultsController.sections!
+        let sections = fetchedResultsController.sections!
         let sectionModel = sections[section]
-        
+
         var total = 0.0
-        for i in 0..<sectionModel.numberOfObjects {
+        for i in 0 ..< sectionModel.numberOfObjects {
             let indexPath = IndexPath(row: i, section: section)
-            let expense = self.fetchedResultsController.object(at: indexPath)
+            let expense = fetchedResultsController.object(at: indexPath)
             total += expense.price?.doubleValue ?? 0.0
         }
-        
+
         return total
     }
 }

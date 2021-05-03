@@ -6,8 +6,8 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CorePlot
+import UIKit
 
 protocol BudgetDetailViewProtocol: BaseViewProtocol {
     var monthLabel: UILabel? { get set }
@@ -69,65 +69,65 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
     weak var constraintChartViewHeight: NSLayoutConstraint?
     weak var constraintAnimationViewWidth: NSLayoutConstraint?
     weak var constraintAnimationViewHeight: NSLayoutConstraint?
-    
+
     fileprivate var piePlot: CPTPieChart!
     fileprivate var pieGraph: CPTXYGraph?
-    
+
     override init(with presenter: T, and viewController: UIViewController) {
         super.init(with: presenter, and: viewController)
-        
+
         presenter.delegate = self
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         editMemberButton?.tintColor = Constants.color.dflt.actionColor
         animationView?.backgroundColor = Constants.color.dflt.actionColor
         viewController?.view.backgroundColor = Constants.color.dflt.backgroundColor
         createNewExpenseContainerView?.backgroundColor = Constants.color.dflt.actionColor
-        
+
         backButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.closePageAction()
         })
-        
+
         editMemberButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.editMembers()
         })
-        
+
         expenseButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.showAllExpenses()
         })
-        
+
         budgetButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.changeBudgetLimit()
         })
-        
+
         createExpenseButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.createNewExpense()
         })
-        
+
         backButton?.addTouchUpInsideListener(completion: { _ in
             self.presenter.closePageAction()
         })
-        
+
         configureBorder(for: budgetContainerView, color: Constants.color.dflt.actionColor)
         configureBorder(for: expenseContainerView, color: Constants.color.dflt.actionColor)
         configureBorder(for: balanceContainerView, color: UIColor(white: 1.0, alpha: 0.5))
-        
+
         configureChart()
     }
-    
+
     override func showPage(title: String?) {
         navigationTitleLabel?.text = title
     }
-    
+
     private func configureBorder(for view: UIView?, color: UIColor? = UIColor.white) {
         view?.layer.borderWidth = 1.0
         view?.layer.cornerRadius = 5.0
         view?.layer.borderColor = color?.cgColor
     }
-    
+
     private func configureChart() {
         // Create graph from theme
         pieGraph = CPTXYGraph(frame: .zero)
@@ -136,58 +136,58 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
         pieGraph?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
         pieGraph?.plotAreaFrame?.fill = CPTFill(color: CPTColor(cgColor: UIColor.clear.cgColor))
         pieGraph?.plotAreaFrame?.borderLineStyle = nil
-        
+
         // Paddings
         pieGraph?.paddingTop = 0.0
         pieGraph?.paddingLeft = 0.0
         pieGraph?.paddingRight = 0.0
         pieGraph?.paddingBottom = 0.0
-        
+
         chartView?.hostedGraph = pieGraph
-        
+
         chartView?.layoutIfNeeded()
         let width = chartView?.frame.width ?? 0.0
         let height = chartView?.frame.height ?? 0.0
         let radius = min(width, height) * 0.5
         let innerRadius = radius * 0.5
-        
+
         // Add pie chart
         piePlot = CPTPieChart(frame: .zero)
         piePlot.pieRadius = radius
         piePlot.pieInnerRadius = innerRadius
-        piePlot.identifier = NSString.init(string: "Pie Chart 1")
+        piePlot.identifier = NSString(string: "Pie Chart 1")
         piePlot.startAngle = CGFloat(Double.pi / 4)
         piePlot.sliceDirection = .clockwise
         piePlot.labelOffset = -60.0
         piePlot.labelRotationRelativeToRadius = true
-        
+
         piePlot.delegate = presenter
         piePlot.dataSource = presenter
-        
+
         pieGraph?.add(piePlot)
-        
+
         configureChartFrame()
     }
-    
+
     private func configureChartFrame() {
         let buttonSize = piePlot.pieInnerRadius * 0.8 * 2
         constraintChartViewWidth?.constant = buttonSize
         constraintChartViewHeight?.constant = buttonSize
         createNewExpenseContainerView?.layer.cornerRadius = buttonSize * 0.5
-        
+
         constraintAnimationViewWidth?.constant = (constraintChartViewWidth?.constant ?? 0.0)
         constraintAnimationViewHeight?.constant = (constraintChartViewHeight?.constant ?? 0.0)
         animationView?.layer.cornerRadius = (constraintAnimationViewWidth?.constant ?? 0.0) / 2.0
         viewController?.view.layoutIfNeeded()
     }
-    
+
     fileprivate func stopAnimation() {
         animationView?.layer.removeAllAnimations()
     }
-    
+
     fileprivate func startAnimation() {
         stopAnimation()
-        
+
         UIView.animate(withDuration: 5.0, animations: { [weak self] in
             self?.animationView?.alpha = 0.0
             self?.animationView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
@@ -195,19 +195,19 @@ class BudgetDetailView<T: BudgetDetailPresenterProtocol>: BaseView<T>, BudgetDet
             if finished {
                 self?.animationView?.alpha = 1.0
                 self?.animationView?.transform = .identity
-                
+
                 self?.startAnimation()
             }
         })
     }
-    
+
     fileprivate func updateContrastColor(to color: UIColor) {
         let newColor = color
-        
+
         configureBorder(for: budgetContainerView, color: newColor)
         configureBorder(for: expenseContainerView, color: newColor)
         configureBorder(for: balanceContainerView, color: UIColor.lightGray)
-        
+
         minusLabel?.textColor = newColor
         equalLabel?.textColor = newColor
         monthLabel?.textColor = newColor
@@ -230,7 +230,7 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
             viewController?.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     }
-    
+
     func updateCreateButtonAnimation(_ isActive: Bool) {
         if isActive {
             startAnimation()
@@ -238,51 +238,51 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
             stopAnimation()
         }
     }
-    
+
     func updateChart() {
         piePlot.reloadData()
     }
-    
+
     func updateTotalExpense(_ total: String) {
         expenseLabel?.text = total
     }
-    
+
     func updateMonthLimit(_ limit: String) {
         budgetLabel?.text = limit
     }
-    
+
     func updateBalance(_ balance: String) {
         balanceLabel?.text = balance
     }
-    
+
     func updateCurrentMonthDate(_ date: String) {
         monthLabel?.text = date
     }
-    
+
     func updateExpenseCoverColor(_ color: UIColor?) {
         navigationView?.backgroundColor = color
         expenseCoverView?.backgroundColor = color
         safeAreaPlaceholderView?.backgroundColor = color
     }
-    
+
     func showEditBudgetLimitView(with title: String, message: String, create: String, cancel: String, placeholder: String, budgetLimit: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
+
         let createAction = UIAlertAction(title: create, style: .default, handler: presenter.createHandler(with: alertController))
-        
+
         let cancelAction = UIAlertAction(title: cancel, style: .cancel)
-        
-        alertController.addTextField { (textField) in
+
+        alertController.addTextField { textField in
             textField.text = budgetLimit
             textField.keyboardType = .decimalPad
             textField.placeholder = placeholder
             textField.autocapitalizationType = .none
-            
+
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { _ in
                 guard let text = textField.text else {
                     return
                 }
-                
+
                 if UtilityFormatter.priceEditFormatter.number(from: text) != nil {
                     createAction.isEnabled = true
                 } else {
@@ -290,10 +290,10 @@ extension BudgetDetailView: BudgetDetailPresenterDelegate {
                 }
             }
         }
-        
+
         alertController.addAction(createAction)
         alertController.addAction(cancelAction)
-        
-        self.viewController?.present(alertController, animated: true, completion: nil)
+
+        viewController?.present(alertController, animated: true, completion: nil)
     }
 }

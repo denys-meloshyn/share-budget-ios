@@ -9,6 +9,5 @@
 @testable import ShareBudget
 
 class MockBudgetViewController: BudgetViewController {
-    override func configureVIPER() {
-    }
+    override func configureVIPER() {}
 }

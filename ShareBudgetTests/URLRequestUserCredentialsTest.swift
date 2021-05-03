@@ -6,22 +6,22 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import XCTest
 import Nimble
 @testable import ShareBudget
+import XCTest
 
 class URLRequestUserCredentialsTest: XCTestCase {
     var urlRequest: URLRequest!
-    
+
     override func setUp() {
         super.setUp()
-        
+
         Dependency.configure()
         Dependency.userCredentials.userID = "-100"
-        
-        self.urlRequest = URLRequest(url: URL(fileURLWithPath: "google.com"))
+
+        urlRequest = URLRequest(url: URL(fileURLWithPath: "google.com"))
     }
-    
+
     func testUserCredentialsNotAdded() {
         expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.token]).to(beNil())
         expect(self.urlRequest.allHTTPHeaderFields?[Constants.key.json.userID]).to(beNil())

@@ -76,7 +76,8 @@ class UserGroupAPI: BaseAPI {
 
                 guard let dict = data as? [String: Any?],
                       let result = dict[Constants.key.json.result] as? [String: Any?],
-                      let token = result["token"] as? String else {
+                      let token = result["token"] as? String
+                else {
                     event(.error(errorType))
                     return
                 }

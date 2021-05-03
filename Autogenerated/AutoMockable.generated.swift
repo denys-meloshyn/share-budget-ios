@@ -6,31 +6,19 @@
 
 import Foundation
 #if os(iOS) || os(tvOS) || os(watchOS)
-import UIKit
+    import UIKit
 #elseif os(OSX)
-import AppKit
+    import AppKit
 #endif
 
-
-
-
-
-
-
-
-
-
-
-
-
 class BaseViewProtocolMock: BaseViewProtocol {
-
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -38,12 +26,13 @@ class BaseViewProtocolMock: BaseViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -53,12 +42,13 @@ class BaseViewProtocolMock: BaseViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -68,12 +58,13 @@ class BaseViewProtocolMock: BaseViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -83,12 +74,13 @@ class BaseViewProtocolMock: BaseViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -97,17 +89,18 @@ class BaseViewProtocolMock: BaseViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
     var delegate: BudgetDetailPresenterDelegate?
 
-    //MARK: - editMembers
+    // MARK: - editMembers
 
     var editMembersCallsCount = 0
     var editMembersCalled: Bool {
         return editMembersCallsCount > 0
     }
+
     var editMembersClosure: (() -> Void)?
 
     func editMembers() {
@@ -115,12 +108,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         editMembersClosure?()
     }
 
-    //MARK: - closePageAction
+    // MARK: - closePageAction
 
     var closePageActionCallsCount = 0
     var closePageActionCalled: Bool {
         return closePageActionCallsCount > 0
     }
+
     var closePageActionClosure: (() -> Void)?
 
     func closePageAction() {
@@ -128,12 +122,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         closePageActionClosure?()
     }
 
-    //MARK: - showAllExpenses
+    // MARK: - showAllExpenses
 
     var showAllExpensesCallsCount = 0
     var showAllExpensesCalled: Bool {
         return showAllExpensesCallsCount > 0
     }
+
     var showAllExpensesClosure: (() -> Void)?
 
     func showAllExpenses() {
@@ -141,12 +136,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         showAllExpensesClosure?()
     }
 
-    //MARK: - createNewExpense
+    // MARK: - createNewExpense
 
     var createNewExpenseCallsCount = 0
     var createNewExpenseCalled: Bool {
         return createNewExpenseCallsCount > 0
     }
+
     var createNewExpenseClosure: (() -> Void)?
 
     func createNewExpense() {
@@ -154,12 +150,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         createNewExpenseClosure?()
     }
 
-    //MARK: - changeBudgetLimit
+    // MARK: - changeBudgetLimit
 
     var changeBudgetLimitCallsCount = 0
     var changeBudgetLimitCalled: Bool {
         return changeBudgetLimitCallsCount > 0
     }
+
     var changeBudgetLimitClosure: (() -> Void)?
 
     func changeBudgetLimit() {
@@ -167,12 +164,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         changeBudgetLimitClosure?()
     }
 
-    //MARK: - createHandler
+    // MARK: - createHandler
 
     var createHandlerWithCallsCount = 0
     var createHandlerWithCalled: Bool {
         return createHandlerWithCallsCount > 0
     }
+
     var createHandlerWithReceivedAlertController: UIAlertController?
     var createHandlerWithReturnValue: ((UIAlertAction) -> Swift.Void)?
     var createHandlerWithClosure: ((UIAlertController) -> ((UIAlertAction) -> Swift.Void)?)?
@@ -180,15 +178,16 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
     func createHandler(with alertController: UIAlertController) -> ((UIAlertAction) -> Swift.Void)? {
         createHandlerWithCallsCount += 1
         createHandlerWithReceivedAlertController = alertController
-        return createHandlerWithClosure.map({ $0(alertController) }) ?? createHandlerWithReturnValue
+        return createHandlerWithClosure.map { $0(alertController) } ?? createHandlerWithReturnValue
     }
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -196,12 +195,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -211,12 +211,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -226,12 +227,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -241,12 +243,13 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -255,8 +258,8 @@ class BudgetDetailPresenterProtocolMock: BudgetDetailPresenterProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
     var monthLabel: UILabel?
     var minusLabel: UILabel?
@@ -287,12 +290,13 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
     var constraintAnimationViewWidth: NSLayoutConstraint?
     var constraintAnimationViewHeight: NSLayoutConstraint?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -300,12 +304,13 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -315,12 +320,13 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -330,12 +336,13 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -345,12 +352,13 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -359,20 +367,21 @@ class BudgetDetailViewProtocolMock: BudgetDetailViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class BudgetViewProtocolMock: BudgetViewProtocol {
     var tableView: UITableView?
     var createNewGroupLabel: UILabel?
     var createNewGroupRootView: UIView?
     var constantCreateNewGroupRootViewBottom: NSLayoutConstraint?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -380,12 +389,13 @@ class BudgetViewProtocolMock: BudgetViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -395,12 +405,13 @@ class BudgetViewProtocolMock: BudgetViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -410,12 +421,13 @@ class BudgetViewProtocolMock: BudgetViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -425,12 +437,13 @@ class BudgetViewProtocolMock: BudgetViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -439,17 +452,18 @@ class BudgetViewProtocolMock: BudgetViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class CategoryViewProtocolMock: CategoryViewProtocol {
     var tableView: UITableView?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -457,12 +471,13 @@ class CategoryViewProtocolMock: CategoryViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -472,12 +487,13 @@ class CategoryViewProtocolMock: CategoryViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -487,12 +503,13 @@ class CategoryViewProtocolMock: CategoryViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -502,12 +519,13 @@ class CategoryViewProtocolMock: CategoryViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -516,8 +534,8 @@ class CategoryViewProtocolMock: CategoryViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
     var categoryButton: ButtonListener?
     var dateContainerView: UIView?
@@ -527,12 +545,13 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
     var priceTextField: UITextField?
     var categoryContainerView: UIView?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -540,12 +559,13 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -555,12 +575,13 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -570,12 +591,13 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -585,12 +607,13 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -599,17 +622,18 @@ class EditExpenseViewProtocolMock: EditExpenseViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class ExpensesViewProtocolMock: ExpensesViewProtocol {
     var tableView: UITableView!
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -617,12 +641,13 @@ class ExpensesViewProtocolMock: ExpensesViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -632,12 +657,13 @@ class ExpensesViewProtocolMock: ExpensesViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -647,12 +673,13 @@ class ExpensesViewProtocolMock: ExpensesViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -662,12 +689,13 @@ class ExpensesViewProtocolMock: ExpensesViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -676,20 +704,21 @@ class ExpensesViewProtocolMock: ExpensesViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class LoginViewProtocolMock: LoginViewProtocol {
     var stackView: UIStackView?
     var scrollView: UIScrollView?
     var authorisationButton: UIButton?
     var authorisationModeButton: UIButton?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -697,12 +726,13 @@ class LoginViewProtocolMock: LoginViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -712,12 +742,13 @@ class LoginViewProtocolMock: LoginViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -727,12 +758,13 @@ class LoginViewProtocolMock: LoginViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -742,12 +774,13 @@ class LoginViewProtocolMock: LoginViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -756,17 +789,18 @@ class LoginViewProtocolMock: LoginViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }
+
 class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
     var tableView: UITableView?
 
-    //MARK: - viewDidLoad
+    // MARK: - viewDidLoad
 
     var viewDidLoadCallsCount = 0
     var viewDidLoadCalled: Bool {
         return viewDidLoadCallsCount > 0
     }
+
     var viewDidLoadClosure: (() -> Void)?
 
     func viewDidLoad() {
@@ -774,12 +808,13 @@ class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
         viewDidLoadClosure?()
     }
 
-    //MARK: - viewWillAppear
+    // MARK: - viewWillAppear
 
     var viewWillAppearCallsCount = 0
     var viewWillAppearCalled: Bool {
         return viewWillAppearCallsCount > 0
     }
+
     var viewWillAppearReceivedAnimated: Bool?
     var viewWillAppearClosure: ((Bool) -> Void)?
 
@@ -789,12 +824,13 @@ class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
         viewWillAppearClosure?(animated)
     }
 
-    //MARK: - viewDidAppear
+    // MARK: - viewDidAppear
 
     var viewDidAppearCallsCount = 0
     var viewDidAppearCalled: Bool {
         return viewDidAppearCallsCount > 0
     }
+
     var viewDidAppearReceivedAnimated: Bool?
     var viewDidAppearClosure: ((Bool) -> Void)?
 
@@ -804,12 +840,13 @@ class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
         viewDidAppearClosure?(animated)
     }
 
-    //MARK: - viewWillDisappear
+    // MARK: - viewWillDisappear
 
     var viewWillDisappearCallsCount = 0
     var viewWillDisappearCalled: Bool {
         return viewWillDisappearCallsCount > 0
     }
+
     var viewWillDisappearReceivedAnimated: Bool?
     var viewWillDisappearClosure: ((Bool) -> Void)?
 
@@ -819,12 +856,13 @@ class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
         viewWillDisappearClosure?(animated)
     }
 
-    //MARK: - viewDidDisappear
+    // MARK: - viewDidDisappear
 
     var viewDidDisappearCallsCount = 0
     var viewDidDisappearCalled: Bool {
         return viewDidDisappearCallsCount > 0
     }
+
     var viewDidDisappearReceivedAnimated: Bool?
     var viewDidDisappearClosure: ((Bool) -> Void)?
 
@@ -833,5 +871,4 @@ class TeamMembersViewProtocolMock: TeamMembersViewProtocol {
         viewDidDisappearReceivedAnimated = animated
         viewDidDisappearClosure?(animated)
     }
-
 }

@@ -22,51 +22,51 @@ class CreateSearchTableViewHeader: UITableViewHeaderFooterView {
     @IBOutlet var textField: UITextField?
     @IBOutlet var textFieldRootView: UIView?
     @IBOutlet var searchCreateButton: UIButton?
-    
+
     weak var delegate: CreateSearchTableViewHeaderDelegate?
-    
+
     var mode: BudgetHeaderMode = .create {
         didSet {
             switch mode {
             case .create:
                 self.showCreate()
-                
+
             case .search:
                 self.showSearch()
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        self.textFieldRootView?.layer.borderWidth = 1.0
-        self.textFieldRootView?.layer.borderColor = Constants.color.dflt.actionColor.cgColor
-        self.searchCreateButton?.tintColor = Constants.color.dflt.actionColor
-        self.contentView.backgroundColor = Constants.color.dflt.backgroundColor
+
+        textFieldRootView?.layer.borderWidth = 1.0
+        textFieldRootView?.layer.borderColor = Constants.color.dflt.actionColor.cgColor
+        searchCreateButton?.tintColor = Constants.color.dflt.actionColor
+        contentView.backgroundColor = Constants.color.dflt.backgroundColor
     }
-    
+
     private func showSearch() {
-        self.searchCreateButton?.setTitle("🔎", for: .normal)
+        searchCreateButton?.setTitle("🔎", for: .normal)
     }
-    
+
     private func showCreate() {
-        self.searchCreateButton?.setTitle("+", for: .normal)
+        searchCreateButton?.setTitle("+", for: .normal)
     }
-    
+
     @IBAction func textChanged() {
-        self.delegate?.textChanged(self, self.textField?.text ?? "")
+        delegate?.textChanged(self, textField?.text ?? "")
     }
-    
+
     @IBAction func modeAction() {
-        self.delegate?.modeButtonPressed(self)
+        delegate?.modeButtonPressed(self)
     }
 }
 
 extension CreateSearchTableViewHeader: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.delegate?.createNewItem(self, textField.text)
-        
+        delegate?.createNewItem(self, textField.text)
+
         return false
     }
 }

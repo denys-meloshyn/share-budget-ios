@@ -6,10 +6,9 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 @testable import ShareBudget
+import UIKit
 
 class MockCategoryViewController: CategoryViewController {
-    override func configureVIPER() {
-    }
+    override func configureVIPER() {}
 }

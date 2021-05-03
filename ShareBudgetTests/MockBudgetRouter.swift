@@ -6,13 +6,13 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-@testable import ShareBudget
 import CoreData
+@testable import ShareBudget
 
 class MockBudgetRouter: BudgetRouter {
     let calledMethodManager = CalledMethodManager()
-    
-    override func openDetailPage(for budgetID: NSManagedObjectID?) {
+
+    override func openDetailPage(for _: NSManagedObjectID?) {
         calledMethodManager.add("openDetailPage")
     }
 }

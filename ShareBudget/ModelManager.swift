@@ -6,29 +6,27 @@
 //  Copyright © 2017 Denys Meloshyn. All rights reserved.
 //
 
-import UIKit
 import CoreData
+import UIKit
 
 class ModelManager {
     static let sharedInstance = ModelManager()
 
     private static let fetchBatchSize = 30
 
-    private init() {
-
-    }
+    private init() {}
 
     // MARK: - Core Data stack
 
-    static private let storeURL = ModelManager.applicationDocumentsDirectory.appendingPathComponent(Dependency.coreDataName)
+    private static let storeURL = ModelManager.applicationDocumentsDirectory.appendingPathComponent(Dependency.coreDataName)
 
-    static private var applicationDocumentsDirectory: URL = {
+    private static var applicationDocumentsDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.denys.meloshyn.TeamExpenses" in the application's documents Application Support directory.
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return urls[urls.count - 1]
     }()
 
-    static private var managedObjectModel: NSManagedObjectModel = {
+    private static var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = Bundle.main.url(forResource: "ShareBudget", withExtension: "momd")!
         var managedObjectModel: NSManagedObjectModel? = NSManagedObjectModel(contentsOf: modelURL)
@@ -36,7 +34,7 @@ class ModelManager {
         return managedObjectModel!
     }()
 
-    static private var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    private static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: ModelManager.managedObjectModel)
@@ -154,7 +152,8 @@ class ModelManager {
 
     class func findOrCreateEntity(_ entity: BaseModel.Type,
                                   response: [String: Any?],
-                                  in managedObjectContext: NSManagedObjectContext) -> BaseModel {
+                                  in managedObjectContext: NSManagedObjectContext) -> BaseModel
+    {
         guard let modelID = response[entity.modelKeyID()] as? Int, let model = ModelManager.findEntity(entity, by: modelID, in: managedObjectContext) else {
             return entity.init(context: managedObjectContext)
         }
@@ -164,7 +163,8 @@ class ModelManager {
 
     class func findEntity(_ entity: BaseModel.Type,
                           by modelID: Int,
-                          in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+                          in managedObjectContext: NSManagedObjectContext) -> BaseModel?
+    {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "modelID == %i", modelID)
         fetchRequest.fetchLimit = 1
@@ -180,7 +180,8 @@ class ModelManager {
 
     class func findEntity(_ entity: BaseModel.Type,
                           internal internalID: Int,
-                          in managedObjectContext: NSManagedObjectContext) -> BaseModel? {
+                          in managedObjectContext: NSManagedObjectContext) -> BaseModel?
+    {
         let fetchRequest: NSFetchRequest<BaseModel> = entity.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "internalID == %i", internalID)
         fetchRequest.fetchLimit = 1
@@ -199,7 +200,8 @@ class ModelManager {
     }
 
     class func lastLimit(for budgetID: NSManagedObjectID,
-                         date: NSDate = NSDate(), _ managedObjectContext: NSManagedObjectContext) -> BudgetLimit? {
+                         date: NSDate = NSDate(), _ managedObjectContext: NSManagedObjectContext) -> BudgetLimit?
+    {
         let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
         fetchRequest.fetchBatchSize = 1
 
@@ -242,7 +244,8 @@ class ModelManager {
     // MARK: - NSFetchedResultsController
 
     class func changedModels(_ entity: BaseModel.Type,
-                             _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>? {
+                             _ managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<NSFetchRequestResult>?
+    {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = entity.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
 
@@ -266,7 +269,8 @@ class ModelManager {
                             apiEntity entityAPI: BaseAPI,
                             resource: String,
                             managedObjectContext: NSManagedObjectContext,
-                            completionBlock: APIResultBlock?) -> [BaseAPITask] {
+                            completionBlock: APIResultBlock?) -> [BaseAPITask]
+    {
         let fetchedResultsController = ModelManager.changedModels(entity, managedObjectContext)
 
         var tasks = [BaseAPITask]()
@@ -283,7 +287,8 @@ class ModelManager {
     }
 
     class func budgetFetchController(_ managedObjectContext: NSManagedObjectContext,
-                                     search text: String = "") -> NSFetchedResultsController<Budget> {
+                                     search text: String = "") -> NSFetchedResultsController<Budget>
+    {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
 
@@ -304,7 +309,8 @@ class ModelManager {
     }
 
     class func budgetLimitFetchController(_ managedObjectContext: NSManagedObjectContext,
-                                          for budgetID: NSManagedObjectID) -> NSFetchedResultsController<BudgetLimit> {
+                                          for budgetID: NSManagedObjectID) -> NSFetchedResultsController<BudgetLimit>
+    {
         let fetchRequest: NSFetchRequest<BudgetLimit> = BudgetLimit.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
 
@@ -343,7 +349,8 @@ class ModelManager {
     class func expenseFetchController(_ managedObjectContext: NSManagedObjectContext,
                                       for budgetID: NSManagedObjectID,
                                       categoryID: NSManagedObjectID? = nil,
-                                      searchText: String? = nil) -> NSFetchedResultsController<Expense> {
+                                      searchText: String? = nil) -> NSFetchedResultsController<Expense>
+    {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
 
@@ -389,7 +396,8 @@ class ModelManager {
     class func expenseFetchController(for budgetID: NSManagedObjectID,
                                       startDate: NSDate,
                                       finishDate: NSDate,
-                                      managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense> {
+                                      managedObjectContext: NSManagedObjectContext) -> NSFetchedResultsController<Expense>
+    {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         fetchRequest.fetchBatchSize = ModelManager.fetchBatchSize
 

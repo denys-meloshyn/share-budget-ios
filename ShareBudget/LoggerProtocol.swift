@@ -13,7 +13,7 @@ protocol LoggerProtocol {
 }
 
 extension XCGLogger: LoggerProtocol {
-    func logError(_ message: String) {
+    func logError(_: String) {
         error("Can't perform fetch request")
     }
 }

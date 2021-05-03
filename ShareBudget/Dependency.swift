@@ -7,8 +7,8 @@
 //
 
 import JustLog
-import XCGLogger
 import url_builder
+import XCGLogger
 
 enum Environment {
     case testing
@@ -20,8 +20,7 @@ enum Environment {
 class Dependency {
     static let instance = Dependency()
 
-    private init() {
-    }
+    private init() {}
 
     static let loggerRemoteIdentifier = "advancedLogger.remoteDestination"
 
@@ -45,29 +44,29 @@ class Dependency {
         }
 
         #if DEVELOPMENT_LOCAL
-        return Environment.developmentLocal
+            return Environment.developmentLocal
         #elseif DEVELOPMENT_REMOTE
-        return Environment.developmentRemote
+            return Environment.developmentRemote
         #else
-        return Environment.production
+            return Environment.production
         #endif
     }
 
     class func configure() {
-        self.configureUserCredentials()
-        self.configureLogger()
-        self.configureBackendConnection()
-        self.configureDataBaseName()
+        configureUserCredentials()
+        configureLogger()
+        configureBackendConnection()
+        configureDataBaseName()
 
-        self.logger.info(self.environment)
+        logger.info(environment)
     }
 
-    static private let cacheDirectory: URL = {
+    private static let cacheDirectory: URL = {
         let urls = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         return urls[urls.endIndex - 1]
     }()
 
-    class private func configureLogger() {
+    private class func configureLogger() {
         Logger.shared.logstashHost = "listener.logz.io"
         Logger.shared.logstashPort = 5052
         Logger.shared.logzioToken = "KwzGuzHVRmyojtidIOicPEZrQbZEzGCQ"
@@ -75,7 +74,7 @@ class Dependency {
         Logger.shared.setup()
 
         // Create a logger object with no destinations
-        self.logger = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
+        logger = XCGLogger(identifier: "advancedLogger", includeDefaultDestinations: false)
 
         // Create a destination for the system console log (via NSLog)
         let systemDestination = AppleSystemLogDestination(identifier: "advancedLogger.systemDestination")
@@ -91,10 +90,10 @@ class Dependency {
         systemDestination.showDate = true
 
         // Add the destination to the logger
-        self.logger.add(destination: systemDestination)
+        logger.add(destination: systemDestination)
 
         // Create a file log destination
-        let logPath: URL = self.cacheDirectory.appendingPathComponent("XCGLogger_Log.txt")
+        let logPath: URL = cacheDirectory.appendingPathComponent("XCGLogger_Log.txt")
         let fileDestination = FileDestination(writeToFile: logPath, identifier: "advancedLogger.fileDestination")
 
         // Optionally set some configuration options
@@ -111,11 +110,11 @@ class Dependency {
         fileDestination.logQueue = XCGLogger.logQueue
 
         // Add the destination to the logger
-        self.logger.add(destination: fileDestination)
+        logger.add(destination: fileDestination)
 
-        if self.environment() == .production || self.environment() == .developmentRemote {
+        if environment() == .production || environment() == .developmentRemote {
             // Remote destination
-            let remoteLogsDestination = RemoteLogsDestination(identifier: self.loggerRemoteIdentifier)
+            let remoteLogsDestination = RemoteLogsDestination(identifier: loggerRemoteIdentifier)
             remoteLogsDestination.outputLevel = .debug
             remoteLogsDestination.showLogIdentifier = false
             remoteLogsDestination.showFunctionName = true
@@ -125,18 +124,18 @@ class Dependency {
             remoteLogsDestination.showLineNumber = true
             remoteLogsDestination.showDate = true
 
-            self.logger.add(destination: remoteLogsDestination)
+            logger.add(destination: remoteLogsDestination)
         }
 
         // Add basic app info, version info etc, to the start of the logs
-        self.logger.logAppDetails()
+        logger.logAppDetails()
     }
 
-    class private func configureBackendConnection() {
+    private class func configureBackendConnection() {
         let components = NSURLComponents()
         Dependency.restAPIVersion = "v1"
 
-        switch self.environment() {
+        switch environment() {
         case .developmentLocal:
             components.scheme = "http"
             components.host = "127.0.0.1"
@@ -154,7 +153,7 @@ class Dependency {
             break
         }
 
-        self.backendURLComponents = components
+        backendURLComponents = components
     }
 
     func restApiUrlBuilder(environment: Environment = Dependency.environment()) -> URL.Builder {
@@ -166,15 +165,15 @@ class Dependency {
 
         case .developmentRemote:
             builder = URL.Builder
-                         .https
-                         .host("sharebudget-development.herokuapp.com")
-                         .appendPath(Dependency.restAPIVersion)
+                .https
+                .host("sharebudget-development.herokuapp.com")
+                .appendPath(Dependency.restAPIVersion)
 
         case .production:
             builder = URL.Builder
-                         .https
-                         .host("sharebudget-development.herokuapp.com")
-                         .appendPath(Dependency.restAPIVersion)
+                .https
+                .host("sharebudget-development.herokuapp.com")
+                .appendPath(Dependency.restAPIVersion)
 
         case .testing:
             builder = URL.Builder.scheme("")
@@ -207,16 +206,16 @@ class Dependency {
         return components
     }
 
-    class private func configureUserCredentials() {
-        self.userCredentials = UserCredentials.instance
+    private class func configureUserCredentials() {
+        userCredentials = UserCredentials.instance
     }
 
-    class private func configureDataBaseName() {
-        if self.environment() == .testing {
-            self.coreDataName = "ShareBudgetTest"
+    private class func configureDataBaseName() {
+        if environment() == .testing {
+            coreDataName = "ShareBudgetTest"
             return
         }
 
-        self.coreDataName = "ShareBudget"
+        coreDataName = "ShareBudget"
     }
 }

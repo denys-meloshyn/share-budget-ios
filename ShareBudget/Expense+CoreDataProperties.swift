@@ -1,26 +1,24 @@
 //
 //  Expense+CoreDataProperties.swift
-//  
+//
 //
 //  Created by Denys Meloshyn on 10.06.2018.
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-extension Expense {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Expense> {
+public extension Expense {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Expense> {
         return NSFetchRequest<Expense>(entityName: "Expense")
     }
 
-    @NSManaged public var creationDate: NSDate?
-    @NSManaged public var name: String?
-    @NSManaged public var price: NSNumber?
-    @NSManaged public var sectionCreationDate: String?
-    @NSManaged public var creationDateSearch: String?
-    @NSManaged public var budget: Budget?
-    @NSManaged public var category: Category?
-
+    @NSManaged var creationDate: NSDate?
+    @NSManaged var name: String?
+    @NSManaged var price: NSNumber?
+    @NSManaged var sectionCreationDate: String?
+    @NSManaged var creationDateSearch: String?
+    @NSManaged var budget: Budget?
+    @NSManaged var category: Category?
 }
